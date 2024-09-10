@@ -6,7 +6,6 @@ export default defineConfig({
   description: "Performant fork of Gale",
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 
-  base: '/Leaf-website/',
   srcDir: './pages',
 
   locales: {
