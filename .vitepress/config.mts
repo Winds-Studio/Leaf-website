@@ -22,7 +22,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/Leaf-website/logo.svg',
+    logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
