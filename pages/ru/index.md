@@ -3,9 +3,9 @@ layout: home
 
 hero:
   name: "Leaf"
-  text: "Современное ядро для MC сервера"
+  text: "Современное ПО для Minecraft серверов"
   image: /logo.svg
-  tagline: Drop-in replacement designed for removing some checks, customized, and high-performance built on top of Gale with optimization from other forks
+  tagline: Цель ядра - удаление некоторых проверок, глубокая кастомизация и высокая производительность. Leaf построен на основе Gale с оптимизациями из других форков
   actions:
     - theme: brand
       text: Релизы
@@ -15,9 +15,9 @@ hero:
       link: /builds
 features:
   - title: <span class='emoji'>⚡</span> Отличная оптимизация
-    details: Leaf is stable and performant, it's designed to handle a large number of players
+    details: Leaf - стабильное и производительное ядро, способное выдерживать большое количество игроков
   - title: <span class='emoji'>🧬</span> Возможность кастомизации
-    details: Leaf has many useful features and fixes, all of them can be customized in config
+    details: В конфиге ядра Вы найдёте много опций для тщательной настройки каждого аспекта работы сервера
   - title: <span class='emoji'>📦</span> Обновлённые зависимости
-    details: Leaf is a modern software, dependencies are updated to keep Leaf up-to-date
+    details: Leaf - современное ядро с самыми новыми библиотками и прочими зависимостями
 ---

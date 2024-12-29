@@ -1,9 +1,13 @@
+---
+aside: false
+---
+
 <script setup>
-    import Build from './Build.vue'
+    import BuildHistory from './BuildHistory.vue'
 </script>
 # Build History
 <hr>
 
 <ClientOnly>
-    <Build/>
+    <BuildHistory/>
 </ClientOnly>
