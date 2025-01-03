@@ -20,8 +20,8 @@ hero:
 features:
   - title: <span class='emoji'>⚡</span> 高度优化
     details: 稳定且高效, 设计用于承载大量玩家
-  - title: <span class='emoji'>🧬</span> 高自定义且实用
-    details: Leaf has many useful features and fixes, all of them can be customized in config
+  - title: <span class='emoji'>🧬</span> 自定义且实用
+    details: 包含实用的功能和修复, 可在配置中自定义
   - title: <span class='emoji'>📦</span> 保持最新
-    details: Leaf is a modern software, dependencies are updated to keep Leaf up-to-date
+    details: 现代化, 保持最新的依赖库
 ---
