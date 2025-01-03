@@ -14,13 +14,13 @@ export default defineConfig({
       lang: 'en'
     },
     ru: {
-      label: 'Russian',
+      label: 'Русский',
       lang: 'ru', // optional, will be added  as `lang` attribute on `html` tag
 
       // other locale specific properties...
     },
     zh: {
-      label: '中文',
+      label: '简体中文',
       lang: 'zh',
     }
   },
