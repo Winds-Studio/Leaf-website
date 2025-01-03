@@ -4,22 +4,25 @@ layout: home
 
 hero:
   name: "Leaf"
-  text: "Modern Minecraft server software"
+  text: "High performance Minecraft server software"
   image: logo.svg
-  tagline: Drop-in replacement designed for removing some checks, customized, and high-performance built on top of Gale with optimization from other forks
+  tagline: A Paper fork aim to find balance between performance, vanilla and stability
   actions:
     - theme: brand
       text: Releases
       link: https://github.com/Winds-Studio/Leaf/releases
+    - theme: alt
+      text: Docs
+      link: https://docs.leafmc.one/
     - theme: alt
       text: Build history
       link: /builds
 
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized
-    details: Leaf is stable and performant, it's designed to handle a large number of players
+    details: Stable and performant, it's designed to handle a large number of players
   - title: <span class='emoji'>🧬</span> Useful and customizable
-    details: Leaf has many useful features and fixes, all of them can be customized in config
+    details: Contains many useful features and fixes, all of them can be customized in config
   - title: <span class='emoji'>📦</span> Latest dependencies
-    details: Leaf is a modern software, dependencies are updated to keep Leaf up-to-date
+    details: Modern, keep dependencies up-to-date
 ---

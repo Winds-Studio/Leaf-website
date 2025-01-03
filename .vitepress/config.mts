@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Leaf",
-  description: "Performant fork of Gale",
+  description: "Performant fork of Paper",
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 
   srcDir: './pages',
@@ -18,6 +18,10 @@ export default defineConfig({
       lang: 'ru', // optional, will be added  as `lang` attribute on `html` tag
 
       // other locale specific properties...
+    },
+    zh: {
+      label: '中文',
+      lang: 'zh',
     }
   },
 
@@ -26,6 +30,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
+      { text: 'Docs', link: 'https://docs.leafmc.one/' },
       { text: 'Build History', link: '/builds' }
     ],
 
