@@ -19,6 +19,10 @@ export default defineConfig({
 
       // other locale specific properties...
     },
+    de: {
+      label: 'Deutsch',
+      lang: 'de',
+    },
     zh: {
       label: '简体中文',
       lang: 'zh',
