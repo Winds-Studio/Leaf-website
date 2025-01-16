@@ -1,0 +1,554 @@
+# Leaf Global Config
+config-version:
+  default: "3.0"
+  description: "配置文件版本，别改啊！"
+
+###########
+#  异步   #
+###########
+async:
+  async-entity-tracker:
+    enabled:
+      default: "false"
+      description: "是否使用异步实体追踪，可以显著提高性能，特别是在小范围内拥有大量密集实体的场景中。"
+    compat-mode:
+      default: "false"
+      description: '是否开启兼容模式，以兼容类似 Citizens 或其他使用真实实体或玩家类型的实体作为 "NPC" 的插件。'
+    max-threads:
+      default: "0"
+      description: "异步实体追踪可使用的最大线程数。如果设为 0, 默认使用 CPU 核心数 1/4 的线程数，且不少于 1."
+    keepalive:
+      default: "60"
+      description: "空闲线程的超时时间，超过该时间并且无任务的线程将被销毁。(以 秒 为单位)"
+
+  async-playerdata-save:
+    enabled:
+      default: "false"
+      description: "是否开启异步玩家数据保存 (I/O 操作都很耗时). 实验性功能，在某些情况下可能导致玩家数据丢失！"
+
+  async-pathfinding:
+    enabled:
+      default: "false"
+      description: "是否使用异步生物寻路。"
+    max-threads:
+      default: "0"
+      description: "异步生物寻路可使用的最大线程数。如果设为 0, 默认使用 CPU 核心数 1/4 的线程数，且不少于 1."
+    keepalive:
+      default: "60"
+      description: "空闲线程的超时时间，超过该时间并且无任务的线程将被销毁。(以 秒 为单位)"
+
+  async-mob-spawning:
+    enabled:
+      default: "true"
+      description: "是否使用异步生物生成。"
+
+  async-locator:
+    enabled:
+      default: "false"
+      description: "是否使用异步定位。"
+    threads:
+      default: "0"
+      description: "异步定位可使用的最大线程数。如果设为 <= 0, 默认使用 1 个线程。"
+    keepalive:
+      default: "60"
+      description: "空闲线程的超时时间，超过该时间并且无任务的线程将被销毁。(以 秒 为单位)"
+
+##########
+#  性能  #
+##########
+performance:
+  use-virtual-thread-for-async-chat-executor:
+    default: "true"
+    description: "是否为异步聊天使用 JDK 21 引入的虚拟线程。"
+  use-virtual-thread-for-async-scheduler:
+    default: "true"
+    description: "是否为异步任务调度器使用 JDK 21 引入的虚拟线程。"
+  create-snapshot-on-retrieving-blockstate:
+    default: "true"
+    description: "是否在获取 TileEntity / BlockState 时创建并使用其快照。"
+  inactive-goal-selector-throttle:
+    default: "true"
+    description: "当实体处在 inactive tick 时，是否将 goal selector 的 tick 计算限制为每秒一次。"
+  throttle-hopper-when-full:
+    enabled:
+      default: "false"
+      description: "是否当目标容器已满时冷却漏斗，以避免其尝试移动物品。"
+    skip-ticks:
+      default: "0"
+      description: "当漏斗冷却时，等待多长时间再次尝试移动物品的操作。(以 tick 为单位)"
+  skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer:
+    default: "true"
+    description: "如果地图没有渲染器，是否跳过地图内容的更新。"
+  skip-ai-for-non-aware-mob:
+    default: "true"
+    description: "当生物处在不活跃且无感知的状态时，是否跳过其 AI tick 的计算。"
+  reduce-packets:
+    reduce-entity-move-packets:
+      default: "false"
+      description: "是否减少发送给玩家的无用实体移动数据包。"
+  optimized-powered-rails:
+    default: "true"
+    description: "是否优化动力铁轨的逻辑。"
+  optimize-minecart:
+    enabled:
+      default: "false"
+      description: "是否优化矿车的 tick 计算。"
+    skip-tick-count:
+      default: "30"
+      description: "每隔多少 tick 计算一次矿车碰撞。(以 tick 为单位)"
+
+  faster-structure-gen-future-sequencing:
+    default: "true"
+    description: "是否为世界结构生成使用更快的任务排序。"
+
+  faster-random-generator:
+    enabled:
+      default: "false"
+      description: "是否使用更快的随机数生成器。"
+    random-generator:
+      default: "Xoroshiro128PlusPlus"
+      description: "需要使用哪种随机数生成器。"
+    enable-for-worldgen:
+      default: "false"
+      description: "是否为世界生成使用更快的随机数生成器。"
+    warn-for-slime-chunk:
+      default: "true"
+      description: "在使用快速随机数生成器生成史莱姆区块时，是否在服务器启动时输出警告消息到控制台。"
+    use-legacy-random-for-slime-chunk:
+      default: "false"
+      description: "是否使用原版随机数生成器来生成史莱姆区块，以保持原版行为。"
+
+  entity-timeouts:
+    ALLAY:
+      default: "-1"
+    AREA_EFFECT_CLOUD:
+      default: "-1"
+    ARMADILLO:
+      default: "-1"
+    ARMOR_STAND:
+      default: "-1"
+    ARROW:
+      default: "-1"
+    AXOLOTL:
+      default: "-1"
+    BAT:
+      default: "-1"
+    BEE:
+      default: "-1"
+    BLAZE:
+      default: "-1"
+    BOAT:
+      default: "-1"
+    BOGGED:
+      default: "-1"
+    BREEZE:
+      default: "-1"
+    BREEZE_WIND_CHARGE:
+      default: "-1"
+    CAMEL:
+      default: "-1"
+    CAT:
+      default: "-1"
+    CAVE_SPIDER:
+      default: "-1"
+    CHEST_BOAT:
+      default: "-1"
+    CHEST_MINECART:
+      default: "-1"
+    CHICKEN:
+      default: "-1"
+    COD:
+      default: "-1"
+    COMMAND_BLOCK_MINECART:
+      default: "-1"
+    COW:
+      default: "-1"
+    CREEPER:
+      default: "-1"
+    DOLPHIN:
+      default: "-1"
+    DONKEY:
+      default: "-1"
+    DRAGON_FIREBALL:
+      default: "-1"
+    DROWNED:
+      default: "-1"
+    EGG:
+      default: "-1"
+    ELDER_GUARDIAN:
+      default: "-1"
+    ENDER_DRAGON:
+      default: "-1"
+    ENDER_PEARL:
+      default: "-1"
+    ENDERMAN:
+      default: "-1"
+    ENDERMITE:
+      default: "-1"
+    EVOKER:
+      default: "-1"
+    EVOKER_FANGS:
+      default: "-1"
+    EXPERIENCE_BOTTLE:
+      default: "-1"
+    EXPERIENCE_ORB:
+      default: "-1"
+    EYE_OF_ENDER:
+      default: "-1"
+    FIREWORK_ROCKET:
+      default: "-1"
+    FOX:
+      default: "-1"
+    FROG:
+      default: "-1"
+    FURNACE_MINECART:
+      default: "-1"
+    GHAST:
+      default: "-1"
+    GIANT:
+      default: "-1"
+    GLOW_SQUID:
+      default: "-1"
+    GOAT:
+      default: "-1"
+    GUARDIAN:
+      default: "-1"
+    HOGLIN:
+      default: "-1"
+    HOPPER_MINECART:
+      default: "-1"
+    HORSE:
+      default: "-1"
+    HUSK:
+      default: "-1"
+    ILLUSIONER:
+      default: "-1"
+    IRON_GOLEM:
+      default: "-1"
+    ITEM:
+      default: "-1"
+    OMINOUS_ITEM_SPAWNER:
+      default: "-1"
+    FIREBALL:
+      default: "-1"
+    LIGHTNING_BOLT:
+      default: "-1"
+    LLAMA:
+      default: "-1"
+    LLAMA_SPIT:
+      default: "-1"
+    MAGMA_CUBE:
+      default: "-1"
+    MOOSHROOM:
+      default: "-1"
+    MULE:
+      default: "-1"
+    OCELOT:
+      default: "-1"
+    PANDA:
+      default: "-1"
+    PARROT:
+      default: "-1"
+    PHANTOM:
+      default: "-1"
+    PIG:
+      default: "-1"
+    PIGLIN:
+      default: "-1"
+    PIGLIN_BRUTE:
+      default: "-1"
+    PILLAGER:
+      default: "-1"
+    POLAR_BEAR:
+      default: "-1"
+    POTION:
+      default: "-1"
+    PUFFERFISH:
+      default: "-1"
+    RABBIT:
+      default: "-1"
+    RAVAGER:
+      default: "-1"
+    SALMON:
+      default: "-1"
+    SHEEP:
+      default: "-1"
+    SHULKER:
+      default: "-1"
+    SHULKER_BULLET:
+      default: "-1"
+    SILVERFISH:
+      default: "-1"
+    SKELETON:
+      default: "-1"
+    SKELETON_HORSE:
+      default: "-1"
+    SLIME:
+      default: "-1"
+    SMALL_FIREBALL:
+      default: "-1"
+    SNIFFER:
+      default: "-1"
+    SNOW_GOLEM:
+      default: "-1"
+    SNOWBALL:
+      default: "-1"
+    SPAWNER_MINECART:
+      default: "-1"
+    SPECTRAL_ARROW:
+      default: "-1"
+    SPIDER:
+      default: "-1"
+    SQUID:
+      default: "-1"
+    STRAY:
+      default: "-1"
+    STRIDER:
+      default: "-1"
+    TADPOLE:
+      default: "-1"
+    TNT_MINECART:
+      default: "-1"
+    TRADER_LLAMA:
+      default: "-1"
+    TRIDENT:
+      default: "-1"
+    TROPICAL_FISH:
+      default: "-1"
+    TURTLE:
+      default: "-1"
+    VEX:
+      default: "-1"
+    VILLAGER:
+      default: "-1"
+    VINDICATOR:
+      default: "-1"
+    WANDERING_TRADER:
+      default: "-1"
+    WARDEN:
+      default: "-1"
+    WIND_CHARGE:
+      default: "-1"
+    WITCH:
+      default: "-1"
+    WITHER:
+      default: "-1"
+    WITHER_SKELETON:
+      default: "-1"
+    WITHER_SKULL:
+      default: "-1"
+    WOLF:
+      default: "-1"
+    ZOGLIN:
+      default: "-1"
+    ZOMBIE:
+      default: "-1"
+    ZOMBIE_HORSE:
+      default: "-1"
+    ZOMBIE_VILLAGER:
+      default: "-1"
+    ZOMBIFIED_PIGLIN:
+      default: "-1"
+    FISHING_BOBBER:
+      default: "-1"
+
+  enable-cached-minecraft-to-bukkit-entitytype-convert:
+    default: "true"
+    description: "是否缓存 Minecraft EntityType 到 Bukkit EntityType 的类型转换结果。"
+
+  dab:
+    enabled:
+      default: "true"
+      description: "根据距离优化生物 AI (又称 DAB), 在生物远离玩家时减少大脑 AI tick 计算的频率。"
+    dont-enable-if-in-water:
+      default: "false"
+      description: "非水生生物在水中时，是否不受 DAB 的影响。"
+    start-distance:
+      default: "12"
+      description: "距离玩家多少格 DAB 开始生效。"
+    max-tick-freq:
+      default: "20"
+      description: "最远处的实体每隔多长时间进行一次寻路和 AI 相关行为的 tick 计算。"
+    activation-dist-mod:
+      default: "8"
+      description: "该配置项定义了距离对实体 tick 计算频率的影响程度。"
+    blacklisted-entities:
+      default: []
+      description: "DAB 黑名单，名单内的生物将不受 DAB 的影响。"
+
+  dont-save-entity:
+    dont-save-primed-tnt:
+      default: "false"
+      description: "区块卸载时不保存激活的 TNT."
+    dont-save-falling-block:
+      default: "false"
+      description: "区块卸载时不保存掉落的方块。"
+
+###########
+#  修复   #
+###########
+fixes:
+  dont-place-player-if-server-full:
+    default: "false"
+    description: "是否禁止玩家进入已满服务器。"
+
+##############
+#  游戏机制   #
+##############
+gameplay-mechanisms:
+  use-spigot-item-merging-mechanism:
+    default: "true"
+    description: "是否使用 Spigot 默认的掉落物合并机制。"
+  smooth-teleport:
+    default: "false"
+    description: '是否在玩家切换维度时尝试使用 "平滑传送".'
+  max-item-stack-count:
+    max-dropped-items-stack-count:
+      default: "0"
+      description: "每组掉落物的最大堆叠大小。"
+    max-container-destroy-count:
+      default: "0"
+      description: "容器被破坏时允许掉落的最大物品堆叠数量。"
+  knockback:
+    snowball-knockback-players:
+      default: "false"
+      description: "是否允许雪球击退玩家。"
+    egg-knockback-players:
+      default: "false"
+      description: "是否允许鸡蛋击退玩家。"
+    can-player-knockback-zombie:
+      default: "true"
+      description: "是否允许玩家击退僵尸。"
+  player:
+    disable-moved-wrongly-threshold:
+      default: "false"
+      description: '是否禁用 Spigot 内置的 "moved too quickly / wrongly" 移动速度检查。'
+    max-use-item-distance:
+      default: "1.0000001"
+      description: "玩家允许用物品进行交互的最远距离。"
+
+#############
+#   网络    #
+#############
+network:
+  protocol-support:
+    jade-protocol:
+      default: "false"
+      description: "是否开启对 Jade 的协议支持。"
+    appleskin-protocol:
+      default: "false"
+      description: "是否开启对 AppleSkin 的协议支持。"
+    asteorbar-protocol:
+      default: "false"
+      description: "是否开启对 AsteorBar 的协议支持。"
+    chatimage-protocol:
+      default: "false"
+      description: "是否开启对 ChatImage 的协议支持。"
+    xaero-map-protocol:
+      default: "false"
+      description: "是否开启对 XaeroMap 的协议支持。"
+    xaero-map-server-id:
+      default: "513317"
+      description: "XaeroMap 用于标识服务器的唯一数字 ID."
+    syncmatica-protocol:
+      default: "false"
+      description: "是否开启对 Syncmatica 的协议支持。"
+    syncmatica-quota:
+      default: "false"
+      description: "是否限制每个共享投影的文件大小。"
+    syncmatica-quota-limit:
+      default: "40000000"
+      description: "上传至服务器的共享投影的最大文件大小。(以 字节 为单位)"
+  chat-message-signature:
+    default: "true"
+    description: "是否开启聊天消息签名。"
+
+##########
+#  杂项  #
+##########
+misc:
+  message:
+    unknown-command:
+      default: "<red><lang:command.unknown.command><newline><detail>"
+      description: "未知指令提示，在执行未知的指令时将向其发送。"
+  rebrand:
+    server-mod-name:
+      default: "Leaf"
+      description: "服务端核心名字。"
+    server-gui-name:
+      default: "Leaf Console"
+      description: "服务端 GUI 控制台名字。"
+  sentry:
+    dsn:
+      default: ""
+      description: "Sentry 的 DSN 密匙。如果设为空，则禁用 Sentry."
+    log-level:
+      default: "WARN"
+      description: "等于或高于此等级的日志将被记录。"
+    only-log-thrown:
+      default: "true"
+      description: "是否仅记录带有 Throwable 的日志。"
+  secure-seed:
+    enabled:
+      default: "false"
+      description: "是否使用安全种子功能。"
+  remove-vanilla-username-check:
+    default: "true"
+    description: "是否移除原版的用户名检查。"
+  remove-spigot-check-bungee-config:
+    default: "true"
+    description: "是否允许玩家通过代理端进入后端服务器。"
+  remove-change-non-editable-sign-warning:
+    default: "false"
+    description: "当玩家尝试编辑其无法编辑的告示牌时，是否在控制台打印警告信息。"
+  region-format-settings:
+    region-format:
+      default: "MCA"
+      description: "可用区块格式。"
+    linear-compress-level:
+      default: "1"
+      description: "Linear 区块格式文件的压缩等级。"
+    throw-on-unknown-extension-detected:
+      default: "false"
+      description: "当检测到未知的区块文件格式时，是否在控制台抛出异常并崩溃服务器。"
+    flush-interval-seconds:
+      default: "5"
+      description: "Linear 区块格式数据保存到磁盘的频率。(以 秒 为单位)"
+  lag-compensation:
+    enabled:
+      default: "false"
+      description: "卡顿滞后补偿，这可以在服务器卡顿或低 TPS 时确保玩家的基本游戏体验。"
+    enable-for-water:
+      default: "false"
+      description: "是否开启水流动的滞后补偿。"
+    enable-for-lava:
+      default: "false"
+      description: "是否开启岩浆流动的滞后补偿。"
+  including-5s-in-get-tps:
+    default: "true"
+    description: "是否在 Bukkit#getTPS 和 Server#getTPS API 方法的结果中包含 5 秒 TPS 数据。"
+  hidden-item-components:
+    default: []
+    description: "是否不发送指定的物品组件信息给客户端。"
+  connection-message:
+    join:
+      enabled:
+        default: "true"
+        description: "是否启用进服信息"
+      message:
+        default: "default"
+        description: "玩家进服信息"
+    quit:
+      enabled:
+        default: "true"
+        description: "是否启用进服信息退服"
+      message:
+        default: "default"
+        description: "玩家退服提示"
+  cache:
+    cache-player-profile-result:
+      default: "true"
+      description: "是否在玩家进服时缓存 PlayerProfile 数据。"
+    cache-player-profile-result-timeout:
+      default: "1440"
+      description: "玩家 PlayerProfile 数据的缓存时间。(以 分钟 为单位)"

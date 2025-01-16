@@ -1,15 +1,23 @@
 {
-  "devDependencies": {
-    "vitepress": "1.5.0",
-    "vue": "^3.5.13"
-  },
-  "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "docs:build": "vitepress build",
-    "preview": "vitepress preview"
-  },
-  "dependencies": {
-    "typescript": "^5.7.2"
-  }
+    "scripts": {
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:preview": "vitepress preview docs"
+    },
+    "devDependencies": {
+        "@nolebase/markdown-it-bi-directional-links": "^2.12.0",
+        "@nolebase/markdown-it-unlazy-img": "^2.12.0",
+        "@nolebase/vitepress-plugin-enhanced-mark": "^2.12.0",
+        "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.12.0",
+        "@nolebase/vitepress-plugin-git-changelog": "^2.12.0",
+        "@nolebase/vitepress-plugin-highlight-targeted-heading": "^2.12.0",
+        "@nolebase/vitepress-plugin-inline-link-preview": "^2.12.0",
+        "@types/node": "^22.10.7",
+        "unocss": "^65.4.2",
+        "vite": "^6.0.7",
+        "vitepress": "^1.5.0",
+        "vitepress-plugin-nprogress": "^0.0.4",
+        "vue": "^3.5.13",
+        "yaml": "^2.7.0"
+    }
 }
