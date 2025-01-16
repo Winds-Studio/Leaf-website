@@ -1,3 +1,5 @@
+<!-- Love the code from the leaves -->
+<!-- https://github.com/LeavesMC/Documentation/blob/96c1b626ae9b2333a9e3ae57995e847655c562d5/src/components/ConfigViewer.vue -->
 <script setup lang="ts">
 import { onMounted, ref, defineProps, defineExpose } from "vue";
 import ConfigViewerNode from "./ConfigViewerNode.vue";
