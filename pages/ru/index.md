@@ -3,15 +3,15 @@ layout: home
 
 hero:
   name: "Leaf"
-  text: "Современное ПО для Minecraft серверов"
+  text: "Серверное ПО Minecraft с высокой производительностью"
   image: /logo.svg
-  tagline: Цель ядра - удаление некоторых проверок, глубокая кастомизация и высокая производительность. Leaf построен на основе Gale с оптимизациями из других форков
+  tagline: Форк Paper сосредоточен на поиске баланса между производительностью, ванильностью и стабильностью
   actions:
     - theme: brand
       text: Релизы
       link: https://github.com/Winds-Studio/Leaf/releases
     - theme: alt
-      text: Docs
+      text: Документация
       link: https://docs.leafmc.one/
     - theme: alt
       text: История сборок
