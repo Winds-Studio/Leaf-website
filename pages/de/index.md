@@ -24,3 +24,13 @@ features:
   - title: <span class='emoji'>📦</span> Neueste Abhängigkeiten
     details: Modern, da Abhängigkeiten immer aktuell gehalten werden
 ---
+
+<script setup>
+import Contributors from '../Contributors.vue'
+</script>
+
+## Команда и контрибьюторы
+
+<Suspense>
+    <Contributors lang="de" />
+</Suspense>

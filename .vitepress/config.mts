@@ -6,7 +6,18 @@ export default defineConfig({
   description: "Performant fork of Paper",
   head: [['link', { rel: 'icon', href: '/logo.svg' }]],
 
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler'
+        }
+      }
+    }
+  },
+
   srcDir: './pages',
+  appearance: 'force-dark',
 
   locales: {
     root: {
@@ -30,6 +41,7 @@ export default defineConfig({
   },
 
   themeConfig: {
+
     logo: '/logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
