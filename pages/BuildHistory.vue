@@ -28,8 +28,9 @@ onMounted(fetchData)
   <div class="actions_container" v-if="loaded && runs.length">
     <BuildCard v-for="item in runs" :key="item.id" :data="item" />
   </div>
-  <div v-else>
-    {{ loaded ? 'No results found.' : 'Loading...' }}
+  <div class="error-text" v-else>
+    <span>{{ loaded ? 'Build history not found.' : 'Loading...' }}</span>
+    <a :href="`https://github.com/Winds-Studio/Leaf/tree/ver/${branch}`" target="_blank">View this branch on GitHub</a>
   </div>
 </template>
 
@@ -39,6 +40,15 @@ onMounted(fetchData)
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+
+.error-text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
 }
 
 </style>

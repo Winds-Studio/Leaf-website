@@ -3,6 +3,7 @@ import {ref} from "vue";
 import BranchSwitch from "./BranchSwitch.vue";
 import BuildHistory from "./BuildHistory.vue";
 import DownloadButton from "./DownloadButton.vue";
+import BranchWarn from "./BranchWarn.vue";
 
 const branches = ref<Array<string>>([]);
 const selected = ref<string>();
@@ -27,6 +28,7 @@ const updateSelected = (newSelected: string) => selected.value = newSelected
 <template>
   <BranchSwitch :branches="branches" v-if="branches.length > 0" :init-selected="selected" @update-selected="updateSelected" />
   <template v-if="selected">
+    <BranchWarn :branch="selected" />
     <DownloadButton :branch="selected" />
     <BuildHistory :branch="selected" />
   </template>

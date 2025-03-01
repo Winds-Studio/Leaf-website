@@ -18,6 +18,7 @@ export default defineConfig({
 
   srcDir: './pages',
   appearance: 'force-dark',
+  cleanUrls: true,
 
   locales: {
     root: {

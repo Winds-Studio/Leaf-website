@@ -3,7 +3,7 @@
 import {computed, onMounted, ref, watch} from "vue";
 import DownloadIcon from "./DownloadIcon.vue";
 
-const fileInfo = ref<{ name: string, url: string }>({name: null, url: null});
+const fileInfo = ref<{ name: string, url: string }>();
 const props = defineProps<{
   branch: string
 }>()
@@ -13,6 +13,7 @@ const branch = computed(() => props.branch)
 
 const fetchData = () => {
   loaded.value = false;
+  fileInfo.value = {name: null, url: null}
   fetch(`https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${branch.value}`)
       .then(resp => resp.json())
       .then(data => {
