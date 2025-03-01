@@ -9,13 +9,10 @@ hero:
   actions:
     - theme: brand
       text: Veröffentlichungen
-      link: https://github.com/Winds-Studio/Leaf/releases
+      link: /download
     - theme: alt
       text: Dokumentation
       link: https://docs.leafmc.one/
-    - theme: alt
-      text: Build-Historie
-      link: /builds
 features:
   - title: <span class='emoji'>⚡</span> Leistungsstark und optimiert
     details: Stabil, performant und für große Spielerzahlen entwickelt

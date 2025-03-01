@@ -8,14 +8,11 @@ hero:
   tagline: Форк Paper с упором на производительность, ванильность и стабильность
   actions:
     - theme: brand
-      text: Релизы
-      link: https://github.com/Winds-Studio/Leaf/releases
+      text: Скачать
+      link: /download
     - theme: alt
       text: Документация
       link: https://docs.leafmc.one/
-    - theme: alt
-      text: История сборок
-      link: /builds
 features:
   - title: <span class='emoji'>⚡</span> Отличная оптимизация
     details: Стабильное и производительное ядро, способное выдерживать большое количество игроков

@@ -9,13 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 下载
-      link: https://github.com/Winds-Studio/Leaf/releases
+      link: /download
     - theme: alt
       text: 文档
       link: https://docs.leafmc.one/zh/
-    - theme: alt
-      text: 版本历史
-      link: /builds
 
 features:
   - title: <span class='emoji'>⚡</span> 高度优化

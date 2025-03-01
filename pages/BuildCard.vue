@@ -35,13 +35,6 @@ const commitMessage = computed(() => {
       </li>
 
       <li>
-        <span>Branch:</span>
-        <a :href="`https://github.com/Winds-Studio/Leaf/tree/${data.head_branch}`" target="_blank">
-          {{ data.head_branch }}
-        </a>
-      </li>
-
-      <li>
         <span>Commit:</span>
         <a v-if="data.head_commit" :href="`https://github.com/Winds-Studio/Leaf/commit/${data.head_commit.id}`" target="_blank">
           {{ data.head_commit.id.slice(0, 7) }}

@@ -18,9 +18,9 @@ interface LangString {
 const members = ref([]);
 const loaded = ref(false);
 
-const titleCreator = <LangString>{ en: "Creator of Leaf", ru: "Создатель Leaf", zh: "Leaf 的创建者", de: "Schöpfer von Leaf" }[props.lang]
-const titleCoreTeam = <LangString>{ en: "Core team", ru: "Основная команда", zh: "核心团队", de: "Kernteam" }[props.lang]
-const titleWebDev = <LangString>{ en: "Designer & Web Dev", ru: "Дизайнер и Веб-разработчик", zh: "设计师兼网页开发", de: "Designer & Webentwickler" }[props.lang]
+const titleCreator = (<LangString>{ en: "Creator of Leaf", ru: "Создатель Leaf", zh: "Leaf 的创建者", de: "Schöpfer von Leaf" })[props.lang];
+const titleCoreTeam = (<LangString>{ en: "Core team", ru: "Основная команда", zh: "核心团队", de: "Kernteam" })[props.lang];
+const titleWebDev = (<LangString>{ en: "Designer & Web Dev", ru: "Дизайнер и Веб-разработчик", zh: "设计师兼网页开发", de: "Designer & Webentwickler" })[props.lang];
 
 const rewrites = {
   "Dreeam-qwq": { title: titleCreator },

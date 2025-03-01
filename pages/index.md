@@ -9,14 +9,11 @@ hero:
   tagline: A Paper fork aim to find balance between performance, vanilla and stability
   actions:
     - theme: brand
-      text: Releases
-      link: https://github.com/Winds-Studio/Leaf/releases
+      text: Download
+      link: /download
     - theme: alt
       text: Docs
       link: https://docs.leafmc.one/
-    - theme: alt
-      text: Build history
-      link: /builds
 
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized

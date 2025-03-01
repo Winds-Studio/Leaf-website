@@ -47,7 +47,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Docs', link: 'https://docs.leafmc.one/' },
-      { text: 'Build History', link: '/builds' }
+      { text: 'Download', link: '/download' }
     ],
 
     sidebar: [
