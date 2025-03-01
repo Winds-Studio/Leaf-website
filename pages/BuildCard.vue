@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import {computed, ref} from "vue";
-import {useData} from "vitepress";
 
 const expanded = ref(false)
-const isDark = useData().isDark
 
 const props = defineProps<{
   data: {
@@ -28,44 +26,58 @@ const commitMessage = computed(() => {
 </script>
 
 <template>
-  <div class="action_container" >
-    Date: {{ new Date(data.created_at).toLocaleDateString() }}
-    &bull;
-    Branch: <a :href="`https://github.com/Winds-Studio/Leaf/tree/${data.head_branch}`">{{ data.head_branch }}</a>
-    &bull;
-    Commit: <a v-if="data.head_commit" :href="`https://github.com/Winds-Studio/Leaf/commit/${data.head_commit.id}`">{{ data.head_commit.id.slice(0, 7) }}</a>
-    &bull;
-    Action: <a :href="data.html_url">{{ data.id }}</a>
+  <div class="action_container">
+    <ul>
+
+      <li>
+        <span>Date:</span>
+        <span>{{ new Date(data.created_at).toLocaleDateString() }}</span>
+      </li>
+
+      <li>
+        <span>Branch:</span>
+        <a :href="`https://github.com/Winds-Studio/Leaf/tree/${data.head_branch}`" target="_blank">
+          {{ data.head_branch }}
+        </a>
+      </li>
+
+      <li>
+        <span>Commit:</span>
+        <a v-if="data.head_commit" :href="`https://github.com/Winds-Studio/Leaf/commit/${data.head_commit.id}`" target="_blank">
+          {{ data.head_commit.id.slice(0, 7) }}
+        </a>
+      </li>
+
+      <li>
+        <span>Action:</span>
+        <a :href="data.html_url" target="_blank">{{ data.id }}</a>
+      </li>
+
+    </ul>
 
     <pre class="changes" :class="{ expanded }">{{ commitMessage }}</pre>
-    <button v-if="data.head_commit?.message?.includes('\n')" @click="expanded = !expanded" :class="{ dark: isDark }">
+    <button v-if="data.head_commit?.message?.includes('\n')" @click="expanded = !expanded">
       {{ expanded ? 'Read Less' : 'Read More' }}
     </button>
+
   </div>
 </template>
 
 <style scoped lang="scss">
 
 .action_container {
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-divider);
   padding: 20px;
   border-radius: 8px;
-}
-
-.dark .action_container {
-  background-color: rgba(0, 0, 0, 0.12);
 }
 
 .changes {
   margin-bottom: 0;
   padding: 10px 20px;
-  border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 6px;
+  background-color: var(--vp-c-bg-alt);
   white-space: pre-wrap;
-}
-
-.dark .changes {
-  background-color: rgba(0, 0, 0, 0.12);
 }
 
 button {
@@ -78,6 +90,29 @@ button {
   cursor: pointer;
   &:hover {
     background-color: var(--vp-c-brand-2);
+  }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  flex-wrap: wrap;
+
+  li {
+    margin-top: 0;
+    display: inline-flex;
+    gap: 4px;
+    > *:nth-child(1) {
+      color: var(--vp-c-text-2);
+    }
+    a {
+      text-decoration-color: var(--vp-c-brand-3);
+    }
   }
 }
 

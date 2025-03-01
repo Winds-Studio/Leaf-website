@@ -1,11 +1,9 @@
 <script setup>
 import {ref} from "vue";
 import BuildCard from "./BuildCard.vue";
-import {useData} from "vitepress";
 
 const result = ref([]);
 const loaded = ref(false);
-const idDark = useData().isDark
 
 fetch('https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push')
   .then(resp => resp.json())
@@ -16,13 +14,11 @@ fetch('https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push')
 </script>
 
 <template>
-  <div :class="{ dark: idDark }">
-    <div class="actions_container" v-if="loaded && result.length">
-      <BuildCard v-for="item in result" :key="item.id" :data="item" />
-    </div>
-    <div v-else>
-      {{ loaded ? 'No results found.' : 'Loading...' }}
-    </div>
+  <div class="actions_container" v-if="loaded && result.length">
+    <BuildCard v-for="item in result" :key="item.id" :data="item" />
+  </div>
+  <div v-else>
+    {{ loaded ? 'No results found.' : 'Loading...' }}
   </div>
 </template>
 
@@ -31,7 +27,8 @@ fetch('https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push')
 .actions_container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 </style>
