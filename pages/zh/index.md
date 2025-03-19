@@ -7,7 +7,7 @@ hero:
   image: /logo.svg
   tagline: 一个 Paper 分支, 专注于寻找性能优化, Vanilla, 稳定之间的平衡, 为大型网络, 密集和高承载量场景设计
   actions:
-    - theme: brand
+    - theme: brand-button
       text: 下载
       link: /download
     - theme: alt
@@ -24,7 +24,7 @@ features:
 ---
 
 <script setup>
-import Contributors from '../Contributors.vue'
+import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
 ## 团队和贡献者

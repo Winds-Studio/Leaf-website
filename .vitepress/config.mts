@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import sidebar from "./sidebar.mjs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -47,16 +48,15 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Docs', link: 'https://docs.leafmc.one/' },
-      { text: 'Download', link: '/download' }
+      { text: 'Download', link: '/download' },
+      { text: 'Docs', link: '/docs/getting-started', activeMatch: '/docs/' },
     ],
 
-    sidebar: [
-
-    ],
+    sidebar,
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Winds-Studio/Leaf' }
+      { icon: 'github', link: 'https://github.com/Winds-Studio/Leaf' },
+      { icon: 'discord', link: 'https://discord.gg/gfgAwdSEuM' }
     ]
   }
 })

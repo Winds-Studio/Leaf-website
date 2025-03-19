@@ -7,12 +7,18 @@ hero:
   image: /logo.svg
   tagline: Форк Paper с упором на производительность, ванильность и стабильность
   actions:
-    - theme: brand
-      text: Скачать
+    - theme: brand-button
+      text: Скачать Leaf
       link: /download
-    - theme: alt
+    - theme: brand-button
       text: Документация
-      link: https://docs.leafmc.one/
+      link: /docs/getting-started
+    - theme: alt
+      text: Discord сервер
+      link: https://discord.gg/gfgAwdSEuM
+    - theme: alt
+      text: GitHub
+      link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Отличная оптимизация
     details: Стабильное и производительное ядро, способное выдерживать большое количество игроков
@@ -23,7 +29,7 @@ features:
 ---
 
 <script setup>
-import Contributors from '../Contributors.vue'
+import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
 ## Команда и контрибьюторы

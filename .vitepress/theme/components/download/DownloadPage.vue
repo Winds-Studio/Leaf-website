@@ -8,7 +8,7 @@ import BranchWarn from "./BranchWarn.vue";
 const branches = ref<Array<string>>([]);
 const selected = ref<string>();
 
-function parseBranches(ghApiBranches: Array<GhApiBranch>) {
+function parseBranches(ghApiBranches: Array<{ name: string }>) {
   for (const ghApiBranch of ghApiBranches) {
     const name: string = ghApiBranch.name
     if (!name.startsWith("ver/")) continue

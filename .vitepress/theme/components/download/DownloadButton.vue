@@ -2,6 +2,7 @@
 
 import {computed, onMounted, ref, watch} from "vue";
 import DownloadIcon from "./DownloadIcon.vue";
+import {Icon} from "@iconify/vue";
 
 const fileInfo = ref<{ name: string, url: string }>();
 const props = defineProps<{
@@ -32,10 +33,10 @@ onMounted(fetchData)
 <template>
   <div class="download-button-container" v-if="loaded && fileInfo.name && fileInfo.url">
     <a :href="fileInfo.url">
-      <button>
-        <DownloadIcon />
+      <button class="brand-button">
+        <Icon icon="lucide:file-down" width="1.25rem" height="1.25rem" />
         <span class="texts">
-          <span class="title">Download {{ fileInfo.name }}</span>
+          <span class="title">Download <b>{{ fileInfo.name }}</b></span>
         </span>
       </button>
     </a>
@@ -56,23 +57,14 @@ onMounted(fetchData)
   }
 
   button {
-    color: white;
-    background-color: var(--vp-c-brand-3);
-    &:hover {
-      background-color: var(--vp-c-brand-2);
-    }
-    &:active {
-      background-color: var(--vp-c-brand-1);
-    }
-    transition: 150ms;
+    color: var(--vp-c-text-1);
     display: flex;
     flex-direction: row;
     gap: .5rem;
     justify-content: center;
     align-items: center;
     padding: 0.5rem 1rem;
-    border-radius: 6px;
-
+    border-radius: 8px;
 
     .texts {
       display: flex;
@@ -81,7 +73,6 @@ onMounted(fetchData)
       .title {
         color: var(--vp-c-white);
         font-size: 18px;
-        font-weight: 600;
       }
     }
   }

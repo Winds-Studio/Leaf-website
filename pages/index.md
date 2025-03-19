@@ -8,12 +8,18 @@ hero:
   image: logo.svg
   tagline: A Paper fork aim to find balance between performance, vanilla and stability
   actions:
-    - theme: brand
-      text: Download
+    - theme: brand-button
+      text: Download Leaf
       link: /download
+    - theme: brand-button
+      text: Read the Docs
+      link: /docs/getting-started
     - theme: alt
-      text: Docs
-      link: https://docs.leafmc.one/
+      text: Join Discord
+      link: https://discord.gg/gfgAwdSEuM
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/Winds-Studio/Leaf
 
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized
@@ -25,7 +31,7 @@ features:
 ---
 
 <script setup>
-import Contributors from './Contributors.vue'
+import Contributors from '../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
 ## Team and contributors

@@ -23,7 +23,7 @@ features:
 ---
 
 <script setup>
-import Contributors from '../Contributors.vue'
+import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
 ## Команда и контрибьюторы

@@ -1,0 +1,89 @@
+.VPDoc .custom-block {
+
+    margin: 28px 0;
+    padding: 20px 24px 12px 42px;
+    border-radius: 8px;
+    overflow-x: auto;
+    transition: color 0.5s, background-color 0.5s;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--vp-c-text-2);
+    background-color: var(--vp-c-bg-soft);
+
+    &:before {
+        content: 'ℹ️';
+        position: absolute;
+        font-weight: 600;
+        font-size: 15px;
+        top: 20px;
+        left: 16px;
+    }
+
+    .custom-block-title {
+        margin-bottom: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--vp-c-text-1);
+        transition: color 0.5s;
+    }
+
+    &.warning {
+        border: 1px solid var(--vp-c-yellow-2);
+        code, a {
+            color: var(--vp-c-yellow-2);
+        }
+        &:before {
+            color: var(--vp-c-yellow-2);
+            content: '⚠️';
+            font-size: 16px;
+            top: 19px;
+            left: 16px;
+        }
+    }
+
+    &.info {
+        border: 1px solid var(--vp-c-info-2);
+        code, a {
+            color: var(--vp-c-info-1);
+        }
+        &:before {
+            color: var(--vp-c-info-2);
+        }
+    }
+
+    &.danger {
+        border: 1px solid var(--vp-c-red-2);
+        &:before {
+            color: var(--vp-c-red-2);
+            content: '⛔';
+        }
+    }
+
+    &.tip {
+        border: 1px solid var(--vp-c-green-2);
+        code, a {
+            color: var(--vp-c-green-1);
+        }
+        &:before {
+            color: var(--vp-c-green-2);
+            content: '💡';
+        }
+    }
+
+    ul li:before {
+        top: 0.55rem;
+    }
+
+    ol li:before {
+        top: 1px;
+        font-size: 13px;
+    }
+
+    :not(pre) > code {
+        font-size: 13px;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+}

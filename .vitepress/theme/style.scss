@@ -43,11 +43,18 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
+@use "custom-blocks";
+
  :root {
-  --vp-c-default-1: var(--vp-c-gray-1);
-  --vp-c-default-2: var(--vp-c-gray-2);
-  --vp-c-default-3: var(--vp-c-gray-3);
+  --vp-c-default-1: #515C67FF;
+  --vp-c-default-2: #414853FF;
+  --vp-c-default-3: #32363FFF;
   --vp-c-default-soft: var(--vp-c-gray-soft);
+
+   --vp-c-bg: #16161a;
+   --vp-c-bg-alt: #101013;
+   --vp-c-bg-elv: #202127FF;
+   --vp-c-bg-soft: #1d1d23;
 
   --vp-c-brand-1: #78C287;
   --vp-c-brand-2: #40a64e;
@@ -75,28 +82,11 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(
-    30deg,
-    #174f09 10%,
-    #036253
-  );
-
-  --vp-home-hero-image-background-image: linear-gradient(
-    -45deg,
-    #9fffee 50%,
-    #b4ffca 50%
-  );
-  --vp-home-hero-image-filter: blur(44px);
-}
-
-
-.dark {
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: -webkit-linear-gradient(
             30deg,
-            var(--vp-c-brand-1) 10%,
-            var(--vp-c-brand-2)
+            #8DC69B 10%,
+            #3CB64D
     );
 
     --vp-home-hero-image-background-image: linear-gradient(
@@ -125,4 +115,19 @@
     border-radius: 5px;
     margin-right: 5px;
     background: var(--vp-c-default-soft);
+}
+
+.brand-button {
+  outline: var(--vp-c-brand-2) 2px solid;
+  box-sizing: border-box !important;
+  background: var(--vp-c-brand-soft);
+  transition: 150ms ease-in-out all !important;
+  &:hover {
+    outline: var(--vp-c-brand-soft) 2px solid;
+    outline-offset: 2px;
+    background: var(--vp-c-brand-3);
+  }
+  &:active {
+    background: var(--vp-c-brand-1);
+  }
 }

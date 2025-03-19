@@ -3,8 +3,7 @@ aside: false
 ---
 
 <script setup>
-    // import BuildHistory from './BuildHistory.vue'
-import DownloadPage from './DownloadPage.vue'
+import DownloadPage from '../.vitepress/theme/components/download/DownloadPage.vue'
 </script>
 
 # Download
