@@ -26,7 +26,7 @@ features:
 import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
-## Команда и контрибьюторы
+## Team und Mitwirkende
 
 <Suspense>
     <Contributors lang="de" />
