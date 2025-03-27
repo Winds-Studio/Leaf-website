@@ -14,7 +14,7 @@ Node.js 18.20+
 Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for more.
 
 ### Commands
-* `pnpm install & pnpm docs:build` - Build the website.
+* `pnpm install & pnpm build` - Build the website.
 * `pnpm run preview` - Preview the website.
 * `pnpm vitepress dev docs` - Start the live-reloading local dev server.
 

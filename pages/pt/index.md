@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Leaf"
   text: "Software de servidor de Minecraft com alto desempenho"
-  image: logo.svg
+  image: /logo.svg
   tagline: Um fork do Paper focado em encontrar o equilíbrio entre desempenho, jogabilidade vanilla e estabilidade
   actions:
     - theme: brand-button
@@ -19,7 +19,6 @@ hero:
     - theme: alt
       text: Veja no GitHub
       link: https://github.com/Winds-Studio/Leaf
-
 features:
   - title: <span class='emoji'>⚡</span> Poderoso e otimizado
     details: Estável e performático, projetado para lidar com um elevado número de jogadores
@@ -30,11 +29,11 @@ features:
 ---
 
 <script setup>
-import Contributors from '../.vitepress/theme/components/download/Contributors.vue'
+import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
 </script>
 
 ## Equipe e colaboradores
 
 <Suspense>
-    <Contributors />
+    <Contributors lang="pt" />
 </Suspense>

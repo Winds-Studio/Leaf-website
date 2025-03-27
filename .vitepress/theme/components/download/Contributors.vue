@@ -10,17 +10,36 @@ const props = defineProps({
 })
 interface LangString {
   en: string
+  de: string
+  pt: string
   ru: string
   zh: string
-  de: string
 }
 
 const members = ref([]);
 const loaded = ref(false);
 
-const titleCreator = (<LangString>{ en: "Creator of Leaf", ru: "Создатель Leaf", zh: "Leaf 的创建者", de: "Schöpfer von Leaf" })[props.lang];
-const titleCoreTeam = (<LangString>{ en: "Core team", ru: "Основная команда", zh: "核心团队", de: "Kernteam" })[props.lang];
-const titleWebDev = (<LangString>{ en: "Designer & Web Dev", ru: "Дизайнер и Веб-разработчик", zh: "设计师兼网页开发", de: "Designer & Webentwickler" })[props.lang];
+const titleCreator = (<LangString>{
+  en: "Creator of Leaf",
+  de: "Schöpfer von Leaf",
+  pt: "Criador do Leaf",
+  ru: "Создатель Leaf",
+  zh: "Leaf 的创建者"
+})[props.lang];
+const titleCoreTeam = (<LangString>{
+  en: "Core team",
+  de: "Kernteam",
+  pt: "Equipe Principal",
+  ru: "Основная команда",
+  zh: "核心团队"
+})[props.lang];
+const titleWebDev = (<LangString>{
+  en: "Designer & Web Dev",
+  de: "Designer & Webentwickler",
+  pt: "Designer & Desenvolvedor Web",
+  ru: "Дизайнер и Веб-разработчик",
+  zh: "设计师兼网页开发"
+})[props.lang];
 
 const rewrites = {
   "Dreeam-qwq": { title: titleCreator },

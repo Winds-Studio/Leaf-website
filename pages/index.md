@@ -20,7 +20,6 @@ hero:
     - theme: alt
       text: View on GitHub
       link: https://github.com/Winds-Studio/Leaf
-
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized
     details: Stable and performant, it's designed to handle a large number of players

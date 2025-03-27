@@ -12,7 +12,13 @@ hero:
       link: /download
     - theme: alt
       text: Dokumentation
-      link: https://docs.leafmc.one/
+      link: /docs/getting-started
+    - theme: alt
+      text: Tritt Discord bei
+      link: https://discord.gg/gfgAwdSEuM
+    - theme: alt
+      text: Auf GitHub ansehen
+      link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Leistungsstark und optimiert
     details: Stabil, performant und für große Spielerzahlen entwickelt
