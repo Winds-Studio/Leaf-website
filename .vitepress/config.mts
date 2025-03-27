@@ -24,17 +24,19 @@ export default defineConfig({
   locales: {
     root: {
       label: 'English',
-      lang: 'en'
-    },
-    ru: {
-      label: 'Русский',
-      lang: 'ru', // optional, will be added  as `lang` attribute on `html` tag
-
-      // other locale specific properties...
+      lang: 'en',
     },
     de: {
       label: 'Deutsch',
       lang: 'de',
+    },
+    pt: {
+      label: 'Português',
+      lang: 'pt',
+    },
+    ru: {
+      label: 'Русский',
+      lang: 'ru',
     },
     zh: {
       label: '简体中文',
