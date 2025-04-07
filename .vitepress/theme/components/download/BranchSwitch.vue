@@ -26,31 +26,3 @@ const updateSelected = (branch: string) => {
     >{{ branch }}</button>
   </div>
 </template>
-
-<style scoped lang="scss">
-
-.switch {
-
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-
-  button {
-    background: var(--vp-c-bg-elv);
-    width: 5rem;
-    border-radius: 4px;
-    font-size: 14px;
-    font-family: "JetBrains Mono", monospace;
-    padding: 0.25rem 0.5rem;
-    transition: 150ms all;
-    border: 1px solid transparent;
-    &:hover {
-      border: 1px solid var(--vp-c-divider);
-    }
-  }
-  .selected {
-    border: 1px solid var(--vp-c-brand-3) !important;
-  }
-}
-
-</style>

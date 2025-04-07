@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
-import {ConfigValue, ConfigSection} from "./config";
-import ConfigValueNode from "./ConfigValueNode.vue";
+import {ConfigSection} from "./config";
 import ConfigNode from "./ConfigNode.vue";
 
 const props = defineProps<{

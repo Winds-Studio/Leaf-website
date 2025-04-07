@@ -2,17 +2,19 @@
 
 import {serializeConfig} from "./config";
 import ConfigNode from "./ConfigNode.vue";
+import {computed, toRefs} from "vue";
 
 const props = defineProps<{
-  data: any
+  data: any,
+  version: string
 }>()
 
-const config = serializeConfig(props.data)
-
+const config = computed(() => serializeConfig(props.data))
+const { version } = toRefs(props)
 </script>
 
 <template>
-  <div class="code-block">
+  <div class="code-block" :key="version">
     <ConfigNode :node="childNode" v-for="childNode in config" />
   </div>
 </template>
