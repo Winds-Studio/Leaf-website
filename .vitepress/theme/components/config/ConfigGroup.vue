@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {ref, toRefs} from "vue";
-import Config from "./Config.vue";
+import ConfigViewer from "./ConfigViewer.vue";
 
 let props = defineProps<{
   data: { [ver: string]: any }
@@ -23,6 +23,6 @@ const selectedVer = ref(Object.keys(props.data)[0])
     >{{ configVer }}</button>
   </div>
 
-  <Config :data="data[selectedVer]" :version="selectedVer" />
+  <ConfigViewer :data="data[selectedVer]" :version="selectedVer" />
 
 </template>

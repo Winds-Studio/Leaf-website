@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {ConfigValue } from "./config";
-import {ref} from "vue";
+import {inject, Ref, ref, watch} from "vue";
 import Markdown from "../Markdown.vue";
 
 const props = defineProps<{
@@ -12,6 +12,17 @@ const opened = ref(false)
 
 const inlineValue = props.node.default.split("\n")[0]
 const otherValue = props.node.default.split("\n").slice(1)
+
+const stateEmitter = inject<Ref<'expand' | 'collapse' | ''>>('stateEmitter')
+watch(stateEmitter, val => {
+  if (val == 'expand') opened.value = true
+  if (val == 'collapse') opened.value = false
+})
+
+const collapse = inject<Ref<Number>>('collapse')
+watch(collapse, val => {
+  if (val == 1) opened.value = false
+})
 </script>
 
 <template>
@@ -42,14 +53,15 @@ const otherValue = props.node.default.split("\n").slice(1)
   gap: 6px;
 
   .nodeName {
-    color: var(--vp-c-brand-1);
     white-space: nowrap;
+    color: var(--vp-c-brand-1);
     .colon {
       color: var(--vp-c-text-3);
     }
   }
 
   .nodeInlineValue {
+    white-space: nowrap;
     color: var(--vp-c-indigo-1);
     &.string {
       color: var(--vp-c-green-1);
