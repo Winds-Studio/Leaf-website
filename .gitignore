@@ -1,7 +1,18 @@
+# Mac filesystem dust
+.DS_Store/
+.DS_Store
+
+# Linux temp files
+*~
+
+# IntelliJ
+*.iml
+.idea
+
+# Node.JS
 node_modules
 
+# Vitepress
 .vitepress/cache
 .vitepress/dist
 docs/.vitepress
-
-.idea
