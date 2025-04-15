@@ -8,7 +8,7 @@ hero:
   tagline: Форк Paper с упором на производительность, ванильность и стабильность
   actions:
     - theme: brand-button
-      text: Скачать Leaf
+      text: Скачать
       link: /download
     - theme: brand-button
       text: Документация

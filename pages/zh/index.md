@@ -17,7 +17,7 @@ hero:
     #   text: 加入 QQ 群
     #   link: https://TODO
     - theme: alt
-      text: View on GitHub
+      text: GitHub
       link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> 高度优化

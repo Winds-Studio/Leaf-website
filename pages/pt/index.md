@@ -8,16 +8,16 @@ hero:
   tagline: Um fork do Paper focado em encontrar o equilíbrio entre desempenho, jogabilidade vanilla e estabilidade
   actions:
     - theme: brand-button
-      text: Baixar Leaf
+      text: Baixar
       link: /download
     - theme: brand-button
-      text: Ler a documentação
+      text: Documentação
       link: /docs/getting-started
     - theme: alt
       text: Entre no Discord
       link: https://discord.gg/gfgAwdSEuM
     - theme: alt
-      text: Veja no GitHub
+      text: GitHub
       link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Poderoso e otimizado

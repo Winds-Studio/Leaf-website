@@ -9,16 +9,16 @@ hero:
   tagline: A Paper fork aim to find balance between performance, vanilla and stability
   actions:
     - theme: brand-button
-      text: Download Leaf
+      text: Download
       link: /download
     - theme: brand-button
-      text: Read the Docs
+      text: Docs
       link: /docs/getting-started
     - theme: alt
       text: Join Discord
       link: https://discord.gg/gfgAwdSEuM
     - theme: alt
-      text: View on GitHub
+      text: GitHub
       link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized

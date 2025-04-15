@@ -17,7 +17,7 @@ hero:
       text: Tritt Discord bei
       link: https://discord.gg/gfgAwdSEuM
     - theme: alt
-      text: Auf GitHub ansehen
+      text: GitHub
       link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Leistungsstark und optimiert
