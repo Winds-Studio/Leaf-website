@@ -19,4 +19,8 @@ Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for mor
 * `pnpm vitepress dev` - Start the live-reloading local dev server.
 
 ## ⚖️ License
-Leaf website is licensed under [MIT](LICENSE).
+Leaf website is licensed under [MIT](LICENSE). The documentations (e.g. `.md`, `.ts`, etc files under `pages/**/docs` folder) are licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+## 📜 Credits
+- [PaperMC Docs](https://docs.papermc.io/paper)
+- [Gale WIKI](https://github.com/GaleMC/Gale/wiki)
