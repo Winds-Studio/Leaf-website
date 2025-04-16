@@ -12,7 +12,7 @@ hero:
       link: /download
     - theme: alt
       text: Dokumentation
-      link: /docs/
+      link: /de/docs/
     - theme: alt
       text: Tritt Discord bei
       link: https://discord.gg/gfgAwdSEuM

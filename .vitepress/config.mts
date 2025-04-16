@@ -51,7 +51,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Download', link: '/download' },
-      { text: 'Docs', link: '/docs/getting-started', activeMatch: '/docs/' },
+      { text: 'Docs', link: '/docs/', activeMatch: '/docs/' },
     ],
 
     sidebar,
