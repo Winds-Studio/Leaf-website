@@ -1,6 +1,6 @@
 # Leaf API
 
-### Maven
+## Maven
 ```xml
 <repository>
     <id>leafmc</id>
@@ -16,7 +16,7 @@
 </dependency>
 ```
 
-### Gradle
+## Gradle
 ```kotlin
 repositories {
   maven {
