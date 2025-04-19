@@ -1,9 +1,7 @@
-# 其他配置
+# Weitere Konfigurationen
+Aus irgendeinem Grund verändert Leaf auch manche Konfigurationseinträge in den Konfigurationen der Upstreams
 
-因为某些原因, Leaf 在上游提供的配置文件里添加或更改了部分配置项.
-
-## Paper 默认世界配置
-
+## Weltspezifische Paper Konfiguration
 ```yaml title="paper-world-defaults.yml"
 entities:
   spawning:
@@ -19,7 +17,7 @@ entities:
         water_creature: -1
 ```
 
-## Purpur 配置
+## Purpur Konfiguration
 ```yaml title="purpur.yml"
 settings:
   messages:
@@ -33,20 +31,20 @@ settings:
     afk-command-cooldown-msg: <gray>You need to wait %time%s to use /afk.
 ```
 
-## 移动的 Pufferfish 和 Purpur 配置项
+## Verschobene Pufferfish & Purpur Konfigurationseinträge
 
 ### Pufferfish
-|     | Before | After |
-|-----|--------|-------|
-|     |        |       |
-|     |        |       |
-|     |        |       |
-|     |        |       |
+|     | Vorher | Nachher |
+|-----|--------|---------|
+|     |        |         |
+|     |        |         |
+|     |        |         |
+|     |        |         |
 
 ### Purpur
-|     | Before | After |
-|-----|--------|-------|
-|     |        |       |
-|     |        |       |
-|     |        |       |
-|     |        |       |
+|     | Vorher | Nachher |
+|-----|--------|---------|
+|     |        |         |
+|     |        |         |
+|     |        |         |
+|     |        |         |

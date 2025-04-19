@@ -9,10 +9,10 @@ const data = {
 </script>
 
 # Leaf global config
+The YAML config below shows the structure and default config values of Leaf's global config (`config/leaf-global.yml`)
 
-Located at `config/leaf-global.yml`. 
+Click arrow button behind the config node to show description of it
 
-You can hot reload it using `/leaf reload`.
-Hot reload for async modules is **not supported**.
+You can hot reload it using `/leaf reload`. Hot reload for async modules is **not supported**.
 
 <ConfigGroup :data />
