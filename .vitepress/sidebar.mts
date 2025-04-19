@@ -23,7 +23,7 @@ export default {
         {
             text: "How to",
             items: [
-                //{ text: "How to setup Sentry", link: "/docs/how-to/setup-sentry" } // TODO
+                { text: "How to setup Sentry", link: "/docs/how-to/setup-sentry" } // TODO
             ]
         },
         {
