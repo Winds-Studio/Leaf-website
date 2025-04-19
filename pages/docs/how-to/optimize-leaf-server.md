@@ -121,11 +121,7 @@ This section contains various targeted optimizations.
 
 Remember that Leaf builds upon Gale, Purpur, and Paper. Many crucial performance settings reside in their configuration files (`gale-global.yml`, `gale-world.yml`, `purpur.yml`, `paper-global.yml`, `paper-world-defaults.yml`).
 
-Refer to their documentation (linked in [Useful Websites](./useful-sites.md)) and community guides (like Paper-chan's) for optimizing those settings as well. Key areas include:
-
-*   **Paper:** Entity activation ranges, mob spawning controls, chunk loading settings, view distances.
-*   **Purpur/Gale:** Additional AI controls, gameplay tweaks, logging options.
-
+Refer to their documentation (linked in [Useful Websites](../useful-sites.md)) and community guides (like Paper-chan's) for optimizing those settings as well.
 
 ## Testing and Iteration
 
