@@ -1,7 +1,6 @@
 <script setup>
 import galeGlobalConfig from './data/gale-global';
-import Config from '../../../../.vitepress/theme/components/config/Config.vue'
-
+import ConfigGroup from '../../../.vitepress/theme/components/config/ConfigGroup.vue'
 </script>
 
 # Gale global config
