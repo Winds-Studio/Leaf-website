@@ -806,6 +806,7 @@ export default {
         "dont-place-player-if-server-full": {
             "default": false,
             "desc": "是否禁止玩家进入已满服务器.<br>" +
+                "修复了 [Paper 的 issue#10668](https://github.com/PaperMC/Paper/issues/10668).<br>" +
                 "如果设为 `true`, 应给予玩家 `purpur.joinfullserver` 权限以允许玩家进入满人的服务器, 而不是使用 `PlayerLoginEvent#allow` 方法."
         }
     },
@@ -1184,7 +1185,7 @@ export default {
                 "default": 1440,
                 "desc": "玩家 PlayerProfile 数据的缓存时间.<br>" +
                     "(以 分钟 为单位)<br>" +
-                    "如果超时, 将在玩家下次加入时重新请求 Mojang 的认证服务器获取 PlayerProfile 数据.<br>"
+                    "如果超时, 将在玩家下次加入时重新请求 Mojang 的认证服务器获取 PlayerProfile 数据."
             }
         }
     }
