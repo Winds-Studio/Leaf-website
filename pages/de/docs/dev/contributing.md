@@ -1,5 +1,4 @@
 # 🌿 Bei Leaf mitwirken
-
 Leaf freut sich über Mitwirkungen zu unseren Projekten. Meistens sind wir 
 sehr nachsichtig mit eingereichten Pull Requests, aber es gibt dennoch einige Richtlinien,
 die den Prozess vereinfachen können. 

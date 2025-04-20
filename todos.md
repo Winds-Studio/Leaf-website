@@ -2,8 +2,15 @@
 
 ## Dreeam
 - [ ] Dev section
-- [ ] Add Contribution.md / contribution writing standard (some raw concepts, like leave one empty line for every docs file?)
-- [ ] Update faq to other langs
+- [X] Add Contribution.md / contribution writing standard (some raw concepts, like leave one empty line for every docs file?)
+- [X] leaf config
+- [X] gale global
+- [X] gale world
+- [X] misc config
+- [ ] leaf flags
+- [ ] index for config and reference
+- [ ] Review other languages
+- [ ] afkcommand in leaf config 1.21.1
 
 ## Writing standard for Chinese:
 

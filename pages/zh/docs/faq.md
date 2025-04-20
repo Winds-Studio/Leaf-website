@@ -13,7 +13,7 @@
 通常来说为 1 ~ 3 周, 具体取决于上游的更新是否重要.
 
 ## ❓ · 我该如何优化我的服务器?
-你可以参考 [YouHaveTrouble 的优化指南](https://github.com/YouHaveTrouble/minecraft-optimization), 或者参考由社区为中文用户撰写的 [笨蛋 WIKI 优化指南](https://nitwikit.yizhan.wiki/Java/optimize).
+你可以参考 [YouHaveTrouble 的优化指南](https://github.com/YouHaveTrouble/minecraft-optimization), 或者参考由社区为中文用户撰写的 [笨蛋 WIKI 优化指南](https://nitwikit.8aka.org/Java/optimize).
 
 ## ❓ · Leaf 有任何已知的不兼容问题吗?
 * [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) (不兼容低于 1.21.1 的 Leaf 版本).
