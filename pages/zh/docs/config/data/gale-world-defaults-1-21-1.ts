@@ -11,8 +11,8 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                "<tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td>-<br></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -26,7 +26,7 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>" +
                 "<table>" +
@@ -48,7 +48,7 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td><code>0.2</code><br></td><td><code>0.2</code></td><td><code>0.0</code></td><td>-</td></tr>" +
                 "</table>" +
                 "<table>" +
@@ -69,7 +69,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td>-<br></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -84,7 +84,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td>-<br></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -99,7 +99,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>"
             },
@@ -109,7 +109,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>"
             },
@@ -119,7 +119,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td>-</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>"
             },
@@ -129,7 +129,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>"
             }
@@ -140,12 +140,12 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td>-<br></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                "<tr><td><i>优化</i></td><td>-</td></tr>" +
+                "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
                 "<tr><td><i>原版行为</i></td><td><code>false</code></td></tr>" +
                 "</table>"
         },
@@ -157,7 +157,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>false</code><br></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -173,7 +173,7 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>" +
                 "<table>" +
@@ -202,7 +202,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td>-</td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -218,7 +218,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -241,7 +241,7 @@ export default {
 
                         "<table>" +
                         "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                         "<tr><td><code>10</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
                         "</table>" +
                         "<table>" +
@@ -258,7 +258,7 @@ export default {
 
                         "<table>" +
                         "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                         "<tr><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                         "</table>" +
                         "<table>" +
@@ -275,7 +275,7 @@ export default {
 
                         "<table>" +
                         "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                        "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                         "<tr><td>-</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                         "</table>" +
                         "<table>" +
@@ -293,7 +293,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>10</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -315,7 +315,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>60</code></td><td><code>60</code></td><td><code>200</code></td><td><code>0</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -341,7 +341,7 @@ export default {
 
                             "<table>" +
                             "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                            "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                            "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                             "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                             "</table>" +
                             "<table>" +
@@ -357,7 +357,7 @@ export default {
 
                                 "<table>" +
                                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                 "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                                 "</table>" +
                                 "<table>" +
@@ -380,7 +380,7 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                     "<tr><td><code>20</code></td><td><code>20</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
@@ -395,8 +395,8 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(不建议将该值改为 <code>false</code>)</td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><code>true</code><br>(不建议将该值改为 <code>true</code>)</td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -410,8 +410,8 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(setting this value to <code>false</code> is strongly not recommended)</td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><code>true</code><br>(不建议将该值改为 <code>false</code>)</td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -427,7 +427,7 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                     "<tr><td><code>100</code></td><td><code>100</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
@@ -444,7 +444,7 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                     "<tr><td><code>24.0</code><br></td><td><code>24.0</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
@@ -460,7 +460,7 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                     "<tr><td><code>4.0</code><br></td><td><code>4.0</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
@@ -477,7 +477,7 @@ export default {
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                                     "<tr><td><code>1200</code></td><td><code>1200</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
@@ -505,7 +505,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>10</code></td><td><code>10</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -531,7 +531,7 @@ export default {
 
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                    "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                     "<tr><td><code>100</code></td><td><code>100</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
                     "</table>" +
                     "<table>" +
@@ -549,7 +549,7 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td>-<br>(参阅下方的 <i>优化</i>)</td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>" +
                 "<table>" +
@@ -568,7 +568,7 @@ export default {
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
-                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Gale</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
+                "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
                 "<tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>" +
                 "</table>" +
                 "<table>" +
