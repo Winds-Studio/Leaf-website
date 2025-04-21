@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue";
+import { ref, onMounted, computed, watch, onUnmounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useTranslation } from "./useTranslation";
 import { useData } from "vitepress";
@@ -131,6 +131,9 @@ function loadVersions() {
       versions.value = filtered.reverse();
       if (versions.value.length > 0) {
         selectedVersion.value = versions.value[0];
+        // 自动加载选中版本的下载信息
+        loadDownload(selectedVersion.value);
+        loadBuildHistory(selectedVersion.value);
       }
     })
     .catch(error => {
@@ -167,9 +170,9 @@ function loadDownload(version: string) {
         // Find pre-release for 1.21.5
         const release = data.find(r => r.tag_name.includes("1.21.5") || r.name.includes("1.21.5"));
         if (!release) throw new Error('No pre-release found for 1.21.5');
-        releaseData.value = release;
-        if (release.assets && release.assets.length > 0) {
-          downloadAsset.value = release.assets[0];
+      releaseData.value = release;
+      if (release.assets && release.assets.length > 0) {
+        downloadAsset.value = release.assets[0];
         } else {
           throw new Error('No download assets found for 1.21.5 pre-release');
         }
@@ -178,8 +181,8 @@ function loadDownload(version: string) {
         releaseData.value = data;
         if (data.assets && data.assets.length > 0) {
           downloadAsset.value = data.assets[0];
-        } else {
-          throw new Error('No download assets found');
+      } else {
+        throw new Error('No download assets found');
         }
       }
     })
@@ -329,6 +332,44 @@ const selectedVersionStatus = computed(() => {
   if (!selectedVersion.value) return null;
   return getVersionStatus(selectedVersion.value);
 });
+
+// States for custom dropdown
+const dropdownOpen = ref(false);
+const toggleDropdown = () => {
+  dropdownOpen.value = !dropdownOpen.value;
+};
+const closeDropdown = () => {
+  dropdownOpen.value = false;
+};
+
+// Click outside handler
+const dropdownRef = ref<HTMLElement | null>(null);
+
+function setupClickOutside() {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node) && dropdownOpen.value) {
+      closeDropdown();
+    }
+  };
+
+  onMounted(() => {
+    document.addEventListener('click', handleClickOutside);
+  });
+
+  onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside);
+  });
+}
+
+setupClickOutside();
+
+// 添加手动刷新方法
+function refreshAll() {
+  if (selectedVersion.value) {
+    loadDownload(selectedVersion.value);
+    loadBuildHistory(selectedVersion.value);
+  }
+}
 </script>
 
 <template>
@@ -371,20 +412,37 @@ const selectedVersionStatus = computed(() => {
       
       <!-- Version selector -->
       <div class="dl-version-selector">
-        <div class="dl-selector-label">{{ t('labels.version') }}</div>
-        <div class="dl-version-buttons">
-          <button
-            v-for="version in versions"
-            :key="version"
-            :class="[
-              'dl-version-btn',
-              { 'active': selectedVersion === version },
-              getVersionStatusClass(version)
-            ]"
-            @click="onVersionSelect(version)"
-          >
-            {{ version }}
+        <div class="dl-selector-label">
+          {{ t('labels.version') }}
+          <button class="dl-refresh-btn" @click="refreshAll" title="刷新数据">
+            <Icon icon="lucide:refresh-cw" />
           </button>
+        </div>
+        <div ref="dropdownRef" class="dl-version-dropdown">
+          <div 
+            class="dl-custom-select" 
+            @click="toggleDropdown"
+            :class="selectedVersion ? getVersionStatusClass(selectedVersion) : ''"
+          >
+            <div class="dl-selected-version">
+              <span :class="['dl-version-status-indicator', getVersionStatusClass(selectedVersion || '')]"></span>
+              <span>{{ selectedVersion }}</span>
+            </div>
+            <div class="dl-select-icon">
+              <Icon icon="lucide:chevron-down" :class="{ 'rotate': dropdownOpen }" />
+            </div>
+          </div>
+          <div class="dl-dropdown-options" v-show="dropdownOpen">
+            <div 
+              v-for="version in versions" 
+              :key="version" 
+              :class="['dl-dropdown-option', { 'selected': selectedVersion === version }, getVersionStatusClass(version)]"
+              @click="onVersionSelect(version); closeDropdown();"
+            >
+              <span class="dl-version-status-indicator"></span>
+              <span>{{ version }}</span>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -576,7 +634,7 @@ const selectedVersionStatus = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 /* Basic settings */
 .dl-page {
   max-width: 960px;
@@ -592,7 +650,6 @@ const selectedVersionStatus = computed(() => {
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
 
@@ -707,93 +764,209 @@ const selectedVersionStatus = computed(() => {
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.dl-version-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.dl-version-btn {
-  padding: 0.4rem 0.75rem;
-  background-color: var(--vp-c-bg-mute);
-  color: var(--vp-c-text-1);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 4px;
+.dl-refresh-btn {
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
-  border: 1px solid transparent;
+  padding: 0.25rem;
+  border-radius: 4px;
+  color: var(--vp-c-text-2);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dl-version-btn:hover {
+.dl-refresh-btn:hover {
+  color: var(--vp-c-brand-1);
   background-color: var(--vp-c-bg-soft);
 }
 
-.dl-version-btn.active {
-  font-weight: 600;
+.dl-refresh-btn svg {
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
-/* Stable version - green */
-.dl-version-btn.status-success {
-  border-color: #10b981;
+.dl-version-dropdown {
+  position: relative;
+  width: 100%;
+  z-index: 10;
 }
 
-.dl-version-btn.status-success:hover {
-  border-color: #059669;
+.dl-custom-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &.status-success {
+    border-color: #10b981;
+  }
+  
+  &.status-warning {
+    border-color: #f59e0b;
+  }
+  
+  &.status-info {
+    border-color: #3b82f6;
+  }
+  
+  &.status-danger {
+    border-color: #ef4444;
+  }
 }
 
-.dl-version-btn.status-success.active {
-  background-color: rgba(16, 185, 129, 0.1);
-  border-color: #10b981 !important;
+.dl-custom-select:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 0 0 1px rgba(var(--vp-c-brand-rgb), 0.1);
+  
+  &.status-success:hover {
+    border-color: #10b981;
+    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2);
+  }
+  
+  &.status-warning:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.2);
+  }
+  
+  &.status-info:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+  }
+  
+  &.status-danger:hover {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
+  }
+}
+
+.dl-selected-version {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 自定义下拉菜单滚动条样式 */
+.dl-dropdown-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+/* Firefox自定义滚动条 */
+.dl-dropdown-options {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--vp-c-brand-rgb), 0.3) transparent;
+}
+
+/* WebKit浏览器自定义滚动条 */
+.dl-dropdown-options::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dl-dropdown-options::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 4px 0;
+}
+
+.dl-dropdown-options::-webkit-scrollbar-thumb {
+  background: rgba(var(--vp-c-brand-rgb), 0.3);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.dl-dropdown-options::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--vp-c-brand-rgb), 0.6);
+}
+
+.dl-dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.dl-dropdown-option:hover {
+  background-color: var(--vp-c-bg-mute);
+}
+
+.dl-dropdown-option.selected {
+  background-color: rgba(var(--vp-c-brand-rgb), 0.1);
+  font-weight: 500;
+}
+
+.dl-select-icon svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.status-success .dl-select-icon svg {
   color: #10b981;
 }
 
-/* End of maintenance version - yellow/orange */
-.dl-version-btn.status-warning {
-  border-color: #f59e0b;
-}
-
-.dl-version-btn.status-warning:hover {
-  border-color: #d97706;
-}
-
-.dl-version-btn.status-warning.active {
-  background-color: rgba(245, 158, 11, 0.1);
-  border-color: #f59e0b !important;
+.status-warning .dl-select-icon svg {
   color: #f59e0b;
 }
 
-/* Experimental version - blue */
-.dl-version-btn.status-info {
-  border-color: #3b82f6;
-}
-
-.dl-version-btn.status-info:hover {
-  border-color: #2563eb;
-}
-
-.dl-version-btn.status-info.active {
-  background-color: rgba(59, 130, 246, 0.1);
-  border-color: #3b82f6 !important;
+.status-info .dl-select-icon svg {
   color: #3b82f6;
 }
 
-/* Unsupported version - red */
-.dl-version-btn.status-danger {
-  border-color: #ef4444;
-}
-
-.dl-version-btn.status-danger:hover {
-  border-color: #dc2626;
-}
-
-.dl-version-btn.status-danger.active {
-  background-color: rgba(239, 68, 68, 0.1);
-  border-color: #ef4444 !important;
+.status-danger .dl-select-icon svg {
   color: #ef4444;
+}
+
+.dl-select-icon svg.rotate {
+  transform: rotate(180deg);
+}
+
+/* Status indicator styles */
+.dl-version-status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-success .dl-version-status-indicator {
+  background-color: #10b981;
+}
+
+.status-warning .dl-version-status-indicator {
+  background-color: #f59e0b;
+}
+
+.status-info .dl-version-status-indicator {
+  background-color: #3b82f6;
+}
+
+.status-danger .dl-version-status-indicator {
+  background-color: #ef4444;
 }
 
 /* ===== Version status hint ===== */
@@ -1173,32 +1346,35 @@ const selectedVersionStatus = computed(() => {
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out, color 150ms ease-in-out, box-shadow 150ms ease-in-out, border-color 150ms ease-in-out;
   white-space: nowrap;
   text-decoration: none;
   outline: none;
+  box-sizing: border-box;
 }
 
 .dl-button.primary {
   background: var(--vp-c-brand);
   color: white;
   box-shadow: 0 2px 6px rgba(var(--vp-c-brand-rgb), 0.15);
+  border: 2px solid transparent;
 }
 
 .dl-button.primary:hover {
-  transform: translateY(-1px);
   background: var(--vp-c-brand-dark);
   box-shadow: 0 4px 12px rgba(var(--vp-c-brand-rgb), 0.2);
-}
-
-.dl-button.primary:active {
-  transform: translateY(0);
 }
 
 .dl-button.primary.download {
   padding: 0.7rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
+}
+
+.dl-button.primary.download:hover {
+  background: var(--vp-c-brand-dark);
+  box-shadow: 0 6px 15px rgba(var(--vp-c-brand-rgb), 0.3);
+  border-color: #2ecc71;
 }
 
 .dl-button.secondary {
@@ -1219,19 +1395,11 @@ const selectedVersionStatus = computed(() => {
   color: var(--vp-c-brand);
 }
 
-.dl-button.secondary:active {
-  transform: translateY(0);
-}
-
 .dl-button svg {
   width: 1.1rem;
   height: 1.1rem;
   transition: transform 0.2s ease;
   flex-shrink: 0;
-}
-
-.dl-button:hover svg {
-  transform: scale(1.1);
 }
 
 .dl-actions {
@@ -1281,15 +1449,8 @@ const selectedVersionStatus = computed(() => {
     max-width: 90%;
   }
   
-  .dl-version-buttons {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 0.5rem;
-    flex-wrap: nowrap;
-  }
-  
-  .dl-version-btn {
-    flex-shrink: 0;
+  .dl-version-select {
+    width: 100%;
   }
   
   .dl-button {
@@ -1299,6 +1460,14 @@ const selectedVersionStatus = computed(() => {
   .dl-release-meta {
     flex-direction: column;
     gap: 0.75rem;
+  }
+  
+  .dl-version-dropdown {
+    width: 100%;
+  }
+  
+  .dl-dropdown-options {
+    max-height: 250px;
   }
 }
 </style>
