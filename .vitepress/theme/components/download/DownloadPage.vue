@@ -2,7 +2,6 @@
 import { ref, onMounted, computed, watch, onUnmounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useTranslation } from "./useTranslation";
-import { marked } from 'marked'
 import { useData } from "vitepress";
 
 interface Branch {
@@ -282,10 +281,45 @@ function getVersionTagMessage(status: string) {
 }
 
 // Parse release notes from Markdown
-function parseReleaseNotes(notes) {
+function parseReleaseNotes(notes: string): string {
   if (!notes) return '';
-
-  return marked(notes)
+  
+  // Enhanced Markdown to HTML conversion with table and code link support
+  let html = notes
+    // Heading conversion
+    .replace(/^#{1,6}\s+(.+)$/gm, '<h3>$1</h3>')
+    // Table processing
+    .replace(/^\|(.+)\|$/gm, (match) => {
+      // Check if it's a table separator row
+      if (/^\|\s*[-:]+[-|\s:]*\|$/.test(match)) {
+        return match; // Keep separator row for subsequent processing
+      }
+      // Process table content row
+      return '<tr>' + match.split('|')
+        .filter(cell => cell.trim() !== '')
+        .map(cell => `<td>${cell.trim()}</td>`)
+        .join('') + '</tr>';
+    })
+    // Process table separator rows and wrapping
+    .replace(/(<tr>.+<\/tr>)\n\|([-:\s\|]+)\|\n(<tr>.+<\/tr>)/g, '<table><thead>$1</thead><tbody>$3</tbody></table>')
+    .replace(/(<tr>.+<\/tr>)\n(<tr>.+<\/tr>)/g, '<table><tbody>$1$2</tbody></table>')
+    // Commit link processing
+    .replace(/\[([a-f0-9]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" class="commit-link">$1</a>')
+    // Regular links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>')
+    // Basic formatting
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/\n\n/g, '<br><br>')
+    // Checkboxes
+    .replace(/- \[x\] (.+)/g, '<div class="checkbox checked">✓ $1</div>')
+    .replace(/- \[ \] (.+)/g, '<div class="checkbox">□ $1</div>')
+    // Lists
+    .replace(/^\s*-\s+(.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.+<\/li>\n)+/g, '<ul>$&</ul>');
+    
+  return html;
 }
 
 // Initial loading
@@ -825,7 +859,6 @@ function refreshAll() {
   gap: 8px;
 }
 
-/* 自定义下拉菜单滚动条样式 */
 .dl-dropdown-options {
   position: absolute;
   top: calc(100% + 4px);
@@ -840,13 +873,11 @@ function refreshAll() {
   z-index: 100;
 }
 
-/* Firefox自定义滚动条 */
 .dl-dropdown-options {
   scrollbar-width: thin;
   scrollbar-color: rgba(var(--vp-c-brand-rgb), 0.3) transparent;
 }
 
-/* WebKit浏览器自定义滚动条 */
 .dl-dropdown-options::-webkit-scrollbar {
   width: 4px;
 }
@@ -887,6 +918,7 @@ function refreshAll() {
 .dl-select-icon svg {
   width: 1.2rem;
   height: 1.2rem;
+  color: var(--vp-c-brand-1);
   transition: transform 0.2s ease;
 }
 
