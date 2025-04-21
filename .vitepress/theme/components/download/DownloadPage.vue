@@ -36,6 +36,10 @@ interface WorkflowRun {
   }
 }
 
+// Dev version
+// Should be only one dev version in a time
+const devVersion = "1.21.5"
+
 // Get VitePress data
 const { isDark } = useData();
 
@@ -61,7 +65,7 @@ const activeTab = ref<'download' | 'history'>('download');
 
 // Version status mapping
 const versionStatus = {
-  "experimental": ["1.21.5"],
+  "experimental": [devVersion],
   "eol": ["1.21.1", "1.20.4"],
   "dead": [
     "1.21.3", "1.20.6", "1.21", "1.20.2", "1.20.1", "1.20",
@@ -124,9 +128,9 @@ function loadVersions() {
         .filter(branch => branch.name.startsWith("ver/"))
         .map(branch => branch.name.slice(4));
       
-      // Ensure 1.21.5 is in the list (pre-release)
-      if (!filtered.includes("1.21.5")) {
-        filtered.push("1.21.5");
+      // Ensure dev branch is in the list (pre-release)
+      if (!filtered.includes(devVersion)) {
+        filtered.push(devVersion);
       }
       
       versions.value = filtered.reverse();
@@ -155,8 +159,8 @@ function loadDownload(version: string) {
   downloadAsset.value = null;
   releaseData.value = null;
   
-  // Special handling for 1.21.5 pre-release
-  const apiUrl = version === "1.21.5" 
+  // Special handling for dev branch release
+  const apiUrl = version === devVersion
     ? `https://api.github.com/repos/Winds-Studio/Leaf/releases?per_page=5` 
     : `https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${version}`;
   
@@ -166,16 +170,16 @@ function loadDownload(version: string) {
       return resp.json();
     })
     .then((data) => {
-      // Handle pre-release for 1.21.5
-      if (version === "1.21.5" && Array.isArray(data)) {
-        // Find pre-release for 1.21.5
-        const release = data.find(r => r.tag_name.includes("1.21.5") || r.name.includes("1.21.5"));
-        if (!release) throw new Error('No pre-release found for 1.21.5');
+      // Handle dev branch release
+      if (version === devVersion && Array.isArray(data)) {
+        // Find EA build for dev branch release
+        const release = data.find(r => r.tag_name.includes(devVersion) || r.name.includes(devVersion));
+        if (!release) throw new Error(`No EA build found for ${devVersion}`);
       releaseData.value = release;
       if (release.assets && release.assets.length > 0) {
         downloadAsset.value = release.assets[0];
         } else {
-          throw new Error('No download assets found for 1.21.5 pre-release');
+          throw new Error(`No download assets found for ${devVersion} EA dev build`);
         }
       } else {
         // Handle regular releases
@@ -203,8 +207,8 @@ function loadBuildHistory(version: string) {
   isLoadingBuilds.value = true;
   buildRuns.value = [];
   
-  // For 1.21.5 pre-release, adjust the branch name
-  const branchName = version === "1.21.5" ? "ver-1.21.5" : `ver/${version}`;
+  // For WIP Mnecraft version dev branch, adjust the branch name
+  const branchName = version === devVersion ? `dev/${devVersion}` : `ver/${version}`;
   
   fetch(`https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push&branch=${branchName}`)
     .then(resp => resp.json())
