@@ -50,15 +50,15 @@ export default {
         {
             text: "Konfiguration",
             items: [
-                { text: "Leaf global", link: "/de/docs/config/leaf-global" },
-                { text: "Gale global", link: "/de/docs/config/gale-global" },
-                { text: "Gale world defaults", link: "/de/docs/config/gale-world-defaults" }
+                { text: "Globale Leaf-Konfiguration", link: "/de/docs/config/leaf-global" },
+                { text: "Globale Leaf-Konfiguration", link: "/de/docs/config/gale-global" },
+                { text: "Gale Weltkonfiguration", link: "/de/docs/config/gale-world-defaults" }
             ]
         },
         {
-            text: "How Anleitungen",
+            text: "Anleitungen",
             items: [
-                //{ text: "Sentry einrichten", link: "/de/docs/how-to/setup-sentry" } // TODO
+                { text: "Sentry einrichten", link: "/de/docs/how-to/setup-sentry" } // TODO
             ]
         },
         {
@@ -66,7 +66,7 @@ export default {
             items: [
                 { text: "Leaf Entwicklungshandbuch", link: "/de/docs/dev" },
                 { text: "Leaf API", link: "/de/docs/dev/api" },
-                //{ text: "Build", link: "/de/docs/dev/build" } // TODO
+                //{ text: "Bauen", link: "/de/docs/dev/build" } // TODO
                 { text: "🌿 Beitrag zu Leaf leisten", link: "/de/docs/dev/contributing" }
             ]
         }
