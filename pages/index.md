@@ -30,7 +30,7 @@ features:
 ---
 
 <script setup>
-import Contributors from '../.vitepress/theme/components/download/Contributors.vue'
+import Contributors from '../.vitepress/theme/components/Contributors.vue'
 </script>
 
 ## Team and contributors

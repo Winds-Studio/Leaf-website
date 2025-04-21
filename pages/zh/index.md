@@ -29,7 +29,7 @@ features:
 ---
 
 <script setup>
-import Contributors from '../../.vitepress/theme/components/download/Contributors.vue'
+import Contributors from '../../.vitepress/theme/components/Contributors.vue'
 </script>
 
 ## 团队和贡献者

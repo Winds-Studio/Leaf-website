@@ -2,50 +2,13 @@
 import { ref, onMounted, computed, watch, onUnmounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useTranslation } from "./useTranslation";
-import { marked } from 'marked'
-import { useData } from "vitepress";
-
-interface Branch {
-  name: string;
-}
-
-interface ReleaseAsset {
-  name: string;
-  browser_download_url: string;
-  size: number;
-  created_at: string;
-  download_count: number;
-}
-
-interface Release {
-  assets: ReleaseAsset[];
-  published_at: string;
-  name: string;
-  body: string;
-  tag_name: string;
-}
-
-interface WorkflowRun {
-  id: string;
-  created_at?: string;
-  head_branch?: string;
-  html_url?: string;
-  head_commit?: {
-    message: string;
-    id: string;
-  }
-}
-
-// Dev version
-// Should be only one dev version in a time
-const devVersion = "1.21.5"
-
-// Get VitePress data
-const { isDark } = useData();
+import {Branch, Release, ReleaseAsset, WorkflowRun} from "./githubApiTypes";
+import {branchesToVers, getLatestStable, getVerInfo, Version} from "./versionStatus";
+import Markdown from "../Markdown.vue";
 
 // States
-const versions = ref<string[]>([]);
-const selectedVersion = ref<string | undefined>(undefined);
+const versions = ref<Array<Version>>([]);
+const selectedVersion = ref<Version | undefined>(undefined);
 const isLoadingVersions = ref(true);
 const versionError = ref(false);
 
@@ -63,36 +26,8 @@ const expandedCommit = ref<string | null>(null);
 // Active tab
 const activeTab = ref<'download' | 'history'>('download');
 
-// Version status mapping
-const versionStatus = {
-  "experimental": [devVersion],
-  "eol": ["1.21.1", "1.20.4"],
-  "dead": [
-    "1.21.3", "1.20.6", "1.21", "1.20.2", "1.20.1", "1.20",
-    "1.19.4", "1.19.3", "1.19.2", "1.19.1", "1.19",
-    "1.18.2"
-  ]
-};
-
 // Get localization content
 const { t } = useTranslation();
-
-// Check version status
-const getVersionStatus = (version: string) => {
-  if (versionStatus.experimental && versionStatus.experimental.includes(version)) return 'experimental';
-  if (versionStatus.dead.includes(version)) return 'dead';
-  if (versionStatus.eol.includes(version)) return 'eol';
-  return 'stable';
-};
-
-// Get version status CSS class
-const getVersionStatusClass = (version: string) => {
-  const status = getVersionStatus(version);
-  if (status === 'experimental') return 'status-info';
-  if (status === 'dead') return 'status-danger';
-  if (status === 'eol') return 'status-warning';
-  return 'status-success';
-};
 
 // Format file size
 const formatFileSize = (bytes: number) => {
@@ -124,19 +59,15 @@ function loadVersions() {
       return resp.json();
     })
     .then((branches: Branch[]) => {
-      const filtered = branches
-        .filter(branch => branch.name.startsWith("ver/"))
-        .map(branch => branch.name.slice(4));
-      
-      // Ensure dev branch is in the list (pre-release)
-      if (!filtered.includes(devVersion)) {
-        filtered.push(devVersion);
-      }
-      
-      versions.value = filtered.reverse();
+      versions.value = branchesToVers(branches).sort((a, b) => {
+        const parse = (v: string) => v.split('.').map(Number)
+        const [a1 = 0, a2 = 0, a3 = 0] = parse(a.name)
+        const [b1 = 0, b2 = 0, b3 = 0] = parse(b.name)
+        return b1 - a1 || b2 - a2 || b3 - a3
+      })
+
       if (versions.value.length > 0) {
-        selectedVersion.value = versions.value[0];
-        // 自动加载选中版本的下载信息
+        selectedVersion.value = getLatestStable(versions.value);
         loadDownload(selectedVersion.value);
         loadBuildHistory(selectedVersion.value);
       }
@@ -151,7 +82,7 @@ function loadVersions() {
 }
 
 // Load download assets
-function loadDownload(version: string) {
+function loadDownload(version: Version) {
   if (!version) return;
   
   isLoadingDownload.value = true;
@@ -160,9 +91,7 @@ function loadDownload(version: string) {
   releaseData.value = null;
   
   // Special handling for dev branch release
-  const apiUrl = version === devVersion
-    ? `https://api.github.com/repos/Winds-Studio/Leaf/releases?per_page=5` 
-    : `https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${version}`;
+  const apiUrl = `https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${version.name}`
   
   fetch(apiUrl)
     .then(resp => {
@@ -170,25 +99,11 @@ function loadDownload(version: string) {
       return resp.json();
     })
     .then((data) => {
-      // Handle dev branch release
-      if (version === devVersion && Array.isArray(data)) {
-        // Find EA build for dev branch release
-        const release = data.find(r => r.tag_name.includes(devVersion) || r.name.includes(devVersion));
-        if (!release) throw new Error(`No EA build found for ${devVersion}`);
-      releaseData.value = release;
-      if (release.assets && release.assets.length > 0) {
-        downloadAsset.value = release.assets[0];
-        } else {
-          throw new Error(`No download assets found for ${devVersion} EA dev build`);
-        }
-      } else {
-        // Handle regular releases
-        releaseData.value = data;
-        if (data.assets && data.assets.length > 0) {
-          downloadAsset.value = data.assets[0];
+      releaseData.value = data;
+      if (data.assets && data.assets.length > 0) {
+        downloadAsset.value = data.assets[0];
       } else {
         throw new Error('No download assets found');
-        }
       }
     })
     .catch(error => {
@@ -201,14 +116,13 @@ function loadDownload(version: string) {
 }
 
 // Load build history
-function loadBuildHistory(version: string) {
+function loadBuildHistory(version: Version) {
   if (!version) return;
   
   isLoadingBuilds.value = true;
   buildRuns.value = [];
-  
-  // For WIP Mnecraft version dev branch, adjust the branch name
-  const branchName = version === devVersion ? `dev/${devVersion}` : `ver/${version}`;
+
+  const branchName = version.branch;
   
   fetch(`https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push&branch=${branchName}`)
     .then(resp => resp.json())
@@ -234,74 +148,18 @@ function formatCommitMessage(message: string | undefined, expanded: boolean) {
   return message.includes('\n') ? `${firstLine}\n...` : firstLine;
 }
 
-// Handle version selection
-function onVersionSelect(version: string) {
-  selectedVersion.value = version;
-  loadDownload(version);
-  loadBuildHistory(version);
-}
-
 // Toggle expanded commit message
 function toggleCommitExpand(commitId: string) {
   expandedCommit.value = expandedCommit.value === commitId ? null : commitId;
 }
 
-// Get version tag icon
-function getVersionTagIcon(status: string) {
-  switch(status) {
-    case 'experimental': return 'lucide:beaker';
-    case 'dead': return 'lucide:alert-triangle';
-    case 'eol': return 'lucide:alert-circle';
-    default: return 'lucide:check-circle';
-  }
-}
-
-// Get version tag message
-function getVersionTagMessage(status: string) {
-  const tFunc = t.value; // Get the actual translation function
-  
-  switch(status) {
-    case 'experimental':
-      return tFunc('versionStatus.experimental');
-    case 'dead':
-      return tFunc('versionStatus.unsupported');
-    case 'eol':
-      return tFunc('versionStatus.endOfLife');
-    case 'stable':
-      // Provide stable version message for different languages
-      const langMap = {
-        'en': 'This version of Leaf is <b>actively maintained</b> and receives regular updates and bug fixes.',
-        'zh': '此版本的 Leaf <b>正在积极维护中</b>，会定期接收更新和错误修复。',
-        'de': 'Diese Version von Leaf wird <b>aktiv gewartet</b> und erhält regelmäßige Updates und Fehlerbehebungen.',
-        'ru': 'Эта версия Leaf <b>активно поддерживается</b> и регулярно получает обновления и исправления ошибок.',
-        'pt': 'Esta versão do Leaf é <b>mantida ativamente</b> e recebe atualizações e correções de bugs regularmente.'
-      };
-      
-      // Get current language
-      const currentLang = useData().lang.value as keyof typeof langMap;
-      return langMap[currentLang] || langMap['en']; // Fallback to English
-    default:
-      return getVersionTagMessage('stable'); // Default to stable version
-  }
-}
-
-// Parse release notes from Markdown
-function parseReleaseNotes(notes: string) {
-  if (!notes) return '';
-
-  // Use marked built-in parse to get correct markdown render
-  return marked(notes);
-}
+const versionTagMessage = computed(() =>
+    (t.value)(`versionStatus.${selectedVersion.value.status}`)
+)
 
 // Initial loading
 onMounted(() => {
   loadVersions();
-});
-
-// Computed property: Get selected version status
-const selectedVersionStatus = computed(() => {
-  if (!selectedVersion.value) return null;
-  return getVersionStatus(selectedVersion.value);
 });
 
 // States for custom dropdown
@@ -334,17 +192,17 @@ function setupClickOutside() {
 
 setupClickOutside();
 
-// 添加手动刷新方法
-function refreshAll() {
+function refreshVersionInfo() {
   if (selectedVersion.value) {
     loadDownload(selectedVersion.value);
     loadBuildHistory(selectedVersion.value);
   }
 }
+watch(selectedVersion, refreshVersionInfo)
 </script>
 
 <template>
-  <div class="dl-page">
+  <div class="dl-page" :class="selectedVersion ? getVerInfo(selectedVersion).cssClass : ''">
     <!-- Loading state -->
     <div v-if="isLoadingVersions" class="dl-loading">
       <div class="dl-spinner"></div>
@@ -385,7 +243,7 @@ function refreshAll() {
       <div class="dl-version-selector">
         <div class="dl-selector-label">
           {{ t('labels.version') }}
-          <button class="dl-refresh-btn" @click="refreshAll" title="刷新数据">
+          <button class="dl-refresh-btn" @click="refreshVersionInfo" title="刷新数据">
             <Icon icon="lucide:refresh-cw" />
           </button>
         </div>
@@ -393,11 +251,11 @@ function refreshAll() {
           <div 
             class="dl-custom-select" 
             @click="toggleDropdown"
-            :class="selectedVersion ? getVersionStatusClass(selectedVersion) : ''"
+            :class="selectedVersion ? getVerInfo(selectedVersion).cssClass : ''"
           >
             <div class="dl-selected-version">
-              <span :class="['dl-version-status-indicator', getVersionStatusClass(selectedVersion || '')]"></span>
-              <span>{{ selectedVersion }}</span>
+              <span class="dl-version-status-indicator"></span>
+              <span>{{ selectedVersion.name }}</span>
             </div>
             <div class="dl-select-icon">
               <Icon icon="lucide:chevron-down" :class="{ 'rotate': dropdownOpen }" />
@@ -406,21 +264,21 @@ function refreshAll() {
           <div class="dl-dropdown-options" v-show="dropdownOpen">
             <div 
               v-for="version in versions" 
-              :key="version" 
-              :class="['dl-dropdown-option', { 'selected': selectedVersion === version }, getVersionStatusClass(version)]"
-              @click="onVersionSelect(version); closeDropdown();"
+              :key="version.name"
+              :class="['dl-dropdown-option', { 'selected': selectedVersion === version }, getVerInfo(version).cssClass]"
+              @click="selectedVersion = version; closeDropdown();"
             >
               <span class="dl-version-status-indicator"></span>
-              <span>{{ version }}</span>
+              <span>{{ version.name }}</span>
             </div>
           </div>
         </div>
       </div>
       
       <!-- Version warning -->
-      <div v-if="selectedVersionStatus" class="dl-version-tag" :class="selectedVersionStatus">
-        <Icon :icon="getVersionTagIcon(selectedVersionStatus)" />
-        <span v-html="getVersionTagMessage(selectedVersionStatus)"></span>
+      <div v-if="selectedVersion.status" :class="['dl-version-tag']">
+        <Icon :icon="getVerInfo(selectedVersion).icon" />
+        <span v-html="versionTagMessage" />
       </div>
       
       <!-- Tab switcher -->
@@ -456,12 +314,12 @@ function refreshAll() {
           <Icon icon="lucide:x-circle" />
           <h3>{{ t('error.download') }}</h3>
           <div class="dl-actions">
-            <button class="dl-button primary" @click="loadDownload(selectedVersion as string)">
+            <button class="dl-button primary" @click="loadDownload(selectedVersion)">
               <Icon icon="lucide:refresh-cw" />
               <span>{{ t('actions.retry') }}</span>
             </button>
             <a 
-              :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion}`" 
+              :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion.name}`"
               target="_blank" 
               class="dl-button secondary"
             >
@@ -502,7 +360,7 @@ function refreshAll() {
                   <span>{{ t('actions.download') }}</span>
                 </a>
                 <a 
-                  :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion}`" 
+                  :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion.name}`"
                   target="_blank"
                   class="dl-button secondary"
                 >
@@ -524,7 +382,7 @@ function refreshAll() {
               <h3>{{ t('labels.releaseNotes') }}</h3>
             </div>
             <div class="dl-card-content">
-              <div class="dl-markdown release-notes" v-html="parseReleaseNotes(releaseData.body)"></div>
+              <Markdown class="dl-markdown release-notes" :content="releaseData.body" />
             </div>
           </div>
         </div>
@@ -606,6 +464,35 @@ function refreshAll() {
 </template>
 
 <style scoped lang="scss">
+
+/* ===== Status colors ===== */
+* {
+  &.status-dev {
+    --status-color-1: var(--vp-c-danger-1);
+    --status-color-2: var(--vp-c-danger-2);
+    --status-color-3: var(--vp-c-danger-3);
+    --status-color-soft: var(--vp-c-danger-soft);
+  }
+  &.status-stable {
+    --status-color-1: var(--vp-c-brand-1);
+    --status-color-2: var(--vp-c-brand-2);
+    --status-color-3: var(--vp-c-brand-3);
+    --status-color-soft: var(--vp-c-brand-soft);
+  }
+  &.status-eol {
+    --status-color-1: var(--vp-c-warning-1);
+    --status-color-2: var(--vp-c-warning-2);
+    --status-color-3: var(--vp-c-warning-3);
+    --status-color-soft: var(--vp-c-warning-soft);
+  }
+  &.status-dead {
+    --status-color-1: var(--vp-c-caution-1);
+    --status-color-2: var(--vp-c-danger-2);
+    --status-color-3: var(--vp-c-danger-3);
+    --status-color-soft: var(--vp-c-danger-soft);
+  }
+}
+
 /* Basic settings */
 .dl-page {
   max-width: 960px;
@@ -774,54 +661,18 @@ function refreshAll() {
   justify-content: space-between;
   align-items: center;
   background-color: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
+  border: 1px solid var(--status-color-1);
   border-radius: 8px;
   padding: 0.8rem 1rem;
   font-size: 0.95rem;
   color: var(--vp-c-text-1);
   cursor: pointer;
   transition: all 0.2s ease;
-  
-  &.status-success {
-    border-color: #10b981;
-  }
-  
-  &.status-warning {
-    border-color: #f59e0b;
-  }
-  
-  &.status-info {
-    border-color: #3b82f6;
-  }
-  
-  &.status-danger {
-    border-color: #ef4444;
-  }
 }
 
 .dl-custom-select:hover {
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 1px rgba(var(--vp-c-brand-rgb), 0.1);
-  
-  &.status-success:hover {
-    border-color: #10b981;
-    box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2);
-  }
-  
-  &.status-warning:hover {
-    border-color: #f59e0b;
-    box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.2);
-  }
-  
-  &.status-info:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
-  }
-  
-  &.status-danger:hover {
-    border-color: #ef4444;
-    box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.2);
-  }
+  border-color: var(--status-color-1);
+  box-shadow: 0 0 0 1px var(--status-color-soft);
 }
 
 .dl-selected-version {
@@ -889,24 +740,8 @@ function refreshAll() {
 .dl-select-icon svg {
   width: 1.2rem;
   height: 1.2rem;
-  color: var(--vp-c-brand-1);
+  color: var(--status-color-1);
   transition: transform 0.2s ease;
-}
-
-.status-success .dl-select-icon svg {
-  color: #10b981;
-}
-
-.status-warning .dl-select-icon svg {
-  color: #f59e0b;
-}
-
-.status-info .dl-select-icon svg {
-  color: #3b82f6;
-}
-
-.status-danger .dl-select-icon svg {
-  color: #ef4444;
 }
 
 .dl-select-icon svg.rotate {
@@ -920,22 +755,7 @@ function refreshAll() {
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
-}
-
-.status-success .dl-version-status-indicator {
-  background-color: #10b981;
-}
-
-.status-warning .dl-version-status-indicator {
-  background-color: #f59e0b;
-}
-
-.status-info .dl-version-status-indicator {
-  background-color: #3b82f6;
-}
-
-.status-danger .dl-version-status-indicator {
-  background-color: #ef4444;
+  background-color: var(--status-color-1);
 }
 
 /* ===== Version status hint ===== */
@@ -950,54 +770,16 @@ function refreshAll() {
   width: 100%;
   box-sizing: border-box;
   animation: fadeIn 0.3s ease;
+  background-color: var(--vp-c-bg-elv);
+  border: 1px solid var(--status-color-1);
+  color: var(--status-color-1);
+  svg {
+    width: 1.0rem;
+    height: 1.0rem;
+    flex-shrink: 0;
+    color: var(--status-color-1);
+  }
 }
-
-.dl-version-tag svg {
-  width: 1.0rem;
-  height: 1.0rem;
-  flex-shrink: 0;
-}
-
-.dl-version-tag.stable {
-  background-color: rgba(16, 185, 129, 0.1);
-  border: 1px solid #10b981;
-  color: #10b981;
-}
-
-.dl-version-tag.stable svg {
-  color: #10b981;
-}
-
-.dl-version-tag.experimental {
-  background-color: rgba(59, 130, 246, 0.1);
-  border: 1px solid #3b82f6;
-  color: #3b82f6;
-}
-
-.dl-version-tag.experimental svg {
-  color: #3b82f6;
-}
-
-.dl-version-tag.eol {
-  background-color: rgba(245, 158, 11, 0.1);
-  border: 1px solid #f59e0b;
-  color: #f59e0b;
-}
-
-.dl-version-tag.eol svg {
-  color: #f59e0b;
-}
-
-.dl-version-tag.dead {
-  background-color: rgba(239, 68, 68, 0.1);
-  border: 1px solid #ef4444;
-  color: #ef4444;
-}
-
-.dl-version-tag.dead svg {
-  color: #ef4444;
-}
-
 /* ===== Tab switcher ===== */
 .dl-tabs {
   display: flex;
@@ -1102,6 +884,8 @@ function refreshAll() {
 
 .dl-release-title {
   margin: 0 0 1rem;
+  padding: 0;
+  border: none;
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -1169,69 +953,63 @@ function refreshAll() {
   font-weight: 600;
 }
 
-.dl-markdown h3:first-child {
-  margin-top: 0;
-}
-
 .dl-markdown code {
   padding: 0.15rem 0.3rem;
   border-radius: 4px;
   background-color: var(--vp-c-bg-soft);
-  font-family: var(--vp-font-family-mono);
+  font-family: var(--vp-font-family-mono), monospace;
   font-size: 0.85em;
 }
 
-/* Table style */
-.release-notes :deep(table) {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-  border: 1px solid var(--vp-c-divider);
-}
+.release-notes {
+  margin-top: 1rem;
 
-.release-notes :deep(th),
-.release-notes :deep(td) {
-  padding: 0.6rem 1rem;
-  border: 1px solid var(--vp-c-divider);
-  text-align: left;
-}
+  >:first-child {
+    margin-top: 0;
+  }
 
-.release-notes :deep(thead) {
-  background-color: var(--vp-c-bg-soft);
-  font-weight: 600;
-}
+  :deep(th), :deep(td) {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--vp-c-divider);
+    text-align: left;
+  }
 
-.release-notes :deep(tbody tr:nth-child(even)) {
-  background-color: var(--vp-c-bg-alt);
-}
+  :deep(thead) {
+    background-color: var(--vp-c-bg-soft);
+    font-weight: 600;
+  }
 
-.release-notes :deep(.commit-link) {
-  font-family: var(--vp-font-family-mono);
-  padding: 0.15rem 0.3rem;
-  background-color: var(--vp-c-bg-soft);
-  border-radius: 4px;
-  font-size: 0.85em;
-}
+  :deep(tbody tr:nth-child(even)) {
+    background-color: var(--vp-c-bg-alt);
+  }
 
-.release-notes :deep(.checkbox) {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.25rem 0;
-}
+  :deep(.commit-link) {
+    font-family: var(--vp-font-family-mono), monospace;
+    padding: 0.15rem 0.3rem;
+    background-color: var(--vp-c-bg-soft);
+    border-radius: 4px;
+    font-size: 0.85em;
+  }
 
-.release-notes :deep(.checkbox.checked) {
-  color: var(--vp-c-brand);
-}
+  :deep(.checkbox) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0;
+  }
 
-.release-notes :deep(ul) {
-  padding-left: 1.5rem;
-  margin: 0.5rem 0;
-}
+  :deep(.checkbox.checked) {
+    color: var(--vp-c-brand);
+  }
 
-.release-notes :deep(li) {
-  margin-bottom: 0.25rem;
+  :deep(ul) {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  :deep(li) {
+    margin-bottom: 0.25rem;
+  }
 }
 
 /* ===== Build history ===== */
@@ -1335,15 +1113,15 @@ function refreshAll() {
 }
 
 .dl-button.primary.download {
+  background: var(--status-color-3);
   padding: 0.7rem 1.25rem;
   font-size: 1rem;
   font-weight: 600;
-}
-
-.dl-button.primary.download:hover {
-  background: var(--vp-c-brand-dark);
-  box-shadow: 0 6px 15px rgba(var(--vp-c-brand-rgb), 0.3);
-  border-color: #2ecc71;
+  &:hover {
+    background: var(--status-color-soft);
+    box-shadow: 0 0 0.5rem var(--status-color-soft);
+    border-color: var(--status-color-1);
+  }
 }
 
 .dl-button.secondary {

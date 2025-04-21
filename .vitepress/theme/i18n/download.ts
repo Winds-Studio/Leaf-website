@@ -21,10 +21,10 @@ export const translations = {
       download: 'Download'
     },
     versionStatus: {
-      unsupported: 'This version of Leaf is <b>unsupported</b> and will not receive any bugfixes. <b>Use at your own risk!</b>',
-      endOfLife: 'This version of Leaf is <b>end-of-life</b> and will only receive critical bugfixes from upstream. Update to latest version and gain better performance!',
+      dead: 'This version of Leaf is <b>unsupported</b> and will not receive any bugfixes. <b>Use at your own risk!</b>',
+      eol: 'This version of Leaf is <b>end-of-life</b> and will only receive critical bugfixes from upstream. Update to latest version and gain better performance!',
       stable: 'This version of Leaf is <b>actively maintained</b> and receives regular updates and bug fixes.',
-      experimental: 'This version of Leaf is <b>experimental</b> and may contain unstable features or bugs. Not recommended for production use.'
+      dev: 'This version of Leaf is <b>experimental</b> and may contain unstable features or bugs. Not recommended for production use.'
     },
     labels: {
       version: 'Minecraft Version',
@@ -107,10 +107,10 @@ export const translations = {
       download: 'Herunterladen'
     },
     versionStatus: {
-      unsupported: 'Diese Version von Leaf wird <b>nicht unterstützt</b> und erhält keine Fehlerbehebungen. <b>Verwendung auf eigene Gefahr!</b>',
-      endOfLife: 'Diese Version von Leaf hat das <b>Ende des Lebenszyklus</b> erreicht und erhält nur noch kritische Fehlerbehebungen. Aktualisiere auf die neueste Version für bessere Leistung!',
+      dead: 'Diese Version von Leaf wird <b>nicht unterstützt</b> und erhält keine Fehlerbehebungen. <b>Verwendung auf eigene Gefahr!</b>',
+      eol: 'Diese Version von Leaf hat das <b>Ende des Lebenszyklus</b> erreicht und erhält nur noch kritische Fehlerbehebungen. Aktualisiere auf die neueste Version für bessere Leistung!',
       stable: 'Diese Version von Leaf wird <b>aktiv gewartet</b> und erhält regelmäßige Updates und Fehlerbehebungen.',
-      experimental: 'Diese Version von Leaf ist <b>experimentell</b> und kann instabile Funktionen oder Fehler enthalten. Nicht für den Produktionseinsatz empfohlen.'
+      dev: 'Diese Version von Leaf ist <b>experimentell</b> und kann instabile Funktionen oder Fehler enthalten. Nicht für den Produktionseinsatz empfohlen.'
     },
     labels: {
       version: 'Minecraft-Version',
@@ -150,10 +150,10 @@ export const translations = {
       download: 'Скачать'
     },
     versionStatus: {
-      unsupported: 'Эта версия Leaf <b>не поддерживается</b> и не будет получать исправления ошибок. <b>Используйте на свой страх и риск!</b>',
-      endOfLife: 'Эта версия Leaf <b>прекратила жизненный цикл</b> и будет получать только критические исправления ошибок. Обновитесь до последней версии для лучшей производительности!',
+      dead: 'Эта версия Leaf <b>не поддерживается</b> и не будет получать исправления ошибок. <b>Используйте на свой страх и риск!</b>',
+      eol: 'Эта версия Leaf <b>прекратила жизненный цикл</b> и будет получать только критические исправления ошибок. Обновитесь до последней версии для лучшей производительности!',
       stable: 'Эта версия Leaf <b>активно поддерживается</b> и регулярно получает обновления и исправления ошибок.',
-      experimental: 'Эта версия Leaf является <b>экспериментальной</b> и может содержать нестабильные функции или ошибки. Не рекомендуется для использования в производственной среде.'
+      dev: 'Эта версия Leaf является <b>экспериментальной</b> и может содержать нестабильные функции или ошибки. Не рекомендуется для использования в производственной среде.'
     },
     labels: {
       version: 'Версия Minecraft',
@@ -193,10 +193,10 @@ export const translations = {
       download: 'Baixar'
     },
     versionStatus: {
-      unsupported: 'Esta versão do Leaf <b>não é suportada</b> e não receberá correções de bugs. <b>Use por sua conta e risco!</b>',
-      endOfLife: 'Esta versão do Leaf está em <b>fim de vida</b> e só receberá correções críticas de bugs. Atualize para a versão mais recente e ganhe melhor desempenho!',
+      dead: 'Esta versão do Leaf <b>não é suportada</b> e não receberá correções de bugs. <b>Use por sua conta e risco!</b>',
+      eol: 'Esta versão do Leaf está em <b>fim de vida</b> e só receberá correções críticas de bugs. Atualize para a versão mais recente e ganhe melhor desempenho!',
       stable: 'Esta versão do Leaf é <b>mantida ativamente</b> e recebe atualizações e correções de bugs regularmente.',
-      experimental: 'Esta versão do Leaf é <b>experimental</b> e pode conter recursos instáveis ou bugs. Não recomendada para uso em produção.'
+      dev: 'Esta versão do Leaf é <b>experimental</b> e pode conter recursos instáveis ou bugs. Não recomendada para uso em produção.'
     },
     labels: {
       version: 'Versão do Minecraft',
