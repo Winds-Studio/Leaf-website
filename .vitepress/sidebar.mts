@@ -23,7 +23,9 @@ export default {
         {
             text: "How to",
             items: [
-                { text: "How to setup Sentry", link: "/docs/how-to/setup-sentry" } // TODO
+                { text: "How to setup Sentry", link: "/docs/how-to/setup-sentry" },
+				{ text: "Optimize your Leaf Server", link: "/docs/how-to/optimize-leaf-server" },
+				{ text: "Java Flags for Servers", link: "/docs/how-to/java-flags" }
             ]
         },
         {
