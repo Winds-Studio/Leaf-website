@@ -145,37 +145,6 @@ const scaleFactor = 160 / maxMspt;
         </div>
       </div>
     </div>
-
-    <!-- Configuration Details -->
-    <div class="config-card">
-      <h3>Test Configuration</h3>
-      
-      <div class="config-section">
-        <h4>Default Configuration</h4>
-        <p>Default settings in bukkit.yml, spigot.yml, and other configuration files.</p>
-      </div>
-      
-      <div class="config-section">
-        <h4>Increased Mob Caps Configuration</h4>
-        <p>Modified settings in bukkit.yml:</p>
-        <ul>
-          <li>monsters: 70 → 700</li>
-          <li>animals: 10 → 100</li>
-        </ul>
-        <p>All other configuration files remained at default settings.</p>
-      </div>
-      
-      <div class="config-section">
-        <h4>Leaf+Async Configuration</h4>
-        <p>Enabled minimal async options in leaf-global.yml:</p>
-        <pre class="code-block">async:
-  async-entity-tracker:
-    enabled: true
-  async-pathfinding:
-    enabled: true</pre>
-        <p>Combined with the increased mob caps configuration.</p>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -186,7 +155,7 @@ const scaleFactor = 160 / maxMspt;
   margin: 0 auto;
 }
 
-.env-card, .config-card {
+.env-card {
   background-color: var(--vp-c-bg-soft);
   border-radius: 8px;
   padding: 20px;
@@ -353,15 +322,6 @@ h4 {
 .improvement-details {
   font-size: 0.9rem;
   opacity: 0.8;
-}
-
-.config-section {
-  margin-bottom: 20px;
-}
-
-ul {
-  padding-left: 20px;
-  margin: 10px 0;
 }
 
 .code-block {
