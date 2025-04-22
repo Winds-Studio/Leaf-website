@@ -64,10 +64,10 @@ export const translations = {
       download: '下载'
     },
     versionStatus: {
-      unsupported: '此版本的 Leaf <b>不再受支持</b>，不会收到任何错误修复。<b>使用需自行承担风险！</b>',
-      endOfLife: '此版本的 Leaf 已<b>生命周期结束</b>，只会从上游接收关键错误修复。请更新到最新版本以获得更好的性能！',
+      dead: '此版本的 Leaf 已<b>不受支持</b>，不会修复任何错误修复。<b>使用需自行承担风险！</b>',
+      eol: '此版本的 Leaf 已<b>停止积极维护</b>，只会从上游接收关键错误修复。请更新到最新版本以获得更好的性能！',
       stable: '此版本的 Leaf <b>正在积极维护中</b>，会定期接收更新和错误修复。',
-      experimental: '此版本的 Leaf 是<b>实验性</b>版本，可能包含不稳定功能或错误。不建议用于生产环境。'
+      dev: '此版本的 Leaf 是<b>实验性</b>版本，可能包含不稳定功能或错误。不建议用于生产环境。'
     },
     labels: {
       version: 'Minecraft 版本',

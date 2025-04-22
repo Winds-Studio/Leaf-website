@@ -5,6 +5,7 @@ import { useTranslation } from "./useTranslation";
 import {Branch, Release, ReleaseAsset, WorkflowRun} from "./githubApiTypes";
 import {branchesToVers, getLatestStable, getVerInfo, Version} from "./versionStatus";
 import Markdown from "../Markdown.vue";
+import { useData } from 'vitepress';
 
 // States
 const versions = ref<Array<Version>>([]);
@@ -26,8 +27,12 @@ const expandedCommit = ref<string | null>(null);
 // Active tab
 const activeTab = ref<'download' | 'history'>('download');
 
-// Get localization content
+// Get localization content and language info
 const { t } = useTranslation();
+const { lang } = useData();
+
+// Store the selected version in session storage to persist across language changes
+const SESSION_STORAGE_KEY = 'leaf-selected-version';
 
 // Format file size
 const formatFileSize = (bytes: number) => {
@@ -67,7 +72,20 @@ function loadVersions() {
       })
 
       if (versions.value.length > 0) {
-        selectedVersion.value = getLatestStable(versions.value);
+        // Try to restore the previously selected version from session storage
+        const savedVersionName = sessionStorage.getItem(SESSION_STORAGE_KEY);
+        
+        if (savedVersionName) {
+          const savedVersion = versions.value.find(v => v.name === savedVersionName);
+          if (savedVersion) {
+            selectedVersion.value = savedVersion;
+          } else {
+            selectedVersion.value = getLatestStable(versions.value);
+          }
+        } else {
+          selectedVersion.value = getLatestStable(versions.value);
+        }
+        
         loadDownload(selectedVersion.value);
         loadBuildHistory(selectedVersion.value);
       }
@@ -156,6 +174,14 @@ function toggleCommitExpand(commitId: string) {
 const versionTagMessage = computed(() =>
     (t.value)(`versionStatus.${selectedVersion.value.status}`)
 )
+
+// Save selected version when it changes
+watch(selectedVersion, (newVersion) => {
+  if (newVersion) {
+    // Save the version name to session storage
+    sessionStorage.setItem(SESSION_STORAGE_KEY, newVersion.name);
+  }
+});
 
 // Initial loading
 onMounted(() => {

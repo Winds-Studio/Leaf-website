@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand-button
       text: Baixar
-      link: /download
+      link: /pt/download
     - theme: brand-button
       text: Documentação
-      link: /docs/ # TODO - pt docs
+      link: /pt/docs/
     - theme: alt
       text: Entre no Discord
       link: https://discord.gg/gfgAwdSEuM

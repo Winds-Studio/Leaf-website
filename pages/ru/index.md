@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand-button
       text: Скачать
-      link: /download
+      link: /ru/download
     - theme: brand-button
       text: Документация
-      link: /docs/ # TODO - ru docs
+      link: /ru/docs/
     - theme: alt
       text: Discord сервер
       link: https://discord.gg/gfgAwdSEuM
