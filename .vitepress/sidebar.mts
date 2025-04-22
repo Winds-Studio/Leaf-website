@@ -9,6 +9,7 @@ export default {
             items: [
                 { text: "Getting started", link: "/docs" },
                 { text: "Frequently Asked Questions", link: "/docs/faq" },
+                { text: "Performance Graphs", link: "/docs/graph" },
                 { text: "Useful Websites", link: "/docs/useful-sites" }
             ]
         },
@@ -24,8 +25,8 @@ export default {
             text: "How to",
             items: [
                 { text: "How to setup Sentry", link: "/docs/how-to/setup-sentry" },
-				{ text: "Optimize your Leaf Server", link: "/docs/how-to/optimize-leaf-server" },
-				{ text: "Java Flags for Servers", link: "/docs/how-to/java-flags" }
+                { text: "Optimize your Leaf Server", link: "/docs/how-to/optimize-leaf-server" },
+                { text: "Java Flags for Servers", link: "/docs/how-to/java-flags" }
             ]
         },
         {
@@ -44,6 +45,7 @@ export default {
             items: [
                 { text: "Erste Schritte", link: "/de/docs" },
                 { text: "Häufig gestellte Fragen", link: "/de/docs/faq" },
+                { text: "Leistungsdiagramme", link: "/de/docs/graph" },
                 { text: "Nützliche Webseiten", link: "/de/docs/useful-sites" }
             ]
         },
@@ -77,6 +79,7 @@ export default {
             items: [
                 { text: "开始", link: "/zh/docs" },
                 { text: "常见问题与解答", link: "/zh/docs/faq" },
+                { text: "性能图表", link: "/zh/docs/graph" },
                 { text: "有用的网站", link: "/zh/docs/useful-sites" }
             ]
         },
