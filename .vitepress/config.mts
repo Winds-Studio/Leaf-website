@@ -25,29 +25,69 @@ export default defineConfig({
     root: {
       label: 'English',
       lang: 'en',
+      // English navigation
+      themeConfig: {
+        nav: [
+          { text: 'Home', link: '/' },
+          { text: 'Download', link: '/download' },
+          { text: 'Docs', link: '/docs/', activeMatch: '/docs/' },
+        ]
+      }
     },
     de: {
       label: 'Deutsch',
       lang: 'de',
+      // German navigation
+      themeConfig: {
+        nav: [
+          { text: 'Startseite', link: '/de/' },
+          { text: 'Herunterladen', link: '/de/download' },
+          { text: 'Dokumentation', link: '/de/docs/', activeMatch: '/de/docs/' },
+        ]
+      }
     },
     pt: {
       label: 'Português',
       lang: 'pt',
+      // Portuguese navigation
+      themeConfig: {
+        nav: [
+          { text: 'Início', link: '/pt/' },
+          { text: 'Baixar', link: '/pt/download' },
+          { text: 'Documentação', link: '/pt/docs/', activeMatch: '/pt/docs/' },
+        ]
+      }
     },
     ru: {
       label: 'Русский',
       lang: 'ru',
+      // Russian navigation
+      themeConfig: {
+        nav: [
+          { text: 'Главная', link: '/ru/' },
+          { text: 'Скачать', link: '/ru/download' },
+          { text: 'Документация', link: '/ru/docs/', activeMatch: '/ru/docs/' },
+        ]
+      }
     },
     zh: {
       label: '简体中文',
       lang: 'zh',
+      // Chinese navigation
+      themeConfig: {
+        nav: [
+          { text: '首页', link: '/zh/' },
+          { text: '下载', link: '/zh/download' },
+          { text: '文档', link: '/zh/docs/', activeMatch: '/zh/docs/' },
+        ]
+      }
     }
   },
 
   themeConfig: {
-
     logo: '/logo.svg',
-    // https://vitepress.dev/reference/default-theme-config
+    
+    // Default navigation (will be overridden by locale-specific navigation)
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Download', link: '/download' },

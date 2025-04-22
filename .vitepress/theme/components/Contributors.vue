@@ -2,6 +2,7 @@
 import { VPTeamMembers } from 'vitepress/theme';
 import { ref } from "vue";
 
+
 const props = defineProps({
   lang: {
     default: 'en',
