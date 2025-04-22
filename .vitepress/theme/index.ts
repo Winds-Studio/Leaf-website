@@ -7,6 +7,9 @@ import './style.scss'
 import './custom-blocks.scss'
 import { watch } from 'vue'
 
+// Import the Vue PerformanceGraph component
+import PerformanceGraph from './components/PerformanceGraph.vue'
+
 // Custom language switcher that preserves current path
 const LanguageSwitcher = {
   setup() {
@@ -85,5 +88,8 @@ export default {
   enhanceApp({ app }) {
     // Register custom language switcher component
     app.component('LanguageSwitcher', LanguageSwitcher)
+    
+    // Register the Vue PerformanceGraph component
+    app.component('performance-graph', PerformanceGraph)
   }
 } satisfies Theme
