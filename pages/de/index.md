@@ -7,10 +7,10 @@ hero:
   image: /logo.svg
   tagline: Ein Paper-Fork mit dem Ziel, die Balance zwischen Leistung, Stabilität und Vanilla-Gameplay zu finden
   actions:
-    - theme: brand
+    - theme: brand-button
       text: Veröffentlichungen
-      link: /download
-    - theme: alt
+      link: /de/download
+    - theme: brand-button
       text: Dokumentation
       link: /de/docs/
     - theme: alt

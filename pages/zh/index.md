@@ -9,8 +9,8 @@ hero:
   actions:
     - theme: brand-button
       text: 下载
-      link: /download
-    - theme: alt
+      link: /zh/download
+    - theme: brand-button
       text: 文档
       link: /zh/docs/
     # - theme: alt

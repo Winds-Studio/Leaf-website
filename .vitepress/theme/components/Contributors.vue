@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { VPTeamMembers } from 'vitepress/theme';
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 
 const props = defineProps({
@@ -17,8 +17,17 @@ interface LangString {
   zh: string
 }
 
-const members = ref([]);
+interface Contributor {
+  avatar: string
+  name: string
+  title?: string
+  links: Array<{icon: string, link: string}>
+}
+
+const members = ref<Contributor[]>([]);
+const websiteMembers = ref<(Contributor | null)[]>([]);
 const loaded = ref(false);
+const websiteLoaded = ref(false);
 
 const titleCreator = (<LangString>{
   en: "Creator of Leaf",
@@ -70,12 +79,44 @@ const transform = ({ login, avatar_url, html_url }: any) => {
   } : base;
 };
 
+const transformWebsite = ({ login, avatar_url, html_url }: any) => {
+  if (login in rewrites) {
+    return null;  // Skip this contributor if already in main list with custom title
+  }
+  
+  const base = {
+    avatar: avatar_url,
+    name: login,
+    links: [
+        { icon: 'github', link: html_url }
+    ]
+  };
+  return base;
+};
+
+// Combine both contributor lists, filtering out nulls and duplicates
+const allMembers = computed(() => {
+  if (!loaded.value || !websiteLoaded.value) return members.value;
+  
+  const mainContributors = new Set(members.value.map(m => m.name));
+  const filteredWebsiteMembers = websiteMembers.value.filter(m => m !== null && !mainContributors.has(m.name));
+  
+  return [...members.value, ...filteredWebsiteMembers];
+});
+
+// Fetch main repo contributors
 fetch("https://api.github.com/repos/Winds-Studio/Leaf/contributors")
     .then(resp => resp.json())
     .then(data => members.value = data.map(transform))
     .finally(() => loaded.value = true);
+
+// Fetch website repo contributors
+fetch("https://api.github.com/repos/Winds-Studio/Leaf-website/contributors")
+    .then(resp => resp.json())
+    .then(data => websiteMembers.value = data.map(transformWebsite))
+    .finally(() => websiteLoaded.value = true);
 </script>
 
 <template>
-  <VPTeamMembers size="small" :members="members" />
+  <VPTeamMembers size="small" :members="allMembers" />
 </template>
