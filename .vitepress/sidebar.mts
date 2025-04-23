@@ -14,6 +14,13 @@ export default {
             ]
         },
         {
+            text: "Benchmarks",
+            items: [
+                { text: "Entity Performance", link: "/docs/benchmark/entity-performance" },
+                { text: "Chunk Generation", link: "/docs/benchmark/chunk-generation" }
+            ]
+        },
+        {
             text: "Config",
             items: [
                 { text: "Leaf global", link: "/docs/config/leaf-global" },
@@ -50,6 +57,13 @@ export default {
             ]
         },
         {
+            text: "Benchmarks",
+            items: [
+                { text: "Entity-Leistung", link: "/de/docs/benchmark/entity-performance" },
+                { text: "Chunk-Generierung", link: "/de/docs/benchmark/chunk-generation" }
+            ]
+        },
+        {
             text: "Konfiguration",
             items: [
                 { text: "Globale Leaf-Konfiguration", link: "/de/docs/config/leaf-global" },
@@ -81,6 +95,13 @@ export default {
                 { text: "常见问题与解答", link: "/zh/docs/faq" },
                 { text: "性能图表", link: "/zh/docs/graph" },
                 { text: "有用的网站", link: "/zh/docs/useful-sites" }
+            ]
+        },
+        {
+            text: "基准测试",
+            items: [
+                { text: "实体性能", link: "/zh/docs/benchmark/entity-performance" },
+                { text: "区块生成", link: "/zh/docs/benchmark/chunk-generation" }
             ]
         },
         {
