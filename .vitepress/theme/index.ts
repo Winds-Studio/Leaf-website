@@ -11,6 +11,7 @@ import { watch } from 'vue'
 import PerformanceGraph from './components/PerformanceGraph.vue'
 import ChunkGenerationGraph from './components/ChunkGenerationGraph.vue'
 
+
 // Custom language switcher that preserves current path
 const LanguageSwitcher = {
   setup() {
@@ -89,7 +90,7 @@ export default {
   enhanceApp({ app }) {
     // Register custom language switcher component
     app.component('LanguageSwitcher', LanguageSwitcher)
-    
+
     // Register the Vue components
     app.component('performance-graph', PerformanceGraph)
     app.component('chunk-generation-graph', ChunkGenerationGraph)
