@@ -180,7 +180,7 @@ export default {
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>8</code></td></tr>" +
-                    "<tr><td><i>原版行为</i></td><td><code>0</code></td></tr>" +
+                    "<tr><td><i>原版行为</i></td><td><code>8</code></td></tr>" +
                     "</table>"
             }
         },

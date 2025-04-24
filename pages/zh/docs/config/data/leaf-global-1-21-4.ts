@@ -234,7 +234,7 @@ export default {
                     "</table>"
             },
             "skip-ticks": {
-                "default": 0,
+                "default": 8,
                 "desc": "当漏斗冷却时, 等待多长时间再次将再次尝试移动物品的操作.<br>" +
                     "(以 tick 为单位)<br>" +
                     "如果设为 &leq; `0`, 将禁用此冷却功能.<br>" +
@@ -244,7 +244,7 @@ export default {
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>8</code></td></tr>" +
-                    "<tr><td><i>原版行为</i></td><td><code>0</code></td></tr>" +
+                    "<tr><td><i>原版行为</i></td><td><code>8</code></td></tr>" +
                     "</table>"
             }
         },
