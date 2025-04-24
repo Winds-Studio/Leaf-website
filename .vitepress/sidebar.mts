@@ -25,7 +25,8 @@ export default {
             items: [
                 { text: "Leaf global", link: "/docs/config/leaf-global" },
                 { text: "Gale global", link: "/docs/config/gale-global" },
-                { text: "Gale world defaults", link: "/docs/config/gale-world-defaults" }
+                { text: "Gale world defaults", link: "/docs/config/gale-world-defaults" },
+                { text: "Leaf JVM Flags", link: "/docs/config/system-properties" }
             ]
         },
         {
@@ -68,7 +69,8 @@ export default {
             items: [
                 { text: "Globale Leaf-Konfiguration", link: "/de/docs/config/leaf-global" },
                 { text: "Globale Leaf-Konfiguration", link: "/de/docs/config/gale-global" },
-                { text: "Gale Weltkonfiguration", link: "/de/docs/config/gale-world-defaults" }
+                { text: "Gale Weltkonfiguration", link: "/de/docs/config/gale-world-defaults" },
+                { text: "Leaf JVM Flags", link: "/de/docs/config/system-properties" }
             ]
         },
         {
@@ -109,7 +111,8 @@ export default {
             items: [
                 { text: "Leaf 全局配置", link: "/zh/docs/config/leaf-global" },
                 { text: "Gale 全局配置", link: "/zh/docs/config/gale-global" },
-                { text: "Gale 世界配置", link: "/zh/docs/config/gale-world-defaults" }
+                { text: "Gale 世界配置", link: "/zh/docs/config/gale-world-defaults" },
+                { text: "Leaf JVM 参数", link: "/zh/docs/config/system-properties" }
             ]
         },
         {
