@@ -9,7 +9,6 @@ export default {
             items: [
                 { text: "Getting started", link: "/docs" },
                 { text: "Frequently Asked Questions", link: "/docs/faq" },
-                { text: "Performance Graphs", link: "/docs/graph" },
                 { text: "Useful Websites", link: "/docs/useful-sites" }
             ]
         },
