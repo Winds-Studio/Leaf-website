@@ -8,8 +8,8 @@ import './custom-blocks.scss'
 import { watch } from 'vue'
 
 // Import the Vue components
-import PerformanceGraph from './components/PerformanceGraph.vue'
-import ChunkGenerationGraph from './components/ChunkGenerationGraph.vue'
+import EntityPerformanceGraph from './components/benchmark/EntityPerformanceGraph.vue'
+import ChunkGenerationGraph from './components/benchmark/ChunkGenerationGraph.vue'
 
 
 // Custom language switcher that preserves current path
@@ -92,7 +92,7 @@ export default {
     app.component('LanguageSwitcher', LanguageSwitcher)
 
     // Register the Vue components
-    app.component('performance-graph', PerformanceGraph)
+    app.component('entity-performance-graph', EntityPerformanceGraph)
     app.component('chunk-generation-graph', ChunkGenerationGraph)
   }
 } satisfies Theme

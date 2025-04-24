@@ -297,7 +297,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.performance-graph {
+.entity-performance-graph {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;

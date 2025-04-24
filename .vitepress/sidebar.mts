@@ -52,7 +52,6 @@ export default {
             items: [
                 { text: "Erste Schritte", link: "/de/docs" },
                 { text: "Häufig gestellte Fragen", link: "/de/docs/faq" },
-                { text: "Leistungsdiagramme", link: "/de/docs/graph" },
                 { text: "Nützliche Webseiten", link: "/de/docs/useful-sites" }
             ]
         },
@@ -94,7 +93,6 @@ export default {
             items: [
                 { text: "开始", link: "/zh/docs" },
                 { text: "常见问题与解答", link: "/zh/docs/faq" },
-                { text: "性能图表", link: "/zh/docs/graph" },
                 { text: "有用的网站", link: "/zh/docs/useful-sites" }
             ]
         },
