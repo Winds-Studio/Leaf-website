@@ -24,7 +24,7 @@
 ## 已弃用参数
 
 ### -DLeaf.nearestEntitySensorBucketCount
-(仅存在于最新的 Leaf 1.21.1)
+(仅存在于最新的 Leaf 1.21.1 和 1.21.3)
 * 默认值: `10`
 
 当实体数量达到 [桶排序 (Bucket Sort)](https://oi-wiki.org/basic/bucket-sort) 的阈值时, 将使用多少个桶进行排序.
@@ -32,7 +32,7 @@
 建议此值设置为实体数量的平方根值.
 
 ### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
-(仅存在于最新的 Leaf 1.21.1)
+(仅存在于最新的 Leaf 1.21.1 和 1.21.3)
 * 默认值: `2.0`
 
 此值控制桶排序阈值的比例. `(阈值 = 上述桶数量 * 比例)`

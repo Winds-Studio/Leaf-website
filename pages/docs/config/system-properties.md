@@ -24,7 +24,7 @@ You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to ch
 ## Deprecated Flags
 
 ## -DLeaf.nearestEntitySensorBucketCount
-(This flag only exists in latest Leaf 1.21.1)
+(This flag only exists in latest Leaf 1.21.1 and 1.21.3)
 * default: `10`
 
 How many buckets will be used if entity count reached the [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) threshold.
@@ -32,7 +32,7 @@ How many buckets will be used if entity count reached the [Bucket Sort](https://
 Should be the square root of entity count.
 
 ## -DLeaf.nearestEntitySensorBucketSortThresholdRatio
-(This flag only exists in latest Leaf 1.21.1)
+(This flag only exists in latest Leaf 1.21.1 and 1.21.3)
 * default: `2.0`
 
 This value controls the ratio of Bucket Sort threshold. `(Threshold = bucketCount * ratio)`

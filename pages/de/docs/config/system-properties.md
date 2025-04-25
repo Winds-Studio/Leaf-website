@@ -25,7 +25,7 @@ Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeb
 ## Veraltete Flags
 
 ### -DLeaf.nearestEntitySensorBucketCount
-(Dieses Flag existiert nur in der neuesten Leaf 1.21.1)
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.1 und 1.21.3)
 * Standard: `10`
 
 Wie viele Buckets beim [Bucket Sort](https://de.wikipedia.org/wiki/Bucketsort) genutzt werden, wenn die Grenze erreicht wird.
@@ -33,7 +33,7 @@ Wie viele Buckets beim [Bucket Sort](https://de.wikipedia.org/wiki/Bucketsort) g
 Sollte der Quadratwurzel der Anzahl an Elementen entsprechen.
 
 ### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
-(Dieses Flag existiert nur in der neuesten Leaf 1.21.1)
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.1 und 1.21.3)
 * Standard: `2.0`
 
 Dieser Wert steuert das Verhältnis für den Bucket-Sort-Schwellenwert. `(Schwellenwert = Anzahl der Buckets * Verhältnis)`
