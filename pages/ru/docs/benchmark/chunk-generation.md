@@ -1,13 +1,13 @@
-# Chunk Generation Benchmark
+# Бенчмарк производительности сущностей
 
 :::warning
-This page presents performance comparison data between Leaf and Paper server implementations for chunk generation tasks. These results represent a specific test scenario and may vary based on hardware, configuration, and specific world seeds.
+На этой странице представлены данные о сравнении производительности между реализациями серверов Leaf и Paper для задач генерации чанков. Эти результаты относятся к конкретному тестовому сценарию и могут отличаться в зависимости от оборудования, конфигурации и конкретных сидов мира.
 :::
 
 <chunk-generation-graph />
 
-## Test Configuration Details
+## Подробности конфигурации теста
 
-### Performance Test Setup
+### Установка теста на производительность
 
-The benchmark was conducted using the Chunky plugin to generate 2048 chunks in a circular pattern. Both servers were run on the same hardware with identical JVM settings to ensure a fair comparison.
+Бенчмарк был проведён с использованием плагина Chunky для генерации 2048 чанков по круговой схеме. Оба сервера запускались на одном и том же оборудовании с одинаковыми настройками JVM, чтобы обеспечить справедливое сравнение.
