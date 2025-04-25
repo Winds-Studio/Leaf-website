@@ -272,7 +272,7 @@ export default {
                 "(Unit: tick)" +
                 "<ul>" +
                 "<li>If this time is exceeded, the connection is closed.</li>" +
-                "<li>If a value &leq; `0` is given, it will default to the same as vanilla, which is currently `600` ticks (30 seconds).</li>" +
+                "<li>If a value &leq; `0` is given, it will default to the same as vanilla's behavior, which is currently `600` ticks (30 seconds).</li>" +
                 "</ul>" +
 
                 "<table>" +

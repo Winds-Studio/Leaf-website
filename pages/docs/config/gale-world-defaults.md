@@ -1,8 +1,10 @@
 <script setup>
-import galeWorldDefaultsConfig from './data/gale-world-defaults';
+import galeWorldDefaultsConfig_1_21_4 from './data/gale-world-defaults-1-21-4';
+import galeWorldDefaultsConfig_1_21_1 from './data/gale-world-defaults-1-21-1';
 import ConfigGroup from '../../../.vitepress/theme/components/config/ConfigGroup.vue'
 const data = {
-    '1.21.1': galeWorldDefaultsConfig
+    '1.21.4': galeWorldDefaultsConfig_1_21_4,
+    '1.21.1': galeWorldDefaultsConfig_1_21_1
 }
 </script>
 
