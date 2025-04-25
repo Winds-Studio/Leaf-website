@@ -1,4 +1,4 @@
-# Leaf 系统属性
+# Leaf JVM 参数
 
 ## -DLeaf.library-download-repo
 * 默认值: 未设置
@@ -12,18 +12,6 @@
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 
-## -DLeaf.nearestEntitySensorBucketCount
-* 默认值: `10`
-
-当实体数量达到 [桶排序 (Bucket Sort)](https://oi-wiki.org/basic/bucket-sort) 的阈值时, 将使用多少个桶进行排序.
-
-建议此值设置为实体数量的平方根值.
-
-## -DLeaf.nearestEntitySensorBucketSortThresholdRatio
-* 默认值: `2.0`
-
-此值控制桶排序阈值的比例. `(阈值 = 上述桶数量 * 比例)`
-
 ## -DLeaf.enableFMA
 * 默认值: `false`
 
@@ -32,3 +20,19 @@
 需要 CPU 支持 FMA 指令集, 否则将导致性能下降.
 
 你可以使用 [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) 等工具检查你的机器是否支持 FMA 指令集.
+
+## 已弃用参数
+
+### -DLeaf.nearestEntitySensorBucketCount
+(仅存在于最新的 Leaf 1.21.1)
+* 默认值: `10`
+
+当实体数量达到 [桶排序 (Bucket Sort)](https://oi-wiki.org/basic/bucket-sort) 的阈值时, 将使用多少个桶进行排序.
+
+建议此值设置为实体数量的平方根值.
+
+### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
+(仅存在于最新的 Leaf 1.21.1)
+* 默认值: `2.0`
+
+此值控制桶排序阈值的比例. `(阈值 = 上述桶数量 * 比例)`

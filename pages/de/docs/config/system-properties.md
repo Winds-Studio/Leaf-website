@@ -1,4 +1,4 @@
-# Leaf Kommandozeilen-Argumente
+# Leaf JVM Flgas
 
 ## -DLeaf.library-download-repo
 * Standard: Nicht gesetzt
@@ -13,18 +13,6 @@ Beispiel:
 ```
 um Aliyun's Repository zu nutzen.
 
-## -DLeaf.nearestEntitySensorBucketCount
-* Standard: `10`
-
-Wie viele Buckets beim [Bucket Sort](https://de.wikipedia.org/wiki/Bucketsort) genutzt werden, wenn die Grenze erreicht wird.
-
-Sollte der Quadratwurzel der Anzahl an Elementen entsprechen.
-
-## -DLeaf.nearestEntitySensorBucketSortThresholdRatio
-* Standard: `2.0`
-
-Dieser Wert steuert das Verhältnis für den Bucket-Sort-Schwellenwert. `(Schwellenwert = Anzahl der Buckets * Verhältnis)`
-
 ## -DLeaf.enableFMA
 * Standard: `false`
 
@@ -33,3 +21,19 @@ Steuert, ob [Multiply-Accumulate](https://de.wikipedia.org/wiki/Multiply-Accumul
 Erfordert eine CPU, die den FMA Instruktionssatz unterstützt. Ansonsten wird die Berechnung langsamer sein.
 
 Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeben, ob ein Prozessor den nötigen Instruktionssatz unterstützt.
+
+## Veraltete Flags
+
+### -DLeaf.nearestEntitySensorBucketCount
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.1)
+* Standard: `10`
+
+Wie viele Buckets beim [Bucket Sort](https://de.wikipedia.org/wiki/Bucketsort) genutzt werden, wenn die Grenze erreicht wird.
+
+Sollte der Quadratwurzel der Anzahl an Elementen entsprechen.
+
+### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.1)
+* Standard: `2.0`
+
+Dieser Wert steuert das Verhältnis für den Bucket-Sort-Schwellenwert. `(Schwellenwert = Anzahl der Buckets * Verhältnis)`
