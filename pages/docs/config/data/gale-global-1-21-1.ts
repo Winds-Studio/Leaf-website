@@ -58,13 +58,13 @@ export default {
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
-                    "<tr><td>-</td><td><code>true</code></td><td><code>true</code></td></tr>" +
+                    "<tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                     "</table>"
             }
         },
         "ignored-advancements": {
             "default": true,
-            "desc": "Whether to log when a player's data is loaded, and they have advancements that don't exist anymore." +
+            "desc": "Whether to log when a player's data is loaded, and they have advancements that don't exist anymore.<br>" +
                 "(this is harmless, it usually happens when the server upgraded to the newer Minecraft version)" +
 
                 "<table>" +
@@ -121,7 +121,7 @@ export default {
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
-                "<tr><td>-</td><td><code>true</code></td><td><code>true</code></td></tr>" +
+                "<tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>"
         },
         "player-login-locations": {
@@ -358,7 +358,7 @@ export default {
             },
             "auto-replenish-lootable-refill": {
                 "default": true,
-                "desc": "Whether to use a XorShift random generator for refilling lootables for the Paper `auto-replenish` feature.<br>" +
+                "desc": "Whether to use a XorShift random generator for refilling lootables for the Paper's `auto-replenish` feature.<br>" +
                     "This does not affect normal Minecraft lootable chests." +
 
                     "<table>" +
@@ -374,7 +374,7 @@ export default {
             },
             "elytra-firework-speed": {
                 "default": true,
-                "desc": "Whether to use a XorShift random generator for the speed boost of using a rocket while gliding." +
+                "desc": "Whether to use a XorShift random generator for the speed boost of using a firework rocket while gliding." +
 
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
