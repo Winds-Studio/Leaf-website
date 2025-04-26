@@ -12,7 +12,7 @@ export default {
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                "<tr><td>-<br></td><td><code>true</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
+                "<tr><td>-<br></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>" +
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -31,7 +31,7 @@ export default {
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
-                "<tr><td><i>Optimization</i></td><td>-</td></tr>" +
+                "<tr><td><i>Optimization</i></td><td><code>false</code></td></tr>" +
                 "<tr><td><i>Vanilla behavior</i></td><td><code>true</code></td></tr>" +
                 "</table>"
         },
@@ -110,7 +110,7 @@ export default {
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
-                "<tr><td><i>Optimization</i></td><td>-</td></tr>" +
+                "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
                 "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
                 "</table>"
         },
@@ -189,11 +189,11 @@ export default {
                         "<table>" +
                         "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                         "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                        "<tr><td><code>10</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
+                        "<tr><td><code>8</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
                         "</table>" +
                         "<table>" +
                         "<tr><td><b>Values for goals</b></td><td></td></tr>" +
-                        "<tr><td><i>Optimization</i></td><td><code>10</code></td></tr>" +
+                        "<tr><td><i>Optimization</i></td><td><code>8</code></td></tr>" +
                         "<tr><td><i>Vanilla behavior</i></td><td><code>-1</code></td></tr>" +
                         "</table>"
                 },
@@ -289,7 +289,7 @@ export default {
                             "<table>" +
                             "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                             "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                            "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
+                            "<tr><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                             "</table>" +
                             "<table>" +
                             "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -305,7 +305,7 @@ export default {
                                 "<table>" +
                                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                                "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
+                                "<tr><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                                 "</table>" +
                                 "<table>" +
                                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -343,7 +343,7 @@ export default {
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(setting this value to <code>false</code> is strongly not recommended)</td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><code>false</code></td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -358,11 +358,11 @@ export default {
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(setting this value to <code>false</code> is strongly not recommended)</td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><code>false</code></td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
-                                    "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
+                                    "<tr><td><i>Optimization</i></td><td><code>false</code></td></tr>" +
                                     "<tr><td><i>Vanilla behavior</i></td><td>- (for vanilla behavior, <code>interval</code> must be set to 1)</td></tr>" +
                                     "</table>"
                             },
@@ -386,6 +386,7 @@ export default {
                             "max-item-horizontal-distance": {
                                 "default": "24.0",
                                 "desc": "The maximum horizontal distance a dropped item can be away from a hopper minecart be to give it temporary immunity from the `interval` setting.<br>" +
+                                    "(Unit: block)<br>" +
                                     "If a value < `0` is given, hopper minecarts will never have temporary immunity from the `interval` setting." +
 
                                     "<table>" +
@@ -401,7 +402,8 @@ export default {
                             },
                             "max-item-vertical-distance": {
                                 "default": "4.0",
-                                "desc": "Same as `max-item-horizontal-distance`, but this is the maximum distance vertically." +
+                                "desc": "Same as `max-item-horizontal-distance`, but this is the maximum distance vertically.<br>" +
+                                    "(Unit: block)" +
 
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
@@ -467,7 +469,6 @@ export default {
                     "<li>Prevents villagers picking up farmed items before hoppers do in certain farm designs; that would otherwise be broken by the `check-nearby-item.hopper` setting described below.</li>" +
                     "<li>Reduces lag from villagers continuously throwing many items at each other when their inventories are full.</li>" +
                     "</ul>" +
-                    "<br><br>" +
                     "For example:" +
                     "<ul>" +
                     "<li>If set to `100`, entities can pick up items dropped by villagers after 5 seconds.</li>" +
@@ -489,7 +490,7 @@ export default {
         "save-fireworks": {
             "default": true,
             "desc": "Whether fireworks are saved when saving a chunk.<br>" +
-                "Fireworks can bug out and not detonate, and an automated launcher can very easily fill a chunk.<br>" +
+                "Fireworks can bug out and not detonate, and it can very easily fill a chunk by using an automated dispenser.<br>" +
                 "If set to `true`, chunk unloads will remove any fireworks, preventing this scenario." +
 
                 "<table>" +

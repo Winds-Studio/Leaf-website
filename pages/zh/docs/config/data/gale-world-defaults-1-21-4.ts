@@ -31,7 +31,7 @@ export default {
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                "<tr><td><i>优化</i></td><td>-</td></tr>" +
+                "<tr><td><i>优化</i></td><td><code>false</code></td></tr>" +
                 "<tr><td><i>原版行为</i></td><td><code>true</code></td></tr>" +
                 "</table>"
         },
@@ -189,11 +189,11 @@ export default {
                         "<table>" +
                         "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                         "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                        "<tr><td><code>10</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
+                        "<tr><td><code>8</code></td><td><code>10</code></td><td><code>-1</code></td><td><code>-1</code></td></tr>" +
                         "</table>" +
                         "<table>" +
                         "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                        "<tr><td><i>优化</i></td><td><code>10</code></td></tr>" +
+                        "<tr><td><i>优化</i></td><td><code>8</code></td></tr>" +
                         "<tr><td><i>原版行为</i></td><td><code>-1</code></td></tr>" +
                         "</table>"
                 },
@@ -289,7 +289,7 @@ export default {
                             "<table>" +
                             "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                             "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                            "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
+                            "<tr><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                             "</table>" +
                             "<table>" +
                             "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -305,7 +305,7 @@ export default {
                                 "<table>" +
                                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                                "<tr><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
+                                "<tr><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>" +
                                 "</table>" +
                                 "<table>" +
                                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -343,7 +343,7 @@ export default {
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(不建议将该值改为 <code>true</code>)</td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><code>false</code></td><td><code>false</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -358,11 +358,11 @@ export default {
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
-                                    "<tr><td><code>true</code><br>(不建议将该值改为 <code>false</code>)</td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
+                                    "<tr><td><code>false</code></td><td><code>true</code></td><td>-</td><td>-</td></tr>" +
                                     "</table>" +
                                     "<table>" +
                                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                                    "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
+                                    "<tr><td><i>优化</i></td><td><code>false</code></td></tr>" +
                                     "<tr><td><i>原版行为</i></td><td>- (如需贴合原版行为, <code>interval</code> 必须设为 1)</td></tr>" +
                                     "</table>"
                             },
@@ -420,7 +420,7 @@ export default {
                                 "default": 1200,
                                 "desc": "超过此存活时间的掉落物不会使附近的漏斗矿车获得临时免疫, 以免受 `interval` 的影响.<br>" +
                                     "(以 tick 为单位)<br>" +
-                                    "如果设为 &leq; `0`, 表示没有存活时间的限制, 即所有掉落物都可以给予漏斗矿车临时免疫." +
+                                    "如果设为 &leq; `0`, 表示没有存活时间的限制, 即所有掉落物都可以给予附近的漏斗矿车临时免疫." +
 
                                     "<table>" +
                                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
@@ -446,8 +446,8 @@ export default {
                     "<br>" +
                     "例如:" +
                     "<ul>" +
-                    "<li>如果设为 `10`, 实体将会每隔 ½ 秒检查一次是否窒息.<、li>" +
-                    "<li>如果设为 &leq; `0`, 默认与 Paper 相同.<、li>" +
+                    "<li>如果设为 `10`, 实体将会每隔 ½ 秒检查一次是否窒息.</li>" +
+                    "<li>如果设为 &leq; `0`, 默认与 Paper 相同.</li>" +
                     "</ul>" +
 
                     "<table>" +
@@ -469,7 +469,6 @@ export default {
                     "<li>防止村民在某些农场设计中优先拾取种植物品, 造成漏斗无法拾取; 否则这些设计会因下面的 `check-nearby-item.hopper` 而失效.</li>" +
                     "<li>减少村民不断向其他库存已满的村民投掷大量物品时造成的卡顿.</li>" +
                     "</ul>" +
-                    "<br><br>" +
                     "例如:" +
                     "<ul>" +
                     "<li>如果设为 `100`, 实体可以在 5 秒后拾取村民投掷的物品.</li>" +

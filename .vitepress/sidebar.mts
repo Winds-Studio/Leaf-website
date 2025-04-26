@@ -67,7 +67,7 @@ export default {
             items: [
                 { text: "Globale Leaf Konfiguration", link: "/de/docs/config/leaf-global" },
                 { text: "Globale Gale Konfiguration", link: "/de/docs/config/gale-global" },
-                { text: "GWeltspezifische Gale Konfiguration", link: "/de/docs/config/gale-world-defaults" },
+                { text: "Weltspezifische Gale Konfiguration", link: "/de/docs/config/gale-world-defaults" },
                 { text: "Leaf JVM Flags", link: "/de/docs/config/system-properties" }
             ]
         },
