@@ -55,6 +55,7 @@ const rewrites = {
   "Dreeam-qwq": { title: titleCreator },
   "HaHaWTH": { name: "Creeam (HaHaWTH)", title: titleCoreTeam },
   "Taiyou06": { title: titleCoreTeam },
+  "hayanesuru": { title: titleCoreTeam },
   "envizar": {
     title: titleWebDev,
     links: [{ icon: "telegram", link: 'https://t.me/envizar' }]
