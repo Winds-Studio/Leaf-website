@@ -141,8 +141,9 @@ function loadBuildHistory(version: Version) {
   buildRuns.value = [];
 
   const branchName = version.branch;
-  
-  fetch(`https://api.github.com/repos/Winds-Studio/Leaf/actions/runs?event=push&branch=${branchName}`)
+  const branchVersion = version.name.replaceAll(".", "");
+
+  fetch(`https://api.github.com/repos/Winds-Studio/Leaf/actions/workflows/build-${branchVersion}.yml/runs?event=push&branch=${branchName}`)
     .then(resp => resp.json())
     .then(data => {
       if (data.workflow_runs) {
