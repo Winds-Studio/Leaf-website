@@ -46,6 +46,49 @@ export default {
             ]
         }
     ],
+    '/tr/docs/': [
+        {
+            text: "Giriş",
+            items: [
+                { text: "Başlarken", link: "/tr/docs" },
+                { text: "Sıkça Sorulan Sorular", link: "/tr/docs/faq" },
+                { text: "Faydalı Web Siteleri", link: "/tr/docs/useful-sites" }
+            ]
+        },
+        {
+            text: "Benchmarks",
+            items: [
+                { text: "Entity Performansı", link: "/tr/docs/benchmark/entity-performance" },
+                { text: "Chunk Üretimi", link: "/tr/docs/benchmark/chunk-generation" }
+            ]
+        },
+        {
+            text: "Konfigürasyon",
+            items: [
+                { text: "Leaf global", link: "/tr/docs/config/leaf-global" },
+                { text: "Gale global", link: "/tr/docs/config/gale-global" },
+                { text: "Gale dünya varsayılanları", link: "/tr/docs/config/gale-world-defaults" },
+                { text: "Leaf JVM Flags", link: "/tr/docs/config/system-properties" }
+            ]
+        },
+        {
+            text: "Nasıl Yapılır",
+            items: [
+                { text: "Sentry nasıl kurulur", link: "/tr/docs/how-to/setup-sentry" },
+                { text: "Leaf Sunucunuzu optimize edin", link: "/tr/docs/how-to/optimize-leaf-server" },
+                { text: "Sunucular için Java Flags", link: "/tr/docs/how-to/java-flags" }
+            ]
+        },
+        {
+            text: "Geliştirme",
+            items: [
+                { text: "Leaf Geliştirme Rehberi", link: "/tr/docs/dev" },
+                { text: "Leaf API", link: "/tr/docs/dev/api" },
+                //{ text: "Build", link: "/tr/docs/dev/build" } // TODO
+                { text: "🌿 Leaf’e katkıda bulunma", link: "/tr/docs/dev/contributing" }
+            ]
+        }
+    ],
     '/de/docs/': [
         {
             text: "Einführung",

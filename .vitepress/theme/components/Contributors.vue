@@ -11,6 +11,7 @@ const props = defineProps({
 })
 interface LangString {
   en: string
+  tr: string
   de: string
   pt: string
   ru: string
@@ -31,6 +32,7 @@ const websiteLoaded = ref(false);
 
 const titleCreator = (<LangString>{
   en: "Creator of Leaf",
+  tr: "Leaf'in Yaratıcısı",
   de: "Schöpfer von Leaf",
   pt: "Criador do Leaf",
   ru: "Создатель Leaf",
@@ -38,6 +40,7 @@ const titleCreator = (<LangString>{
 })[props.lang];
 const titleCoreTeam = (<LangString>{
   en: "Core team",
+  tr: "Ana ekip",
   de: "Kernteam",
   pt: "Equipe Principal",
   ru: "Основная команда",
@@ -45,6 +48,7 @@ const titleCoreTeam = (<LangString>{
 })[props.lang];
 const titleWebDev = (<LangString>{
   en: "Designer & Web Dev",
+  tr: "Tasarımcı & Web Geliştirici",
   de: "Designer & Webentwickler",
   pt: "Designer & Desenvolvedor Web",
   ru: "Дизайнер и Веб-разработчик",
