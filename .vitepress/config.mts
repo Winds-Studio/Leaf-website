@@ -34,6 +34,18 @@ export default defineConfig({
         ]
       }
     },
+    tr: {
+      label: 'Türkçe',
+      lang: 'tr',
+      // Türkçe navigasyon
+      themeConfig: {
+        nav: [
+          { text: 'Ana Sayfa', link: '/tr/' },
+          { text: 'İndir', link: '/tr/download' },
+          { text: 'Dokümantasyon', link: '/tr/docs/', activeMatch: '/tr/docs/' },
+        ]
+      }
+    },
     de: {
       label: 'Deutsch',
       lang: 'de',

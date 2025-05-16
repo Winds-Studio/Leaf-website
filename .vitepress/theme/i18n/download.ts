@@ -213,5 +213,48 @@ export const translations = {
       download: 'Baixar',
       history: 'Histórico de compilação'
     }
+  },
+tr: {
+    loading: {
+      versions: 'Kullanılabilir versiyonlar yükleniyor...',
+      download: 'İndirme dosyaları aranıyor...',
+      builds: 'Build geçmişi yükleniyor...'
+    },
+    error: {
+      versions: 'GitHub’dan branch’ler yüklenemedi. Lütfen daha sonra tekrar deneyin.',
+      download: 'Bu versiyon için indirme bulunamadı.',
+      builds: 'Build geçmişi bulunamadı.'
+    },
+    actions: {
+      retry: 'Tekrar Dene',
+      refresh: 'Yenile',
+      showMore: 'Daha Fazla Göster',
+      showLess: 'Daha Az Göster',
+      viewOnGitHub: 'GitHub’da Görüntüle',
+      viewRelease: 'GitHub’da release’i görüntüle',
+      viewBranch: 'Bu branch’i GitHub’da görüntüle',
+      download: 'İndir'
+    },
+    versionStatus: {
+      dead: 'Bu Leaf versiyonu <b>desteklenmiyor</b> ve hiçbir bugfix almayacak. <b>Kendi riskinizle kullanın!</b>',
+      eol: 'Bu Leaf versiyonu <b>end-of-life</b> durumunda ve sadece kritik bugfix’ler alacak. En son versiyona güncelleyin, daha iyi performans elde edin!',
+      stable: 'Bu Leaf versiyonu <b>aktif olarak destekleniyor</b> ve düzenli update’ler ile bugfix’ler alıyor.',
+      dev: 'Bu Leaf versiyonu <b>deneysel</b>dir ve kararsız özellikler ya da bug’lar içerebilir. Production kullanımı için önerilmez.'
+    },
+    labels: {
+      version: 'Minecraft Versiyonu',
+      noVersions: 'Kullanılabilir versiyon bulunamadı',
+      buildHistory: 'Build Geçmişi',
+      date: 'Tarih',
+      commit: 'Commit',
+      action: 'Action’ı Görüntüle',
+      unknown: 'Bilinmiyor',
+      releaseNotes: 'Release Notları',
+      description: 'Yüksek performanslı Minecraft sunucu yazılımı'
+    },
+    tabs: {
+      download: 'İndir',
+      history: 'Build Geçmişi'
+    }
   }
 };
