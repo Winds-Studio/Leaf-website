@@ -290,7 +290,7 @@ export default {
                     "<li>如果设为 `true`, 与世界生成相关的 `Random` 调用将使用上述 `random-generator` 指定的随机数生成器, 世界生成将会与原版略有不同.</li>" +
                     "<li>如果设为 `false`, 与世界生成相关的 `Random` 调用将使用原版随机数生成器.</li>" +
                     "</ul>" +
-                    "<br><br>" +
+                    "<br>" +
                     "__推荐值: `true`__" +
 
                     "<table>" +
