@@ -892,7 +892,9 @@ export default {
         "afk-command": {
             "enabled": {
                 "default": false,
-                "desc": "The command for player to switch their AFK mode."
+                "desc": "Wether to enable rhe AFK command based on Minecraft built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle).<br>" +
+                    "Players can use /afk command to switch their AFK mode, and their AFK status can be shown in Tab list.<br> " +
+                    "Rest of AFK settings, configurable AFK messages, title messages, are in Purpur config."
             }
         }
     },

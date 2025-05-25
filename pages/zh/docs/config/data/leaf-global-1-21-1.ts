@@ -896,7 +896,9 @@ export default {
         "afk-command": {
             "enabled": {
                 "default": false,
-                "desc": ""
+                "desc": "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
+                    "玩家可以使用 /afk 命令切换他们的 AFK 状态, 并且状态将会在 Tab 列表中展示.<br> " +
+                    "剩余的 AFK 配置项, 包括可配置的 AFK 提示消息, Title 消息, 在 Purpur 配置中."
             }
         }
     },
@@ -981,13 +983,13 @@ export default {
         "message": {
             "unknown-command": {
                 "default": "<red><lang:command.unknown.command><newline><detail>",
-                "desc": "未知指令提示, 在执行未知的指令时将向其发送.<br>" +
+                "desc": "未知命令提示, 在执行未知的命令时将向其发送.<br>" +
                     "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
-                    "如果设为 `default` 或保留默认值, 将使用原版默认的未知指令提示.<br>" +
+                    "如果设为 `default` 或保留默认值, 将使用原版默认的未知命令提示.<br>" +
                     "<br>" +
                     "可用占位符:" +
                     "<ul>" +
-                    "<li>__`<detail>`__ - 未知指令的详细信息.</li>" +
+                    "<li>__`<detail>`__ - 未知命令的详细信息.</li>" +
                     "</ul>" +
 
                     "<div class=\"tip custom-block\">" +
