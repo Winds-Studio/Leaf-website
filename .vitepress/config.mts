@@ -1,9 +1,5 @@
 import { defineConfig } from "vitepress";
 import sidebar from "./sidebar.mjs";
-import {
-  GitChangelog,
-  GitChangelogMarkdownSection,
-} from "@nolebase/vitepress-plugin-git-changelog/vite";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -19,12 +15,6 @@ export default defineConfig({
         },
       },
     },
-    plugins: [
-      GitChangelog({
-        repoURL: () => "https://github.com/Winds-Studio/Leaf-website",
-      }),
-      GitChangelogMarkdownSection(),
-    ],
   },
 
   srcDir: "./pages",
@@ -52,11 +42,7 @@ export default defineConfig({
         nav: [
           { text: "Ana Sayfa", link: "/tr/" },
           { text: "İndir", link: "/tr/download" },
-          {
-            text: "Dokümantasyon",
-            link: "/tr/docs/",
-            activeMatch: "/tr/docs/",
-          },
+          { text: "Dokümantasyon", link: "/tr/docs/", activeMatch: "/tr/docs/" },
         ],
       },
     },
@@ -68,11 +54,7 @@ export default defineConfig({
         nav: [
           { text: "Startseite", link: "/de/" },
           { text: "Herunterladen", link: "/de/download" },
-          {
-            text: "Dokumentation",
-            link: "/de/docs/",
-            activeMatch: "/de/docs/",
-          },
+          { text: "Dokumentation", link: "/de/docs/", activeMatch: "/de/docs/" },
         ],
       },
     },

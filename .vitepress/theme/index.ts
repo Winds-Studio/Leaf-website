@@ -6,7 +6,6 @@ import DefaultTheme from "vitepress/theme";
 import "./style.scss";
 import "./custom-blocks.scss";
 import { watch } from "vue";
-import { NolebaseGitChangelogPlugin } from "@nolebase/vitepress-plugin-git-changelog/client";
 
 import "@nolebase/vitepress-plugin-git-changelog/client/style.css";
 // Import the Vue components
@@ -93,7 +92,7 @@ export default {
   enhanceApp({ app }) {
     // Register custom language switcher component
     app.component("LanguageSwitcher", LanguageSwitcher);
-    app.use(NolebaseGitChangelogPlugin);
+
     // Register the Vue components
     app.component("entity-performance-graph", EntityPerformanceGraph);
     app.component("chunk-generation-graph", ChunkGenerationGraph);
