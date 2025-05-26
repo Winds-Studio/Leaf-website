@@ -7,7 +7,6 @@ import "./style.scss";
 import "./custom-blocks.scss";
 import { watch } from "vue";
 
-import "@nolebase/vitepress-plugin-git-changelog/client/style.css";
 // Import the Vue components
 import EntityPerformanceGraph from "./components/benchmark/EntityPerformanceGraph.vue";
 import ChunkGenerationGraph from "./components/benchmark/ChunkGenerationGraph.vue";
