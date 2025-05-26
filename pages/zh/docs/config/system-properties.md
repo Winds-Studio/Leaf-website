@@ -12,7 +12,10 @@
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 
-## -DLeaf.enableFMA
+## 已弃用参数
+
+### -DLeaf.enableFMA
+(仅存在于最新的 Leaf 1.21.1 和 1.21.3)
 * 默认值: `false`
 
 是否使用 [融合乘加操作 (FMA)](https://baike.baidu.com/item/%E4%B9%98%E7%A7%AF%E7%B4%AF%E5%8A%A0%E8%BF%90%E7%AE%97) 来加速某些数学计算.
@@ -20,8 +23,6 @@
 需要 CPU 支持 FMA 指令集, 否则将导致性能下降.
 
 你可以使用 [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) 等工具检查你的机器是否支持 FMA 指令集.
-
-## 已弃用参数
 
 ### -DLeaf.nearestEntitySensorBucketCount
 (仅存在于最新的 Leaf 1.21.1 和 1.21.3)

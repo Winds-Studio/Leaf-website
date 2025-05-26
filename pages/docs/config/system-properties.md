@@ -12,7 +12,10 @@ For example, use the flag below to define Aliyun's repo as the mirror repo.
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 
-## -DLeaf.enableFMA
+## Deprecated Flags
+
+### -DLeaf.enableFMA
+(This flag only exists in latest Leaf 1.21.1 and 1.21.3)
 * default: `false`
 
 Whether to use [Fused-Multiply-Add operations](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation) to accelerate some math calculations.
@@ -20,8 +23,6 @@ Whether to use [Fused-Multiply-Add operations](https://en.wikipedia.org/wiki/Mul
 Requires a CPU which supports the FMA instruction set, otherwise it will be slower.
 
 You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to check whether your machine supports the FMA instruction set.
-
-## Deprecated Flags
 
 ## -DLeaf.nearestEntitySensorBucketCount
 (This flag only exists in latest Leaf 1.21.1 and 1.21.3)

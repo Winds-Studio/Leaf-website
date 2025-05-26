@@ -12,7 +12,10 @@ SpigotLibraryLoader veya PaperLibraryLoader için belirli bir yansı deposunu ay
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 
-## -DLeaf.enableFMA
+## Kullanımdan Kaldırılmış Bayraklar
+
+### -DLeaf.enableFMA
+(Bu bayrak yalnızca en son Leaf 1.21.1 ve 1.21.3 sürümlerinde mevcuttur)
 * varsayılan: `false`
 
 Bazı matematiksel hesaplamaları hızlandırmak için [Fused-Multiply-Add işlemleri](https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation) kullanılıp kullanılmayacağını belirler.
@@ -20,8 +23,6 @@ Bazı matematiksel hesaplamaları hızlandırmak için [Fused-Multiply-Add işle
 FMA komut setini destekleyen bir CPU gerektirir, aksi takdirde daha yavaş olacaktır.
 
 Makinenizin FMA komut setini destekleyip desteklemediğini kontrol etmek için [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) gibi araçlar kullanabilirsiniz.
-
-## Kullanımdan Kaldırılmış Bayraklar
 
 ## -DLeaf.nearestEntitySensorBucketCount
 (Bu bayrak yalnızca en son Leaf 1.21.1 ve 1.21.3 sürümlerinde mevcuttur)

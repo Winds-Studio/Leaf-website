@@ -13,7 +13,10 @@ Beispiel:
 ```
 um Aliyun's Repository zu nutzen.
 
-## -DLeaf.enableFMA
+## Veraltete Flags
+
+### -DLeaf.enableFMA
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.1 und 1.21.3)
 * Standard: `false`
 
 Steuert, ob [Multiply-Accumulate](https://de.wikipedia.org/wiki/Multiply-Accumulate) für manche Operationen genutzt werden sollen.
@@ -21,8 +24,6 @@ Steuert, ob [Multiply-Accumulate](https://de.wikipedia.org/wiki/Multiply-Accumul
 Erfordert eine CPU, die den FMA Instruktionssatz unterstützt. Ansonsten wird die Berechnung langsamer sein.
 
 Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeben, ob ein Prozessor den nötigen Instruktionssatz unterstützt.
-
-## Veraltete Flags
 
 ### -DLeaf.nearestEntitySensorBucketCount
 (Dieses Flag existiert nur in der neuesten Leaf 1.21.1 und 1.21.3)
