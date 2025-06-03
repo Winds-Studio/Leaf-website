@@ -10,7 +10,7 @@ Visit the website in https://www.leafmc.one/
 ### Prerequisite
 Node.js 18.20+
 
-### Installtion
+### Installation
 Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for more.
 
 ### Commands
