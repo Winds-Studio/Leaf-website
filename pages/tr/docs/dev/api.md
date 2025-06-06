@@ -4,9 +4,7 @@
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven {
-    url = uri("https://maven.nostal.ink/repository/maven-snapshots/")
-  }
+  maven("https://maven.nostal.ink/repository/maven-snapshots/")
 }
 
 dependencies {
@@ -19,17 +17,23 @@ java {
 ```
 
 ```xml [pom.xml]
-<repository>
-    <id>leafmc</id>
-    <url>https://maven.nostal.ink/repository/maven-snapshots/</url>
-</repository>
+<project>
+  <repositories>
+    <repository>
+      <id>leafmc</id>
+      <url>https://maven.nostal.ink/repository/maven-snapshots/</url>
+    </repository>
+  </repositories>
 
-<dependency>
-    <groupId>cn.dreeam.leaf</groupId>
-    <artifactId>leaf-api</artifactId>
-    <version>1.21.5-R0.1-SNAPSHOT</version>
-    <scope>provided</scope>
-</dependency>
+  <dependencies>
+    <dependency>
+      <groupId>cn.dreeam.leaf</groupId>
+      <artifactId>leaf-api</artifactId>
+      <version>1.21.5-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
 ```
 :::
 
@@ -40,9 +44,8 @@ Leaf tarafından sağlanan dev bundle'ı kullanabilmek için, yukarıdaki öğre
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven {
-    url = uri("https://maven.nostal.ink/repository/maven-snapshots/")
-  }
+  maven("https://maven.nostal.ink/repository/maven-snapshots/")
+  maven("https://repo.bsdevelopment.org/releases/")
 }
 
 dependencies {
