@@ -544,7 +544,7 @@ export default {
             "default": true,
             "desc": "是否在保存区块时保存烟花.<br>" +
                 "烟花可能会出现故障而无法引爆, 并且使用发射器可以非常容易的用烟花填满一个区块.<br>" +
-                "如果设为 `true`, 区块卸载时会清除烟花, 从而防止这种情况发生." +
+                "如果设为 `false`, 区块卸载时会清除烟花, 从而防止这种情况发生." +
 
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
@@ -553,7 +553,7 @@ export default {
                 "</table>" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                "<tr><td><i>优化</i></td><td><ul><li>通常情况下: - (无关紧要)<li>如果你预计玩家喜欢尝试破坏服务器: 设为 <code>false</code></li></ul></td></tr>" +
+                "<tr><td><i>优化</i></td><td><ul><li>通常情况下: - (无关紧要)<li>如果你认为你的玩家喜欢尝试破坏服务器: 设为 <code>false</code></li></ul></td></tr>" +
                 "<tr><td><i>原版行为</i></td><td><code>true</code></td></tr>" +
                 "</table>"
         },

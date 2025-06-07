@@ -544,7 +544,7 @@ export default {
             "default": true,
             "desc": "Gibt an, ob Feuerwerk gespeichert wird, wenn ein Chunk gespeichert wird.<br>" +
                 "Feuerwerk kann verbuggt werden und nicht zünden und eine automatische Redstone-Schaltung kann leicht einen ganzen Chunk damit füllen.<br>" +
-                "Wenn dieser Wert `true` ist, wird jegliches Feuerwerk beim Entladen des Chunks entfernt, um dieses Problem zu verhindern." +
+                "Wenn dieser Wert `false` ist, wird jegliches Feuerwerk beim Entladen des Chunks entfernt, um dieses Problem zu verhindern." +
 
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +

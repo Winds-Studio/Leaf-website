@@ -491,7 +491,7 @@ export default {
             "default": true,
             "desc": "Whether fireworks are saved when saving a chunk.<br>" +
                 "Fireworks can bug out and not detonate, and it can very easily fill a chunk by using an automated dispenser.<br>" +
-                "If set to `true`, chunk unloads will remove any fireworks, preventing this scenario." +
+                "If set to `false`, chunk unloads will remove any fireworks, preventing this scenario." +
 
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
