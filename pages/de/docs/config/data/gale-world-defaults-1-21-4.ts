@@ -463,7 +463,7 @@ export default {
             },
             "villager-item-repickup": {
                 "default": 100,
-                "desc": " Die Mindestverzögerung, bis von Dorfbewohnern fallengelassene Items von (anderen) Entites aufgesammelt werden können.<br>" +
+                "desc": "Die Mindestverzögerung, bis von Dorfbewohnern fallengelassene Items von (anderen) Entites aufgesammelt werden können.<br>" +
                     "(Einheit: Tick)" +
                     "<ul>" +
                     "<li>Verhindert, dass Dorfbewohner gefarmte Items wieder aufsammeln, bevor Trichter das können. Ansonsten könnte es Probleme durch die `check-nearby-item.hopper` Einstellung geben.</li>" +
