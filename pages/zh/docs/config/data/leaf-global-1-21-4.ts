@@ -36,7 +36,7 @@ export default {
                 "default": false,
                 "desc": "是否使用异步实体追踪, 可以显著提高性能, 特别是在小范围内拥有大量密集实体的场景中.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">注意</p>" +
@@ -57,7 +57,7 @@ export default {
                 "desc": "异步实体追踪可使用的最大线程数.<br>" +
                     "如果设为 `0`, 默认使用 CPU 核心数 1/4 的线程数, 且不少于 1.<br>" +
                     "<br>" +
-                    "__推荐值: CPU 核心数的 1/2__"
+                    "__⚡推荐值: CPU 核心数的 1/2__"
             },
             "keepalive": {
                 "default": 60,
@@ -91,14 +91,14 @@ export default {
                 "default": false,
                 "desc": "是否使用异步生物寻路.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "max-threads": {
                 "default": 0,
                 "desc": "异步生物寻路可使用的最大线程数.<br>" +
                     "如果设为 `0`, 默认使用 CPU 核心数 1/4 的线程数, 且不少于 1.<br>" +
                     "<br>" +
-                    "__推荐值: CPU 核心数的 1/3__"
+                    "__⚡推荐值: CPU 核心数的 1/3__"
             },
             "keepalive": {
                 "default": 60,
@@ -121,7 +121,7 @@ export default {
                     "对于拥有大量实体的服务器, 开启此功能可以带来近 15% 的性能提升. 并且你必须将 Paper 的 `per-player-mob-spawns` 设为 `true`, 此功能才能生效.<br>" +
                     "需要注意的是: 此功能并不会将生物生成的所有逻辑完全异步 (这样做非常不安全). 它只是将生物生成的一些耗时计算分担到其他线程上.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             }
         },
         "async-locator": {
@@ -136,14 +136,14 @@ export default {
                     "<li>末影之眼定位要塞</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "threads": {
                 "default": 0,
                 "desc": "异步定位可使用的最大线程数.<br>" +
                     "如果设为 &leq; `0`, 默认使用 1 个线程.<br>" +
                     "<br>" +
-                    "__推荐值: `1` 或 `2`__"
+                    "__⚡推荐值: `1` 或 `2`__"
             },
             "keepalive": {
                 "default": 60,
@@ -152,12 +152,6 @@ export default {
             }
         },
         "async-chunk-send": {
-            "enabled": {
-                "default": false,
-                "desc": ""
-            }
-        },
-        "async-block-finding": {
             "enabled": {
                 "default": false,
                 "desc": ""
@@ -172,47 +166,48 @@ export default {
         },
         "use-virtual-thread-for-user-authenticator": {
             "default": true,
-            "desc": ""
+            "desc": "是否为用户验证服务使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 该服务负责验证正版玩家的加入.<br>" +
+                "<br>" +
+                "__⚡推荐值: `true`__"
         },
         "use-virtual-thread-for-profile-executor": {
             "default": true,
-            "desc": ""
-        },
-        "use-virtual-thread-for-download-pool": {
-            "default": true,
-            "desc": ""
+            "desc": "是否为玩家档案执行器 (Profile Executor) 使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 该执行器用于处理玩家档案和头颅皮肤的获取.<br>" +
+                "<br>" +
+                "__⚡推荐值: `true`__"
         },
         "use-virtual-thread-for-async-chat-executor": {
             "default": true,
             "desc": "是否为异步聊天使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html).<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
             "default": true,
-            "desc": "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高使用异步调度器的插件的性能.<br>" +
+            "desc": "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高大量使用异步调度器的插件的性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
             "default": true,
-            "desc": "是否在获取 TileEntity / BlockState 时创建并使用其快照.<br>" +
+            "desc": "是否默认在插件获取 TileEntity / BlockState 时创建并使用其快照.<br>" +
                 "<br>" +
-                "一些插件可能会使用 `getHolder` 方法来获取物品栏的所有者, 这涉及获取 BlockState 的副本. 而创建 BlockState 的副本或解析物品数据相当耗时, 其中涉及 NBT 的解析.<br>" +
+                "一些插件可能会调用 `getInventory().getHolder()` 来获取物品栏的所有者, 这涉及访问 BlockState. 其中涉及创建 BlockState 的副本和序列化物品 NBT 数据相当耗时.<br>" +
                 "例如, 在拥有大量密集漏斗的场景中, 如果插件在监听某些事件 (例如与漏斗相关的事件) 时调用此类方法, 频繁地调用将会显著影响性能.<br>" +
                 "参阅 Paper 的 [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) 补丁以获取更多信息." +
                 "<ul>" +
                 "<li>如果设为 `true`, 每次插件调用相关方法时, 都会创建 BlockState 的快照 (副本).</li>" +
-                "<li>如果设为 `false`, 每次插件调用相关方法时将, 直接获取目标 BlockState 本身, 除非插件指定要求使用其快照.</li>" +
+                "<li>如果设为 `false`, 每次插件调用相关方法时将, 直接获取目标 BlockState 本身, 除非插件明确要求使用快照. 性能会有所提升，但存在由于插件设计不当而导致方块状态被意外修改的风险</li>" +
                 "</ul>" +
                 "<br>" +
-                "__推荐值: (推荐仅在遇到上述卡顿时设为 `false`)__"
+                "__⚡推荐值: (推荐仅在遇到上述卡顿时设为 `false`)__"
         },
         "inactive-goal-selector-throttle": {
             "default": true,
-            "desc": "当实体处在 *inactive tick* 时, 是否将 *goal selector* 的 tick 计算限制为每秒一次. 这可以略微提高性能, 但会对游戏机制有略微影响.<br>" +
+            "desc": "限制 [意向选择器](https://zh.minecraft.wiki/w/%E7%94%9F%E7%89%A9AI#:~:text=%E6%84%8F%E5%90%91%E9%80%89%E6%8B%A9%E5%99%A8) 在非活跃实体 (通常是远离玩家的实体) 上的运行频率.<br>" +
+                "不再每刻 (tick) 都执行意向选择器逻辑, 而是改为每秒一次. 这样可以略微提升性能，但可能会对游戏玩法产生轻微影响<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -223,9 +218,10 @@ export default {
         "throttle-hopper-when-full": {
             "enabled": {
                 "default": false,
-                "desc": "是否当目标容器已满时冷却漏斗, 以避免其尝试移动物品.<br>" +
+                "desc": "是否当目标容器已满时限制漏斗尝试转移物品的频率.<br>" +
+                    "此选项可防止漏斗即使在失败的情况下, 也在每个 tick 都不断尝试转移物品.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -235,11 +231,12 @@ export default {
             },
             "skip-ticks": {
                 "default": 8,
-                "desc": "当漏斗冷却时, 等待多长时间再次将再次尝试移动物品的操作.<br>" +
+                "desc": "当目标容器已满时, 等待多长时间将再次尝试移动物品的操作.<br>" +
                     "(以 tick 为单位)<br>" +
+                    "仅当上方所述的 `throttle-hopper-when-full.enabled` 设为 `true` 时, 此选项才会生效.<br>" +
                     "如果设为 &leq; `0`, 将禁用此冷却功能.<br>" +
                     "<br>" +
-                    "__推荐值: `8`__" +
+                    "__⚡推荐值: `8`__" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -250,10 +247,10 @@ export default {
         },
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             "default": true,
-            "desc": "如果地图没有渲染器, 是否跳过地图内容的更新.<br>" +
-                "这可以提高使用 ImageMap 之类插件时的性能.<br>" +
+            "desc": "如果地图没有渲染器 (`CraftMapRenderer`), 是否跳过地图内容的更新.<br>" +
+                "当使用 ImageMap 之类的, 能创建大量自定义图片地图的插件时, 这可以提高性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -268,9 +265,10 @@ export default {
         },
         "skip-ai-for-non-aware-mob": {
             "default": true,
-            "desc": "当生物处在 *不活跃* 且 *无感知* 的状态时, 是否跳过其 AI tick 的计算. *无感知* 的生物会像呆子一样, 不会自主活动, 也不会在与其交互时作出反应.<br>" +
+            "desc": "当生物同时处在 *不活跃* 且 *无感知* 的状态时, 是否跳过其 AI tick 计算.<br>" +
+                "被设为无感知的生物在重新变为活跃之前将不会自主活动, 也不会在与其交互时作出反应, 更多信息请参阅: [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)).<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -285,38 +283,31 @@ export default {
             },
             "reduce-entity-move-packets": {
                 "default": false,
-                "desc": "是否减少发送给玩家的无用实体移动数据包.<br>" +
+                "desc": "是否减少发送给玩家的无用实体移动数据包 (例如微小的移动).<br>" +
+                    "此配置项可以略微节省带宽并减少客户端的处理负担, 在实体数量较多或出现轻微卡顿时, 有希望使使移动看起来更流畅.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
+            }
+        },
+        "reduce-chunk-source-updates": {
+            "enabled": {
+                "default": false,
+                "desc": "是否减少玩家跨区块移动时的区块源更新.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__"
             }
         },
         "optimized-powered-rails": {
-            "default": true,
-            "desc": "是否优化动力铁轨的逻辑. 将使用完全重写的动力铁轨迭代逻辑, 可提升近 4 倍 的性能.<br>" +
+            "default": false,
+            "desc": "是否优化动力铁轨的逻辑. 将使用完全重写的动力铁轨迭代逻辑, 同时保持原版行为, 可提升近 4 倍 的性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
-        "optimize-minecart": {
-            "enabled": {
-                "default": false,
-                "desc": "是否优化矿车的 tick 计算. 通过跳过部分碰撞计算的方式, 以减少 `getEntities()` 调用和一些 Bukkit 事件调用的耗时.<br>" +
-                    "这可以更好地承载大量的堆叠矿车, 特别适用于 [无政府服](https://minecraftservers.org/type/anarchy).<br>" +
-                    "<br>" +
-                    "__推荐值: `true`__" +
-
-                    "<table>" +
-                    "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
-                    "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
-                    "<tr><td><i>原版行为</i></td><td><code>false</code></td></tr>" +
-                    "</table>"
-            },
-            "skip-tick-count": {
-                "default": 30,
-                "desc": "每隔多少 tick 计算一次矿车碰撞.<br>" +
-                    "(以 tick 为单位)<br>" +
-                    "<br>" +
-                    "__推荐值: `30`__"
-            }
+        "optimize-player-movement": {
+            "default": true,
+            "desc": "是否优化玩家移动处理, 跳过不必要的方块边缘检查并避免冗余的视距更新.<br>" +
+            "<br>" +
+                "__⚡推荐值: `true`__"
         },
         "faster-structure-gen-future-sequencing": {
             "default": true,
@@ -333,7 +324,7 @@ export default {
                 "desc": "是否使用更快的随机数生成器.<br>" +
                     "随机数生成在 Minecraft 中几乎无处不在, 此功能可以显著提升性能.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">注意</p>" +
@@ -345,7 +336,7 @@ export default {
                 "desc": "需要使用哪种随机数生成器?<br>" +
                     "可参阅 [Java 随机数生成器](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1), 了解所有可用的随机数生成器.<br>" +
                     "<br>" +
-                    "__推荐值: `Xoroshiro128PlusPlus`__"
+                    "__⚡推荐值: `Xoroshiro128PlusPlus`__"
             },
             "enable-for-worldgen": {
                 "default": false,
@@ -354,8 +345,8 @@ export default {
                     "<li>如果设为 `true`, 与世界生成相关的 `Random` 调用将使用上述 `random-generator` 指定的随机数生成器, 世界生成将会与原版略有不同.</li>" +
                     "<li>如果设为 `false`, 与世界生成相关的 `Random` 调用将使用原版随机数生成器.</li>" +
                     "</ul>" +
-                    "<br><br>" +
-                    "__推荐值: `true`__" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -372,7 +363,7 @@ export default {
                 "desc": "是否使用原版随机数生成器来生成史莱姆区块, 以保持原版行为.<br>" +
                     "如果服务器中已存在史莱姆农场或相关依赖史莱姆区块的红石机器, 请开启此配置项; 否则, 史莱姆区块的坐标将会偏移.<br>" +
                     "<br>" +
-                    "__推荐值:__ (取决于你服务器的类型, 参阅下方的 `基于目标的推荐值` 了解更多.)" +
+                    "__⚡推荐值:__ (取决于你服务器的类型, 参阅下方的 `基于目标的推荐值` 了解更多.)" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -389,14 +380,14 @@ export default {
             "default": true,
             "desc": "是否缓存 *Minecraft EntityType* 到 *Bukkit EntityType* 的类型转换结果, 这可以获得微小的性能提升.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "dab": {
             "enabled": {
                 "default": true,
                 "desc": "根据距离优化生物 AI (又称 DAB), 在生物远离玩家时减少大脑 AI tick 计算的频率.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -409,13 +400,13 @@ export default {
                 "desc": "非水生生物在水中时, 是否不受 DAB 的影响.<br>" +
                     "如果设为 `true`, 可以修复实体远离玩家时在水中溺死的问题. 修复了 [Pufferfish 的 issue#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "start-distance": {
                 "default": 12,
                 "desc": "距离玩家多少格 DAB 开始生效.<br>" +
                     "<br>" +
-                    "__推荐值: `8`__"
+                    "__⚡推荐值: `8`__"
             },
             "max-tick-freq": {
                 "default": 20,
@@ -430,7 +421,7 @@ export default {
                     "<li>如果希望距离较远的实体 __多__ tick 计算 一些, 设为 `9`.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__推荐值: `7`__"
+                    "__⚡推荐值: `7`__"
             },
             "blacklisted-entities": {
                 "default": "[]",
@@ -480,16 +471,15 @@ export default {
                 "desc": "区块卸载时不保存激活的TNT.<br>" +
                     "当玩家意外掉线或者玩家远离导致区块被卸载时, 此功能可防止机器被 TNT 炸毁. 适用于拥有较多 TNT 相关机器的生存服.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "dont-save-falling-block": {
                 "default": false,
                 "desc": "区块卸载时不保存掉落中的方块 (FallingBlock).<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
-            },
-            "entity-running-behavior-cache-update-interval": {
-                "default": 5,
+                    "__⚡推荐值: `true`__"
+            }
+        },
                 "desc": ""
             }
         }
@@ -609,7 +599,7 @@ export default {
                     "<br>" +
                     "如果设为 `-1`, 将禁用此最远交互距离检查.<br>" +
                     "<br>" +
-                    "__推荐值: `10.0000001` (适用于无政府服)__" +
+                    "__⚡推荐值: `10.0000001` (适用于无政府服)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">注意</p>" +
@@ -622,7 +612,7 @@ export default {
                 "default": false,
                 "desc": "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
                     "玩家可以使用 /afk 命令切换他们的 AFK 状态, 并且状态将会在 Tab 列表中展示.<br> " +
-                    "剩余的 AFK 配置项, 包括可配置的 AFK 提示消息, Title 消息, 在 Purpur 配置中."
+                    "剩余的 AFK 配置项在 Purpur 配置中, 包括可配置的 AFK 提示消息, Title 消息."
             }
         }
     },
@@ -703,7 +693,8 @@ export default {
             "desc": "是否开启 MC 1.19.1 引入的聊天消息签名.<br>" +
                 "如果设为 `false`, 将无法举报玩家的聊天消息, 并且玩家进服时不会显示不安全警告弹窗.<br>" +
                 "<br>" +
-                "__推荐值: `false`__"
+                "__⚡推荐值: `false`__"
+        },
         }
     },
 
@@ -771,7 +762,7 @@ export default {
                     "所有矿石和结构将使用 1024 位的种子生成, 而不是原版中的 64 位种子, 从而使破解种子变得不可能.<br>" +
                     "如果在已经存在的世界中使用安全种子, 则只会应用在新生成的区块.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
 
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
@@ -794,7 +785,7 @@ export default {
             "desc": "当玩家尝试编辑其无法编辑的告示牌时, 是否在控制台打印警告信息.<br>" +
                 "如果设为 `true`, 可以防止某些情况下玩家使用某些方法在控制台刷屏.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "region-format-settings": {
             "": {
@@ -831,19 +822,19 @@ export default {
                 "default": false,
                 "desc": "卡顿滞后补偿, 这可以在服务器卡顿或低 TPS 时确保玩家的基本游戏体验.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "enable-for-water": {
                 "default": false,
                 "desc": "是否开启水流动的滞后补偿.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "enable-for-lava": {
                 "default": false,
                 "desc": "是否开启岩浆流动的滞后补偿.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             }
         },
         "including-5s-in-get-tps": {
