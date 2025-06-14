@@ -16,14 +16,14 @@ export interface Version {
 export const versionStatusMap: {[name: string]: VersionStatus} = {
 
     dev: {
-        versions: ["1.21.5"],
+        versions: ["1.21.6"],
         icon: "lucide:flask-conical",
         cssClass: "status-dev",
         branchPrefix: "dev/"
     },
 
     stable: {
-        versions: ["1.21.4"],
+        versions: ["1.21.4", "1.21.5"],
         cssClass: "status-stable",
         icon: "lucide:check-circle"
     },
