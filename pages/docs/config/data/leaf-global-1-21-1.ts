@@ -14,7 +14,7 @@ export default {
                 "default": false,
                 "desc": "Make entity tracking asynchronously, can improve performance significantly, especially in some massive entities in small area situations.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">Attention</p>" +
@@ -35,7 +35,7 @@ export default {
                 "desc": "Maximum number of threads for async entity tracker to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
-                    "__Recommended value: 1/2 of CPU cores__"
+                    "__⚡Recommended value: 1/2 of CPU cores__"
             },
             "keepalive": {
                 "default": 60,
@@ -59,14 +59,14 @@ export default {
                 "default": false,
                 "desc": "Make mob pathfinding calculation asynchronously.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "max-threads": {
                 "default": 0,
                 "desc": "Maximum number of threads for async entity pathfinding to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
-                    "__Recommended value: 1/3 of CPU cores__"
+                    "__⚡Recommended value: 1/3 of CPU cores__"
             },
             "keepalive": {
                 "default": 60,
@@ -81,7 +81,7 @@ export default {
                     "On servers with many entities, this can improve performance by up to 15%. You must have Paper's `per-player-mob-spawns` config set to `true` for this to work.<br>" +
                     "One quick note: this does not actually spawn mobs async (that would be very unsafe). This just offloads some expensive calculations that are required for mob spawning.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "async-locator": {
@@ -96,14 +96,14 @@ export default {
                     "<li>Eye of ender stronghold finding</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "threads": {
                 "default": 0,
                 "desc": "Maximum number of threads for async locator to use.<br>" +
                     "If a value &leq; `0` is given, it automatically uses 1 thread.<br>" +
                     "<br>" +
-                    "__Recommended value: `1` or `2`__"
+                    "__⚡Recommended value: `1` or `2`__"
             },
             "keepalive": {
                 "default": 60,
@@ -120,35 +120,36 @@ export default {
         },
         "use-virtual-thread-for-async-chat-executor": {
             "default": true,
-            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for Async Chat Executor.<br>" +
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
             "default": true,
-            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for CraftAsyncScheduler, which could improve performance of plugin that uses async scheduler.<br>" +
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
             "default": true,
-            "desc": "Whether to create the snapshot of TileEntity / BlockState when retrieving them.<br>" +
+            "desc": "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
                 "<br>" +
-                "Some plugins may use `getHolder` to get the holder for an inventory, which involved getting the BlockState.<br>" +
-                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events). It is very expensive to re-create BlockState and parse item stack in massive and frequent calls.<br>" +
+                "Some plugins may call `getInventory().getHolder()` to get the holder of an inventory, which involves accessings the BlockState.<br>" +
+                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events, call frequently). Re-creating BlockState and parsing item stack in massive and frequent calls are very expensive.<br>" +
                 "See Paper's [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) for more information." +
                 "<ul>" +
-                "<li>If `true`, it will create snapshot (copy) of BlockState everytime when the plugin call related methods.</li>" +
-                "<li>If `false`, it will get real BlockState itself when plugins call related methods, unless the plugin defines to use snapshot.</li>" +
+                "<li>If `true`, always creates snapshot (copy) of BlockState when the plugin calls related methods.</li>" +
+                "<li>If `false`, gets real BlockState directly unless the plugin explicitly requests a snapshot. Performance improves, but has risk that block state gets modified due to plugin's poor design.</li>" +
                 "</ul>" +
                 "<br>" +
-                "__Recommended value: `false` (Only if you encounter specific lag described above)__"
+                "__⚡Recommended value: `false` (Only if you encounter specific lag described above)__"
         },
         "inactive-goal-selector-throttle": {
             "default": true,
-            "desc": "Throttles the *AI goal selector* calculation in entity's *inactive tick* to every second. This can improve performance by a few percent, but has minor gameplay implications.<br>" +
+            "desc": "Throttles the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>" +
+                "Instead of ticking goal selector every tick, it ticks less frequently to every second. This can improve performance slightly, but has minor gameplay implications.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -159,9 +160,10 @@ export default {
         "throttle-hopper-when-full": {
             "enabled": {
                 "default": false,
-                "desc": "Whether to throttle attempts on moving items for hopper if the target container is full.<br>" +
+                "desc": "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
+                    "Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -171,10 +173,12 @@ export default {
             },
             "skip-ticks": {
                 "default": 0,
-                "desc": "How many ticks to wait before the next move item attempt when the hopper is throttled.<br>" +
+                "desc": "How many ticks a hopper should wait before trying to move items again if the target container is full.<br>" +
+                    "(Unit: tick)<br>" +
+                    "Only active if `throttle-hopper-when-full.enabled` (described above) is `true`.<br>" +
                     "If a value &leq; `0` is given, this throttling feature is disabled.<br>" +
                     "<br>" +
-                    "__Recommended value: `8`__" +
+                    "__⚡Recommended value: `8`__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -185,10 +189,10 @@ export default {
         },
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             "default": true,
-            "desc": "Whether to skip map item data update if the map doesn't have a renderer.<br>" +
-                "This can improve performance if using ImageMap kind of plugins.<br>" +
+            "desc": "Whether to skip updating map item data update if the map doesn't have a renderer (`CraftMapRenderer`).<br>" +
+                "This can improve performance if using ImageMap kind of plugins that create many custom maps.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -203,9 +207,10 @@ export default {
         },
         "skip-ai-for-non-aware-mob": {
             "default": true,
-            "desc": " Whether to skip AI ticks if the mob is *inactive* and *unaware*. Unaware mobs are nerd and will not make actions themselves or when interacted with them.<br>" +
+            "desc": "Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>" +
+                "Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
 
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -220,16 +225,17 @@ export default {
             },
             "reduce-entity-move-packets": {
                 "default": false,
-                "desc": "Whether to reduce the useless entity movement packets sent to players.<br>" +
+                "desc": "Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>" +
+                    "This can save bandwidth and reduces client-side processing load, potentially making movement appear smoother during high entity counts or minor lag.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "optimized-powered-rails": {
             "default": true,
-            "desc": "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic, can achieve 4x faster performance.<br>" +
+            "desc": "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, can achieve 4x faster performance.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "optimize-minecart": {
             "enabled": {
@@ -237,7 +243,7 @@ export default {
                 "desc": "Whether to optimize minecart ticking. By skipping tick collisions to reduce expensive `getEntities()` calls and bukkit event calls.<br>" +
                     "This can handle a large amount of stacked minecarts better which is useful for [Anarchy servers](https://minecraftservers.org/type/anarchy).<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__" +
+                    "__⚡Recommended value: `true`__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -249,7 +255,7 @@ export default {
                 "default": 30,
                 "desc": "How many ticks to skip before checking for the next minecart collisions.<br>" +
                     "<br>" +
-                    "__Recommended value: `30`__"
+                    "__⚡Recommended value: `30`__"
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -267,7 +273,7 @@ export default {
                 "desc": "Whether to use the faster random generator.<br>" +
                     "Random is used almost everywhere in Minecraft, enable this can get a decent performance improvement.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">Attention</p>" +
@@ -279,7 +285,7 @@ export default {
                 "desc": "Which random generator will be used?<br>" +
                     "Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1).<br>" +
                     "<br>" +
-                    "__Recommended value: `Xoroshiro128PlusPlus`__"
+                    "__⚡Recommended value: `Xoroshiro128PlusPlus`__"
             },
             "enable-for-worldgen": {
                 "default": false,
@@ -289,7 +295,7 @@ export default {
                     "<li>If `false`, `Random` calls involved in world generation will use legacy random generator of vanilla.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `true`__" +
+                    "__⚡Recommended value: `true`__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -306,7 +312,7 @@ export default {
                 "desc": "Whether to use legacy random source for slime chunk generation to follow the vanilla behavior.<br>" +
                     "If your server has existing slime farms or related facilities need slime chunk, enable this, otherwise the location of slime chunk will offset.<br>" +
                     "<br>" +
-                    "__Recommended value:__ (Depends on your server type, see `Values for goals` below for more.)" +
+                    "__⚡Recommended value:__ (Depends on your server type, see `Values for goals` below for more.)" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -323,7 +329,7 @@ export default {
                     "If an entity is in this list, and it has survived for longer than that number of ticks, then it will be removed. 🛈<br>" +
                     "If a value `-1` is given, the Entity TTL check will disable for specific entity.<br>" +
                     "<br>" +
-                    "__Recommended values:__" +
+                    "__⚡Recommended values:__" +
 
                     "<table>" +
                     "<thead><tr><th>Entity</th><th>Max Lifespan</th></tr></thead>" +
@@ -694,14 +700,14 @@ export default {
             "default": true,
             "desc": "Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. It can get a tiny improvement.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "dab": {
             "enabled": {
                 "default": true,
                 "desc": "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain to decrease the frequency of their brain ticking when they are far away from players.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -714,13 +720,13 @@ export default {
                 "desc": "Whether non-aquatic entities in the water will not be affected by DAB.<br>" +
                     "If `true`, this could fix entities suffocate in the water if they are far from the player. This fixed [Pufferfish's issue#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "start-distance": {
                 "default": 12,
                 "desc": "This value determines how far away an entity has to be from the player to start being affected by DAB.<br>" +
                     "<br>" +
-                    "__Recommended value: `8`__"
+                    "__⚡Recommended value: `8`__"
             },
             "max-tick-freq": {
                 "default": 20,
@@ -735,7 +741,7 @@ export default {
                     "<li>If you want entities further away to tick __more__ often, try `9`.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `7`__"
+                    "__⚡Recommended value: `7`__"
             },
             "blacklisted-entities": {
                 "default": "[]",
@@ -784,13 +790,13 @@ export default {
                 "desc": "Disable save primed tnt on chunk unloads.<br>" +
                     "It can prevent machines from being exploded by TNT when the player accidentally disconnected or chunk unloads when the player is far away. Useful for survival servers which have machines involved TNT.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "dont-save-falling-block": {
                 "default": false,
                 "desc": "Disable save falling block on chunk unloads.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         }
     },
@@ -870,7 +876,7 @@ export default {
                 "desc": "Whether to disable the Spigot built-in moved too quickly / wrongly checks for players and vehicles.<br>" +
                     "If `true`, players can move or use vehicles (e.g. Minecart) to move with abnormal speed.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "max-use-item-distance": {
                 "default": 1.0000001,
@@ -881,7 +887,7 @@ export default {
                     "<br>" +
                     "If a value `-1` is given, the check of max allowed distance to use an item will be disabled.<br>" +
                     "<br>" +
-                    "__Recommended value: `10.0000001` (For anarchy server)__" +
+                    "__⚡Recommended value: `10.0000001` (For anarchy server)__" +
 
                     "<div class=\"tip custom-block\">" +
                     "<p class=\"custom-block-title custom-block-title-default\">Attention</p>" +
@@ -966,7 +972,7 @@ export default {
             "desc": "Whether to enable chat message signature which introduced since Minecraft 1.19.1.<br>" +
                 "If `false`, players' chat messages become unable to report, and the insecure warning popup when player joined the server will be disabled.<br>" +
                 "<br>" +
-                "__Recommended value: `false`__"
+                "__⚡Recommended value: `false`__"
         }
     },
 
@@ -1034,7 +1040,7 @@ export default {
                     "All ores and structures are generated with 1024-bit seed instead of using 64-bit seed in vanilla, made seed cracker become impossible.<br>" +
                     "If used in the existing world, then the secure seed will only apply to new generating chunks.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
 
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
@@ -1045,7 +1051,7 @@ export default {
         },
         "remove-vanilla-username-check": {
             "default": true,
-            "desc": " Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
+            "desc": "Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
                 "If `true`, players are allowed to use non-English name to join the server."
         },
         "remove-spigot-check-bungee-config": {
@@ -1057,7 +1063,7 @@ export default {
             "desc": "Whether the server prints warning when players tried to edit the sign that they are not allowed to edit.<br>" +
                 "Enable this to prevent console spam in some cases.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "region-format-settings": {
             "": {
@@ -1094,19 +1100,19 @@ export default {
                 "default": false,
                 "desc": "Lag compensation, which could ensure the basic game experience for players when server is lagging or low TPS situation.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "enable-for-water": {
                 "default": false,
                 "desc": "Whether to enable lag compensation for water flowing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "enable-for-lava": {
                 "default": false,
                 "desc": "Whether to enable lag compensation for lava flowing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "including-5s-in-get-tps": {

@@ -5,13 +5,32 @@ export default {
     },
 
     "async": {
+        "": {
+            "default": "",
+            "desc": "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously."
+        },
         "parallel-world-tracking": {
             "enabled": {
                 "default": false,
-                "desc": "**Experimental feature**\n\n" +
-                    "Enables parallel world ticking to improve performance on multi-core systems " +
-                    "by processing different worlds or regions concurrently.\n\n" +
-                    "⚡ **Recommended value:** `false` (unless experiencing specific bottlenecks and understand the risks)"
+                "desc": "Whether parallel processing different worlds in separate threads, which can improve performance on multi-core system.<br>" +
+                    "<br>" +
+                    "Parallel World Ticking, also called \"PWT\", is a concept created by [SparklyPaper](https://github.com/SparklyPower/SparklyPaper), by ticking each world in a separate thread, to reduce and split the work load in originally single thread for all worlds.<br>" +
+                    "In this PWT implementation, each world will wait until last world tick finished, read more in SparklyPaper's explanation [PARALLEL_WORLD_TICKING.md](https://github.com/SparklyPower/SparklyPaper/blob/13aff425238ea322658de0d9f4f7bd906bd9f431/docs/PARALLEL_WORLD_TICKING.md).<br>" +
+                    "<br>" +
+                    "When I should consider to try PWT?" +
+                    "<ol>" +
+                    "<li>I really can't switch to [Folia](https://papermc.io/software/folia)</li>" +
+                    "<li>I have a multi-core server</li>" +
+                    "<li>My players spread averagely in each world</li>" +
+                    "<li>(Or I have many worlds, e.g. some RPG servers)</li>" +
+                    "</ol>" +
+                    "<br>" +
+                    "__⚡Recommended value: true (Only if experience specific bottlenecks and understand the risks)__" +
+
+                    "<div class=\"warning custom-block\">" +
+                    "<p class=\"custom-block-title custom-block-title-default\">Warning</p>" +
+                    "Experimental feature, potentially unsable, and may cause compatibility issue with some plugins." +
+                    "</div>"
             },
             "threads": {
                 "default": 8,
@@ -175,109 +194,154 @@ export default {
     },
 
     "performance": {
+        "": {
+            "default": "",
+            "desc": "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server."
+        },
         "use-virtual-thread-for-user-authenticator": {
-             "enabled": {
-                 "default": true,
-                 "desc": "Whether to use [Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) " +
-                     "(if available, requires Java 21+) for the User Authenticator service, which handles player login verification.\n\n" +
-                     "⚡ **Recommended value:** `true` (on Java 21+)"
-             }
+            "default": true,
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the User Authenticator service, which handles premium player join verification.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
+        },
+        "use-virtual-thread-for-profile-executor": {
+            "default": true,
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Profile Executor, which handles player profile and skull skin fetching.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-async-chat-executor": {
-            "enabled": {
-                "default": true,
-                "desc": "Whether to use [Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) " +
-                    "(if available, requires Java 21+) for the Async Chat Executor.\n\n" +
-                    "⚡ **Recommended value:** `true` (on Java 21+)"
-            }
+            "default": true,
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
-            "enabled": {
-                "default": true,
-                "desc": "Whether to use [Virtual Threads](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) " +
-                    "(if available, requires Java 21+) for the CraftAsyncScheduler.\n\n" +
-                    "Could improve performance for plugins heavily utilizing Bukkit's async scheduler.\n\n" +
-                    "⚡ **Recommended value:** `true` (on Java 21+)"
-            }
+            "default": true,
+            "desc": "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
-             "enabled": {
-                "default": true,
-                 "desc": "Whether to create a snapshot (copy) of TileEntity / BlockState data when plugins retrieve them by default.\n\n" +
-                     "Some plugins frequently access BlockState (e.g., checking hopper contents via `getInventory().getHolder()`). " +
-                     "Constantly creating snapshots can be expensive.\n\n" +
-                     "- If `true`: Creates a safe copy (snapshot) every time, preventing plugins from accidentally modifying the live state." +
-                     "- If `false`: Returns the live BlockState unless the plugin specifically requests a snapshot. " +
-                     "Faster, but relies on plugins behaving correctly.\n\n" +
-                     "See Paper's discussion on [API-to-get-a-BlockState-without-a-snapshot.patch](https://github.com/PaperMC/Paper/blob/master/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch) for context.\n\n" +
-                     "⚡ **Recommended value:** `false` (Improved performance, generally safe unless specific plugin issues arise or lag described in MD #(17) is observed)"
-            }
+            "default": true,
+            "desc": "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
+                "<br>" +
+                "Some plugins may call `getInventory().getHolder()` to get the holder of an inventory, which involves accessings the BlockState.<br>" +
+                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events, call frequently). Re-creating BlockState and parsing item stack in massive and frequent calls are very expensive.<br>" +
+                "See Paper's [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) for more information." +
+                "<ul>" +
+                "<li>If `true`, always creates snapshot (copy) of BlockState when the plugin calls related methods.</li>" +
+                "<li>If `false`, gets real BlockState directly unless the plugin explicitly requests a snapshot. Performance improves, but has risk that block state gets modified due to plugin's poor design.</li>" +
+                "</ul>" +
+                "<br>" +
+                "__⚡Recommended value: `false` (Only if you encounter specific lag described above)__"
         },
         "inactive-goal-selector-throttle": {
-            "enabled": {
-                "default": true,
-                "desc": "Throttles the AI goal selector calculations for entities that are inactive (typically far from players).\n\n" +
-                    "Instead of running every tick, it runs less frequently (e.g., every second), improving performance slightly at " +
-                    "the cost of minor delays in AI reaction for inactive mobs.\n\n" +
-                    "⚡ **Recommended value:** `true` for optimization, `false` for vanilla behavior."
-            }
+            "default": true,
+            "desc": "Throttles the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>" +
+                "Instead of ticking goal selector every tick, it ticks less frequently to every second. This can improve performance slightly, but has minor gameplay implications.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__" +
+
+                "<table>" +
+                "<tr><td><b>Values for goals</b></td><td></td></tr>" +
+                "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
+                "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
+                "</table>"
         },
         "throttle-hopper-when-full": {
             "enabled": {
                 "default": false,
-                "desc": "Whether to throttle hopper item transfer attempts if the target container is full.\n\n" +
-                    "Prevents the hopper from constantly trying (and failing) to push items every tick.\n\n" +
-                    "⚡ **Recommended value:** `true` for optimization, `false` for vanilla behavior."
+                "desc": "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
+                    "Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>" +
+                    "<br>" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
+
+                    "<table>" +
+                    "<tr><td><b>Values for goals</b></td><td></td></tr>" +
+                    "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
+                    "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
+                    "</table>"
             },
             "skip-ticks": {
-                "default": 0,
-                "desc": "How many ticks a hopper should wait before trying to move items again after finding the target container full.\n\n" +
-                    "Only active if `throttle-hopper-when-full.enabled` is `true`. A value ≤ `0` effectively disables throttling.\n\n" +
-                    "⚡ **Recommended value:** `8` (Vanilla hopper cooldown) or `5` (Leaf default) for optimization, `0` for vanilla behavior."
+                "default": 8,
+                "desc": "How many ticks a hopper should wait before trying to move items again if the target container is full.<br>" +
+                    "(Unit: tick)<br>" +
+                    "Only active if `throttle-hopper-when-full.enabled` (described above) is `true`.<br>" +
+                    "If a value &leq; `0` is given, this throttling feature is disabled.<br>" +
+                    "<br>" +
+                    "__⚡Recommended value: `8`__" +
+
+                    "<table>" +
+                    "<tr><td><b>Values for goals</b></td><td></td></tr>" +
+                    "<tr><td><i>Optimization</i></td><td><code>8</code></td></tr>" +
+                    "<tr><td><i>Vanilla behavior</i></td><td><code>8</code></td></tr>" +
+                    "</table>"
             }
         },
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
-            "enabled": {
-                "default": true,
-                "desc": "Whether to skip updating map item data if the map doesn't have an " +
-                    "associated renderer (`CraftMapRenderer`).\n\n" +
-                    "Can improve performance significantly if using plugins that create " +
-                    "many custom maps without renderers (e.g., image map plugins).\n\n" +
-                    "⚠️ **This may cause vanilla maps held by players but not currently " +
-                    "displayed in an item frame or their hand to stop updating until viewed again.**\n\n" +
-                    "⚡ **Recommended value:** `true` for optimization, `false` for vanilla behavior."
-            }
+            "default": true,
+            "desc": "Whether to skip updating map item data update if the map doesn't have a renderer (`CraftMapRenderer`).<br>" +
+                "This can improve performance if using ImageMap kind of plugins that create many custom maps.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__" +
+
+                "<table>" +
+                "<tr><td><b>Values for goals</b></td><td></td></tr>" +
+                "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
+                "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
+                "</table>" +
+
+                "<div class=\"tip custom-block\">" +
+                "<p class=\"custom-block-title custom-block-title-default\">Attention</p>" +
+                "This may cause vanilla map item data to stop be updated." +
+                "</div>"
         },
         "skip-ai-for-non-aware-mob": {
-            "enabled": {
-                "default": true,
-                "desc": "Whether to skip AI ticks entirely for mobs that are both inactive (far from players) " +
-                    "and unaware (e.g., `PersistenceRequired=false` and haven't interacted recently).\n\n" +
-                    "Unaware mobs optimized this way will not perform actions or react until they become active again.\n\n" +
-                    "⚡ **Recommended value:** `true` for optimization, `false` for vanilla behavior."
-            }
+            "default": true,
+            "desc": "Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>" +
+                "Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__" +
+
+                "<table>" +
+                "<tr><td><b>Values for goals</b></td><td></td></tr>" +
+                "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
+                "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
+                "</table>"
         },
         "reduce-packets": {
+            "": {
+                "default": "",
+                "desc": "This section is for the useless packet reducing features."
+            },
             "reduce-entity-move-packets": {
-                 "enabled": {
-                    "default": false,
-                    "desc": "Reduces the frequency or necessity of sending entity movement packets " +
-                        "under certain conditions (e.g., small movements).\n\n" +
-                        "Saves bandwidth and reduces client-side processing load, potentially making " +
-                        "movement appear smoother during high entity counts or minor lag.\n\n" +
-                        "⚡ **Recommended value:** `true`"
-                 }
+                "default": false,
+                "desc": "Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>" +
+                    "This can save bandwidth and reduces client-side processing load, potentially making movement appear smoother during high entity counts or minor lag.<br>" +
+                    "<br>" +
+                    "__⚡Recommended value: `true`__"
             }
         },
-        "faster-structure-gen-future-sequencing": {
+        "reduce-chunk-source-updates": {
             "enabled": {
-                "default": true,
-                 "desc": "Uses a potentially faster method for sequencing asynchronous tasks " +
-                     "related to structure generation.\n\n" +
-                     "⚠️ **May cause inconsistent order of future composition tasks in rare " +
-                     "edge cases, potentially affecting structure generation results subtly.**\n\n" +
-                     "⚡ **Recommended value:** `true` (if no issues observed)"
+                "default": false,
+                "desc": "Whether to reduces chunk source updates on inter-chunk player moves.<br>" +
+                    "<br>" +
+                    "__⚡Recommended value: `true`__"
             }
+        },
+        "optimized-powered-rails": {
+            "default": false,
+            "desc": "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, can achieve 4x faster performance.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
+        },
+        "optimize-player-movement": {
+            "default": true,
+            "desc": "Whether to optimize player movement processing by skipping unnecessary block edge checks and avoiding redundant view distance updates.<br>" +
+            "<br>" +
+                "__⚡Recommended value: `true`__"
         },
         "faster-random-generator": {
             "enabled": {
