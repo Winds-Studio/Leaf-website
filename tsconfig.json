@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "lib": ["ES2022", "DOM"],
+    "target": "ES2022"
   },
   "include": [
     "**/.vitepress/**/*.ts",

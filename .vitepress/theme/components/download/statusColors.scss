@@ -1,0 +1,26 @@
+* {
+  &.status-dev {
+    --status-color-1: var(--vp-c-danger-1);
+    --status-color-2: var(--vp-c-danger-2);
+    --status-color-3: var(--vp-c-danger-3);
+    --status-color-soft: var(--vp-c-danger-soft);
+  }
+  &.status-stable {
+    --status-color-1: var(--vp-c-brand-1);
+    --status-color-2: var(--vp-c-brand-2);
+    --status-color-3: var(--vp-c-brand-3);
+    --status-color-soft: var(--vp-c-brand-soft);
+  }
+  &.status-eol {
+    --status-color-1: var(--vp-c-warning-1);
+    --status-color-2: var(--vp-c-warning-2);
+    --status-color-3: var(--vp-c-warning-3);
+    --status-color-soft: var(--vp-c-warning-soft);
+  }
+  &.status-dead {
+    --status-color-1: var(--vp-c-caution-1);
+    --status-color-2: var(--vp-c-danger-2);
+    --status-color-3: var(--vp-c-danger-3);
+    --status-color-soft: var(--vp-c-danger-soft);
+  }
+}
