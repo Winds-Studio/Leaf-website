@@ -187,10 +187,7 @@ const config: ConfigRoot = {
 
     "small-optimizations": {
         "load-chunks": {
-            "": {
-                default: "",
-                desc: "Whether to load chunks at certain times."
-            },
+            __desc__: "Whether to load chunks at certain times.",
             "to-activate-climbing-entities": {
                 default: false,
                 desc:
@@ -230,10 +227,7 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            "": {
-                default: "",
-                desc: "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk)."
-            },
+            __desc__: "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk).",
             "per-projectile": {
                 max: {
                     default: 10,
@@ -327,12 +321,8 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 hopper: {
-                    "": {
-                        default: "",
-                        desc:
-                            "Frequency with which hoppers check for items to pick up.<br>" +
-                            "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks."
-                    },
+                    __desc__: "Frequency with which hoppers check for items to pick up.<br>" +
+                            "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
                     interval: {
                         default: 1,
                         desc:
@@ -369,12 +359,8 @@ const config: ConfigRoot = {
                                 "</table>"
                         },
                         "temporary-immunity": {
-                            "": {
-                                default: "",
-                                desc:
-                                    "Hopper minecarts can have temporary immunity from the `interval` setting above.<br>" +
-                                    "While a minecart is immune, it can check for items every tick."
-                            },
+                            __desc__: "Hopper minecarts can have temporary immunity from the `interval` setting above.<br>" +
+                                    "While a minecart is immune, it can check for items every tick.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
                                 desc:

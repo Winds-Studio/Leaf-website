@@ -134,10 +134,7 @@ const config: ConfigRoot = {
 
     "small-optimizations": {
         "load-chunks": {
-            "": {
-                default: "",
-                desc: "是否在特定情况下加载区块."
-            },
+            __desc__: "是否在特定情况下加载区块.",
             "to-activate-climbing-entities": {
                 default: false,
                 desc:
@@ -177,10 +174,7 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            "": {
-                default: "",
-                desc: "以下是为弹射物 (例如箭、三叉戟或末影珍珠进入未加载区块时) 加载区块的配置."
-            },
+            __desc__: "以下是为弹射物 (例如箭、三叉戟或末影珍珠进入未加载区块时) 加载区块的配置.",
             "per-projectile": {
                 max: {
                     default: 10,
@@ -274,12 +268,8 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 hopper: {
-                    "": {
-                        default: "",
-                        desc:
-                            "每个漏斗检查附近可拾取掉落物的频率.<br>" +
-                            "这仅影响从地面拾取掉落物 (例如掉落物), 而不影响从箱子或其他存储容器中吸取物品."
-                    },
+                    __desc__: "每个漏斗检查附近可拾取掉落物的频率.<br>" +
+                            "这仅影响从地面拾取掉落物 (例如掉落物), 而不影响从箱子或其他存储容器中吸取物品.",
                     interval: {
                         default: 1,
                         desc:
@@ -316,12 +306,8 @@ const config: ConfigRoot = {
                                 "</table>"
                         },
                         "temporary-immunity": {
-                            "": {
-                                default: "",
-                                desc:
-                                    "漏斗矿车可以暂时免疫, 免受上述 `interval` 的影响.<br>" +
-                                    "在免疫期间, 矿车将每 tick 检查一次掉落物."
-                            },
+                            __desc__: "漏斗矿车可以暂时免疫, 免受上述 `interval` 的影响.<br>" +
+                                    "在免疫期间, 矿车将每 tick 检查一次掉落物.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
                                 desc:

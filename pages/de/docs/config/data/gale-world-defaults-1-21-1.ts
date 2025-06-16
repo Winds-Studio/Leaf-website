@@ -187,10 +187,7 @@ const config: ConfigRoot = {
 
     "small-optimizations": {
         "load-chunks": {
-            "": {
-                default: "",
-                desc: "Gibt an, ob Chunks in bestimmten Fällen geladen werden sollen."
-            },
+            __desc__: "Gibt an, ob Chunks in bestimmten Fällen geladen werden sollen.",
             "to-activate-climbing-entities": {
                 default: false,
                 desc:
@@ -230,10 +227,8 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            "": {
-                default: "",
-                desc: "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt)."
-            },
+            __desc__:
+                "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt).",
             "per-projectile": {
                 max: {
                     default: 10,
@@ -327,12 +322,9 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 hopper: {
-                    "": {
-                        default: "",
-                        desc:
-                            "Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>" +
-                            "Dies beeinflusst nur das Aufheben von Items in der Welt (z.B. gedroppte Items). Dies beeinflusst nicht das Extrahieren von Items aus einer Truhe oder anderen Blöcken mit Items darin."
-                    },
+                    __desc__:
+                        "Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>" +
+                        "Dies beeinflusst nur das Aufheben von Items in der Welt (z.B. gedroppte Items). Dies beeinflusst nicht das Extrahieren von Items aus einer Truhe oder anderen Blöcken mit Items darin.",
                     interval: {
                         default: 1,
                         desc:
@@ -369,12 +361,9 @@ const config: ConfigRoot = {
                                 "</table>"
                         },
                         "temporary-immunity": {
-                            "": {
-                                default: "",
-                                desc:
-                                    "Loren mit Trichtern können durch die obige `interval` Einstellung kurzzeitig immun werden.<br>" +
-                                    "Während eine Lore immun ist, kann sie jeden Tick nach Items suchen."
-                            },
+                            __desc__:
+                                "Loren mit Trichtern können durch die obige `interval` Einstellung kurzzeitig immun werden.<br>" +
+                                "Während eine Lore immun ist, kann sie jeden Tick nach Items suchen.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
                                 desc:

@@ -348,10 +348,7 @@ const config: ConfigRoot = {
             }
         },
         "use-xor-shift-random": {
-            "": {
-                default: "",
-                desc: "是否使用 [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) 随机数生成器代替 Java 默认的随机数生成器."
-            },
+            __desc__: "是否使用 [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) 随机数生成器代替 Java 默认的随机数生成器.",
             "auto-replenish-lootable-refill": {
                 default: true,
                 desc:

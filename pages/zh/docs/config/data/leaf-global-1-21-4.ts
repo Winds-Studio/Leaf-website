@@ -488,10 +488,7 @@ const config: ConfigRoot = {
     },
 
     fixes: {
-        "": {
-            default: "",
-            desc: "本节包含对特定问题的修复."
-        },
+        __desc__: "本节包含对特定问题的修复.",
         "dont-place-player-if-server-full": {
             default: false,
             desc:
@@ -502,10 +499,7 @@ const config: ConfigRoot = {
     },
 
     "gameplay-mechanisms": {
-        "": {
-            default: "",
-            desc: "本节包含修改游戏机制的功能."
-        },
+        __desc__: "本节包含修改游戏机制的功能.",
         "use-spigot-item-merging-mechanism": {
             default: true,
             desc: "是否使用 Spigot 默认的掉落物合并机制."
@@ -561,10 +555,7 @@ const config: ConfigRoot = {
             desc: ""
         },
         knockback: {
-            "": {
-                default: "",
-                desc: "本节包含调整击退相关行为的功能."
-            },
+            __desc__: "本节包含调整击退相关行为的功能.",
             "snowball-knockback-players": {
                 default: false,
                 desc: "是否允许雪球击退玩家."
@@ -622,15 +613,9 @@ const config: ConfigRoot = {
     },
 
     network: {
-        "": {
-            default: "",
-            desc: "本节包含与网络相关的功能."
-        },
+        __desc__: "本节包含与网络相关的功能.",
         "protocol-support": {
-            "": {
-                default: "",
-                desc:
-                    "熙熙攘攘, 我们的协议.<br>" +
+            __desc__: "熙熙攘攘, 我们的协议.<br>" +
                     "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
                     "<br>" +
                     "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
@@ -638,8 +623,7 @@ const config: ConfigRoot = {
                     '<p class="custom-block-title custom-block-title-default">注意</p>' +
                     "开启协议支持后, 可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容.<br>" +
                     "并且我们建议玩家使用与服务器核心相同版本的客户端, 并安装对应模组的最新版本, 否则将会无法进入服务器." +
-                    "</div>"
-            },
+                    "</div>",
             "jade-protocol": {
                 default: false,
                 desc:
@@ -708,10 +692,7 @@ const config: ConfigRoot = {
     },
 
     misc: {
-        "": {
-            default: "",
-            desc: "本节包含一些杂项功能."
-        },
+        __desc__: "本节包含一些杂项功能.",
         message: {
             "unknown-command": {
                 default: "default",
@@ -742,15 +723,11 @@ const config: ConfigRoot = {
             }
         },
         sentry: {
-            "": {
-                default: "",
-                desc:
-                    "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
+            __desc__: "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
                     "<br>" +
                     "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
                     "<br>" +
-                    "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>"
-            },
+                    "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
             dsn: {
                 default: "",
                 desc: "Sentry 的 DSN 密匙.<br>" + "如果设为空 `''`, 则禁用 Sentry."
@@ -799,17 +776,13 @@ const config: ConfigRoot = {
                 "__推荐值: `true`__"
         },
         "region-format-settings": {
-            "": {
-                default: "",
-                desc:
-                    "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
+            __desc__: "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
                     "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
                     '<div class="warning custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">警告</p>' +
                     "实验性功能, 存在丢失区块数据的潜在风险. 在切换到 Linear 格式之前请备份你的服务端.<br>" +
                     "并且我们不推荐使用 Linear 区块格式, 用原版的 ANVIL 格式 (.mca) 就足够了. Leaf 用了重构版的 Linear 保存系统, 可以更安全的保存区块大大减小丢数据的可能性, 虽然比原版的 Linear 更慢. 但是无论如何, 这个重构的改动是值得的, 毕竟数据无价." +
-                    "</div>"
-            },
+                    "</div>",
             "region-format": {
                 default: "MCA",
                 desc: '可用区块格式: `"MCA"`, `"LINEAR"`.'
@@ -859,10 +832,7 @@ const config: ConfigRoot = {
                 "</details>"
         },
         "connection-message": {
-            "": {
-                default: "",
-                desc:
-                    "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
+            __desc__: "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
                     "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
                     "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
                     "<br>" +
@@ -875,8 +845,7 @@ const config: ConfigRoot = {
                     '<p class="custom-block-title custom-block-title-default">API / 插件友好</p>' +
                     "此功能对 API / 插件 友好<br>" +
                     "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
-                    "</div>"
-            },
+                    "</div>",
             join: {
                 enabled: {
                     default: true

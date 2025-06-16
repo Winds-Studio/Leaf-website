@@ -786,10 +786,7 @@ const config: ConfigRoot = {
     },
 
     fixes: {
-        "": {
-            default: "",
-            desc: "This section contains bugfixes for specific issues."
-        },
+        __desc__: "This section contains bugfixes for specific issues.",
         "dont-place-player-if-server-full": {
             default: false,
             desc:
@@ -799,10 +796,7 @@ const config: ConfigRoot = {
     },
 
     "gameplay-mechanisms": {
-        "": {
-            default: "",
-            desc: "This section contains the features that modify the game mechanics."
-        },
+        __desc__: "This section contains the features that modify the game mechanics.",
         "use-spigot-item-merging-mechanism": {
             default: true,
             desc: "Whether to use Spigot's dropped item merging mechanism."
@@ -818,16 +812,12 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "max-item-stack-count": {
-            "": {
-                default: "",
-                desc:
-                    "Configurable max stack size of dropped item." +
+            __desc__: "Configurable max stack size of dropped item." +
                     '<div class="warning custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                     "We __do not__ recommended to use this feature. It is working in progress and has known issues.<br>" +
                     "This feature also maybe remove in the future. __Do not__ touch this unless you know what you are doing!" +
-                    "</div>"
-            },
+                    "</div>",
             "max-dropped-items-stack-count": {
                 default: 0,
                 desc: "Maximum number of dropped items to stack."
@@ -838,10 +828,7 @@ const config: ConfigRoot = {
             }
         },
         knockback: {
-            "": {
-                default: "",
-                desc: "This section contains options to adjust knockback related behaviors."
-            },
+            __desc__: "This section contains options to adjust knockback related behaviors.",
             "snowball-knockback-players": {
                 default: false,
                 desc: "Whether the snowball can knockback players."
@@ -893,23 +880,16 @@ const config: ConfigRoot = {
     },
 
     network: {
-        "": {
-            default: "",
-            desc: "This section contains features for server networking related."
-        },
+        __desc__: "This section contains features for server networking related.",
         "protocol-support": {
-            "": {
-                default: "",
-                desc:
-                    "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
+            __desc__: "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
                     "<br>" +
                     "The extra protocol support is only functional if there is corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installed that mod on client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before." +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                     "The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>" +
                     " We recommend players to use client that has same version with the server core and install latest corresponding mod, otherwise they may unable to join the server." +
-                    "</div>"
-            },
+                    "</div>",
             "jade-protocol": {
                 default: false,
                 desc:
@@ -972,10 +952,7 @@ const config: ConfigRoot = {
     },
 
     misc: {
-        "": {
-            default: "",
-            desc: "This section contains some miscellaneous features."
-        },
+        __desc__: "This section contains some miscellaneous features.",
         message: {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
@@ -1006,15 +983,11 @@ const config: ConfigRoot = {
             }
         },
         sentry: {
-            "": {
-                default: "",
-                desc:
-                    "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
+            __desc__: "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
                     "<br>" +
                     "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
                     "<br>" +
-                    "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>"
-            },
+                    "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
             dsn: {
                 default: "",
                 desc:
@@ -1064,17 +1037,13 @@ const config: ConfigRoot = {
                 "__Recommended value: `true`__"
         },
         "region-format-settings": {
-            "": {
-                default: "",
-                desc:
-                    "Linear is a region file format that uses [ZSTD compression](https://facebook.github.io/zstd/) instead of ZLIB in vanilla Minecraft. This format saves about ~50% of disk space.<br>" +
+            __desc__: "Linear is a region file format that uses [ZSTD compression](https://facebook.github.io/zstd/) instead of ZLIB in vanilla Minecraft. This format saves about ~50% of disk space.<br>" +
                     "To use Linear region format, make sure you __Read [Linear Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__, and have done all steps required, then change `region-format-settings.region-format` below to `LINEAR`." +
                     '<div class="warning custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                     "Experimental feature, there is potential risk to lose chunk data. Backup your server before switching to Linear.<br>" +
                     "Also, we do not recommend using Linear, since vanilla's ANVIL format (.mca) is enough. Leaf uses the refactored version of the Linear flush system, which is safer but slower to save chunks to make data lost less possible. However this change is worth it, data is invaluable." +
-                    "</div>"
-            },
+                    "</div>",
             "region-format": {
                 default: "MCA",
                 desc: 'Available region formats: `"MCA"`, `"LINEAR"`.'
@@ -1140,10 +1109,7 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "connection-message": {
-            "": {
-                default: "",
-                desc:
-                    "Connection message, broadcasts to all online players, when they join or quit the server.<br>" +
+            __desc__: "Connection message, broadcasts to all online players, when they join or quit the server.<br>" +
                     "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
                     "If set message to `default` or leave the default value, the vanilla join / quit message will be used.<br>" +
                     "<br>" +
@@ -1156,8 +1122,7 @@ const config: ConfigRoot = {
                     '<p class="custom-block-title custom-block-title-default">API / Plugin Friendly</p>' +
                     "This feature is API / plugin friendly." +
                     "It means that the connection message can be overrided by plugins using `PlayerJoinEvent` or `PlayerQuitEvent`." +
-                    "</div>"
-            },
+                    "</div>",
             join: {
                 enabled: {
                     default: true

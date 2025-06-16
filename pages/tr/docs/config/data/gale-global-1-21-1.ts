@@ -348,10 +348,7 @@ const config: ConfigRoot = {
             }
         },
         "use-xor-shift-random": {
-            "": {
-                default: "",
-                desc: "Whether to use a [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) random number generator instead of the Java's default."
-            },
+            __desc__: "Whether to use a [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) random number generator instead of the Java's default.",
             "auto-replenish-lootable-refill": {
                 default: true,
                 desc:
