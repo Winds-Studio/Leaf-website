@@ -1,12 +1,23 @@
 {
-  "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Bundler"
-  },
-  "include": [
-    "**/.vitepress/**/*.ts",
-    "**/.vitepress/**/*.mts",
-    "**/.vitepress/**/*.vue"
-  ],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "lib": ["esnext", "dom"],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["*"]
+        },
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        ".vitepress/**/*.ts",
+        ".vitepress/**/*.mts",
+        ".vitepress/theme/components/**/*.ts",
+        ".vitepress/**/*.vue",
+        "pages/**/*.ts"
+    ],
+    "exclude": ["node_modules"]
 }
