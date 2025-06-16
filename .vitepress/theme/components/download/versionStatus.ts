@@ -1,10 +1,12 @@
-import {Branch} from "./githubApiTypes";
+import {Branch} from "./old/githubApiTypes";
+import {version} from "vue";
 
 export interface VersionStatus {
     versions: Array<string>
     icon: string
     cssClass: string
     branchPrefix?: string
+    name?: string
 }
 
 export interface Version {
@@ -79,3 +81,18 @@ export function getLatestStable(vers: Array<Version>): Version {
 }
 
 export const getVerInfo = (ver: Version) => versionStatusMap[ver.status]
+
+export function getVerStatus(ver: string): VersionStatus {
+    let versionStatus: VersionStatus | null = null
+    for (const key in versionStatusMap) {
+        if (versionStatusMap[key].versions.includes(ver)) {
+            versionStatus = versionStatusMap[key]
+            versionStatus.name = key
+        }
+    }
+    if (versionStatus == null) {
+        versionStatus = versionStatusMap['stable']
+        versionStatus.name = 'stable'
+    }
+    return versionStatus
+}
