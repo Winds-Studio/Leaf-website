@@ -269,7 +269,8 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 "hopper": {
-                    __desc__: "Frequency with which hoppers check for items to pick up.<br>" +
+                    __desc__:
+                        "Frequency with which hoppers check for items to pick up.<br>" +
                         "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
                     "interval": {
                         default: 1,

@@ -163,10 +163,11 @@ const config: ConfigRoot = {
             "enabled": {
                 default: false,
                 desc:
-                    "是否当目标容器已满时限制漏斗尝试转移物品的频率.<br>" +
-                    "此选项可防止漏斗即使在失败的情况下, 也在每个 tick 都不断尝试转移物品.<br>" +
+                    "当目标容器已满时, 等待多长时间将再次尝试移动物品的操作.<br>" +
+                    "(以 tick 为单位)<br>" +
+                    "仅当上方所述的 `throttle-hopper-when-full.enabled` 设为 `true` 时, 此选项才会生效.<br>" +
                     "<br>" +
-                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__ " +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -1087,7 +1088,7 @@ const config: ConfigRoot = {
             },
             "enable-for-water": {
                 default: false,
-                desc: "否开启水流动的滞后补偿.<br>" +
+                desc: "是否开启水流动的滞后补偿.<br>" +
                     "<br>" +
                     "__⚡推荐值: `true`__"
             },

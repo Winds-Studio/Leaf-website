@@ -185,7 +185,7 @@ const config: ConfigRoot = {
         "use-virtual-thread-for-async-scheduler": {
             default: true,
             desc:
-                "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高大量使用异步调度器的插件的性能.<br>>" +
+                "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高大量使用异步调度器的插件的性能.<br>" +
                 "<br>" +
                 "__⚡推荐值: `true`__"
         },
@@ -608,7 +608,7 @@ const config: ConfigRoot = {
             "enabled": {
                 default: false,
                 desc:
-                    "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B4%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
+                    "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
                     "玩家可以使用 /afk 命令切换他们的 AFK 状态, 并且状态将会在 Tab 列表中展示.<br> " +
                     "剩余的 AFK 配置项在 Purpur 配置中, 包括可配置的 AFK 提示消息, Title 消息."
             }

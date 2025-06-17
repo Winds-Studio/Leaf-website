@@ -175,8 +175,7 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            __desc__:
-                "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt).",
+            __desc__: "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt).",
             "per-projectile": {
                 "max": {
                     default: 10,

@@ -228,8 +228,7 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            __desc__:
-                "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk).",
+            __desc__: "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk).",
             "per-projectile": {
                 "max": {
                     default: 10,
