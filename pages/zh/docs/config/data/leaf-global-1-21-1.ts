@@ -1,19 +1,20 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
+
     "config-version": {
         default: "3.0"
     },
 
-    async: {
+    "async": {
         __desc__: "本节包含异步相关的特性, 旨在通过异步执行任务来减少主线程 (Server Thread) 的负载.",
         "async-entity-tracker": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否使用异步实体追踪, 可以显著提高性能, 特别是在小范围内拥有大量密集实体的场景中.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">注意</p>' +
                     '如果你安装了类似 Citizens, 使用真实实体或玩家类型的实体作为 "NPC" 的插件, 请参阅下文的 `compat-mode` 以获取更多信息.' +
@@ -35,15 +36,15 @@ const config: ConfigRoot = {
                     "异步实体追踪可使用的最大线程数.<br>" +
                     "如果设为 `0`, 默认使用 CPU 核心数 1/4 的线程数, 且不少于 1.<br>" +
                     "<br>" +
-                    "__推荐值: CPU 核心数的 1/2__"
+                    "__⚡推荐值: CPU 核心数的 1/2__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         },
         "async-playerdata-save": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否开启异步玩家数据保存 (I/O 操作都很耗时)." +
@@ -54,9 +55,11 @@ const config: ConfigRoot = {
             }
         },
         "async-pathfinding": {
-            enabled: {
+            "enabled": {
                 default: false,
-                desc: "是否使用异步生物寻路.<br>" + "<br>" + "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                desc: "是否使用异步生物寻路.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "max-threads": {
                 default: 0,
@@ -64,26 +67,26 @@ const config: ConfigRoot = {
                     "异步生物寻路可使用的最大线程数.<br>" +
                     "如果设为 `0`, 默认使用 CPU 核心数 1/4 的线程数, 且不少于 1.<br>" +
                     "<br>" +
-                    "__推荐值: CPU 核心数的 1/3__"
+                    "__⚡推荐值: CPU 核心数的 1/3__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         },
         "async-mob-spawning": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "是否使用异步生物生成.<br>" +
                     "对于拥有大量实体的服务器, 开启此功能可以带来近 15% 的性能提升. 并且你必须将 Paper 的 `per-player-mob-spawns` 设为 `true`, 此功能才能生效.<br>" +
                     "需要注意的是: 此功能并不会将生物生成的所有逻辑完全异步 (这样做非常不安全). 它只是将生物生成的一些耗时计算分担到其他线程上.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             }
         },
         "async-locator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否使用异步定位.<br>" +
@@ -95,60 +98,61 @@ const config: ConfigRoot = {
                     "<li>末影之眼定位要塞</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
-            threads: {
+            "threads": {
                 default: 0,
                 desc:
                     "异步定位可使用的最大线程数.<br>" +
                     "如果设为 &leq; `0`, 默认使用 1 个线程.<br>" +
                     "<br>" +
-                    "__推荐值: `1` 或 `2`__"
+                    "__⚡推荐值: `1` 或 `2`__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         }
     },
 
-    performance: {
+    "performance": {
         __desc__: "本节包含性能调优, 旨在减少不必要的计算或使用更高效的方法优化服务器.",
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
             desc:
                 "是否为异步聊天使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html).<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
             default: true,
             desc:
-                "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高使用异步调度器的插件的性能.<br>" +
+                "是否为异步任务调度器使用 JDK 21 引入的 [虚拟线程 (Virtual Thread)](https://javaguide.cn/java/concurrent/virtual-thread.html), 这可以提高大量使用异步调度器的插件的性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
             desc:
-                "是否在获取 TileEntity / BlockState 时创建并使用其快照.<br>" +
+                "是否默认在插件获取 TileEntity / BlockState 时创建并使用其快照.<br>" +
                 "<br>" +
-                "一些插件可能会使用 `getHolder` 方法来获取物品栏的所有者, 这涉及获取 BlockState 的副本. 而创建 BlockState 的副本或解析物品数据相当耗时, 其中涉及 NBT 的解析.<br>" +
+                "一些插件可能会调用 `getInventory().getHolder()` 来获取物品栏的所有者, 这涉及访问 BlockState. 其中涉及创建 BlockState 的副本和序列化物品 NBT 数据相当耗时.<br>" +
                 "例如, 在拥有大量密集漏斗的场景中, 如果插件在监听某些事件 (例如与漏斗相关的事件) 时调用此类方法, 频繁地调用将会显著影响性能.<br>" +
                 "参阅 Paper 的 [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) 补丁以获取更多信息." +
                 "<ul>" +
                 "<li>如果设为 `true`, 每次插件调用相关方法时, 都会创建 BlockState 的快照 (副本).</li>" +
-                "<li>如果设为 `false`, 每次插件调用相关方法时将, 直接获取目标 BlockState 本身, 除非插件指定要求使用其快照.</li>" +
+                "<li>如果设为 `false`, 每次插件调用相关方法时将, 直接获取目标 BlockState 本身, 除非插件明确要求使用快照. 性能会有所提升，但存在由于插件设计不当而导致方块状态被意外修改的风险</li>" +
                 "</ul>" +
                 "<br>" +
-                "__推荐值: (推荐仅在遇到上述卡顿时设为 `false`)__"
+                "__⚡推荐值: (推荐仅在遇到上述卡顿时设为 `false`)__"
         },
         "inactive-goal-selector-throttle": {
             default: true,
             desc:
-                "当实体处在 *inactive tick* 时, 是否将 *goal selector* 的 tick 计算限制为每秒一次. 这可以略微提高性能, 但会对游戏机制有略微影响.<br>" +
+                "限制 [意向选择器](https://zh.minecraft.wiki/w/%E7%94%9F%E7%89%A9AI#:~:text=%E6%84%8F%E5%90%91%E9%80%89%E6%8B%A9%E5%99%A8) 在非活跃实体 (通常是远离玩家的实体) 上的运行频率.<br>" +
+                "不再每刻 (tick) 都执行意向选择器逻辑, 而是改为每秒一次. 这样可以略微提升性能，但可能会对游戏玩法产生轻微影响<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                 "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -156,12 +160,14 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "throttle-hopper-when-full": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
-                    "是否当目标容器已满时冷却漏斗, 以避免其尝试移动物品.<br>" +
+                    "当目标容器已满时, 等待多长时间将再次尝试移动物品的操作.<br>" +
+                    "(以 tick 为单位)<br>" +
+                    "仅当上方所述的 `throttle-hopper-when-full.enabled` 设为 `true` 时, 此选项才会生效.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -175,7 +181,7 @@ const config: ConfigRoot = {
                     "(以 tick 为单位)<br>" +
                     "如果设为 &leq; `0`, 将禁用此冷却功能.<br>" +
                     "<br>" +
-                    "__推荐值: `8`__" +
+                    "__⚡推荐值: `8`__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>8</code></td></tr>" +
@@ -186,10 +192,10 @@ const config: ConfigRoot = {
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             default: true,
             desc:
-                "如果地图没有渲染器, 是否跳过地图内容的更新.<br>" +
-                "这可以提高使用 ImageMap 之类插件时的性能.<br>" +
+                "如果地图没有渲染器 (`CraftMapRenderer`), 是否跳过地图内容的更新.<br>" +
+                "当使用 ImageMap 之类的, 能创建大量自定义图片地图的插件时, 这可以提高性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                 "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -203,9 +209,10 @@ const config: ConfigRoot = {
         "skip-ai-for-non-aware-mob": {
             default: true,
             desc:
-                "当生物处在 *不活跃* 且 *无感知* 的状态时, 是否跳过其 AI tick 的计算. *无感知* 的生物会像呆子一样, 不会自主活动, 也不会在与其交互时作出反应.<br>" +
+                "当生物同时处在 *不活跃* 且 *无感知* 的状态时, 是否跳过其 AI tick 计算.<br>" +
+                "被设为无感知的生物在重新变为活跃之前将不会自主活动, 也不会在与其交互时作出反应, 更多信息请参阅: [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)).<br>" +
                 "<br>" +
-                "__推荐值: `true`__" +
+                "__⚡推荐值: `true`__" +
                 "<table>" +
                 "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                 "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -216,24 +223,27 @@ const config: ConfigRoot = {
             __desc__: "本节用于无用数据包减少相关特性.",
             "reduce-entity-move-packets": {
                 default: false,
-                desc: "是否减少发送给玩家的无用实体移动数据包.<br>" + "<br>" + "__推荐值: `true`__"
+                desc: "是否减少发送给玩家的无用实体移动数据包 (例如微小的移动).<br>" +
+                    "此配置项可以略微节省带宽并减少客户端的处理负担, 在实体数量较多或出现轻微卡顿时, 有希望使使移动看起来更流畅.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__"
             }
         },
         "optimized-powered-rails": {
             default: true,
             desc:
-                "是否优化动力铁轨的逻辑. 将使用完全重写的动力铁轨迭代逻辑, 可提升近 4 倍 的性能.<br>" +
+                "是否优化动力铁轨的逻辑. 将使用完全重写的动力铁轨迭代逻辑, 同时保持原版行为, 可提升近 4 倍 的性能.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "optimize-minecart": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否优化矿车的 tick 计算. 通过跳过部分碰撞计算的方式, 以减少 `getEntities()` 调用和一些 Bukkit 事件调用的耗时.<br>" +
                     "这可以更好地承载大量的堆叠矿车, 特别适用于 [无政府服](https://minecraftservers.org/type/anarchy).<br>" +
                     "<br>" +
-                    "__推荐值: `true`__" +
+                    "__⚡推荐值: `true`__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -242,7 +252,10 @@ const config: ConfigRoot = {
             },
             "skip-tick-count": {
                 default: 30,
-                desc: "每隔多少 tick 计算一次矿车碰撞.<br>" + "(以 tick 为单位)<br>" + "<br>" + "__推荐值: `30`__"
+                desc: "每隔多少 tick 计算一次矿车碰撞.<br>" +
+                    "(以 tick 为单位)<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `30`__"
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -255,13 +268,13 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "faster-random-generator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否使用更快的随机数生成器.<br>" +
                     "随机数生成在 Minecraft 中几乎无处不在, 此功能可以显著提升性能.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">注意</p>' +
                     "需要使用支持 `RandomGenerator` 的 JVM 来运行服务器. 一些 JRE 可能不支持此功能." +
@@ -273,7 +286,7 @@ const config: ConfigRoot = {
                     "需要使用哪种随机数生成器?<br>" +
                     "可参阅 [Java 随机数生成器](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1), 了解所有可用的随机数生成器.<br>" +
                     "<br>" +
-                    "__推荐值: `Xoroshiro128PlusPlus`__"
+                    "__⚡推荐值: `Xoroshiro128PlusPlus`__"
             },
             "enable-for-worldgen": {
                 default: false,
@@ -284,7 +297,7 @@ const config: ConfigRoot = {
                     "<li>如果设为 `false`, 与世界生成相关的 `Random` 调用将使用原版随机数生成器.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__推荐值: `true`__" +
+                    "__⚡推荐值: `true`__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -301,7 +314,7 @@ const config: ConfigRoot = {
                     "是否使用原版随机数生成器来生成史莱姆区块, 以保持原版行为.<br>" +
                     "如果服务器中已存在史莱姆农场或相关依赖史莱姆区块的红石机器, 请开启此配置项; 否则, 史莱姆区块的坐标将会偏移.<br>" +
                     "<br>" +
-                    "__推荐值:__ (取决于你服务器的类型, 参阅下方的 `基于目标的推荐值` 了解更多.)" +
+                    "__⚡推荐值:__ (取决于你服务器的类型, 参阅下方的 `基于目标的推荐值` 了解更多.)" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>false</code></td></tr>" +
@@ -311,7 +324,26 @@ const config: ConfigRoot = {
         },
         "entity-timeouts": {
             __desc__:
-                "这些值定义了实体的最大生存时间 (即 Entity TTL)。(单位: tick)<br>如果实体在此列表中, 且存活时间超过该值, 则会被移除。🛈<br>如果设置为 -1, 则禁用该实体的 TTL 检查。<br><br>__推荐值:__<table><thead><tr><th>实体</th><th>最大生存时间</th></tr></thead><tbody><tr><td>SNOWBALL</td><td>200</td></tr><tr><td>LLAMA_SPIT</td><td>150</td></tr><tr><td>DRAGON_FIREBALL</td><td>150</td></tr><tr><td>EGG</td><td>300</td></tr><tr><td>FIREBALL</td><td>600</td></tr><tr><td>SMALL_FIREBALL</td><td>400</td></tr><tr><td>WIND_CHARGE</td><td>200</td></tr><tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr><tr><td>WITHER_SKULL</td><td>200</td></tr></tbody></table>🛈 = 此处实体存活时间指实体总生存时间, 不会因区块卸载/加载而重置。",
+                "实体的最长存活时间 (又称 Entity TTL).<br>" +
+                "(以 tick 为单位)<br>" +
+                "如果下列列表中某实体的存活时间超过此值, 将清除该实体. 🛈<br>" +
+                "如果设为 `-1`, 则禁用此功能.<br>" +
+                "<br>" +
+                "__⚡推荐值:__" +
+                "<table>" +
+                "<thead><tr><th>实体</th><th>最长存活时间</th></tr></thead>" +
+                "<tbody>" +
+                "<tr><td>SNOWBALL</td><td>200</td></tr>" +
+                "<tr><td>LLAMA_SPIT</td><td>150</td></tr>" +
+                "<tr><td>DRAGON_FIREBALL</td><td>150</td></tr>" +
+                "<tr><td>EGG</td><td>300</td></tr>" +
+                "<tr><td>FIREBALL</td><td>600</td></tr>" +
+                "<tr><td>SMALL_FIREBALL</td><td>400</td></tr>" +
+                "<tr><td>WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>WITHER_SKULL</td><td>200</td></tr>" +
+                "</tbody></table>" +
+                "🛈 = 在此处, 实体存活的时间指的是实体存在的总时间, 该时间不会因区块的卸载或加载而重置.",
             ALLAY: {
                 default: -1
             },
@@ -666,15 +698,15 @@ const config: ConfigRoot = {
             desc:
                 "是否缓存 *Minecraft EntityType* 到 *Bukkit EntityType* 的类型转换结果, 这可以获得微小的性能提升.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
-        dab: {
-            enabled: {
+        "dab": {
+            "enabled": {
                 default: true,
                 desc:
                     "根据距离优化生物 AI (又称 DAB), 在生物远离玩家时减少大脑 AI tick 计算的频率.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td><code>true</code></td></tr>" +
@@ -687,11 +719,13 @@ const config: ConfigRoot = {
                     "非水生生物在水中时, 是否不受 DAB 的影响.<br>" +
                     "如果设为 `true`, 可以修复实体远离玩家时在水中溺死的问题. 修复了 [Pufferfish 的 issue#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "start-distance": {
                 default: 12,
-                desc: "距离玩家多少格 DAB 开始生效.<br>" + "<br>" + "__推荐值: `8`__"
+                desc: "距离玩家多少格 DAB 开始生效.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `8`__"
             },
             "max-tick-freq": {
                 default: 20,
@@ -708,7 +742,7 @@ const config: ConfigRoot = {
                     "<li>如果希望距离较远的实体 __多__ tick 计算 一些, 设为 `9`.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__推荐值: `7`__"
+                    "__⚡推荐值: `7`__"
             },
             "blacklisted-entities": {
                 default: "[]",
@@ -758,16 +792,18 @@ const config: ConfigRoot = {
                     "区块卸载时不保存激活的TNT.<br>" +
                     "当玩家意外掉线或者玩家远离导致区块被卸载时, 此功能可防止机器被 TNT 炸毁. 适用于拥有较多 TNT 相关机器的生存服.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "dont-save-falling-block": {
                 default: false,
-                desc: "区块卸载时不保存掉落中的方块 (FallingBlock).<br>" + "<br>" + "__推荐值: `true`__"
+                desc: "区块卸载时不保存掉落中的方块 (FallingBlock).<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__"
             }
         }
     },
 
-    fixes: {
+    "fixes": {
         __desc__: "本节包含对特定问题的修复.",
         "dont-place-player-if-server-full": {
             default: false,
@@ -796,11 +832,11 @@ const config: ConfigRoot = {
         },
         "max-item-stack-count": {
             __desc__: "每组掉落物的最大堆叠大小." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">警告</p>' +
-                    "__不推荐__ 使用此功能. 此功能仍在开发中, 存在已知问题.<br>" +
-                    "且可能在未来被移除. __请勿__ 修改此配置, 除非你知道自己做什么!" +
-                    "</div>",
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">警告</p>' +
+                "__不推荐__ 使用此功能. 此功能仍在开发中, 存在已知问题.<br>" +
+                "且可能在未来被移除. __请勿__ 修改此配置, 除非你知道自己做什么!" +
+                "</div>",
             "max-dropped-items-stack-count": {
                 default: 0,
                 desc: "每组掉落物可以堆叠的最大数量."
@@ -810,7 +846,7 @@ const config: ConfigRoot = {
                 desc: "容器被破坏时允许掉落的最大物品堆叠数量."
             }
         },
-        knockback: {
+        "knockback": {
             __desc__: "本节包含调整击退相关行为的功能.",
             "snowball-knockback-players": {
                 default: false,
@@ -825,14 +861,14 @@ const config: ConfigRoot = {
                 desc: "是否允许玩家击退僵尸."
             }
         },
-        player: {
+        "player": {
             "disable-moved-wrongly-threshold": {
                 default: false,
                 desc:
                     '是否禁用 Spigot 内置的 "moved too quickly / wrongly" 移动速度检查. (针对玩家和载具的移速).<br>' +
                     "如果设为 `true`, 玩家可以高速移动或使用载具 (例如矿车) 以异常速度移动.<br>" +
                     "<br>" +
-                    "__推荐值: `true`__"
+                    "__⚡推荐值: `true`__"
             },
             "max-use-item-distance": {
                 default: 1.0000001,
@@ -844,7 +880,7 @@ const config: ConfigRoot = {
                     "<br>" +
                     "如果设为 `-1`, 将禁用此最远交互距离检查.<br>" +
                     "<br>" +
-                    "__推荐值: `10.0000001` (适用于无政府服)__" +
+                    "__⚡推荐值: `10.0000001` (适用于无政府服)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">注意</p>' +
                     "如果设为 `-1`, 玩家将可以使用黑客端的一些发包功能, 也能够使用 [Nocom 漏洞](https://github.com/nerdsinspace/nocom-explanation)!" +
@@ -852,28 +888,28 @@ const config: ConfigRoot = {
             }
         },
         "afk-command": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
                     "玩家可以使用 /afk 命令切换他们的 AFK 状态, 并且状态将会在 Tab 列表中展示.<br> " +
-                    "剩余的 AFK 配置项, 包括可配置的 AFK 提示消息, Title 消息, 在 Purpur 配置中."
+                    "剩余的 AFK 配置项在 Purpur 配置中, 包括可配置的 AFK 提示消息, Title 消息."
             }
         }
     },
 
-    network: {
+    "network": {
         __desc__: "本节包含与网络相关的功能.",
         "protocol-support": {
             __desc__: "熙熙攘攘, 我们的协议.<br>" +
-                    "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
-                    "<br>" +
-                    "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">注意</p>' +
-                    "开启协议支持后, 可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容.<br>" +
-                    "并且我们建议玩家使用与服务器核心相同版本的客户端, 并安装对应模组的最新版本, 否则将会无法进入服务器." +
-                    "</div>",
+                "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
+                "<br>" +
+                "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">注意</p>' +
+                "开启协议支持后, 可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容.<br>" +
+                "并且我们建议玩家使用与服务器核心相同版本的客户端, 并安装对应模组的最新版本, 否则将会无法进入服务器." +
+                "</div>",
             "jade-protocol": {
                 default: false,
                 desc:
@@ -929,13 +965,13 @@ const config: ConfigRoot = {
                 "是否开启 MC 1.19.1 引入的聊天消息签名.<br>" +
                 "如果设为 `false`, 将无法举报玩家的聊天消息, 并且玩家进服时不会显示不安全警告弹窗.<br>" +
                 "<br>" +
-                "__推荐值: `false`__"
+                "__⚡推荐值: `false`__"
         }
     },
 
-    misc: {
+    "misc": {
         __desc__: "本节包含一些杂项功能.",
-        message: {
+        "message": {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
                 desc:
@@ -954,7 +990,7 @@ const config: ConfigRoot = {
                     "</div>"
             }
         },
-        rebrand: {
+        "rebrand": {
             "server-mod-name": {
                 default: "Leaf",
                 desc: "服务端核心名字. 在 F3 菜单和服务器 MOTD 中显示."
@@ -964,13 +1000,13 @@ const config: ConfigRoot = {
                 desc: "服务端 GUI 控制台名字. 如果启动服务器时未添加 `--nogui` 选项, 将在核心自带的 GUI 控制台中显示."
             }
         },
-        sentry: {
+        "sentry": {
             __desc__: "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
-                    "<br>" +
-                    "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
-                    "<br>" +
-                    "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
-            dsn: {
+                "<br>" +
+                "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
+                "<br>" +
+                "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
+            "dsn": {
                 default: "",
                 desc: "Sentry 的 DSN 密匙.<br>" + "如果设为空 `''`, 则禁用 Sentry."
             },
@@ -984,14 +1020,14 @@ const config: ConfigRoot = {
             }
         },
         "secure-seed": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否使用安全种子功能.<br>" +
                     "所有矿石和结构将使用 1024 位的种子生成, 而不是原版中的 64 位种子, 从而使破解种子变得不可能.<br>" +
                     "如果在已经存在的世界中使用安全种子, 则只会应用在新生成的区块.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__" +
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__" +
                     "<table>" +
                     "<tr><td><b>基于目标的推荐值</b></td><td></td></tr>" +
                     "<tr><td><i>优化</i></td><td>-</td></tr>" +
@@ -1015,16 +1051,16 @@ const config: ConfigRoot = {
                 "当玩家尝试编辑其无法编辑的告示牌时, 是否在控制台打印警告信息.<br>" +
                 "如果设为 `true`, 可以防止某些情况下玩家使用某些方法在控制台刷屏.<br>" +
                 "<br>" +
-                "__推荐值: `true`__"
+                "__⚡推荐值: `true`__"
         },
         "region-format-settings": {
             __desc__: "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
-                    "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">警告</p>' +
-                    "实验性功能, 存在丢失区块数据的潜在风险. 在切换到 Linear 格式之前请备份你的服务端.<br>" +
-                    "并且我们不推荐使用 Linear 区块格式, 用原版的 ANVIL 格式 (.mca) 就足够了. Leaf 用了重构版的 Linear 保存系统, 可以更安全的保存区块大大减小丢数据的可能性, 虽然比原版的 Linear 更慢. 但是无论如何, 这个重构的改动是值得的, 毕竟数据无价." +
-                    "</div>",
+                "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">警告</p>' +
+                "实验性功能, 存在丢失区块数据的潜在风险. 在切换到 Linear 格式之前请备份你的服务端.<br>" +
+                "并且我们不推荐使用 Linear 区块格式, 用原版的 ANVIL 格式 (.mca) 就足够了. Leaf 用了重构版的 Linear 保存系统, 可以更安全的保存区块大大减小丢数据的可能性, 虽然比原版的 Linear 更慢. 但是无论如何, 这个重构的改动是值得的, 毕竟数据无价." +
+                "</div>",
             "region-format": {
                 default: "MCA",
                 desc: '可用区块格式: `"MCA"`, `"LINEAR"`.'
@@ -1043,20 +1079,24 @@ const config: ConfigRoot = {
             }
         },
         "lag-compensation": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "卡顿滞后补偿, 这可以在服务器卡顿或低 TPS 时确保玩家的基本游戏体验.<br>" +
                     "<br>" +
-                    "__推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "enable-for-water": {
                 default: false,
-                desc: "是否开启水流动的滞后补偿.<br>" + "<br>" + "__推荐值: `true`__"
+                desc: "是否开启水流动的滞后补偿.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__"
             },
             "enable-for-lava": {
                 default: false,
-                desc: "是否开启岩浆流动的滞后补偿.<br>" + "<br>" + "__推荐值: `true`__"
+                desc: "是否开启岩浆流动的滞后补偿.<br>" +
+                    "<br>" +
+                    "__⚡推荐值: `true`__"
             }
         },
         "including-5s-in-get-tps": {
@@ -1085,39 +1125,39 @@ const config: ConfigRoot = {
         },
         "connection-message": {
             __desc__: "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
-                    "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
-                    "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
-                    "<br>" +
-                    "可用占位符:" +
-                    "<ul>" +
-                    "<li>__`%player_name%`__ - 玩家名.</li>" +
-                    "<li>__`%player_displayname%`__ - 玩家显示名称.</li>" +
-                    "</ul>" +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">API / 插件友好</p>' +
-                    "此功能对 API / 插件 友好<br>" +
-                    "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
-                    "</div>",
-            join: {
-                enabled: {
+                "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
+                "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
+                "<br>" +
+                "可用占位符:" +
+                "<ul>" +
+                "<li>__`%player_name%`__ - 玩家名.</li>" +
+                "<li>__`%player_displayname%`__ - 玩家显示名称.</li>" +
+                "</ul>" +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">API / 插件友好</p>' +
+                "此功能对 API / 插件 友好<br>" +
+                "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
+                "</div>",
+            "join": {
+                "enabled": {
                     default: true
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc: "玩家进服提示."
                 }
             },
-            quit: {
-                enabled: {
+            "quit": {
+                "enabled": {
                     default: true
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc: "玩家退服提示."
                 }
             }
         },
-        cache: {
+        "cache": {
             "cache-player-profile-result": {
                 default: true,
                 desc:

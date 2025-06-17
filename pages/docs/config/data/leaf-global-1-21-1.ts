@@ -1,20 +1,21 @@
-import type { ConfigRoot } from "../../../../.vitepress/theme/components/config/types";
+import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
+
     "config-version": {
         default: "3.0"
     },
 
-    async: {
+    "async": {
         __desc__:
             "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
         "async-entity-tracker": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Make entity tracking asynchronously, can improve performance significantly, especially in some massive entities in small area situations.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                     'If you installed plugins like Citizens, which uses real, and player type entity as "NPC", also read `compat-mode` below for more infomration.' +
@@ -36,9 +37,9 @@ const config: ConfigRoot = {
                     "Maximum number of threads for async entity tracker to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
-                    "__Recommended value: 1/2 of CPU cores__"
+                    "__⚡Recommended value: 1/2 of CPU cores__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
@@ -46,7 +47,7 @@ const config: ConfigRoot = {
             }
         },
         "async-playerdata-save": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Make PlayerData saving asynchronously. (I/O operations are expensive)" +
@@ -57,12 +58,12 @@ const config: ConfigRoot = {
             }
         },
         "async-pathfinding": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Make mob pathfinding calculation asynchronously.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "max-threads": {
                 default: 0,
@@ -70,9 +71,9 @@ const config: ConfigRoot = {
                     "Maximum number of threads for async entity pathfinding to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
-                    "__Recommended value: 1/3 of CPU cores__"
+                    "__⚡Recommended value: 1/3 of CPU cores__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
@@ -80,18 +81,18 @@ const config: ConfigRoot = {
             }
         },
         "async-mob-spawning": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether asynchronous mob spawning should be enabled.<br>" +
                     "On servers with many entities, this can improve performance by up to 15%. You must have Paper's `per-player-mob-spawns` config set to `true` for this to work.<br>" +
                     "One quick note: this does not actually spawn mobs async (that would be very unsafe). This just offloads some expensive calculations that are required for mob spawning.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "async-locator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether asynchronous locator should be enabled.<br>" +
@@ -103,17 +104,17 @@ const config: ConfigRoot = {
                     "<li>Eye of ender stronghold finding</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
-            threads: {
+            "threads": {
                 default: 0,
                 desc:
                     "Maximum number of threads for async locator to use.<br>" +
                     "If a value &leq; `0` is given, it automatically uses 1 thread.<br>" +
                     "<br>" +
-                    "__Recommended value: `1` or `2`__"
+                    "__⚡Recommended value: `1` or `2`__"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
@@ -122,44 +123,45 @@ const config: ConfigRoot = {
         }
     },
 
-    performance: {
+    "performance": {
         __desc__:
             "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
             desc:
-                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for Async Chat Executor.<br>" +
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
             default: true,
             desc:
-                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for CraftAsyncScheduler, which could improve performance of plugin that uses async scheduler.<br>" +
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
             desc:
-                "Whether to create the snapshot of TileEntity / BlockState when retrieving them.<br>" +
+                "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
                 "<br>" +
-                "Some plugins may use `getHolder` to get the holder for an inventory, which involved getting the BlockState.<br>" +
-                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events). It is very expensive to re-create BlockState and parse item stack in massive and frequent calls.<br>" +
+                "Some plugins may call `getInventory().getHolder()` to get the holder of an inventory, which involves accessings the BlockState.<br>" +
+                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events, call frequently). Re-creating BlockState and parsing item stack in massive and frequent calls are very expensive.<br>" +
                 "See Paper's [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) for more information." +
                 "<ul>" +
-                "<li>If `true`, it will create snapshot (copy) of BlockState everytime when the plugin call related methods.</li>" +
-                "<li>If `false`, it will get real BlockState itself when plugins call related methods, unless the plugin defines to use snapshot.</li>" +
+                "<li>If `true`, always creates snapshot (copy) of BlockState when the plugin calls related methods.</li>" +
+                "<li>If `false`, gets real BlockState directly unless the plugin explicitly requests a snapshot. Performance improves, but has risk that block state gets modified due to plugin's poor design.</li>" +
                 "</ul>" +
                 "<br>" +
-                "__Recommended value: `false` (Only if you encounter specific lag described above)__"
+                "__⚡Recommended value: `false` (Only if you encounter specific lag described above)__"
         },
         "inactive-goal-selector-throttle": {
             default: true,
             desc:
-                "Throttles the *AI goal selector* calculation in entity's *inactive tick* to every second. This can improve performance by a few percent, but has minor gameplay implications.<br>" +
+                "Throttles the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>" +
+                "Instead of ticking goal selector every tick, it ticks less frequently to every second. This can improve performance slightly, but has minor gameplay implications.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                 "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -167,12 +169,13 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "throttle-hopper-when-full": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
-                    "Whether to throttle attempts on moving items for hopper if the target container is full.<br>" +
+                    "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
+                    "Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -182,10 +185,12 @@ const config: ConfigRoot = {
             "skip-ticks": {
                 default: 0,
                 desc:
-                    "How many ticks to wait before the next move item attempt when the hopper is throttled.<br>" +
+                    "How many ticks a hopper should wait before trying to move items again if the target container is full.<br>" +
+                    "(Unit: tick)<br>" +
+                    "Only active if `throttle-hopper-when-full.enabled` (described above) is `true`.<br>" +
                     "If a value &leq; `0` is given, this throttling feature is disabled.<br>" +
                     "<br>" +
-                    "__Recommended value: `8`__" +
+                    "__⚡Recommended value: `8`__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>8</code></td></tr>" +
@@ -196,10 +201,10 @@ const config: ConfigRoot = {
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             default: true,
             desc:
-                "Whether to skip map item data update if the map doesn't have a renderer.<br>" +
-                "This can improve performance if using ImageMap kind of plugins.<br>" +
+                "Whether to skip updating map item data update if the map doesn't have a renderer (`CraftMapRenderer`).<br>" +
+                "This can improve performance if using ImageMap kind of plugins that create many custom maps.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                 "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -213,9 +218,10 @@ const config: ConfigRoot = {
         "skip-ai-for-non-aware-mob": {
             default: true,
             desc:
-                " Whether to skip AI ticks if the mob is *inactive* and *unaware*. Unaware mobs are nerd and will not make actions themselves or when interacted with them.<br>" +
+                " Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>" +
+                "Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__" +
+                "__⚡Recommended value: `true`__" +
                 "<table>" +
                 "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                 "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -227,26 +233,27 @@ const config: ConfigRoot = {
             "reduce-entity-move-packets": {
                 default: false,
                 desc:
-                    "Whether to reduce the useless entity movement packets sent to players.<br>" +
+                    "Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>" +
+                    "This can save bandwidth and reduces client-side processing load, potentially making movement appear smoother during high entity counts or minor lag.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "optimized-powered-rails": {
             default: true,
             desc:
-                "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic, can achieve 4x faster performance.<br>" +
+                "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, can achieve 4x faster performance.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "optimize-minecart": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether to optimize minecart ticking. By skipping tick collisions to reduce expensive `getEntities()` calls and bukkit event calls.<br>" +
                     "This can handle a large amount of stacked minecarts better which is useful for [Anarchy servers](https://minecraftservers.org/type/anarchy).<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__" +
+                    "__⚡Recommended value: `true`__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -258,7 +265,7 @@ const config: ConfigRoot = {
                 desc:
                     "How many ticks to skip before checking for the next minecart collisions.<br>" +
                     "<br>" +
-                    "__Recommended value: `30`__"
+                    "__⚡Recommended value: `30`__"
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -271,13 +278,13 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "faster-random-generator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether to use the faster random generator.<br>" +
                     "Random is used almost everywhere in Minecraft, enable this can get a decent performance improvement.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                     "Requires a JVM that supports `RandomGenerator`. Some JREs don't support this." +
@@ -289,7 +296,7 @@ const config: ConfigRoot = {
                     "Which random generator will be used?<br>" +
                     "Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1).<br>" +
                     "<br>" +
-                    "__Recommended value: `Xoroshiro128PlusPlus`__"
+                    "__⚡Recommended value: `Xoroshiro128PlusPlus`__"
             },
             "enable-for-worldgen": {
                 default: false,
@@ -300,7 +307,7 @@ const config: ConfigRoot = {
                     "<li>If `false`, `Random` calls involved in world generation will use legacy random generator of vanilla.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `true`__" +
+                    "__⚡Recommended value: `true`__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -317,7 +324,7 @@ const config: ConfigRoot = {
                     "Whether to use legacy random source for slime chunk generation to follow the vanilla behavior.<br>" +
                     "If your server has existing slime farms or related facilities need slime chunk, enable this, otherwise the location of slime chunk will offset.<br>" +
                     "<br>" +
-                    "__Recommended value:__ (Depends on your server type, see `Values for goals` below for more.)" +
+                    "__⚡Recommended value:__ (Depends on your server type, see `Values for goals` below for more.)" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>false</code></td></tr>" +
@@ -327,7 +334,26 @@ const config: ConfigRoot = {
         },
         "entity-timeouts": {
             __desc__:
-                "These values define an entity's maximum lifespan (i.e. Entity TTL).<br>(Unit: tick)<br>If an entity is in this list, and it has survived for longer than that number of ticks, then it will be removed. 🛈<br>If a value `-1` is given, the Entity TTL check will disable for specific entity.<br><br>__Recommended values:__<table><thead><tr><th>Entity</th><th>Max Lifespan</th></tr></thead><tbody><tr><td>SNOWBALL</td><td>200</td></tr><tr><td>LLAMA_SPIT</td><td>150</td></tr><tr><td>DRAGON_FIREBALL</td><td>150</td></tr><tr><td>EGG</td><td>300</td></tr><tr><td>FIREBALL</td><td>600</td></tr><tr><td>SMALL_FIREBALL</td><td>400</td></tr><tr><td>WIND_CHARGE</td><td>200</td></tr><tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr><tr><td>WITHER_SKULL</td><td>200</td></tr></tbody></table>🛈 = In here, the time that the entity survived means the total living time of entity, and will not be reset by chunk unloading or loading.",
+                "These values define an entity's maximum lifespan (i.e. Entity TTL).<br>" +
+                "(Unit: tick)<br>" +
+                "If an entity is in this list, and it has survived for longer than that number of ticks, then it will be removed. 🛈<br>" +
+                "If a value `-1` is given, the Entity TTL check will disable for specific entity.<br>" +
+                "<br>" +
+                "__⚡Recommended values:__" +
+                "<table>" +
+                "<thead><tr><th>Entity</th><th>Max Lifespan</th></tr></thead>" +
+                "<tbody>" +
+                "<tr><td>SNOWBALL</td><td>200</td></tr>" +
+                "<tr><td>LLAMA_SPIT</td><td>150</td></tr>" +
+                "<tr><td>DRAGON_FIREBALL</td><td>150</td></tr>" +
+                "<tr><td>EGG</td><td>300</td></tr>" +
+                "<tr><td>FIREBALL</td><td>600</td></tr>" +
+                "<tr><td>SMALL_FIREBALL</td><td>400</td></tr>" +
+                "<tr><td>WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>WITHER_SKULL</td><td>200</td></tr>" +
+                "</tbody></table>" +
+                "🛈 = In here, the time that the entity survived means the total living time of entity, and will not be reset by chunk unloading or loading.",
             ALLAY: {
                 default: -1
             },
@@ -682,15 +708,15 @@ const config: ConfigRoot = {
             desc:
                 "Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. It can get a tiny improvement.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
-        dab: {
-            enabled: {
+        "dab": {
+            "enabled": {
                 default: true,
                 desc:
                     "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain to decrease the frequency of their brain ticking when they are far away from players.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td><code>true</code></td></tr>" +
@@ -703,14 +729,14 @@ const config: ConfigRoot = {
                     "Whether non-aquatic entities in the water will not be affected by DAB.<br>" +
                     "If `true`, this could fix entities suffocate in the water if they are far from the player. This fixed [Pufferfish's issue#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "start-distance": {
                 default: 12,
                 desc:
                     "This value determines how far away an entity has to be from the player to start being affected by DAB.<br>" +
                     "<br>" +
-                    "__Recommended value: `8`__"
+                    "__⚡Recommended value: `8`__"
             },
             "max-tick-freq": {
                 default: 20,
@@ -727,7 +753,7 @@ const config: ConfigRoot = {
                     "<li>If you want entities further away to tick __more__ often, try `9`.</li>" +
                     "</ul>" +
                     "<br>" +
-                    "__Recommended value: `7`__"
+                    "__⚡Recommended value: `7`__"
             },
             "blacklisted-entities": {
                 default: "[]",
@@ -776,16 +802,18 @@ const config: ConfigRoot = {
                     "Disable save primed tnt on chunk unloads.<br>" +
                     "It can prevent machines from being exploded by TNT when the player accidentally disconnected or chunk unloads when the player is far away. Useful for survival servers which have machines involved TNT.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "dont-save-falling-block": {
                 default: false,
-                desc: "Disable save falling block on chunk unloads.<br>" + "<br>" + "__Recommended value: `true`__"
+                desc: "Disable save falling block on chunk unloads.<br>" +
+                    "<br>" +
+                    "__⚡Recommended value: `true`__"
             }
         }
     },
 
-    fixes: {
+    "fixes": {
         __desc__: "This section contains bugfixes for specific issues.",
         "dont-place-player-if-server-full": {
             default: false,
@@ -813,11 +841,11 @@ const config: ConfigRoot = {
         },
         "max-item-stack-count": {
             __desc__: "Configurable max stack size of dropped item." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">Warning</p>' +
-                    "We __do not__ recommended to use this feature. It is working in progress and has known issues.<br>" +
-                    "This feature also maybe remove in the future. __Do not__ touch this unless you know what you are doing!" +
-                    "</div>",
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">Warning</p>' +
+                "We __do not__ recommended to use this feature. It is working in progress and has known issues.<br>" +
+                "This feature also maybe remove in the future. __Do not__ touch this unless you know what you are doing!" +
+                "</div>",
             "max-dropped-items-stack-count": {
                 default: 0,
                 desc: "Maximum number of dropped items to stack."
@@ -827,7 +855,7 @@ const config: ConfigRoot = {
                 desc: "Maximum count of items to drop when container is destroyed."
             }
         },
-        knockback: {
+        "knockback": {
             __desc__: "This section contains options to adjust knockback related behaviors.",
             "snowball-knockback-players": {
                 default: false,
@@ -842,14 +870,14 @@ const config: ConfigRoot = {
                 desc: "Whether the player can knockback zombies."
             }
         },
-        player: {
+        "player": {
             "disable-moved-wrongly-threshold": {
                 default: false,
                 desc:
                     "Whether to disable the Spigot built-in moved too quickly / wrongly checks for players and vehicles.<br>" +
                     "If `true`, players can move or use vehicles (e.g. Minecart) to move with abnormal speed.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "max-use-item-distance": {
                 default: 1.0000001,
@@ -861,7 +889,7 @@ const config: ConfigRoot = {
                     "<br>" +
                     "If a value `-1` is given, the check of max allowed distance to use an item will be disabled.<br>" +
                     "<br>" +
-                    "__Recommended value: `10.0000001` (For anarchy server)__" +
+                    "__⚡Recommended value: `10.0000001` (For anarchy server)__" +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                     "If set to `-1`, players are able to use some packet modules of hack clients, and also [Nocom Exploit](https://github.com/nerdsinspace/nocom-explanation)!" +
@@ -869,7 +897,7 @@ const config: ConfigRoot = {
             }
         },
         "afk-command": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Wether to enable rhe AFK command based on Minecraft built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle).<br>" +
@@ -879,17 +907,17 @@ const config: ConfigRoot = {
         }
     },
 
-    network: {
+    "network": {
         __desc__: "This section contains features for server networking related.",
         "protocol-support": {
             __desc__: "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
-                    "<br>" +
-                    "The extra protocol support is only functional if there is corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installed that mod on client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before." +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">Attention</p>' +
-                    "The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>" +
-                    " We recommend players to use client that has same version with the server core and install latest corresponding mod, otherwise they may unable to join the server." +
-                    "</div>",
+                "<br>" +
+                "The extra protocol support is only functional if there is corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installed that mod on client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before." +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">Attention</p>' +
+                "The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>" +
+                " We recommend players to use client that has same version with the server core and install latest corresponding mod, otherwise they may unable to join the server." +
+                "</div>",
             "jade-protocol": {
                 default: false,
                 desc:
@@ -947,13 +975,13 @@ const config: ConfigRoot = {
                 "Whether to enable chat message signature which introduced since Minecraft 1.19.1.<br>" +
                 "If `false`, players' chat messages become unable to report, and the insecure warning popup when player joined the server will be disabled.<br>" +
                 "<br>" +
-                "__Recommended value: `false`__"
+                "__⚡Recommended value: `false`__"
         }
     },
 
-    misc: {
+    "misc": {
         __desc__: "This section contains some miscellaneous features.",
-        message: {
+        "message": {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
                 desc:
@@ -972,7 +1000,7 @@ const config: ConfigRoot = {
                     "</div>"
             }
         },
-        rebrand: {
+        "rebrand": {
             "server-mod-name": {
                 default: "Leaf",
                 desc: "Server brand name that shows in F3 menu and server MOTD."
@@ -982,13 +1010,13 @@ const config: ConfigRoot = {
                 desc: "Server GUI window name, if you launched server without adding `--nogui` option in the startup flag."
             }
         },
-        sentry: {
+        "sentry": {
             __desc__: "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
-                    "<br>" +
-                    "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
-                    "<br>" +
-                    "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
-            dsn: {
+                "<br>" +
+                "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
+                "<br>" +
+                "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
+            "dsn": {
                 default: "",
                 desc:
                     "The DSN key of your Sentry.<br>" + "If an empty value `''` is given, the Sentry will be disabled."
@@ -1003,14 +1031,14 @@ const config: ConfigRoot = {
             }
         },
         "secure-seed": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether to use secure seed.<br>" +
                     "All ores and structures are generated with 1024-bit seed instead of using 64-bit seed in vanilla, made seed cracker become impossible.<br>" +
                     "If used in the existing world, then the secure seed will only apply to new generating chunks.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__" +
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     "<table>" +
                     "<tr><td><b>Values for goals</b></td><td></td></tr>" +
                     "<tr><td><i>Optimization</i></td><td>-</td></tr>" +
@@ -1021,7 +1049,7 @@ const config: ConfigRoot = {
         "remove-vanilla-username-check": {
             default: true,
             desc:
-                " Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
+                "Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
                 "If `true`, players are allowed to use non-English name to join the server."
         },
         "remove-spigot-check-bungee-config": {
@@ -1034,16 +1062,16 @@ const config: ConfigRoot = {
                 "Whether the server prints warning when players tried to edit the sign that they are not allowed to edit.<br>" +
                 "Enable this to prevent console spam in some cases.<br>" +
                 "<br>" +
-                "__Recommended value: `true`__"
+                "__⚡Recommended value: `true`__"
         },
         "region-format-settings": {
             __desc__: "Linear is a region file format that uses [ZSTD compression](https://facebook.github.io/zstd/) instead of ZLIB in vanilla Minecraft. This format saves about ~50% of disk space.<br>" +
-                    "To use Linear region format, make sure you __Read [Linear Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__, and have done all steps required, then change `region-format-settings.region-format` below to `LINEAR`." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">Warning</p>' +
-                    "Experimental feature, there is potential risk to lose chunk data. Backup your server before switching to Linear.<br>" +
-                    "Also, we do not recommend using Linear, since vanilla's ANVIL format (.mca) is enough. Leaf uses the refactored version of the Linear flush system, which is safer but slower to save chunks to make data lost less possible. However this change is worth it, data is invaluable." +
-                    "</div>",
+                "To use Linear region format, make sure you __Read [Linear Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__, and have done all steps required, then change `region-format-settings.region-format` below to `LINEAR`." +
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">Warning</p>' +
+                "Experimental feature, there is potential risk to lose chunk data. Backup your server before switching to Linear.<br>" +
+                "Also, we do not recommend using Linear, since vanilla's ANVIL format (.mca) is enough. Leaf uses the refactored version of the Linear flush system, which is safer but slower to save chunks to make data lost less possible. However this change is worth it, data is invaluable." +
+                "</div>",
             "region-format": {
                 default: "MCA",
                 desc: 'Available region formats: `"MCA"`, `"LINEAR"`.'
@@ -1062,26 +1090,26 @@ const config: ConfigRoot = {
             }
         },
         "lag-compensation": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Lag compensation, which could ensure the basic game experience for players when server is lagging or low TPS situation.<br>" +
                     "<br>" +
-                    "__Recommended value: `true` (set `enabled` below to true)__"
+                    "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "enable-for-water": {
                 default: false,
                 desc:
                     "Whether to enable lag compensation for water flowing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             },
             "enable-for-lava": {
                 default: false,
                 desc:
                     "Whether to enable lag compensation for lava flowing.<br>" +
                     "<br>" +
-                    "__Recommended value: `true`__"
+                    "__⚡Recommended value: `true`__"
             }
         },
         "including-5s-in-get-tps": {
@@ -1110,39 +1138,39 @@ const config: ConfigRoot = {
         },
         "connection-message": {
             __desc__: "Connection message, broadcasts to all online players, when they join or quit the server.<br>" +
-                    "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
-                    "If set message to `default` or leave the default value, the vanilla join / quit message will be used.<br>" +
-                    "<br>" +
-                    "Available placeholders:" +
-                    "<ul>" +
-                    "<li>__`%player_name%`__ - player name.</li>" +
-                    "<li>__`%player_displayname%`__ - player display name.</li>" +
-                    "</ul>" +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">API / Plugin Friendly</p>' +
-                    "This feature is API / plugin friendly." +
-                    "It means that the connection message can be overrided by plugins using `PlayerJoinEvent` or `PlayerQuitEvent`." +
-                    "</div>",
-            join: {
-                enabled: {
+                "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
+                "If set message to `default` or leave the default value, the vanilla join / quit message will be used.<br>" +
+                "<br>" +
+                "Available placeholders:" +
+                "<ul>" +
+                "<li>__`%player_name%`__ - player name.</li>" +
+                "<li>__`%player_displayname%`__ - player display name.</li>" +
+                "</ul>" +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">API / Plugin Friendly</p>' +
+                "This feature is API / plugin friendly." +
+                "It means that the connection message can be overrided by plugins using `PlayerJoinEvent` or `PlayerQuitEvent`." +
+                "</div>",
+            "join": {
+                "enabled": {
                     default: true
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc: "The join message of the player."
                 }
             },
-            quit: {
-                enabled: {
+            "quit": {
+                "enabled": {
                     default: true
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc: "The left message of the player."
                 }
             }
         },
-        cache: {
+        "cache": {
             "cache-player-profile-result": {
                 default: true,
                 desc:

@@ -1,6 +1,7 @@
 <script setup>
-import galeGlobalConfig_1_21_4 from './data/gale-global-1-21-4';
-import galeGlobalConfig_1_21_1 from './data/gale-global-1-21-1';
+// Same with en
+import galeGlobalConfig_1_21_4 from '../../../docs/config/data/gale-global-1-21-4';
+import galeGlobalConfig_1_21_1 from '../../../docs/config/data/gale-global-1-21-1';
 import ConfigGroup from '../../../../.vitepress/theme/components/config/ConfigGroup.vue'
 const data = {
     '1.21.4': galeGlobalConfig_1_21_4,
