@@ -3,11 +3,17 @@ import MarkdownIt from 'markdown-it';
 import { computed } from 'vue';
 
 const props = defineProps<{
-  content: string,
+  content: string
+  unwrap?: boolean
 }>();
 
-const md = new MarkdownIt({ html: true });
-const renderedContent = computed(() => md.render(props.content));
+const md = new MarkdownIt({ html: true })
+if (props.unwrap) {
+  md.renderer.rules.paragraph_open = () => ''
+  md.renderer.rules.paragraph_close = () => ''
+}
+
+const renderedContent = computed(() => md.render(props.content))
 </script>
 
 <template>

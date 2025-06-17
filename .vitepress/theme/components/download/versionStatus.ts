@@ -1,10 +1,12 @@
-import {Branch} from "./githubApiTypes";
+import {Branch} from "./old/githubApiTypes";
+import {version} from "vue";
 
 export interface VersionStatus {
     versions: Array<string>
     icon: string
     cssClass: string
     branchPrefix?: string
+    name?: string
 }
 
 export interface Version {
@@ -16,14 +18,14 @@ export interface Version {
 export const versionStatusMap: {[name: string]: VersionStatus} = {
 
     dev: {
-        versions: ["1.21.5"],
+        versions: ["1.21.6"],
         icon: "lucide:flask-conical",
         cssClass: "status-dev",
         branchPrefix: "dev/"
     },
 
     stable: {
-        versions: ["1.21.4"],
+        versions: ["1.21.4", "1.21.5"],
         cssClass: "status-stable",
         icon: "lucide:check-circle"
     },
@@ -79,3 +81,18 @@ export function getLatestStable(vers: Array<Version>): Version {
 }
 
 export const getVerInfo = (ver: Version) => versionStatusMap[ver.status]
+
+export function getVerStatus(ver: string): VersionStatus {
+    let versionStatus: VersionStatus | null = null
+    for (const key in versionStatusMap) {
+        if (versionStatusMap[key].versions.includes(ver)) {
+            versionStatus = versionStatusMap[key]
+            versionStatus.name = key
+        }
+    }
+    if (versionStatus == null) {
+        versionStatus = versionStatusMap['stable']
+        versionStatus.name = 'stable'
+    }
+    return versionStatus
+}
