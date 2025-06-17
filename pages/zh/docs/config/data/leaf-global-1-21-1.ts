@@ -205,7 +205,6 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "skip-ai-for-non-aware-mob": {
-            "default": true,
             default: true,
             desc:
                 "当生物同时处在 *不活跃* 且 *无感知* 的状态时, 是否跳过其 AI tick 计算.<br>" +
@@ -324,25 +323,25 @@ const config: ConfigRoot = {
         "entity-timeouts": {
             __desc__:
                 "实体的最长存活时间 (又称 Entity TTL).<br>" +
-                    "(以 tick 为单位)<br>" +
-                    "如果下列列表中某实体的存活时间超过此值, 将清除该实体. 🛈<br>" +
-                    "如果设为 `-1`, 则禁用此功能.<br>" +
-                    "<br>" +
-                    "__⚡推荐值:__" +
-                    "<table>" +
-                    "<thead><tr><th>实体</th><th>最长存活时间</th></tr></thead>" +
-                    "<tbody>" +
-                    "<tr><td>SNOWBALL</td><td>200</td></tr>" +
-                    "<tr><td>LLAMA_SPIT</td><td>150</td></tr>" +
-                    "<tr><td>DRAGON_FIREBALL</td><td>150</td></tr>" +
-                    "<tr><td>EGG</td><td>300</td></tr>" +
-                    "<tr><td>FIREBALL</td><td>600</td></tr>" +
-                    "<tr><td>SMALL_FIREBALL</td><td>400</td></tr>" +
-                    "<tr><td>WIND_CHARGE</td><td>200</td></tr>" +
-                    "<tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>" +
-                    "<tr><td>WITHER_SKULL</td><td>200</td></tr>" +
-                    "</tbody></table>" +
-                    "🛈 = 在此处, 实体存活的时间指的是实体存在的总时间, 该时间不会因区块的卸载或加载而重置.",
+                "(以 tick 为单位)<br>" +
+                "如果下列列表中某实体的存活时间超过此值, 将清除该实体. 🛈<br>" +
+                "如果设为 `-1`, 则禁用此功能.<br>" +
+                "<br>" +
+                "__⚡推荐值:__" +
+                "<table>" +
+                "<thead><tr><th>实体</th><th>最长存活时间</th></tr></thead>" +
+                "<tbody>" +
+                "<tr><td>SNOWBALL</td><td>200</td></tr>" +
+                "<tr><td>LLAMA_SPIT</td><td>150</td></tr>" +
+                "<tr><td>DRAGON_FIREBALL</td><td>150</td></tr>" +
+                "<tr><td>EGG</td><td>300</td></tr>" +
+                "<tr><td>FIREBALL</td><td>600</td></tr>" +
+                "<tr><td>SMALL_FIREBALL</td><td>400</td></tr>" +
+                "<tr><td>WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>" +
+                "<tr><td>WITHER_SKULL</td><td>200</td></tr>" +
+                "</tbody></table>" +
+                "🛈 = 在此处, 实体存活的时间指的是实体存在的总时间, 该时间不会因区块的卸载或加载而重置.",
             ALLAY: {
                 default: -1
             },
@@ -831,11 +830,11 @@ const config: ConfigRoot = {
         },
         "max-item-stack-count": {
             __desc__: "每组掉落物的最大堆叠大小." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">警告</p>' +
-                    "__不推荐__ 使用此功能. 此功能仍在开发中, 存在已知问题.<br>" +
-                    "且可能在未来被移除. __请勿__ 修改此配置, 除非你知道自己做什么!" +
-                    "</div>",
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">警告</p>' +
+                "__不推荐__ 使用此功能. 此功能仍在开发中, 存在已知问题.<br>" +
+                "且可能在未来被移除. __请勿__ 修改此配置, 除非你知道自己做什么!" +
+                "</div>",
             "max-dropped-items-stack-count": {
                 default: 0,
                 desc: "每组掉落物可以堆叠的最大数量."
@@ -901,14 +900,14 @@ const config: ConfigRoot = {
         __desc__: "本节包含与网络相关的功能.",
         "protocol-support": {
             __desc__: "熙熙攘攘, 我们的协议.<br>" +
-                    "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
-                    "<br>" +
-                    "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">注意</p>' +
-                    "开启协议支持后, 可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容.<br>" +
-                    "并且我们建议玩家使用与服务器核心相同版本的客户端, 并安装对应模组的最新版本, 否则将会无法进入服务器." +
-                    "</div>",
+                "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
+                "<br>" +
+                "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">注意</p>' +
+                "开启协议支持后, 可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容.<br>" +
+                "并且我们建议玩家使用与服务器核心相同版本的客户端, 并安装对应模组的最新版本, 否则将会无法进入服务器." +
+                "</div>",
             "jade-protocol": {
                 default: false,
                 desc:
@@ -1001,10 +1000,10 @@ const config: ConfigRoot = {
         },
         sentry: {
             __desc__: "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
-                    "<br>" +
-                    "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
-                    "<br>" +
-                    "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
+                "<br>" +
+                "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
+                "<br>" +
+                "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
             dsn: {
                 default: "",
                 desc: "Sentry 的 DSN 密匙.<br>" + "如果设为空 `''`, 则禁用 Sentry."
@@ -1054,12 +1053,12 @@ const config: ConfigRoot = {
         },
         "region-format-settings": {
             __desc__: "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
-                    "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
-                    '<div class="warning custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">警告</p>' +
-                    "实验性功能, 存在丢失区块数据的潜在风险. 在切换到 Linear 格式之前请备份你的服务端.<br>" +
-                    "并且我们不推荐使用 Linear 区块格式, 用原版的 ANVIL 格式 (.mca) 就足够了. Leaf 用了重构版的 Linear 保存系统, 可以更安全的保存区块大大减小丢数据的可能性, 虽然比原版的 Linear 更慢. 但是无论如何, 这个重构的改动是值得的, 毕竟数据无价." +
-                    "</div>",
+                "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">警告</p>' +
+                "实验性功能, 存在丢失区块数据的潜在风险. 在切换到 Linear 格式之前请备份你的服务端.<br>" +
+                "并且我们不推荐使用 Linear 区块格式, 用原版的 ANVIL 格式 (.mca) 就足够了. Leaf 用了重构版的 Linear 保存系统, 可以更安全的保存区块大大减小丢数据的可能性, 虽然比原版的 Linear 更慢. 但是无论如何, 这个重构的改动是值得的, 毕竟数据无价." +
+                "</div>",
             "region-format": {
                 default: "MCA",
                 desc: '可用区块格式: `"MCA"`, `"LINEAR"`.'
@@ -1124,19 +1123,19 @@ const config: ConfigRoot = {
         },
         "connection-message": {
             __desc__: "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
-                    "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
-                    "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
-                    "<br>" +
-                    "可用占位符:" +
-                    "<ul>" +
-                    "<li>__`%player_name%`__ - 玩家名.</li>" +
-                    "<li>__`%player_displayname%`__ - 玩家显示名称.</li>" +
-                    "</ul>" +
-                    '<div class="tip custom-block">' +
-                    '<p class="custom-block-title custom-block-title-default">API / 插件友好</p>' +
-                    "此功能对 API / 插件 友好<br>" +
-                    "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
-                    "</div>",
+                "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
+                "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
+                "<br>" +
+                "可用占位符:" +
+                "<ul>" +
+                "<li>__`%player_name%`__ - 玩家名.</li>" +
+                "<li>__`%player_displayname%`__ - 玩家显示名称.</li>" +
+                "</ul>" +
+                '<div class="tip custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">API / 插件友好</p>' +
+                "此功能对 API / 插件 友好<br>" +
+                "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
+                "</div>",
             join: {
                 enabled: {
                     default: true

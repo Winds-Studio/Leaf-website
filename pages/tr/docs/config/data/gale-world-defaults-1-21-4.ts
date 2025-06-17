@@ -269,7 +269,7 @@ const config: ConfigRoot = {
             "check-nearby-item": {
                 hopper: {
                     __desc__: "Frequency with which hoppers check for items to pick up.<br>" +
-                            "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
+                        "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
                     interval: {
                         default: 1,
                         desc:
@@ -307,7 +307,7 @@ const config: ConfigRoot = {
                         },
                         "temporary-immunity": {
                             __desc__: "Hopper minecarts can have temporary immunity from the `interval` setting above.<br>" +
-                                    "While a minecart is immune, it can check for items every tick.",
+                                "While a minecart is immune, it can check for items every tick.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
                                 desc:

@@ -269,7 +269,7 @@ const config: ConfigRoot = {
             "check-nearby-item": {
                 hopper: {
                     __desc__: "每个漏斗检查附近可拾取掉落物的频率.<br>" +
-                            "这仅影响从地面拾取掉落物 (例如掉落物), 而不影响从箱子或其他存储容器中吸取物品.",
+                        "这仅影响从地面拾取掉落物 (例如掉落物), 而不影响从箱子或其他存储容器中吸取物品.",
                     interval: {
                         default: 1,
                         desc:
@@ -307,7 +307,7 @@ const config: ConfigRoot = {
                         },
                         "temporary-immunity": {
                             __desc__: "漏斗矿车可以暂时免疫, 免受上述 `interval` 的影响.<br>" +
-                                    "在免疫期间, 矿车将每 tick 检查一次掉落物.",
+                                "在免疫期间, 矿车将每 tick 检查一次掉落物.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
                                 desc:

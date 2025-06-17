@@ -215,7 +215,7 @@ const config: ConfigRoot = {
 
     performance: {
         __desc__:
-             "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
+            "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "use-virtual-thread-for-user-authenticator": {
             default: true,
             desc: "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the User Authenticator service, which handles premium player join verification.<br>" +
@@ -360,7 +360,7 @@ const config: ConfigRoot = {
         "optimize-player-movement": {
             default: true,
             desc: "Whether to optimize player movement processing by skipping unnecessary block edge checks and avoiding redundant view distance updates.<br>" +
-            "<br>" +
+                "<br>" +
                 "__⚡Recommended value: `true`__"
         },
         "faster-random-generator": {
