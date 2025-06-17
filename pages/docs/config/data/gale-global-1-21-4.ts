@@ -1,15 +1,15 @@
-export default {
-
-    "_version": {
-        "default": 1
+import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
+const config: ConfigRoot = {
+    _version: {
+        default: 1
     },
 
     "gameplay-mechanics": {
         "enable-book-writing": {
-            "default": true,
-            "desc": "Whether books should be writeable.<br>" +
+            default: true,
+            desc:
+                "Whether books should be writeable.<br>" +
                 "If set to `false`, players with the permission `gale.writebooks` (default: `op`) can still use books." +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -24,16 +24,13 @@ export default {
     },
 
     "log-to-console": {
-        "": {
-            "default": "",
-            "desc": "Whether to log specific text and events to the console and the log files."
-        },
-        "chat": {
+        __desc__: "Whether to log specific text and events to the console and the log files.",
+        chat: {
             "empty-message-warning": {
-                "default": false,
-                "desc": "Whether to log when a player sends a message packet that is empty.<br>" +
+                default: false,
+                desc:
+                    "Whether to log when a player sends a message packet that is empty.<br>" +
                     "(this is harmless, it usually happens when the player's client is outdated)" +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -41,10 +38,10 @@ export default {
                     "</table>"
             },
             "expired-message-warning": {
-                "default": false,
-                "desc": "Whether to log when a player's message packet has expired.<br>" +
+                default: false,
+                desc:
+                    "Whether to log when a player's message packet has expired.<br>" +
                     "(this is harmless, it usually happens when the player's client's chat is a bit out-of-sync)" +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -52,9 +49,9 @@ export default {
                     "</table>"
             },
             "not-secure-marker": {
-                "default": true,
-                "desc": "Whether to add a [NOT SECURE] marker in front of unsigned chat packets." +
-
+                default: true,
+                desc:
+                    "Whether to add a [NOT SECURE] marker in front of unsigned chat packets." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -63,10 +60,10 @@ export default {
             }
         },
         "ignored-advancements": {
-            "default": true,
-            "desc": "Whether to log when a player's data is loaded, and they have advancements that don't exist anymore.<br>" +
+            default: true,
+            desc:
+                "Whether to log when a player's data is loaded, and they have advancements that don't exist anymore.<br>" +
                 "(this is harmless, it usually happens when the server upgraded to the newer Minecraft version)" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -74,8 +71,9 @@ export default {
                 "</table>"
         },
         "invalid-pool-element-error-log-level": {
-            "default": "info",
-            "desc": "The logging level for errors when the server encounters *invalid pool elements* in world data.<br>" +
+            default: "info",
+            desc:
+                "The logging level for errors when the server encounters *invalid pool elements* in world data.<br>" +
                 "<br>" +
                 "*Invalid pool elements* are parts of generated structures (such as Mineshafts) that are corrupted or not updated from old versions properly.<br>" +
                 "<br>" +
@@ -83,20 +81,18 @@ export default {
                 "<br>" +
                 "The error logs are usually pointless: there is nothing you can do about it.<br>" +
                 "<br>" +
-                "The valid values for this setting are: `\"none\"`, `\"info\"`, `\"warn\"` and `\"error\"`." +
-
+                'The valid values for this setting are: `"none"`, `"info"`, `"warn"` and `"error"`.' +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
-                "<tr><td><code>\"none\"</code> 🛈</td><td><code>\"info\"</code></td><td><code>\"error\"</code></td><td><code>\"error\"</code></td></tr>" +
+                '<tr><td><code>"none"</code> 🛈</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>' +
                 "</table>" +
-
-                "<p>🛈 = The default value is `\"info\"` to prevent any errors going unnoticed by default, but the recommended value is `\"none\"` because these errors are usually meaningless and unsolvable anyway.</p>"
+                '<p>🛈 = The default value is `"info"` to prevent any errors going unnoticed by default, but the recommended value is `"none"` because these errors are usually meaningless and unsolvable anyway.</p>'
         },
         "invalid-statistics": {
-            "default": true,
-            "desc": "Whether to log when a player's data is loaded, and they have statistics that don't exist anymore." +
-
+            default: true,
+            desc:
+                "Whether to log when a player's data is loaded, and they have statistics that don't exist anymore." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -104,9 +100,9 @@ export default {
                 "</table>"
         },
         "legacy-material-initialization": {
-            "default": false,
-            "desc": "Whether to log when a very old Bukkit plugin is loaded." +
-
+            default: false,
+            desc:
+                "Whether to log when a very old Bukkit plugin is loaded." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -114,10 +110,10 @@ export default {
                 "</table>"
         },
         "null-id-disconnections": {
-            "default": true,
-            "desc": "Whether to log when a player did not send a valid profile during login.<br>" +
+            default: true,
+            desc:
+                "Whether to log when a player did not send a valid profile during login.<br>" +
                 "(this usually indicates a hacker is trying to flood your server's joining capacity)" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -125,9 +121,9 @@ export default {
                 "</table>"
         },
         "player-login-locations": {
-            "default": true,
-            "desc": "Whether to include a player's coordinates in the join message logged to the console." +
-
+            default: true,
+            desc:
+                "Whether to include a player's coordinates in the join message logged to the console." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -135,10 +131,10 @@ export default {
                 "</table>"
         },
         "plugin-library-loader": {
-            "downloads": {
-                "default": true,
-                "desc": "Whether to log when the plugin library loader starts downloading libraries." +
-
+            downloads: {
+                default: true,
+                desc:
+                    "Whether to log when the plugin library loader starts downloading libraries." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -146,9 +142,9 @@ export default {
                     "</table>"
             },
             "library-loaded": {
-                "default": true,
-                "desc": "Whether to log when the plugin library loader finished loading a library." +
-
+                default: true,
+                desc:
+                    "Whether to log when the plugin library loader finished loading a library." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -156,9 +152,9 @@ export default {
                     "</table>"
             },
             "start-load-libraries-for-plugin": {
-                "default": true,
-                "desc": "Whether to log when the plugin library loader starts loading libraries for a plugin." +
-
+                default: true,
+                desc:
+                    "Whether to log when the plugin library loader starts loading libraries for a plugin." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -167,10 +163,10 @@ export default {
             }
         },
         "set-block-in-far-chunk": {
-            "default": true,
-            "desc": "Whether to log when a player attempts to set a block that is *very* far away.<br>" +
+            default: true,
+            desc:
+                "Whether to log when a player attempts to set a block that is *very* far away.<br>" +
                 "(this usually indicates a hacker is trying to get information about other players' locations, or is using the hack client)" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -178,9 +174,9 @@ export default {
                 "</table>"
         },
         "unrecognized-recipes": {
-            "default": false,
-            "desc": "Whether to log when a player's data is loaded, and they have recipe book recipes that don't exist anymore." +
-
+            default: false,
+            desc:
+                "Whether to log when a player's data is loaded, and they have recipe book recipes that don't exist anymore." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -189,15 +185,15 @@ export default {
         }
     },
 
-    "misc": {
+    misc: {
         "ignore-null-legacy-structure-data": {
-            "default": false,
-            "desc": "Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason." +
+            default: false,
+            desc:
+                "Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason." +
                 "<ul>" +
                 "<li>If `true`, no warning will be given when this happens.</li>" +
                 "<li>If `false`, an exception will be thrown in the console when this happens.</li>" +
                 "</ul>" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -208,18 +204,17 @@ export default {
                 "<tr><td><i>Optimization</i></td><td>-</td></tr>" +
                 "<tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>" +
                 "</table>" +
-
                 "<p>🛈 = The default value is `false` to prevent any errors going unnoticed by default, but the recommended value is `true` because these errors are usually meaningless and unsolvable anyway.</p>"
         },
-        "keepalive": {
+        keepalive: {
             "send-multiple": {
-                "default": true,
-                "desc": "Whether to send more frequent keepalive packets than vanilla." +
+                default: true,
+                desc:
+                    "Whether to send more frequent keepalive packets than vanilla." +
                     "<ul>" +
                     "<li>If `true`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>" +
                     "<li>If `false`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>" +
                     "</ul>" +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -234,10 +229,10 @@ export default {
         },
         "last-tick-time-in-tps-command": {
             "add-oversleep": {
-                "default": false,
-                "desc": "Whether to add the oversleep portion of the last tick's time to the `/tps` command.<br>" +
+                default: false,
+                desc:
+                    "Whether to add the oversleep portion of the last tick's time to the `/tps` command.<br>" +
                     "This only has any effect if `enabled` above is `true`." +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -249,11 +244,11 @@ export default {
                     "<tr><td><i>Paper behavior</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            "enabled": {
-                "default": false,
-                "desc": "Whether to include the time that the last tick took in the `/tps` command.<br>" +
+            enabled: {
+                default: false,
+                desc:
+                    "Whether to include the time that the last tick took in the `/tps` command.<br>" +
                     "The time that the last tick took only represents that one tick, so it is normally not very useful." +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -267,14 +262,14 @@ export default {
             }
         },
         "premium-account-slow-login-timeout": {
-            "default": -1,
-            "desc": "The maximum time that a premium account login can take.<br>" +
+            default: -1,
+            desc:
+                "The maximum time that a premium account login can take.<br>" +
                 "(Unit: tick)" +
                 "<ul>" +
                 "<li>If this time is exceeded, the connection is closed.</li>" +
                 "<li>If a value &leq; `0` is given, it will default to the same as vanilla's behavior, which is currently `600` ticks (30 seconds).</li>" +
                 "</ul>" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -287,13 +282,13 @@ export default {
                 "</table>"
         },
         "verify-chat-order": {
-            "default": true,
-            "desc": "Whether to verify the order of chat messages." +
+            default: true,
+            desc:
+                "Whether to verify the order of chat messages." +
                 "<ul>" +
                 "<li>If set to `true`, and a player sends an out-of-order chat packet for some reason, they will be kicked.</li>" +
                 "<li>If set to `false`, no verification will occur, and players will not be kicked.</li>" +
                 "</ul>" +
-
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -310,8 +305,9 @@ export default {
     "small-optimizations": {
         "reduced-intervals": {
             "increase-time-statistics": {
-                "default": 20,
-                "desc": "The interval at which to increase the time-related statistics such as total playtime, time since the last death, etc.<br>" +
+                default: 20,
+                desc:
+                    "The interval at which to increase the time-related statistics such as total playtime, time since the last death, etc.<br>" +
                     "Changing this value does not change the speed with which statistics increase from vanilla.<br>" +
                     "(Unit: tick)" +
                     "<br>" +
@@ -321,7 +317,6 @@ export default {
                     "<li>If set to `100`, the total playtime in ticks will be increased by 100 every 5 seconds.</li>" +
                     "<li>If a value &leq; `0` is given, it will default to the same as Paper's behavior.</li>" +
                     "</ul>" +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -334,11 +329,11 @@ export default {
                     "</table>"
             },
             "update-entity-line-of-sight": {
-                "default": 4,
-                "desc": "The interval at which to update whether one entity is within another entity's line of sight.<br>" +
+                default: 4,
+                desc:
+                    "The interval at which to update whether one entity is within another entity's line of sight.<br>" +
                     "(Unit: tick)<br>" +
                     "If a value &leq; `0` is given, it will default to the same as Paper's behavior." +
-
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -352,4 +347,6 @@ export default {
             }
         }
     }
-}
+};
+
+export default config;

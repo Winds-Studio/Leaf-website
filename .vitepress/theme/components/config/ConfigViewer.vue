@@ -1,30 +1,27 @@
 <script setup lang="ts">
-
-import {serializeConfig} from "./config";
+import { serializeConfig } from "./config";
 import ConfigNode from "./ConfigNode.vue";
-import {computed, toRefs, provide, ref} from "vue";
-import {Icon} from "@iconify/vue";
+import { computed, toRefs, provide, ref } from "vue";
+import { Icon } from "@iconify/vue";
 
 const props = defineProps<{
-  data: any,
-  version: string
-}>()
+  data: any;
+  version: string;
+}>();
 
-const config = computed(() => serializeConfig(props.data))
-const { version } = toRefs(props)
+const config = computed(() => serializeConfig(props.data));
+const { version } = toRefs(props);
 
-const stateEmitter = ref<'expand' | 'collapse' | ''>('')
-provide('stateEmitter', stateEmitter)
-const emit = (state: 'expand' | 'collapse') => {
-  stateEmitter.value = state
-  setTimeout(() => stateEmitter.value = '', 0)
-}
-
+const stateEmitter = ref<"expand" | "collapse" | "">("");
+provide("stateEmitter", stateEmitter);
+const emit = (state: "expand" | "collapse") => {
+  stateEmitter.value = state;
+  setTimeout(() => (stateEmitter.value = ""), 0);
+};
 </script>
 
 <template>
   <div class="code-block" :key="version">
-
     <div class="buttons">
       <button @click="emit('expand')">
         <Icon icon="lucide:unfold-vertical" />
@@ -36,12 +33,11 @@ const emit = (state: 'expand' | 'collapse') => {
       </button>
     </div>
 
-    <ConfigNode :node="childNode" v-for="childNode in config"  />
+    <ConfigNode :node="childNode" v-for="childNode in config" />
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .code-block {
   font-family: var(--vp-font-family-mono), monospace;
   background-color: var(--vp-c-bg-alt);
@@ -88,5 +84,4 @@ const emit = (state: 'expand' | 'collapse') => {
     }
   }
 }
-
 </style>

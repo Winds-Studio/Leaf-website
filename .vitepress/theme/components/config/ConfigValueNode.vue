@@ -10,19 +10,35 @@ const props = defineProps<{
 
 const opened = ref(false)
 
-const inlineValue = props.node.default.split("\n")[0]
-const otherValue = props.node.default.split("\n").slice(1)
+let inlineValue: string = ''
+let otherValue: string[] = []
+
+if (typeof props.node.default === 'string') {
+  const lines = props.node.default.split('\n')
+  inlineValue = lines[0]
+  otherValue = lines.slice(1)
+} else if (Array.isArray(props.node.default)) {
+  inlineValue = String(props.node.default[0] ?? '')
+  otherValue = props.node.default.slice(1).map(String)
+} else {
+  inlineValue = String(props.node.default)
+  otherValue = []
+}
 
 const stateEmitter = inject<Ref<'expand' | 'collapse' | ''>>('stateEmitter')
-watch(stateEmitter, val => {
-  if (val == 'expand') opened.value = true
-  if (val == 'collapse') opened.value = false
-})
+if (stateEmitter) {
+  watch(stateEmitter, val => {
+    if (val == 'expand') opened.value = true
+    if (val == 'collapse') opened.value = false
+  })
+}
 
 const collapse = inject<Ref<Number>>('collapse')
-watch(collapse, val => {
-  if (val == 1) opened.value = false
-})
+if (collapse) {
+  watch(collapse, val => {
+    if (val == 1) opened.value = false
+  })
+}
 </script>
 
 <template>
@@ -30,7 +46,7 @@ watch(collapse, val => {
 
     <button @click="opened = !opened" class="nameAndValue">
       <span class="nodeName">{{ node.name }}<span class="colon">:</span></span>
-      <span class="nodeInlineValue" :class='{string: isNaN(parseFloat(inlineValue)) }'>{{ inlineValue }}</span>
+      <span class="nodeInlineValue" :class="{string: isNaN(parseFloat(inlineValue)) }">{{ inlineValue }}</span>
       <span class="openedIndicator" v-if="node.description" :class="{ opened }">▶</span>
     </button>
     <div style="margin-left: 1rem;" class="nodeOtherValue">{{ otherValue.join("\n") }}</div>

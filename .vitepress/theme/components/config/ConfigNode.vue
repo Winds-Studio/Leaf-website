@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {ConfigElement, ConfigSection, ConfigValue} from "./config";
+import { ConfigElement, ConfigSection, ConfigValue } from "./config";
 import ConfigValueNode from "./ConfigValueNode.vue";
 import ConfigSectionNode from "./ConfigSectionNode.vue";
 
 const props = defineProps<{
-  node: ConfigElement
-}>()
+  node: ConfigElement;
+}>();
 </script>
 
 <template>
