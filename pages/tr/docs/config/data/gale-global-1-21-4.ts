@@ -1,7 +1,8 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-    _version: {
+
+    "_version": {
         default: 1
     },
 
@@ -26,7 +27,7 @@ const config: ConfigRoot = {
 
     "log-to-console": {
         __desc__: "Whether to log specific text and events to the console and the log files.",
-        chat: {
+        "chat": {
             "empty-message-warning": {
                 default: false,
                 desc:
@@ -132,7 +133,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "plugin-library-loader": {
-            downloads: {
+            "downloads": {
                 default: true,
                 desc:
                     "Whether to log when the plugin library loader starts downloading libraries." +
@@ -186,7 +187,7 @@ const config: ConfigRoot = {
         }
     },
 
-    misc: {
+    "misc": {
         "ignore-null-legacy-structure-data": {
             default: false,
             desc:
@@ -207,7 +208,7 @@ const config: ConfigRoot = {
                 "</table>" +
                 "<p>🛈 = The default value is `false` to prevent any errors going unnoticed by default, but the recommended value is `true` because these errors are usually meaningless and unsolvable anyway.</p>"
         },
-        keepalive: {
+        "keepalive": {
             "send-multiple": {
                 default: true,
                 desc:
@@ -245,7 +246,7 @@ const config: ConfigRoot = {
                     "<tr><td><i>Paper behavior</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether to include the time that the last tick took in the `/tps` command.<br>" +

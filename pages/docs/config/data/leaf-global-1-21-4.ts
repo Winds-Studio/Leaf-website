@@ -1,6 +1,7 @@
 import type { ConfigRoot } from "../../../../.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
+
     "config-version": {
         default: "3.0"
     },
@@ -9,7 +10,7 @@ const config: ConfigRoot = {
         __desc__:
             "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
         "parallel-world-tracking": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether parallel processing different worlds in separate threads, which can improve performance on multi-core system.<br>" +
@@ -31,7 +32,7 @@ const config: ConfigRoot = {
                     "Experimental feature, potentially unsable, and may cause compatibility issue with some plugins." +
                     "</div>"
             },
-            threads: {
+            "threads": {
                 default: 8,
                 desc:
                     "Number of threads dedicated to parallel world ticking.\n\n" +
@@ -57,7 +58,7 @@ const config: ConfigRoot = {
             }
         },
         "async-entity-tracker": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Make entity tracking asynchronous, can improve performance significantly, " +
@@ -84,7 +85,7 @@ const config: ConfigRoot = {
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores (minimum 1).\n\n" +
                     "⚡ **Recommended value:** 1/2 of CPU cores (or adjust based on server load and core count)"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time. Threads with no tasks will be terminated if " +
@@ -101,7 +102,7 @@ const config: ConfigRoot = {
             }
         },
         "async-target-finding": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "**Experimental feature**\n\n Moves the expensive entity target search calculations " +
@@ -112,7 +113,7 @@ const config: ConfigRoot = {
             }
         },
         "async-playerdata-save": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "**Experimental feature**\n\n Make PlayerData saving asynchronous.\n\n" +
@@ -121,7 +122,7 @@ const config: ConfigRoot = {
             }
         },
         "async-pathfinding": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc: "Make mob pathfinding calculations asynchronous.\n\n ⚡ **Recommended value:** `true`"
             },
@@ -132,7 +133,7 @@ const config: ConfigRoot = {
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores (minimum 1).\n\n" +
                     "⚡ **Recommended value:** 1/3 of CPU cores (or adjust based on server load)"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time. Threads with no tasks will be terminated if they remain idle " +
@@ -153,7 +154,7 @@ const config: ConfigRoot = {
             }
         },
         "async-mob-spawning": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether asynchronous mob spawning calculations should be enabled.\n\n" +
@@ -166,7 +167,7 @@ const config: ConfigRoot = {
             }
         },
         "async-locator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether asynchronous structure locating should be enabled.\n\n" +
@@ -177,14 +178,14 @@ const config: ConfigRoot = {
                     "- Eye of Ender stronghold finding\n\n" +
                     "⚡ **Recommended value:** `true`"
             },
-            threads: {
+            "threads": {
                 default: 0,
                 desc:
                     "Maximum number of threads for the async locator to use.\n\n" +
                     "If a value ≤ `0` is given, it automatically uses 1 thread.\n\n" +
                     "⚡ **Recommended value:** `1` or `2` (usually sufficient as these lookups aren't constant)"
             },
-            keepalive: {
+            "keepalive": {
                 default: 60,
                 desc:
                     "Thread keepalive time. Threads with no tasks will be terminated if " +
@@ -192,7 +193,7 @@ const config: ConfigRoot = {
             }
         },
         "async-chunk-send": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Makes chunk packet preparation and sending asynchronous.\n\n" +
@@ -202,7 +203,7 @@ const config: ConfigRoot = {
             }
         },
         "async-block-finding": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Moves expensive block search calculations (e.g., used by some commands or AI behaviors) " +
@@ -213,7 +214,7 @@ const config: ConfigRoot = {
         }
     },
 
-    performance: {
+    "performance": {
         __desc__:
             "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "use-virtual-thread-for-user-authenticator": {
@@ -341,7 +342,7 @@ const config: ConfigRoot = {
             }
         },
         "faster-structure-gen-future-sequencing": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Uses a potentially faster method for sequencing asynchronous tasks " +
@@ -364,7 +365,7 @@ const config: ConfigRoot = {
                 "__⚡Recommended value: `true`__"
         },
         "faster-random-generator": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Use faster random number generator implementations provided by Java 17+.\n\n" +
@@ -417,7 +418,7 @@ const config: ConfigRoot = {
             }
         },
         "enable-cached-minecraft-to-bukkit-entitytype-convert": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether to cache the result of the `CraftEntityType#minecraftToBukkit` conversion call.\n\n" +
@@ -426,8 +427,8 @@ const config: ConfigRoot = {
                     "⚡ **Recommended value:** `true`"
             }
         },
-        dab: {
-            enabled: {
+        "dab": {
+            "enabled": {
                 default: true,
                 desc:
                     "Enables Distant Activation Behavior (DAB) / Dynamic Activation of Brain optimization for entities.\n\n" +
@@ -482,7 +483,7 @@ const config: ConfigRoot = {
         },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "If enabled, Primed TNT entities will not be saved when chunks unload.\n\n" +
@@ -493,7 +494,7 @@ const config: ConfigRoot = {
                 }
             },
             "dont-save-falling-block": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "If enabled, Falling Block entities will not be saved when chunks unload.\n\n" +
@@ -513,9 +514,9 @@ const config: ConfigRoot = {
         }
     },
 
-    fixes: {
+    "fixes": {
         "dont-place-player-if-server-full": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Prevents players from being fully placed into the world if the server is already at its maximum " +
@@ -528,7 +529,7 @@ const config: ConfigRoot = {
 
     "gameplay-mechanisms": {
         "use-spigot-item-merging-mechanism": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether to use Spigot's specific logic for merging item stacks (e.g., dropped items).\n\n" +
@@ -536,7 +537,7 @@ const config: ConfigRoot = {
             }
         },
         "spawner-settings": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Enable the custom mob spawner settings defined below. If `false`, spawners will use default behavior " +
@@ -579,7 +580,7 @@ const config: ConfigRoot = {
             }
         },
         "smooth-teleport": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "**Experimental feature**\n\nAttempts to make dimension changes (e.g., entering Nether/End portals) " +
@@ -590,26 +591,26 @@ const config: ConfigRoot = {
             }
         },
         "only-player-pushable": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc: "If enabled, only players will have collisions."
             }
         },
-        knockback: {
+        "knockback": {
             "snowball-knockback-players": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc: "Allow snowballs thrown by players (or dispensers) to apply knockback to other players upon impact."
                 }
             },
             "egg-knockback-players": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc: "Allow eggs thrown by players (or dispensers) to apply knockback to other players upon impact."
                 }
             },
             "can-player-knockback-zombie": {
-                enabled: {
+                "enabled": {
                     default: true,
                     desc:
                         "Determines if players' attacks apply standard knockback to Zombies " +
@@ -619,7 +620,7 @@ const config: ConfigRoot = {
             }
         },
         "hide-item-component": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "If enabled, specified item component information from player's inventory will be hidden from the client.\n\n" +
@@ -640,7 +641,7 @@ const config: ConfigRoot = {
             }
         },
         "allow-tripwire-dupe": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Whether to allow the vanilla behavior where tripwire hooks can sometimes " +
@@ -648,7 +649,7 @@ const config: ConfigRoot = {
                     "Set to `true` to enable this vanilla mechanic/exploit."
             }
         },
-        player: {
+        "player": {
             "max-use-item-distance": {
                 default: 1.0000001,
                 desc:
@@ -665,7 +666,7 @@ const config: ConfigRoot = {
             }
         },
         "afk-command": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Enables a built-in `/afk` command functionality integrated with " +
@@ -677,10 +678,10 @@ const config: ConfigRoot = {
         }
     },
 
-    network: {
+    "network": {
         "protocol-support": {
             "jade-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for the [Jade / WTHIT](https://modrinth.com/mod/jade) " +
@@ -690,7 +691,7 @@ const config: ConfigRoot = {
                 }
             },
             "appleskin-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for the [AppleSkin](https://modrinth.com/mod/appleskin) client mod's protocol.\n\n" +
@@ -707,7 +708,7 @@ const config: ConfigRoot = {
                     "📏 **Unit:** ticks."
             },
             "asteorbar-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for the [Astéor Bar](https://modrinth.com/mod/asteorbar) client mod's protocol.\n\n" +
@@ -715,7 +716,7 @@ const config: ConfigRoot = {
                 }
             },
             "chatimage-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for client mods that allow embedding images in chat " +
@@ -725,7 +726,7 @@ const config: ConfigRoot = {
                 }
             },
             "xaero-map-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for [Xaero's World Map and Minimap](https://modrinth.com/mod/xaeros-minimap) " +
@@ -743,7 +744,7 @@ const config: ConfigRoot = {
                     "(especially in a multi-server network environment). Generated randomly on first start if not set."
             },
             "syncmatica-protocol": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Enable server-side support for the [Syncmatica](https://modrinth.com/mod/syncmatica) client mod's protocol.\n\n" +
@@ -752,7 +753,7 @@ const config: ConfigRoot = {
                 }
             },
             "syncmatica-quota": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc: "Enable a storage quota limit for schematics uploaded via Syncmatica, if `syncmatica-protocol.enabled` is true."
                 }
@@ -767,7 +768,7 @@ const config: ConfigRoot = {
             }
         },
         OptimizeNonFlushPacketSending: {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "Optimizes the sending of non-flushed packets by using Netty's `lazyExecute` method. " +
@@ -778,7 +779,7 @@ const config: ConfigRoot = {
             }
         },
         "chat-message-signature": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether to enable cryptographic signatures for chat messages (introduced in 1.19.1).\n\n" +
@@ -791,8 +792,8 @@ const config: ConfigRoot = {
         }
     },
 
-    misc: {
-        message: {
+    "misc": {
+        "message": {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
                 desc:
@@ -803,7 +804,7 @@ const config: ConfigRoot = {
                     "📝 **Note:** This message can be overridden by plugins using `UnknownCommandEvent#message`."
             }
         },
-        rebrand: {
+        "rebrand": {
             "server-mod-name": {
                 default: "Leaf",
                 desc:
@@ -815,8 +816,8 @@ const config: ConfigRoot = {
                 desc: "The title displayed in the server's graphical console window (if one is used, i.e., not launched with `--nogui`)."
             }
         },
-        sentry: {
-            dsn: {
+        "sentry": {
+            "dsn": {
                 default: "",
                 desc:
                     "Your Sentry Data Source Name (DSN) for advanced error reporting and aggregation.\n\n" +
@@ -830,7 +831,7 @@ const config: ConfigRoot = {
                     "log message to be captured and sent to Sentry, if Sentry is enabled."
             },
             "only-log-thrown": {
-                enabled: {
+                "enabled": {
                     default: true,
                     desc:
                         "If true, only log messages that include a Java Throwable (an exception or error stack trace) " +
@@ -839,7 +840,7 @@ const config: ConfigRoot = {
             }
         },
         "secure-seed": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "If enabled, world generation features like ore veins and structure placements " +
@@ -854,7 +855,7 @@ const config: ConfigRoot = {
             }
         },
         "remove-vanilla-username-check": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Removes the default vanilla check that restricts player usernames " +
@@ -865,7 +866,7 @@ const config: ConfigRoot = {
             }
         },
         "remove-spigot-check-bungee-config": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Disables Spigot's check for `settings.bungeecord: true` in `spigot.yml` " +
@@ -880,7 +881,7 @@ const config: ConfigRoot = {
             }
         },
         "remove-change-non-editable-sign-warning": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     'Suppresses the console warning message: "Player [...] tried to change non-editable sign".\n\n' +
@@ -910,7 +911,7 @@ const config: ConfigRoot = {
                     "CPU time for compression. Lower levels are faster. Level 1 is a fast, light compression setting."
             },
             "throw-on-unknown-extension-detected": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "If true, the server will detect and throw an error (potentially stopping) if it " +
@@ -925,7 +926,7 @@ const config: ConfigRoot = {
             }
         },
         "lag-compensation": {
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "**Experimental feature**\n\n Enables lag compensation features designed to " +
@@ -936,7 +937,7 @@ const config: ConfigRoot = {
                     "⚡ **Recommended value:** `true`"
             },
             "enable-for-water": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Apply lag compensation logic specifically to player interactions involving water " +
@@ -945,7 +946,7 @@ const config: ConfigRoot = {
                 }
             },
             "enable-for-lava": {
-                enabled: {
+                "enabled": {
                     default: false,
                     desc:
                         "Apply lag compensation logic specifically to player interactions " +
@@ -955,7 +956,7 @@ const config: ConfigRoot = {
             }
         },
         "including-5s-in-get-tps": {
-            enabled: {
+            "enabled": {
                 default: true,
                 desc:
                     "Whether the server's reported TPS (Ticks Per Second) values should include the " +
@@ -970,12 +971,12 @@ const config: ConfigRoot = {
             }
         },
         "connection-message": {
-            join: {
-                enabled: {
+            "join": {
+                "enabled": {
                     default: true,
                     desc: "Whether to use the custom join message defined below instead of the default Minecraft join message."
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc:
                         "The message broadcast globally when a player joins the server.\n\n" +
@@ -984,12 +985,12 @@ const config: ConfigRoot = {
                         "Placeholders: `%player_name%`, `%player_displayname%`."
                 }
             },
-            quit: {
-                enabled: {
+            "quit": {
+                "enabled": {
                     default: true,
                     desc: "Whether to use the custom quit message defined below instead of the default Minecraft quit message."
                 },
-                message: {
+                "message": {
                     default: "default",
                     desc:
                         "The message broadcast globally when a player leaves the server.\n\n" +
@@ -999,9 +1000,9 @@ const config: ConfigRoot = {
                 }
             }
         },
-        cache: {
+        "cache": {
             "cache-player-profile-result": {
-                enabled: {
+                "enabled": {
                     default: true,
                     desc:
                         "Cache the player's profile information (UUID, username, skin/cape textures) " +

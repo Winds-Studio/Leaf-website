@@ -1,7 +1,8 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-    _version: {
+
+    "_version": {
         default: 1
     },
 
@@ -26,7 +27,7 @@ const config: ConfigRoot = {
 
     "log-to-console": {
         __desc__: "是否将特定文本和事件记录到控制台和日志中.",
-        chat: {
+        "chat": {
             "empty-message-warning": {
                 default: false,
                 desc:
@@ -132,7 +133,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "plugin-library-loader": {
-            downloads: {
+            "downloads": {
                 default: true,
                 desc:
                     "当插件的库加载器开始下载依赖库文件时." +
@@ -186,7 +187,7 @@ const config: ConfigRoot = {
         }
     },
 
-    misc: {
+    "misc": {
         "ignore-null-legacy-structure-data": {
             default: false,
             desc:
@@ -207,7 +208,7 @@ const config: ConfigRoot = {
                 "</table>" +
                 "<p>🛈 = 默认值为 `false`, 以防止任何潜在错误被默认忽略, 但推荐值为 `true`, 因为这些错误通常没有意义且无法解决</p>"
         },
-        keepalive: {
+        "keepalive": {
             "send-multiple": {
                 default: true,
                 desc:
@@ -245,7 +246,7 @@ const config: ConfigRoot = {
                     "<tr><td><i>Paper 行为</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            enabled: {
+            "enabled": {
                 default: false,
                 desc:
                     "是否在 `/tps` 命令中显示上一 tick 的耗时.<br>" +
