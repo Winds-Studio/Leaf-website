@@ -9,7 +9,7 @@ const config: ConfigRoot = {
         "arrow-movement-resets-despawn-counter": {
             default: false,
             desc:
-                "当箭开始下落时 (例如卡住箭的方块被破坏), 是否重置箭的[自然清除计数器](https://zh.minecraft.wiki/w/%E7%94%9F%E6%88%90#%E6%B8%85%E9%99%A4)." +
+                "当箭开始下落时 (例如卡住箭的方块被破坏), 是否重置箭的 [自然清除计数器](https://zh.minecraft.wiki/w/%E7%94%9F%E6%88%90#%E6%B8%85%E9%99%A4)." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +
