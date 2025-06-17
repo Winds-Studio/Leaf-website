@@ -1,4 +1,4 @@
-import type { ConfigRoot } from "../../../../.vitepress/theme/components/config/types";
+import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
 
@@ -543,7 +543,7 @@ const config: ConfigRoot = {
                     "Enable the custom mob spawner settings defined below. If `false`, spawners will use default behavior " +
                     "(likely closer to vanilla or Paper)."
             },
-            checks: {
+            "checks": {
                 "light-level-check": {
                     default: false,
                     desc: "Check if there is the required light level to spawn the mob. Vanilla spawners ignore light levels."
@@ -767,7 +767,7 @@ const config: ConfigRoot = {
                     "📏 **Unit:** bytes."
             }
         },
-        OptimizeNonFlushPacketSending: {
+        "OptimizeNonFlushPacketSending": {
             "enabled": {
                 default: false,
                 desc:

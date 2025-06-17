@@ -1,4 +1,4 @@
-import type { ConfigRoot } from "../../../../.vitepress/theme/components/config/types";
+import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
 

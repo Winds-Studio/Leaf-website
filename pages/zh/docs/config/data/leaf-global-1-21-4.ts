@@ -512,7 +512,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: ""
             },
-            checks: {
+            "checks": {
                 "light-level-check": {
                     default: false,
                     desc: ""
@@ -680,7 +680,7 @@ const config: ConfigRoot = {
                 desc: "上传至服务器的共享投影的最大文件大小.<br>" + "(以 字节 为单位, 默认的 40,000,000 字节 ≈ 38 MB)"
             }
         },
-        OptimizeNonFlushPacketSending: {
+        "OptimizeNonFlushPacketSending": {
             default: false,
             desc: ""
         },
