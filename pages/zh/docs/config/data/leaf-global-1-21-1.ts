@@ -6,7 +6,7 @@ const config: ConfigRoot = {
         default: "3.0"
     },
 
-    async: {
+    "async": {
         __desc__: "本节包含异步相关的特性, 旨在通过异步执行任务来减少主线程 (Server Thread) 的负载.",
         "async-entity-tracker": {
             "enabled": {

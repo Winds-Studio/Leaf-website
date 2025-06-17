@@ -6,7 +6,7 @@ const config: ConfigRoot = {
         default: "3.0"
     },
 
-    async: {
+    "async": {
         __desc__:
             "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
         "parallel-world-tracking": {
