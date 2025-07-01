@@ -8,6 +8,8 @@ import {useTranslation} from "../useTranslation";
 import {Icon} from "@iconify/vue";
 import LatestBuild from "./LatestBuild.vue";
 
+const SHOW_BUILD_LIMIT = 8;
+
 const props = defineProps<{
   version: string
 }>()
@@ -28,7 +30,7 @@ const shownBuilds = computed(() => {
   if (showAll.value) {
     return builds.value
   } else {
-    return builds.value.slice(0, 8)
+    return builds.value.slice(0, SHOW_BUILD_LIMIT)
   }
 })
 
@@ -38,10 +40,11 @@ const shownBuilds = computed(() => {
 
   <div class="builds-list" v-if="builds">
 
-    <LatestBuild :build="builds[0]" :version />
+    <LatestBuild :build="builds[0]" :version v-if="builds[0]" />
+    <UiMessage type="error" :message="t('error.builds')" v-else />
 
     <BuildCard :build :version v-for="build in shownBuilds" />
-    <button @click="showAll = !showAll" class="show-all">
+    <button @click="showAll = !showAll" class="show-all" v-if="builds.length > SHOW_BUILD_LIMIT">
       <Icon :icon="'lucide:' + (showAll ? 'arrow-up-from-line' : 'arrow-down-from-line')" />
       {{ showAll ? t("actions.showLess") : t("actions.showMore") }}
     </button>
