@@ -13,7 +13,7 @@ Ja, Leaf enthält alle Purpur patches. Allerdings sind manche Optionen von Purpu
 Normalerweise alle 1 bis 3 Wochen, je nachdem wie wichtig die Updates sind.
 
 ## ❓ · Wie kann ich meinen Server optimieren?
-Die [Anleitung von YouHaveTrouble](https://github.com/YouHaveTrouble/minecraft-optimization) und [Anleitung von Paper-chan](https://paper-chan.moe/paper-optimization/) bietet gute Informationen über die Optimierung.
+Die [Anleitung von YouHaveTrouble](https://github.com/YouHaveTrouble/minecraft-optimization) und die [Anleitung von Paper-chan](https://paper-chan.moe/paper-optimization/) bieten gute Informationen über die Optimierung.
 
 ## ❓ · Gibt es bekannte Inkompatibilitäten?
 * [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) (Inkompatibel ab Leaf 1.21.1).
