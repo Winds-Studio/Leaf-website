@@ -25,7 +25,7 @@ export const versionStatusMap: {[name: string]: VersionStatus} = {
     },
 
     stable: {
-        versions: ["1.21.7", "1.21.4"],
+        versions: ["1.21.8", "1.21.4"],
         cssClass: "status-stable",
         icon: "lucide:check-circle"
     },
@@ -38,7 +38,7 @@ export const versionStatusMap: {[name: string]: VersionStatus} = {
 
     dead: {
         versions: [
-            "1.21.6", "1.21.5", "1.21.3", "1.21",
+            "1.21.7", "1.21.6", "1.21.5", "1.21.3", "1.21",
             "1.20.6", "1.20.2", "1.20.1", "1.20",
             "1.19.4", "1.19.3", "1.19.2", "1.19.1", "1.19", "1.18.2"
         ],
