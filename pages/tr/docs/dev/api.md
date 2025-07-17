@@ -4,7 +4,7 @@
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven("https://maven.nostal.ink/repository/maven-snapshots/")
+  maven("https://maven.leafmc.one/snapshots/")
 }
 
 dependencies {
@@ -21,7 +21,7 @@ java {
   <repositories>
     <repository>
       <id>leafmc</id>
-      <url>https://maven.nostal.ink/repository/maven-snapshots/</url>
+      <url>https://maven.leafmc.one/snapshots/</url>
     </repository>
   </repositories>
 
@@ -44,8 +44,7 @@ Leaf tarafından sağlanan dev bundle'ı kullanabilmek için, yukarıdaki öğre
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven("https://maven.nostal.ink/repository/maven-snapshots/")
-  maven("https://repo.bsdevelopment.org/releases/")
+  maven("https://maven.leafmc.one/snapshots/")
 }
 
 dependencies {

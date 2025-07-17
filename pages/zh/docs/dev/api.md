@@ -4,7 +4,7 @@
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven("https://maven.nostal.ink/repository/maven-snapshots/")
+  maven("https://maven.leafmc.one/snapshots/")
 }
 
 dependencies {
@@ -21,7 +21,7 @@ java {
   <repositories>
     <repository>
       <id>leafmc</id>
-      <url>https://maven.nostal.ink/repository/maven-snapshots/</url>
+      <url>https://maven.leafmc.one/snapshots/</url>
     </repository>
   </repositories>
 
@@ -45,8 +45,7 @@ Dev bundle 是由 paperweight 提供的工具, 允许你在插件开发过程中
 ::: code-group
 ```kotlin [build.gradle.kts]
 repositories {
-  maven("https://maven.nostal.ink/repository/maven-snapshots/")
-  maven("https://repo.bsdevelopment.org/releases/")
+  maven("https://maven.leafmc.one/snapshots/")
 }
 
 dependencies {
