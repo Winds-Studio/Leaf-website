@@ -111,15 +111,31 @@ const allMembers = computed(() => {
 
 // Fetch main repo contributors
 fetch("https://api.github.com/repos/Winds-Studio/Leaf/contributors")
-    .then(resp => resp.json())
-    .then(data => members.value = data.map(transform))
-    .finally(() => loaded.value = true);
+  .then(resp => resp.json())
+  .then(data => {
+    // TODO: find a solution to avoid rate limit
+    if (Array.isArray(data)) {
+      members.value = data.map(transform)
+    } else {
+      console.warn(`Unexpected response: ${JSON.stringify(data)}`);
+      members.value = [];
+    }
+  })
+  .finally(() => loaded.value = true);
 
 // Fetch website repo contributors
 fetch("https://api.github.com/repos/Winds-Studio/Leaf-website/contributors")
-    .then(resp => resp.json())
-    .then(data => websiteMembers.value = data.map(transformWebsite))
-    .finally(() => websiteLoaded.value = true);
+  .then(resp => resp.json())
+  .then(data => {
+    // TODO: find a solution to avoid rate limit
+    if (Array.isArray(data)) {
+      websiteMembers.value = data.map(transform)
+    } else {
+      console.warn(`Unexpected response: ${JSON.stringify(data)}`);
+      websiteMembers.value = [];
+    }
+  })
+  .finally(() => websiteLoaded.value = true);
 </script>
 
 <template>
