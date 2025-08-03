@@ -12,7 +12,7 @@ hero:
       link: /zh/download
     - theme: brand-button
       text: 文档
-      link: /zh/docs/
+      link: /zh/docs/getting-started
     # - theme: alt
     #   text: 加入 QQ 群
     #   link: https://TODO

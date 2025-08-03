@@ -27,5 +27,5 @@
 任何人都可以通过我们的 [Open Collective](https://opencollective.com/Winds-Studio) 或者 [Dreeam 的 爱发电](https://afdian.com/a/Dreeam) (支持 支付宝 / 微信支付) 来赞助, 支持 Leaf.
 
 :::info 提示
-是否需要为此 *常见问题与解答* 添加更多内容? [点此反馈](index.md#📫-联系方式)!
+是否需要为此 *常见问题与解答* 添加更多内容? [点此反馈](getting-started.md#📫-联系方式)!
 :::

@@ -30,7 +30,7 @@ export default defineConfig({
         nav: [
           { text: "Home", link: "/" },
           { text: "Download", link: "/download" },
-          { text: "Docs", link: "/docs/", activeMatch: "/docs/" },
+          { text: "Docs", link: "/docs/getting-started", activeMatch: "/docs/getting-started" },
         ],
       },
     },
@@ -42,7 +42,7 @@ export default defineConfig({
         nav: [
           { text: "Ana Sayfa", link: "/tr/" },
           { text: "İndir", link: "/tr/download" },
-          { text: "Dokümantasyon", link: "/tr/docs/", activeMatch: "/tr/docs/" },
+          { text: "Dokümantasyon", link: "/tr/docs/getting-started", activeMatch: "/tr/docs/getting-started" },
         ],
       },
     },
@@ -54,7 +54,7 @@ export default defineConfig({
         nav: [
           { text: "Startseite", link: "/de/" },
           { text: "Herunterladen", link: "/de/download" },
-          { text: "Dokumentation", link: "/de/docs/", activeMatch: "/de/docs/" },
+          { text: "Dokumentation", link: "/de/docs/getting-started", activeMatch: "/de/docs/getting-started" },
         ],
       },
     },
@@ -66,7 +66,7 @@ export default defineConfig({
         nav: [
           { text: "Início", link: "/pt/" },
           { text: "Baixar", link: "/pt/download" },
-          { text: "Documentação", link: "/pt/docs/", activeMatch: "/pt/docs/" },
+          { text: "Documentação", link: "/pt/docs/getting-started", activeMatch: "/pt/docs/getting-started" },
         ],
       },
     },
@@ -78,7 +78,7 @@ export default defineConfig({
         nav: [
           { text: "Главная", link: "/ru/" },
           { text: "Скачать", link: "/ru/download" },
-          { text: "Документация", link: "/ru/docs/", activeMatch: "/ru/docs/" },
+          { text: "Документация", link: "/ru/docs/getting-started", activeMatch: "/ru/docs/getting-started" },
         ],
       },
     },
@@ -90,7 +90,7 @@ export default defineConfig({
         nav: [
           { text: "首页", link: "/zh/" },
           { text: "下载", link: "/zh/download" },
-          { text: "文档", link: "/zh/docs/", activeMatch: "/zh/docs/" },
+          { text: "文档", link: "/zh/docs/getting-started", activeMatch: "/zh/docs/getting-started" },
         ],
       },
     },
@@ -103,7 +103,7 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Download", link: "/download" },
-      { text: "Docs", link: "/docs/", activeMatch: "/docs/" },
+      { text: "Docs", link: "/docs/getting-started", activeMatch: "/docs/getting-started" },
     ],
 
     sidebar,

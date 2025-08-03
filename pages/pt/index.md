@@ -12,7 +12,7 @@ hero:
       link: /pt/download
     - theme: brand-button
       text: Documentação
-      link: /pt/docs/
+      link: /pt/docs/getting-started
     - theme: alt
       text: Entre no Discord
       link: https://discord.gg/gfgAwdSEuM

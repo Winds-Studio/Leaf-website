@@ -12,7 +12,7 @@ hero:
       link: /ru/download
     - theme: brand-button
       text: Документация
-      link: /ru/docs/
+      link: /ru/docs/getting-started
     - theme: alt
       text: Discord сервер
       link: https://discord.gg/gfgAwdSEuM

@@ -28,5 +28,5 @@ Farklı eşleme sistemleridir. Mojmap, Mojang eşlemesini kullanırken reobf, Sp
 [Open Collective](https://opencollective.com/Winds-Studio) veya [Dreeam'ın AFDIAN](https://afdian.com/a/Dreeam) (PayPal / Stripe destekler) üzerinden bağış yapabilirsiniz.
 
 :::info Not
-Bu *SSS*'ye eklenmesi gereken bir şey mi var? [Bize ulaşın](index.md#📫-contact)!
+Bu *SSS*'ye eklenmesi gereken bir şey mi var? [Bize ulaşın](getting-started.md#📫-contact)!
 :::

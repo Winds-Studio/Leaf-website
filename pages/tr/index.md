@@ -12,7 +12,7 @@ hero:
       link: /tr/download
     - theme: brand-button
       text: Dokümanlar
-      link: /tr/docs/
+      link: /tr/docs/getting-started
     - theme: alt
       text: Discord'a Katıl
       link: https://discord.gg/gfgAwdSEuM

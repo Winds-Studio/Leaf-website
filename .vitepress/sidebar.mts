@@ -7,7 +7,7 @@ export default {
         {
             text: "Introduction",
             items: [
-                { text: "Getting started", link: "/docs" },
+                { text: "Getting started", link: "/docs/getting-started" },
                 { text: "Frequently Asked Questions", link: "/docs/faq" },
                 { text: "Useful Websites", link: "/docs/useful-sites" }
             ]
@@ -50,7 +50,7 @@ export default {
         {
             text: "Giriş",
             items: [
-                { text: "Başlarken", link: "/tr/docs" },
+                { text: "Başlarken", link: "/tr/docs/getting-started" },
                 { text: "Sıkça Sorulan Sorular", link: "/tr/docs/faq" },
                 { text: "Faydalı Web Siteleri", link: "/tr/docs/useful-sites" }
             ]
@@ -93,7 +93,7 @@ export default {
         {
             text: "Einführung",
             items: [
-                { text: "Erste Schritte", link: "/de/docs" },
+                { text: "Erste Schritte", link: "/de/docs/getting-started" },
                 { text: "Häufig gestellte Fragen", link: "/de/docs/faq" },
                 { text: "Nützliche Webseiten", link: "/de/docs/useful-sites" }
             ]
@@ -134,7 +134,7 @@ export default {
         {
             text: "介绍",
             items: [
-                { text: "开始", link: "/zh/docs" },
+                { text: "开始", link: "/zh/docs/getting-started" },
                 { text: "常见问题与解答", link: "/zh/docs/faq" },
                 { text: "有用的网站", link: "/zh/docs/useful-sites" }
             ]

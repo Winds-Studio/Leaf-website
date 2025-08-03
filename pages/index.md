@@ -13,7 +13,7 @@ hero:
       link: /download
     - theme: brand-button
       text: Docs
-      link: /docs/
+      link: /docs/getting-started
     - theme: alt
       text: Join Discord
       link: https://discord.gg/gfgAwdSEuM
