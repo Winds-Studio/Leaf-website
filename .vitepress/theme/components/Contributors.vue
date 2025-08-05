@@ -60,6 +60,8 @@ const rewrites = {
   "HaHaWTH": { name: "Creeam (HaHaWTH)", title: titleCoreTeam },
   "Taiyou06": { title: titleCoreTeam },
   "hayanesuru": { title: titleCoreTeam },
+  "MartijnMuijsers": { title: titleCoreTeam },
+  //TODO: "Pascalpex: special supporter"
   "envizar": {
     title: titleWebDev,
     links: [{ icon: "telegram", link: 'https://t.me/envizar' }]
