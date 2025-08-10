@@ -10,4 +10,4 @@ This page presents performance comparison data between Leaf and Paper server imp
 
 ### Performance Test Setup
 
-The benchmark was conducted using the Chunky plugin to generate 2048 chunks in a circular pattern. Both servers were run on the same hardware with identical JVM settings to ensure a fair comparison.
+The benchmark was conducted using the Chunky plugin to generate radius of 2048 (in block) chunks in a circular pattern. Both servers were run on the same hardware with identical JVM settings to ensure a fair comparison.
