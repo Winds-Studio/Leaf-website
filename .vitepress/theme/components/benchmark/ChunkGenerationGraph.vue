@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue';
 // Test environment details
 const environment = {
   seed: '4791817952625876078',
-  size: '2048 chunks, circular, using Chunky',
+  size: '2048 block radius, circular, using Chunky',
   cpu: 'i7-10750H',
   jvm: 'GraalVM 21',
   memory: '8GB',
