@@ -104,40 +104,36 @@ const transformWebsite = ({ login, avatar_url, html_url }: any) => {
 // Combine both contributor lists, filtering out nulls and duplicates
 const allMembers = computed(() => {
   if (!loaded.value || !websiteLoaded.value) return members.value;
-  
-  const mainContributors = new Set(members.value.map(m => m.name));
-  const filteredWebsiteMembers = websiteMembers.value.filter(m => m !== null && !mainContributors.has(m.name));
-  
-  return [...members.value, ...filteredWebsiteMembers];
+
+  const names = new Set();
+  return [...members.value, ...websiteMembers.value]
+    .filter(m => m && !names.has(m.name) && names.add(m.name));
 });
-
-// Fetch main repo contributors
-fetch("https://api.github.com/repos/Winds-Studio/Leaf/contributors")
-  .then(resp => resp.json())
-  .then(data => {
-    // TODO: find a solution to avoid rate limit
+  
+// Helper to fetch contributors from a repo
+async function fetchContributors(repo, targetRef, loadedFlag) {
+  try {
+    const resp = await fetch(`https://api.github.com/repos/${repo}/contributors`);
+    const data = await resp.json();
     if (Array.isArray(data)) {
-      members.value = data.map(transform)
+      targetRef.value = data.filter(m => m.type == "User").map(transform);
     } else {
-      console.warn(`Unexpected response: ${JSON.stringify(data)}`);
-      members.value = [];
+      console.warn(`Unexpected response from ${repo}:`, data);
+      targetRef.value = [];
     }
-  })
-  .finally(() => loaded.value = true);
+  } catch (err) {
+    console.error(`Error fetching contributors from ${repo}:`, err);
+    targetRef.value = [];
+  } finally {
+    loadedFlag.value = true;
+  }
+}
 
-// Fetch website repo contributors
-fetch("https://api.github.com/repos/Winds-Studio/Leaf-website/contributors")
-  .then(resp => resp.json())
-  .then(data => {
-    // TODO: find a solution to avoid rate limit
-    if (Array.isArray(data)) {
-      websiteMembers.value = data.map(transform)
-    } else {
-      console.warn(`Unexpected response: ${JSON.stringify(data)}`);
-      websiteMembers.value = [];
-    }
-  })
-  .finally(() => websiteLoaded.value = true);
+// Fetch both repos in parallel
+Promise.all([
+  fetchContributors("Winds-Studio/Leaf", members, loaded),
+  fetchContributors("Winds-Studio/Leaf-website", websiteMembers, websiteLoaded)
+]);
 </script>
 
 <template>
