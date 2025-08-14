@@ -26,7 +26,7 @@ You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to ch
 
 Specifies the network I/O model to be used for data transmission. Requires `use-native-transport` to be enabled in server.properties.
 
-If the specified transport type is unavailable, it will fall back to an available model.
+If the specified transport type is unavailable, it will fallback to an available model.
 
 Available options:
 * Linux: `io_uring`, `epoll`, `nio`
