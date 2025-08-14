@@ -22,6 +22,18 @@ Erfordert eine CPU, die den FMA Instruktionssatz unterstützt. Ansonsten wird di
 
 Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeben, ob ein Prozessor den nötigen Instruktionssatz unterstützt.
 
+## -DLeaf.native-transport-type
+* Standard: `epoll`
+
+Legt das Netzwerk-I/O-Modell für die Datenübertragung fest. Muss in der Datei server.properties unter `use-native-transport` aktiviert sein.
+
+Falls der angegebene Übertragungstyp nicht verfügbar ist, wird automatisch auf ein verfügbares Modell umgeschaltet.
+
+Verfügbare Optionen:
+* Linux: `io_uring`, `epoll`, `nio`
+* MacOS: `kqueue`, `nio`
+* Windows: nicht verfügbar
+
 ## Veraltete Flags
 
 ### -DLeaf.nearestEntitySensorBucketCount

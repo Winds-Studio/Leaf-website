@@ -21,6 +21,18 @@ FMA komut setini destekleyen bir CPU gerektirir, aksi takdirde daha yavaş olaca
 
 Makinenizin FMA komut setini destekleyip desteklemediğini kontrol etmek için [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) gibi araçlar kullanabilirsiniz.
 
+## -DLeaf.native-transport-type
+* varsayılan: `epoll`
+
+Veri iletimi için kullanılacak ağ I/O modelini belirtir. server.properties dosyasında `use-native-transport` seçeneğinin etkinleştirilmiş olması gerekir.
+
+Belirtilen aktarım türü mevcut değilse, kullanılabilir bir modele otomatik olarak geçilir.
+
+Mevcut seçenekler:
+* Linux: `io_uring`, `epoll`, `nio`
+* MacOS: `kqueue`, `nio`
+* Windows: mevcut değil
+
 ## Kullanımdan Kaldırılmış Bayraklar
 
 ## -DLeaf.nearestEntitySensorBucketCount

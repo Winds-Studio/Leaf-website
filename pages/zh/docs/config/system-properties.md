@@ -21,6 +21,18 @@
 
 你可以使用 [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) 等工具检查你的机器是否支持 FMA 指令集.
 
+## -DLeaf.native-transport-type
+* 默认值: `epoll`
+
+设置用于网络传输的网络 I/O 模型, 需开启 server.properties 内的 `use-native-transport`.
+
+如果指定的传输类型不可用, 将会切换至可用的模型.
+
+可选项:
+* Linux: `io_uring`, `epoll`, `nio`
+* MacOS: `kqueue`, `nio`
+* Windows: 不可用
+
 ## 已弃用参数
 
 ### -DLeaf.nearestEntitySensorBucketCount
