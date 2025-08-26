@@ -54,6 +54,14 @@ const titleWebDev = (<LangString>{
   ru: "Дизайнер и Веб-разработчик",
   zh: "设计师兼网页开发"
 })[props.lang];
+const titleSpecial = (<LangString>{
+  en: "Special Supporter",
+  tr: "Özel Destekçi",
+  de: "Besonderer Unterstützer",
+  pt: "Apoiante Especial",
+  ru: "Особый поддерживающий",
+  zh: "特别支持者"
+})[props.lang];
 
 const rewrites = {
   "Dreeam-qwq": { title: titleCreator },
@@ -61,7 +69,7 @@ const rewrites = {
   "Taiyou06": { title: titleCoreTeam },
   "hayanesuru": { title: titleCoreTeam },
   "MartijnMuijsers": { title: titleCoreTeam },
-  //TODO: "Pascalpex: special supporter"
+  "Pascalpex": { title: titleSpecial },
   "envizar": {
     title: titleWebDev,
     links: [{ icon: "telegram", link: 'https://t.me/envizar' }]
