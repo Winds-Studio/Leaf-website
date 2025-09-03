@@ -59,7 +59,7 @@ function loadVersions() {
   isLoadingVersions.value = true;
   versionError.value = false;
   
-  fetch('https://api.github.com/repos/Winds-Studio/Leaf/branches')
+  fetch('https://api.github.com/repos/Winds-Studio/Leaf/branches?per_page=100') // Fetch branches up to 100, default is 30 
     .then(resp => {
       if (!resp.ok) throw new Error(`GitHub API request failed with status ${resp.status}`);
       return resp.json();
