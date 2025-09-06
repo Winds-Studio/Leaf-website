@@ -66,7 +66,7 @@ const titleSpecial = (<LangString>{
 const rewrites = {
   "Dreeam-qwq": { title: titleCreator },
   "HaHaWTH": { name: "Creeam (HaHaWTH)", title: titleCoreTeam },
-  "Taiyou06": { title: titleCoreTeam },
+  //"Taiyou06": { title: titleCoreTeam },
   "hayanesuru": { title: titleCoreTeam },
   "MartijnMuijsers": { title: titleCoreTeam },
   "Pascalpex": { title: titleSpecial },
