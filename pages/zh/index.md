@@ -5,7 +5,7 @@ hero:
   name: "Leaf"
   text: "高性能 Minecraft 服务端核心"
   image: /logo.svg
-  tagline: 一个 Paper 分支, 专注于寻找性能优化, Vanilla, 稳定之间的平衡, 为大型网络, 密集和高承载量场景设计
+  tagline: 一个 Paper 分支, 专注于寻找性能优化, 原版特性, 稳定之间的平衡
   actions:
     - theme: brand-button
       text: 下载

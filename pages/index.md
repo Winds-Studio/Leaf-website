@@ -6,7 +6,7 @@ hero:
   name: "Leaf"
   text: "High performance Minecraft server software"
   image: logo.svg
-  tagline: A Paper fork aim to find balance between performance, vanilla and stability
+  tagline: A Paper fork, focused on finding balance between performance, vanilla behavior and stability
   actions:
     - theme: brand-button
       text: Download
