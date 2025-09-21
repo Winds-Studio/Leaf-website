@@ -158,7 +158,7 @@ export default {
         {
             text: "教程",
             items: [
-                //{ text: "配置 Sentry", link: "/zh/docs/how-to/setup-sentry" } // TODO
+                { text: "配置 Sentry", link: "/zh/docs/how-to/setup-sentry" }
             ]
         },
         {
