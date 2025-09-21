@@ -5,7 +5,7 @@
     "useTabs": false,
     "semi": true,
     "singleQuote": false,
-    "quoteProps": "as-needed",
+    "quoteProps": "preserve",
     "jsxSingleQuote": false,
     "trailingComma": "none",
     "bracketSpacing": true,
