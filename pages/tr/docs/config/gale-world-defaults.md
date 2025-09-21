@@ -10,6 +10,7 @@ const data = {
 </script>
 
 # Gale Dünya Varsayılan Yapılandırma
+
 Aşağıdaki YAML yapılandırması, Gale'in dünya varsayılan yapılandırma dosyasının (`config/gale-world-defaults.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
 
 Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.

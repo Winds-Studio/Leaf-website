@@ -11,5 +11,6 @@ and stability, designed for large-scale networks in high-load environments.
 This site includes guides about configuring Leaf, development, and more.
 
 ## 📫 Contact
+
 - **Discord:** [`https://discord.com/invite/gfgAwdSEuM`](https://discord.com/invite/gfgAwdSEuM)
 - **Community QQ Group:** `619278377`

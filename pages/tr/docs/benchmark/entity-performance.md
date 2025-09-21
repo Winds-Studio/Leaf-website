@@ -27,8 +27,8 @@ leaf-global.yml dosyasında minimal asenkron seçenekler etkinleştirildi:
 
 ```yaml
 async:
-  async-entity-tracker:
-    enabled: true
-  async-pathfinding:
-    enabled: true
+    async-entity-tracker:
+        enabled: true
+    async-pathfinding:
+        enabled: true
 ```

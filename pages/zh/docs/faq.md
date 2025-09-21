@@ -22,9 +22,9 @@
 
 ## ❓ · Leaf 有任何已知的不兼容问题吗？
 
-* [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055)（不兼容低于 1.21.1 的 Leaf 版本）。
-* 如果你的服务器装有 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 插件，并开启了异步实体跟踪，请打开 异步实体跟踪的兼容模式 `compat-mode`, 或关闭异步实体跟踪！
-* 发现有不兼容的插件？[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
+- [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055)（不兼容低于 1.21.1 的 Leaf 版本）。
+- 如果你的服务器装有 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 插件，并开启了异步实体跟踪，请打开 异步实体跟踪的兼容模式 `compat-mode`, 或关闭异步实体跟踪！
+- 发现有不兼容的插件？[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
 
 ## ❓ · Mojmap 和 Reobf 有什么区别？我该使用哪个？
 
@@ -35,5 +35,5 @@
 任何人都可以通过我们的 [Open Collective](https://opencollective.com/Winds-Studio) 或者 [Dreeam 的 爱发电](https://afdian.com/a/Dreeam)（支持 支付宝 / 微信支付）来赞助，支持 Leaf。
 
 :::info 提示
-是否需要为此 *常见问题与解答* 添加更多内容？[点此反馈](getting-started.md#📫-联系方式)！
+是否需要为此 _常见问题与解答_ 添加更多内容？[点此反馈](getting-started.md#📫-联系方式)！
 :::

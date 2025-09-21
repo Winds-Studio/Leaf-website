@@ -1,7 +1,9 @@
 # Leaf API
 
 ## API
+
 ::: code-group
+
 ```kotlin [build.gradle.kts]
 repositories {
   maven("https://maven.leafmc.one/snapshots/")
@@ -35,13 +37,16 @@ java {
   </dependencies>
 </project>
 ```
+
 :::
 
 ## Dev Bundle
+
 Dev bundle, paperweight tarafından sağlanan bir araçtır ve eklenti geliştirme sırasında Minecraft NMS koduna kolayca erişmenizi sağlar. Kurulumu ve daha fazla detay için [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/) adresine bakın.
 
 Leaf tarafından sağlanan dev bundle'ı kullanabilmek için, yukarıdaki öğreticide belirtilen bağımlılıkta aşağıdaki değişiklikleri yapmanız gerekir.
 ::: code-group
+
 ```kotlin [build.gradle.kts]
 repositories {
   maven("https://maven.leafmc.one/snapshots/")
@@ -52,4 +57,5 @@ dependencies {
     paperweight.devBundle("cn.dreeam.leaf", "1.21.8-R0.1-SNAPSHOT") // [!code ++]
 }
 ```
+
 :::
