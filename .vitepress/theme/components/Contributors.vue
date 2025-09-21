@@ -125,7 +125,7 @@ fetch("https://api.github.com/repos/Winds-Studio/Leaf/contributors")
   .then(data => {
     // TODO: find a solution to avoid rate limit
     if (Array.isArray(data)) {
-      members.value = data.map(transform)
+      members.value = data.filter(m => m.type == "User").map(transform)
     } else {
       console.warn(`Unexpected response: ${JSON.stringify(data)}`);
       members.value = [];
@@ -139,7 +139,7 @@ fetch("https://api.github.com/repos/Winds-Studio/Leaf-website/contributors")
   .then(data => {
     // TODO: find a solution to avoid rate limit
     if (Array.isArray(data)) {
-      websiteMembers.value = data.map(transform)
+      websiteMembers.value = data.filter(m => m.type == "User").map(transform)
     } else {
       console.warn(`Unexpected response: ${JSON.stringify(data)}`);
       websiteMembers.value = [];
