@@ -1,7 +1,9 @@
 # 其他配置
-因为某些原因, Leaf 在上游提供的配置文件里添加或更改了部分配置项.
+
+因为某些原因，Leaf 在上游提供的配置文件里添加或更改了部分配置项。
 
 ## Paper 默认世界配置
+
 ```yaml title="paper-world-defaults.yml"
 entities:
   spawning:
@@ -18,6 +20,7 @@ entities:
 ```
 
 ## Purpur 配置
+
 ```yaml title="purpur.yml"
 settings:
   messages:
@@ -34,16 +37,18 @@ settings:
 ## 移动的 Pufferfish 和 Purpur 配置项
 
 ### Pufferfish
+
 |     | Before | After |
-|-----|--------|-------|
+| --- | ------ | ----- |
 |     |        |       |
 |     |        |       |
 |     |        |       |
 |     |        |       |
 
 ### Purpur
+
 |     | Before | After |
-|-----|--------|-------|
+| --- | ------ | ----- |
 |     |        |       |
 |     |        |       |
 |     |        |       |

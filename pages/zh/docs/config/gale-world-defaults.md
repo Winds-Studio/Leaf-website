@@ -9,6 +9,7 @@ const data = {
 </script>
 
 # Gale 默认世界配置
+
 以下 YAML 配置展示了 Gale 默认世界配置 (`config/gale-world-defaults.yml`) 的结构及其默认的值
 
 点击配置项后面的箭头按钮以显示其描述
