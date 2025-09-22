@@ -22,7 +22,7 @@ hero:
       link: https://github.com/Winds-Studio/Leaf
 features:
   - title: <span class='emoji'>⚡</span> Powerful and optimized
-    details: Stable and performant; Leaf is designed to scale
+    details: Stable and performant, Leaf is designed to scale
   - title: <span class='emoji'>🧬</span> Useful and customizable
     details: Contains many useful features and fixes; all of which can be customized in-config
   - title: <span class='emoji'>📦</span> Latest dependencies
