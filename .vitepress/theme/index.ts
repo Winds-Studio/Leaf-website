@@ -77,6 +77,27 @@ const LanguageSwitcher = {
   },
 };
 
+// Gradient raibow animation
+let homePageStyle: HTMLStyleElement | undefined
+
+function updateHomePageStyle(value: boolean) {
+  if (value) {
+    if (homePageStyle) return
+
+    homePageStyle = document.createElement('style')
+    homePageStyle.innerHTML = `
+    :root {
+      animation: rainbow 12s linear infinite;
+    }`
+    document.body.appendChild(homePageStyle)
+  } else {
+    if (!homePageStyle) return
+
+    homePageStyle.remove()
+    homePageStyle = undefined
+  }
+}
+
 export default {
   extends: DefaultTheme,
   Layout() {
@@ -86,12 +107,21 @@ export default {
       "nav-bar-content-before": () => h(LanguageSwitcher),
     });
   },
-  enhanceApp({ app }) {
+  enhanceApp({ app, router }) {
     // Register custom language switcher component
     app.component("LanguageSwitcher", LanguageSwitcher);
 
     // Register the Vue components
     app.component("entity-performance-graph", EntityPerformanceGraph);
     app.component("chunk-generation-graph", ChunkGenerationGraph);
+
+    // Gradient raibow animation
+    if (typeof window !== 'undefined') {
+      watch(
+        () => router.route.data.relativePath,
+        () => updateHomePageStyle(location.pathname === '/'),
+        { immediate: true },
+      )
+    }
   },
 } satisfies Theme;
