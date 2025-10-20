@@ -3,8 +3,7 @@ import { h } from "vue";
 import type { Theme } from "vitepress";
 import { useData, useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
-import "./style.scss";
-import "./custom-blocks.scss";
+import "./style/index.css";
 import { watch } from "vue";
 
 // Import the Vue components
