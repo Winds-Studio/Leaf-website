@@ -1,0 +1,46 @@
+/* .vitepress\theme\style\blur.css */
+
+:root {
+
+    /* Navbar */
+    .VPNavBar:not(.has-sidebar):not(.home.top) {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(10px);
+    }
+
+    /* DocSearch button */
+    .DocSearch-Button {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Feature cards */
+    /* Dreeam Note: We don't need this for now */
+    /* .VPFeature {
+        border: 1px solid transparent;
+        box-shadow: 0 10px 30px 0 rgb(0 0 0 / 15%);
+        background-color: transparent;
+    } */
+
+    /* Left sidebar in docs */
+    .curtain {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(10px);
+    }
+
+    @media (min-width: 960px) {
+
+        /* Navbar in docs */
+        .VPNavBar:not(.home.top) .content-body {
+            background-color: rgba(255, 255, 255, 0);
+            backdrop-filter: blur(10px);
+        }
+    }
+
+    /* Navbar on mobile  */
+    .VPLocalNav {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(10px);
+    }
+
+}
