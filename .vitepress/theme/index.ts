@@ -1,10 +1,9 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from "vue";
 import type { Theme } from "vitepress";
 import { useData, useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
 import "./style/index.css";
-import { watch } from "vue";
+import { h, watch } from "vue";
 
 // Import the Vue components
 import EntityPerformanceGraph from "./components/benchmark/EntityPerformanceGraph.vue";
