@@ -7,7 +7,7 @@ Bazı bölgelerde varsayılan Maven Central deposunun indirme hızı oldukça ya
 
 SpigotLibraryLoader veya PaperLibraryLoader için belirli bir yansı deposunu ayarlamak için bu JVM bayrağını kullanın.
 
-Örneğin, aşağıdaki parametreyi kullanarak Aliyun deposunu Maven deposu aynası olarak tanımlayabilirsiniz. Bu, Çin anakarasındaki sunucular için daha hızlı kütüphane indirme hızı sağlar.
+Örneğin, Aliyun'un deposunu yansı depo olarak tanımlamak için aşağıdaki bayrağı kullanın:
 ```
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
