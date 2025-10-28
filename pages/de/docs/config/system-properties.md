@@ -7,11 +7,10 @@ Die Downloadgeschwindigkeit des standardmäßigen Maven Central Repositories ist
 
 Mithilfe dieses JVM Arguemnts kann ein anderes Mirror Repository for SpigotLibraryLoader oder PaperLibraryLoader gesetzt werden.
 
-Beispiel:
+Verwenden Sie zum Beispiel die folgende Option, um das Aliyun-Repository als Maven-Spiegel festzulegen. Dadurch können Server auf dem chinesischen Festland Bibliotheken schneller herunterladen.
 ```
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
-um Aliyun's Repository zu nutzen.
 
 ## -DLeaf.enableFMA
 * Standard: `false`
