@@ -1,17 +1,16 @@
-# Leaf JVM Flgas
+# Leaf JVM Flags
 
 ## -DLeaf.library-download-repo
 * Standard: Nicht gesetzt
 
 Die Downloadgeschwindigkeit des standardmäßigen Maven Central Repositories ist in manchen Regionen sehr langsam.
 
-Mithilfe dieses JVM Arguemnts kann ein anderes Mirror Repository for SpigotLibraryLoader oder PaperLibraryLoader gesetzt werden.
+Mithilfe dieses JVM Arguments kann ein anderes Mirror Repository for SpigotLibraryLoader oder PaperLibraryLoader gesetzt werden.
 
-Beispiel:
+Verwende zum Beispiel das folgende Argument, um das Aliyun-Repository als Maven-Mirror festzulegen. Dadurch können Server auf dem chinesischen Festland Bibliotheken schneller herunterladen.
 ```
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
-um Aliyun's Repository zu nutzen.
 
 ## -DLeaf.enableFMA
 * Standard: `false`

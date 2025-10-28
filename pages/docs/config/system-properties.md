@@ -7,7 +7,7 @@ Download speed of default Maven Central repo is extremely slow in some regions.
 
 Use this JVM flag to set a specific mirror repository for SpigotLibraryLoader or PaperLibraryLoader.
 
-For example, use the flag below to define Aliyun's repo as the mirror repo.
+For example, use the flag below to define Aliyun's repository as the maven repository mirror, which can provide faster library download speed for servers in Chinese mainland.
 ```
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```

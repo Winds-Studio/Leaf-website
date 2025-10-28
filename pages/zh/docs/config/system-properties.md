@@ -7,7 +7,7 @@
 
 使用此 JVM 参数可以为 SpigotLibraryLoader 或 PaperLibraryLoader 设置特定的镜像仓库,
 
-例如你可以使用如下参数, 将阿里云仓库设置为镜像仓库.
+例如，使用下面的参数将阿里云仓库设置为 Maven 仓库镜像，这样可以为中国大陆地区的服务器提供更快的依赖下载速度
 ```
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
