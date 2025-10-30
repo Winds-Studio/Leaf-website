@@ -21,7 +21,7 @@ Die [Anleitung von YouHaveTrouble](https://github.com/YouHaveTrouble/minecraft-o
 * Weitere Inkompatibilitäten sollten [hier](https://github.com/Winds-Studio/Leaf/issues/new/choose) gemeldet werden!
 
 ## ❓ · Was ist der Unterschied zwischen mojmap und reobf? Was soll ich nutzen?
-Es handelt sich um unterschiedliche Mappings. Mojmap verwendet die Mojang-Mappings, während reobf die Spigot-Mappings nutzt. Wenn zwei JAR-Dateien zur Verfügung stehen – eine mit dem Suffix mojang und eine mit reobf – sollte in der Regel die mit mojmap verwendet werden.
+Es handelt sich um unterschiedliche Mappings. Mojmap verwendet die Mojang-Mappings, während reobf die Spigot-Mappings nutzt. Wenn zwei JAR-Dateien zur Verfügung stehen – eine mit dem Suffix mojmap und eine mit reobf – sollte in der Regel die mit mojmap verwendet werden.
 
 ## ❓ · Wie kann ich das Projekt unterstützen?
 Jeder kann über unser [Open Collective](https://opencollective.com/Winds-Studio) oder [Dreeam's AFDIAN](https://afdian.com/a/Dreeam) (unterstützt PayPal / Stripe) spenden.

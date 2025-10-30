@@ -20,8 +20,8 @@
 * 如果你的服务器装有 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 插件, 并开启了异步实体跟踪, 请打开 异步实体跟踪的兼容模式 `compat-mode`, 或关闭异步实体跟踪!
 * 发现有不兼容的插件? [请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
 
-## ❓ · Mojmap 和 Reobf 有什么区别？我该使用哪个?
-它们是基于不同的映射方式. Mojmap 使用 Mojang 映射, 而 Reobf 使用 Spigot 的 reobf 映射. 如提供了带有两种后缀结尾的核心, 请使用 Mojmap 结尾的核心.
+## ❓ · mojmap 和 reobf 有什么区别？我该使用哪个?
+它们是基于不同的映射方式. mojmap 使用 Mojang 映射, 而 reobf 使用 Spigot 的 reobf 映射. 如提供了带有两种后缀结尾的核心, 请使用 mojmap 结尾的核心.
 
 ## ❓ · 我该如何支持该项目?
 任何人都可以通过我们的 [Open Collective](https://opencollective.com/Winds-Studio) 或者 [Dreeam 的 爱发电](https://afdian.com/a/Dreeam) (支持 支付宝 / 微信支付) 来赞助, 支持 Leaf.
