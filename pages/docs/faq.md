@@ -22,7 +22,7 @@ You can refer to [YouHaveTrouble's guide](https://github.com/YouHaveTrouble/mine
 Found an incompatible plugin? [Report it here](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
 
 ## ❓ · What's the difference between mojmap and reobf? Which should I use?
-They use different mappings. Mojmap uses mojang mapping, and reobf uses spigot mapping. If two jar files provided, one ends with mojang,
+They use different mappings. Mojmap uses mojang mapping, and reobf uses spigot mapping. If two jar files provided, one ends with mojmap,
 and another is reobf, you should use the one ends with mojmap.
 
 ## ❓ · How can I support the project?
