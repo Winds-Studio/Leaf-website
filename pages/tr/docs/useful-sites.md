@@ -5,4 +5,3 @@
 - [Paper Dokümanları](https://docs.papermc.io/paper)
 - [Purpur Dokümanları](https://purpurmc.org/docs/purpur/)
 - [Paper-chan optimizasyon rehberi](https://paper-chan.moe/paper-optimization/)
-- [NitWikit](https://nitwikit.8aka.org/) (Çince)

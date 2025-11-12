@@ -5,4 +5,3 @@
 - [Paper 文档](https://docs.papermc.io/paper)
 - [Purpur 文档](https://purpurmc.org/docs/purpur/)
 - [Paper-chan 优化指南](https://paper-chan.moe/paper-optimization/)
-- [笨蛋文档](https://nitwikit.8aka.org/)
