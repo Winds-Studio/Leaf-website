@@ -4,3 +4,4 @@ Hier ist eine Liste mit hilfreichen Webseiten. Es wird empfohlen, diese zusammen
 ## Liste der Webseiten
 - [Paper Dokumentation](https://docs.papermc.io/paper)
 - [Purpur Dokumentation](https://purpurmc.org/docs/purpur/)
+- [Paper-chan Optimierungsanleitung](https://paper-chan.moe/paper-optimization/)
