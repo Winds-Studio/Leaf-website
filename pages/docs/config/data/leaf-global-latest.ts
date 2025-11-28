@@ -776,34 +776,46 @@ const config: ConfigRoot = {
         },
         "remove-spigot-check-bungee-config": {
             default: false,
-            desc: "[TODO]"
+            desc: "Whether player can enter backend server via proxy, without the backend server to enable bungeecord mode in `spigot.yml`.<br>" +
+                '<div class="warning custom-block">' +
+                '<p class="custom-block-title custom-block-title-default">Warning</p>' +
+                "This option is not reommended to touch, unless you are sure what you are doing.<br>" +
+                "And it may be removed in the future." +
+                "</div>"
         },
         "secure-seed": {
             "enabled": {
                 default: false,
-                desc: "[TODO]If enabled, world generation features like ore veins and structure placements " +
-                    "will use a secure, high-entropy 1024-bit seed derived internally from the main world " +
-                    "seed, instead of directly using the 64-bit world seed.\n\n" +
-                    "This makes predicting ore/structure locations based on the world seed (seed cracking) " +
-                    "computationally infeasible.\n\n" +
-                    "⚠️ **WARNING: This fundamentally changes ore and structure positions compared to vanilla " +
-                    "generation with the same world seed! Use only for new worlds or where vanilla seed parity " +
-                    "is not a requirement. Applies only to newly generated chunks in existing worlds.**\n\n" +
-                    "⚡ **Recommended value:** `true` (on new worlds where seed cracking is a concern), `false` for vanilla behavior/seed parity."
+                desc: "Whether to use secure seed.<br>" +
+                    "<br>" +
+                    "The secure seed enables that all ores and structures are generated with a 1024-bit seed using high security cryptographic hash function instead of using 64-bit seed like in vanilla. This protects structure seeds with computational secrecy and makes the seed cracking nearly impossible to happen.<br>" +
+                    '<div class="warning custom-block">' +
+                    '<p class="custom-block-title custom-block-title-default">Warning</p>' +
+                    "Secure seed fundamentally changes positions of ore and structure compared to vanilla.<br>" +
+                    "It only applys to new generated chunks. Thus you must prepare a new world if you want to enable this option.<br>" +
+                    "Once this option is enabled, you can not disable it to return the vanilla generation, unless you pre-generate the entire world, or new generated chunks will have terrain mismatch." +
+                    "</div>"
             }
         },
         "sentry": {
+            __desc__: "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
+                "<br>" +
+                "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
+                "<br>" +
+                "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
             "dsn": {
                 default: "''",
-                desc: ""
+                desc: "The DSN key of your Sentry.<br>" +
+                    "If an empty value `''` is given, the Sentry will be disabled."
             },
             "log-level": {
                 default: "WARN",
-                desc: ""
+                desc: "Logs with a level higher than or equal to this level will be recorded.<br>" +
+                    'The valid values for this option are: `"WARN"`, `"ERROR"` and `"FATAL"`.'
             },
             "only-log-thrown": {
                 default: true,
-                desc: ""
+                desc: "Whether the Sentry only records the log with Java's `Throwable`."
             }
         },
         "rebrand": {
@@ -819,9 +831,9 @@ const config: ConfigRoot = {
         "message": {
             "unknown-command": {
                 default: "default",
-                desc: "[TODO] Unknown command message, will send to player if they execute an unknown command.<br>" +
-                    "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
-                    "If set message to `default` or leave the default value, the vanilla unknown command message will be used.<br>" +
+                desc: "Unknown command message, will send to player if they execute an unknown command.<br>" +
+                    "The message needs to use [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) format.<br>" +
+                    "If set message to `default`, the vanilla unknown command message will be used.<br>" +
                     "<br>" +
                     "Available placeholders:" +
                     "<ul>" +
