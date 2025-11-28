@@ -9,8 +9,7 @@ const config: ConfigRoot = {
     "gameplay-mechanics": {
         "enable-book-writing": {
             default: true,
-            desc:
-                "是否允许书本可写入.<br>" +
+            desc: "是否允许书本可写入.<br>" +
                 "如果设为 `false`, 拥有权限 `gale.writebooks` 的玩家 (默认: `op`) 仍然可以写入并使用书本." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
@@ -30,8 +29,7 @@ const config: ConfigRoot = {
         "chat": {
             "empty-message-warning": {
                 default: false,
-                desc:
-                    "当玩家发送一个空的消息数据包时.<br>" +
+                desc: "当玩家发送一个空的消息数据包时.<br>" +
                     "(这无害, 通常是由于玩家的客户端版本过旧)" +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
@@ -41,8 +39,7 @@ const config: ConfigRoot = {
             },
             "expired-message-warning": {
                 default: false,
-                desc:
-                    "当玩家的消息数据包已失效时.<br>" +
+                desc: "当玩家的消息数据包已失效时.<br>" +
                     "(这无害, 通常是由于玩家客户端的聊天有些不同步)" +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
@@ -52,8 +49,7 @@ const config: ConfigRoot = {
             },
             "not-secure-marker": {
                 default: true,
-                desc:
-                    "是否在未签名的聊天消息前添加 [NOT SECURE] 标记." +
+                desc: "是否在未签名的聊天消息前添加 [NOT SECURE] 标记." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -63,8 +59,7 @@ const config: ConfigRoot = {
         },
         "ignored-advancements": {
             default: true,
-            desc:
-                "当加载玩家数据时, 发现他们拥有已经不存在的进度内容.<br>" +
+            desc: "当加载玩家数据时, 发现他们拥有已经不存在的进度内容.<br>" +
                 "(这无害, 通常是通常发生在服务器升级 MC 版本后)" +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
@@ -74,8 +69,7 @@ const config: ConfigRoot = {
         },
         "invalid-pool-element-error-log-level": {
             default: "info",
-            desc:
-                "当服务器在世界数据中遇到 *无效的池元素* 时的错误日志等级.<br>" +
+            desc: "当服务器在世界数据中遇到 *无效的池元素* 时的错误日志等级.<br>" +
                 "<br>" +
                 "*无效的池元素* 是生成的结构 (如矿井) 中由于版本更新不完全或损坏的部分.<br>" +
                 "<br>" +
@@ -93,8 +87,7 @@ const config: ConfigRoot = {
         },
         "invalid-statistics": {
             default: true,
-            desc:
-                "当加载玩家数据时, 发现他们拥有已经不存在的统计数据." +
+            desc: "当加载玩家数据时, 发现他们拥有已经不存在的统计数据." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -103,8 +96,7 @@ const config: ConfigRoot = {
         },
         "legacy-material-initialization": {
             default: false,
-            desc:
-                "当加载一个非常旧的 Bukkit 插件时." +
+            desc: "当加载一个非常旧的 Bukkit 插件时." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -113,8 +105,7 @@ const config: ConfigRoot = {
         },
         "null-id-disconnections": {
             default: true,
-            desc:
-                "当玩家在进服时没有发送有效的用户信息.<br>" +
+            desc: "当玩家在进服时没有发送有效的用户信息.<br>" +
                 "(通常表明有黑客试图通过占用服务器性能进行攻击)" +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
@@ -124,8 +115,7 @@ const config: ConfigRoot = {
         },
         "player-login-locations": {
             default: true,
-            desc:
-                "是否在记录到控制台的玩家进服消息中包含玩家的坐标." +
+            desc: "是否在记录到控制台的玩家进服消息中包含玩家的坐标." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -135,8 +125,7 @@ const config: ConfigRoot = {
         "plugin-library-loader": {
             "downloads": {
                 default: true,
-                desc:
-                    "当插件的库加载器开始下载依赖库文件时." +
+                desc: "当插件的库加载器开始下载依赖库文件时." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -145,8 +134,7 @@ const config: ConfigRoot = {
             },
             "library-loaded": {
                 default: true,
-                desc:
-                    "当插件库的加载器完成依赖库文件加载时." +
+                desc: "当插件库的加载器完成依赖库文件加载时." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -155,8 +143,7 @@ const config: ConfigRoot = {
             },
             "start-load-libraries-for-plugin": {
                 default: true,
-                desc:
-                    "当插件的库加载器开始为插件加载依赖库文件时." +
+                desc: "当插件的库加载器开始为插件加载依赖库文件时." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -166,8 +153,7 @@ const config: ConfigRoot = {
         },
         "set-block-in-far-chunk": {
             default: true,
-            desc:
-                "当玩家尝试与一个 *非常* 远的方块交互时.<br>" +
+            desc: "当玩家尝试与一个 *非常* 远的方块交互时.<br>" +
                 "(通常表明有黑客试图获取其他玩家位置信息, 或正在使用黑客端)" +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
@@ -177,8 +163,7 @@ const config: ConfigRoot = {
         },
         "unrecognized-recipes": {
             default: false,
-            desc:
-                "当加载玩家数据时, 发现他们拥有已经不存在的配方书配方数据." +
+            desc: "当加载玩家数据时, 发现他们拥有已经不存在的配方书配方数据." +
                 "<table>" +
                 "<tr><td></td><td><b>默认值</b></td><td></td></tr>" +
                 "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -190,8 +175,7 @@ const config: ConfigRoot = {
     "misc": {
         "ignore-null-legacy-structure-data": {
             default: false,
-            desc:
-                "如果任何旧版结构数据的 NBT tag 解析器因某些原因返回 null, 是否忽略这些数据." +
+            desc: "如果任何旧版结构数据的 NBT tag 解析器因某些原因返回 null, 是否忽略这些数据." +
                 "<ul>" +
                 "<li>如果设为 `true`, 当这种情况发生时不会显示警告.</li>" +
                 "<li>如果设为 `false`, 当这种情况发生时会在控制台中抛出异常.</li>" +
@@ -211,8 +195,7 @@ const config: ConfigRoot = {
         "keepalive": {
             "send-multiple": {
                 default: true,
-                desc:
-                    "是否发送比原版更频繁的 keepalive 数据包." +
+                desc: "是否发送比原版更频繁的 keepalive 数据包." +
                     "<ul>" +
                     "<li>如果设为 `true`, 每秒向每个客户端发送一个 keepalive 数据包, 如果他们在 30 秒内响应至少一个数据包, 则不会被踢出.</li>" +
                     "<li>如果设为 `false`, 每 15 秒向每个客户端发送一个 keepalive 数据包, 如果他们未响应, 则会被踢出.</li>" +
@@ -232,8 +215,7 @@ const config: ConfigRoot = {
         "last-tick-time-in-tps-command": {
             "add-oversleep": {
                 default: false,
-                desc:
-                    "是否将上一 tick 的超时部分添加到 `/tps` 命令中.<br>" +
+                desc: "是否将上一 tick 的超时部分添加到 `/tps` 命令中.<br>" +
                     "仅当上方的 `enabled` 为 `true` 时, 此配置项才会生效." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
@@ -248,8 +230,7 @@ const config: ConfigRoot = {
             },
             "enabled": {
                 default: false,
-                desc:
-                    "是否在 `/tps` 命令中显示上一 tick 的耗时.<br>" +
+                desc: "是否在 `/tps` 命令中显示上一 tick 的耗时.<br>" +
                     "上一 tick 的耗时仅代表那一个 tick 的时间, 因此通常不太有用." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
@@ -265,8 +246,7 @@ const config: ConfigRoot = {
         },
         "premium-account-slow-login-timeout": {
             default: -1,
-            desc:
-                "进服时, 允许正版账户成功进入的最长时间.<br>" +
+            desc: "进服时, 允许正版账户成功进入的最长时间.<br>" +
                 "(以 tick 为单位)" +
                 "<ul>" +
                 "<li>如果超出此时间, 玩家的连接将被关闭.</li>" +
@@ -285,8 +265,7 @@ const config: ConfigRoot = {
         },
         "verify-chat-order": {
             default: true,
-            desc:
-                "是否验证聊天消息的顺序." +
+            desc: "是否验证聊天消息的顺序." +
                 "<ul>" +
                 "<li>如果设为 `true`, 并且玩家由于某些原因发送了乱序的聊天数据包, 他们将被踢出.</li>" +
                 "<li>如果设为 `false`, 将不会进行验证, 玩家也不会被踢出.</li>" +
@@ -308,8 +287,7 @@ const config: ConfigRoot = {
         "reduced-intervals": {
             "increase-time-statistics": {
                 default: 20,
-                desc:
-                    "与时间相关的统计信息增加的频率 (总游戏时间, 自上次死亡以来的时间等等的时间增长频率).<br>" +
+                desc: "与时间相关的统计信息增加的频率 (总游戏时间, 自上次死亡以来的时间等等的时间增长频率).<br>" +
                     "(以 tick 为单位)<br>" +
                     "修改此值不会改变统计数据自原版以来的增长速度.<br>" +
                     "<br>" +
@@ -332,8 +310,7 @@ const config: ConfigRoot = {
             },
             "update-entity-line-of-sight": {
                 default: 4,
-                desc:
-                    "更新一个实体是否在另一个实体视线内的频率.<br>" +
+                desc: "更新一个实体是否在另一个实体视线内的频率.<br>" +
                     "(以 tick 为单位)<br>" +
                     "如果设为 &leq; `0`, 将默认与 Paper 一致." +
                     "<table>" +
