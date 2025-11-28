@@ -216,7 +216,7 @@ const config: ConfigRoot = {
             "add-oversleep": {
                 default: false,
                 desc: "是否将上一 tick 的超时部分添加到 `/tps` 命令中.<br>" +
-                    "仅当上方的 `enabled` 为 `true` 时, 此配置项才会生效." +
+                    "仅当下方的 `enabled` 为 `true` 时, 此配置项才会生效." +
                     "<table>" +
                     "<tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>" +

@@ -216,7 +216,7 @@ const config: ConfigRoot = {
             "add-oversleep": {
                 default: false,
                 desc: "Whether to add the oversleep portion of the last tick's time to the `/tps` command.<br>" +
-                    "This only has any effect if `enabled` above is `true`." +
+                    "This only has any effect if `enabled` below is `true`." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
