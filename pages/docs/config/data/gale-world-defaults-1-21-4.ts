@@ -9,8 +9,7 @@ const config: ConfigRoot = {
     "gameplay-mechanics": {
         "arrow-movement-resets-despawn-counter": {
             default: false,
-            desc:
-                "Whether the [despawn counter](https://minecraft.wiki/w/Mob_spawning#Despawning) of arrows will restart when the arrow starts falling (e.g. when the block it is stuck in gets broken)." +
+            desc: "Whether the [despawn counter](https://minecraft.wiki/w/Mob_spawning#Despawning) of arrows will restart when the arrow starts falling (e.g. when the block it is stuck in gets broken)." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -24,8 +23,7 @@ const config: ConfigRoot = {
         },
         "entities-can-random-stroll-into-non-ticking-chunks": {
             default: true,
-            desc:
-                "Whether entities that are wandering around randomly can also pathfind into non-ticking chunks." +
+            desc: "Whether entities that are wandering around randomly can also pathfind into non-ticking chunks." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -39,8 +37,7 @@ const config: ConfigRoot = {
         },
         "entity-wake-up-duration-ratio-standard-deviation": {
             default: 0.2,
-            desc:
-                "If a value > `0` is given, waking up inactive entities happens spread over time, instead of many entities at once.<br>" +
+            desc: "If a value > `0` is given, waking up inactive entities happens spread over time, instead of many entities at once.<br>" +
                 "This makes entities feel and behave more natural.<br>" +
                 "<br>" +
                 "This setting is the [coefficient of variation](https://en.wikipedia.org/wiki/Coefficient_of_variation), or `σ / μ` (the ratio of the standard deviation to the mean) of the inactivity duration.<br>" +
@@ -62,8 +59,7 @@ const config: ConfigRoot = {
         "fixes": {
             "broadcast-crit-animations-as-the-entity-being-critted": {
                 default: false,
-                desc:
-                    "Whether to broadcast crit animations as the entity being critted.<br>" +
+                desc: "Whether to broadcast crit animations as the entity being critted.<br>" +
                     "<br>" +
                     "This does not affect where the crit animation is shown: it is always shown on the entity being critted.<br>" +
                     "However, normally (if set to `false`), the crit animation is broadcast as the player doing the crit, meaning anyone who cannot see the player cannot see the crit.<br>" +
@@ -82,8 +78,7 @@ const config: ConfigRoot = {
             },
             "mc-121706": {
                 default: false,
-                desc:
-                    "Whether to fix [MC-121706](https://bugs.mojang.com/browse/MC-121706)." +
+                desc: "Whether to fix [MC-121706](https://bugs.mojang.com/browse/MC-121706)." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -92,8 +87,7 @@ const config: ConfigRoot = {
             },
             "mc-238526": {
                 default: false,
-                desc:
-                    "Whether to fix [MC-238526](https://bugs.mojang.com/browse/MC-238526)." +
+                desc: "Whether to fix [MC-238526](https://bugs.mojang.com/browse/MC-238526)." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td></tr>" +
                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -103,8 +97,7 @@ const config: ConfigRoot = {
         },
         "hide-flames-on-entities-with-fire-resistance": {
             default: false,
-            desc:
-                "Whether to hide visual flames for entities that are on fire, but also have the Fire Resistance potion effect." +
+            desc: "Whether to hide visual flames for entities that are on fire, but also have the Fire Resistance potion effect." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -118,8 +111,7 @@ const config: ConfigRoot = {
         },
         "try-respawn-ender-dragon-after-end-crystal-place": {
             default: true,
-            desc:
-                "Whether able to attempt to respawn the ender dragon after an end crystal has been placed in one of the right positions on the fountain." +
+            desc: "Whether able to attempt to respawn the ender dragon after an end crystal has been placed in one of the right positions on the fountain." +
                 "<table>" +
                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -138,8 +130,7 @@ const config: ConfigRoot = {
             __desc__: "Whether to load chunks at certain times.",
             "to-activate-climbing-entities": {
                 default: false,
-                desc:
-                    "Whether to load chunks to activate climbing entities.<br>" +
+                desc: "Whether to load chunks to activate climbing entities.<br>" +
                     "<br>" +
                     'In Paper, entities, like zombies, that are "climbing" (e.g. going down a ladder) get priority to be activated.<br>' +
                     "To check whether an entity is climbing, the block it is in must be checked.<br>" +
@@ -159,8 +150,7 @@ const config: ConfigRoot = {
             },
             "to-spawn-phantoms": {
                 default: false,
-                desc:
-                    "Whether to load chunks to spawn phantoms.<br>" +
+                desc: "Whether to load chunks to spawn phantoms.<br>" +
                     "If set to `false`, when the server attempts to spawn a phantom in an unloaded chunk, nothing happens." +
                     "<table>" +
                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
@@ -179,8 +169,7 @@ const config: ConfigRoot = {
             "per-projectile": {
                 "max": {
                     default: 10,
-                    desc:
-                        "The maximum number of chunks that can be synchronously loaded by a projectile throughout its lifetime.<br>" +
+                    desc: "The maximum number of chunks that can be synchronously loaded by a projectile throughout its lifetime.<br>" +
                         "If a value < `0` is given, this setting is disabled: i.e. the number of chunks loaded by a projectile will be unlimited." +
                         "<table>" +
                         "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
@@ -195,8 +184,7 @@ const config: ConfigRoot = {
                 },
                 "remove-from-world-after-reach-limit": {
                     default: false,
-                    desc:
-                        "Whether to remove projectiles that cross the `max` threshold (described above) from the world entirely.<br>" +
+                    desc: "Whether to remove projectiles that cross the `max` threshold (described above) from the world entirely.<br>" +
                         "<br>" +
                         "Removing projectiles from the world is risky, because this will also affect projectiles such as tridents that are valuable to players, so it is not recommended to set this value to `true` unless you accept that risk." +
                         "<table>" +
@@ -212,8 +200,7 @@ const config: ConfigRoot = {
                 },
                 "reset-movement-after-reach-limit": {
                     default: false,
-                    desc:
-                        "Whether to set the planar velocity of projectiles that cross the `max` threshold (described above) to `0`, so that they stop attempting to cross chunk boundaries.<br>" +
+                    desc: "Whether to set the planar velocity of projectiles that cross the `max` threshold (described above) to `0`, so that they stop attempting to cross chunk boundaries.<br>" +
                         "<br>" +
                         "This has no effect if `remove-from-world-after-reach-limit` (described above) is `true`." +
                         "<table>" +
@@ -230,8 +217,7 @@ const config: ConfigRoot = {
             },
             "per-tick": {
                 default: 10,
-                desc:
-                    "The maximum number of chunks that can be synchronously loaded by all projectiles in one world in a tick.<br>" +
+                desc: "The maximum number of chunks that can be synchronously loaded by all projectiles in one world in a tick.<br>" +
                     "<br>" +
                     "If a value < `0` is given, this setting is disabled: i.e. the number of chunks loaded by projectiles per tick will be unlimited." +
                     "<table>" +
@@ -249,8 +235,7 @@ const config: ConfigRoot = {
         "reduced-intervals": {
             "acquire-poi-for-stuck-entity": {
                 default: 60,
-                desc:
-                    "The extra interval (on top of the regular interval) for entities that are stuck (e.g. in a vehicle) to attempt to acquire a POI (such as a villager job block).<br>" +
+                desc: "The extra interval (on top of the regular interval) for entities that are stuck (e.g. in a vehicle) to attempt to acquire a POI (such as a villager job block).<br>" +
                     "(Unit: tick)<br>" +
                     "If they become unstuck during this time, they will immediately be free to acquire a POI again.<br>" +
                     "For example, if set to `100`, stuck entities will try to find a POI every 5 seconds.<br>" +
@@ -269,13 +254,11 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 "hopper": {
-                    __desc__:
-                        "Frequency with which hoppers check for items to pick up.<br>" +
+                    __desc__: "Frequency with which hoppers check for items to pick up.<br>" +
                         "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
                     "interval": {
                         default: 1,
-                        desc:
-                            "Frequency with which hopper blocks check for items to pick up.<br>" +
+                        desc: "Frequency with which hopper blocks check for items to pick up.<br>" +
                             "(Unit: tick)<br>" +
                             "For example, if set to `20`, hoppers will check for items above them every second.<br>" +
                             "<br>" +
@@ -294,8 +277,7 @@ const config: ConfigRoot = {
                     "minecart": {
                         "interval": {
                             default: 1,
-                            desc:
-                                "The same as the `interval` setting above, but for hopper minecarts." +
+                            desc: "The same as the `interval` setting above, but for hopper minecarts." +
                                 "<table>" +
                                 "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                 "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -312,8 +294,7 @@ const config: ConfigRoot = {
                                 "While a minecart is immune, it can check for items every tick.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
-                                desc:
-                                    "How often to check for hopper minecarts near items, to give the minecarts temporary immunity from the `interval` setting.<br>" +
+                                desc: "How often to check for hopper minecarts near items, to give the minecarts temporary immunity from the `interval` setting.<br>" +
                                     "(Unit: tick)<br>" +
                                     "If a value &leq; `0` is given, it behaves like `1`." +
                                     "<table>" +
@@ -329,8 +310,7 @@ const config: ConfigRoot = {
                             },
                             "check-for-minecart-near-item-while-active": {
                                 default: false,
-                                desc:
-                                    "Whether to check for hopper minecarts near items that are __active__, to give the minecarts temporary immunity from the `interval` setting." +
+                                desc: "Whether to check for hopper minecarts near items that are __active__, to give the minecarts temporary immunity from the `interval` setting." +
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -344,8 +324,7 @@ const config: ConfigRoot = {
                             },
                             "check-for-minecart-near-item-while-inactive": {
                                 default: true,
-                                desc:
-                                    "Whether to check for hopper minecarts near items that are __inactive__, to give the minecarts temporary immunity from the `interval` setting." +
+                                desc: "Whether to check for hopper minecarts near items that are __inactive__, to give the minecarts temporary immunity from the `interval` setting." +
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
                                     "<tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -359,8 +338,7 @@ const config: ConfigRoot = {
                             },
                             "duration": {
                                 default: 100,
-                                desc:
-                                    "The duration of temporary immunity from the `interval` setting for hopper minecarts.<br>" +
+                                desc: "The duration of temporary immunity from the `interval` setting for hopper minecarts.<br>" +
                                     "(Unit: tick)<br>" +
                                     "If a value &leq; `0` is given, hopper minecarts will never have temporary immunity from the `interval` setting." +
                                     "<table>" +
@@ -376,8 +354,7 @@ const config: ConfigRoot = {
                             },
                             "max-item-horizontal-distance": {
                                 default: "24.0",
-                                desc:
-                                    "The maximum horizontal distance a dropped item can be away from a hopper minecart be to give it temporary immunity from the `interval` setting.<br>" +
+                                desc: "The maximum horizontal distance a dropped item can be away from a hopper minecart be to give it temporary immunity from the `interval` setting.<br>" +
                                     "(Unit: block)<br>" +
                                     "If a value < `0` is given, hopper minecarts will never have temporary immunity from the `interval` setting." +
                                     "<table>" +
@@ -393,8 +370,7 @@ const config: ConfigRoot = {
                             },
                             "max-item-vertical-distance": {
                                 default: "4.0",
-                                desc:
-                                    "Same as `max-item-horizontal-distance`, but this is the maximum distance vertically.<br>" +
+                                desc: "Same as `max-item-horizontal-distance`, but this is the maximum distance vertically.<br>" +
                                     "(Unit: block)" +
                                     "<table>" +
                                     "<tr><td></td><td><b>Default</b></td><td></td><td></td></tr>" +
@@ -409,8 +385,7 @@ const config: ConfigRoot = {
                             },
                             "nearby-item-max-age": {
                                 default: 1200,
-                                desc:
-                                    "Items with an age higher than this value will not cause nearby hopper minecarts to become immune from the `interval` setting.<br>" +
+                                desc: "Items with an age higher than this value will not cause nearby hopper minecarts to become immune from the `interval` setting.<br>" +
                                     "(Unit: tick)<br>" +
                                     "If a value &leq; `0` is given, it means no minimum age: in other words, all items can give nearby hopper minecarts temporary immunity from the `interval` setting." +
                                     "<table>" +
@@ -430,8 +405,7 @@ const config: ConfigRoot = {
             },
             "check-stuck-in-wall": {
                 default: 10,
-                desc:
-                    "The interval at which to check whether an entity is stuck in a wall, to deal suffocation damage.<br>" +
+                desc: "The interval at which to check whether an entity is stuck in a wall, to deal suffocation damage.<br>" +
                     "(Unit: tick)<br>" +
                     "<br>" +
                     "Since after dealing damage, there is an interval (this may change in the future, but approximately 1 second) at which entities cannot take repeated damage, delaying the suffocation check by less than 1 second is almost unnoticeable.<br>" +
@@ -454,8 +428,7 @@ const config: ConfigRoot = {
             },
             "villager-item-repickup": {
                 default: 100,
-                desc:
-                    "The minimum delay for items dropped by villagers to be picked up by (other) entities.<br>" +
+                desc: "The minimum delay for items dropped by villagers to be picked up by (other) entities.<br>" +
                     "(Unit: tick)" +
                     "<ul>" +
                     "<li>Prevents villagers picking up farmed items before hoppers do in certain farm designs; that would otherwise be broken by the `check-nearby-item.hopper` setting described below.</li>" +
@@ -480,8 +453,7 @@ const config: ConfigRoot = {
         },
         "save-fireworks": {
             default: true,
-            desc:
-                "Whether fireworks are saved when saving a chunk.<br>" +
+            desc: "Whether fireworks are saved when saving a chunk.<br>" +
                 "Fireworks can bug out and not detonate, and it can very easily fill a chunk by using an automated dispenser.<br>" +
                 "If set to `false`, chunk unloads will remove any fireworks, preventing this scenario." +
                 "<table>" +
@@ -497,8 +469,7 @@ const config: ConfigRoot = {
         },
         "use-optimized-sheep-offspring-color": {
             default: true,
-            desc:
-                "Whether to use a (much) faster way to choose a color when a new baby sheep is born.<br>" +
+            desc: "Whether to use a (much) faster way to choose a color when a new baby sheep is born.<br>" +
                 "The color chosen is exactly the same as vanilla's behavior.<br>" +
                 "<br>" +
                 "However, in vanilla, it is possible to change the new color by changing the crafting recipe for combining dyes using a data pack.<br>" +
