@@ -10,6 +10,7 @@ const data = {
 </script>
 
 # Gale Genel Yapılandırma
+
 Aşağıdaki YAML yapılandırması, Gale'in genel yapılandırma dosyasının (`config/gale-global.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
 
 Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.

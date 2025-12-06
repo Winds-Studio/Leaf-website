@@ -1,48 +1,48 @@
-import {getVerStatus} from "./versionStatus";
+import { getVerStatus } from "./versionStatus";
 
 export interface ApiBuild {
-    build: number,
-    time: string,
-    channel: 'default' | 'experimental',
+    build: number;
+    time: string;
+    channel: "default" | "experimental";
     changes: {
-        commit: string,
-        summary: string,
-        message: string
-    }[],
+        commit: string;
+        summary: string;
+        message: string;
+    }[];
     downloads: {
         primary: {
-            name: string,
-            sha256: string
-        }
-    }
+            name: string;
+            sha256: string;
+        };
+    };
 }
 
 export interface ApiProject {
-    versions: string[]
+    versions: string[];
 }
 
 export interface ApiBuilds {
-    builds: ApiBuild[]
+    builds: ApiBuild[];
 }
 
-const API_BASE = "https://api.leafmc.one/v2"
+const API_BASE = "https://api.leafmc.one/v2";
 
 export async function getVersions(): Promise<string[]> {
-    const rawData = await fetch(`${API_BASE}/projects/leaf`)
-    const data = await rawData.json() as ApiProject
-    return data.versions.reverse()
+    const rawData = await fetch(`${API_BASE}/projects/leaf`);
+    const data = (await rawData.json()) as ApiProject;
+    return data.versions.reverse();
 }
 
 export async function getBuilds(version: string): Promise<ApiBuild[]> {
-    const rawData = await fetch(`${API_BASE}/projects/leaf/versions/${version}/builds`)
-    const data = await rawData.json() as ApiBuilds
-    return data.builds.reverse()
+    const rawData = await fetch(`${API_BASE}/projects/leaf/versions/${version}/builds`);
+    const data = (await rawData.json()) as ApiBuilds;
+    return data.builds.reverse();
 }
 
 export function getBuildLink(version: string, build: ApiBuild): string {
-    return `${API_BASE}/projects/leaf/versions/${version}/builds/${build.build}/downloads/${build.downloads.primary.name}`
+    return `${API_BASE}/projects/leaf/versions/${version}/builds/${build.build}/downloads/${build.downloads.primary.name}`;
 }
 
 export function getLatestStable(versions: string[]): string {
-    return versions.filter(it => getVerStatus(it).name == 'stable')[0]
+    return versions.filter((it) => getVerStatus(it).name == "stable")[0];
 }

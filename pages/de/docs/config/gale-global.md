@@ -9,6 +9,7 @@ const data = {
 </script>
 
 # Globale Gale Konfiguration
+
 Diese YAML Konfiguration zeigt die standardmäßige Struktur der Konfigurationswerte der globalen Konfiguration von Gale (`config/gale-global.yml`)
 
 Klicke auf die Pfeile hinter den Konfigurationswerten um die entsprechende Beschreibung anzusehen

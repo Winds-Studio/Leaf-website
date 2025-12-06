@@ -1,62 +1,59 @@
 <script setup lang="ts">
-
-import {ConfigValue } from "./config";
-import {inject, Ref, ref, watch} from "vue";
+import { ConfigValue } from "./config";
+import { inject, Ref, ref, watch } from "vue";
 import Markdown from "../Markdown.vue";
 
 const props = defineProps<{
-  node: ConfigValue
-}>()
+  node: ConfigValue;
+}>();
 
-const opened = ref(false)
+const opened = ref(false);
 
-let inlineValue: string = ''
-let otherValue: string[] = []
+let inlineValue: string = "";
+let otherValue: string[] = [];
 
-if (typeof props.node.default === 'string') {
-  const lines = props.node.default.split('\n')
-  inlineValue = lines[0]
-  otherValue = lines.slice(1)
+if (typeof props.node.default === "string") {
+  const lines = props.node.default.split("\n");
+  inlineValue = lines[0];
+  otherValue = lines.slice(1);
 } else if (Array.isArray(props.node.default)) {
-  inlineValue = String(props.node.default[0] ?? '')
-  otherValue = props.node.default.slice(1).map(String)
+  inlineValue = String(props.node.default[0] ?? "");
+  otherValue = props.node.default.slice(1).map(String);
 } else {
-  inlineValue = String(props.node.default)
-  otherValue = []
+  inlineValue = String(props.node.default);
+  otherValue = [];
 }
 
-const stateEmitter = inject<Ref<'expand' | 'collapse' | ''>>('stateEmitter')
+const stateEmitter = inject<Ref<"expand" | "collapse" | "">>("stateEmitter");
 if (stateEmitter) {
-  watch(stateEmitter, val => {
-    if (val == 'expand') opened.value = true
-    if (val == 'collapse') opened.value = false
-  })
+  watch(stateEmitter, (val) => {
+    if (val == "expand") opened.value = true;
+    if (val == "collapse") opened.value = false;
+  });
 }
 
-const collapse = inject<Ref<Number>>('collapse')
+const collapse = inject<Ref<Number>>("collapse");
 if (collapse) {
-  watch(collapse, val => {
-    if (val == 1) opened.value = false
-  })
+  watch(collapse, (val) => {
+    if (val == 1) opened.value = false;
+  });
 }
 </script>
 
 <template>
   <div class="valueNode">
-
     <button @click="opened = !opened" class="nameAndValue">
       <span class="nodeName">{{ node.name }}<span class="colon">:</span></span>
-      <span class="nodeInlineValue" :class="{string: isNaN(parseFloat(inlineValue)) }">{{ inlineValue }}</span>
+      <span class="nodeInlineValue" :class="{ string: isNaN(parseFloat(inlineValue)) }">{{ inlineValue }}</span>
       <span class="openedIndicator" v-if="node.description" :class="{ opened }">▶</span>
     </button>
-    <div style="margin-left: 1rem;" class="nodeOtherValue">{{ otherValue.join("\n") }}</div>
+    <div style="margin-left: 1rem" class="nodeOtherValue">{{ otherValue.join("\n") }}</div>
 
     <Markdown v-if="opened && node.description" class="description" :content="node.description" />
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .valueNode {
   display: flex;
   flex-direction: column;
@@ -96,7 +93,7 @@ if (collapse) {
   &.opened {
     transform: rotate(90deg);
   }
-  margin-left: .25rem;
+  margin-left: 0.25rem;
   color: var(--vp-c-text-3);
 }
 
@@ -104,8 +101,8 @@ if (collapse) {
   background-color: var(--vp-c-bg-elv);
   font-family: var(--vp-font-family-base), serif;
   color: var(--vp-c-text-1);
-  padding: .5rem .75rem;
-  margin: .25rem 0;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
   border-left: 4px solid var(--vp-c-brand-3);
   border-radius: 4px;
   display: flex;
@@ -117,5 +114,4 @@ if (collapse) {
     line-height: 26px;
   }
 }
-
 </style>

@@ -2,8 +2,7 @@
 // import Sidebar = DefaultTheme.Sidebar;
 
 export default {
-
-    '/docs/': [
+    "/docs/": [
         {
             text: "Introduction",
             items: [
@@ -46,7 +45,7 @@ export default {
             ]
         }
     ],
-    '/tr/docs/': [
+    "/tr/docs/": [
         {
             text: "Giriş",
             items: [
@@ -89,7 +88,7 @@ export default {
             ]
         }
     ],
-    '/de/docs/': [
+    "/de/docs/": [
         {
             text: "Einführung",
             items: [
@@ -130,7 +129,7 @@ export default {
             ]
         }
     ],
-    '/zh/docs/': [
+    "/zh/docs/": [
         {
             text: "介绍",
             items: [
@@ -171,4 +170,4 @@ export default {
             ]
         }
     ]
-}
+};

@@ -45,36 +45,36 @@
 
 @use "custom-blocks";
 
- :root {
-  --vp-c-default-1: #515C67FF;
-  --vp-c-default-2: #414853FF;
-  --vp-c-default-3: #32363FFF;
-  --vp-c-default-soft: var(--vp-c-gray-soft);
+:root {
+    --vp-c-default-1: #515c67ff;
+    --vp-c-default-2: #414853ff;
+    --vp-c-default-3: #32363fff;
+    --vp-c-default-soft: var(--vp-c-gray-soft);
 
-   --vp-c-bg: #16161a;
-   --vp-c-bg-alt: #101013;
-   --vp-c-bg-elv: #202127FF;
-   --vp-c-bg-soft: #1d1d23;
+    --vp-c-bg: #16161a;
+    --vp-c-bg-alt: #101013;
+    --vp-c-bg-elv: #202127ff;
+    --vp-c-bg-soft: #1d1d23;
 
-  --vp-c-brand-1: #78C287;
-  --vp-c-brand-2: #40a64e;
-  --vp-c-brand-3: #2c8038;
-  --vp-c-brand-soft: #49B85844;
+    --vp-c-brand-1: #78c287;
+    --vp-c-brand-2: #40a64e;
+    --vp-c-brand-3: #2c8038;
+    --vp-c-brand-soft: #49b85844;
 
-  --vp-c-tip-1: var(--vp-c-brand-1);
-  --vp-c-tip-2: var(--vp-c-brand-2);
-  --vp-c-tip-3: var(--vp-c-brand-3);
-  --vp-c-tip-soft: var(--vp-c-brand-soft);
+    --vp-c-tip-1: var(--vp-c-brand-1);
+    --vp-c-tip-2: var(--vp-c-brand-2);
+    --vp-c-tip-3: var(--vp-c-brand-3);
+    --vp-c-tip-soft: var(--vp-c-brand-soft);
 
-  --vp-c-warning-1: var(--vp-c-yellow-1);
-  --vp-c-warning-2: var(--vp-c-yellow-2);
-  --vp-c-warning-3: var(--vp-c-yellow-3);
-  --vp-c-warning-soft: var(--vp-c-yellow-soft);
+    --vp-c-warning-1: var(--vp-c-yellow-1);
+    --vp-c-warning-2: var(--vp-c-yellow-2);
+    --vp-c-warning-3: var(--vp-c-yellow-3);
+    --vp-c-warning-soft: var(--vp-c-yellow-soft);
 
-  --vp-c-danger-1: var(--vp-c-red-1);
-  --vp-c-danger-2: var(--vp-c-red-2);
-  --vp-c-danger-3: var(--vp-c-red-3);
-  --vp-c-danger-soft: var(--vp-c-red-soft);
+    --vp-c-danger-1: var(--vp-c-red-1);
+    --vp-c-danger-2: var(--vp-c-red-2);
+    --vp-c-danger-3: var(--vp-c-red-3);
+    --vp-c-danger-soft: var(--vp-c-red-soft);
 }
 
 /**
@@ -83,32 +83,23 @@
 
 :root {
     --vp-home-hero-name-color: transparent;
-    --vp-home-hero-name-background: -webkit-linear-gradient(
-            30deg,
-            #8DC69B 10%,
-            #3CB64D
-    );
+    --vp-home-hero-name-background: -webkit-linear-gradient(30deg, #8dc69b 10%, #3cb64d);
 
-    --vp-home-hero-image-background-image: linear-gradient(
-            -45deg,
-            #30504b 50%,
-            #35493b 50%
-    );
+    --vp-home-hero-image-background-image: linear-gradient(-45deg, #30504b 50%, #35493b 50%);
     --vp-home-hero-image-filter: blur(44px);
 }
-
 
 /**
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-custom-block-tip-border: transparent;
-  --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
-  --vp-border-radius: 0.5rem;
-  --vp-anim-dur: 150ms;
+    --vp-custom-block-tip-border: transparent;
+    --vp-custom-block-tip-text: var(--vp-c-text-1);
+    --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
+    --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+    --vp-border-radius: 0.5rem;
+    --vp-anim-dur: 150ms;
 }
 
 .VPFeatures .emoji {
@@ -120,49 +111,48 @@
 }
 
 .brand-button {
-  outline: var(--vp-c-brand-2) 2px solid;
-  box-sizing: border-box !important;
-  background: var(--vp-c-brand-soft);
-  transition: 150ms ease-in-out all !important;
-  &:hover {
-    outline-offset: 2px;
-    background: var(--vp-c-brand-3);
-  }
-  &:active {
-    background: var(--vp-c-brand-1);
-  }
+    outline: var(--vp-c-brand-2) 2px solid;
+    box-sizing: border-box !important;
+    background: var(--vp-c-brand-soft);
+    transition: 150ms ease-in-out all !important;
+    &:hover {
+        outline-offset: 2px;
+        background: var(--vp-c-brand-3);
+    }
+    &:active {
+        background: var(--vp-c-brand-1);
+    }
 }
 
 .switch {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
 
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-
-  button {
-    background: var(--vp-c-bg-elv);
-    width: 5rem;
-    border-radius: 4px;
-    font-size: 14px;
-    font-family: "JetBrains Mono", monospace;
-    padding: 0.25rem 0.5rem;
-    transition: 150ms all;
-    border: 1px solid transparent;
-    &:hover {
-      border: 1px solid var(--vp-c-divider);
+    button {
+        background: var(--vp-c-bg-elv);
+        width: 5rem;
+        border-radius: 4px;
+        font-size: 14px;
+        font-family: "JetBrains Mono", monospace;
+        padding: 0.25rem 0.5rem;
+        transition: 150ms all;
+        border: 1px solid transparent;
+        &:hover {
+            border: 1px solid var(--vp-c-divider);
+        }
     }
-  }
-  .selected {
-    border: 1px solid var(--vp-c-brand-3) !important;
-  }
+    .selected {
+        border: 1px solid var(--vp-c-brand-3) !important;
+    }
 }
 
 /* VPFeatures feature card hover animation */
 .VPFeatures .items .item {
-  transition: transform 0.3s;
+    transition: transform 0.3s;
 }
 
 .VPFeatures .items .item:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }

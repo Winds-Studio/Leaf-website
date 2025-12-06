@@ -1,15 +1,14 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
     "config-version": {
         default: "3.0"
     },
 
-    "async": {
+    async: {
         __desc__: "本节包含异步相关的特性, 旨在通过异步执行任务来减少主线程 (Server Thread) 的负载.",
         "async-entity-tracker": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否使用异步实体追踪, 可以显著提高性能, 特别是在小范围内拥有大量密集实体的场景中.<br>" +
@@ -38,13 +37,13 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡推荐值: CPU 核心数的 1/2__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         },
         "async-playerdata-save": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否开启异步玩家数据保存 (I/O 操作都很耗时)." +
@@ -55,11 +54,9 @@ const config: ConfigRoot = {
             }
         },
         "async-pathfinding": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: "是否使用异步生物寻路.<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
+                desc: "是否使用异步生物寻路.<br>" + "<br>" + "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
             "max-threads": {
                 default: 0,
@@ -69,13 +66,13 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡推荐值: CPU 核心数的 1/3__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         },
         "async-mob-spawning": {
-            "enabled": {
+            enabled: {
                 default: true,
                 desc:
                     "是否使用异步生物生成.<br>" +
@@ -86,7 +83,7 @@ const config: ConfigRoot = {
             }
         },
         "async-locator": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否使用异步定位.<br>" +
@@ -100,7 +97,7 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡推荐值: `true` (将下方的 `enabled` 设为 true)__"
             },
-            "threads": {
+            threads: {
                 default: 0,
                 desc:
                     "异步定位可使用的最大线程数.<br>" +
@@ -108,14 +105,14 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡推荐值: `1` 或 `2`__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "空闲线程的超时时间, 超过该时间并且无任务的线程将被销毁.<br>" + "(以 秒 为单位)"
             }
         }
     },
 
-    "performance": {
+    performance: {
         __desc__: "本节包含性能调优, 旨在减少不必要的计算或使用更高效的方法优化服务器.",
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
@@ -160,7 +157,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "throttle-hopper-when-full": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "当目标容器已满时, 等待多长时间将再次尝试移动物品的操作.<br>" +
@@ -223,7 +220,8 @@ const config: ConfigRoot = {
             __desc__: "本节用于无用数据包减少相关特性.",
             "reduce-entity-move-packets": {
                 default: false,
-                desc: "是否减少发送给玩家的无用实体移动数据包 (例如微小的移动).<br>" +
+                desc:
+                    "是否减少发送给玩家的无用实体移动数据包 (例如微小的移动).<br>" +
                     "此配置项可以略微节省带宽并减少客户端的处理负担, 在实体数量较多或出现轻微卡顿时, 有希望使使移动看起来更流畅.<br>" +
                     "<br>" +
                     "__⚡推荐值: `true`__"
@@ -237,7 +235,7 @@ const config: ConfigRoot = {
                 "__⚡推荐值: `true`__"
         },
         "optimize-minecart": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否优化矿车的 tick 计算. 通过跳过部分碰撞计算的方式, 以减少 `getEntities()` 调用和一些 Bukkit 事件调用的耗时.<br>" +
@@ -252,10 +250,7 @@ const config: ConfigRoot = {
             },
             "skip-tick-count": {
                 default: 30,
-                desc: "每隔多少 tick 计算一次矿车碰撞.<br>" +
-                    "(以 tick 为单位)<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `30`__"
+                desc: "每隔多少 tick 计算一次矿车碰撞.<br>" + "(以 tick 为单位)<br>" + "<br>" + "__⚡推荐值: `30`__"
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -268,7 +263,7 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "faster-random-generator": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否使用更快的随机数生成器.<br>" +
@@ -700,8 +695,8 @@ const config: ConfigRoot = {
                 "<br>" +
                 "__⚡推荐值: `true`__"
         },
-        "dab": {
-            "enabled": {
+        dab: {
+            enabled: {
                 default: true,
                 desc:
                     "根据距离优化生物 AI (又称 DAB), 在生物远离玩家时减少大脑 AI tick 计算的频率.<br>" +
@@ -723,9 +718,7 @@ const config: ConfigRoot = {
             },
             "start-distance": {
                 default: 12,
-                desc: "距离玩家多少格 DAB 开始生效.<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `8`__"
+                desc: "距离玩家多少格 DAB 开始生效.<br>" + "<br>" + "__⚡推荐值: `8`__"
             },
             "max-tick-freq": {
                 default: 20,
@@ -796,14 +789,12 @@ const config: ConfigRoot = {
             },
             "dont-save-falling-block": {
                 default: false,
-                desc: "区块卸载时不保存掉落中的方块 (FallingBlock).<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `true`__"
+                desc: "区块卸载时不保存掉落中的方块 (FallingBlock).<br>" + "<br>" + "__⚡推荐值: `true`__"
             }
         }
     },
 
-    "fixes": {
+    fixes: {
         __desc__: "本节包含对特定问题的修复.",
         "dont-place-player-if-server-full": {
             default: false,
@@ -831,7 +822,8 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "max-item-stack-count": {
-            __desc__: "每组掉落物的最大堆叠大小." +
+            __desc__:
+                "每组掉落物的最大堆叠大小." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">警告</p>' +
                 "__不推荐__ 使用此功能. 此功能仍在开发中, 存在已知问题.<br>" +
@@ -846,7 +838,7 @@ const config: ConfigRoot = {
                 desc: "容器被破坏时允许掉落的最大物品堆叠数量."
             }
         },
-        "knockback": {
+        knockback: {
             __desc__: "本节包含调整击退相关行为的功能.",
             "snowball-knockback-players": {
                 default: false,
@@ -861,7 +853,7 @@ const config: ConfigRoot = {
                 desc: "是否允许玩家击退僵尸."
             }
         },
-        "player": {
+        player: {
             "disable-moved-wrongly-threshold": {
                 default: false,
                 desc:
@@ -888,7 +880,7 @@ const config: ConfigRoot = {
             }
         },
         "afk-command": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否开启基于 Minecraft 原版 [玩家空闲机制](https://zh.minecraft.wiki/w/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F#:~:text=%E7%8E%A9%E5%AE%B6%E7%9A%84%E7%A9%BA%E9%97%B2%E6%97%B6%E9%97%B4) 的 AFK 命令.<br>" +
@@ -898,10 +890,11 @@ const config: ConfigRoot = {
         }
     },
 
-    "network": {
+    network: {
         __desc__: "本节包含与网络相关的功能.",
         "protocol-support": {
-            __desc__: "熙熙攘攘, 我们的协议.<br>" +
+            __desc__:
+                "熙熙攘攘, 我们的协议.<br>" +
                 "本部分包含为一些提升游戏体验 (QoL) 的实用模组提供额外的协议支持.<br>" +
                 "<br>" +
                 "这些额外的协议支持仅在客户端安装了相应模组时才会生效. 这意味着, 如果开启了特定的协议支持, 并且玩家在客户端安装了该模组, 他们可以获得下方配置中描述的额外功能. 但对于没有安装相应模组的玩家, 一切都和之前一样." +
@@ -969,9 +962,9 @@ const config: ConfigRoot = {
         }
     },
 
-    "misc": {
+    misc: {
         __desc__: "本节包含一些杂项功能.",
-        "message": {
+        message: {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
                 desc:
@@ -990,7 +983,7 @@ const config: ConfigRoot = {
                     "</div>"
             }
         },
-        "rebrand": {
+        rebrand: {
             "server-mod-name": {
                 default: "Leaf",
                 desc: "服务端核心名字. 在 F3 菜单和服务器 MOTD 中显示."
@@ -1000,13 +993,14 @@ const config: ConfigRoot = {
                 desc: "服务端 GUI 控制台名字. 如果启动服务器时未添加 `--nogui` 选项, 将在核心自带的 GUI 控制台中显示."
             }
         },
-        "sentry": {
-            __desc__: "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
+        sentry: {
+            __desc__:
+                "[Sentry](https://sentry.io/welcome/) 是一个应用程序监控服务, 皆在更好地收集, 记录, 跟踪错误日志和相关信息, 协助运维人员更好的定位并修复问题.<br>" +
                 "<br>" +
                 "开启 Sentry 集成后, 你无需再手动审计冗长的日志以寻找错误. Sentry 可以收集服务器运行时发生的错误, 允许你通过 Sentry 的 Web 面板跟踪, 帮助你更轻松, 快速地定位问题并修复错误.<br>" +
                 "<br>" +
                 "参阅 __[配置 Sentry](../../how-to/setup-sentry.md)__ 以了解如何配置 Sentry 并获取下方 `sentry.dsn` 所需的 DSN 密匙.<br>",
-            "dsn": {
+            dsn: {
                 default: "",
                 desc: "Sentry 的 DSN 密匙.<br>" + "如果设为空 `''`, 则禁用 Sentry."
             },
@@ -1020,7 +1014,7 @@ const config: ConfigRoot = {
             }
         },
         "secure-seed": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "是否使用安全种子功能.<br>" +
@@ -1054,7 +1048,8 @@ const config: ConfigRoot = {
                 "__⚡推荐值: `true`__"
         },
         "region-format-settings": {
-            __desc__: "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
+            __desc__:
+                "Linear 是一种区块文件格式, 使用 [ZSTD 压缩](https://facebook.github.io/zstd/) 代替 MC 原版的 ZLIB 压缩算法. 此格式可以节省约 ~50% 的磁盘空间.<br>" +
                 "在使用 Linear 区块格式前，请确保你已 __阅读 [Linear 文档](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__ 并完成所有必需步骤, 然后将下方的 `region-format-settings.region-format` 改为 `LINEAR`." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">警告</p>' +
@@ -1079,7 +1074,7 @@ const config: ConfigRoot = {
             }
         },
         "lag-compensation": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc:
                     "卡顿滞后补偿, 这可以在服务器卡顿或低 TPS 时确保玩家的基本游戏体验.<br>" +
@@ -1088,15 +1083,11 @@ const config: ConfigRoot = {
             },
             "enable-for-water": {
                 default: false,
-                desc: "是否开启水流动的滞后补偿.<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `true`__"
+                desc: "是否开启水流动的滞后补偿.<br>" + "<br>" + "__⚡推荐值: `true`__"
             },
             "enable-for-lava": {
                 default: false,
-                desc: "是否开启岩浆流动的滞后补偿.<br>" +
-                    "<br>" +
-                    "__⚡推荐值: `true`__"
+                desc: "是否开启岩浆流动的滞后补偿.<br>" + "<br>" + "__⚡推荐值: `true`__"
             }
         },
         "including-5s-in-get-tps": {
@@ -1124,7 +1115,8 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "connection-message": {
-            __desc__: "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
+            __desc__:
+                "玩家连接提示, 当玩家加入或退出服务器时广播发送给所有在线玩家.<br>" +
                 "需要使用 [MiniMessage](https://docs.advntr.dev/minimessage/format) 格式.<br>" +
                 "如果设为 `default` 或保留默认值, 将使用原版默认的进服和退服提示.<br>" +
                 "<br>" +
@@ -1138,26 +1130,26 @@ const config: ConfigRoot = {
                 "此功能对 API / 插件 友好<br>" +
                 "这意味着插件可以使用 `PlayerJoinEvent` 或 `PlayerQuitEvent`, 的相关方法覆盖此配置项." +
                 "</div>",
-            "join": {
-                "enabled": {
+            join: {
+                enabled: {
                     default: true
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "玩家进服提示."
                 }
             },
-            "quit": {
-                "enabled": {
+            quit: {
+                enabled: {
                     default: true
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "玩家退服提示."
                 }
             }
         },
-        "cache": {
+        cache: {
             "cache-player-profile-result": {
                 default: true,
                 desc:

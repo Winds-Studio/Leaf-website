@@ -27,8 +27,8 @@ Enabled minimal async options in leaf-global.yml:
 
 ```yaml
 async:
-  async-entity-tracker:
-    enabled: true
-  async-pathfinding:
-    enabled: true
+    async-entity-tracker:
+        enabled: true
+    async-pathfinding:
+        enabled: true
 ```

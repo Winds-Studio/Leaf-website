@@ -9,6 +9,7 @@ const data = {
 </script>
 
 # Gale 全局配置
+
 以下 YAML 配置展示了 Gale 全局配置 (`config/gale-global.yml`) 的结构及其默认的值
 
 点击配置项后面的箭头按钮以显示其描述

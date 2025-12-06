@@ -1,7 +1,9 @@
 # Leaf API
 
 ## API
+
 ::: code-group
+
 ```kotlin [build.gradle.kts]
 repositories {
   maven("https://maven.leafmc.one/snapshots/")
@@ -35,14 +37,17 @@ java {
   </dependencies>
 </project>
 ```
+
 :::
 
 ## Dev Bundle
+
 Dev bundle 是由 paperweight 提供的工具, 允许你在插件开发过程中可以轻松访问 Minecraft 的 NMS 代码.
-有关如何设置及更多详细信息, 请参阅  [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/).
+有关如何设置及更多详细信息, 请参阅 [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/).
 
 为了能够使用 Leaf 提供的 dev bundle, 你需要将上述教程中所提供 dependency 做以下改动.
 ::: code-group
+
 ```kotlin [build.gradle.kts]
 repositories {
   maven("https://maven.leafmc.one/snapshots/")
@@ -53,4 +58,5 @@ dependencies {
     paperweight.devBundle("cn.dreeam.leaf", "1.21.8-R0.1-SNAPSHOT") // [!code ++]
 }
 ```
+
 :::

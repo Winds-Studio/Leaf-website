@@ -1,45 +1,41 @@
 <script setup lang="ts">
-
-import {computed, onMounted, ref, watch} from "vue";
-import {ApiBuild, getBuilds} from "../downloadApi";
+import { computed, onMounted, ref, watch } from "vue";
+import { ApiBuild, getBuilds } from "../downloadApi";
 import BuildCard from "./BuildCard.vue";
 import UiMessage from "../../UiMessage.vue";
-import {useTranslation} from "../useTranslation";
-import {Icon} from "@iconify/vue";
+import { useTranslation } from "../useTranslation";
+import { Icon } from "@iconify/vue";
 import LatestBuild from "./LatestBuild.vue";
 
 const SHOW_BUILD_LIMIT = 8;
 
 const props = defineProps<{
-  version: string
-}>()
+  version: string;
+}>();
 
-const builds = ref<ApiBuild[] | null>(null)
-const showAll = ref(false)
-const { t } = useTranslation()
+const builds = ref<ApiBuild[] | null>(null);
+const showAll = ref(false);
+const { t } = useTranslation();
 
 const loadBuilds = async () => {
-  builds.value = null
-  builds.value = await getBuilds(props.version)
-}
+  builds.value = null;
+  builds.value = await getBuilds(props.version);
+};
 
-onMounted(loadBuilds)
-watch(() => props.version, loadBuilds)
+onMounted(loadBuilds);
+watch(() => props.version, loadBuilds);
 
 const shownBuilds = computed(() => {
   if (showAll.value) {
-    return builds.value
+    return builds.value;
   } else {
-    return builds.value.slice(0, SHOW_BUILD_LIMIT)
+    return builds.value.slice(0, SHOW_BUILD_LIMIT);
   }
-})
-
+});
 </script>
 
 <template>
-
   <div class="builds-list" v-if="builds">
-
     <LatestBuild :build="builds[0]" :version v-if="builds[0]" />
     <UiMessage type="error" :message="t('error.builds')" v-else />
 
@@ -55,7 +51,6 @@ const shownBuilds = computed(() => {
 </template>
 
 <style scoped lang="scss">
-
 .builds-list {
   display: flex;
   flex-direction: column;
@@ -79,5 +74,4 @@ const shownBuilds = computed(() => {
     background-color: var(--vp-c-bg-elv);
   }
 }
-
 </style>

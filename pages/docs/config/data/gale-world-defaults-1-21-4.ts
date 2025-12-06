@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -59,7 +58,7 @@ const config: ConfigRoot = {
                 "<tr><td><i>Paper behavior</i></td><td><code>0.0</code></td></tr>" +
                 "</table>"
         },
-        "fixes": {
+        fixes: {
             "broadcast-crit-animations-as-the-entity-being-critted": {
                 default: false,
                 desc:
@@ -175,9 +174,10 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            __desc__: "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk).",
+            __desc__:
+                "Settings for loading chunks for projectiles (e.g. when an arrow, trident or ender pearl enters an unloaded chunk).",
             "per-projectile": {
-                "max": {
+                max: {
                     default: 10,
                     desc:
                         "The maximum number of chunks that can be synchronously loaded by a projectile throughout its lifetime.<br>" +
@@ -268,11 +268,11 @@ const config: ConfigRoot = {
                     "</table>"
             },
             "check-nearby-item": {
-                "hopper": {
+                hopper: {
                     __desc__:
                         "Frequency with which hoppers check for items to pick up.<br>" +
                         "This only affects picking up in-world (e.g. dropped) items, not pulling items from chests or other storage blocks.",
-                    "interval": {
+                    interval: {
                         default: 1,
                         desc:
                             "Frequency with which hopper blocks check for items to pick up.<br>" +
@@ -291,8 +291,8 @@ const config: ConfigRoot = {
                             "<tr><td><i>Vanilla behavior</i></td><td><code>1</code></td></tr>" +
                             "</table>"
                     },
-                    "minecart": {
-                        "interval": {
+                    minecart: {
+                        interval: {
                             default: 1,
                             desc:
                                 "The same as the `interval` setting above, but for hopper minecarts." +
@@ -308,7 +308,8 @@ const config: ConfigRoot = {
                                 "</table>"
                         },
                         "temporary-immunity": {
-                            __desc__: "Hopper minecarts can have temporary immunity from the `interval` setting above.<br>" +
+                            __desc__:
+                                "Hopper minecarts can have temporary immunity from the `interval` setting above.<br>" +
                                 "While a minecart is immune, it can check for items every tick.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
@@ -357,7 +358,7 @@ const config: ConfigRoot = {
                                     "<tr><td><i>Vanilla behavior</i></td><td>- (for vanilla behavior, <code>interval</code> must be set to 1)</td></tr>" +
                                     "</table>"
                             },
-                            "duration": {
+                            duration: {
                                 default: 100,
                                 desc:
                                     "The duration of temporary immunity from the `interval` setting for hopper minecarts.<br>" +

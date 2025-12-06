@@ -2,10 +2,10 @@
 import { ref, onMounted, computed, watch, onUnmounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useTranslation } from "../useTranslation";
-import {Branch, Release, ReleaseAsset, WorkflowRun} from "./githubApiTypes";
-import {branchesToVers, getLatestStable, getVerInfo, Version} from "../versionStatus";
+import { Branch, Release, ReleaseAsset, WorkflowRun } from "./githubApiTypes";
+import { branchesToVers, getLatestStable, getVerInfo, Version } from "../versionStatus";
 import Markdown from "../../Markdown.vue";
-import { useData } from 'vitepress';
+import { useData } from "vitepress";
 import VersionInfoCard from "../components/VersionInfoCard.vue";
 
 // States
@@ -26,31 +26,31 @@ const isLoadingBuilds = ref(false);
 const expandedCommit = ref<string | null>(null);
 
 // Active tab
-const activeTab = ref<'download' | 'history'>('download');
+const activeTab = ref<"download" | "history">("download");
 
 // Get localization content and language info
 const { t } = useTranslation();
 const { lang } = useData();
 
 // Store the selected version in session storage to persist across language changes
-const SESSION_STORAGE_KEY = 'leaf-selected-version';
+const SESSION_STORAGE_KEY = "leaf-selected-version";
 
 // Format file size
 const formatFileSize = (bytes: number) => {
-  if (bytes === 0) return '0 Bytes';
+  if (bytes === 0) return "0 Bytes";
   const k = 1024;
-  const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+  const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
 };
 
 // Format date
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString(undefined, { 
-    year: 'numeric', 
-    month: 'short', 
-    day: 'numeric' 
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
   });
 };
 
@@ -58,26 +58,26 @@ const formatDate = (dateString: string) => {
 function loadVersions() {
   isLoadingVersions.value = true;
   versionError.value = false;
-  
-  fetch('https://api.github.com/repos/Winds-Studio/Leaf/branches?per_page=100') // Fetch branches up to 100, default is 30 
-    .then(resp => {
+
+  fetch("https://api.github.com/repos/Winds-Studio/Leaf/branches?per_page=100") // Fetch branches up to 100, default is 30
+    .then((resp) => {
       if (!resp.ok) throw new Error(`GitHub API request failed with status ${resp.status}`);
       return resp.json();
     })
     .then((branches: Branch[]) => {
       versions.value = branchesToVers(branches).sort((a, b) => {
-        const parse = (v: string) => v.split('.').map(Number)
-        const [a1 = 0, a2 = 0, a3 = 0] = parse(a.name)
-        const [b1 = 0, b2 = 0, b3 = 0] = parse(b.name)
-        return b1 - a1 || b2 - a2 || b3 - a3
-      })
+        const parse = (v: string) => v.split(".").map(Number);
+        const [a1 = 0, a2 = 0, a3 = 0] = parse(a.name);
+        const [b1 = 0, b2 = 0, b3 = 0] = parse(b.name);
+        return b1 - a1 || b2 - a2 || b3 - a3;
+      });
 
       if (versions.value.length > 0) {
         // Try to restore the previously selected version from session storage
         const savedVersionName = sessionStorage.getItem(SESSION_STORAGE_KEY);
-        
+
         if (savedVersionName) {
-          const savedVersion = versions.value.find(v => v.name === savedVersionName);
+          const savedVersion = versions.value.find((v) => v.name === savedVersionName);
           if (savedVersion) {
             selectedVersion.value = savedVersion;
           } else {
@@ -86,12 +86,12 @@ function loadVersions() {
         } else {
           selectedVersion.value = getLatestStable(versions.value);
         }
-        
+
         loadDownload(selectedVersion.value);
         loadBuildHistory(selectedVersion.value);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error loading versions:", error);
       versionError.value = true;
     })
@@ -103,17 +103,17 @@ function loadVersions() {
 // Load download assets
 function loadDownload(version: Version) {
   if (!version) return;
-  
+
   isLoadingDownload.value = true;
   downloadError.value = false;
   downloadAsset.value = null;
   releaseData.value = null;
-  
+
   // Special handling for dev branch release
-  const apiUrl = `https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${version.name}`
-  
+  const apiUrl = `https://api.github.com/repos/Winds-Studio/Leaf/releases/tags/ver-${version.name}`;
+
   fetch(apiUrl)
-    .then(resp => {
+    .then((resp) => {
       if (!resp.ok) throw new Error(`API request failed with status ${resp.status}`);
       return resp.json();
     })
@@ -122,10 +122,10 @@ function loadDownload(version: Version) {
       if (data.assets && data.assets.length > 0) {
         downloadAsset.value = data.assets[0];
       } else {
-        throw new Error('No download assets found');
+        throw new Error("No download assets found");
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error loading download:", error);
       downloadError.value = true;
     })
@@ -137,21 +137,23 @@ function loadDownload(version: Version) {
 // Load build history
 function loadBuildHistory(version: Version) {
   if (!version) return;
-  
+
   isLoadingBuilds.value = true;
   buildRuns.value = [];
 
   const branchName = version.branch;
   const branchVersion = version.name.replaceAll(".", "");
 
-  fetch(`https://api.github.com/repos/Winds-Studio/Leaf/actions/workflows/build-${branchVersion}.yml/runs?event=push&branch=${branchName}`)
-    .then(resp => resp.json())
-    .then(data => {
+  fetch(
+    `https://api.github.com/repos/Winds-Studio/Leaf/actions/workflows/build-${branchVersion}.yml/runs?event=push&branch=${branchName}`
+  )
+    .then((resp) => resp.json())
+    .then((data) => {
       if (data.workflow_runs) {
-        buildRuns.value = data.workflow_runs.filter((item: any) => item.event === 'push');
+        buildRuns.value = data.workflow_runs.filter((item: any) => item.event === "push");
       }
     })
-    .catch(error => {
+    .catch((error) => {
       console.error("Error loading build history:", error);
     })
     .finally(() => {
@@ -161,11 +163,11 @@ function loadBuildHistory(version: Version) {
 
 // Format commit message
 function formatCommitMessage(message: string | undefined, expanded: boolean) {
-  if (!message) return '';
+  if (!message) return "";
   if (expanded) return message;
-  
-  const firstLine = message.split('\n')[0];
-  return message.includes('\n') ? `${firstLine}\n...` : firstLine;
+
+  const firstLine = message.split("\n")[0];
+  return message.includes("\n") ? `${firstLine}\n...` : firstLine;
 }
 
 // Toggle expanded commit message
@@ -173,9 +175,7 @@ function toggleCommitExpand(commitId: string) {
   expandedCommit.value = expandedCommit.value === commitId ? null : commitId;
 }
 
-const versionTagMessage = computed(() =>
-    (t.value)(`versionStatus.${selectedVersion.value.status}`)
-)
+const versionTagMessage = computed(() => t.value(`versionStatus.${selectedVersion.value.status}`));
 
 // Save selected version when it changes
 watch(selectedVersion, (newVersion) => {
@@ -210,11 +210,11 @@ function setupClickOutside() {
   };
 
   onMounted(() => {
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
   });
 
   onUnmounted(() => {
-    document.removeEventListener('click', handleClickOutside);
+    document.removeEventListener("click", handleClickOutside);
   });
 }
 
@@ -226,14 +226,13 @@ function refreshVersionInfo() {
     loadBuildHistory(selectedVersion.value);
   }
 }
-watch(selectedVersion, refreshVersionInfo)
+watch(selectedVersion, refreshVersionInfo);
 </script>
 
 <template>
-
   <a href="download" class="switch-link">
     <Icon icon="lucide:log-out" />
-    <span>{{ t('new-download-page') }}</span>
+    <span>{{ t("new-download-page") }}</span>
   </a>
 
   <div class="dl-page" :class="selectedVersion ? getVerInfo(selectedVersion).cssClass : ''">
@@ -242,48 +241,48 @@ watch(selectedVersion, refreshVersionInfo)
       <div class="dl-spinner"></div>
       <p v-html="t('loading.versions')"></p>
     </div>
-    
+
     <!-- Error state -->
     <div v-else-if="versionError" class="dl-error">
       <Icon icon="lucide:alert-circle" />
-      <h3>{{ t('error.versions') }}</h3>
+      <h3>{{ t("error.versions") }}</h3>
       <button class="dl-button primary" @click="loadVersions">
         <Icon icon="lucide:refresh-cw" />
-        <span>{{ t('actions.retry') }}</span>
+        <span>{{ t("actions.retry") }}</span>
       </button>
     </div>
-    
+
     <!-- No version state -->
     <div v-else-if="versions.length === 0" class="dl-empty">
       <Icon icon="lucide:package" />
-      <h3>{{ t('labels.noVersions') }}</h3>
+      <h3>{{ t("labels.noVersions") }}</h3>
       <button class="dl-button primary" @click="loadVersions">
         <Icon icon="lucide:refresh-cw" />
-        <span>{{ t('actions.refresh') }}</span>
+        <span>{{ t("actions.refresh") }}</span>
       </button>
     </div>
-    
+
     <!-- Main content -->
     <div v-else class="dl-content">
       <!-- Header -->
       <div class="dl-header">
         <div class="dl-header-content">
           <h1>Leaf</h1>
-          <p class="dl-subtitle">{{ t('labels.description') }}</p>
+          <p class="dl-subtitle">{{ t("labels.description") }}</p>
         </div>
       </div>
-      
+
       <!-- Version selector -->
       <div class="dl-version-selector">
         <div class="dl-selector-label">
-          {{ t('labels.version') }}
+          {{ t("labels.version") }}
           <button class="dl-refresh-btn" @click="refreshVersionInfo" title="刷新数据">
             <Icon icon="lucide:refresh-cw" />
           </button>
         </div>
         <div ref="dropdownRef" class="dl-version-dropdown">
-          <div 
-            class="dl-custom-select" 
+          <div
+            class="dl-custom-select"
             @click="toggleDropdown"
             :class="selectedVersion ? getVerInfo(selectedVersion).cssClass : ''"
           >
@@ -292,15 +291,18 @@ watch(selectedVersion, refreshVersionInfo)
               <span>{{ selectedVersion.name }}</span>
             </div>
             <div class="dl-select-icon">
-              <Icon icon="lucide:chevron-down" :class="{ 'rotate': dropdownOpen }" />
+              <Icon icon="lucide:chevron-down" :class="{ rotate: dropdownOpen }" />
             </div>
           </div>
           <div class="dl-dropdown-options" v-show="dropdownOpen">
-            <div 
-              v-for="version in versions" 
+            <div
+              v-for="version in versions"
               :key="version.name"
-              :class="['dl-dropdown-option', { 'selected': selectedVersion === version }, getVerInfo(version).cssClass]"
-              @click="selectedVersion = version; closeDropdown();"
+              :class="['dl-dropdown-option', { selected: selectedVersion === version }, getVerInfo(version).cssClass]"
+              @click="
+                selectedVersion = version;
+                closeDropdown();
+              "
             >
               <span class="dl-version-status-indicator"></span>
               <span>{{ version.name }}</span>
@@ -308,58 +310,50 @@ watch(selectedVersion, refreshVersionInfo)
           </div>
         </div>
       </div>
-      
+
       <!-- Version warning -->
       <VersionInfoCard :version="selectedVersion.name" />
-      
+
       <!-- Tab switcher -->
       <div class="dl-tabs">
-        <button 
-          class="dl-tab" 
-          :class="{ 'active': activeTab === 'download' }"
-          @click="activeTab = 'download'"
-        >
+        <button class="dl-tab" :class="{ active: activeTab === 'download' }" @click="activeTab = 'download'">
           <Icon icon="lucide:download" />
-          <span>{{ t('tabs.download') }}</span>
+          <span>{{ t("tabs.download") }}</span>
         </button>
-        <button 
-          class="dl-tab" 
-          :class="{ 'active': activeTab === 'history' }"
-          @click="activeTab = 'history'"
-        >
+        <button class="dl-tab" :class="{ active: activeTab === 'history' }" @click="activeTab = 'history'">
           <Icon icon="lucide:history" />
-          <span>{{ t('tabs.history') }}</span>
+          <span>{{ t("tabs.history") }}</span>
         </button>
       </div>
-      
+
       <!-- Download tab content -->
       <div v-if="activeTab === 'download'" class="dl-tab-content">
         <!-- Download loading -->
         <div v-if="isLoadingDownload" class="dl-loading-small">
           <div class="dl-spinner"></div>
-          <p>{{ t('loading.download') }}</p>
+          <p>{{ t("loading.download") }}</p>
         </div>
-        
+
         <!-- Download error -->
         <div v-else-if="downloadError" class="dl-error-small">
           <Icon icon="lucide:x-circle" />
-          <h3>{{ t('error.download') }}</h3>
+          <h3>{{ t("error.download") }}</h3>
           <div class="dl-actions">
             <button class="dl-button primary" @click="loadDownload(selectedVersion)">
               <Icon icon="lucide:refresh-cw" />
-              <span>{{ t('actions.retry') }}</span>
+              <span>{{ t("actions.retry") }}</span>
             </button>
-            <a 
+            <a
               :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion.name}`"
-              target="_blank" 
+              target="_blank"
               class="dl-button secondary"
             >
               <Icon icon="lucide:github" />
-              <span>{{ t('actions.viewOnGitHub') }}</span>
+              <span>{{ t("actions.viewOnGitHub") }}</span>
             </a>
           </div>
         </div>
-        
+
         <!-- Download content -->
         <div v-else-if="downloadAsset && releaseData" class="dl-release-wrapper">
           <!-- Download card -->
@@ -372,7 +366,7 @@ watch(selectedVersion, refreshVersionInfo)
                 <div class="dl-release-meta">
                   <div class="dl-meta-item">
                     <Icon icon="lucide:calendar" />
-                    <span>{{ formatDate(releaseData.published_at || '') }}</span>
+                    <span>{{ formatDate(releaseData.published_at || "") }}</span>
                   </div>
                   <div class="dl-meta-item">
                     <Icon icon="lucide:file" />
@@ -384,33 +378,33 @@ watch(selectedVersion, refreshVersionInfo)
                   </div>
                 </div>
               </div>
-              
+
               <div class="dl-download-actions">
                 <a :href="downloadAsset.browser_download_url" class="dl-button primary download">
                   <Icon icon="lucide:download" />
-                  <span>{{ t('actions.download') }}</span>
+                  <span>{{ t("actions.download") }}</span>
                 </a>
-                <a 
+                <a
                   :href="`https://github.com/Winds-Studio/Leaf/releases/tag/ver-${selectedVersion.name}`"
                   target="_blank"
                   class="dl-button secondary"
                 >
                   <Icon icon="lucide:github" />
-                  <span>{{ t('actions.viewRelease') }}</span>
+                  <span>{{ t("actions.viewRelease") }}</span>
                 </a>
               </div>
-              
+
               <div class="dl-file-detail">
                 <div class="dl-file-name">{{ downloadAsset.name }}</div>
               </div>
             </div>
           </div>
-          
+
           <!-- Release notes -->
           <div v-if="releaseData.body" class="dl-card dl-release-notes">
             <div class="dl-card-header">
               <Icon icon="lucide:file-text" />
-              <h3>{{ t('labels.releaseNotes') }}</h3>
+              <h3>{{ t("labels.releaseNotes") }}</h3>
             </div>
             <div class="dl-card-content">
               <Markdown class="dl-markdown release-notes" :content="releaseData.body" />
@@ -418,29 +412,25 @@ watch(selectedVersion, refreshVersionInfo)
           </div>
         </div>
       </div>
-      
+
       <!-- History tab content -->
       <div v-if="activeTab === 'history'" class="dl-tab-content">
         <!-- Build history loading -->
         <div v-if="isLoadingBuilds" class="dl-loading-small">
           <div class="dl-spinner"></div>
-          <p>{{ t('loading.builds') }}</p>
+          <p>{{ t("loading.builds") }}</p>
         </div>
-        
+
         <!-- No build history -->
         <div v-else-if="buildRuns.length === 0" class="dl-empty-small">
           <Icon icon="lucide:info" />
-          <h3>{{ t('error.builds') }}</h3>
-          <a 
-            :href="`https://github.com/Winds-Studio/Leaf/tree/ver/${selectedVersion}`" 
-            target="_blank"
-            class="dl-link"
-          >
+          <h3>{{ t("error.builds") }}</h3>
+          <a :href="`https://github.com/Winds-Studio/Leaf/tree/ver/${selectedVersion}`" target="_blank" class="dl-link">
             <Icon icon="lucide:github" />
-            <span>{{ t('actions.viewBranch') }}</span>
+            <span>{{ t("actions.viewBranch") }}</span>
           </a>
         </div>
-        
+
         <!-- Build history list -->
         <div v-else class="dl-build-list">
           <div v-for="run in buildRuns" :key="run.id" class="dl-card dl-build-item">
@@ -449,41 +439,41 @@ watch(selectedVersion, refreshVersionInfo)
                 <div class="dl-build-meta">
                   <div class="dl-meta-item">
                     <Icon icon="lucide:calendar" />
-                    <span>{{ run.created_at ? formatDate(run.created_at) : t('labels.unknown') }}</span>
+                    <span>{{ run.created_at ? formatDate(run.created_at) : t("labels.unknown") }}</span>
                   </div>
-                  
+
                   <div class="dl-meta-item">
                     <Icon icon="lucide:git-commit" />
-                    <a 
-                      v-if="run.head_commit" 
-                      :href="`https://github.com/Winds-Studio/Leaf/commit/${run.head_commit.id}`" 
+                    <a
+                      v-if="run.head_commit"
+                      :href="`https://github.com/Winds-Studio/Leaf/commit/${run.head_commit.id}`"
                       target="_blank"
                       class="dl-link"
                     >
                       {{ run.head_commit.id.slice(0, 7) }}
                     </a>
-                    <span v-else>{{ t('labels.unknown') }}</span>
+                    <span v-else>{{ t("labels.unknown") }}</span>
                   </div>
-                  
+
                   <div class="dl-meta-item">
                     <Icon icon="lucide:github" />
-                    <a :href="run.html_url" target="_blank" class="dl-link">{{ t('labels.action') }}</a>
+                    <a :href="run.html_url" target="_blank" class="dl-link">{{ t("labels.action") }}</a>
                   </div>
                 </div>
               </div>
-              
+
               <div v-if="run.head_commit?.message" class="dl-commit-message">
-                <div class="dl-commit-content" :class="{ 'expanded': expandedCommit === run.id }">
+                <div class="dl-commit-content" :class="{ expanded: expandedCommit === run.id }">
                   {{ formatCommitMessage(run.head_commit.message, expandedCommit === run.id) }}
                 </div>
-                
-                <button 
-                  v-if="run.head_commit.message.includes('\n')" 
-                  @click="toggleCommitExpand(run.id)" 
+
+                <button
+                  v-if="run.head_commit.message.includes('\n')"
+                  @click="toggleCommitExpand(run.id)"
                   class="dl-expand-btn"
                 >
                   <Icon :icon="`lucide:chevron-${expandedCommit === run.id ? 'up' : 'down'}`" />
-                  <span>{{ t(`actions.${expandedCommit === run.id ? 'showLess' : 'showMore'}`) }}</span>
+                  <span>{{ t(`actions.${expandedCommit === run.id ? "showLess" : "showMore"}`) }}</span>
                 </button>
               </div>
             </div>
@@ -495,7 +485,6 @@ watch(selectedVersion, refreshVersionInfo)
 </template>
 
 <style scoped lang="scss">
-
 @use "../statusColors";
 
 /* Basic settings */
@@ -507,21 +496,35 @@ watch(selectedVersion, refreshVersionInfo)
 
 /* ===== Animation effects ===== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== Loading states ===== */
-.dl-loading, .dl-error, .dl-empty {
+.dl-loading,
+.dl-error,
+.dl-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -535,7 +538,9 @@ watch(selectedVersion, refreshVersionInfo)
   animation: fadeIn 0.4s ease;
 }
 
-.dl-loading-small, .dl-error-small, .dl-empty-small {
+.dl-loading-small,
+.dl-error-small,
+.dl-empty-small {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -557,19 +562,24 @@ watch(selectedVersion, refreshVersionInfo)
   animation: spin 0.8s linear infinite;
 }
 
-.dl-error svg, .dl-error-small svg {
+.dl-error svg,
+.dl-error-small svg {
   color: var(--vp-c-danger);
   width: 2.5rem;
   height: 2.5rem;
 }
 
-.dl-empty svg, .dl-empty-small svg {
+.dl-empty svg,
+.dl-empty-small svg {
   color: var(--vp-c-text-3);
   width: 2.5rem;
   height: 2.5rem;
 }
 
-.dl-error h3, .dl-empty h3, .dl-error-small h3, .dl-empty-small h3 {
+.dl-error h3,
+.dl-empty h3,
+.dl-error-small h3,
+.dl-empty-small h3 {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 600;
@@ -788,7 +798,7 @@ watch(selectedVersion, refreshVersionInfo)
 }
 
 .dl-tab::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -826,7 +836,9 @@ watch(selectedVersion, refreshVersionInfo)
   border-radius: 4px;
   background-color: var(--vp-c-bg-alt);
   overflow: hidden;
-  transition: border-color 150ms ease-in-out, transform 150ms ease-in-out;
+  transition:
+    border-color 150ms ease-in-out,
+    transform 150ms ease-in-out;
   border: 1px solid var(--vp-c-divider);
 }
 
@@ -947,11 +959,12 @@ watch(selectedVersion, refreshVersionInfo)
 .release-notes {
   margin-top: 1rem;
 
-  >:first-child {
+  > :first-child {
     margin-top: 0;
   }
 
-  :deep(th), :deep(td) {
+  :deep(th),
+  :deep(td) {
     padding: 0.6rem 1rem;
     border: 1px solid var(--vp-c-divider);
     text-align: left;
@@ -1076,7 +1089,11 @@ watch(selectedVersion, refreshVersionInfo)
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 150ms ease-in-out, color 150ms ease-in-out, box-shadow 150ms ease-in-out, border-color 150ms ease-in-out;
+  transition:
+    background-color 150ms ease-in-out,
+    color 150ms ease-in-out,
+    box-shadow 150ms ease-in-out,
+    border-color 150ms ease-in-out;
   white-space: nowrap;
   text-decoration: none;
   outline: none;
@@ -1168,34 +1185,34 @@ watch(selectedVersion, refreshVersionInfo)
     padding: 1.75rem 0;
     margin-bottom: 2rem;
   }
-  
+
   .dl-header h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .dl-subtitle {
     font-size: 0.9rem;
     max-width: 90%;
   }
-  
+
   .dl-version-select {
     width: 100%;
   }
-  
+
   .dl-button {
     width: 100%;
   }
-  
+
   .dl-release-meta {
     flex-direction: column;
     gap: 0.75rem;
   }
-  
+
   .dl-version-dropdown {
     width: 100%;
   }
-  
+
   .dl-dropdown-options {
     max-height: 250px;
   }
