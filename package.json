@@ -1,9 +1,9 @@
 {
   "devDependencies": {
-    "@vueuse/core": "^13.9.0",
-    "sass": "^1.93.0",
-    "vitepress": "1.6.3",
-    "vue": "^3.5.21"
+    "@vueuse/core": "^14.1.0",
+    "sass": "^1.94.2",
+    "vitepress": "1.6.4",
+    "vue": "^3.5.25"
   },
   "scripts": {
     "dev": "vitepress dev",
@@ -13,6 +13,6 @@
   "dependencies": {
     "@iconify/vue": "^5.0.0",
     "markdown-it": "^14.1.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
