@@ -1,28 +1,23 @@
 <script setup lang="ts">
-
-import {getVerStatus} from "../versionStatus";
-import {useTranslation} from "../useTranslation";
-import {Icon} from "@iconify/vue";
+import { getVerStatus } from "../versionStatus";
+import { useTranslation } from "../useTranslation";
+import { Icon } from "@iconify/vue";
 import Markdown from "../../Markdown.vue";
 
 const props = defineProps<{
-  version: string
-}>()
-const { t } = useTranslation()
-
+  version: string;
+}>();
+const { t } = useTranslation();
 </script>
 
 <template>
-
   <div :class="['dl-version-tag', getVerStatus(version).cssClass]">
     <Icon :icon="getVerStatus(version).icon" />
     <Markdown class="md-description" :content="t('versionStatus.' + getVerStatus(version).name)" :unwrap="true" />
   </div>
-
 </template>
 
 <style scoped lang="scss">
-
 @use "../statusColors";
 
 .dl-version-tag {
@@ -57,5 +52,4 @@ const { t } = useTranslation()
     }
   }
 }
-
 </style>

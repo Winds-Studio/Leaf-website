@@ -1,25 +1,25 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 // Test environment details
 const environment = {
-  seed: '4791817952625876078',
-  size: '2048 block radius, circular, using Chunky',
-  cpu: 'i7-10750H',
-  jvm: 'GraalVM 21',
-  memory: '8GB',
-  leafCommit: '9db6bfb',
-  paperCommit: 'a838a88',
-  moonriseConfig: 'chunk-system:\n  gen-parallelism: \'true\'\n  io-threads: 12\n  worker-threads: 12'
+  seed: "4791817952625876078",
+  size: "2048 block radius, circular, using Chunky",
+  cpu: "i7-10750H",
+  jvm: "GraalVM 21",
+  memory: "8GB",
+  leafCommit: "9db6bfb",
+  paperCommit: "a838a88",
+  moonriseConfig: "chunk-system:\n  gen-parallelism: 'true'\n  io-threads: 12\n  worker-threads: 12"
 };
 
 // Chunk generation data (in seconds)
 const generationData = [
   {
-    name: 'World Generation',
+    name: "World Generation",
     Paper: 517, // 8:37 in seconds
-    Leaf: 473,  // 7:53 in seconds
-    improvement: ((517 - 473) / 517 * 100).toFixed(1)
+    Leaf: 473, // 7:53 in seconds
+    improvement: (((517 - 473) / 517) * 100).toFixed(1)
   }
 ];
 
@@ -27,16 +27,16 @@ const generationData = [
 const jvmFlags = `-Xms8192M -Xmx8192M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20`;
 
 // Calculate maximum time value for scaling the chart
-const maxTime = Math.max(...generationData.map(d => Math.max(d.Paper, d.Leaf)));
+const maxTime = Math.max(...generationData.map((d) => Math.max(d.Paper, d.Leaf)));
 
 // Calculate the scale factor for bar heights (pixels per second)
-const scaleFactor = 200 / maxTime; // Aim for tallest bar to be about 200px 
+const scaleFactor = 200 / maxTime; // Aim for tallest bar to be about 200px
 
 // Format time from seconds to mm:ss
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
-  return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+  return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 }
 
 // Animation control
@@ -47,7 +47,7 @@ const showImprovements = ref(false);
 
 // Counter for animated numbers
 const animatedValues = ref(
-  generationData.map(data => ({
+  generationData.map((data) => ({
     Paper: 0,
     Leaf: 0,
     improvement: 0
@@ -58,33 +58,33 @@ const animatedValues = ref(
 function animateCounters() {
   const duration = 1500; // Animation duration in ms
   const fps = 60;
-  const frames = duration * fps / 1000;
-  
-  const targets = generationData.map(data => ({
+  const frames = (duration * fps) / 1000;
+
+  const targets = generationData.map((data) => ({
     Paper: data.Paper,
     Leaf: data.Leaf,
     improvement: parseFloat(data.improvement)
   }));
-  
+
   let frame = 0;
-  
+
   const interval = setInterval(() => {
     frame++;
     const progress = frame / frames;
-    
+
     // Update values
     animatedValues.value = targets.map((target, i) => ({
       Paper: Math.round(target.Paper * progress),
       Leaf: Math.round(target.Leaf * progress),
       improvement: +(target.improvement * progress).toFixed(1)
     }));
-    
+
     // Stop when done
     if (frame >= frames) {
       clearInterval(interval);
-      
+
       // Set exact final values
-      animatedValues.value = targets.map(target => ({
+      animatedValues.value = targets.map((target) => ({
         Paper: target.Paper,
         Leaf: target.Leaf,
         improvement: target.improvement
@@ -96,14 +96,18 @@ function animateCounters() {
 // Start animations when the component is mounted
 onMounted(() => {
   animationStarted.value = true;
-  
+
   // Staggered animations
-  setTimeout(() => { showBars.value = true; }, 300);
-  setTimeout(() => { 
+  setTimeout(() => {
+    showBars.value = true;
+  }, 300);
+  setTimeout(() => {
     showNumbers.value = true;
     animateCounters();
   }, 800);
-  setTimeout(() => { showImprovements.value = true; }, 1500);
+  setTimeout(() => {
+    showImprovements.value = true;
+  }, 1500);
 });
 </script>
 
@@ -113,34 +117,20 @@ onMounted(() => {
     <div class="env-card fade-in">
       <h3>Test Environment</h3>
       <div class="env-grid">
-        <div class="env-item">
-          <span class="label">Size:</span> {{ environment.size }}
-        </div>
-        <div class="env-item">
-          <span class="label">CPU:</span> {{ environment.cpu }}
-        </div>
-        <div class="env-item">
-          <span class="label">JVM:</span> {{ environment.jvm }}
-        </div>
-        <div class="env-item">
-          <span class="label">Memory:</span> {{ environment.memory }}
-        </div>
-        <div class="env-item">
-          <span class="label">Seed:</span> {{ environment.seed }}
-        </div>
-        <div class="env-item">
-          <span class="label">Leaf Commit:</span> {{ environment.leafCommit }}
-        </div>
-        <div class="env-item">
-          <span class="label">Paper Commit:</span> {{ environment.paperCommit }}
-        </div>
+        <div class="env-item"><span class="label">Size:</span> {{ environment.size }}</div>
+        <div class="env-item"><span class="label">CPU:</span> {{ environment.cpu }}</div>
+        <div class="env-item"><span class="label">JVM:</span> {{ environment.jvm }}</div>
+        <div class="env-item"><span class="label">Memory:</span> {{ environment.memory }}</div>
+        <div class="env-item"><span class="label">Seed:</span> {{ environment.seed }}</div>
+        <div class="env-item"><span class="label">Leaf Commit:</span> {{ environment.leafCommit }}</div>
+        <div class="env-item"><span class="label">Paper Commit:</span> {{ environment.paperCommit }}</div>
       </div>
-      
+
       <div class="moonrise-config">
         <h4>Moonrise Configuration</h4>
         <div class="code-block moonrise-config-code">{{ environment.moonriseConfig }}</div>
       </div>
-      
+
       <div class="jvm-flags">
         <h4>JVM Flags</h4>
         <div class="code-block jvm-flags-code">{{ jvmFlags }}</div>
@@ -157,51 +147,55 @@ onMounted(() => {
             <!-- Paper Bar -->
             <div class="bar-container">
               <div class="bar-wrapper">
-                <div 
-                  class="bar paper" 
-                  :style="{ 
+                <div
+                  class="bar paper"
+                  :style="{
                     height: showBars ? `${data.Paper * scaleFactor}px` : '0px',
                     transitionDelay: `${dataIndex * 100}ms`
                   }"
                 ></div>
               </div>
-              <div 
-                class="bar-value" 
-                :class="{ 'show': showNumbers }"
+              <div
+                class="bar-value"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 200}ms` }"
               >
                 {{ formatTime(animatedValues[dataIndex].Paper) }}
               </div>
-              <div 
+              <div
                 class="bar-name"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 250}ms` }"
-              >Paper</div>
+              >
+                Paper
+              </div>
             </div>
-            
+
             <!-- Leaf Bar -->
             <div class="bar-container">
               <div class="bar-wrapper">
-                <div 
-                  class="bar leaf" 
-                  :style="{ 
+                <div
+                  class="bar leaf"
+                  :style="{
                     height: showBars ? `${data.Leaf * scaleFactor}px` : '0px',
                     transitionDelay: `${dataIndex * 100 + 150}ms`
                   }"
                 ></div>
               </div>
-              <div 
+              <div
                 class="bar-value"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 300}ms` }"
               >
                 {{ formatTime(animatedValues[dataIndex].Leaf) }}
               </div>
-              <div 
+              <div
                 class="bar-name"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 350}ms` }"
-              >Leaf</div>
+              >
+                Leaf
+              </div>
             </div>
           </div>
         </div>
@@ -211,14 +205,12 @@ onMounted(() => {
     <!-- Improvement Card -->
     <h3 class="fade-in" :style="{ animationDelay: '1200ms' }">Performance Improvement</h3>
     <div class="improvement-grid">
-      <div 
-        class="improvement-card highlight fade-slide-up" 
-        :class="{ 'show': showImprovements }"
+      <div
+        class="improvement-card highlight fade-slide-up"
+        :class="{ show: showImprovements }"
         :style="{ animationDelay: '400ms' }"
       >
-        <div class="improvement-percentage counter">
-          {{ animatedValues[0].improvement }}%
-        </div>
+        <div class="improvement-percentage counter">{{ animatedValues[0].improvement }}%</div>
         <div class="improvement-title">Chunk Generation Time Reduction</div>
         <div class="improvement-details">
           Leaf ({{ formatTime(animatedValues[0].Leaf) }}) vs Paper ({{ formatTime(animatedValues[0].Paper) }})
@@ -271,11 +263,13 @@ h4 {
   margin-right: 6px;
 }
 
-.moonrise-config, .jvm-flags {
+.moonrise-config,
+.jvm-flags {
   margin-top: 16px;
 }
 
-.moonrise-config-code, .jvm-flags-code {
+.moonrise-config-code,
+.jvm-flags-code {
   font-size: 0.8rem;
   line-height: 1.4;
   overflow-x: auto;
@@ -349,7 +343,9 @@ h4 {
 .bar {
   width: 80px;
   border-radius: 4px 4px 0 0;
-  transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.5s ease;
+  transition:
+    height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.5s ease;
   height: 0;
 }
 
@@ -358,7 +354,7 @@ h4 {
 }
 
 .bar.leaf {
-  background-color: #78C287;
+  background-color: #78c287;
 }
 
 .bar-value {
@@ -368,7 +364,9 @@ h4 {
   white-space: nowrap;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .bar-value.show {
@@ -381,7 +379,9 @@ h4 {
   margin-top: 4px;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .bar-name.show {
@@ -407,7 +407,11 @@ h4 {
   margin: 0 auto;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .improvement-card.show {
@@ -479,35 +483,41 @@ h4 {
   .env-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .chart-group {
     width: 100%;
   }
-  
+
   .chart-bars {
     gap: 40px;
   }
-  
+
   .bar-container {
     width: 60px;
   }
-  
+
   .bar {
     width: 60px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bar, .bar-value, .bar-name, .improvement-card, .fade-in {
+  .bar,
+  .bar-value,
+  .bar-name,
+  .improvement-card,
+  .fade-in {
     transition: none !important;
     animation: none !important;
   }
-  
+
   .bar {
     height: auto !important;
   }
-  
-  .bar-value, .bar-name, .improvement-card {
+
+  .bar-value,
+  .bar-name,
+  .improvement-card {
     opacity: 1 !important;
     transform: none !important;
   }

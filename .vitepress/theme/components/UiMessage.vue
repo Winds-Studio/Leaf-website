@@ -1,29 +1,26 @@
 <script setup lang="ts">
-
-import {Icon} from "@iconify/vue";
+import { Icon } from "@iconify/vue";
 
 const props = defineProps<{
-  type: 'info' | 'error' | 'loading'
-  message: string | null
-}>()
+  type: "info" | "error" | "loading";
+  message: string | null;
+}>();
 
 const icons = {
-  'info': 'lucide:info',
-  'error': 'lucide:triangle-alert',
-  'loading': 'lucide:loader'
-}
-
+  info: "lucide:info",
+  error: "lucide:triangle-alert",
+  loading: "lucide:loader"
+};
 </script>
 
 <template>
   <div class="message-container" :class="'type-' + type">
-    <Icon :icon="icons[type]" :class="{'rotating': type == 'loading'}" class="message-icon" />
+    <Icon :icon="icons[type]" :class="{ rotating: type == 'loading' }" class="message-icon" />
     <span>{{ message }}</span>
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .message-container {
   display: flex;
   width: 100%;
@@ -46,8 +43,12 @@ const icons = {
 }
 
 @keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .type-error {
@@ -63,5 +64,4 @@ const icons = {
     opacity: 1;
   }
 }
-
 </style>

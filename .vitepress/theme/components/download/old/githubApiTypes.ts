@@ -26,5 +26,5 @@ export interface WorkflowRun {
     head_commit?: {
         message: string;
         id: string;
-    }
+    };
 }

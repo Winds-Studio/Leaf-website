@@ -11,6 +11,7 @@ const data = {
 </script>
 
 # Leaf global config
+
 The YAML config below shows the structure and default config values of Leaf's global config (`config/leaf-global.yml`)
 
 Click arrow button behind the config node to show description of it

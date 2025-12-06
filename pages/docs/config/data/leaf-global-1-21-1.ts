@@ -1,15 +1,15 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
     "config-version": {
         default: "3.0"
     },
 
-    "async": {
-        __desc__: "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
+    async: {
+        __desc__:
+            "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
         "async-entity-tracker": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Make entity tracking asynchronously, can improve performance significantly, especially in some massive entities in small area situations.<br>" +
                     "<br>" +
@@ -35,14 +35,14 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡Recommended value: 1/2 of CPU cores__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
             }
         },
         "async-playerdata-save": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Make PlayerData saving asynchronously. (I/O operations are expensive)" +
                     '<div class="warning custom-block">' +
@@ -52,7 +52,7 @@ const config: ConfigRoot = {
             }
         },
         "async-pathfinding": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Make mob pathfinding calculation asynchronously.<br>" +
                     "<br>" +
@@ -65,14 +65,14 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡Recommended value: 1/3 of CPU cores__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
             }
         },
         "async-mob-spawning": {
-            "enabled": {
+            enabled: {
                 default: true,
                 desc: "Whether asynchronous mob spawning should be enabled.<br>" +
                     "On servers with many entities, this can improve performance by up to 15%. You must have Paper's `per-player-mob-spawns` config set to `true` for this to work.<br>" +
@@ -82,7 +82,7 @@ const config: ConfigRoot = {
             }
         },
         "async-locator": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether asynchronous locator should be enabled.<br>" +
                     "This offloads structure locating to other threads.<br>" +
@@ -95,14 +95,14 @@ const config: ConfigRoot = {
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
-            "threads": {
+            threads: {
                 default: 0,
                 desc: "Maximum number of threads for async locator to use.<br>" +
                     "If a value &leq; `0` is given, it automatically uses 1 thread.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `1` or `2`__"
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
@@ -110,8 +110,9 @@ const config: ConfigRoot = {
         }
     },
 
-    "performance": {
-        __desc__: "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
+    performance: {
+        __desc__:
+            "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
             desc: "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
@@ -151,7 +152,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "throttle-hopper-when-full": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
                     "Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>" +
@@ -223,7 +224,7 @@ const config: ConfigRoot = {
                 "__⚡Recommended value: `true`__"
         },
         "optimize-minecart": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to optimize minecart ticking. By skipping tick collisions to reduce expensive `getEntities()` calls and bukkit event calls.<br>" +
                     "This can handle a large amount of stacked minecarts better which is useful for [Anarchy servers](https://minecraftservers.org/type/anarchy).<br>" +
@@ -251,7 +252,7 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "faster-random-generator": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to use the faster random generator.<br>" +
                     "Random is used almost everywhere in Minecraft, enable this can get a decent performance improvement.<br>" +
@@ -677,8 +678,8 @@ const config: ConfigRoot = {
                 "<br>" +
                 "__⚡Recommended value: `true`__"
         },
-        "dab": {
-            "enabled": {
+        dab: {
+            enabled: {
                 default: true,
                 desc: "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain to decrease the frequency of their brain ticking when they are far away from players.<br>" +
                     "<br>" +
@@ -766,14 +767,12 @@ const config: ConfigRoot = {
             },
             "dont-save-falling-block": {
                 default: false,
-                desc: "Disable save falling block on chunk unloads.<br>" +
-                    "<br>" +
-                    "__⚡Recommended value: `true`__"
+                desc: "Disable save falling block on chunk unloads.<br>" + "<br>" + "__⚡Recommended value: `true`__"
             }
         }
     },
 
-    "fixes": {
+    fixes: {
         __desc__: "This section contains bugfixes for specific issues.",
         "dont-place-player-if-server-full": {
             default: false,
@@ -798,7 +797,8 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "max-item-stack-count": {
-            __desc__: "Configurable max stack size of dropped item." +
+            __desc__:
+                "Configurable max stack size of dropped item." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                 "We __do not__ recommended to use this feature. It is working in progress and has known issues.<br>" +
@@ -813,7 +813,7 @@ const config: ConfigRoot = {
                 desc: "Maximum count of items to drop when container is destroyed."
             }
         },
-        "knockback": {
+        knockback: {
             __desc__: "This section contains options to adjust knockback related behaviors.",
             "snowball-knockback-players": {
                 default: false,
@@ -828,7 +828,7 @@ const config: ConfigRoot = {
                 desc: "Whether the player can knockback zombies."
             }
         },
-        "player": {
+        player: {
             "disable-moved-wrongly-threshold": {
                 default: false,
                 desc: "Whether to disable the Spigot built-in moved too quickly / wrongly checks for players and vehicles.<br>" +
@@ -853,7 +853,7 @@ const config: ConfigRoot = {
             }
         },
         "afk-command": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Wether to enable rhe AFK command based on Minecraft built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle).<br>" +
                     "Players can use /afk command to switch their AFK mode, and their AFK status can be shown in Tab list.<br> " +
@@ -862,10 +862,11 @@ const config: ConfigRoot = {
         }
     },
 
-    "network": {
+    network: {
         __desc__: "This section contains features for server networking related.",
         "protocol-support": {
-            __desc__: "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
+            __desc__:
+                "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
                 "<br>" +
                 "The extra protocol support is only functional if there is corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installed that mod on client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before." +
                 '<div class="tip custom-block">' +
@@ -926,9 +927,9 @@ const config: ConfigRoot = {
         }
     },
 
-    "misc": {
+    misc: {
         __desc__: "This section contains some miscellaneous features.",
-        "message": {
+        message: {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
                 desc: "Unknown command message, will send to player if they execute an unknown command.<br>" +
@@ -946,7 +947,7 @@ const config: ConfigRoot = {
                     "</div>"
             }
         },
-        "rebrand": {
+        rebrand: {
             "server-mod-name": {
                 default: "Leaf",
                 desc: "Server brand name that shows in F3 menu and server MOTD."
@@ -956,13 +957,14 @@ const config: ConfigRoot = {
                 desc: "Server GUI window name, if you launched server without adding `--nogui` option in the startup flag."
             }
         },
-        "sentry": {
-            __desc__: "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
+        sentry: {
+            __desc__:
+                "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
                 "<br>" +
                 "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
                 "<br>" +
                 "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
-            "dsn": {
+            dsn: {
                 default: "",
                 desc: "The DSN key of your Sentry.<br>" + "If an empty value `''` is given, the Sentry will be disabled."
             },
@@ -976,7 +978,7 @@ const config: ConfigRoot = {
             }
         },
         "secure-seed": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to use secure seed.<br>" +
                     "All ores and structures are generated with 1024-bit seed instead of using 64-bit seed in vanilla, made seed cracker become impossible.<br>" +
@@ -1007,7 +1009,8 @@ const config: ConfigRoot = {
                 "__⚡Recommended value: `true`__"
         },
         "region-format-settings": {
-            __desc__: "Linear is a region file format that uses [ZSTD compression](https://facebook.github.io/zstd/) instead of ZLIB in vanilla Minecraft. This format saves about ~50% of disk space.<br>" +
+            __desc__:
+                "Linear is a region file format that uses [ZSTD compression](https://facebook.github.io/zstd/) instead of ZLIB in vanilla Minecraft. This format saves about ~50% of disk space.<br>" +
                 "To use Linear region format, make sure you __Read [Linear Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__, and have done all steps required, then change `region-format-settings.region-format` below to `LINEAR`." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Warning</p>' +
@@ -1032,7 +1035,7 @@ const config: ConfigRoot = {
             }
         },
         "lag-compensation": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Lag compensation, which could ensure the basic game experience for players when server is lagging or low TPS situation.<br>" +
                     "<br>" +
@@ -1074,7 +1077,8 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "connection-message": {
-            __desc__: "Connection message, broadcasts to all online players, when they join or quit the server.<br>" +
+            __desc__:
+                "Connection message, broadcasts to all online players, when they join or quit the server.<br>" +
                 "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
                 "If set message to `default` or leave the default value, the vanilla join / quit message will be used.<br>" +
                 "<br>" +
@@ -1088,26 +1092,26 @@ const config: ConfigRoot = {
                 "This feature is API / plugin friendly." +
                 "It means that the connection message can be overrided by plugins using `PlayerJoinEvent` or `PlayerQuitEvent`." +
                 "</div>",
-            "join": {
-                "enabled": {
+            join: {
+                enabled: {
                     default: true
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "The join message of the player."
                 }
             },
-            "quit": {
-                "enabled": {
+            quit: {
+                enabled: {
                     default: true
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "The left message of the player."
                 }
             }
         },
-        "cache": {
+        cache: {
             "cache-player-profile-result": {
                 default: true,
                 desc: "Whether to cache the player profile result when they joined server.<br>" +
@@ -1124,4 +1128,3 @@ const config: ConfigRoot = {
 };
 
 export default config;
-

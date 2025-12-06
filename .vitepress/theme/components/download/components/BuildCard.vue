@@ -1,27 +1,26 @@
 <script setup lang="ts">
-
-import {ApiBuild, getBuildLink} from "../downloadApi";
+import { ApiBuild, getBuildLink } from "../downloadApi";
 import { Icon } from "@iconify/vue";
-import {useDateFormat, useTimeAgo} from "@vueuse/core";
+import { useDateFormat, useTimeAgo } from "@vueuse/core";
 
 const props = defineProps<{
-  build: ApiBuild,
-  version: string
-}>()
-
+  build: ApiBuild;
+  version: string;
+}>();
 </script>
 
 <template>
   <div class="build-card">
-
     <h2>
       <span style="color: var(--vp-c-text-2)">#</span>
-{{ build.build }}
+      {{ build.build }}
     </h2>
 
     <div class="commits-list">
       <div class="commit" v-for="commit in build.changes">
-        <a target="_blank" :href="'https://github.com/Winds-Studio/Leaf/commit/' + commit.commit"><code>{{ commit.commit.slice(0, 7) }}</code></a>
+        <a target="_blank" :href="'https://github.com/Winds-Studio/Leaf/commit/' + commit.commit"
+          ><code>{{ commit.commit.slice(0, 7) }}</code></a
+        >
         {{ commit.summary }}
       </div>
     </div>
@@ -36,12 +35,10 @@ const props = defineProps<{
       <Icon icon="lucide:file-box" class="file-icon" />
       {{ build.downloads.primary.name }}
     </a>
-
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .build-card {
   background-color: var(--vp-c-bg-alt);
   padding: 1.25rem 1.5rem;
@@ -70,7 +67,7 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: var(--vp-c-text-2)
+    color: var(--vp-c-text-2);
   }
 
   .commits-list {
@@ -106,5 +103,4 @@ const props = defineProps<{
     opacity: 1;
   }
 }
-
 </style>

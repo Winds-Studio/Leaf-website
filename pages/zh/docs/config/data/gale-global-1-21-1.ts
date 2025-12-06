@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -26,7 +25,7 @@ const config: ConfigRoot = {
 
     "log-to-console": {
         __desc__: "是否将特定文本和事件记录到控制台和日志中.",
-        "chat": {
+        chat: {
             "empty-message-warning": {
                 default: false,
                 desc: "当玩家发送一个空的消息数据包时.<br>" +
@@ -123,7 +122,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "plugin-library-loader": {
-            "downloads": {
+            downloads: {
                 default: true,
                 desc: "当插件的库加载器开始下载依赖库文件时." +
                     "<table>" +
@@ -172,7 +171,7 @@ const config: ConfigRoot = {
         }
     },
 
-    "misc": {
+    misc: {
         "ignore-null-legacy-structure-data": {
             default: false,
             desc: "如果任何旧版结构数据的 NBT tag 解析器因某些原因返回 null, 是否忽略这些数据." +
@@ -192,7 +191,7 @@ const config: ConfigRoot = {
                 "</table>" +
                 "<p>🛈 = 默认值为 `false`, 以防止任何潜在错误被默认忽略, 但推荐值为 `true`, 因为这些错误通常没有意义且无法解决</p>"
         },
-        "keepalive": {
+        keepalive: {
             "send-multiple": {
                 default: true,
                 desc: "是否发送比原版更频繁的 keepalive 数据包." +
@@ -228,7 +227,7 @@ const config: ConfigRoot = {
                     "<tr><td><i>Paper 行为</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "是否在 `/tps` 命令中显示上一 tick 的耗时.<br>" +
                     "上一 tick 的耗时仅代表那一个 tick 的时间, 因此通常不太有用." +
@@ -326,7 +325,8 @@ const config: ConfigRoot = {
             }
         },
         "use-xor-shift-random": {
-            __desc__: "是否使用 [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) 随机数生成器代替 Java 默认的随机数生成器.",
+            __desc__:
+                "是否使用 [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) 随机数生成器代替 Java 默认的随机数生成器.",
             "auto-replenish-lootable-refill": {
                 default: true,
                 desc: "是否在 Paper 的 `auto-replenish` 功能中使用 XorShift 随机数生成器为战利品补充物品.<br>" +

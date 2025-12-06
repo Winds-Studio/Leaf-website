@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -25,8 +24,9 @@ const config: ConfigRoot = {
     },
 
     "log-to-console": {
-        __desc__: "Gibt an, ob bestimmte Texte und Ereignisse in der Konsole und in den Logdateien geloggt werden sollen.",
-        "chat": {
+        __desc__:
+            "Gibt an, ob bestimmte Texte und Ereignisse in der Konsole und in den Logdateien geloggt werden sollen.",
+        chat: {
             "empty-message-warning": {
                 default: false,
                 desc: "Wenn ein Spieler ein leeres Nachrichtenpaket sendet.<br>" +
@@ -123,7 +123,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "plugin-library-loader": {
-            "downloads": {
+            downloads: {
                 default: true,
                 desc: "Wenn der Plugin Library-Loader mit dem Download der Libraries beginnt." +
                     "<table>" +
@@ -172,7 +172,7 @@ const config: ConfigRoot = {
         }
     },
 
-    "misc": {
+    misc: {
         "ignore-null-legacy-structure-data": {
             default: false,
             desc: "Gibt an, ob veraltete Strukturdaten ignoriert werden sollen, für die der NBT Tag Parser aus irgendeinem Grund null zurückgegeben hat." +
@@ -192,7 +192,7 @@ const config: ConfigRoot = {
                 "</table>" +
                 "<p>🛈 = Der Standardwert ist `false` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist `true` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>"
         },
-        "keepalive": {
+        keepalive: {
             "send-multiple": {
                 default: true,
                 desc: "Gibt an, ob Keepalive-Pakete häufiger als in Vanilla gesendet werden sollen." +
@@ -228,7 +228,7 @@ const config: ConfigRoot = {
                     "<tr><td><i>Paper Verhalten</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Gibt an, ob die Zeit, die der letzte Tick gedauert hat, im `/tps` Command enthalten sein soll.<br>" +
                     "Die Zeit des letzten Ticks ist meistens nicht sehr nützlich, das es sich nur um einen einzelnen Tick handelt." +

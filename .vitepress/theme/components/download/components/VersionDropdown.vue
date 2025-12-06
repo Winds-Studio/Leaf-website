@@ -1,80 +1,73 @@
 <script setup lang="ts">
-
-import {onMounted, onUnmounted, ref} from "vue";
-import {Icon} from "@iconify/vue";
-import {getVerStatus} from "../versionStatus";
-import {useTranslation} from "../useTranslation";
+import { onMounted, onUnmounted, ref } from "vue";
+import { Icon } from "@iconify/vue";
+import { getVerStatus } from "../versionStatus";
+import { useTranslation } from "../useTranslation";
 
 const props = defineProps<{
-  selectedVersion: string,
-  versions: string[]
-}>()
-const { t } = useTranslation()
+  selectedVersion: string;
+  versions: string[];
+}>();
+const { t } = useTranslation();
 
-const emit = defineEmits(['update:selectedVersion'])
-const dropdownOpen = ref(false)
+const emit = defineEmits(["update:selectedVersion"]);
+const dropdownOpen = ref(false);
 
 const selectVersion = (version: string) => {
-  emit('update:selectedVersion', version)
-  dropdownOpen.value = false
-}
+  emit("update:selectedVersion", version);
+  dropdownOpen.value = false;
+};
 
 const dropdownRef = ref<HTMLElement | null>(null);
 
 const handleClickOutside = (event: MouseEvent) => {
   if (dropdownRef.value && !dropdownRef.value.contains(event.target as Node) && dropdownOpen.value) {
-    dropdownOpen.value = false
+    dropdownOpen.value = false;
   }
 };
 
-onMounted(() => document.addEventListener('click', handleClickOutside))
-onUnmounted(() => document.removeEventListener('click', handleClickOutside))
-
+onMounted(() => document.addEventListener("click", handleClickOutside));
+onUnmounted(() => document.removeEventListener("click", handleClickOutside));
 </script>
 
 <template>
-
   <div class="dl-version-selector">
     <div class="dl-selector-label">
-      {{ t('labels.version') }}
+      {{ t("labels.version") }}
     </div>
     <div ref="dropdownRef" class="dl-version-dropdown">
-
       <div
-          class="dl-custom-select"
-          @click="dropdownOpen = !dropdownOpen"
-          :class="selectedVersion ? getVerStatus(selectedVersion).cssClass : ''"
+        class="dl-custom-select"
+        @click="dropdownOpen = !dropdownOpen"
+        :class="selectedVersion ? getVerStatus(selectedVersion).cssClass : ''"
       >
         <div class="dl-selected-version">
           <span class="dl-version-status-indicator"></span>
           <span>{{ selectedVersion }}</span>
         </div>
         <div class="dl-select-icon">
-          <Icon icon="lucide:chevron-down" :class="{ 'rotate': dropdownOpen }" />
+          <Icon icon="lucide:chevron-down" :class="{ rotate: dropdownOpen }" />
         </div>
       </div>
 
       <transition name="fade">
         <div class="dl-dropdown-options" v-show="dropdownOpen">
           <div
-              v-for="version in versions"
-              :key="version"
-              :class="['dl-dropdown-option', { 'selected': selectedVersion === version }, getVerStatus(version).cssClass]"
-              @click="selectVersion(version)"
+            v-for="version in versions"
+            :key="version"
+            :class="['dl-dropdown-option', { selected: selectedVersion === version }, getVerStatus(version).cssClass]"
+            @click="selectVersion(version)"
           >
             <span class="dl-version-status-indicator"></span>
             <span>{{ version }}</span>
           </div>
         </div>
       </transition>
-
     </div>
   </div>
-
 </template>
 
 <style scoped lang="scss">
-
 @use "../statusColors";
 
 // ---------------------------------------
@@ -214,5 +207,4 @@ onUnmounted(() => document.removeEventListener('click', handleClickOutside))
   opacity: 0;
   transform: translateY(-8px);
 }
-
 </style>

@@ -10,6 +10,7 @@ const data = {
 </script>
 
 # Leaf Genel Yapılandırma
+
 Aşağıdaki YAML yapılandırması, Leaf'in genel yapılandırma dosyasının (`config/leaf-global.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
 
 Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.

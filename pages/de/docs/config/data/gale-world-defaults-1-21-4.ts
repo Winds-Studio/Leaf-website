@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -56,7 +55,7 @@ const config: ConfigRoot = {
                 "<tr><td><i>Paper Verhalten</i></td><td><code>0.0</code></td></tr>" +
                 "</table>"
         },
-        "fixes": {
+        fixes: {
             "broadcast-crit-animations-as-the-entity-being-critted": {
                 default: false,
                 desc: "Gibt an, ob die Animation von kritischen Treffern durch das Entity gezeigt werden soll, das den kritischen Treffer erleidet.<br>" +
@@ -165,9 +164,10 @@ const config: ConfigRoot = {
             }
         },
         "max-projectile-chunk-loads": {
-            __desc__: "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt).",
+            __desc__:
+                "Einstellungen für das Laden von Chunks für Projektile (z.B. wenn ein Pfeil, Dreizack oder eine Enderperle einen ungeladenen Chunk betritt).",
             "per-projectile": {
-                "max": {
+                max: {
                     default: 10,
                     desc: "Die maximale Anzahl an Chunks, die synchron von einem Projektil während seiner Lebenszeit geladen werden können.<br>" +
                         "Wenn ein Wert < `0` angegeben ist, wird dies deaktiviert: Die Anzahl an Chunks, die ein Projektil laden kann, ist unbegrenzt." +
@@ -253,10 +253,11 @@ const config: ConfigRoot = {
                     "</table>"
             },
             "check-nearby-item": {
-                "hopper": {
-                    __desc__: "Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>" +
+                hopper: {
+                    __desc__:
+                        "Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>" +
                         "Dies beeinflusst nur das Aufheben von Items in der Welt (z.B. gedroppte Items). Dies beeinflusst nicht das Extrahieren von Items aus einer Truhe oder anderen Blöcken mit Items darin.",
-                    "interval": {
+                    interval: {
                         default: 1,
                         desc: "Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>" +
                             "(Einheit: Tick)<br>" +
@@ -274,8 +275,8 @@ const config: ConfigRoot = {
                             "<tr><td><i>Vanilla Verhalten</i></td><td><code>1</code></td></tr>" +
                             "</table>"
                     },
-                    "minecart": {
-                        "interval": {
+                    minecart: {
+                        interval: {
                             default: 1,
                             desc: "Gleich wie die obige `interval` Einstellung, aber für Loren mit Trichtern." +
                                 "<table>" +
@@ -336,7 +337,7 @@ const config: ConfigRoot = {
                                     "<tr><td><i>Vanilla Verhalten</i></td><td>- (Für Vanilla Verhalten muss <code>interval</code> auf 1 gestellt sein)</td></tr>" +
                                     "</table>"
                             },
-                            "duration": {
+                            duration: {
                                 default: 100,
                                 desc: "Die Dauer, für die Loren mit Trichtern temporär von der `interval` Einstellung immun werden.<br>" +
                                     "(Einheit: Tick)<br>" +

@@ -1,44 +1,42 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from "vue";
 
 // Performance comparison data
 const performanceData = [
   {
-    name: 'Default Config',
+    name: "Default Config",
     Leaf: 2.8,
     Paper: 3.7,
     LeafAsync: null, // No async data for this scenario
-    leafImprovement: ((3.7 - 2.8) / 3.7 * 100).toFixed(1)
+    leafImprovement: (((3.7 - 2.8) / 3.7) * 100).toFixed(1)
   },
   {
-    name: 'Increased Mob Caps',
+    name: "Increased Mob Caps",
     Leaf: 5.8,
     Paper: 8.1,
     LeafAsync: 4.5,
-    leafImprovement: ((8.1 - 5.8) / 8.1 * 100).toFixed(1),
-    asyncImprovement: ((8.1 - 4.5) / 8.1 * 100).toFixed(1)
+    leafImprovement: (((8.1 - 5.8) / 8.1) * 100).toFixed(1),
+    asyncImprovement: (((8.1 - 4.5) / 8.1) * 100).toFixed(1)
   }
 ];
 
 // Environment details
 const environment = {
-  leafCommit: '9db6bfb',
-  paperCommit: 'a838a88',
-  seed: '2618050634530417871',
-  coords: '183.5 67.00 -201.5',
-  version: '1.21.4',
-  cpu: 'i7-10750H',
-  jvm: 'GraalVM 21',
-  memory: '6GB'
+  leafCommit: "9db6bfb",
+  paperCommit: "a838a88",
+  seed: "2618050634530417871",
+  coords: "183.5 67.00 -201.5",
+  version: "1.21.4",
+  cpu: "i7-10750H",
+  jvm: "GraalVM 21",
+  memory: "6GB"
 };
 
 // Aikar's flags
 const jvmFlags = `-Xms6144M -Xmx6144M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20`;
 
 // Calculate maximum MSPT value for scaling
-const maxMspt = Math.max(
-  ...performanceData.map(d => Math.max(d.Paper, d.Leaf, d.LeafAsync || 0))
-);
+const maxMspt = Math.max(...performanceData.map((d) => Math.max(d.Paper, d.Leaf, d.LeafAsync || 0)));
 
 // Calculate the scale factor for bar heights (pixels per mspt)
 // We'll aim for the tallest bar to be about 160px tall
@@ -52,7 +50,7 @@ const showImprovements = ref(false);
 
 // Counter for animated numbers
 const animatedValues = ref(
-  performanceData.map(data => ({
+  performanceData.map((data) => ({
     Paper: 0,
     Leaf: 0,
     LeafAsync: data.LeafAsync ? 0 : null,
@@ -65,23 +63,23 @@ const animatedValues = ref(
 function animateCounters() {
   const duration = 1500; // Animation duration in ms
   const fps = 60;
-  const frames = duration * fps / 1000;
-  
+  const frames = (duration * fps) / 1000;
+
   // Clone target values
-  const targets = performanceData.map(data => ({
+  const targets = performanceData.map((data) => ({
     Paper: data.Paper,
     Leaf: data.Leaf,
     LeafAsync: data.LeafAsync,
     leafImprovement: parseFloat(data.leafImprovement),
     asyncImprovement: data.asyncImprovement ? parseFloat(data.asyncImprovement) : null
   }));
-  
+
   let frame = 0;
-  
+
   const interval = setInterval(() => {
     frame++;
     const progress = frame / frames;
-    
+
     // Update values
     animatedValues.value = targets.map((target, i) => ({
       Paper: +(target.Paper * progress).toFixed(1),
@@ -90,13 +88,13 @@ function animateCounters() {
       leafImprovement: +(target.leafImprovement * progress).toFixed(1),
       asyncImprovement: target.asyncImprovement ? +(target.asyncImprovement * progress).toFixed(1) : null
     }));
-    
+
     // Stop when done
     if (frame >= frames) {
       clearInterval(interval);
-      
+
       // Set exact final values
-      animatedValues.value = targets.map(target => ({
+      animatedValues.value = targets.map((target) => ({
         Paper: +target.Paper.toFixed(1),
         Leaf: +target.Leaf.toFixed(1),
         LeafAsync: target.LeafAsync ? +target.LeafAsync.toFixed(1) : null,
@@ -110,14 +108,18 @@ function animateCounters() {
 // Start animations when the component is mounted
 onMounted(() => {
   animationStarted.value = true;
-  
+
   // Staggered animations
-  setTimeout(() => { showBars.value = true; }, 300);
-  setTimeout(() => { 
+  setTimeout(() => {
+    showBars.value = true;
+  }, 300);
+  setTimeout(() => {
     showNumbers.value = true;
     animateCounters();
   }, 800);
-  setTimeout(() => { showImprovements.value = true; }, 1500);
+  setTimeout(() => {
+    showImprovements.value = true;
+  }, 1500);
 });
 </script>
 
@@ -127,32 +129,16 @@ onMounted(() => {
     <div class="env-card fade-in">
       <h3>Test Environment</h3>
       <div class="env-grid">
-        <div class="env-item">
-          <span class="label">Version:</span> {{ environment.version }}
-        </div>
-        <div class="env-item">
-          <span class="label">CPU:</span> {{ environment.cpu }}
-        </div>
-        <div class="env-item">
-          <span class="label">JVM:</span> {{ environment.jvm }}
-        </div>
-        <div class="env-item">
-          <span class="label">Memory:</span> {{ environment.memory }}
-        </div>
-        <div class="env-item">
-          <span class="label">Leaf Commit:</span> {{ environment.leafCommit }}
-        </div>
-        <div class="env-item">
-          <span class="label">Paper Commit:</span> {{ environment.paperCommit }}
-        </div>
-        <div class="env-item">
-          <span class="label">Seed:</span> {{ environment.seed }}
-        </div>
-        <div class="env-item">
-          <span class="label">Coords:</span> {{ environment.coords }}
-        </div>
+        <div class="env-item"><span class="label">Version:</span> {{ environment.version }}</div>
+        <div class="env-item"><span class="label">CPU:</span> {{ environment.cpu }}</div>
+        <div class="env-item"><span class="label">JVM:</span> {{ environment.jvm }}</div>
+        <div class="env-item"><span class="label">Memory:</span> {{ environment.memory }}</div>
+        <div class="env-item"><span class="label">Leaf Commit:</span> {{ environment.leafCommit }}</div>
+        <div class="env-item"><span class="label">Paper Commit:</span> {{ environment.paperCommit }}</div>
+        <div class="env-item"><span class="label">Seed:</span> {{ environment.seed }}</div>
+        <div class="env-item"><span class="label">Coords:</span> {{ environment.coords }}</div>
       </div>
-      
+
       <div class="jvm-flags">
         <h4>JVM Flags</h4>
         <div class="code-block jvm-flags-code">{{ jvmFlags }}</div>
@@ -169,76 +155,82 @@ onMounted(() => {
             <!-- Paper Bar -->
             <div class="bar-container">
               <div class="bar-wrapper">
-                <div 
-                  class="bar paper" 
-                  :style="{ 
+                <div
+                  class="bar paper"
+                  :style="{
                     height: showBars ? `${data.Paper * scaleFactor}px` : '0px',
                     transitionDelay: `${dataIndex * 100}ms`
                   }"
                 ></div>
               </div>
-              <div 
-                class="bar-value" 
-                :class="{ 'show': showNumbers }"
+              <div
+                class="bar-value"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 200}ms` }"
               >
                 {{ animatedValues[dataIndex].Paper }} mspt
               </div>
-              <div 
+              <div
                 class="bar-name"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 250}ms` }"
-              >Paper</div>
+              >
+                Paper
+              </div>
             </div>
-            
+
             <!-- Leaf Bar -->
             <div class="bar-container">
               <div class="bar-wrapper">
-                <div 
-                  class="bar leaf" 
-                  :style="{ 
+                <div
+                  class="bar leaf"
+                  :style="{
                     height: showBars ? `${data.Leaf * scaleFactor}px` : '0px',
                     transitionDelay: `${dataIndex * 100 + 150}ms`
                   }"
                 ></div>
               </div>
-              <div 
+              <div
                 class="bar-value"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 300}ms` }"
               >
                 {{ animatedValues[dataIndex].Leaf }} mspt
               </div>
-              <div 
+              <div
                 class="bar-name"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 350}ms` }"
-              >Leaf</div>
+              >
+                Leaf
+              </div>
             </div>
-            
+
             <!-- Leaf+Async Bar (when available) -->
             <div v-if="data.LeafAsync" class="bar-container">
               <div class="bar-wrapper">
-                <div 
-                  class="bar leaf-async" 
-                  :style="{ 
+                <div
+                  class="bar leaf-async"
+                  :style="{
                     height: showBars ? `${data.LeafAsync * scaleFactor}px` : '0px',
                     transitionDelay: `${dataIndex * 100 + 300}ms`
                   }"
                 ></div>
               </div>
-              <div 
+              <div
                 class="bar-value"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 400}ms` }"
               >
                 {{ animatedValues[dataIndex].LeafAsync }} mspt
               </div>
-              <div 
+              <div
                 class="bar-name"
-                :class="{ 'show': showNumbers }"
+                :class="{ show: showNumbers }"
                 :style="{ transitionDelay: `${dataIndex * 100 + 450}ms` }"
-              >Leaf+Async</div>
+              >
+                Leaf+Async
+              </div>
             </div>
           </div>
         </div>
@@ -249,44 +241,38 @@ onMounted(() => {
     <h3 class="fade-in" :style="{ animationDelay: '1200ms' }">Performance Improvement</h3>
     <div class="improvement-grid">
       <!-- Card 1 -->
-      <div 
-        class="improvement-card fade-slide-up" 
-        :class="{ 'show': showImprovements }"
+      <div
+        class="improvement-card fade-slide-up"
+        :class="{ show: showImprovements }"
         :style="{ animationDelay: '0ms' }"
       >
-        <div class="improvement-percentage counter">
-          {{ animatedValues[0].leafImprovement }}%
-        </div>
+        <div class="improvement-percentage counter">{{ animatedValues[0].leafImprovement }}%</div>
         <div class="improvement-title">Default Configuration</div>
         <div class="improvement-details">
           Leaf ({{ animatedValues[0].Leaf }} mspt) vs Paper ({{ animatedValues[0].Paper }} mspt)
         </div>
       </div>
-      
+
       <!-- Card 2 -->
-      <div 
-        class="improvement-card fade-slide-up" 
-        :class="{ 'show': showImprovements }"
+      <div
+        class="improvement-card fade-slide-up"
+        :class="{ show: showImprovements }"
         :style="{ animationDelay: '200ms' }"
       >
-        <div class="improvement-percentage counter">
-          {{ animatedValues[1].leafImprovement }}%
-        </div>
+        <div class="improvement-percentage counter">{{ animatedValues[1].leafImprovement }}%</div>
         <div class="improvement-title">Leaf with Increased Mob Caps</div>
         <div class="improvement-details">
           Leaf ({{ animatedValues[1].Leaf }} mspt) vs Paper ({{ animatedValues[1].Paper }} mspt)
         </div>
       </div>
-      
+
       <!-- Card 3 -->
-      <div 
-        class="improvement-card highlight fade-slide-up" 
-        :class="{ 'show': showImprovements }"
+      <div
+        class="improvement-card highlight fade-slide-up"
+        :class="{ show: showImprovements }"
         :style="{ animationDelay: '400ms' }"
       >
-        <div class="improvement-percentage counter">
-          {{ animatedValues[1].asyncImprovement }}%
-        </div>
+        <div class="improvement-percentage counter">{{ animatedValues[1].asyncImprovement }}%</div>
         <div class="improvement-title">Leaf+Async with Increased Mob Caps</div>
         <div class="improvement-details">
           Leaf+Async ({{ animatedValues[1].LeafAsync }} mspt) vs Paper ({{ animatedValues[1].Paper }} mspt)
@@ -406,7 +392,9 @@ h4 {
 .bar {
   width: 60px;
   border-radius: 4px 4px 0 0;
-  transition: height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.5s ease;
+  transition:
+    height 1.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.5s ease;
   height: 0;
 }
 
@@ -415,11 +403,11 @@ h4 {
 }
 
 .bar.leaf {
-  background-color: #78C287;
+  background-color: #78c287;
 }
 
 .bar.leaf-async {
-  background-color: #49B858;
+  background-color: #49b858;
   border: 1px solid #2c8038;
 }
 
@@ -430,7 +418,9 @@ h4 {
   white-space: nowrap;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .bar-value.show {
@@ -443,7 +433,9 @@ h4 {
   margin-top: 4px;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .bar-name.show {
@@ -466,7 +458,11 @@ h4 {
   text-align: center;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .improvement-card.show {
@@ -553,35 +549,41 @@ h4 {
   .env-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .chart-group {
     width: 100%;
   }
-  
+
   .chart-bars {
     gap: 20px;
   }
-  
+
   .bar-container {
     width: 50px;
   }
-  
+
   .bar {
     width: 50px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bar, .bar-value, .bar-name, .improvement-card, .fade-in {
+  .bar,
+  .bar-value,
+  .bar-name,
+  .improvement-card,
+  .fade-in {
     transition: none !important;
     animation: none !important;
   }
-  
+
   .bar {
     height: auto !important;
   }
-  
-  .bar-value, .bar-name, .improvement-card {
+
+  .bar-value,
+  .bar-name,
+  .improvement-card {
     opacity: 1 !important;
     transform: none !important;
   }

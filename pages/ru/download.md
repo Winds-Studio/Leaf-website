@@ -16,7 +16,6 @@ if (lang.value && lang.value !== 'ru' && window.location.pathname.includes('/ru/
 }
 </script>
 
-
 <ClientOnly>
     <DownloadPage/>
 </ClientOnly>

@@ -1,28 +1,27 @@
 <script setup lang="ts">
-import { VPTeamMembers } from 'vitepress/theme';
+import { VPTeamMembers } from "vitepress/theme";
 import { ref, computed } from "vue";
-
 
 const props = defineProps({
   lang: {
-    default: 'en',
+    default: "en",
     type: String
   }
-})
+});
 interface LangString {
-  en: string
-  tr: string
-  de: string
-  pt: string
-  ru: string
-  zh: string
+  en: string;
+  tr: string;
+  de: string;
+  pt: string;
+  ru: string;
+  zh: string;
 }
 
 interface Contributor {
-  avatar: string
-  name: string
-  title?: string
-  links: Array<{icon: string, link: string}>
+  avatar: string;
+  name: string;
+  title?: string;
+  links: Array<{ icon: string; link: string }>;
 }
 
 const members = ref<Contributor[]>([]);
@@ -65,14 +64,14 @@ const titleSpecial = (<LangString>{
 
 const rewrites = {
   "Dreeam-qwq": { title: titleCreator },
-  "HaHaWTH": { name: "Creeam (HaHaWTH)", title: titleCoreTeam },
+  HaHaWTH: { name: "Creeam (HaHaWTH)", title: titleCoreTeam },
   //"Taiyou06": { title: titleCoreTeam },
-  "hayanesuru": { title: titleCoreTeam },
-  "MartijnMuijsers": { title: titleCoreTeam },
-  "Pascalpex": { title: titleSpecial },
-  "envizar": {
+  hayanesuru: { title: titleCoreTeam },
+  MartijnMuijsers: { title: titleCoreTeam },
+  Pascalpex: { title: titleSpecial },
+  envizar: {
     title: titleWebDev,
-    links: [{ icon: "telegram", link: 'https://t.me/envizar' }]
+    links: [{ icon: "telegram", link: "https://t.me/envizar" }]
   }
 };
 
@@ -80,31 +79,27 @@ const transform = ({ login, avatar_url, html_url }: any) => {
   const base = {
     avatar: avatar_url,
     name: login,
-    links: [
-        { icon: 'github', link: html_url }
-    ]
+    links: [{ icon: "github", link: html_url }]
   };
   const rewrite = rewrites[login];
-  return rewrite ? {
-    ...base, ...rewrite,
-    links: [
-        ...base.links,
-      ...(rewrite.links || [])
-    ]
-  } : base;
+  return rewrite
+    ? {
+        ...base,
+        ...rewrite,
+        links: [...base.links, ...(rewrite.links || [])]
+      }
+    : base;
 };
 
 const transformWebsite = ({ login, avatar_url, html_url }: any) => {
   if (login in rewrites) {
-    return null;  // Skip this contributor if already in main list with custom title
+    return null; // Skip this contributor if already in main list with custom title
   }
-  
+
   const base = {
     avatar: avatar_url,
     name: login,
-    links: [
-        { icon: 'github', link: html_url }
-    ]
+    links: [{ icon: "github", link: html_url }]
   };
   return base;
 };
@@ -112,40 +107,40 @@ const transformWebsite = ({ login, avatar_url, html_url }: any) => {
 // Combine both contributor lists, filtering out nulls and duplicates
 const allMembers = computed(() => {
   if (!loaded.value || !websiteLoaded.value) return members.value;
-  
-  const mainContributors = new Set(members.value.map(m => m.name));
-  const filteredWebsiteMembers = websiteMembers.value.filter(m => m !== null && !mainContributors.has(m.name));
-  
+
+  const mainContributors = new Set(members.value.map((m) => m.name));
+  const filteredWebsiteMembers = websiteMembers.value.filter((m) => m !== null && !mainContributors.has(m.name));
+
   return [...members.value, ...filteredWebsiteMembers];
 });
 
 // Fetch main repo contributors
 fetch("https://api.github.com/repos/Winds-Studio/Leaf/contributors")
-  .then(resp => resp.json())
-  .then(data => {
+  .then((resp) => resp.json())
+  .then((data) => {
     // TODO: find a solution to avoid rate limit
     if (Array.isArray(data)) {
-      members.value = data.filter(m => m.type == "User").map(transform)
+      members.value = data.filter((m) => m.type == "User").map(transform);
     } else {
       console.warn(`Unexpected response: ${JSON.stringify(data)}`);
       members.value = [];
     }
   })
-  .finally(() => loaded.value = true);
+  .finally(() => (loaded.value = true));
 
 // Fetch website repo contributors
 fetch("https://api.github.com/repos/Winds-Studio/Leaf-website/contributors")
-  .then(resp => resp.json())
-  .then(data => {
+  .then((resp) => resp.json())
+  .then((data) => {
     // TODO: find a solution to avoid rate limit
     if (Array.isArray(data)) {
-      websiteMembers.value = data.filter(m => m.type == "User").map(transform)
+      websiteMembers.value = data.filter((m) => m.type == "User").map(transform);
     } else {
       console.warn(`Unexpected response: ${JSON.stringify(data)}`);
       websiteMembers.value = [];
     }
   })
-  .finally(() => websiteLoaded.value = true);
+  .finally(() => (websiteLoaded.value = true));
 </script>
 
 <template>

@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -26,7 +25,7 @@ const config: ConfigRoot = {
 
     "log-to-console": {
         __desc__: "Whether to log specific text and events to the console and the log files.",
-        "chat": {
+        chat: {
             "empty-message-warning": {
                 default: false,
                 desc: "Whether to log when a player sends a message packet that is empty.<br>" +
@@ -123,7 +122,7 @@ const config: ConfigRoot = {
                 "</table>"
         },
         "plugin-library-loader": {
-            "downloads": {
+            downloads: {
                 default: true,
                 desc: "Whether to log when the plugin library loader starts downloading libraries." +
                     "<table>" +
@@ -172,7 +171,7 @@ const config: ConfigRoot = {
         }
     },
 
-    "misc": {
+    misc: {
         "ignore-null-legacy-structure-data": {
             default: false,
             desc: "Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason." +
@@ -192,7 +191,7 @@ const config: ConfigRoot = {
                 "</table>" +
                 "<p>🛈 = The default value is `false` to prevent any errors going unnoticed by default, but the recommended value is `true` because these errors are usually meaningless and unsolvable anyway.</p>"
         },
-        "keepalive": {
+        keepalive: {
             "send-multiple": {
                 default: true,
                 desc: "Whether to send more frequent keepalive packets than vanilla." +
@@ -228,7 +227,7 @@ const config: ConfigRoot = {
                     "<tr><td><i>Paper behavior</i></td><td>-</td></tr>" +
                     "</table>"
             },
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to include the time that the last tick took in the `/tps` command.<br>" +
                     "The time that the last tick took only represents that one tick, so it is normally not very useful." +

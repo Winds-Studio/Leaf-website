@@ -1,8 +1,7 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
-    "_version": {
+    _version: {
         default: 1
     },
 
@@ -56,7 +55,7 @@ const config: ConfigRoot = {
                 "<tr><td><i>Paper 行为</i></td><td><code>0.0</code></td></tr>" +
                 "</table>"
         },
-        "fixes": {
+        fixes: {
             "broadcast-crit-animations-as-the-entity-being-critted": {
                 default: false,
                 desc: "是否将广播暴击动画为被攻击实体的动画.<br>" +
@@ -167,7 +166,7 @@ const config: ConfigRoot = {
         "max-projectile-chunk-loads": {
             __desc__: "以下是为弹射物 (例如箭、三叉戟或末影珍珠进入未加载区块时) 加载区块的配置.",
             "per-projectile": {
-                "max": {
+                max: {
                     default: 10,
                     desc: "弹射物在其生命周期内可以同时加载的最大区块数.<br>" +
                         "如果设为 < `0`, 此配置项将被禁用, 即弹射物可加载的区块数量不受限制." +
@@ -253,10 +252,11 @@ const config: ConfigRoot = {
                     "</table>"
             },
             "check-nearby-item": {
-                "hopper": {
-                    __desc__: "每个漏斗检查附近可拾取掉落物的频率.<br>" +
+                hopper: {
+                    __desc__:
+                        "每个漏斗检查附近可拾取掉落物的频率.<br>" +
                         "这仅影响从地面拾取掉落物 (例如掉落物), 而不影响从箱子或其他存储容器中吸取物品.",
-                    "interval": {
+                    interval: {
                         default: 1,
                         desc: "每个漏斗方块检查附近可拾取掉落物的频率.<br>" +
                             "(以 tick 为单位)<br>" +
@@ -274,8 +274,8 @@ const config: ConfigRoot = {
                             "<tr><td><i>原版行为</i></td><td><code>1</code></td></tr>" +
                             "</table>"
                     },
-                    "minecart": {
-                        "interval": {
+                    minecart: {
+                        interval: {
                             default: 1,
                             desc: "与上述 `interval` 相同, 但仅适用于漏斗矿车." +
                                 "<table>" +
@@ -290,7 +290,8 @@ const config: ConfigRoot = {
                                 "</table>"
                         },
                         "temporary-immunity": {
-                            __desc__: "漏斗矿车可以暂时免疫, 免受上述 `interval` 的影响.<br>" +
+                            __desc__:
+                                "漏斗矿车可以暂时免疫, 免受上述 `interval` 的影响.<br>" +
                                 "在免疫期间, 矿车将每 tick 检查一次掉落物.",
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
@@ -336,7 +337,7 @@ const config: ConfigRoot = {
                                     "<tr><td><i>原版行为</i></td><td>- (如需贴合原版行为, <code>interval</code> 必须设为 1)</td></tr>" +
                                     "</table>"
                             },
-                            "duration": {
+                            duration: {
                                 default: 100,
                                 desc: "每个矿车临时免疫的时长, 免受 `interval` 的影响.<br>" +
                                     "(以 tick 为单位)<br>" +

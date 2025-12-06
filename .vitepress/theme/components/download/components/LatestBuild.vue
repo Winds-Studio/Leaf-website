@@ -1,31 +1,28 @@
 <script setup lang="ts">
-
-import {ApiBuild, getBuildLink} from "../downloadApi";
-import {useTranslation} from "../useTranslation";
+import { ApiBuild, getBuildLink } from "../downloadApi";
+import { useTranslation } from "../useTranslation";
 
 const props = defineProps<{
-  build: ApiBuild
-  version: string
-}>()
+  build: ApiBuild;
+  version: string;
+}>();
 
-const { t } = useTranslation()
-
+const { t } = useTranslation();
 </script>
 
 <template>
   <div class="container">
-
     <div class="logo">
       {{ build.build }}
     </div>
 
-    <a class="download-button brand-button" :href="getBuildLink(version, build)">{{t('actions.download')}} Leaf {{version}}</a>
-
+    <a class="download-button brand-button" :href="getBuildLink(version, build)"
+      >{{ t("actions.download") }} Leaf {{ version }}</a
+    >
   </div>
 </template>
 
 <style scoped lang="scss">
-
 .container {
   width: 100%;
   height: 16rem;
@@ -73,7 +70,6 @@ const { t } = useTranslation()
       height: 8rem;
       width: 8rem;
     }
-
   }
 
   .download-button {
@@ -82,7 +78,5 @@ const { t } = useTranslation()
     color: var(--vp-c-text-1);
     text-decoration: none;
   }
-
 }
-
 </style>

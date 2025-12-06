@@ -1,7 +1,6 @@
 /* .vitepress\theme\style\blur.css */
 
 :root {
-
     /* Navbar */
     .VPNavBar:not(.has-sidebar):not(.home.top) {
         background-color: rgba(255, 255, 255, 0);
@@ -29,7 +28,6 @@
     }
 
     @media (min-width: 960px) {
-
         /* Navbar in docs */
         .VPNavBar:not(.home.top) .content-body {
             background-color: rgba(255, 255, 255, 0);
@@ -42,5 +40,4 @@
         background-color: rgba(255, 255, 255, 0);
         backdrop-filter: blur(10px);
     }
-
 }

@@ -21,23 +21,13 @@ if (stateEmitter) {
 
 <template>
   <div>
-    <button
-      v-if="node.description"
-      @click="opened = !opened"
-      class="nameAndDescription"
-    >
+    <button v-if="node.description" @click="opened = !opened" class="nameAndDescription">
       <span class="nodeName">{{ node.name }}<span class="colon">:</span></span>
       <span class="openedIndicator" :class="{ opened }">▶</span>
     </button>
-    <span v-else class="nodeName"
-      >{{ node.name }}<span class="colon">:</span></span
-    >
+    <span v-else class="nodeName">{{ node.name }}<span class="colon">:</span></span>
 
-    <Markdown
-      v-if="opened && node.description"
-      class="description"
-      :content="node.description"
-    />
+    <Markdown v-if="opened && node.description" class="description" :content="node.description" />
 
     <div v-for="childNode in node.nodes" style="margin-left: 1rem">
       <ConfigNode :node="childNode" />
