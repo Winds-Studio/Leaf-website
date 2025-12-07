@@ -25,6 +25,7 @@ Java bayrakları, JVM'nin nasıl çalıştığını, özellikle bellek yönetimi
 - **Amaç:** Aikar'ın bayrakları, Minecraft sunucuları için optimize edilmiş, Çöp-Öncelikli Çöp Toplayıcı (G1GC) kullanan tanınmış bir argüman setidir [8]. G1GC, modern Java sürümlerinde varsayılan GC'dir ve genellikle verim (sunucunun ne kadar iş yaptığı) ile duraklama süreleri (sunucunun GC için ne kadar süre donduğu) arasında iyi bir denge sağlar [9, 10].
 - **Uygunluk:** Bu bayraklar, **çoğu sunucu** için (yaklaşık 1-100 oyuncu) mükemmel bir başlangıç noktasıdır ve çalışır. Minecraft'ın tipik nesne ayırma kalıplarına (çok sayıda kısa ömürlü nesne) özel olarak G1GC'yi ayarlayarak GC duraklamalarının neden olduğu gecikme artışlarını azaltmayı amaçlar [8].
 - **Java 21+ Aikar'ın Bayrakları (G1GC kullanarak):**
+
     ```bash
     java -Xms<RAM>M -Xmx<RAM>M \
     -XX:+UseG1GC \
@@ -64,6 +65,7 @@ Java bayrakları, JVM'nin nasıl çalıştığını, özellikle bellek yönetimi
     - **Neden:** ZGC'nin eşzamanlı, ultra düşük duraklama süresi performansını nesilsel bir yığın yapısıyla birleştirir [10, 13, 17]. Genç nesil, çoğu nesnenin öldüğü yer olarak sık sık toplanır, tam yığın taramalarına olan ihtiyacı azaltır ve eski nesilsel olmayan ZGC'ye kıyasla yüksek ayırma hızlarını daha iyi idare eder [12, 17].
     - **Uygunluk:** Düşük duraklama süresinin öncelikli olduğu güçlü sunucular için mükemmeldir (yüksek çekirdek sayısı, 16GB+ RAM önerilir) [10, 13].
     - **Örnek Bayraklar (Java 21):**
+
         ```bash
         java -Xms<RAM>M -Xmx<RAM>M \
         -XX:+UnlockExperimentalVMOptions \
@@ -78,10 +80,12 @@ Java bayrakları, JVM'nin nasıl çalıştığını, özellikle bellek yönetimi
 
         - `-XX:+UseZGC -XX:+ZGenerational`: Nesilsel ZGC'yi etkinleştirir [13, 17]. (Java 23+'te varsayılan olur) [10].
         - `-XX:+UseDynamicNumberOfGCThreads`: GC iş parçacıklarının dinamik ayarlanmasını sağlar [7].
+
 - **Nesilsel Shenandoah:**
     - **Neden:** Shenandoah da çoğu GC işini eşzamanlı olarak yapar ve yığın boyutundan bağımsız olarak düşük duraklamalar hedefler [14]. JEP 404, Java 17-23'te deneysel olarak nesilsel yetenekler getirdi ve daha sonraki yapılarla daha kararlı hale geldi [18]. GZGC'ye benzer şekilde, genç nesil koleksiyonlarını daha verimli bir şekilde idare eder [18].
     - **Uygunluk:** Birçok OpenJDK yapısında (Oracle JDK değil) mevcut olan alternatif bir düşük gecikmeli nesilsel toplayıcı. GZGC'ye göre performansı, belirli iş yüküne bağlıdır; özellikle Java 24+ için nesilsel modda test edilmesi önerilir [12, 18].
     - **Örnek Bayraklar (Java 24 Kullanımı - _Deneysel_ Nesilsel Mod):**
+
         ```bash
         java -Xms<RAM>M -Xmx<RAM>M \
         -XX:+UnlockExperimentalVMOptions \
