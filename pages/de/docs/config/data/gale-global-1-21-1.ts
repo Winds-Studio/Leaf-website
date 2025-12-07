@@ -8,7 +8,8 @@ const config: ConfigRoot = {
     "gameplay-mechanics": {
         "enable-book-writing": {
             default: true,
-            desc: "Gibt an, ob Bücher beschreibbar sein sollen.<br>" +
+            desc:
+                "Gibt an, ob Bücher beschreibbar sein sollen.<br>" +
                 "Wenn diese Option auf `false` gesetzt wird, können Spieler mit der Permission `gale.writebooks` (Standard: `op`) trotzdem Bücher nutzen." +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
@@ -29,7 +30,8 @@ const config: ConfigRoot = {
         chat: {
             "empty-message-warning": {
                 default: false,
-                desc: "Wenn ein Spieler ein leeres Nachrichtenpaket sendet.<br>" +
+                desc:
+                    "Wenn ein Spieler ein leeres Nachrichtenpaket sendet.<br>" +
                     "(Dies ist harmlos und passiert meistens, wenn der Client des Spielers veraltet ist)" +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
@@ -39,7 +41,8 @@ const config: ConfigRoot = {
             },
             "expired-message-warning": {
                 default: false,
-                desc: "Wenn das Nachrichtenpaket eines Spielers abgelaufen ist.<br>" +
+                desc:
+                    "Wenn das Nachrichtenpaket eines Spielers abgelaufen ist.<br>" +
                     "(Dies ist harmlos und passiert meistens, wenn ein Bit des Clients des Spielers nicht mehr synchron ist)" +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
@@ -49,7 +52,8 @@ const config: ConfigRoot = {
             },
             "not-secure-marker": {
                 default: true,
-                desc: "Gibt an, ob ein [NOT SECURE] Marker vor unsignierte Chatpakete angefügt werden soll." +
+                desc:
+                    "Gibt an, ob ein [NOT SECURE] Marker vor unsignierte Chatpakete angefügt werden soll." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -59,7 +63,8 @@ const config: ConfigRoot = {
         },
         "ignored-advancements": {
             default: true,
-            desc: "Wenn Spielerdaten geladen werden und Advancements beinhalten, die nicht mehr existieren.<br>" +
+            desc:
+                "Wenn Spielerdaten geladen werden und Advancements beinhalten, die nicht mehr existieren.<br>" +
                 "(Dies ist harmlos und passiert meistens, wenn der Server auf eine neue Minecraft Version aktualisiert wurde)" +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
@@ -69,7 +74,8 @@ const config: ConfigRoot = {
         },
         "invalid-pool-element-error-log-level": {
             default: "info",
-            desc: "Das Logging-Level für Fehler, wenn *ungültige Pool-Elemente* in den Weltdaten auftreten.<br>" +
+            desc:
+                "Das Logging-Level für Fehler, wenn *ungültige Pool-Elemente* in den Weltdaten auftreten.<br>" +
                 "<br>" +
                 "*Ungültige Pool-Elemente* sind Teil von generierten Strukturen (wie Minenschachte), die korrupt sind oder nicht richtig von älteren Versionen übernommen wurden.<br>" +
                 "<br>" +
@@ -87,7 +93,8 @@ const config: ConfigRoot = {
         },
         "invalid-statistics": {
             default: true,
-            desc: "Wenn Spielerdaten geladen werden und Statistiken beinhalten, die nicht mehr existieren." +
+            desc:
+                "Wenn Spielerdaten geladen werden und Statistiken beinhalten, die nicht mehr existieren." +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                 "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -96,7 +103,8 @@ const config: ConfigRoot = {
         },
         "legacy-material-initialization": {
             default: false,
-            desc: "Wenn ein sehr altes Bukkit Plugin geladen wird" +
+            desc:
+                "Wenn ein sehr altes Bukkit Plugin geladen wird" +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                 "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -105,7 +113,8 @@ const config: ConfigRoot = {
         },
         "null-id-disconnections": {
             default: true,
-            desc: "Wenn ein Spieler kein gültiges Profil während dem Login gesendet hat.<br>" +
+            desc:
+                "Wenn ein Spieler kein gültiges Profil während dem Login gesendet hat.<br>" +
                 "(Dies bedeutet meistens, dass ein Hacker versucht die Join-Kapazität des Servers zu überlasten)" +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
@@ -115,7 +124,8 @@ const config: ConfigRoot = {
         },
         "player-login-locations": {
             default: true,
-            desc: "Gibt an, ob die Koordinaten eines Spielers in der Join-Nachricht in der Konsole enthalten sein soll." +
+            desc:
+                "Gibt an, ob die Koordinaten eines Spielers in der Join-Nachricht in der Konsole enthalten sein soll." +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                 "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -125,7 +135,8 @@ const config: ConfigRoot = {
         "plugin-library-loader": {
             downloads: {
                 default: true,
-                desc: "Wenn der Plugin Library-Loader mit dem Download der Libraries beginnt." +
+                desc:
+                    "Wenn der Plugin Library-Loader mit dem Download der Libraries beginnt." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -134,7 +145,8 @@ const config: ConfigRoot = {
             },
             "library-loaded": {
                 default: true,
-                desc: "Wenn der Plugin Library-Loader mit dem Download einer Library fertig ist." +
+                desc:
+                    "Wenn der Plugin Library-Loader mit dem Download einer Library fertig ist." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -143,7 +155,8 @@ const config: ConfigRoot = {
             },
             "start-load-libraries-for-plugin": {
                 default: true,
-                desc: "Wenn der Plugin Library-Loader mit dem Laden der Libraries für ein Plugin beginnt." +
+                desc:
+                    "Wenn der Plugin Library-Loader mit dem Laden der Libraries für ein Plugin beginnt." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -153,7 +166,8 @@ const config: ConfigRoot = {
         },
         "set-block-in-far-chunk": {
             default: true,
-            desc: "Wenn ein Spieler versucht, einen Block zu platzieren, der *sehr* weit entfernt ist.<br>" +
+            desc:
+                "Wenn ein Spieler versucht, einen Block zu platzieren, der *sehr* weit entfernt ist.<br>" +
                 "(Dies bedeutet meistens, dass ein Hacker versucht, Informationen über die Standorte anderer Spieler zu erhalten oder einen Hack Client nutzt)" +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
@@ -163,7 +177,8 @@ const config: ConfigRoot = {
         },
         "unrecognized-recipes": {
             default: false,
-            desc: "Wenn Spielerdaten geladen werden und Rezeptbuch-Rezepte beinhaltet, die nicht mehr existieren." +
+            desc:
+                "Wenn Spielerdaten geladen werden und Rezeptbuch-Rezepte beinhaltet, die nicht mehr existieren." +
                 "<table>" +
                 "<tr><td></td><td><b>Standard</b></td><td></td></tr>" +
                 "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>" +
@@ -175,7 +190,8 @@ const config: ConfigRoot = {
     misc: {
         "ignore-null-legacy-structure-data": {
             default: false,
-            desc: "Gibt an, ob veraltete Strukturdaten ignoriert werden sollen, für die der NBT Tag Parser aus irgendeinem Grund null zurückgegeben hat." +
+            desc:
+                "Gibt an, ob veraltete Strukturdaten ignoriert werden sollen, für die der NBT Tag Parser aus irgendeinem Grund null zurückgegeben hat." +
                 "<ul>" +
                 "<li>Bei `true` wird in diesem Fall keine Warnung ausgegeben.</li>" +
                 "<li>Bei `false` wird in diesem Fall eine Exception geworfen und in der Konsole geworfen.</li>" +
@@ -195,7 +211,8 @@ const config: ConfigRoot = {
         keepalive: {
             "send-multiple": {
                 default: true,
-                desc: "Gibt an, ob Keepalive-Pakete häufiger als in Vanilla gesendet werden sollen." +
+                desc:
+                    "Gibt an, ob Keepalive-Pakete häufiger als in Vanilla gesendet werden sollen." +
                     "<ul>" +
                     "<li>Bei `true` wird ein Keepalive-Paket jedem Client jede Sekunde gesendet und diese werden nicht gekickt, solange sie innerhalb von 30 Sekunden mindestens einmal antworten.</li>" +
                     "<li>Bei `false` wird ein Keepalive-Paket jedem Client alle 15 Sekunden gesendet und werden gekickt, falls diese nicht innerhalb von 30 Sekunden antworten.</li>" +
@@ -215,7 +232,8 @@ const config: ConfigRoot = {
         "last-tick-time-in-tps-command": {
             "add-oversleep": {
                 default: false,
-                desc: "Gibt an, ob der Oversleep-Anteil der letzten Tickzeit im `/tps` Command enthalten sein soll.<br>" +
+                desc:
+                    "Gibt an, ob der Oversleep-Anteil der letzten Tickzeit im `/tps` Command enthalten sein soll.<br>" +
                     "Diese Option wird ignoriert, wenn `enabled` auf `false` gestellt ist." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
@@ -230,7 +248,8 @@ const config: ConfigRoot = {
             },
             enabled: {
                 default: false,
-                desc: "Gibt an, ob die Zeit, die der letzte Tick gedauert hat, im `/tps` Command enthalten sein soll.<br>" +
+                desc:
+                    "Gibt an, ob die Zeit, die der letzte Tick gedauert hat, im `/tps` Command enthalten sein soll.<br>" +
                     "Die Zeit des letzten Ticks ist meistens nicht sehr nützlich, das es sich nur um einen einzelnen Tick handelt." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
@@ -246,7 +265,8 @@ const config: ConfigRoot = {
         },
         "premium-account-slow-login-timeout": {
             default: -1,
-            desc: "Die maximale Zeit, die ein Login Vorgang eines Premium-Accounts dauern kann." +
+            desc:
+                "Die maximale Zeit, die ein Login Vorgang eines Premium-Accounts dauern kann." +
                 "(Einheit: Tick)" +
                 "<ul>" +
                 "<li>Wenn die Zeit abläuft, wird die Verbindung geschlossen.</li>" +
@@ -265,7 +285,8 @@ const config: ConfigRoot = {
         },
         "verify-chat-order": {
             default: true,
-            desc: "Gibt an, ob die Reihenfolge der Chatnachrichten verifiziert werden soll." +
+            desc:
+                "Gibt an, ob die Reihenfolge der Chatnachrichten verifiziert werden soll." +
                 "<ul>" +
                 "<li>Bei `true` wird ein Spieler gekickt, wenn er ein Chat-Paket senden sollte, das nicht in der korrekten Reihenfolge entspricht.</li>" +
                 "<li>Bei `false` findet keine Überprüfung statt und Spieler werden nicht gekickt.</li>" +
@@ -287,7 +308,8 @@ const config: ConfigRoot = {
         "reduced-intervals": {
             "increase-time-statistics": {
                 default: 20,
-                desc: "Das Interval, in welchem die zeitbasierten Statistiken, wie Spielzeit oder Zeit seit dem letzten Tod erhöht werden sollen.<br>" +
+                desc:
+                    "Das Interval, in welchem die zeitbasierten Statistiken, wie Spielzeit oder Zeit seit dem letzten Tod erhöht werden sollen.<br>" +
                     "(Einheit: Tick)" +
                     "Das Ändern dieses Wertes ändert nicht die Geschwindigkeit, mit der Statistiken von Vanilla erhöht werden.<br>" +
                     "<br>" +
@@ -310,7 +332,8 @@ const config: ConfigRoot = {
             },
             "update-entity-line-of-sight": {
                 default: 4,
-                desc: "Das Interval, in welchem aktualisiert wird, ob ein Entity in der Sicht eines anderen Entity ist.<br>" +
+                desc:
+                    "Das Interval, in welchem aktualisiert wird, ob ein Entity in der Sicht eines anderen Entity ist.<br>" +
                     "(Einheit: Tick)" +
                     "Wenn ein Wert &leq; `0` gesetzt ist, ist der Wert gleich wie bei Paper." +
                     "<table>" +
@@ -326,10 +349,12 @@ const config: ConfigRoot = {
             }
         },
         "use-xor-shift-random": {
-            __desc__: "Gibt an, ob ein [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) Zufallsgenerator anstelle des Standardgenerators von Java genutzt werden soll.",
+            __desc__:
+                "Gibt an, ob ein [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) Zufallsgenerator anstelle des Standardgenerators von Java genutzt werden soll.",
             "auto-replenish-lootable-refill": {
                 default: true,
-                desc: "Gibt an, ob der XorShift Generator für das Auffüllen von Lootables des Paper `auto-replenish` Features genutzt werden soll.<br>" +
+                desc:
+                    "Gibt an, ob der XorShift Generator für das Auffüllen von Lootables des Paper `auto-replenish` Features genutzt werden soll.<br>" +
                     "Dies hat keine Auswirkung auf normale Minecraft Lootable Truhen." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
@@ -344,7 +369,8 @@ const config: ConfigRoot = {
             },
             "elytra-firework-speed": {
                 default: true,
-                desc: "Gibt an, ob der XorShift Generator für den Speed-Boost einer Feuerwerksraketen beim Gleiten genutzt werden soll." +
+                desc:
+                    "Gibt an, ob der XorShift Generator für den Speed-Boost einer Feuerwerksraketen beim Gleiten genutzt werden soll." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -358,7 +384,8 @@ const config: ConfigRoot = {
             },
             "entity-wake-up-duration": {
                 default: true,
-                desc: "Gibt an, ob der XorShift Generator für Variationen in Entity-Aktivierung-Zeiten genutzt werden soll." +
+                desc:
+                    "Gibt an, ob der XorShift Generator für Variationen in Entity-Aktivierung-Zeiten genutzt werden soll." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -371,7 +398,8 @@ const config: ConfigRoot = {
             },
             "generate-tree-with-bukkit-api": {
                 default: true,
-                desc: "Gibt an, ob der XorShift Generator für die Generierung von Bäumen mit der Bukkit API (`World#generateTree`) genutzt werden soll." +
+                desc:
+                    "Gibt an, ob der XorShift Generator für die Generierung von Bäumen mit der Bukkit API (`World#generateTree`) genutzt werden soll." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +
@@ -385,7 +413,8 @@ const config: ConfigRoot = {
             },
             "lightning-random-tick": {
                 default: true,
-                desc: "Gibt an, ob der XorShift Generator für die Chance eines Blitzes genutzt werden soll." +
+                desc:
+                    "Gibt an, ob der XorShift Generator für die Chance eines Blitzes genutzt werden soll." +
                     "<table>" +
                     "<tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>" +
                     "<tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>" +

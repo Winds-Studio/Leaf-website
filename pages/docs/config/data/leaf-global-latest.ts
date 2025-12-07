@@ -1,27 +1,27 @@
 import type { ConfigRoot } from "@/.vitepress/theme/components/config/types";
 
 const config: ConfigRoot = {
-
     "config-version": {
-        default: "3.0",
+        default: "3.0"
     },
 
-    "async": {
-        __desc__: "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
+    async: {
+        __desc__:
+            "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
         "async-chunk-send": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             }
         },
         "async-mob-spawning": {
-            "enabled": {
+            enabled: {
                 default: true,
                 desc: ""
             }
         },
         "async-pathfinding": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -29,7 +29,7 @@ const config: ConfigRoot = {
                 default: 0,
                 desc: ""
             },
-            "keepalive": {
+            keepalive: {
                 default: 60,
                 desc: ""
             },
@@ -43,27 +43,45 @@ const config: ConfigRoot = {
             }
         },
         "async-playerdata-save": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             }
         },
         "async-entity-tracker": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
-            "threads": {
+            threads: {
                 default: 0,
                 desc: ""
             }
         },
         "parallel-world-ticking": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: ""
+                desc:
+                    "Whether parallel processing different worlds in separate threads, which can improve performance on multi-core system.<br>" +
+                    "<br>" +
+                    'Parallel World Ticking, also called "PWT", is a concept created by [SparklyPaper](https://github.com/SparklyPower/SparklyPaper), by ticking each world in a separate thread, to reduce and split the work load in originally single thread for all worlds.<br>' +
+                    "In this PWT implementation, each world will wait until last world tick finished, read more in SparklyPaper's explanation [PARALLEL_WORLD_TICKING.md](https://github.com/SparklyPower/SparklyPaper/blob/13aff425238ea322658de0d9f4f7bd906bd9f431/docs/PARALLEL_WORLD_TICKING.md).<br>" +
+                    "<br>" +
+                    "When I should consider to try PWT?" +
+                    "<ol>" +
+                    "<li>I really can't switch to [Folia](https://papermc.io/software/folia)</li>" +
+                    "<li>I have a multi-core server</li>" +
+                    "<li>My players spread averagely in each world</li>" +
+                    "<li>(Or I have many worlds, e.g. some RPG servers)</li>" +
+                    "</ol>" +
+                    "<br>" +
+                    "__⚡Recommended value: `true` (Only if experience specific bottlenecks and understand the risks)__" +
+                    '<div class="warning custom-block">' +
+                    '<p class="custom-block-title custom-block-title-default">Warning</p>' +
+                    "Experimental feature, potentially unsable, and may cause compatibility issue with some plugins." +
+                    "</div>"
             },
-            "threads": {
+            threads: {
                 default: 8,
                 desc: ""
             },
@@ -82,8 +100,9 @@ const config: ConfigRoot = {
         }
     },
 
-    "performance": {
-        __desc__: "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
+    performance: {
+        __desc__:
+            "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "check-survival-before-growth": {
             "cactus-check-survival": {
                 default: false,
@@ -100,8 +119,8 @@ const config: ConfigRoot = {
                 desc: ""
             }
         },
-        "dab": {
-            "enabled": {
+        dab: {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -131,7 +150,7 @@ const config: ConfigRoot = {
             desc: ""
         },
         "fast-biome-manager-seed-obfuscation": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -141,7 +160,7 @@ const config: ConfigRoot = {
             }
         },
         "faster-random-generator": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -171,7 +190,7 @@ const config: ConfigRoot = {
             desc: ""
         },
         "cache-biome": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -179,7 +198,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: ""
             },
-            "advancements": {
+            advancements: {
                 default: false,
                 desc: ""
             }
@@ -228,7 +247,7 @@ const config: ConfigRoot = {
             default: true,
             desc: ""
         },
-        "datapack": {
+        datapack: {
             "skip-inactive-entity-for-execute-command": {
                 default: false,
                 desc: ""
@@ -239,7 +258,7 @@ const config: ConfigRoot = {
             desc: ""
         },
         "throttle-hopper-when-full": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
@@ -249,11 +268,11 @@ const config: ConfigRoot = {
             }
         },
         "throttle-mob-spawning": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: ""
             },
-            "monster": {
+            monster: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -263,7 +282,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "creature": {
+            creature: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -273,7 +292,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "ambient": {
+            ambient: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -283,7 +302,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "axolotls": {
+            axolotls: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -293,7 +312,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "underground_water_creature": {
+            underground_water_creature: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -303,7 +322,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "water_creature": {
+            water_creature: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -313,7 +332,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "water_ambient": {
+            water_ambient: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -323,7 +342,7 @@ const config: ConfigRoot = {
                     desc: ""
                 }
             },
-            "misc": {
+            misc: {
                 "min-failed": {
                     default: 8,
                     desc: ""
@@ -336,31 +355,55 @@ const config: ConfigRoot = {
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
-            desc: ""
+            desc:
+                "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
+                "<br>" +
+                "Some plugins may call `getInventory().getHolder()` to get the holder of an inventory, which involves accessings the BlockState.<br>" +
+                "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events, call frequently). Re-creating BlockState and parsing item stack in massive and frequent calls are very expensive.<br>" +
+                "See Paper's [API-to-get-a-BlockState-without-a-snapshot.patch#L6](https://github.com/PaperMC/Paper-archive/blob/b48403bd69f534ffd43fe2afb4e8e1f1ffa95fe1/patches/server/0160-API-to-get-a-BlockState-without-a-snapshot.patch#L6) for more information." +
+                "<ul>" +
+                "<li>If `true`, always creates snapshot (copy) of BlockState when the plugin calls related methods.</li>" +
+                "<li>If `false`, gets real BlockState directly unless the plugin explicitly requests a snapshot. Performance improves, but has risk that block state gets modified due to plugin's poor design.</li>" +
+                "</ul>" +
+                "<br>" +
+                "__⚡Recommended value: `false` (Only if you encounter specific lag described above)__"
         },
         "use-virtual-thread-for-async-scheduler": {
             default: false,
-            desc: ""
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__ (Only if all plugins support Virutal Thread)"
         },
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
-            desc: ""
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-profile-executor": {
             default: false,
-            desc: ""
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Profile Executor, which handles player profile and skull skin fetching.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `false`__"
         },
         "use-virtual-thread-for-user-authenticator": {
             default: true,
-            desc: ""
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the User Authenticator service, which handles premium player join verification.<br>" +
+                "<br>" +
+                "__⚡Recommended value: `true`__"
         }
     },
 
-    "fixes": {
+    fixes: {
         __desc__: "This section contains bugfixes for specific issues.",
         "dont-place-player-if-server-full": {
             default: false,
-            desc: "Whether to disallow players join if the server is full (defined as `max-players` in `server.properties`).<br>" +
+            desc:
+                "Whether to disallow players join if the server is full (defined as `max-players` in `server.properties`).<br>" +
                 "This option fixed [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>" +
                 "<br>" +
                 "If `true`, you should grant player `purpur.joinfullserver` permission rather than using `PlayerLoginEvent#allow` API allow players to bypass the limit."
@@ -370,17 +413,19 @@ const config: ConfigRoot = {
     "gameplay-mechanisms": {
         __desc__: "This section contains the features that modify or improve the game mechanics.",
         "afk-command": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: "Wether to enable the AFK command based on Minecraft's built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle). Players can use /afk command to switch their AFK mode, and their AFK status can be shown in Tab list.<br>" +
+                desc:
+                    "Wether to enable the AFK command based on Minecraft's built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle). Players can use /afk command to switch their AFK mode, and their AFK status can be shown in Tab list.<br>" +
                     "<br>" +
                     "Also set `kick-if-idle` to `false` in Purpur config, to prevent players from being kicked when they enter AFK mode. Rest of AFK settings, configurable AFK messages, title messages, are in Purpur config."
             }
         },
         "inventory-overflow-event": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: "Whether to enable inventory overflow event. The event called when used plugin to `Inventory#addItem` into player's inventory and the target inventory is full." +
+                desc:
+                    "Whether to enable inventory overflow event. The event called when used plugin to `Inventory#addItem` into player's inventory and the target inventory is full." +
                     '<div class="tip custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                     "This is not proper solution to use! Please re-design your plugin logic to use the returned map of `Inventory#addItem` method as soon as possible!" +
@@ -391,10 +436,11 @@ const config: ConfigRoot = {
                 desc: "The full listener class name which listens to this inventory overflow event. Set to your own listener class to use this event."
             }
         },
-        "player": {
+        player: {
             "max-use-item-distance": {
                 default: 1.0000001,
-                desc: "The maximum distance that the player is allowed to interact using an item.<br>" +
+                desc:
+                    "The maximum distance that the player is allowed to interact using an item.<br>" +
                     "(Unit: block)<br>" +
                     "<br>" +
                     "Some [Anarchy servers](https://minecraftservers.org/type/anarchy) or similar type of servers may allow players to use hacks / cheats. If you want players able to use crystal related modules that are packet-based (e.g. CEV Breaker, BedAura), you may need to adjust this value.<br>" +
@@ -416,7 +462,8 @@ const config: ConfigRoot = {
         "death-item-drop-knockback": {
             "drop-around": {
                 default: true,
-                desc: "Whether to drop items randomly around the player on their death." +
+                desc:
+                    "Whether to drop items randomly around the player on their death." +
                     "<ul>" +
                     "<li>If `true`, items will be dropped with a randomized motion and scattered around the dead player.</li>" +
                     "<li>If `false`, items will be dropped below the dead player.</li>" +
@@ -456,7 +503,7 @@ const config: ConfigRoot = {
         //             "</div>"
         //     }
         // },
-        "knockback": {
+        knockback: {
             "snowball-knockback-players": {
                 default: false,
                 desc: "Whether the snowball can knockback players."
@@ -475,7 +522,8 @@ const config: ConfigRoot = {
             },
             "old-blast-protection-explosion-knockback": {
                 default: false,
-                desc: "Whether to use old <= 1.20.4 explosion knockback behavior which applys on armors with blast protection enchantment." +
+                desc:
+                    "Whether to use old <= 1.20.4 explosion knockback behavior which applys on armors with blast protection enchantment." +
                     "<ul>" +
                     "<li>If `true`, explosion knocback will be calculated based on blast protection enchantment the player has. The knockback is slightly bigger than that after 1.20.4 version.</li>" +
                     "<li>If `false`, explosion knockback will follow vanilla behavior of the current version.</li>" +
@@ -484,7 +532,8 @@ const config: ConfigRoot = {
         },
         "only-player-pushable": {
             default: false,
-            desc: "Whether to make only player pushable.<br>" +
+            desc:
+                "Whether to make only player pushable.<br>" +
                 "If `true`, this option will override values of related collision options in Paper's global and world config, and mobs will not be killed under the effect of [maxEntityCramming](https://minecraft.wiki/w/Game_rule#:~:text=entity%20cramming%20damage) gamerule." +
                 '<div class="tip custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Attention</p>' +
@@ -492,14 +541,15 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "spawner-settings": {
-            "enabled": {
+            enabled: {
                 default: false,
                 desc: "Whether to use custom spawner options below. Options below only affect spawning of spawner blocks instead of the natural spawning."
             },
-            "checks": {
+            checks: {
                 "light-level-check": {
                     default: false,
-                    desc: "Whether to check if the light level is sufficient to spawn the mob." +
+                    desc:
+                        "Whether to check if the light level is sufficient to spawn the mob." +
                         "<ul>" +
                         "<li>If `true`, the spawner will attempt to spawn mobs using the same light level conditions used for natural mob spawning.</li>" +
                         "<li>If `false`, the spawner will follow the vanilla behavior that attempts to spawn without checking the light level.</li>" +
@@ -507,7 +557,8 @@ const config: ConfigRoot = {
                 },
                 "spawner-max-nearby-check": {
                     default: true,
-                    desc: "Whether to check if there are the max amount of nearby mobs to spawn the mob. The spawner will stop spawning new mobs to prevent overcrowding." +
+                    desc:
+                        "Whether to check if there are the max amount of nearby mobs to spawn the mob. The spawner will stop spawning new mobs to prevent overcrowding." +
                         "<ul>" +
                         "<li>If `true`, the spawner will follow the vanilla behavior that prevents to spawn new mob if nearby mob count exceeds the limit.</li>" +
                         "<li>If `false`, the spawner will always attempt to spawn without checking nearby mob count.</li>" +
@@ -515,7 +566,8 @@ const config: ConfigRoot = {
                 },
                 "check-for-nearby-players": {
                     default: true,
-                    desc: "Whether to check if any players are in a radius to spawn the mob." +
+                    desc:
+                        "Whether to check if any players are in a radius to spawn the mob." +
                         "<ul>" +
                         "<li>If `true`, the spawner will always attempt to spawn mob without checking if there is any player nearby.</li>" +
                         "<li>If `false`, the spawner will attempt to spawn mob only if there is any player in the radius.</li>" +
@@ -531,7 +583,8 @@ const config: ConfigRoot = {
                 },
                 "ignore-spawn-rules": {
                     default: false,
-                    desc: "Whether to ignore additional spawn rules of mobs.<br>" +
+                    desc:
+                        "Whether to ignore additional spawn rules of mobs.<br>" +
                         "<br>" +
                         "Many mobs have spawn restrictions to only or prevent to spawn on specific blocks. For example, most of animals only can spawn on grass block, or the hoglin can not spawn on the nether wart block. You can find the list of additional spawn rules in [Additional Rules](https://minecraft.wiki/w/Mob_spawning#:~:text=additional%20rules).<br>" +
                         "<br>" +
@@ -540,18 +593,21 @@ const config: ConfigRoot = {
             },
             "min-spawn-delay": {
                 default: 200,
-                desc: "Minimum delay between each spawn attempt of the spawner. Higher values will slow down the spawning speed of spawners.<br>" +
+                desc:
+                    "Minimum delay between each spawn attempt of the spawner. Higher values will slow down the spawning speed of spawners.<br>" +
                     "(Unit: tick)"
             },
             "max-spawn-delay": {
                 default: 800,
-                desc: "Maximum delay between each spawn attempt of the spawner. Higher values will slow down the spawning speed of spawners.<br>" +
+                desc:
+                    "Maximum delay between each spawn attempt of the spawner. Higher values will slow down the spawning speed of spawners.<br>" +
                     "(Unit: tick)"
             }
         },
         "use-spigot-item-merging-mechanism": {
             default: false,
-            desc: "Whether to merge dropped items based on their tick sequence, which is the long-standing default behvior of Spigot.<br>" +
+            desc:
+                "Whether to merge dropped items based on their tick sequence, which is the long-standing default behvior of Spigot.<br>" +
                 "<br>" +
                 "In Spigot, the item entity that ticks later will merge to eailer ticking one. If merge radius is relatively larger, it can prevent dropped items from getting stuck at unexcepted loctions. So that this is useful for farms or redstone builds that can create numbers of dropped items.<br>" +
                 "However, in vanilla, the item merging is based on the item count of the stack. The stack with smaller count will merge to the one with the larger count." +
@@ -563,7 +619,7 @@ const config: ConfigRoot = {
         }
     },
 
-    "network": {
+    network: {
         __desc__: "This section contains features for server networking related.",
         "async-switch-state": {
             default: false,
@@ -571,17 +627,19 @@ const config: ConfigRoot = {
         },
         "chat-message-signature": {
             default: true,
-            desc: "Whether to enable chat message signature which is introduced since Minecraft 1.19.1.<br>" +
+            desc:
+                "Whether to enable chat message signature which is introduced since Minecraft 1.19.1.<br>" +
                 "<ul>" +
                 "<li>If `true`, messages are signed and able to report that is same in Vanilla.</li>" +
                 "<li>If `false`, the chat signature is disabled. Players are unable to report messages, and the insecure warning popup will be disabled, when player joined the server.</li>" +
                 "</ul>" +
                 "<br>" +
-                "__⚡Recommended value: `false`__ (Only for offline-mode server or severs which have alternative moderation methods.)"
+                "__⚡Recommended value: `false`__ (Only for offline-mode server or severs which have alternative moderation methods)"
         },
-        "OptimizeNonFlushPacketSending": {
+        OptimizeNonFlushPacketSending: {
             default: false,
-            desc: "Whether to optimize the sending of non-flushed packets by usinga Netty's [`lazyExecute`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations." +
+            desc:
+                "Whether to optimize the sending of non-flushed packets by usinga Netty's [`lazyExecute`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                 "This option is known to be INCOMPATIBLE with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>" +
@@ -589,7 +647,8 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "protocol-support": {
-            __desc__: "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
+            __desc__:
+                "This section contains features that provide extra protocol support for some QoL / Utility mods.<br>" +
                 "<br>" +
                 "The extra protocol support is only functional if there is corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installed that mod on client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before." +
                 '<div class="tip custom-block">' +
@@ -599,44 +658,52 @@ const config: ConfigRoot = {
                 "</div>",
             "jade-protocol": {
                 default: false,
-                desc: "Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>" +
+                desc:
+                    "Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>" +
                     "If `true`, player who has Jade mod installed, can display item information inside the storage container, progress of furnace, brewing stand, foods on the campfire, bee data in beehive, and more vanilla-friendly features."
             },
             "appleskin-protocol": {
                 default: false,
-                desc: "Whether to enable [AppleSkin](https://modrinth.com/mod/appleskin) protocol support.<br>" +
+                desc:
+                    "Whether to enable [AppleSkin](https://modrinth.com/mod/appleskin) protocol support.<br>" +
                     "If `true`, player who has AppleSkin mod installed, can display the accurate saturation / exhaustion values on the client."
             },
             "appleskin-protocol-sync-tick-interval": {
                 default: 20,
-                desc: "How often the server should synchronize AppleSkin data to clients with AppleSkin installed.<br>" +
+                desc:
+                    "How often the server should synchronize AppleSkin data to clients with AppleSkin installed.<br>" +
                     "This only has any effect if `appleskin-protocol` above is `true`.<br>" +
                     "(Unit: tick, default value 20 ticks = 1 second)"
             },
             "asteorbar-protocol": {
                 default: false,
-                desc: "Whether to enable [AsteorBar](https://modrinth.com/mod/asteorbar) protocol support.<br>" +
+                desc:
+                    "Whether to enable [AsteorBar](https://modrinth.com/mod/asteorbar) protocol support.<br>" +
                     "If `true`, player who has AsteorBar mod installed, can display the accurate saturation / exhaustion values on the client."
             },
             "chatimage-protocol": {
                 default: false,
-                desc: "Whether to enable [ChatImage](https://modrinth.com/mod/chatimage) protocol support.<br>" +
+                desc:
+                    "Whether to enable [ChatImage](https://modrinth.com/mod/chatimage) protocol support.<br>" +
                     "If `true`, player who has ChatImage mod installed, can see the image sent by others using CICode format."
             },
             "xaero-map-protocol": {
                 default: false,
-                desc: "Whether to enable [XaeroMap](https://modrinth.com/mod/xaeros-minimap) protocol support.<br>" +
+                desc:
+                    "Whether to enable [XaeroMap](https://modrinth.com/mod/xaeros-minimap) protocol support.<br>" +
                     "If `true`, player who has Xaero's MiniMap mod or Xaero's WorldMap mod installed, can store players' coordinate points and death points based on server's `protocol-support.xaero-map-server-id` below."
             },
             "xaero-map-server-id": {
                 default: 513317,
-                desc: "Unique number id for XaeroMap to identify the server.<br>" +
+                desc:
+                    "Unique number id for XaeroMap to identify the server.<br>" +
                     "This can prevent points from been deleted / refreshed if server name or IP address changed. Change this value if needed.<br>" +
                     "The value will generate randomly on first start."
             },
             "syncmatica-protocol": {
                 default: false,
-                desc: "Whether to enable [Syncmatica](https://modrinth.com/mod/syncmatica) protocol support.<br>" +
+                desc:
+                    "Whether to enable [Syncmatica](https://modrinth.com/mod/syncmatica) protocol support.<br>" +
                     "If `true`, player who has Syncmatica mod installed, can upload their [Litematica](https://modrinth.com/mod/litematica) schematics files or download shared schematics files from the server. Every player with Syncmatica mod installed can access shared schematics uploaded by others."
             },
             "syncmatica-quota": {
@@ -645,12 +712,14 @@ const config: ConfigRoot = {
             },
             "syncmatica-quota-limit": {
                 default: 40000000,
-                desc: "Maximum file size of each shared schematics file uploading to server.<br>" +
+                desc:
+                    "Maximum file size of each shared schematics file uploading to server.<br>" +
                     "(Unit: byte, default value 40,000,000 bytes ≈ 38 MB)"
             },
             "do-a-barrel-roll-protocol": {
                 default: false,
-                desc: "Whether to enable [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) protocol support.<br>" +
+                desc:
+                    "Whether to enable [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) protocol support.<br>" +
                     "If `true`, visual effects of Do a Barrel Roll can be synchroized to other players who have this mod installed."
             },
             "do-a-barrel-roll-allow-thrusting": {
@@ -667,25 +736,28 @@ const config: ConfigRoot = {
             },
             "do-a-barrel-roll-installed-timeout": {
                 default: 0,
-                desc: "The amount of time to wait for a client to respond to the `do_a_barrel_roll:config_sync` packet.<br>" +
+                desc:
+                    "The amount of time to wait for a client to respond to the `do_a_barrel_roll:config_sync` packet.<br>" +
                     "(Unit: tick)<br>" +
                     "If `true`, players who have not install this mod in their clients will be kicked after this timeout reached."
             }
         }
     },
 
-    "misc": {
+    misc: {
         __desc__: "This section contains some miscellaneous features.",
-        "cache": {
+        cache: {
             "profile-lookup": {
-                "enabled": {
+                enabled: {
                     default: false,
-                    desc: "Whether to cache profile data lookups (skins, textures, etc.) to reduce API calls to Mojang.<br>" +
+                    desc:
+                        "Whether to cache profile data lookups (skins, textures, etc.) to reduce API calls to Mojang.<br>" +
                         "This allows players to rejoin the server using cached data even if Mojang's authentication servee is temporarily unavailable."
                 },
-                "timeout": {
+                timeout: {
                     default: 1440,
-                    desc: "The timeout of profile lookup cache.<br>" +
+                    desc:
+                        "The timeout of profile lookup cache.<br>" +
                         "Once a cahced profile data expired after the timeout, the cache of it becomes invalid and the server will re-fetch the profile from Mojang server to ensure the profile data is updated.<br>" +
                         "(Unit: minute, default value 1440 minutes = 24 hours)"
                 },
@@ -696,7 +768,8 @@ const config: ConfigRoot = {
             }
         },
         "connection-message": {
-            __desc__: "The connection message, broadcasts to all online players, when they join or quit the server.<br>" +
+            __desc__:
+                "The connection message, broadcasts to all online players, when they join or quit the server.<br>" +
                 "The message needs to use [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) format.<br>" +
                 "If set `message` below to `default`, the vanilla join / quit message will be used.<br>" +
                 "If set `enabled` below to `false`, the connection message will be disabled, another plugin is used to send the connection message.<br>" +
@@ -711,22 +784,22 @@ const config: ConfigRoot = {
                 "This feature is API / plugin friendly." +
                 "It means that the connection message content can be overrided by plugins using `PlayerJoinEvent` or `PlayerQuitEvent`." +
                 "</div>",
-            "join": {
-                "enabled": {
+            join: {
+                enabled: {
                     default: true,
                     desc: "Whether to broadcast message on the player joins."
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "The join message of the player."
                 }
             },
-            "quit": {
-                "enabled": {
+            quit: {
+                enabled: {
                     default: true,
                     desc: "Whether to broadcast message on the player quits."
                 },
-                "message": {
+                message: {
                     default: "default",
                     desc: "The quit message of the player."
                 }
@@ -734,7 +807,8 @@ const config: ConfigRoot = {
         },
         "including-5s-in-get-tps": {
             default: true,
-            desc: "Whether to include 5-second TPS in the result of API `Bukkit#getTPS` and `Server#getTPS`.<br>" +
+            desc:
+                "Whether to include 5-second TPS in the result of API `Bukkit#getTPS` and `Server#getTPS`.<br>" +
                 "Commands like `/tps` display it regardless.<br>" +
                 "<ul>" +
                 "<li>If `true`, you can use `getTPS` method to get a TPS long array with 4 elements [`5s, 1m, 5m, 15m`].</li>" +
@@ -747,28 +821,32 @@ const config: ConfigRoot = {
                 "</details>"
         },
         "lag-compensation": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: "The lag compensation, designed to mitigate the gameplay impact of server lag spikes or low TPS situations, which could ensure the basic game experience for players during the lagging.<br>" +
+                desc:
+                    "The lag compensation, designed to mitigate the gameplay impact of server lag spikes or low TPS situations, which could ensure the basic game experience for players during the lagging.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (Also set `enabled` below to true)__"
             },
             "enable-for-water": {
                 default: false,
-                desc: "Whether to enable lag compensation for water flowing.<br>" +
+                desc:
+                    "Whether to enable lag compensation for water flowing.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             },
             "enable-for-lava": {
                 default: false,
-                desc: "Whether to enable lag compensation for lava flowing.<br>" +
+                desc:
+                    "Whether to enable lag compensation for lava flowing.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             }
         },
         "remove-change-non-editable-sign-warning": {
             default: false,
-            desc: "Whether the server prints warning message when players tried to edit the sign that they are not allowed to edit.<br>" +
+            desc:
+                "Whether the server prints warning message when players tried to edit the sign that they are not allowed to edit.<br>" +
                 "The warning message looks like: `Player [...] just tried to change non-editable sign`.<br>" +
                 "If `true`, it will prevent console spam caused by player actions or other cases.<br>" +
                 "<br>" +
@@ -776,7 +854,8 @@ const config: ConfigRoot = {
         },
         "remove-spigot-check-bungee-config": {
             default: false,
-            desc: "Whether player can enter backend server via proxy, without the backend server to enable bungeecord mode in `spigot.yml`.<br>" +
+            desc:
+                "Whether player can enter backend server via proxy, without the backend server to enable bungeecord mode in `spigot.yml`.<br>" +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                 "This option is not reommended to touch, unless you are sure what you are doing.<br>" +
@@ -784,9 +863,10 @@ const config: ConfigRoot = {
                 "</div>"
         },
         "secure-seed": {
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: "Whether to use secure seed.<br>" +
+                desc:
+                    "Whether to use secure seed.<br>" +
                     "<br>" +
                     "The secure seed enables that all ores and structures are generated with a 1024-bit seed using high security cryptographic hash function instead of using 64-bit seed like in vanilla. This protects structure seeds with computational secrecy and makes the seed cracking nearly impossible to happen.<br>" +
                     '<div class="warning custom-block">' +
@@ -797,20 +877,22 @@ const config: ConfigRoot = {
                     "</div>"
             }
         },
-        "sentry": {
-            __desc__: "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
+        sentry: {
+            __desc__:
+                "[Sentry](https://sentry.io/welcome/) is an application monitor service for improved error logging, tracing. Helping the server dev team to maintain better.<br>" +
                 "<br>" +
                 "After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>" +
                 "<br>" +
                 "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
-            "dsn": {
+            dsn: {
                 default: "''",
-                desc: "The DSN key of your Sentry.<br>" +
-                    "If an empty value `''` is given, the Sentry will be disabled."
+                desc:
+                    "The DSN key of your Sentry.<br>" + "If an empty value `''` is given, the Sentry will be disabled."
             },
             "log-level": {
                 default: "WARN",
-                desc: "Logs with a level higher than or equal to this level will be recorded.<br>" +
+                desc:
+                    "Logs with a level higher than or equal to this level will be recorded.<br>" +
                     'The valid values for this option are: `"WARN"`, `"ERROR"` and `"FATAL"`.'
             },
             "only-log-thrown": {
@@ -818,7 +900,7 @@ const config: ConfigRoot = {
                 desc: "Whether the Sentry only records the log with Java's `Throwable`."
             }
         },
-        "rebrand": {
+        rebrand: {
             "server-mod-name": {
                 default: "Leaf",
                 desc: "The server brand name that will be shown on client's F3 debug menu and server MOTD."
@@ -828,10 +910,11 @@ const config: ConfigRoot = {
                 desc: "The title displayed on the server GUI window, if you launched server without adding `--nogui` option in the startup flag."
             }
         },
-        "message": {
+        message: {
             "unknown-command": {
                 default: "default",
-                desc: "Unknown command message, will send to player if they execute an unknown command.<br>" +
+                desc:
+                    "Unknown command message, will send to player if they execute an unknown command.<br>" +
                     "The message needs to use [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) format.<br>" +
                     "If set message to `default`, the vanilla unknown command message will be used.<br>" +
                     "<br>" +
@@ -849,7 +932,8 @@ const config: ConfigRoot = {
         "vanilla-username-check": {
             "remove-all-check": {
                 default: false,
-                desc: "Whether to remove Vanilla username check, allowing all characters as username, including Chinese characters, etc." +
+                desc:
+                    "Whether to remove Vanilla username check, allowing all characters as username, including Chinese characters, etc." +
                     '<div class="warning custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                     "Removing all username check is UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!" +

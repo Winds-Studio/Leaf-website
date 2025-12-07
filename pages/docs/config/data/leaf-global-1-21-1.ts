@@ -11,7 +11,8 @@ const config: ConfigRoot = {
         "async-entity-tracker": {
             enabled: {
                 default: false,
-                desc: "Make entity tracking asynchronously, can improve performance significantly, especially in some massive entities in small area situations.<br>" +
+                desc:
+                    "Make entity tracking asynchronously, can improve performance significantly, especially in some massive entities in small area situations.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     '<div class="tip custom-block">' +
@@ -21,7 +22,8 @@ const config: ConfigRoot = {
             },
             "compat-mode": {
                 default: false,
-                desc: "Enable compat mode to be compatible with plugins like Citizens or NPC plugins that use real, and player-type entity.<br>" +
+                desc:
+                    "Enable compat mode to be compatible with plugins like Citizens or NPC plugins that use real, and player-type entity.<br>" +
                     "If `true`,  visibility issue that player-type NPCs may disappear sometimes can be fixed.<br>" +
                     "<br>" +
                     "You should enable `compat-mode` to use async entity tracker feature **ONLY IF** you installed Citizens or any other kind of real entity NPC plugins.<br>" +
@@ -30,21 +32,24 @@ const config: ConfigRoot = {
             },
             "max-threads": {
                 default: 0,
-                desc: "Maximum number of threads for async entity tracker to use.<br>" +
+                desc:
+                    "Maximum number of threads for async entity tracker to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
                     "__⚡Recommended value: 1/2 of CPU cores__"
             },
             keepalive: {
                 default: 60,
-                desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
+                desc:
+                    "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
             }
         },
         "async-playerdata-save": {
             enabled: {
                 default: false,
-                desc: "Make PlayerData saving asynchronously. (I/O operations are expensive)" +
+                desc:
+                    "Make PlayerData saving asynchronously. (I/O operations are expensive)" +
                     '<div class="warning custom-block">' +
                     '<p class="custom-block-title custom-block-title-default">Warning</p>' +
                     "Experimental feature, may cause data lost in some circumstances!" +
@@ -54,27 +59,31 @@ const config: ConfigRoot = {
         "async-pathfinding": {
             enabled: {
                 default: false,
-                desc: "Make mob pathfinding calculation asynchronously.<br>" +
+                desc:
+                    "Make mob pathfinding calculation asynchronously.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "max-threads": {
                 default: 0,
-                desc: "Maximum number of threads for async entity pathfinding to use.<br>" +
+                desc:
+                    "Maximum number of threads for async entity pathfinding to use.<br>" +
                     "If the value is set to `0`, it automatically uses 1/4 of the number of CPU cores and no less than 1.<br>" +
                     "<br>" +
                     "__⚡Recommended value: 1/3 of CPU cores__"
             },
             keepalive: {
                 default: 60,
-                desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
+                desc:
+                    "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
             }
         },
         "async-mob-spawning": {
             enabled: {
                 default: true,
-                desc: "Whether asynchronous mob spawning should be enabled.<br>" +
+                desc:
+                    "Whether asynchronous mob spawning should be enabled.<br>" +
                     "On servers with many entities, this can improve performance by up to 15%. You must have Paper's `per-player-mob-spawns` config set to `true` for this to work.<br>" +
                     "One quick note: this does not actually spawn mobs async (that would be very unsafe). This just offloads some expensive calculations that are required for mob spawning.<br>" +
                     "<br>" +
@@ -84,7 +93,8 @@ const config: ConfigRoot = {
         "async-locator": {
             enabled: {
                 default: false,
-                desc: "Whether asynchronous locator should be enabled.<br>" +
+                desc:
+                    "Whether asynchronous locator should be enabled.<br>" +
                     "This offloads structure locating to other threads.<br>" +
                     "Currently available for:" +
                     "<ul>" +
@@ -97,14 +107,16 @@ const config: ConfigRoot = {
             },
             threads: {
                 default: 0,
-                desc: "Maximum number of threads for async locator to use.<br>" +
+                desc:
+                    "Maximum number of threads for async locator to use.<br>" +
                     "If a value &leq; `0` is given, it automatically uses 1 thread.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `1` or `2`__"
             },
             keepalive: {
                 default: 60,
-                desc: "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
+                desc:
+                    "Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>" +
                     "(Unit: second)"
             }
         }
@@ -115,19 +127,22 @@ const config: ConfigRoot = {
             "This section contains performance tuning intended to reduce unnecessary calculations or use more efficient methods to optimize the server.",
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
-            desc: "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__"
         },
         "use-virtual-thread-for-async-scheduler": {
             default: true,
-            desc: "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
+            desc:
+                "Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve performance of plugin that heavily utilizing Bukkit's async scheduler.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__"
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
-            desc: "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
+            desc:
+                "Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>" +
                 "<br>" +
                 "Some plugins may call `getInventory().getHolder()` to get the holder of an inventory, which involves accessings the BlockState.<br>" +
                 "For example, if there are tons of hoppers and plugins call this method when listening to some events (e.g. hopper related events, call frequently). Re-creating BlockState and parsing item stack in massive and frequent calls are very expensive.<br>" +
@@ -141,7 +156,8 @@ const config: ConfigRoot = {
         },
         "inactive-goal-selector-throttle": {
             default: true,
-            desc: "Throttles the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>" +
+            desc:
+                "Throttles the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>" +
                 "Instead of ticking goal selector every tick, it ticks less frequently to every second. This can improve performance slightly, but has minor gameplay implications.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__" +
@@ -154,7 +170,8 @@ const config: ConfigRoot = {
         "throttle-hopper-when-full": {
             enabled: {
                 default: false,
-                desc: "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
+                desc:
+                    "Whether to throttle hopper item transfer attempts if the target container is full.<br>" +
                     "Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__" +
@@ -166,7 +183,8 @@ const config: ConfigRoot = {
             },
             "skip-ticks": {
                 default: 0,
-                desc: "How many ticks a hopper should wait before trying to move items again if the target container is full.<br>" +
+                desc:
+                    "How many ticks a hopper should wait before trying to move items again if the target container is full.<br>" +
                     "(Unit: tick)<br>" +
                     "Only active if `throttle-hopper-when-full.enabled` (described above) is `true`.<br>" +
                     "If a value &leq; `0` is given, this throttling feature is disabled.<br>" +
@@ -181,7 +199,8 @@ const config: ConfigRoot = {
         },
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             default: true,
-            desc: "Whether to skip updating map item data update if the map doesn't have a renderer (`CraftMapRenderer`).<br>" +
+            desc:
+                "Whether to skip updating map item data update if the map doesn't have a renderer (`CraftMapRenderer`).<br>" +
                 "This can improve performance if using ImageMap kind of plugins that create many custom maps.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__" +
@@ -197,7 +216,8 @@ const config: ConfigRoot = {
         },
         "skip-ai-for-non-aware-mob": {
             default: true,
-            desc: " Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>" +
+            desc:
+                " Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>" +
                 "Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__" +
@@ -211,7 +231,8 @@ const config: ConfigRoot = {
             __desc__: "This section is for the useless packet reducing features.",
             "reduce-entity-move-packets": {
                 default: false,
-                desc: "Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>" +
+                desc:
+                    "Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>" +
                     "This can save bandwidth and reduces client-side processing load, potentially making movement appear smoother during high entity counts or minor lag.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
@@ -219,14 +240,16 @@ const config: ConfigRoot = {
         },
         "optimized-powered-rails": {
             default: true,
-            desc: "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, can achieve 4x faster performance.<br>" +
+            desc:
+                "Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, can achieve 4x faster performance.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__"
         },
         "optimize-minecart": {
             enabled: {
                 default: false,
-                desc: "Whether to optimize minecart ticking. By skipping tick collisions to reduce expensive `getEntities()` calls and bukkit event calls.<br>" +
+                desc:
+                    "Whether to optimize minecart ticking. By skipping tick collisions to reduce expensive `getEntities()` calls and bukkit event calls.<br>" +
                     "This can handle a large amount of stacked minecarts better which is useful for [Anarchy servers](https://minecraftservers.org/type/anarchy).<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__" +
@@ -238,14 +261,16 @@ const config: ConfigRoot = {
             },
             "skip-tick-count": {
                 default: 30,
-                desc: "How many ticks to skip before checking for the next minecart collisions.<br>" +
+                desc:
+                    "How many ticks to skip before checking for the next minecart collisions.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `30`__"
             }
         },
         "faster-structure-gen-future-sequencing": {
             default: true,
-            desc: "Whether to use faster task sequencing for generating structures." +
+            desc:
+                "Whether to use faster task sequencing for generating structures." +
                 '<div class="tip custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Attention</p>' +
                 "This may cause the inconsistent order of future compose tasks." +
@@ -254,7 +279,8 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: "Whether to use the faster random generator.<br>" +
+                desc:
+                    "Whether to use the faster random generator.<br>" +
                     "Random is used almost everywhere in Minecraft, enable this can get a decent performance improvement.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__" +
@@ -265,14 +291,16 @@ const config: ConfigRoot = {
             },
             "random-generator": {
                 default: "Xoroshiro128PlusPlus",
-                desc: "Which random generator will be used?<br>" +
+                desc:
+                    "Which random generator will be used?<br>" +
                     "Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1).<br>" +
                     "<br>" +
                     "__⚡Recommended value: `Xoroshiro128PlusPlus`__"
             },
             "enable-for-worldgen": {
                 default: false,
-                desc: "Whether to use the faster random generator for world generation.<br>" +
+                desc:
+                    "Whether to use the faster random generator for world generation.<br>" +
                     "<ul>" +
                     "<li>If `true`, `Random` calls involved in world generation will use faster random generator you chose in `random-generator` above. The world generation will be slightly different from vanilla.</li>" +
                     "<li>If `false`, `Random` calls involved in world generation will use legacy random generator of vanilla.</li>" +
@@ -291,7 +319,8 @@ const config: ConfigRoot = {
             },
             "use-legacy-random-for-slime-chunk": {
                 default: false,
-                desc: "Whether to use legacy random source for slime chunk generation to follow the vanilla behavior.<br>" +
+                desc:
+                    "Whether to use legacy random source for slime chunk generation to follow the vanilla behavior.<br>" +
                     "If your server has existing slime farms or related facilities need slime chunk, enable this, otherwise the location of slime chunk will offset.<br>" +
                     "<br>" +
                     "__⚡Recommended value:__ (Depends on your server type, see `Values for goals` below for more.)" +
@@ -303,7 +332,8 @@ const config: ConfigRoot = {
             }
         },
         "entity-timeouts": {
-            __desc__: "These values define an entity's maximum lifespan (i.e. Entity TTL).<br>" +
+            __desc__:
+                "These values define an entity's maximum lifespan (i.e. Entity TTL).<br>" +
                 "(Unit: tick)<br>" +
                 "If an entity is in this list, and it has survived for longer than that number of ticks, then it will be removed. 🛈<br>" +
                 "If a value `-1` is given, the Entity TTL check will disable for specific entity.<br>" +
@@ -674,14 +704,16 @@ const config: ConfigRoot = {
         },
         "enable-cached-minecraft-to-bukkit-entitytype-convert": {
             default: true,
-            desc: "Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. It can get a tiny improvement.<br>" +
+            desc:
+                "Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. It can get a tiny improvement.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__"
         },
         dab: {
             enabled: {
                 default: true,
-                desc: "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain to decrease the frequency of their brain ticking when they are far away from players.<br>" +
+                desc:
+                    "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain to decrease the frequency of their brain ticking when they are far away from players.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__" +
                     "<table>" +
@@ -692,25 +724,29 @@ const config: ConfigRoot = {
             },
             "dont-enable-if-in-water": {
                 default: false,
-                desc: "Whether non-aquatic entities in the water will not be affected by DAB.<br>" +
+                desc:
+                    "Whether non-aquatic entities in the water will not be affected by DAB.<br>" +
                     "If `true`, this could fix entities suffocate in the water if they are far from the player. This fixed [Pufferfish's issue#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             },
             "start-distance": {
                 default: 12,
-                desc: "This value determines how far away an entity has to be from the player to start being affected by DAB.<br>" +
+                desc:
+                    "This value determines how far away an entity has to be from the player to start being affected by DAB.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `8`__"
             },
             "max-tick-freq": {
                 default: 20,
-                desc: "This value defines how often the furthest entity will get their pathfinders and behaviors ticked<br>." +
+                desc:
+                    "This value defines how often the furthest entity will get their pathfinders and behaviors ticked<br>." +
                     "(Unit: tick, default value 20 ticks = 1s)"
             },
             "activation-dist-mod": {
                 default: 8,
-                desc: "This value defines how much distance modifies an entity's tick frequency. `freq = (distanceToPlayer^2) / (2^value)`." +
+                desc:
+                    "This value defines how much distance modifies an entity's tick frequency. `freq = (distanceToPlayer^2) / (2^value)`." +
                     "<ul>" +
                     "<li>If you want entities further away to tick __less__ often, use `7`.</li>" +
                     "<li>If you want entities further away to tick __more__ often, try `9`.</li>" +
@@ -720,7 +756,8 @@ const config: ConfigRoot = {
             },
             "blacklisted-entities": {
                 default: "[]",
-                desc: "A list of entities that will not be affected by DAB.<br>" +
+                desc:
+                    "A list of entities that will not be affected by DAB.<br>" +
                     "<br>" +
                     'Some survival servers have mob farms which need mobs to have a target. This kind of "pathfinding" mob farm may break by DAB. This situation can be solved by adding specific mob of mob farm into this DAB blacklist.<br>' +
                     "If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them into this blacklist to see if it fixes the issue.<br>" +
@@ -760,7 +797,8 @@ const config: ConfigRoot = {
         "dont-save-entity": {
             "dont-save-primed-tnt": {
                 default: false,
-                desc: "Disable save primed tnt on chunk unloads.<br>" +
+                desc:
+                    "Disable save primed tnt on chunk unloads.<br>" +
                     "It can prevent machines from being exploded by TNT when the player accidentally disconnected or chunk unloads when the player is far away. Useful for survival servers which have machines involved TNT.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
@@ -776,7 +814,8 @@ const config: ConfigRoot = {
         __desc__: "This section contains bugfixes for specific issues.",
         "dont-place-player-if-server-full": {
             default: false,
-            desc: "Whether to disallow player join a server if the server is full.<br>" +
+            desc:
+                "Whether to disallow player join a server if the server is full.<br>" +
                 "If `true`, you should give player `purpur.joinfullserver` permission instead of using `PlayerLoginEvent#allow` to enable player to join a full server."
         }
     },
@@ -789,7 +828,8 @@ const config: ConfigRoot = {
         },
         "smooth-teleport": {
             default: false,
-            desc: 'hether to make a "smooth teleport" when players change dimension.<br>' +
+            desc:
+                'hether to make a "smooth teleport" when players change dimension.<br>' +
                 "This requires original world and target world that have the same logical height to work." +
                 '<div class="warning custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Warning</p>' +
@@ -831,14 +871,16 @@ const config: ConfigRoot = {
         player: {
             "disable-moved-wrongly-threshold": {
                 default: false,
-                desc: "Whether to disable the Spigot built-in moved too quickly / wrongly checks for players and vehicles.<br>" +
+                desc:
+                    "Whether to disable the Spigot built-in moved too quickly / wrongly checks for players and vehicles.<br>" +
                     "If `true`, players can move or use vehicles (e.g. Minecart) to move with abnormal speed.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             },
             "max-use-item-distance": {
                 default: 1.0000001,
-                desc: "The max distance that the player is allowed to interact with an item.<br>" +
+                desc:
+                    "The max distance that the player is allowed to interact with an item.<br>" +
                     "<br>" +
                     "Some [Anarchy servers](https://minecraftservers.org/type/anarchy) or similar type of servers may allow players to use hacks / cheats. If you want players able to use crystal related modules that are packet-based (e.g. CEV Breaker, BedAura), you may need to adjust this value.<br>" +
                     "It's better to set value to `10.0000001`, to allow using related hack modules." +
@@ -855,7 +897,8 @@ const config: ConfigRoot = {
         "afk-command": {
             enabled: {
                 default: false,
-                desc: "Wether to enable rhe AFK command based on Minecraft built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle).<br>" +
+                desc:
+                    "Wether to enable rhe AFK command based on Minecraft built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle).<br>" +
                     "Players can use /afk command to switch their AFK mode, and their AFK status can be shown in Tab list.<br> " +
                     "Rest of AFK settings, configurable AFK messages, title messages, are in Purpur config."
             }
@@ -876,27 +919,32 @@ const config: ConfigRoot = {
                 "</div>",
             "jade-protocol": {
                 default: false,
-                desc: "Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>" +
+                desc:
+                    "Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>" +
                     "If `true`, player who has Jade mod installed, can display item information inside the storage container, progress of furnace, brewing stand, foods on the campfire, bee data in beehive, and more vanilla-friendly features."
             },
             "appleskin-protocol": {
                 default: false,
-                desc: "Whether to enable [AppleSkin](https://modrinth.com/mod/appleskin) protocol support.<br>" +
+                desc:
+                    "Whether to enable [AppleSkin](https://modrinth.com/mod/appleskin) protocol support.<br>" +
                     "If `true`, player who has AppleSkin mod installed, can display the accurate saturation / exhaustion values on the client."
             },
             "asteorbar-protocol": {
                 default: false,
-                desc: "Whether to enable [AsteorBar](https://modrinth.com/mod/asteorbar) protocol support.<br>" +
+                desc:
+                    "Whether to enable [AsteorBar](https://modrinth.com/mod/asteorbar) protocol support.<br>" +
                     "If `true`, player who has AsteorBar mod installed, can display the accurate saturation / exhaustion values on the client."
             },
             "chatimage-protocol": {
                 default: false,
-                desc: "Whether to enable [ChatImage](https://modrinth.com/mod/chatimage) protocol support.<br>" +
+                desc:
+                    "Whether to enable [ChatImage](https://modrinth.com/mod/chatimage) protocol support.<br>" +
                     "If `true`, player who has ChatImage mod installed, can see the image sent by others using CICode format."
             },
             "xaero-map-protocol": {
                 default: false,
-                desc: "Whether to enable [XaeroMap](https://modrinth.com/mod/xaeros-minimap) protocol support.<br>" +
+                desc:
+                    "Whether to enable [XaeroMap](https://modrinth.com/mod/xaeros-minimap) protocol support.<br>" +
                     "If `true`, player who has Xaero's MiniMap mod or Xaero's WorldMap mod installed, can store players' coordinate points and death points based on server's `protocol-support.xaero-map-server-id` below, to prevent points from been deleted / refreshed if server name or IP address changed."
             },
             "xaero-map-server-id": {
@@ -905,7 +953,8 @@ const config: ConfigRoot = {
             },
             "syncmatica-protocol": {
                 default: false,
-                desc: "Whether to enable [Syncmatica](https://modrinth.com/mod/syncmatica) protocol support.<br>" +
+                desc:
+                    "Whether to enable [Syncmatica](https://modrinth.com/mod/syncmatica) protocol support.<br>" +
                     "If `true`, player who has Syncmatica mod installed, can upload their [Litematica](https://modrinth.com/mod/litematica) schematics files or download shared schematics files from the server. Every player with Syncmatica mod installed can access shared schematics uploaded by others."
             },
             "syncmatica-quota": {
@@ -914,13 +963,15 @@ const config: ConfigRoot = {
             },
             "syncmatica-quota-limit": {
                 default: 40000000,
-                desc: "Maximum file size, in bytes, for each shared schematics file uploading to server.<br>" +
+                desc:
+                    "Maximum file size, in bytes, for each shared schematics file uploading to server.<br>" +
                     "(Unit: byte, default value 40,000,000 bytes ≈ 38 MB)"
             }
         },
         "chat-message-signature": {
             default: true,
-            desc: "Whether to enable chat message signature which introduced since Minecraft 1.19.1.<br>" +
+            desc:
+                "Whether to enable chat message signature which introduced since Minecraft 1.19.1.<br>" +
                 "If `false`, players' chat messages become unable to report, and the insecure warning popup when player joined the server will be disabled.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `false`__"
@@ -932,7 +983,8 @@ const config: ConfigRoot = {
         message: {
             "unknown-command": {
                 default: "<red><lang:command.unknown.command><newline><detail>",
-                desc: "Unknown command message, will send to player if they execute an unknown command.<br>" +
+                desc:
+                    "Unknown command message, will send to player if they execute an unknown command.<br>" +
                     "The message needs to use [MiniMessage](https://docs.advntr.dev/minimessage/format) format.<br>" +
                     "If set message to `default` or leave the default value, the vanilla unknown command message will be used.<br>" +
                     "<br>" +
@@ -966,7 +1018,8 @@ const config: ConfigRoot = {
                 "See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for `sentry.dsn` below.<br>",
             dsn: {
                 default: "",
-                desc: "The DSN key of your Sentry.<br>" + "If an empty value `''` is given, the Sentry will be disabled."
+                desc:
+                    "The DSN key of your Sentry.<br>" + "If an empty value `''` is given, the Sentry will be disabled."
             },
             "log-level": {
                 default: "WARN",
@@ -980,7 +1033,8 @@ const config: ConfigRoot = {
         "secure-seed": {
             enabled: {
                 default: false,
-                desc: "Whether to use secure seed.<br>" +
+                desc:
+                    "Whether to use secure seed.<br>" +
                     "All ores and structures are generated with 1024-bit seed instead of using 64-bit seed in vanilla, made seed cracker become impossible.<br>" +
                     "If used in the existing world, then the secure seed will only apply to new generating chunks.<br>" +
                     "<br>" +
@@ -994,7 +1048,8 @@ const config: ConfigRoot = {
         },
         "remove-vanilla-username-check": {
             default: true,
-            desc: "Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
+            desc:
+                "Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>" +
                 "If `true`, players are allowed to use non-English name to join the server."
         },
         "remove-spigot-check-bungee-config": {
@@ -1003,7 +1058,8 @@ const config: ConfigRoot = {
         },
         "remove-change-non-editable-sign-warning": {
             default: false,
-            desc: "Whether the server prints warning when players tried to edit the sign that they are not allowed to edit.<br>" +
+            desc:
+                "Whether the server prints warning when players tried to edit the sign that they are not allowed to edit.<br>" +
                 "Enable this to prevent console spam in some cases.<br>" +
                 "<br>" +
                 "__⚡Recommended value: `true`__"
@@ -1037,26 +1093,30 @@ const config: ConfigRoot = {
         "lag-compensation": {
             enabled: {
                 default: false,
-                desc: "Lag compensation, which could ensure the basic game experience for players when server is lagging or low TPS situation.<br>" +
+                desc:
+                    "Lag compensation, which could ensure the basic game experience for players when server is lagging or low TPS situation.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true` (set `enabled` below to true)__"
             },
             "enable-for-water": {
                 default: false,
-                desc: "Whether to enable lag compensation for water flowing.<br>" +
+                desc:
+                    "Whether to enable lag compensation for water flowing.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             },
             "enable-for-lava": {
                 default: false,
-                desc: "Whether to enable lag compensation for lava flowing.<br>" +
+                desc:
+                    "Whether to enable lag compensation for lava flowing.<br>" +
                     "<br>" +
                     "__⚡Recommended value: `true`__"
             }
         },
         "including-5s-in-get-tps": {
             default: true,
-            desc: "Whether to include 5-second TPS in the result of API `Bukkit#getTPS` and `Server#getTPS`.<br>" +
+            desc:
+                "Whether to include 5-second TPS in the result of API `Bukkit#getTPS` and `Server#getTPS`.<br>" +
                 "<ul>" +
                 "<li>If `true`, you can use `getTPS` method to get a TPS long array with 4 elements (`5s, 1m, 5m, 15m`).</li>" +
                 "<li>If `false`, you can use `getTPS` method to get a TPS long array with 3 elements (`1m, 5m, 15m`).</li>" +
@@ -1069,7 +1129,8 @@ const config: ConfigRoot = {
         },
         "hidden-item-components": {
             default: "[]",
-            desc: "Controls whether specified component information is sent to clients. This may break resource packs and client mods that rely on this information. It needs a component type list, incorrect things will not work.<br>" +
+            desc:
+                "Controls whether specified component information is sent to clients. This may break resource packs and client mods that rely on this information. It needs a component type list, incorrect things will not work.<br>" +
                 'For example, you can fill it with `["custom_data"]` to hide components of *CUSTOM_DATA*. Also, it can avoid some frequent client animations.' +
                 '<div class="tip custom-block">' +
                 '<p class="custom-block-title custom-block-title-default">Attention</p>' +
@@ -1114,12 +1175,14 @@ const config: ConfigRoot = {
         cache: {
             "cache-player-profile-result": {
                 default: true,
-                desc: "Whether to cache the player profile result when they joined server.<br>" +
+                desc:
+                    "Whether to cache the player profile result when they joined server.<br>" +
                     "It's useful if Mojang's authentication server is down."
             },
             "cache-player-profile-result-timeout": {
                 default: 1440,
-                desc: "The timeout of the player profile cache.<br>" +
+                desc:
+                    "The timeout of the player profile cache.<br>" +
                     "(Unit: minute)<br>" +
                     "If the given timeout is exceeded, it will send another request to Mojang's authentication server to get profile data on player's next join.<br>"
             }
