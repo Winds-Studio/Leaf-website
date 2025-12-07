@@ -8,7 +8,7 @@ const config: ConfigRoot = {
     async: {
         __desc__:
             "This section contains asynchronous features intended to reduce the load on the main thread (Server Thread) by processing tasks asynchronously.",
-        "parallel-world-tracking": {
+        "parallel-world-ticking": {
             enabled: {
                 default: false,
                 desc:
@@ -49,8 +49,8 @@ const config: ConfigRoot = {
                     "Disable hard throws (which usually stop the server) related to parallel ticking errors.\n\n" +
                     "⚠️ **Might mask underlying issues but could prevent crashes in unstable experimental phases. Use with caution.**"
             },
-            "run-async-tasks-sync": {
-                default: false,
+            "async-unsafe-read-handling": {
+                default: "BUFFERED",
                 desc:
                     "Run asynchronous tasks synchronously within the parallel ticking system.\n\n" +
                     "Might be needed for compatibility with certain plugins but largely negates the performance benefits of parallel ticking."
@@ -109,6 +109,22 @@ const config: ConfigRoot = {
                     "the actual entity validation on the main thread.\n\n" +
                     "Can improve performance by reducing main thread load from AI calculations.\n\n" +
                     "⚡ **Recommended value:** `true`"
+            },
+            "async-alert-other": {
+                default: true,
+                desc: ""
+            },
+            "async-search-block": {
+                default: true,
+                desc: ""
+            },
+            "async-search-entity": {
+                default: true,
+                desc: ""
+            },
+            "queue-size": {
+                default: 0,
+                desc: ""
             }
         },
         "async-playerdata-save": {
@@ -145,7 +161,7 @@ const config: ConfigRoot = {
                     "If set to `0`, the queue size is dynamically calculated as `max-threads * 256`."
             },
             "reject-policy": {
-                default: "FLUSH_ALL",
+                default: "CALLER_RUNS",
                 desc:
                     "The policy to use when the pathfinding task queue is full (only relevant if `queue-size` is > 0) and a new task is submitted.\n\n" +
                     "- `FLUSH_ALL`: All pending tasks in the queue are immediately run on the main server thread.\n" +
