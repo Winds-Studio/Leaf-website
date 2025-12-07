@@ -25,6 +25,7 @@ Java flags control how the JVM operates, particularly memory management (Garbage
 - **Purpose:** Aikar's flags are a well-known set of arguments optimized for Minecraft servers using the Garbage-First Garbage Collector (G1GC) [8]. G1GC is the default GC in modern Java versions and generally provides a good balance between throughput (how much work the server gets done) and pause times (how long the server freezes for GC) [9, 10].
 - **Suitability:** These flags are an excellent starting point and work well for **most servers** (roughly up to 1-100 players). They aim to reduce lag spikes caused by GC pauses by tuning G1GC specifically for Minecraft's typical object allocation patterns (many short-lived objects) [8].
 - **Java 21+ Aikar's Flags (using G1GC):**
+
     ```bash
     java -Xms<RAM>M -Xmx<RAM>M \
     -XX:+UseG1GC \
@@ -63,6 +64,7 @@ For very large or active servers (150-300 players), the sheer **rate of object a
     - **Why:** Combines ZGC's concurrent, ultra-low pause time performance with a generational heap structure [10, 13, 17]. It frequently collects the young generation where most objects die, reducing the need for full heap scans and better handling high allocation rates compared to the older non-generational ZGC [12, 17].
     - **Suitability:** Excellent for powerful servers (high core count, 16GB+ RAM recommended) where minimizing pause time is paramount [10, 13].
     - **Example Flags (Java 21):**
+
         ```bash
         java -Xms<RAM>M -Xmx<RAM>M \
         -XX:+UnlockExperimentalVMOptions \
@@ -77,10 +79,12 @@ For very large or active servers (150-300 players), the sheer **rate of object a
 
         - `-XX:+UseZGC -XX:+ZGenerational`: Enables Generational ZGC [13, 17]. (Becomes default in Java 23+) [10].
         - `-XX:+UseDynamicNumberOfGCThreads`: Allows dynamic adjustment of GC threads [7].
+
 - **Generational Shenandoah:**
     - **Why:** Shenandoah also performs most GC work concurrently, aiming for low pauses independent of heap size [14]. JEP 404 introduced generational capabilities as experimental in Java 17-23, becoming more stable in later builds [18]. It allows Shenandoah to more efficiently handle young object collections, similar in principle to GZGC [18].
     - **Suitability:** An alternative low-latency generational collector available in many OpenJDK builds (not Oracle JDK). Performance relative to GZGC can depend on the specific workload; testing is recommended, especially on Java 24+ for the generational mode [12, 18].
     - **Example Flags (Using Java 24 - _Experimental_ Generational Mode):**
+
         ```bash
         java -Xms<RAM>M -Xmx<RAM>M \
         -XX:+UnlockExperimentalVMOptions \
