@@ -20,7 +20,7 @@
     "singleAttributePerLine": false,
     "overrides": [
         {
-            "files": "*.vue",
+            "files": ["*.vue", "*.yml"],
             "options": {
                 "tabWidth": 2
             }
