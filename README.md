@@ -24,7 +24,7 @@ Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for mor
 
 ## ⚖️ License
 
-Leaf website is licensed under [MIT](LICENSE). The documentations (e.g. `.md`, `.ts`, etc files under `pages/**/docs` folder) are licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+Leaf website is licensed under [MIT](LICENSE). The documentations (e.g. `.md`, `.ts`, etc files under `pages/` folder) are licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## 📜 Credits
 
