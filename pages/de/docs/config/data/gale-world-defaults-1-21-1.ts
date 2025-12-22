@@ -8,8 +8,7 @@ const config: ConfigRoot = {
     "gameplay-mechanics": {
         "arrow-movement-resets-despawn-counter": {
             default: false,
-            desc:
-                `Gibt an, ob der [Despawn Zähler](https://minecraft.wiki/w/Mob_spawning#Despawning) von Pfeilen neu startet, wenn der Pfeil zu fallen beginnt (z.B. Wenn der Block zerstört wird, in dem der Pfeil steckt).
+            desc: `Gibt an, ob der [Despawn Zähler](https://minecraft.wiki/w/Mob_spawning#Despawning) von Pfeilen neu startet, wenn der Pfeil zu fallen beginnt (z.B. Wenn der Block zerstört wird, in dem der Pfeil steckt).
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -23,8 +22,7 @@ const config: ConfigRoot = {
         },
         "entities-can-random-stroll-into-non-ticking-chunks": {
             default: true,
-            desc:
-                `Gibt an, ob Entities, die zufällig umherlaufen auch in nicht-getickte Chunks laufen können.
+            desc: `Gibt an, ob Entities, die zufällig umherlaufen auch in nicht-getickte Chunks laufen können.
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -38,8 +36,7 @@ const config: ConfigRoot = {
         },
         "entity-wake-up-duration-ratio-standard-deviation": {
             default: 0.2,
-            desc:
-                `Wenn dieser Wert > \`0\` ist, wird das Aufwecken inaktiver Entities zeitlich verteilt, anstatt alle auf einmal aufzuwecken.<br>
+            desc: `Wenn dieser Wert > \`0\` ist, wird das Aufwecken inaktiver Entities zeitlich verteilt, anstatt alle auf einmal aufzuwecken.<br>
                 Dadurch verhalten sich Entities natürlicher.<br>
                 <br>
                 Dieser Wert ist der [Variationskoeffizient](https://de.wikipedia.org/wiki/Variationskoeffizient) bzw. \`σ / μ\` (Das Verhältnis der Standardabweichung und dem Mittelwert) der Inaktivitätsdauer.<br>
@@ -61,8 +58,7 @@ const config: ConfigRoot = {
         fixes: {
             "broadcast-crit-animations-as-the-entity-being-critted": {
                 default: false,
-                desc:
-                    `Gibt an, ob die Animation von kritischen Treffern durch das Entity gezeigt werden soll, das den kritischen Treffer erleidet.<br>
+                desc: `Gibt an, ob die Animation von kritischen Treffern durch das Entity gezeigt werden soll, das den kritischen Treffer erleidet.<br>
                     <br>
                     Dies beeinflusst nicht, wo die Animation gezeigt wird: Sie wird immer bei dem Entity gezeigt, das den kritischen Treffer erleidet.<br>
                     Allerdings wird normalerweise (Wenn die Einstellung auf \`false\` gestellt ist) die Animation durch den Spieler gezeigt, der den kritischen Treffer landet. Dadurch kann jemand, der den Spieler nicht sehen kann, auch nicht die Animation sehen.<br>
@@ -81,8 +77,7 @@ const config: ConfigRoot = {
             },
             "keep-mooshroom-rotation-after-shearing": {
                 default: true,
-                desc:
-                    `Gibt an, ob Pilzkühe ihre Rotation behalten sollen, nachdem die geschoren werden. (Behebt einen Teil von [MC-88967](https://bugs.mojang.com/browse/MC-88967)).
+                desc: `Gibt an, ob Pilzkühe ihre Rotation behalten sollen, nachdem die geschoren werden. (Behebt einen Teil von [MC-88967](https://bugs.mojang.com/browse/MC-88967)).
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -96,8 +91,7 @@ const config: ConfigRoot = {
             },
             "mc-110386": {
                 default: true,
-                desc:
-                    `Gibt an, ob [MC-110386](https://bugs.mojang.com/browse/MC-110386) gefixt werden soll.
+                desc: `Gibt an, ob [MC-110386](https://bugs.mojang.com/browse/MC-110386) gefixt werden soll.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -106,8 +100,7 @@ const config: ConfigRoot = {
             },
             "mc-121706": {
                 default: false,
-                desc:
-                    `Gibt an, ob [MC-121706](https://bugs.mojang.com/browse/MC-121706) gefixt werden soll.
+                desc: `Gibt an, ob [MC-121706](https://bugs.mojang.com/browse/MC-121706) gefixt werden soll.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -116,8 +109,7 @@ const config: ConfigRoot = {
             },
             "mc-238526": {
                 default: false,
-                desc:
-                    `Gibt an, ob [MC-238526](https://bugs.mojang.com/browse/MC-238526) gefixt werden soll.
+                desc: `Gibt an, ob [MC-238526](https://bugs.mojang.com/browse/MC-238526) gefixt werden soll.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -126,8 +118,7 @@ const config: ConfigRoot = {
             },
             "mc-31819": {
                 default: true,
-                desc:
-                    `Gibt an, ob [MC-31819](https://bugs.mojang.com/browse/MC-31819) gefixt werden soll.
+                desc: `Gibt an, ob [MC-31819](https://bugs.mojang.com/browse/MC-31819) gefixt werden soll.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -137,8 +128,7 @@ const config: ConfigRoot = {
         },
         "hide-flames-on-entities-with-fire-resistance": {
             default: false,
-            desc:
-                `Gibt an, ob visuelle Flammen von Entities versteckt werden sollen, die Brennen und gleichzeitig Feuerresistenz haben.
+            desc: `Gibt an, ob visuelle Flammen von Entities versteckt werden sollen, die Brennen und gleichzeitig Feuerresistenz haben.
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -153,8 +143,7 @@ const config: ConfigRoot = {
         technical: {
             "load-portal-destination-chunk-before-entity-teleport": {
                 default: false,
-                desc:
-                    `Gibt an, ob Chunks vollständig geraden werden sollen, bevor ein Entity teleportiert wird, wenn es ein Portal betritt.<br>
+                desc: `Gibt an, ob Chunks vollständig geraden werden sollen, bevor ein Entity teleportiert wird, wenn es ein Portal betritt.<br>
                     Dies zwingt den ganzen Server zu warten, bis der Chunk geladen ist.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
@@ -170,8 +159,7 @@ const config: ConfigRoot = {
         },
         "try-respawn-ender-dragon-after-end-crystal-place": {
             default: true,
-            desc:
-                `Gibt an, ob versucht werden soll den Enderdrache zu respawnen, nachdem ein Endkristall an der richtigen Position am Portal platziert wurde.
+            desc: `Gibt an, ob versucht werden soll den Enderdrache zu respawnen, nachdem ein Endkristall an der richtigen Position am Portal platziert wurde.
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -190,8 +178,7 @@ const config: ConfigRoot = {
             __desc__: "Gibt an, ob Chunks in bestimmten Fällen geladen werden sollen.",
             "to-activate-climbing-entities": {
                 default: false,
-                desc:
-                    `Gibt an, ob Chunks geladen werden sollen, um kletternde Entities zu laden.<br>
+                desc: `Gibt an, ob Chunks geladen werden sollen, um kletternde Entities zu laden.<br>
                     <br>
                     In Paper erhalten Entites wie Zombies die klettern (z.B. eine Leiter heruntergehen) eine Priorität um aktiviert zu werden.<br>
                     Um zu überprüfen, ob ein Entity klettert, muss der Block, in dem es sich befindet, überprüft werden.<br>
@@ -211,8 +198,7 @@ const config: ConfigRoot = {
             },
             "to-spawn-phantoms": {
                 default: false,
-                desc:
-                    `Gibt an, ob Chunks geladen werden sollen um Phantome zu spawnen.<br>
+                desc: `Gibt an, ob Chunks geladen werden sollen um Phantome zu spawnen.<br>
                     Wenn dieser Wert \`false\` ist, wird nichts passieren, wenn der Server versucht ein Phantom in einem ungeladenen Chunk zu spawnen.
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
@@ -232,8 +218,7 @@ const config: ConfigRoot = {
             "per-projectile": {
                 max: {
                     default: 10,
-                    desc:
-                        `Die maximale Anzahl an Chunks, die synchron von einem Projektil während seiner Lebenszeit geladen werden können.<br>
+                    desc: `Die maximale Anzahl an Chunks, die synchron von einem Projektil während seiner Lebenszeit geladen werden können.<br>
                         Wenn ein Wert < \`0\` angegeben ist, wird dies deaktiviert: Die Anzahl an Chunks, die ein Projektil laden kann, ist unbegrenzt.
                         <table>
                         <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
@@ -248,8 +233,7 @@ const config: ConfigRoot = {
                 },
                 "remove-from-world-after-reach-limit": {
                     default: false,
-                    desc:
-                        `Gibt an ob Projektile komplett entfernt werden sollen, die den \`max\` Schwellenwert (siehe oben) überschreiben.<br>
+                    desc: `Gibt an ob Projektile komplett entfernt werden sollen, die den \`max\` Schwellenwert (siehe oben) überschreiben.<br>
                         <br>
                         Projektile aus der Welt zu entfernen ist riskant, da hierdurch auch wertvolle Projektile wie Dreizäcke entfernt werden können. Daher wird ein Wert von \`true\` nicht empfohlen.
                         <table>
@@ -265,8 +249,7 @@ const config: ConfigRoot = {
                 },
                 "reset-movement-after-reach-limit": {
                     default: false,
-                    desc:
-                        `Gibt an, ob die planare Geschwindigkeit von Projektilen, die den \`max\` Schwellenwert (siehe oben) überschreiben, auf \`0\` gesetzte werden soll, damit diese keine weiteren Chunkgrenzen erreichen.<br>
+                    desc: `Gibt an, ob die planare Geschwindigkeit von Projektilen, die den \`max\` Schwellenwert (siehe oben) überschreiben, auf \`0\` gesetzte werden soll, damit diese keine weiteren Chunkgrenzen erreichen.<br>
                         <br>
                         Dies hat keine Auswirkung wenn \`remove-from-world-after-reach-limit\` (siehe oben) \`true\` ist.
                         <table>
@@ -283,8 +266,7 @@ const config: ConfigRoot = {
             },
             "per-tick": {
                 default: 10,
-                desc:
-                    `Die maximale Anzahl an Chunks, die in einer Welt in einem Tick von allen Projektilen synchron geladen werden können.<br>
+                desc: `Die maximale Anzahl an Chunks, die in einer Welt in einem Tick von allen Projektilen synchron geladen werden können.<br>
                     <br>
                     Wenn ein Wert < \`0\` gesetzt ist, wird dies deaktiviert: Die Anzahl an Chunks, die Projektile pro Tick laden können ist unbegrenzt.
                     <table>
@@ -302,8 +284,7 @@ const config: ConfigRoot = {
         "reduced-intervals": {
             "acquire-poi-for-stuck-entity": {
                 default: 60,
-                desc:
-                    `Das zusätzliche Intervall (zusätzlich zum regulären Intervall), das für Entitäten gilt, die feststecken (z. B. in einem Fahrzeug), um zu versuchen, einen POI (wie einen Dorfbewohner-Arbeitsblock) zu erwerben.<br>
+                desc: `Das zusätzliche Intervall (zusätzlich zum regulären Intervall), das für Entitäten gilt, die feststecken (z. B. in einem Fahrzeug), um zu versuchen, einen POI (wie einen Dorfbewohner-Arbeitsblock) zu erwerben.<br>
                     (Einheit: Tick)<br>
                     Wenn sie sich während dieser Zeit befreien, können sie sofort einen neuen POI erwerben.<br>
                     Wenn dieser Wert z.B. auf \`100\` gesetzt ist, versuchen Entities, die feststecken, alle 5 Sekunden einen POI zu finden.<br>
@@ -322,13 +303,11 @@ const config: ConfigRoot = {
             },
             "check-nearby-item": {
                 hopper: {
-                    __desc__:
-                        `Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>
+                    __desc__: `Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>
                         Dies beeinflusst nur das Aufheben von Items in der Welt (z.B. gedroppte Items). Dies beeinflusst nicht das Extrahieren von Items aus einer Truhe oder anderen Blöcken mit Items darin.`,
                     interval: {
                         default: 1,
-                        desc:
-                            `Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>
+                        desc: `Frequenz, mit der Trichter nach Items zum Aufheben suchen.<br>
                             (Einheit: Tick)<br>
                             Wenn dieser Wert zum Beispiel \`20\` ist, suchen Trichter jede Sekunde nach Items über ihnen..<br>
                             <br>
@@ -347,8 +326,7 @@ const config: ConfigRoot = {
                     minecart: {
                         interval: {
                             default: 1,
-                            desc:
-                                `Gleich wie die obige \`interval\` Einstellung, aber für Loren mit Trichtern.
+                            desc: `Gleich wie die obige \`interval\` Einstellung, aber für Loren mit Trichtern.
                                 <table>
                                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -361,13 +339,11 @@ const config: ConfigRoot = {
                                 </table>`
                         },
                         "temporary-immunity": {
-                            __desc__:
-                                `Loren mit Trichtern können durch die obige \`interval\` Einstellung kurzzeitig immun werden.<br>
+                            __desc__: `Loren mit Trichtern können durch die obige \`interval\` Einstellung kurzzeitig immun werden.<br>
                                 Während eine Lore immun ist, kann sie jeden Tick nach Items suchen.`,
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
-                                desc:
-                                    `Gibt an, wie oft nach Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.<br>
+                                desc: `Gibt an, wie oft nach Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.<br>
                                     (Einheit: Tick)<br>
                                     Wenn der Wert &leq; \`0\` ist, ist das Verhalten wie bei \`1\`.
                                     <table>
@@ -383,8 +359,7 @@ const config: ConfigRoot = {
                             },
                             "check-for-minecart-near-item-while-active": {
                                 default: false,
-                                desc:
-                                    `Gibt an, ob nach __aktiven__ Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.
+                                desc: `Gibt an, ob nach __aktiven__ Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.
                                     <table>
                                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -398,8 +373,7 @@ const config: ConfigRoot = {
                             },
                             "check-for-minecart-near-item-while-inactive": {
                                 default: true,
-                                desc:
-                                    `Gibt an, ob nach __inaktiven__ Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.
+                                desc: `Gibt an, ob nach __inaktiven__ Loren mit Trichtern in der Nähe von Items gesucht werden soll, um den Loren kurzzeitige Immunität von der \`interval\` Einstellung zu geben.
                                     <table>
                                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -413,8 +387,7 @@ const config: ConfigRoot = {
                             },
                             duration: {
                                 default: 100,
-                                desc:
-                                    `Die Dauer, für die Loren mit Trichtern temporär von der \`interval\` Einstellung immun werden.<br>
+                                desc: `Die Dauer, für die Loren mit Trichtern temporär von der \`interval\` Einstellung immun werden.<br>
                                     (Einheit: Tick)<br>
                                     Wenn ein Wert &leq; \`0\` gesetzt ist, werden Loren mit Trichtern niemals immun von der \`interval\` Einstellung.
                                     <table>
@@ -430,8 +403,7 @@ const config: ConfigRoot = {
                             },
                             "max-item-horizontal-distance": {
                                 default: "24.0",
-                                desc:
-                                    `Die maximale horizontale Distanz, die ein gedropptes Item von einer Lore mit Trichter entfernt sein kann, um der Lore temporäre Immunität zu der \`interval\` zu geben.<br>
+                                desc: `Die maximale horizontale Distanz, die ein gedropptes Item von einer Lore mit Trichter entfernt sein kann, um der Lore temporäre Immunität zu der \`interval\` zu geben.<br>
                                     (Einheit: Block)<br>
                                     Wenn ein Wert < \`0\` gesetzt ist, werden Loren mit Trichtern niemals immun von der \`interval\` Einstellung.
                                     <table>
@@ -447,8 +419,7 @@ const config: ConfigRoot = {
                             },
                             "max-item-vertical-distance": {
                                 default: "4.0",
-                                desc:
-                                    `Genau wie \`max-item-horizontal-distance\`, aber für die maximale vertikale Distanz.<br>
+                                desc: `Genau wie \`max-item-horizontal-distance\`, aber für die maximale vertikale Distanz.<br>
                                     (Einheit: Block)
                                     <table>
                                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
@@ -463,8 +434,7 @@ const config: ConfigRoot = {
                             },
                             "nearby-item-max-age": {
                                 default: 1200,
-                                desc:
-                                    `Items mit einem Alter höher als dieser Wert sorgen nicht dafür, dass Loren mit Trichtern temporär immun von der \`interval\` Einstellung werden können.<br>
+                                desc: `Items mit einem Alter höher als dieser Wert sorgen nicht dafür, dass Loren mit Trichtern temporär immun von der \`interval\` Einstellung werden können.<br>
                                     (Einheit: Tick)<br>
                                     Wenn der Wert &leq; \`0\` ist, gibt es kein minimales Alter: Alle Items können Loren mit Trichtern temporär immun von der \`interval\` Einstellung machen.
                                     <table>
@@ -484,8 +454,7 @@ const config: ConfigRoot = {
             },
             "check-stuck-in-wall": {
                 default: 10,
-                desc:
-                    `Das Interval mit wem überprüft wird, ob ein Entity in einer Wand feststeckt, um Erstickungsschaden zu erteilen.<br>
+                desc: `Das Interval mit wem überprüft wird, ob ein Entity in einer Wand feststeckt, um Erstickungsschaden zu erteilen.<br>
                     (Einheit: Tick)<br>
                     <br>
                     Da es nach dem Erteilen von Schaden ein kurzes Zeitfenster (Aktuell etwa 1 Sekunde) gibt, in dem die Entites immun sind, bleibt es beinnahe unbemerkt, diese Überprüfung zur jede Sekunde durchzuführen.<br>
@@ -508,8 +477,7 @@ const config: ConfigRoot = {
             },
             "villager-item-repickup": {
                 default: 100,
-                desc:
-                    `Die Mindestverzögerung, bis von Dorfbewohnern fallengelassene Items von (anderen) Entites aufgesammelt werden können.<br>
+                desc: `Die Mindestverzögerung, bis von Dorfbewohnern fallengelassene Items von (anderen) Entites aufgesammelt werden können.<br>
                     (Einheit: Tick)
                     <ul>
                     <li>Verhindert, dass Dorfbewohner gefarmte Items wieder aufsammeln, bevor Trichter das können. Ansonsten könnte es Probleme durch die \`check-nearby-item.hopper\` Einstellung geben.</li>
@@ -534,8 +502,7 @@ const config: ConfigRoot = {
         },
         "save-fireworks": {
             default: true,
-            desc:
-                `Gibt an, ob Feuerwerk gespeichert wird, wenn ein Chunk gespeichert wird.<br>
+            desc: `Gibt an, ob Feuerwerk gespeichert wird, wenn ein Chunk gespeichert wird.<br>
                 Feuerwerk kann verbuggt werden und nicht zünden und eine automatische Redstone-Schaltung kann leicht einen ganzen Chunk damit füllen.<br>
                 Wenn dieser Wert \`false\` ist, wird jegliches Feuerwerk beim Entladen des Chunks entfernt, um dieses Problem zu verhindern.
                 <table>
@@ -551,8 +518,7 @@ const config: ConfigRoot = {
         },
         "use-optimized-sheep-offspring-color": {
             default: true,
-            desc:
-                `Gibt an. ob eine (viel) schnellere Methode genutzt werden soll, um die Farbe eines neuen Babyschafs zu bestimmen.<br>
+            desc: `Gibt an. ob eine (viel) schnellere Methode genutzt werden soll, um die Farbe eines neuen Babyschafs zu bestimmen.<br>
                 Die Farbe wird auf die gleiche Weise wie in Vanilla bestimmt.<br>
                 <br>
                 Allerdings ist es in Vanilla möglich, die neue Farbe durch Datapacks zu ändern, die das Crafting-Rezept für das Kombinieren von Farbstoffen ändern.<br>

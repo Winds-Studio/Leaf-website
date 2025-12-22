@@ -8,8 +8,7 @@ const config: ConfigRoot = {
     "gameplay-mechanics": {
         "enable-book-writing": {
             default: true,
-            desc:
-                `Whether books should be writeable.<br>
+            desc: `Whether books should be writeable.<br>
                 If set to \`false\`, players with the permission \`gale.writebooks\` (default: \`op\`) can still use books.
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -29,8 +28,7 @@ const config: ConfigRoot = {
         chat: {
             "empty-message-warning": {
                 default: false,
-                desc:
-                    `Whether to log when a player sends a message packet that is empty.<br>
+                desc: `Whether to log when a player sends a message packet that is empty.<br>
                     (this is harmless, it usually happens when the player's client is outdated)
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
@@ -40,8 +38,7 @@ const config: ConfigRoot = {
             },
             "expired-message-warning": {
                 default: false,
-                desc:
-                    `Whether to log when a player's message packet has expired.<br>
+                desc: `Whether to log when a player's message packet has expired.<br>
                     (this is harmless, it usually happens when the player's client's chat is a bit out-of-sync)
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
@@ -51,8 +48,7 @@ const config: ConfigRoot = {
             },
             "not-secure-marker": {
                 default: true,
-                desc:
-                    `Whether to add a [NOT SECURE] marker in front of unsigned chat packets.
+                desc: `Whether to add a [NOT SECURE] marker in front of unsigned chat packets.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -62,8 +58,7 @@ const config: ConfigRoot = {
         },
         "ignored-advancements": {
             default: true,
-            desc:
-                `Whether to log when a player's data is loaded, and they have advancements that don't exist anymore.<br>
+            desc: `Whether to log when a player's data is loaded, and they have advancements that don't exist anymore.<br>
                 (this is harmless, it usually happens when the server upgraded to the newer Minecraft version)
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
@@ -73,8 +68,7 @@ const config: ConfigRoot = {
         },
         "invalid-pool-element-error-log-level": {
             default: "info",
-            desc:
-                `The logging level for errors when the server encounters *invalid pool elements* in world data.<br>
+            desc: `The logging level for errors when the server encounters *invalid pool elements* in world data.<br>
                 <br>
                 *Invalid pool elements* are parts of generated structures (such as Mineshafts) that are corrupted or not updated from old versions properly.<br>
                 <br>
@@ -92,8 +86,7 @@ const config: ConfigRoot = {
         },
         "invalid-statistics": {
             default: true,
-            desc:
-                `Whether to log when a player's data is loaded, and they have statistics that don't exist anymore.
+            desc: `Whether to log when a player's data is loaded, and they have statistics that don't exist anymore.
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -102,8 +95,7 @@ const config: ConfigRoot = {
         },
         "legacy-material-initialization": {
             default: false,
-            desc:
-                `Whether to log when a very old Bukkit plugin is loaded.
+            desc: `Whether to log when a very old Bukkit plugin is loaded.
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -112,8 +104,7 @@ const config: ConfigRoot = {
         },
         "null-id-disconnections": {
             default: true,
-            desc:
-                `Whether to log when a player did not send a valid profile during login.<br>
+            desc: `Whether to log when a player did not send a valid profile during login.<br>
                 (this usually indicates a hacker is trying to flood your server's joining capacity)
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
@@ -123,8 +114,7 @@ const config: ConfigRoot = {
         },
         "player-login-locations": {
             default: true,
-            desc:
-                `Whether to include a player's coordinates in the join message logged to the console.
+            desc: `Whether to include a player's coordinates in the join message logged to the console.
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -134,8 +124,7 @@ const config: ConfigRoot = {
         "plugin-library-loader": {
             downloads: {
                 default: true,
-                desc:
-                    `Whether to log when the plugin library loader starts downloading libraries.
+                desc: `Whether to log when the plugin library loader starts downloading libraries.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -144,8 +133,7 @@ const config: ConfigRoot = {
             },
             "library-loaded": {
                 default: true,
-                desc:
-                    `Whether to log when the plugin library loader finished loading a library.
+                desc: `Whether to log when the plugin library loader finished loading a library.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -154,8 +142,7 @@ const config: ConfigRoot = {
             },
             "start-load-libraries-for-plugin": {
                 default: true,
-                desc:
-                    `Whether to log when the plugin library loader starts loading libraries for a plugin.
+                desc: `Whether to log when the plugin library loader starts loading libraries for a plugin.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -165,8 +152,7 @@ const config: ConfigRoot = {
         },
         "set-block-in-far-chunk": {
             default: true,
-            desc:
-                `Whether to log when a player attempts to set a block that is *very* far away.<br>
+            desc: `Whether to log when a player attempts to set a block that is *very* far away.<br>
                 (this usually indicates a hacker is trying to get information about other players' locations, or is using the hack client)
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
@@ -176,8 +162,7 @@ const config: ConfigRoot = {
         },
         "unrecognized-recipes": {
             default: false,
-            desc:
-                `Whether to log when a player's data is loaded, and they have recipe book recipes that don't exist anymore.
+            desc: `Whether to log when a player's data is loaded, and they have recipe book recipes that don't exist anymore.
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
@@ -189,8 +174,7 @@ const config: ConfigRoot = {
     misc: {
         "ignore-null-legacy-structure-data": {
             default: false,
-            desc:
-                `Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason.
+            desc: `Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason.
                 <ul>
                 <li>If \`true\`, no warning will be given when this happens.</li>
                 <li>If \`false\`, an exception will be thrown in the console when this happens.</li>
@@ -210,8 +194,7 @@ const config: ConfigRoot = {
         keepalive: {
             "send-multiple": {
                 default: true,
-                desc:
-                    `Whether to send more frequent keepalive packets than vanilla.
+                desc: `Whether to send more frequent keepalive packets than vanilla.
                     <ul>
                     <li>If \`true\`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>
                     <li>If \`false\`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>
@@ -231,8 +214,7 @@ const config: ConfigRoot = {
         "last-tick-time-in-tps-command": {
             "add-oversleep": {
                 default: false,
-                desc:
-                    `Whether to add the oversleep portion of the last tick's time to the \`/tps\` command.<br>
+                desc: `Whether to add the oversleep portion of the last tick's time to the \`/tps\` command.<br>
                     This only has any effect if \`enabled\` below is \`true\`.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -247,8 +229,7 @@ const config: ConfigRoot = {
             },
             enabled: {
                 default: false,
-                desc:
-                    `Whether to include the time that the last tick took in the \`/tps\` command.<br>
+                desc: `Whether to include the time that the last tick took in the \`/tps\` command.<br>
                     The time that the last tick took only represents that one tick, so it is normally not very useful.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -264,8 +245,7 @@ const config: ConfigRoot = {
         },
         "premium-account-slow-login-timeout": {
             default: -1,
-            desc:
-                `The maximum time that a premium account login can take.<br>
+            desc: `The maximum time that a premium account login can take.<br>
                 (Unit: tick)
                 <ul>
                 <li>If this time is exceeded, the connection is closed.</li>
@@ -284,8 +264,7 @@ const config: ConfigRoot = {
         },
         "verify-chat-order": {
             default: true,
-            desc:
-                `Whether to verify the order of chat messages.
+            desc: `Whether to verify the order of chat messages.
                 <ul>
                 <li>If set to \`true\`, and a player sends an out-of-order chat packet for some reason, they will be kicked.</li>
                 <li>If set to \`false\`, no verification will occur, and players will not be kicked.</li>
@@ -307,8 +286,7 @@ const config: ConfigRoot = {
         "reduced-intervals": {
             "increase-time-statistics": {
                 default: 20,
-                desc:
-                    `The interval at which to increase the time-related statistics such as total playtime, time since the last death, etc.<br>
+                desc: `The interval at which to increase the time-related statistics such as total playtime, time since the last death, etc.<br>
                     Changing this value does not change the speed with which statistics increase from vanilla.<br>
                     (Unit: tick)
                     <br>
@@ -331,8 +309,7 @@ const config: ConfigRoot = {
             },
             "update-entity-line-of-sight": {
                 default: 4,
-                desc:
-                    `The interval at which to update whether one entity is within another entity's line of sight.<br>
+                desc: `The interval at which to update whether one entity is within another entity's line of sight.<br>
                     (Unit: tick)<br>
                     If a value &leq; \`0\` is given, it will default to the same as Paper's behavior.
                     <table>
@@ -352,8 +329,7 @@ const config: ConfigRoot = {
                 "Whether to use a [XorShift](https://www.codeproject.com/Articles/9187/A-fast-equivalent-for-System-Random) random number generator instead of the Java's default.",
             "auto-replenish-lootable-refill": {
                 default: true,
-                desc:
-                    `Whether to use a XorShift random generator for refilling lootables for the Paper's \`auto-replenish\` feature.<br>
+                desc: `Whether to use a XorShift random generator for refilling lootables for the Paper's \`auto-replenish\` feature.<br>
                     This does not affect normal Minecraft lootable chests.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -368,8 +344,7 @@ const config: ConfigRoot = {
             },
             "elytra-firework-speed": {
                 default: true,
-                desc:
-                    `Whether to use a XorShift random generator for the speed boost of using a firework rocket while gliding.
+                desc: `Whether to use a XorShift random generator for the speed boost of using a firework rocket while gliding.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -383,8 +358,7 @@ const config: ConfigRoot = {
             },
             "entity-wake-up-duration": {
                 default: true,
-                desc:
-                    `Whether to use a XorShift random generator for variation in entity activation durations.
+                desc: `Whether to use a XorShift random generator for variation in entity activation durations.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -397,8 +371,7 @@ const config: ConfigRoot = {
             },
             "generate-tree-with-bukkit-api": {
                 default: true,
-                desc:
-                    `Whether to use a XorShift random generator to generate trees with the Bukkit API (\`World#generateTree\`).
+                desc: `Whether to use a XorShift random generator to generate trees with the Bukkit API (\`World#generateTree\`).
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
@@ -412,8 +385,7 @@ const config: ConfigRoot = {
             },
             "lightning-random-tick": {
                 default: true,
-                desc:
-                    `Whether to use a XorShift random generator for the chance of lightning strike.
+                desc: `Whether to use a XorShift random generator for the chance of lightning strike.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
