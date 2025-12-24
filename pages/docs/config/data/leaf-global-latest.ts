@@ -105,250 +105,413 @@ const config: ConfigRoot = {
         "check-survival-before-growth": {
             "cactus-check-survival": {
                 default: false,
-                desc: ""
+                desc: `Whether to check cactus can survive before trying to grow.<br>
+                    This can help improving performance if there are huge cactus farms existing in the server.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
                 default: false,
-                desc: ""
+                desc: `Whether to disable saving primed tnt on chunk unloads.<br>
+                    This can prevent machines or redstone builds from being exploded by TNT when the player accidentally disconnected or chunk unloads when the player is far away. Useful for redstone/technical/survival servers which have machines involving TNTs.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "dont-save-falling-block": {
                 default: false,
-                desc: ""
+                desc: `Whether to disable saving falling block on chunk unloads.<br>
+                    This can prevent potential issues with glitched or duplicated falling blocks (sand, gravel, etc.) after server restarts or chunk loads, especially if caused by lag.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         dab: {
+            __desc__:
+                "Dynamic Activation of Brain, as known as DAB, optimizes entity's brain by decreasing the frequency of their brain ticking when they are far away from players. It is a worthful trade-off to improve performance if there are many entities.",
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to enable the DAB.<br>
+                    <br>
+                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>false</code> (or see <code>dab.blacklisted-entities</code> below for more)</td></tr>
+                    </table>`
             },
             "dont-enable-if-in-water": {
                 default: false,
-                desc: ""
+                desc: `Whether non-aquatic entities in the water will not be affected by DAB. This can fix [Pufferfish#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>
+                    If \`true\`, this could fix entities suffocate in the water if they are far from the player.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "start-distance": {
                 default: 12,
-                desc: ""
+                desc: `The distance that determines how far away an entity has to be from the player to start being affected by DAB.<br>
+                    (Unit: block)<br>
+                    <br>
+                    __⚡Recommended value: \`8\`__`
             },
             "max-tick-freq": {
                 default: 20,
-                desc: ""
+                desc: `The maximum tick time of how often the furthest entity will get their pathfinders and behaviors ticked.<br>
+                    (Unit: tick, default value 20 ticks = 1s)`
             },
             "activation-dist-mod": {
                 default: 8,
-                desc: ""
+                desc: `The tick frequency that defines how much distance modifies an entity's tick frequency. \`freq = (distanceToPlayer^2) / (2^value)\`.
+                    <ul>
+                    <li>If you want entities further away to tick __less__ often, use \`7\`.</li>
+                    <li>If you want entities further away to tick __more__ often, try \`9\`.</li>
+                    </ul>
+                    <br>
+                    __⚡Recommended value: \`7\`__`
             },
             "blacklisted-entities": {
-                default: ["villager", "axolotl", "hoglin", "zombified_piglin", "goat"],
-                desc: ""
+                default: `
+                - villager
+                - axolotl
+                - hoglin
+                - zombified_piglin
+                - goat`,
+                desc: `A list of entities that will not be affected by DAB.<br>
+                    <br>
+                    Some survival servers have mob farms which need mobs to have a target. This kind of "pathfinding" mob farm may break by DAB. This situation can be solved by adding specific mob of mob farm into this DAB blacklist.<br>
+                    If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them into this blacklist to see if it fixes the issue.<br>
+                    <br>
+                    Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/EntityType.html)).<br>
+                    <br>
+                    [💡 Want to Go Deeper?](guides/dab-blacklist-format)`
             }
         },
         "enable-cached-minecraft-to-bukkit-entitytype-convert": {
             default: true,
-            desc: ""
+            desc: `Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. This conversion can be somewhat expensive, especially in the spawning logic, so caching it can improve performance slightly.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "fast-biome-manager-seed-obfuscation": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to replace vanilla SHA-256 seed obfuscation in \`BiomeManager\` with XXHash.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "seed-obfuscation-key": {
                 default: 513317,
-                desc: ""
+                desc: `Seed obfuscation key for XXHash.<br>
+                    This value will generate randomly on first server start.`
             }
         },
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to use the faster random generator introduced in JDK 17.<br>
+                    Random is used almost everywhere in Minecraft, enable this can get a decent performance improvement.<br>
+                    <br>
+                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    <div class="tip custom-block">
+                    <p class="custom-block-title custom-block-title-default">Attention</p>
+                    This requires a JVM that supports \`RandomGenerator\`. Some JREs don't support it.
+                    </div>`
             },
             "random-generator": {
                 default: "Xoroshiro128PlusPlus",
-                desc: ""
+                desc: `The specific algorithm of the random generator should be used.<br>
+                    Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1) or [JEP 356](https://openjdk.org/jeps/356).<br>
+                    <br>
+                    __⚡Recommended value: \`Xoroshiro128PlusPlus\`__`
             },
             "enable-for-worldgen": {
                 default: false,
-                desc: ""
+                desc: `Whether to use the faster random generator for world generation.<br>
+                    <ul>
+                    <li>If \`true\`, \`Random\` calls involved in world generation will use faster random generator you chose in \`random-generator\` above. The world generation will be slightly different from vanilla.</li>
+                    <li>If \`false\`, \`Random\` calls involved in world generation will use legacy random generator of vanilla.</li>
+                    </ul>
+                    <br>
+                    __⚡Recommended value: \`true\`__
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                    </table>`
             },
             "warn-for-slime-chunk": {
                 default: true,
-                desc: ""
+                desc: "Whether server prints a warning message on startup if enabled faster random generator for slime chunk generation."
             },
             "use-legacy-random-for-slime-chunk": {
                 default: false,
-                desc: ""
+                desc: `Whether to use legacy random source (\`java.util.Random\`) for slime chunk generation to follow the vanilla behavior.<br>
+                    If your server has existing slime farms or related facilities need slime chunk, enable this, otherwise the location of slime chunk will offset.<br>
+                    <br>
+                    __⚡Recommended value:__ (Depends on your server type, see \`Values for goals\` below for more.)
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>false</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>true</code></td></tr>
+                    </table>`
             },
             "use-direct-implementation": {
                 default: false,
-                desc: ""
+                desc: `Whether to use direct random implementation (LCG without synchronization) instead of delegating to Java's RandomGenerator.<br>
+                    This may improve performance but potentially changes RNG behavior.<br>
+                    <br>
+                    __⚡Recommended value: \`false\`__`
             }
         },
         "faster-structure-gen-future-sequencing": {
             default: true,
-            desc: ""
+            desc: `Whether to use faster task sequencing for generating structures.<br>
+                <br>
+                __⚡Recommended value: \`true\`__
+                <div class="tip custom-block">
+                <p class="custom-block-title custom-block-title-default">Attention</p>
+                This may cause the inconsistent order of future compose tasks in rare edge cases which may lead to different structure generation results.
+                </div>`
         },
         "cache-biome": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to cache biome data of block location, instead of re-calculating the biome everytime of the searching.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__ (Also requires to enable options below)`
             },
             "mob-spawning": {
                 default: false,
-                desc: ""
+                desc: `Whether to cache biome in mob spawning logic.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             advancements: {
                 default: false,
-                desc: ""
+                desc: `Whether to cahce biome in player advancement calculation logic.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "optimize-block-entities": {
             default: true,
-            desc: ""
+            desc: `Whether to use more efficient map data structure for block entity ticker storage.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "optimize-mob-despawn": {
             default: false,
-            desc: ""
+            desc: `Whether to use more efficient logic for mob natural despawn.<br>
+                This can prevent expensive cost of the vanilla despawn logic that iterates every player then compares the distance between mobs and the player.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "only-tick-items-in-hand": {
             default: false,
-            desc: ""
+            desc: `Whether to tick or update items only if player holds them in main hand or offhand, instead of ticking the entire inventory.<br>
+                This currently only affects compass and map item.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "optimize-no-action-time": {
             "disable-light-check": {
                 default: false,
-                desc: ""
+                desc: `Whether to skip light check in monster's \`noActionTime\` update.<br>
+                    Directly increment \`noActionTime\` counter by 1 without checking light level on every entity ticking. In vanilla, the counter increases by 2 if the monster in a place where the light level is higher than speific value.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                    </table>`
             }
         },
         "optimize-player-movement": {
             default: true,
-            desc: ""
+            desc: `Whether to skip unnecessary block edge checks on player moving and avoid redundant view distance updates.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "optimize-random-tick": {
             default: false,
-            desc: ""
+            desc: `Whether to use rewritten random ticking system.<br>
+                <br>
+                This rewritten random ticking system uses weighted statistics and sampling to select tickable blocks in active chunks. It can reduce the unnecessary cost caused by frequently selecting non-tickable location in the vanilla random ticking logic.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "optimize-waypoint": {
             default: false,
-            desc: ""
+            desc: `Whether to update player's waypoint tracking data only when their block positions change.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "optimized-powered-rails": {
             default: false,
-            desc: ""
+            desc: `Whether to use optimized powered rails. Uses fully rewritten version of powered rail iteration logic which also keeps vanilla behavior, and can achieve 4x faster performance.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "reduce-packets": {
+            __desc__: "This section is for the useless packet reducing features.",
             "reduce-entity-move-packets": {
                 default: false,
-                desc: ""
+                desc: `Whether to reduce the useless entity movement packets sent to players (e.g., small movements).<br>
+                    This can save bandwidth and reduces client-side processing load, potentially making movement appear smoother during high entity counts or minor lag.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "skip-ai-for-non-aware-mob": {
             default: true,
-            desc: ""
+            desc: `Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>
+                Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
+                <br>
+                __⚡Recommended value: \`true\`__
+                <table>
+                <tr><td><b>Values for goals</b></td><td></td></tr>
+                <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                </table>`
         },
         datapack: {
             "skip-inactive-entity-for-execute-command": {
                 default: false,
-                desc: ""
+                desc: `Whether to skip selecting inactive entities when using execute command.<br>
+                    Tihs can improve performance on servers with massive datapack functions.`
             }
         },
         "skip-map-item-data-updates-if-map-does-not-have-craftmaprenderer": {
             default: true,
-            desc: ""
+            desc: `Whether to skip updating map item data update if the map doesn't have a renderer (\`CraftMapRenderer\`).<br>
+                This can improve performance if using ImageMap kind of plugins that create many custom maps.<br>
+                <br>
+                __⚡Recommended value: \`true\`__
+                <table>
+                <tr><td><b>Values for goals</b></td><td></td></tr>
+                <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                </table>
+                <div class="tip custom-block">
+                <p class="custom-block-title custom-block-title-default">Attention</p>
+                This may cause vanilla map item data to stop be updated.
+                </div>`
         },
         "throttle-hopper-when-full": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to throttle hopper item transfer attempts if the target container is full.<br>
+                    Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>
+                    <br>
+                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                    </table>`
             },
             "skip-ticks": {
                 default: 8,
-                desc: ""
+                desc: `How many ticks a hopper should wait before trying to move items again if the target container is full.<br>
+                    (Unit: tick)<br>
+                    Only active if \`throttle-hopper-when-full.enabled\` (described above) is \`true\`.<br>
+                    If a value &leq; \`0\` is given, this throttling feature is disabled.<br>
+                    <br>
+                    __⚡Recommended value: \`8\`__
+                    <table>
+                    <tr><td><b>Values for goals</b></td><td></td></tr>
+                    <tr><td><i>Optimization</i></td><td><code>8</code></td></tr>
+                    <tr><td><i>Vanilla behavior</i></td><td><code>8</code></td></tr>
+                    </table>`
             }
         },
         "throttle-mob-spawning": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to skip mob spawning in chunks that have repeatedly failed to spawn mobs beyond the configured \`min-failed\` value.<br>
+                    Once the minimum number of failed spawn attempts is reached, the server will randomly skip between 1 ~ \`spawn-chance\`% of spawn attempts in that chunk.<br>
+                    Failed spawn attempts will not be counted if spawn limits are reached, and the failure counter will be reset after a successful spawn.`
             },
             monster: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for hostile monsters."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of hostile monsters after reaching `min-failed` value above."
                 }
             },
             creature: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for passive creatures (animals)."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of passive creatures (animals) after reaching `min-failed` value above."
                 }
             },
             ambient: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for ambient mobs (bats)."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of ambient mobs (bats) after reaching `min-failed` value above."
                 }
             },
             axolotls: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for axolotls."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of axolotls after reaching `min-failed` value above."
                 }
             },
             underground_water_creature: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for underground water creatures (glow squid)."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of underground water creatures (glow squid) after reaching `min-failed` value above."
                 }
             },
             water_creature: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for water creatures (squid, dolphins)."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of water creatures (squid, dolphins) after reaching `min-failed` value above."
                 }
             },
             water_ambient: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for ambient water mobs (tropical fish)."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of ambient water mobs (tropical fish) after reaching `min-failed` value above."
                 }
             },
             misc: {
                 "min-failed": {
                     default: 8,
-                    desc: ""
+                    desc: "The minimum failed spawn attempt for misc entities."
                 },
                 "spawn-chance": {
                     default: "25.0",
-                    desc: ""
+                    desc: "The spawn chance of misc entities after reaching `min-failed` value above."
                 }
             }
         },
@@ -668,7 +831,7 @@ const config: ConfigRoot = {
                 default: 513317,
                 desc: `Unique number id for XaeroMap to identify the server.<br>
                     This can prevent points from been deleted / refreshed if server name or IP address changed. Change this value if needed.<br>
-                    The value will generate randomly on first start.`
+                    This value will generate randomly on first server start.`
             },
             "syncmatica-protocol": {
                 default: false,
@@ -838,7 +1001,7 @@ const config: ConfigRoot = {
                 <br>
                 After enabled Sentry integration for your server, you don't need to audit long logs to find errors manually. Sentry can collect errors happened in your server, enable you to track errors on Sentry's web panel and help you to locate and fix them easier and faster.<br>
                 <br>
-                See __[How to Setup Sentry](../../how-to/setup-sentry.md)__ to know how to set up and get the DSN key for \`sentry.dsn\` below.<br>`,
+                See __[How to Setup Sentry](../how-to/setup-sentry)__ to know how to set up and get the DSN key for \`sentry.dsn\` below.<br>`,
             dsn: {
                 default: "''",
                 desc: `The DSN key of your Sentry.<br>
