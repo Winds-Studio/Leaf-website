@@ -11,57 +11,92 @@ const config: ConfigRoot = {
         "async-chunk-send": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to make chunk packets packing and sending asynchronously.<br>
+                    This can significantly reduce main thread load, especially when many players are loading chunks simultaneously (e.g., joining, teleporting, flying fast).<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "async-mob-spawning": {
             enabled: {
                 default: true,
-                desc: ""
+                desc: `Whether to make mob spawning asynchronously.<br>
+                    <br>
+                    On servers with many entities, this can improve performance by up to ~15%. You must have Paper's \`per-player-mob-spawns\` config set to \`true\` for this to work.<br>
+                    One quick note: this does not actually spawn mobs async (that would be very unsafe). This just offloads some expensive calculations that are required for mob spawning.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "async-pathfinding": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to make mob pathfinding calculation asynchronously.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "max-threads": {
                 default: 0,
-                desc: ""
+                desc: `Maximum number of threads for async entity pathfinding to use.<br>
+                    If the value is set to \`0\`, it automatically uses 1/4 of the number of CPU cores and minimum 1.<br>
+                    <br>
+                    __⚡Recommended value: 1/3 of CPU cores__`
             },
             keepalive: {
                 default: 60,
-                desc: ""
+                desc: `Thread keepalive time, threads with no tasks will be terminated if they exceed the time.<br>
+                    (Unit: second)`
             },
             "queue-size": {
                 default: 0,
-                desc: ""
+                desc: `Maximum size of the queue for pending entity tracking tasks.<br>
+                    If set to &leq; \`0\`, the queue size is dynamically calculated as \`max-threads * 256\`.`
             },
             "reject-policy": {
                 default: "CALLER_RUNS",
-                desc: ""
+                desc: `The policy to use when the pathfinding task queue is full and a new task is submitted.<br>
+                <ul>
+                <li>\`FLUSH_ALL\`: All pending tasks in the queue are immediately run on the server thread.</li>
+                <li>\`CALLER_RUNS\`: The incoming submitted task will be ran on the server thread.</li>
+                </ul>
+                <br>
+                __⚡Recommended value: \`CALLER_RUNS\`__`
             }
         },
         "async-playerdata-save": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to make player data saving asynchronously. (I/O operations are expensive)
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    Experimental feature, may cause data lost or data inconsistency in some circumstances!
+                    </div>`
             }
         },
         "async-entity-tracker": {
             enabled: {
                 default: false,
-                desc: ""
+                desc: `Whether to make entity tracking asynchronously.<br>
+                    This can improve performance significantly, especially in some massive entities in small area situations.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__
+                    <div class="tip custom-block">
+                    <p class="custom-block-title custom-block-title-default">Attention</p>
+                    Experimental feature, actively testing, please report any bugs you encoutered.
+                    </div>`
             },
             threads: {
                 default: 0,
-                desc: ""
+                desc: `Maximum number of threads for async entity tracker to use.<br>
+                    If the value is set to \`0\`, it automatically uses 1/4 of the number of CPU cores and minimum 1.<br>
+                    <br>
+                    __⚡Recommended value: 1/2 of CPU cores__`
             }
         },
         "parallel-world-ticking": {
             enabled: {
                 default: false,
-                desc: `Whether parallel processing different worlds in separate threads, which can improve performance on multi-core system.<br>
+                desc: `Whether to parallel process different worlds in separate threads, which can improve performance on multi-core system.<br>
                     <br>
                     Parallel World Ticking, also called "PWT", is a concept created by [SparklyPaper](https://github.com/SparklyPower/SparklyPaper), by ticking each world in a separate thread, to reduce and split the work load in originally single thread for all worlds.<br>
                     In this PWT implementation, each world will wait until last world tick finished, read more in SparklyPaper's explanation [PARALLEL_WORLD_TICKING.md](https://github.com/SparklyPower/SparklyPaper/blob/13aff425238ea322658de0d9f4f7bd906bd9f431/docs/PARALLEL_WORLD_TICKING.md).<br>
@@ -82,19 +117,29 @@ const config: ConfigRoot = {
             },
             threads: {
                 default: 8,
-                desc: ""
+                desc: `Number of threads dedicated to parallel world ticking.<br>
+                    <br>
+                    __⚡Recommended value: same with the amount of worlds__`
             },
             "log-container-creation-stacktraces": {
                 default: false,
-                desc: ""
+                desc: `Whether to log stacktraces when containers (like Tile Entities or Entities) are created during parallel ticking.<br>
+                    This is useful for debugging potential concurrency issues.`
             },
             "disable-hard-throw": {
                 default: false,
-                desc: ""
+                desc: `Whether to disable hard throws (which usually stop the server) related to parallel ticking errors.<br>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    This might mask underlying issues but could prevent crashes in unstable experimental phases. Use with caution.
+                    </div>`
             },
             "async-unsafe-read-handling": {
                 default: "BUFFERED",
-                desc: ""
+                desc: `Whether to run asynchronous tasks synchronously within the parallel ticking system.<br>
+                    This might be needed for plugin compatibility with certain plugins but largely negates the performance benefits of parallel ticking.<br>
+                    <br>
+                    __⚡Recommended value: \`BUFFERED\`__`
             }
         }
     },
