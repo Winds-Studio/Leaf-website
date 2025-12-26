@@ -176,8 +176,8 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason.
                 <ul>
-                <li>If \`true\`, no warning will be given when this happens.</li>
-                <li>If \`false\`, an exception will be thrown in the console when this happens.</li>
+                <li>If set to \`true\`, no warning will be given when this happens.</li>
+                <li>If set to \`false\`, an exception will be thrown in the console when this happens.</li>
                 </ul>
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -196,8 +196,8 @@ const config: ConfigRoot = {
                 default: true,
                 desc: `Whether to send more frequent keepalive packets than vanilla.
                     <ul>
-                    <li>If \`true\`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>
-                    <li>If \`false\`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>
+                    <li>If set to \`true\`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>
+                    <li>If set to \`false\`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>
                     </ul>
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
