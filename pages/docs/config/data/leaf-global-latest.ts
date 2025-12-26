@@ -66,11 +66,12 @@ const config: ConfigRoot = {
         "async-playerdata-save": {
             enabled: {
                 default: false,
-                desc: `Whether to make player data saving asynchronous. (I/O operations are expensive)
-                    <div class="warning custom-block">
-                    <p class="custom-block-title custom-block-title-default">Warning</p>
-                    Experimental feature, may cause data loss or data inconsistency in some circumstances!
-                    </div>`
+                desc: "Whether to make player data saving asynchronous. (I/O operations are expensive)"
+                    // TODO
+                    // <div class="warning custom-block">
+                    // <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    // Experimental feature, may cause data loss or data inconsistency in some circumstances!
+                    // </div>`
             }
         },
         "async-entity-tracker": {
@@ -80,8 +81,8 @@ const config: ConfigRoot = {
                     This can improve performance significantly, especially in some massive entities in small area situations.<br>
                     <br>
                     __⚡Recommended value: \`true\`__
-                    <div class="tip custom-block">
-                    <p class="custom-block-title custom-block-title-default">Attention</p>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, actively testing, please report any bugs you encounter.
                     </div>`
             },
@@ -111,7 +112,7 @@ const config: ConfigRoot = {
                     <br>
                     __⚡Recommended value: \`true\` (Only if experience specific bottlenecks and understand the risks)__
                     <div class="warning custom-block">
-                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, potentially unstable, and may cause compatibility issues with some plugins.
                     </div>`
             },
@@ -129,8 +130,8 @@ const config: ConfigRoot = {
             "disable-hard-throw": {
                 default: false,
                 desc: `Whether to disable hard throws (which usually stop the server) related to parallel ticking errors.<br>
-                    <div class="warning custom-block">
-                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    <div class="tip custom-block">
+                    <p class="custom-block-title custom-block-title-default">Attention</p>
                     This might mask underlying issues, but could prevent crashes in unstable experimental phases. Use with caution.
                     </div>`
             },
@@ -294,7 +295,7 @@ const config: ConfigRoot = {
                 desc: `Whether to use legacy random source (\`java.util.Random\`) for slime chunk generation to follow the vanilla behavior.<br>
                     If your server has existing slime farms or related facilities that need slime chunk, enable this; otherwise, the location of slime chunk will be offset.<br>
                     <br>
-                    __⚡Recommended value:__ (Depends on your server type, see \`Values for goals\` below for more.)
+                    __⚡Recommended value: (Depends on your server type, see \`Values for goals\` below for more)__
                     <table>
                     <tr><td><b>Values for goals</b></td><td></td></tr>
                     <tr><td><i>Optimization</i></td><td><code>false</code></td></tr>
@@ -324,7 +325,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Whether to cache the biome data of the block location, instead of recalculating the biome every time searching.<br>
                     <br>
-                    __⚡Recommended value: \`true\`__ (Also requires enabling options below)`
+                    __⚡Recommended value: \`true\` (Also requires enabling options below)__`
             },
             "mob-spawning": {
                 default: false,
@@ -350,7 +351,13 @@ const config: ConfigRoot = {
             desc: `Whether to use more efficient logic for mob natural despawn.<br>
                 This can prevent the expensive cost of the vanilla despawn logic that iterates over every player, then compares the distance between the mobs and the player.<br>
                 <br>
-                __⚡Recommended value: \`true\`__`
+                It's recommended to add [\`-DLeaf.enableFMA=true\`](http://localhost:5173/docs/config/system-properties#dleaf-enablefma) flag for better performance.<br>
+                <br>
+                __⚡Recommended value: \`true\`__
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing, please report any bugs you encounter.
+                </div>`
         },
         "only-tick-items-in-hand": {
             default: false,
@@ -370,7 +377,11 @@ const config: ConfigRoot = {
                     <tr><td><b>Values for goals</b></td><td></td></tr>
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
-                    </table>`
+                    </table>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    Experimental feature, actively testing, please report any bugs you encounter.
+                    </div>`
             }
         },
         "optimize-player-movement": {
@@ -385,13 +396,21 @@ const config: ConfigRoot = {
                 <br>
                 This rewritten random ticking system uses weighted statistics and sampling to select tickable blocks in active chunks. It can reduce the unnecessary cost caused by frequently selecting non-tickable locations in the vanilla random ticking logic.<br>
                 <br>
-                __⚡Recommended value: \`true\`__`
+                __⚡Recommended value: \`true\`__
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing, please report any bugs you encounter.
+                </div>`
         },
         "optimize-waypoint": {
             default: false,
             desc: `Whether to update the player's waypoint tracking data only when their block positions change.<br>
                 <br>
-                __⚡Recommended value: \`true\`__`
+                __⚡Recommended value: \`true\`__
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing, please report any bugs you encounter.
+                </div>`
         },
         "optimized-powered-rails": {
             default: false,
@@ -578,7 +597,7 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve the performance of plugins that heavily utilize Bukkit's async scheduler.<br>
                 <br>
-                __⚡Recommended value: \`true\`__ (Only if all plugins support Virtual Thread)`
+                __⚡Recommended value: \`true\` (Only if all plugins support Virtual Thread)__`
         },
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
@@ -684,20 +703,20 @@ const config: ConfigRoot = {
         //             See Paper Javadoc's [DataComponentTypeKeys.html](https://jd.papermc.io/paper/1.21.8/io/papermc/paper/registry/keys/DataComponentTypeKeys.html) to get the full list of available component type keys for items.<br>
         //             For example:
         //             <ul>
-        //             <li>If \`[]\` is given, no item will be affected.</li>
-        //             <li>If \`[\"minecraft:custom_data\"]\` is given, item's \`custom_data\` component will be hided on player's client.</li>
+        //             <li>If a value \`[]\` is given, no item will be affected.</li>
+        //             <li>If a value \`[\"minecraft:custom_data\"]\` is given, the item's \`custom_data\` component will be hidden on the player's client.</li>
         //             </ul>`
         //     },
         //     "enabled": {
         //         default: false,
-        //         desc: `Controls whether to hide specified component information from player's inventory sent to clients. Also see \`hidden-types\` above.<br>
+        //         desc: `Controls whether to hide specified component information from the player's inventory sent to clients. Also see \`hidden-types\` above.<br>
         //             <br>
-        //             It can be used to hide complex component data on item to reduce rendering load, frequent animations on client side and network usage. The actual item data will not be affected.<br>
+        //             It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
         //             <br>
-        //             To be noted that, this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from player's own inventory, instead of hiding data sent to others.
+        //             It is noted that this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from the player's own inventory, instead of hiding data sent to others.
         //             <div class="tip custom-block">
         //             <p class="custom-block-title custom-block-title-default">Attention</p>
-        //             It may break resource packs, client mods, or specific gameplay mechanics that rely on these client-side component data of items. Uses with caution. You must know what components you are hiding!
+        //             It may break resource packs, client mods, or specific gameplay mechanics that rely on these client-side component data of items. Use with caution. You must know what components you are hiding!
         //             </div>`
         //     }
         // },
@@ -716,7 +735,13 @@ const config: ConfigRoot = {
             },
             "flush-location-while-knockback-player": {
                 default: false,
-                desc: "Whether to send movement changes to the client immediately, once the target player is hit and gets knockback. It can give a smoother PVP gameplay experience with faster knockback responses. (WIP, TODO, not sure whether we need to explain update packets sending in vanilla more.)"
+                desc: `Whether to send movement changes to the client immediately, once the target player is hit and gets knockback. It can give a smoother PVP gameplay experience with faster knockback responses. Instead, in vanilla, the packet sending happens at the end of the tick and it may hurt the PVP game experience.<br>
+                    <br>
+                    __⚡Recommended value: \`true\` (For PVP server)__
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    Experimental feature, actively testing, please report any bugs you encounter.
+                    </div>`
             },
             "old-blast-protection-explosion-knockback": {
                 default: false,
@@ -829,7 +854,7 @@ const config: ConfigRoot = {
             desc: `Whether to optimize the sending of non-flushed packets by using Netty's [\`lazyExecute\`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations.
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warning</p>
-                This option is known to be INCOMPATIBLE with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>
+                This option is known to be **INCOMPATIBLE** with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>
                 Requires restarting the server to take effect. Use with extreme caution.
                 </div>`
         },
@@ -1094,8 +1119,8 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Whether to remove the vanilla username check, allowing all characters as usernames, including Chinese characters, etc.
                     <div class="warning custom-block">
-                    <p class="custom-block-title custom-block-title-default">Warning</p>
-                    Removing all username checks is UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    Removing all username checks is **UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!**
                     </div>`
             },
             "enforce-skull-validation": {
@@ -1104,7 +1129,11 @@ const config: ConfigRoot = {
             },
             "allow-old-players-join": {
                 default: false,
-                desc: "Whether to allow old players to join the server after the username regex is changed, even if their names don't meet the new requirements."
+                desc: `Whether to allow old players to join the server after the username regex is changed, even if their names don't meet the new requirements.
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    Removing all username checks for old players is **UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!**
+                    </div>`
             }
         }
     }
