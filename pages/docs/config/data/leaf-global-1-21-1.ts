@@ -24,11 +24,11 @@ const config: ConfigRoot = {
                 default: false,
                 desc:
                     "Enable compat mode to be compatible with plugins like Citizens or NPC plugins that use real, and player-type entity.<br>" +
-                    "If `true`,  visibility issue that player-type NPCs may disappear sometimes can be fixed.<br>" +
+                    "If `true`, visibility issue that player-type NPCs may disappear sometimes can be fixed.<br>" +
                     "<br>" +
                     "You should enable `compat-mode` to use async entity tracker feature **ONLY IF** you installed Citizens or any other kind of real entity NPC plugins.<br>" +
                     "<br>" +
-                    "But we still recommend to use packet-based / virtual entity NPC plugin to gain better performance, e.g. [ZNPC Plus](https://github.com/Pyrbu/ZNPCsPlus), [Adyeshach](https://github.com/TabooLib/Adyeshach), [Fancy NPC](https://modrinth.com/plugin/fancynpcs), or else, and then `compat-mode` can be disabled."
+                    "But we still recommend to use packet-based / virtual entity NPC plugin to gain better performance, e.g., [ZNPC Plus](https://github.com/Pyrbu/ZNPCsPlus), [Adyeshach](https://github.com/TabooLib/Adyeshach), [Fancy NPC](https://modrinth.com/plugin/fancynpcs), or else, and then `compat-mode` can be disabled."
             },
             "max-threads": {
                 default: 0,
