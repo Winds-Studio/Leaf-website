@@ -78,7 +78,7 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: `Whether to make entity tracking asynchronous.<br>
-                    This can improve performance significantly, especially in some massive entities in small area situations.<br>
+                    This can improve performance significantly, especially in some large number of entities in small area situations.<br>
                     <br>
                     __⚡Recommended value: \`true\`__
                     <div class="warning custom-block">
@@ -694,7 +694,7 @@ const config: ConfigRoot = {
                 desc: "Same as \`horizontal-force\`, but it is for vertical velocity."
             }
         },
-        // TODO: needs to check grammar when added this.
+        // TODO: Add back when implemented it
         // "hide-item-component": {
         //     "hidden-types": {
         //         default: "[]",
@@ -854,7 +854,7 @@ const config: ConfigRoot = {
             desc: `Whether to optimize the sending of non-flushed packets by using Netty's [\`lazyExecute\`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations.
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warning</p>
-                This option is known to be **INCOMPATIBLE** with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>
+                This option is known to be __INCOMPATIBLE__ with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>
                 Requires restarting the server to take effect. Use with extreme caution.
                 </div>`
         },
@@ -1120,7 +1120,7 @@ const config: ConfigRoot = {
                 desc: `Whether to remove the vanilla username check, allowing all characters as usernames, including Chinese characters, etc.
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
-                    Removing all username checks is **UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!**
+                    Removing all username checks is __UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!__
                     </div>`
             },
             "enforce-skull-validation": {
@@ -1132,7 +1132,7 @@ const config: ConfigRoot = {
                 desc: `Whether to allow old players to join the server after the username regex is changed, even if their names don't meet the new requirements.
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
-                    Removing all username checks for old players is **UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!**
+                    Removing all username checks for old players is __UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!__
                     </div>`
             }
         }
