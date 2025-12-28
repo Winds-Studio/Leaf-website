@@ -132,7 +132,7 @@ const config: ConfigRoot = {
                 desc: `Whether to disable hard throws (which usually stop the server) related to parallel ticking errors.<br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
-                    This might mask underlying issues, but could prevent crashes in unstable experimental phases. Use with caution.
+                    This may mask underlying issues, but it can help prevent crashes during the testing stage of server development. Use with caution.
                     </div>`
             },
             "async-unsafe-read-handling": {
@@ -880,7 +880,7 @@ const config: ConfigRoot = {
             "appleskin-protocol-sync-tick-interval": {
                 default: 20,
                 desc: `How often the server should synchronize AppleSkin data to clients with AppleSkin installed.<br>
-                    This only has effects if \`appleskin-protocol\` above is \`true\`.<br>
+                    This only has any effect if \`appleskin-protocol\` above is \`true\`.<br>
                     (Unit: tick, default value 20 ticks = 1 second)`
             },
             "asteorbar-protocol": {

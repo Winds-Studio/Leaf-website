@@ -46,7 +46,7 @@ const config: ConfigRoot = {
                 desc: `Whether to disable hard throws (which usually stop the server) related to parallel ticking errors.<br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
-                    This might mask underlying issues, but could prevent crashes in unstable experimental phases. Use with caution.
+                    This may mask underlying issues, but it can help prevent crashes during the testing stage of server development. Use with caution.
                     </div>`
             },
             "async-unsafe-read-handling": {
@@ -57,27 +57,26 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`BUFFERED\`__`
             }
         },
-        // TODO: grammar check
         "async-entity-tracker": {
             enabled: {
                 default: false,
                 desc: `Whether to make entity tracking asynchronous.<br>
-                    This can improve performance significantly, especially in some large number of entities in small area situations.<br>
+                    This can improve performance significantly, especially in situations with a large number of entities in a small area.
                     <br>
                     __⚡Recommended value: \`true\`__
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
-                    If you installed plugins like Citizens, which uses real, and player type entity as "NPC", also read \`compat-mode\` below for more infomration.
+                    If you installed plugins like Citizens, which uses the real entity or player-type entity as the "NPC", also read \`compat-mode\` below for more information.
                     </div>`
             },
             "compat-mode": {
                 default: false,
-                desc: `Whether to enable compatibility mode for plugins like Citizens or NPC plugins that use real, and player-type entity.<br>
-                    If set to \`true\`, visibility issue that player-type NPCs may disappear sometimes can be fixed.<br>
+                desc: `Whether to enable compatibility mode for plugins like Citizens or NPC plugins that use the real, player-type entity.<br>
+                    If set to \`true\`, the visibility issue that player-type NPCs may disappear sometimes can be fixed.<br>
                     <br>
-                    You should enable \`compat-mode\` to use async entity tracker feature __ONLY IF__ you installed Citizens or any other kind of real entity NPC plugins.<br>
+                    You should enable \`compat-mode\` to use the async entity tracker feature __ONLY IF__ you installed Citizens or any other kind of real entity NPC plugins.<br>
                     <br>
-                    But we still recommend to use packet-based / virtual entity NPC plugin to gain better performance, e.g., [ZNPC Plus](https://github.com/Pyrbu/ZNPCsPlus), [Adyeshach](https://github.com/TabooLib/Adyeshach), [Fancy NPC](https://modrinth.com/plugin/fancynpcs), or else, and then \`compat-mode\` can be disabled.`
+                    But we still recommend using packet-based / virtual entity NPC plugin to gain better performance, e.g., [ZNPC Plus](https://github.com/Pyrbu/ZNPCsPlus), [Adyeshach](https://github.com/TabooLib/Adyeshach), [Fancy NPC](https://modrinth.com/plugin/fancynpcs), or else, and then \`compat-mode\` can be disabled.`
             },
             "max-threads": {
                 default: 0,
@@ -100,33 +99,41 @@ const config: ConfigRoot = {
                     If a value &leq; \`0\` is given, the queue size is dynamically calculated as \`max-threads * 384\`.`
             }
         },
-        // TODO: Update it for 1.21.4
         "async-target-finding": {
             enabled: {
                 default: false,
-                desc:
-                    "**Experimental feature**\n\n Moves the expensive entity target search calculations 
-                    "(finding nearby entities to attack or interact with) to a background thread while keeping 
-                    "the actual entity validation on the main thread.\n\n
-                    "Can improve performance by reducing main thread load from AI calculations.\n\n
-                    "⚡ **Recommended value:** `true`"
+                desc: `Whether to make entity target finding asynchronous.<br>
+                    <br>
+                    Mob's target search calculations, for example, finding nearby entities to attack or interact with nearby blocks, are expensive, especially if there is a large number of mobs or many mob farms exist.<br>
+                    It can improve performance by moving the AI-related calculations to another thread, while keeping the actual validation on the main thread.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "async-alert-other": {
                 default: true,
-                desc: ""
+                desc: `Whether to make mobs alerting other mobs asynchronous.<br>
+                    This only has any effect if \`enabled\` above is \`true\`.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "async-search-block": {
                 default: true,
-                desc: ""
+                desc: `Whether to make mobs searching block target asynchronous.<br>
+                    This only has any effect if \`enabled\` above is \`true\`.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "async-search-entity": {
                 default: true,
-                desc: ""
+                desc: `Whether to make mobs searching entity target asynchronous.<br>
+                    This only has any effect if \`enabled\` above is \`true\`.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             },
             "queue-size": {
                 default: 0,
-                desc: `Maximum size of the queue for pending entity tracking tasks.<br>
-                    If a value &leq; \`0\` is given, it is automatically uses \`4096\`.`
+                desc: `Maximum size of the queue for pending entity target finding tasks.<br>
+                    If a value &leq; \`0\` is given, it automatically uses \`4096\`.`
             }
         },
         "async-playerdata-save": {
@@ -186,7 +193,6 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`true\`__`
             }
         },
-        // TODO: grammar check
         "async-locator": {
             enabled: {
                 default: false,
@@ -196,7 +202,7 @@ const config: ConfigRoot = {
                     <ul>
                     <li>\`/locate\` command</li>
                     <li>Dolphin treasure finding</li>
-                    <li>Eye of ender stronghold finding</li>
+                    <li>Eye of Ender stronghold finding</li>
                     </ul>
                     <br>
                     __⚡Recommended value: \`true\`__`
@@ -358,7 +364,7 @@ const config: ConfigRoot = {
         "inactive-goal-selector-throttle": {
             default: true,
             desc: `Whether to throttle the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>
-                Instead of ticking goal selector every tick, it ticks less frequently to every second. This can improve performance slightly, but has minor gameplay implications.<br>
+                Instead of ticking the goal selector every tick, it ticks less frequently every second. This can improve performance slightly, but has minor gameplay implications.<br>
                 <br>
                 __⚡Recommended value: \`true\`__
                 <table>
@@ -558,7 +564,6 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`false\`__`
             }
         },
-        // TODO: grammar check
         "cache-eye-fluid-status": {
             default: false,
             desc: `Whether to cache the \`Entity#isEyeInFluid\` method to improve performance and reduce memory usage.<br>
@@ -642,10 +647,13 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`true\`__`
             }
         },
-        // TODO: Update it for 1.21.4
         "count-all-chunks-for-ticking": {
             default: false,
-            desc: ""
+            desc: `Whether to skip the additional check that checks whether ticking chunks are near the player during the mob spawning.<br>
+                <br>
+                The cost of this check can be expensive if there is a high number of players and loading chunks. It's better to skip this check, since ticking chunks are often near or around players most of the time. It's also expected that the mob spawning increases slightly in some edge conditions.
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "check-survival-before-growth": {
             "cactus-check-survival": {
@@ -895,7 +903,7 @@ const config: ConfigRoot = {
             "appleskin-protocol-sync-tick-interval": {
                 default: 20,
                 desc: `How often the server should synchronize AppleSkin data to clients with AppleSkin installed.<br>
-                    This only has effects if \`appleskin-protocol\` above is \`true\`.<br>
+                    This only has any effect if \`appleskin-protocol\` above is \`true\`.<br>
                     (Unit: tick, default value 20 ticks = 1 second)`
             },
             "asteorbar-protocol": {
@@ -1046,11 +1054,10 @@ const config: ConfigRoot = {
                     </div>`
             }
         },
-        // TODO: Update it for 1.21.4
         "remove-vanilla-username-check": {
             default: true,
-            desc: `Whether to remove vanilla's username check to allow __all characters__ as username, including Chinese, etc. (It's only useful for offline servers).<br>
-                If set to \`true\`, players are allowed to use non-English name to join the server.`
+            desc: `Whether to remove vanilla's username check to allow __all characters__ as usernames, including Chinese, etc. (It's only useful for offline servers).<br>
+                If set to \`true\`, players are allowed to use a non-English name to join the server.`
         },
         "remove-spigot-check-bungee-config": {
             default: false,
@@ -1069,38 +1076,46 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
-        // TODO: Update it for 1.21.4
         "region-format-settings": {
+            __desc__: `Linear is a region file format that uses [zstd compression](https://facebook.github.io/zstd/) instead of zlib in vanilla Minecraft. This format saves about ~50% of disk space.<br>
+                To use Linear region format, make sure you __read [Linear Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools)__, and have done all steps required, then change \`region-format\` below to \`LINEAR\`.
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Warning</p>
+                Experimental feature, there is a potential risk of losing chunk data. Backup your server before switching to Linear.<br>
+                Also, we do not recommend using Linear, since vanilla's ANVIL format (\`.mca\`) is enough. Leaf uses the refactored version of the Linear flush system, which is safer but slower to save chunks to make data loss less likely. However, this trade-off is worthwhile, since data is invaluable.
+                </div>`,
             "region-format": {
                 default: "MCA",
-                desc:
-                    "Specifies the format used for saving chunk data in region files.\n\n
-                    "- `MCA`: Standard Minecraft Anvil format using Zlib compression. Compatible everywhere. Safer.\n
-                    "- `LINEAR`: Experimental format using Zstandard (ZSTD) compression. Offers significant disk 
-                    "space savings but is less compatible and potentially riskier.\n\n
-                    "See [LinearRegionFileFormatTools Documentation](https://github.com/xymb-endcrystalme/LinearRegionFileFormatTools) 
-                    "before using LINEAR.\n\n
-                    "⚠️ **LINEAR is experimental. Always back up your world before switching formats. 
-                    "Potential risk of data loss or corruption. Requires server restart.**"
+                desc: `Specifies the format used for saving chunk data in region files.<br>
+                    Available region formats:<br>
+                    <ul>
+                    <li>\`MCA\`: Standard Minecraft ANVIL format using zlib compression.</li>
+                    <li>\`LINEAR\`: The Linear v1 format. The refactored version by [EarthMe](https://github.com/MrHua269) fixed the Linear flush system.</li>
+                    </ul>`
             },
             "linear-compress-level": {
                 default: 1,
-                desc:
-                    "The Zstandard compression level to use when `region-format` is set to `LINEAR`.\n\n
-                    "Higher levels (up to 22) provide better compression ratios but require significantly more 
-                    "CPU time for compression. Lower levels are faster. Level 1 is a fast, light compression setting."
+                desc: `The compression level of the Linear region format file.<br>
+                    This only has any effect if \`region-format\` above is \`LINEAR\`.<br>
+                    <br>
+                    <ul>
+                    <li>If set to a higher level (up to \`22\`), it provides better compression ratios but requires significantly more CPU time for compression.</li>
+                    <li>If set to a lower level, it compresses faster, but requires more space. The level 1 uses the fastest and lightest compression.</li>
+                    </ul>`
             },
             "throw-on-unknown-extension-detected": {
                 default: false,
-                desc:
-                        "If true, the server will detect and throw an error (potentially stopping) if it 
-                        "encounters region files with an unexpected file extension in the world's region directory 
-                        "(e.g., finding `.linear` files when expecting `.mca`, or vice-versa).\n\n
-                        "Helps prevent data corruption from accidentally mixing region file formats in the same world."
+                desc: `Whether to throw an error and crash the server when an unknown or unmatched region format extension is detected during loading region files from the disk.<br>
+                    It can prevent data corruption from accidentally configured wrong region file formats in the same world.<br>
+                    <br>
+                    For example:<br>
+                    If set to \`true\`, the server will crash immediately when loaded \`.linear\` files when \`region-format\` above is \`MCA\`, or vice-versa.`
             },
             "flush-interval-seconds": {
                 default: 5,
-                desc: "How often (in seconds) the server attempts to flush cached region file data (relevant for LINEAR format) to disk.\n\nMore frequent flushing reduces potential data loss on crash but increases disk I/O.\n\n📏 **Unit:** seconds.\n\n"
+                desc: `How often the server attempts to flush cached Linear region file data to the disk.<br>
+                More frequent flushing reduces potential data loss on a crash but increases disk I/O.<br>
+                (Unit: second)`
             }
         },
         "lag-compensation": {
@@ -1173,36 +1188,35 @@ const config: ConfigRoot = {
                 }
             }
         },
-        // TODO: Update it for 1.21.4
         cache: {
             "profile-lookup": {
                 enabled: {
                     default: false,
-                    desc:
-                        "Cache the player's profile information (UUID, username, skin/cape textures) 
-                        "retrieved from Mojang's session servers upon their first successful join.\n\n
-                        "This allows players to rejoin the server using cached data even if Mojang's 
-                        "authentication servers are temporarily unavailable (useful during outages)."
+                    desc: `Whether to cache the player's profile data (e.g., UUID, username, skin/cape textures) when they joined the server.<br>
+                        This can reduce network requests to Mojang's authentication server, and is also useful if the authentication server is temporarily unavailable, and still allows players to rejoin the server using cached profile data.`
                 },
                 timeout: {
                     default: 1440,
-                    desc: "How long (in minutes) the cached player profile information remains valid.\n\n
-                    "After this timeout, the server will attempt to re-fetch the profile from Mojang upon 
-                    "the player's next join to ensure the data (especially textures) is up-to-date.\n\n
-                    "Default is 1440 minutes (24 hours).\n\n
-                    "📏 **Unit:** minutes."
+                    desc: `The timeout of the player profile cache.<br>
+                    (Unit: minute, default value 1440 minutes = 24 hours)<br>
+                    If the given timeout is exceeded, the server will send another request to fetch player profile data from Mojang's authentication server on the player's next join.`
                 },
                 "max-size": {
                     default: 8192,
-                    desc: ""
+                    desc: `The maximum number of profiles to cache.<br>
+                        Higher values may take slightly more memory.`
                 }
             }
         },
-        // TODO: Update it for 1.21.4
         "async-catcher": {
                 enabled: {
                     default: true,
-                    desc: ""
+                    desc: `Whether to enable Spigot's main thread check.
+                        <div class="warning custom-block">
+                        <p class="custom-block-title custom-block-title-default">Warning</p>
+                        Disabling this is NOT recommended and can lead to severe server instability.<br>
+                        This option is not recommended to touch, unless you are sure what you are doing.
+                        </div>`
                 }
             },
     }
