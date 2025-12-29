@@ -140,11 +140,11 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: "Whether to make player data saving asynchronous. (I/O operations are expensive)"
-                    // TODO
-                    // <div class="warning custom-block">
-                    // <p class="custom-block-title custom-block-title-default">Experimental</p>
-                    // Experimental feature, may cause data loss or data inconsistency in some circumstances!
-                    // </div>`
+                // TODO
+                // <div class="warning custom-block">
+                // <p class="custom-block-title custom-block-title-default">Experimental</p>
+                // Experimental feature, may cause data loss or data inconsistency in some circumstances!
+                // </div>`
             }
         },
         "async-pathfinding": {
@@ -360,7 +360,6 @@ const config: ConfigRoot = {
                 }
             }
         },
-        // TODO: grammar check
         "inactive-goal-selector-throttle": {
             default: true,
             desc: `Whether to throttle the [goal selector](https://maven.fabricmc.net/docs/yarn-1.21.4+build.8/net/minecraft/entity/ai/goal/GoalSelector.html) calculations for entities that are inactive (typically far from players).<br>
@@ -420,7 +419,7 @@ const config: ConfigRoot = {
         "skip-ai-for-non-aware-mob": {
             default: true,
             desc: `Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>
-                Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
+                Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
                 <br>
                 __⚡Recommended value: \`true\`__
                 <table>
@@ -626,7 +625,7 @@ const config: ConfigRoot = {
                     Some survival servers have mob farms, which need mobs to have a target. This kind of "pathfinding" mob farm may be broken by DAB. This situation can be solved by adding specific mobs of the mob farm to this DAB blacklist.<br>
                     If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them to this blacklist to see if it fixes the issue.<br>
                     <br>
-                    Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/EntityType.html)).<br>
+                    Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.4/org/bukkit/entity/EntityType.html)).<br>
                     <br>
                     [💡 Want to Go Deeper?](guides/dab-blacklist-format)`
             }
@@ -759,6 +758,7 @@ const config: ConfigRoot = {
                 </div>`
         },
         knockback: {
+            __desc__: "This section contains options to adjust knockback related behaviors.",
             "snowball-knockback-players": {
                 default: false,
                 desc: "Whether the snowball can knockback players."
@@ -795,16 +795,16 @@ const config: ConfigRoot = {
                 default: "[]",
                 desc: `The list of component type keys that will be hidden from the client.<br>
                     <br>
-                    See Paper Javadoc's [DataComponentTypeKeys.html](https://jd.papermc.io/paper/1.21.8/io/papermc/paper/registry/keys/DataComponentTypeKeys.html) to get the full list of available component type keys for items.<br>
+                    See [List of components](https://minecraft.wiki/w/Data_component_format#List_of_components) to get the full list of available component type keys for items.<br>
                     For example:
                     <ul>
                     <li>If a value \`[]\` is given, no item will be affected.</li>
                     <li>If a value \`[\"minecraft:custom_data\"]\` is given, the item's \`custom_data\` component will be hidden on the player's client.</li>
                     </ul>`
             },
-            "enabled": {
+            enabled: {
                 default: false,
-                desc: `Controls whether to hide specified component information from the player's inventory sent to clients. Also see \`hidden-types\` above.<br>
+                desc: `Whether to hide specified component information from the player's inventory sent to clients. Also see \`hidden-types\` above.<br>
                     <br>
                     It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
                     <br>
@@ -876,7 +876,7 @@ const config: ConfigRoot = {
                     <br>
                     Also set \`kick-if-idle\` to \`false\` in Purpur config, to prevent players from being kicked when they enter AFK mode. The rest of the AFK settings, configurable AFK messages, and title messages are in Purpur config.`
             }
-        },
+        }
     },
 
     network: {
@@ -1209,16 +1209,16 @@ const config: ConfigRoot = {
             }
         },
         "async-catcher": {
-                enabled: {
-                    default: true,
-                    desc: `Whether to enable Spigot's main thread check.
-                        <div class="warning custom-block">
-                        <p class="custom-block-title custom-block-title-default">Warning</p>
-                        Disabling this is NOT recommended and can lead to severe server instability.<br>
-                        This option is not recommended to touch, unless you are sure what you are doing.
-                        </div>`
-                }
-            },
+            enabled: {
+                default: true,
+                desc: `Whether to enable Spigot's main thread check.
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    Disabling this is NOT recommended and can lead to severe server instability.<br>
+                    This option is not recommended to touch, unless you are sure what you are doing.
+                    </div>`
+            }
+        }
     }
 };
 

@@ -67,11 +67,11 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: "Whether to make player data saving asynchronous. (I/O operations are expensive)"
-                    // TODO
-                    // <div class="warning custom-block">
-                    // <p class="custom-block-title custom-block-title-default">Experimental</p>
-                    // Experimental feature, may cause data loss or data inconsistency in some circumstances!
-                    // </div>`
+                // TODO
+                // <div class="warning custom-block">
+                // <p class="custom-block-title custom-block-title-default">Experimental</p>
+                // Experimental feature, may cause data loss or data inconsistency in some circumstances!
+                // </div>`
             }
         },
         "async-entity-tracker": {
@@ -700,7 +700,7 @@ const config: ConfigRoot = {
         //         default: "[]",
         //         desc: `The list of component type keys that will be hidden from the client.<br>
         //             <br>
-        //             See Paper Javadoc's [DataComponentTypeKeys.html](https://jd.papermc.io/paper/1.21.8/io/papermc/paper/registry/keys/DataComponentTypeKeys.html) to get the full list of available component type keys for items.<br>
+        //             See [List of components](https://minecraft.wiki/w/Data_component_format#List_of_components) to get the full list of available component type keys for items.<br>
         //             For example:
         //             <ul>
         //             <li>If a value \`[]\` is given, no item will be affected.</li>
@@ -709,7 +709,7 @@ const config: ConfigRoot = {
         //     },
         //     "enabled": {
         //         default: false,
-        //         desc: `Controls whether to hide specified component information from the player's inventory sent to clients. Also see \`hidden-types\` above.<br>
+        //         desc: `Whether to hide specified component information from the player's inventory sent to clients. Also see \`hidden-types\` above.<br>
         //             <br>
         //             It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
         //             <br>
@@ -721,6 +721,7 @@ const config: ConfigRoot = {
         //     }
         // },
         knockback: {
+            __desc__: "This section contains options to adjust knockback related behaviors.",
             "snowball-knockback-players": {
                 default: false,
                 desc: "Whether the snowball can knockback players."
