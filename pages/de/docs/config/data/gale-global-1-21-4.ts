@@ -81,9 +81,9 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>"none"</code> 🛈</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
+                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
                 </table>
-                <p>🛈 = Der Standardwert ist \`"info"\` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist \`"none"\` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>`
+                <p>ⓘ = Der Standardwert ist \`"info"\` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist \`"none"\` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>`
         },
         "invalid-statistics": {
             default: true,
@@ -183,14 +183,14 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                 <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>true</code> 🛈</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                <tr><td><code>true</code> ⓘ</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                 </table>
                 <table>
                 <tr><td><b>Werte für Ziele</b></td><td></td></tr>
                 <tr><td><i>Optimierung</i></td><td>-</td></tr>
                 <tr><td><i>Vanilla Verhalten</i></td><td><code>false</code></td></tr>
                 </table>
-                <p>🛈 = Der Standardwert ist \`false\` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist \`true\` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>`
+                <p>ⓘ = Der Standardwert ist \`false\` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist \`true\` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>`
         },
         keepalive: {
             "send-multiple": {

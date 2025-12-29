@@ -80,9 +80,9 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>"none"</code> 🛈</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
+                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
                 </table>
-                <p>🛈 = The default value is \`"info"\` to prevent any errors going unnoticed by default, but the recommended value is \`"none"\` because these errors are usually meaningless and unsolvable anyway.</p>`
+                <p>ⓘ = The default value is \`"info"\` to prevent any errors going unnoticed by default, but the recommended value is \`"none"\` because these errors are usually meaningless and unsolvable anyway.</p>`
         },
         "invalid-statistics": {
             default: true,
@@ -182,14 +182,14 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>true</code> 🛈</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                <tr><td><code>true</code> ⓘ</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                 </table>
                 <table>
                 <tr><td><b>Values for goals</b></td><td></td></tr>
                 <tr><td><i>Optimization</i></td><td>-</td></tr>
                 <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
                 </table>
-                <p>🛈 = The default value is \`false\` to prevent any errors going unnoticed by default, but the recommended value is \`true\` because these errors are usually meaningless and unsolvable anyway.</p>`
+                <p>ⓘ = The default value is \`false\` to prevent any errors going unnoticed by default, but the recommended value is \`true\` because these errors are usually meaningless and unsolvable anyway.</p>`
         },
         keepalive: {
             "send-multiple": {

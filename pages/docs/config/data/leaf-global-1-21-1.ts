@@ -409,7 +409,7 @@ const config: ConfigRoot = {
                 <tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>
                 <tr><td>WITHER_SKULL</td><td>200</td></tr>
                 </tbody></table>
-                🛈 = In here, the time that the entity survived means the total living time of the entity, and will not be reset by chunk unloading or loading.`,
+                ⓘ = In here, the time that the entity survived means the total living time of the entity, and will not be reset by chunk unloading or loading.`,
             ALLAY: {
                 default: -1
             },

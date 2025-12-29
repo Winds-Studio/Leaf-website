@@ -80,9 +80,9 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                 <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
-                <tr><td><code>"none"</code> 🛈</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
+                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
                 </table>
-                <p>🛈 = 默认值为 \`"info"\`, 以防止任何潜在错误被默认忽略, 但推荐值为 \`"none"\`, 因为这些错误通常没有实际意义且无法解决.</p>`
+                <p>ⓘ = 默认值为 \`"info"\`, 以防止任何潜在错误被默认忽略, 但推荐值为 \`"none"\`, 因为这些错误通常没有实际意义且无法解决.</p>`
         },
         "invalid-statistics": {
             default: true,
@@ -182,14 +182,14 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                 <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
-                <tr><td><code>true</code> 🛈</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                <tr><td><code>true</code> ⓘ</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                 </table>
                 <table>
                 <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
                 <tr><td><i>优化</i></td><td>-</td></tr>
                 <tr><td><i>原版行为</i></td><td><code>false</code></td></tr>
                 </table>
-                <p>🛈 = 默认值为 \`false\`, 以防止任何潜在错误被默认忽略, 但推荐值为 \`true\`, 因为这些错误通常没有意义且无法解决</p>`
+                <p>ⓘ = 默认值为 \`false\`, 以防止任何潜在错误被默认忽略, 但推荐值为 \`true\`, 因为这些错误通常没有意义且无法解决</p>`
         },
         keepalive: {
             "send-multiple": {
