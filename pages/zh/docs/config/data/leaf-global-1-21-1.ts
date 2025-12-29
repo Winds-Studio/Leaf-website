@@ -321,7 +321,7 @@ const config: ConfigRoot = {
             __desc__:
                 "实体的最长存活时间 (又称 Entity TTL).<br>" +
                 "(以 tick 为单位)<br>" +
-                "如果下列列表中某实体的存活时间超过此值, 将清除该实体. 🛈<br>" +
+                "如果下列列表中某实体的存活时间超过此值, 将清除该实体. ⓘ<br>" +
                 "如果设为 `-1`, 则禁用此功能.<br>" +
                 "<br>" +
                 "__⚡推荐值:__" +
@@ -338,7 +338,7 @@ const config: ConfigRoot = {
                 "<tr><td>BREEZE_WIND_CHARGE</td><td>200</td></tr>" +
                 "<tr><td>WITHER_SKULL</td><td>200</td></tr>" +
                 "</tbody></table>" +
-                "🛈 = 在此处, 实体存活的时间指的是实体存在的总时间, 该时间不会因区块的卸载或加载而重置.",
+                "ⓘ = 在此处, 实体存活的时间指的是实体存在的总时间, 该时间不会因区块的卸载或加载而重置.",
             ALLAY: {
                 default: -1
             },
