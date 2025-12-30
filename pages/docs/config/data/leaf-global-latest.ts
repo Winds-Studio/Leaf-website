@@ -1135,6 +1135,16 @@ const config: ConfigRoot = {
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Removing all username checks for old players is __UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!__
                     </div>`
+            },
+            "use-username-regex": {
+                default: false,
+                desc: `Whether to use the username regex to validate usernames, allowing only characters specified in the regex.<br>
+                    This option is incompatible with the \`remove-all-check\` above. You can only use one of these two options.`
+            },
+            "username-regex": {
+                default: "^[a-zA-Z0-9_.]*$",
+                desc: `The username regex specifies the characters allowed in usernames.<br>
+                    This only has any effect if \`use-username-regex\` above is \`true\`.`
             }
         }
     }
