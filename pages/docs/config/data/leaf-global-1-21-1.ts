@@ -162,7 +162,7 @@ const config: ConfigRoot = {
                 desc: `Whether to throttle hopper item transfer attempts if the target container is full.<br>
                     Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>
                     <br>
-                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    __⚡Recommended value: \`true\`__
                     <table>
                     <tr><td><b>Values for goals</b></td><td></td></tr>
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
@@ -266,7 +266,7 @@ const config: ConfigRoot = {
                 desc: `Whether to use the faster random generator introduced in JDK 17.<br>
                     Random is used almost everywhere in Minecraft, enabling this can get a decent performance improvement.<br>
                     <br>
-                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    __⚡Recommended value: \`true\`__
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
                     This requires a JVM that supports \`RandomGenerator\`. Some JREs don't support it.
@@ -324,7 +324,7 @@ const config: ConfigRoot = {
                 default: true,
                 desc: `Whether to enable the DAB.<br>
                     <br>
-                    __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
+                    __⚡Recommended value: \`true\`__
                     <table>
                     <tr><td><b>Values for goals</b></td><td></td></tr>
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
@@ -795,8 +795,7 @@ const config: ConfigRoot = {
                 </div>`
         },
         "max-item-stack-count": {
-            __desc__:
-                `Configurable max stack size of dropped item.
+            __desc__: `Configurable max stack size of dropped item.
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warning</p>
                 We __do not__ recommend using this feature. It is a work in progress and has known issues.<br>
@@ -1063,7 +1062,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `The lag compensation is designed to mitigate the gameplay impact of server lag spikes or low TPS situations, which could ensure the basic game experience for players during the lag.<br>
                     <br>
-                    __⚡Recommended value: \`true\` (Also set \`enabled\` below to true)__`
+                    __⚡Recommended value: \`true\`__`
             },
             "enable-for-water": {
                 default: false,
