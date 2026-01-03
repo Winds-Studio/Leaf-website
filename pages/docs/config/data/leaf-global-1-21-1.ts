@@ -224,7 +224,9 @@ const config: ConfigRoot = {
         },
         "optimized-powered-rails": {
             default: true,
-            ddesc: `Whether to use optimized powered rails. Uses a fully rewritten version of powered rail iteration logic, which also keeps vanilla behavior, and can achieve 4x faster performance.<br>
+            desc: `Whether to use optimized powered rails.<br>
+                Uses a fully rewritten version of powered rail iteration logic, which also keeps vanilla behavior, and can achieve 4x faster performance.<br>
+                The implementation is originally based on the fabric mod [FX's Rail Optimization](https://modrinth.com/mod/rail-optimization) made by [Fx Morin](https://github.com/FxMorin).<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
@@ -1150,7 +1152,7 @@ const config: ConfigRoot = {
         cache: {
             "cache-player-profile-result": {
                 default: true,
-                ddesc: `Whether to cache the player's profile data (e.g., UUID, username, skin/cape textures) when they joined the server.<br>
+                desc: `Whether to cache the player's profile data (e.g., UUID, username, skin/cape textures) when they joined the server.<br>
                         This can reduce network requests to Mojang's authentication server, and is also useful if the authentication server is temporarily unavailable, and still allows players to rejoin the server using cached profile data.`
             },
             "cache-player-profile-result-timeout": {

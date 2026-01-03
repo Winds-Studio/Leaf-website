@@ -414,7 +414,9 @@ const config: ConfigRoot = {
         },
         "optimized-powered-rails": {
             default: false,
-            desc: `Whether to use optimized powered rails. Uses a fully rewritten version of powered rail iteration logic, which also keeps vanilla behavior, and can achieve 4x faster performance.<br>
+            desc: `Whether to use optimized powered rails.<br>
+                Uses a fully rewritten version of powered rail iteration logic, which also keeps vanilla behavior, and can achieve 4x faster performance.<br>
+                The implementation is originally based on the fabric mod [FX's Rail Optimization](https://modrinth.com/mod/rail-optimization) made by [Fx Morin](https://github.com/FxMorin).<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
