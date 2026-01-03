@@ -318,13 +318,11 @@ const config: ConfigRoot = {
                 __⚡Recommended value: \`true\`__`
         },
         dab: {
+            __desc__:
+                "Dynamic Activation of Brain, also known as DAB, optimizes the brain of entities by decreasing the frequency of their brain ticking when they are far away from players. It is a worthwhile trade-off to improve performance if there are many entities.",
             enabled: {
                 default: true,
-                __desc__:
-                    "Dynamic Activation of Brain, also known as DAB, optimizes the brain of entities by decreasing the frequency of their brain ticking when they are far away from players. It is a worthwhile trade-off to improve performance if there are many entities.",
-                enabled: {
-                    default: true,
-                    desc: `Whether to enable the DAB.<br>
+                desc: `Whether to enable the DAB.<br>
                     <br>
                     __⚡Recommended value: \`true\` (set \`enabled\` below to true)__
                     <table>
@@ -332,39 +330,39 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>false</code> (or see <code>dab.blacklisted-entities</code> below for more)</td></tr>
                     </table>`
-                },
-                "dont-enable-if-in-water": {
-                    default: false,
-                    desc: `Whether the non-aquatic entities in the water will be excluded by DAB. This can fix [Pufferfish#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>
+            },
+            "dont-enable-if-in-water": {
+                default: false,
+                desc: `Whether the non-aquatic entities in the water will be excluded by DAB. This can fix [Pufferfish#58](https://github.com/pufferfish-gg/Pufferfish/issues/58).<br>
                     If set to \`true\`, this could fix entities suffocating in the water if they are far from the player.<br>
                     <br>
                     __⚡Recommended value: \`true\`__`
-                },
-                "start-distance": {
-                    default: 12,
-                    desc: `The distance determines how far away an entity has to be from the player to start being affected by DAB.<br>
+            },
+            "start-distance": {
+                default: 12,
+                desc: `The distance determines how far away an entity has to be from the player to start being affected by DAB.<br>
                     (Unit: block)<br>
                     <br>
                     __⚡Recommended value: \`8\`__`
-                },
-                "max-tick-freq": {
-                    default: 20,
-                    desc: `The maximum tick time defines how often the furthest entity will get their pathfinders and behaviors ticked.<br>
+            },
+            "max-tick-freq": {
+                default: 20,
+                desc: `The maximum tick time defines how often the furthest entity will get their pathfinders and behaviors ticked.<br>
                     (Unit: tick, default value 20 ticks = 1s)`
-                },
-                "activation-dist-mod": {
-                    default: 8,
-                    desc: `The tick frequency that defines how much distance modifies an entity's tick frequency. \`freq = (distanceToPlayer^2) / (2^value)\`.
+            },
+            "activation-dist-mod": {
+                default: 8,
+                desc: `The tick frequency that defines how much distance modifies an entity's tick frequency. \`freq = (distanceToPlayer^2) / (2^value)\`.
                     <ul>
                     <li>If you want entities further away to tick __less__ often, use \`7\`.</li>
                     <li>If you want entities further away to tick __more__ often, try \`9\`.</li>
                     </ul>
                     <br>
                     __⚡Recommended value: \`7\`__`
-                },
-                "blacklisted-entities": {
-                    default: "[]",
-                    desc: `A list of entities that will not be affected by DAB.<br>
+            },
+            "blacklisted-entities": {
+                default: "[]",
+                desc: `A list of entities that will not be affected by DAB.<br>
                     <br>
                     Some survival servers have mob farms, which need mobs to have a target. This kind of "pathfinding" mob farm may be broken by DAB. This situation can be solved by adding specific mobs of the mob farm to this DAB blacklist.<br>
                     If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them to this blacklist to see if it fixes the issue.<br>
@@ -372,7 +370,6 @@ const config: ConfigRoot = {
                     Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.1/org/bukkit/entity/EntityType.html)).<br>
                     <br>
                     [💡 Want to Go Deeper?](guides/dab-blacklist-format)`
-                }
             }
         },
         "dont-save-entity": {
