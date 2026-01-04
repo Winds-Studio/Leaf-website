@@ -22,7 +22,7 @@ const config: ConfigRoot = {
                 default: true,
                 desc: `Whether to make mob spawning asynchronous.<br>
                     <br>
-                    On servers with many entities, this can improve performance by up to ~15%. You must have Paper's \`per-player-mob-spawns\` config set to \`true\` for this to work.<br>
+                    On servers with heavy mob spawning, this can improve performance by up to ~15%. You must have Paper's \`per-player-mob-spawns\` config set to \`true\` for this to work.<br>
                     One quick note: this does not actually spawn mobs async (that would be very unsafe). This just offloads some expensive calculations that are required for mob spawning.<br>
                     <br>
                     __⚡Recommended value: \`true\`__`
@@ -37,7 +37,7 @@ const config: ConfigRoot = {
             },
             "max-threads": {
                 default: 0,
-                desc: `Maximum number of threads for async entity pathfinding to use.<br>
+                desc: `Maximum number of threads for async mob pathfinding to use.<br>
                     If a value &leq; \`0\` is given, it automatically uses 1/4 of the number of CPU cores, with a minimum of 1.<br>
                     <br>
                     __⚡Recommended value: 1/3 of CPU cores__`
@@ -49,7 +49,7 @@ const config: ConfigRoot = {
             },
             "queue-size": {
                 default: 0,
-                desc: `Maximum size of the queue for pending entity tracking tasks.<br>
+                desc: `Maximum size of the queue for pending mob pathfinding tasks.<br>
                     If a value &leq; \`0\` is given, the queue size is dynamically calculated as \`max-threads * 256\`.`
             },
             "reject-policy": {
@@ -226,7 +226,7 @@ const config: ConfigRoot = {
                 - hoglin
                 - zombified_piglin
                 - goat`,
-                desc: `A list of entities that will not be affected by DAB.<br>
+                desc: `A list of entity types that will not be affected by DAB.<br>
                     <br>
                     Some survival servers have mob farms, which need mobs to have a target. This kind of "pathfinding" mob farm may be broken by DAB. This situation can be solved by adding specific mobs of the mob farm to this DAB blacklist.<br>
                     If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them to this blacklist to see if it fixes the issue.<br>
@@ -258,7 +258,7 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: `Whether to use the faster random generator introduced in JDK 17.<br>
+                desc: `Whether to use the faster random generator introduced in Java 17.<br>
                     Random is used almost everywhere in Minecraft, enabling this can get a decent performance improvement.<br>
                     <br>
                     __⚡Recommended value: \`true\`__<br>
@@ -368,7 +368,7 @@ const config: ConfigRoot = {
         "only-tick-items-in-hand": {
             default: false,
             desc: `Whether to tick or update items only if the player holds them in the main hand or offhand, instead of ticking the entire inventory.<br>
-                This currently only affects the compass and map item.<br>
+                This currently only affects the ticking of compass and map item.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
@@ -441,7 +441,7 @@ const config: ConfigRoot = {
         },
         "skip-ai-for-non-aware-mob": {
             default: true,
-            desc: `Whether to skip AI ticks entirely for mobs that are both *inactive* and *unaware*.<br>
+            desc: `Whether to skip AI ticks entirely for mobs that are both _inactive_ and _unaware_.<br>
                 Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
                 <br>
                 __⚡Recommended value: \`true\`__
@@ -607,25 +607,25 @@ const config: ConfigRoot = {
         },
         "use-virtual-thread-for-async-scheduler": {
             default: false,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the CraftAsyncScheduler, which could improve the performance of plugins that heavily utilize Bukkit's async scheduler.<br>
+            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __CraftAsyncScheduler__, which could improve the performance of plugins that heavily utilize Bukkit's async scheduler.<br>
                 <br>
                 __⚡Recommended value: \`true\` (Only if all plugins support Virtual Thread)__`
         },
         "use-virtual-thread-for-async-chat-executor": {
             default: true,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Async Chat Executor.<br>
+            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __Async Chat Executor__.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
         "use-virtual-thread-for-profile-executor": {
             default: false,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the Profile Executor, which handles player profile and skull skin fetching.<br>
+            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __Profile Executor__, which handles player profile and skull skin fetching.<br>
                 <br>
                 __⚡Recommended value: \`false\`__`
         },
         "use-virtual-thread-for-user-authenticator": {
             default: true,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in JDK 21 for the User Authenticator service, which handles premium player join verification.<br>
+            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __User Authenticator service__, which handles premium player join verification.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
         }
