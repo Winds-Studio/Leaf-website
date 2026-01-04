@@ -66,7 +66,7 @@ const config: ConfigRoot = {
         "async-playerdata-save": {
             enabled: {
                 default: false,
-                desc: "Whether to make player data saving asynchronous. (I/O operations are expensive)"
+                desc: "Whether to make player data saving asynchronous (I/O operations are expensive)."
                 // TODO
                 // <div class="warning custom-block">
                 // <p class="custom-block-title custom-block-title-default">Experimental</p>
@@ -126,7 +126,7 @@ const config: ConfigRoot = {
             },
             "log-container-creation-stacktraces": {
                 default: false,
-                desc: `Whether to log stacktraces when containers (like Tile Entities or Entities) are created during parallel ticking.<br>
+                desc: `Whether to log stacktraces when containers (like Block Entities or Entities) are created during parallel ticking.<br>
                     This is useful for debugging potential concurrency issues.`
             },
             "disable-hard-throw": {
@@ -213,7 +213,7 @@ const config: ConfigRoot = {
                 default: 8,
                 desc: `The tick frequency that defines how much distance modifies an entity's tick frequency. \`freq = (distanceToPlayer^2) / (2^value)\`.
                     <ul>
-                    <li>If you want entities further away to tick __less__ often, use \`7\`.</li>
+                    <li>If you want entities further away to tick __less__ often, try \`7\`.</li>
                     <li>If you want entities further away to tick __more__ often, try \`9\`.</li>
                     </ul>
                     <br>
@@ -593,7 +593,7 @@ const config: ConfigRoot = {
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
-            desc: `Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>
+            desc: `Whether to create a snapshot (copy) of \`BlockEntity\` / \`BlockState\` data by default when plugins retrieve them.<br>
                 <br>
                 Some plugins may call \`getInventory().getHolder()\` to get the holder of an inventory, which involves accessing the BlockState.<br>
                 For example, if there are tons of hoppers and plugins, call this method when listening to some events (e.g., hopper related events, call frequently). Re-creating BlockState and parsing item stacks in massive and frequent calls are very expensive.<br>
@@ -751,7 +751,8 @@ const config: ConfigRoot = {
             },
             "flush-location-while-knockback-player": {
                 default: false,
-                desc: `Whether to send movement changes to the client immediately, once the target player is hit and gets knockback. It can give a smoother PVP gameplay experience with faster knockback responses. Instead, in vanilla, the packet sending happens at the end of the tick and it may hurt the PVP game experience.<br>
+                desc: `Whether to send movement changes to the client immediately.<br>
+                    Once the target player is hit and gets knockback, it can give a smoother PVP gameplay experience with faster knockback responses. Instead, in vanilla, the packet sending happens at the end of the tick and it may hurt the PVP game experience.<br>
                     <br>
                     __⚡Recommended value: \`true\` (For PVP server)__<br>
                     <br>
@@ -857,7 +858,10 @@ const config: ConfigRoot = {
         __desc__: "This section contains features related to server networking.",
         "async-switch-state": {
             default: false,
-            desc: "Whether to process the connection state switch logic of the player asynchronously. This can resolve the main thread blocking issue caused by using exploits due to vanilla logic's design flaw."
+            desc: `Whether to process the connection state switch logic of the player asynchronously.<br>
+                This can resolve the main thread blocking issue caused by using exploits due to vanilla logic's design flaw.<br>
+                <br>
+                __⚡Recommended value: \`true\`__ `
         },
         "chat-message-signature": {
             default: true,
@@ -995,8 +999,8 @@ const config: ConfigRoot = {
                 <br>
                 Available placeholders:
                 <ul>
-                <li>__\`<player_name%>\`__ - player name.</li>
-                <li>__\`<player_displayname>\`__ - player display name.</li>
+                <li>__\`<player_name%>\`__ - player name</li>
+                <li>__\`<player_displayname>\`__ - player display name</li>
                 </ul>
                 <br>
                 <div class="tip custom-block">

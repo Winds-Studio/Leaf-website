@@ -50,7 +50,7 @@ const config: ConfigRoot = {
         "async-playerdata-save": {
             enabled: {
                 default: false,
-                desc: `Whether to make player data saving asynchronous. (I/O operations are expensive)<br>
+                desc: `Whether to make player data saving asynchronous (I/O operations are expensive).<br>
                     <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
@@ -135,7 +135,7 @@ const config: ConfigRoot = {
         },
         "create-snapshot-on-retrieving-blockstate": {
             default: true,
-            desc: `Whether to create a snapshot (copy) of TileEntity / BlockState data by default when plugins retrieve them.<br>
+            desc: `Whether to create a snapshot (copy) of \`BlockEntity\` / \`BlockState\` data by default when plugins retrieve them.<br>
                 <br>
                 Some plugins may call \`getInventory().getHolder()\` to get the holder of an inventory, which involves accessing the BlockState.<br>
                 For example, if there are tons of hoppers and plugins, call this method when listening to some events (e.g., hopper related events, call frequently). Re-creating BlockState and parsing item stacks in massive and frequent calls are very expensive.<br>
@@ -360,7 +360,7 @@ const config: ConfigRoot = {
                 default: 8,
                 desc: `The tick frequency that defines how much distance modifies an entity's tick frequency. \`freq = (distanceToPlayer^2) / (2^value)\`.
                     <ul>
-                    <li>If you want entities further away to tick __less__ often, use \`7\`.</li>
+                    <li>If you want entities further away to tick __less__ often, try \`7\`.</li>
                     <li>If you want entities further away to tick __more__ often, try \`9\`.</li>
                     </ul>
                     <br>
@@ -1134,8 +1134,8 @@ const config: ConfigRoot = {
                 <br>
                 Available placeholders:
                 <ul>
-                <li>__\`<player_name%>\`__ - player name.</li>
-                <li>__\`<player_displayname>\`__ - player display name.</li>
+                <li>__\`<player_name%>\`__ - player name</li>
+                <li>__\`<player_displayname>\`__ - player display name</li>
                 </ul>
                 <br>
                 <div class="tip custom-block">
