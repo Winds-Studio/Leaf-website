@@ -80,7 +80,8 @@ const config: ConfigRoot = {
                 desc: `Whether to make entity tracking asynchronous.<br>
                     This can improve performance significantly, especially in some large number of entities in small area situations.<br>
                     <br>
-                    __⚡Recommended value: \`true\`__
+                    __⚡Recommended value: \`true\`__<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, actively testing, please report any bugs you encounter.
@@ -110,7 +111,8 @@ const config: ConfigRoot = {
                     <li>(Or I have many worlds, e.g., some RPG servers)</li>
                     </ol>
                     <br>
-                    __⚡Recommended value: \`false\` (Only enable it if experience specific bottlenecks and understand the risks)__
+                    __⚡Recommended value: \`false\` (Only enable it if experience specific bottlenecks and understand the risks)__<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, potentially unstable, and may cause compatibility issues with some plugins.
@@ -130,6 +132,7 @@ const config: ConfigRoot = {
             "disable-hard-throw": {
                 default: false,
                 desc: `Whether to disable hard throws (which usually stop the server) related to parallel ticking errors.<br>
+                    <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
                     This may mask underlying issues, but it can help prevent crashes during the testing stage of server development. Use with caution.
@@ -258,7 +261,8 @@ const config: ConfigRoot = {
                 desc: `Whether to use the faster random generator introduced in JDK 17.<br>
                     Random is used almost everywhere in Minecraft, enabling this can get a decent performance improvement.<br>
                     <br>
-                    __⚡Recommended value: \`true\`__
+                    __⚡Recommended value: \`true\`__<br>
+                    <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
                     This requires a JVM that supports \`RandomGenerator\`. Some JREs don't support it.
@@ -314,7 +318,8 @@ const config: ConfigRoot = {
             default: true,
             desc: `Whether to use faster task sequencing for generating structures.<br>
                 <br>
-                __⚡Recommended value: \`true\`__
+                __⚡Recommended value: \`true\`__<br>
+                <br>
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 This may cause the inconsistent order of future compose tasks in rare edge cases, which may lead to different structure generation results.
@@ -353,7 +358,8 @@ const config: ConfigRoot = {
                 <br>
                 It's recommended to add [\`-DLeaf.enableFMA=true\`](http://localhost:5173/docs/config/system-properties#dleaf-enablefma) flag for better performance.<br>
                 <br>
-                __⚡Recommended value: \`true\`__
+                __⚡Recommended value: \`true\`__<br>
+                <br>
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Experimental</p>
                 Experimental feature, actively testing, please report any bugs you encounter.
@@ -378,6 +384,7 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
                     </table>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, actively testing, please report any bugs you encounter.
@@ -396,7 +403,8 @@ const config: ConfigRoot = {
                 <br>
                 This rewritten random ticking system uses weighted statistics and sampling to select tickable blocks in active chunks. It can reduce the unnecessary cost caused by frequently selecting non-tickable locations in the vanilla random ticking logic.<br>
                 <br>
-                __⚡Recommended value: \`true\`__
+                __⚡Recommended value: \`true\`__<br>
+                <br>
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Experimental</p>
                 Experimental feature, actively testing, please report any bugs you encounter.
@@ -406,7 +414,8 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to update the player's waypoint tracking data only when their block positions change.<br>
                 <br>
-                __⚡Recommended value: \`true\`__
+                __⚡Recommended value: \`true\`__<br>
+                <br>
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Experimental</p>
                 Experimental feature, actively testing, please report any bugs you encounter.
@@ -460,6 +469,7 @@ const config: ConfigRoot = {
                 <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
                 <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
                 </table>
+                <br>
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 This may cause vanilla map item data to stop being updated.
@@ -645,7 +655,8 @@ const config: ConfigRoot = {
         "inventory-overflow-event": {
             enabled: {
                 default: false,
-                desc: `Whether to enable the inventory overflow event. The event is called when the plugin uses \`Inventory#addItem\` to add items to the player's inventory, and the target inventory is full.
+                desc: `Whether to enable the inventory overflow event. The event is called when the plugin uses \`Inventory#addItem\` to add items to the player's inventory, and the target inventory is full.<br>
+                    <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
                     This is not a proper solution to use! Please redesign your plugin logic to use the returned map of the \`Inventory#addItem\` method as soon as possible!
@@ -667,7 +678,8 @@ const config: ConfigRoot = {
                     <br>
                     If set to \`-1\` is given, the check of the maximum allowed distance to use an item will be disabled.<br>
                     <br>
-                    __⚡Recommended value: \`10.0000001\` (Only for anarchy server)__
+                    __⚡Recommended value: \`10.0000001\` (Only for anarchy server)__<br>
+                    <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
                     If set to \`-1\` or any large positive values, players can use some packet modules of hack clients, and are also able to use [Nocom Exploit](https://github.com/nerdsinspace/nocom-explanation)! Adjusting this option requires careful consideration of potential exploits.
@@ -715,7 +727,8 @@ const config: ConfigRoot = {
         //             <br>
         //             It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
         //             <br>
-        //             It is noted that this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from the player's own inventory, instead of hiding data sent to others.
+        //             It is noted that this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from the player's own inventory, instead of hiding data sent to others.<br>
+        //             <br>
         //             <div class="tip custom-block">
         //             <p class="custom-block-title custom-block-title-default">Attention</p>
         //             It may break resource packs, client mods, or specific gameplay mechanics that rely on these client-side component data of items. Use with caution. You must know what components you are hiding!
@@ -740,7 +753,8 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Whether to send movement changes to the client immediately, once the target player is hit and gets knockback. It can give a smoother PVP gameplay experience with faster knockback responses. Instead, in vanilla, the packet sending happens at the end of the tick and it may hurt the PVP game experience.<br>
                     <br>
-                    __⚡Recommended value: \`true\` (For PVP server)__
+                    __⚡Recommended value: \`true\` (For PVP server)__<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Experimental feature, actively testing, please report any bugs you encounter.
@@ -760,7 +774,8 @@ const config: ConfigRoot = {
             desc: `Whether to make only the player pushable.<br>
                 If set to \`true\`, this option will override values of related collision options in Paper's global and world config, and mobs will not be killed under the effect of [maxEntityCramming](https://minecraft.wiki/w/Game_rule#:~:text=entity%20cramming%20damage) gamerule.<br>
                 <br>
-                    __⚡Recommended value: \`true\`__
+                __⚡Recommended value: \`true\`__<br>
+                <br>
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 It can break mob farms that are using mob collision to push mobs to fall or kill mobs by exceeding the value of the [maxEntityCramming](https://minecraft.wiki/w/Game_rule#:~:text=entity%20cramming%20damage) gamerule.
@@ -856,7 +871,8 @@ const config: ConfigRoot = {
         },
         OptimizeNonFlushPacketSending: {
             default: false,
-            desc: `Whether to optimize the sending of non-flushed packets by using Netty's [\`lazyExecute\`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations.
+            desc: `Whether to optimize the sending of non-flushed packets by using Netty's [\`lazyExecute\`](https://netty.io/4.2/api/io/netty/util/concurrent/SingleThreadEventExecutor.html#lazyExecute(java.lang.Runnable)) method. This can reduce thread contention and wakeup calls for certain types of network operations.<br>
+                <br>
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warning</p>
                 This option is known to be __INCOMPATIBLE__ with ProtocolLib and may cause issues with other plugins that extensively manipulate network packets.<br>
@@ -866,7 +882,8 @@ const config: ConfigRoot = {
         "protocol-support": {
             __desc__: `This section contains features that provide extra protocol support for some QoL / Utility mods.<br>
                 <br>
-                The extra protocol support is only functional if there is a corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installs that mod on the client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before.
+                The extra protocol support is only functional if there is a corresponding client-side mod installed. It means if a specific protocol support is enabled, and a player installs that mod on the client, they can get the additional features described in each config below. But for players who have no corresponding mod installed, then everything is the same as before.<br>
+                <br>
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>
@@ -981,6 +998,7 @@ const config: ConfigRoot = {
                 <li>__\`<player_name%>\`__ - player name.</li>
                 <li>__\`<player_displayname>\`__ - player display name.</li>
                 </ul>
+                <br>
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">API / Plugin Friendly</p>
                 This feature is API / plugin-friendly. It means that the connection message content can be overridden by plugins using \`PlayerJoinEvent\` or \`PlayerQuitEvent\`.
@@ -1014,6 +1032,7 @@ const config: ConfigRoot = {
                 <li>If set to \`true\`, you can use the \`getTPS\` method to get a TPS long array with 4 elements \`[5s, 1m, 5m, 15m]\`.</li>
                 <li>If set to \`false\`, you can use the \`getTPS\` method to get a TPS long array with 3 elements \`[1m, 5m, 15m]\`.</li>
                 </ul>
+                <br>
                 <details class="tip custom-block">
                 <summary class="custom-block-title custom-block-title-default">Want to Go Deeper?</summary>
                 If you are using the Leaf API for your plugins. Or running on Leaf and using reflection to get TPS, you can use \`Bukkit#getTPSIncluding5SecondAverage\`, to get the TPS array including 5-second TPS \`[5s, 1m, 5m, 15m]\`.<br>
@@ -1051,6 +1070,7 @@ const config: ConfigRoot = {
         "remove-spigot-check-bungee-config": {
             default: false,
             desc: `Whether the player can enter the backend server via proxy, without the backend server enabling BungeeCord mode in \`spigot.yml\`.<br>
+                <br>
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warning</p>
                 This option is not recommended to touch, unless you are sure what you are doing.<br>
@@ -1063,6 +1083,7 @@ const config: ConfigRoot = {
                 desc: `Whether to use the secure seed.<br>
                     <br>
                     The secure seed ensures that all ores and structures are generated with a 1024-bit seed using a high security cryptographic hash function instead of using a 64-bit seed like in vanilla. This protects the structure seeds with computational secrecy and makes the seed cracking nearly impossible.<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Warning</p>
                     The secure seed fundamentally changes the positions of ore and structure compared to vanilla.<br>
@@ -1113,6 +1134,7 @@ const config: ConfigRoot = {
                     <ul>
                     <li>__\`<detail>\`__ - the detailed information of the unknown command.</li>
                     </ul>
+                    <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">API / Plugin Friendly</p>
                     This feature is API / plugin-friendly. It means that this message can be overridden by plugins using \`UnknownCommandEvent#message\` or \`UnknownCommandEvent#setMessage\`.
@@ -1122,7 +1144,8 @@ const config: ConfigRoot = {
         "vanilla-username-check": {
             "remove-all-check": {
                 default: false,
-                desc: `Whether to remove the vanilla username check, allowing all characters as usernames, including Chinese characters, etc.
+                desc: `Whether to remove the vanilla username check, allowing all characters as usernames, including Chinese characters, etc.<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Removing all username checks is __UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!__
@@ -1134,7 +1157,8 @@ const config: ConfigRoot = {
             },
             "allow-old-players-join": {
                 default: false,
-                desc: `Whether to allow old players to join the server after the username regex is changed, even if their names don't meet the new requirements.
+                desc: `Whether to allow old players to join the server after the username regex is changed, even if their names don't meet the new requirements.<br>
+                    <br>
                     <div class="warning custom-block">
                     <p class="custom-block-title custom-block-title-default">Experimental</p>
                     Removing all username checks for old players is __UNSAFE AND DANGEROUS, USE AT YOUR OWN RISK!__
