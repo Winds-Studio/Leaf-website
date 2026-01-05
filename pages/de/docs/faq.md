@@ -35,5 +35,7 @@ Es handelt sich um unterschiedliche Mappings. Mojmap verwendet die Mojang-Mappin
 Jeder kann über unser [Open Collective](https://opencollective.com/Winds-Studio) oder [Dreeam's AFDIAN](https://afdian.com/a/Dreeam) (unterstützt PayPal / Stripe) spenden.
 
 :::info Hinweis
+
 Fehlt etwas in diesem _FAQ_? [Schreib es hier](getting-started.md#📫-kontakt)!
+
 :::

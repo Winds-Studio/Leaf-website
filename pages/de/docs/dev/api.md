@@ -46,6 +46,7 @@ Das Dev Bundle ist ein von paperweight bereitgestelltes Tool, mit dem du währen
 Wie du es einrichtest und weitere Details findest du unter [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/).
 
 Um das von Leaf bereitgestellte dev Bundle verwenden zu können, musst du die im obigen Tutorial angegebene Abhängigkeit wie folgt anpassen.
+
 ::: code-group
 
 ```kotlin [build.gradle.kts]

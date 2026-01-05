@@ -21,7 +21,7 @@ Modified settings in bukkit.yml:
 
 All other configuration files remained at default settings. This test simulates a high-entity-count scenario that frequently occurs on busy servers.
 
-### Leaf+Async Configuration
+### Leaf + Async Configuration
 
 Enabled minimal async options in leaf-global.yml:
 

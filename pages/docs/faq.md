@@ -37,5 +37,7 @@ and another is reobf, you should use the one ends with mojmap.
 Anyone can donate via our [Open Collective](https://opencollective.com/Winds-Studio) or [Dreeam's AFDIAN](https://afdian.com/a/Dreeam) (Supports PayPal / Stripe).
 
 :::info Note
+
 Do we need to add something to this _FAQ_? [Write it here](getting-started.md#📫-contact)!
+
 :::

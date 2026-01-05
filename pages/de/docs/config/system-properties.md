@@ -10,7 +10,7 @@ Mithilfe dieses JVM Arguments kann ein anderes Mirror Repository for SpigotLibra
 
 Verwende zum Beispiel das folgende Argument, um das Aliyun-Repository als Maven-Mirror festzulegen. Dadurch können Server auf dem chinesischen Festland Bibliotheken schneller herunterladen.
 
-```
+```bash
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 

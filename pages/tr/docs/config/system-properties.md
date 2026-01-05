@@ -10,7 +10,7 @@ SpigotLibraryLoader veya PaperLibraryLoader için belirli bir yansı deposunu ay
 
 Örneğin, Aliyun'un deposunu yansı depo olarak tanımlamak için aşağıdaki bayrağı kullanın:
 
-```
+```bash
 -DLeaf.library-download-repo=https://maven.aliyun.com/repository/public
 ```
 

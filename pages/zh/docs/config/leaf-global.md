@@ -14,6 +14,6 @@ const data = {
 
 点击配置项后面的箭头按钮以显示其描述
 
-使用 `/leaf reload` 重载 Leaf 配置. 但是目前 **不支持** 重载异步部分的配置.
+使用 `/leaf reload` 重载 Leaf 配置。但是目前 **不支持** 重载异步部分的配置。
 
 <ConfigGroup :data />

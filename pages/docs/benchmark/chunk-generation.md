@@ -1,7 +1,9 @@
 # Chunk Generation Benchmark
 
 :::warning
+
 This page presents performance comparison data between Leaf and Paper server implementations for chunk generation tasks. These results represent a specific test scenario and may vary based on hardware, configuration, and specific world seeds.
+
 :::
 
 <chunk-generation-graph />
