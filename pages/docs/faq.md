@@ -18,7 +18,7 @@ Generally 1 ˜ 3 weeks, depends on how important an update on upstream.
 
 ## ❓ · How can I optimize my server?
 
-You can refer to [YouHaveTrouble's guide](https://github.com/YouHaveTrouble/minecraft-optimization) and [Paper-chan optimization guide](https://paper-chan.moe/paper-optimization/), or [optimization guide](https://nitwikit.8aka.org/Java/optimize/) of NitWikit made by the community (For Chinese user).
+You can refer to [YouHaveTrouble's guide](https://github.com/YouHaveTrouble/minecraft-optimization) and [Paper-chan optimization guide](https://paper-chan.moe/paper-optimization/), or [optimization guide](https://nitwikit.8aka.org/java/optimize/) of NitWikit made by the community (For Chinese user).
 
 ## ❓ · Any known incompatibilities?
 
