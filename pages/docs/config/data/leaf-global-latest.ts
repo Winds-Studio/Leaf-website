@@ -288,7 +288,12 @@ const config: ConfigRoot = {
                     <tr><td><b>Values for goals</b></td><td></td></tr>
                     <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
-                    </table>`
+                    </table>
+                    <br>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Warning</p>
+                    This will affect world generation. The terrain and other results of world generation will be slightly different from vanilla.
+                    </div>`
             },
             "warn-for-slime-chunk": {
                 default: true,

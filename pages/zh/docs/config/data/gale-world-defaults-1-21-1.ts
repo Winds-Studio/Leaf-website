@@ -232,7 +232,7 @@ const config: ConfigRoot = {
                 },
                 "remove-from-world-after-reach-limit": {
                     default: false,
-                    desc: `是否清除超过上述 \`max\` 阈值的弹射物.<br>
+                    desc: `是否清除超过上方的 \`max\` 阈值的弹射物.<br>
                         <br>
                         从世界中清除弹射物具有一定风险，因为这会影响像三叉戟这类对玩家有价值的弹射物，因此不推荐将此值设为 \`true\`, 除非你可以接受该风险。
                         <table>
@@ -248,9 +248,9 @@ const config: ConfigRoot = {
                 },
                 "reset-movement-after-reach-limit": {
                     default: false,
-                    desc: `是否将超过上述 \`max\` 阈值的弹射物的平面速度设为 \`0\`, 避免其尝试穿过区块边界.<br>
+                    desc: `是否将超过上方的 \`max\` 阈值的弹射物的平面速度设为 \`0\`, 避免其尝试穿过区块边界.<br>
                         <br>
-                        如果上述 \`remove-from-world-after-reach-limit\` 设为 \`true\`, 此配置项无效。
+                        如果上方的 \`remove-from-world-after-reach-limit\` 设为 \`true\`, 此配置项无效。
                         <table>
                         <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                         <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
@@ -325,7 +325,7 @@ const config: ConfigRoot = {
                     minecart: {
                         interval: {
                             default: 1,
-                            desc: `与上述 \`interval\` 相同，但仅适用于漏斗矿车。
+                            desc: `与上方的 \`interval\` 相同，但仅适用于漏斗矿车。
                                 <table>
                                 <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                                 <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
@@ -338,7 +338,7 @@ const config: ConfigRoot = {
                                 </table>`
                         },
                         "temporary-immunity": {
-                            __desc__: `漏斗矿车可以暂时免疫，免受上述 \`interval\` 的影响.<br>
+                            __desc__: `漏斗矿车可以暂时免疫，免受上方的 \`interval\` 的影响.<br>
                                 在免疫期间，矿车将每 tick 检查一次掉落物.`,
                             "check-for-minecart-near-item-interval": {
                                 default: 20,
@@ -479,7 +479,7 @@ const config: ConfigRoot = {
                 desc: `村民投掷的掉落物被其他实体拾取的最小延迟.<br>
                     (以 tick 为单位)
                     <ul>
-                    <li>防止村民在某些农场设计中优先拾取种植物品，造成漏斗无法拾取; 否则这些设计会因下面的 \`check-nearby-item.hopper\` 而失效.</li>
+                    <li>防止村民在某些农场设计中优先拾取种植物品，造成漏斗无法拾取; 否则这些设计会下方的 \`check-nearby-item.hopper\` 而失效.</li>
                     <li>减少村民不断向其他库存已满的村民投掷大量物品时造成的卡顿.</li>
                     </ul>
                     例如：
