@@ -55,12 +55,12 @@ const config: ConfigRoot = {
             "reject-policy": {
                 default: "CALLER_RUNS",
                 desc: `The policy to use when the pathfinding task queue is full, and a new task is submitted.<br>
-                <ul>
-                <li>\`FLUSH_ALL\`: All pending tasks in the queue are immediately run on the server thread.</li>
-                <li>\`CALLER_RUNS\`: The incoming submitted task will be run on the server thread.</li>
-                </ul>
-                <br>
-                __⚡Recommended value: \`CALLER_RUNS\`__`
+                    <ul>
+                    <li>\`FLUSH_ALL\`: All pending tasks in the queue are immediately run on the server thread.</li>
+                    <li>\`CALLER_RUNS\`: The incoming submitted task will be run on the server thread.</li>
+                    </ul>
+                    <br>
+                    __⚡Recommended value: \`CALLER_RUNS\`__`
             }
         },
         "async-playerdata-save": {

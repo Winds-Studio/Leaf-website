@@ -178,13 +178,13 @@ const config: ConfigRoot = {
             "reject-policy": {
                 default: "CALLER_RUNS",
                 desc: `The policy to use when the pathfinding task queue is full, and a new task is submitted.<br>
-                <ul>
-                <li>\`FLUSH_ALL\`: All pending tasks in the queue are immediately run on the server thread.</li>
-                <li>\`CALLER_RUNS\`: The incoming submitted task will be run on the server thread.</li>
-                <li>\`DISCARD\`: The incoming submitted task will be discarded.</li>
-                </ul>
-                <br>
-                __⚡Recommended value: \`CALLER_RUNS\`__`
+                    <ul>
+                    <li>\`FLUSH_ALL\`: All pending tasks in the queue are immediately run on the server thread.</li>
+                    <li>\`CALLER_RUNS\`: The incoming submitted task will be run on the server thread.</li>
+                    <li>\`DISCARD\`: The incoming submitted task will be discarded.</li>
+                    </ul>
+                    <br>
+                    __⚡Recommended value: \`CALLER_RUNS\`__`
             }
         },
         "async-mob-spawning": {
@@ -1233,8 +1233,8 @@ const config: ConfigRoot = {
                 timeout: {
                     default: 1440,
                     desc: `The timeout of the player profile cache.<br>
-                    (Unit: minute, default value 1440 minutes = 24 hours)<br>
-                    If the given timeout is exceeded, the server will send another request to fetch player profile data from Mojang's authentication server on the player's next join.`
+                        (Unit: minute, default value 1440 minutes = 24 hours)<br>
+                        If the given timeout is exceeded, the server will send another request to fetch player profile data from Mojang's authentication server on the player's next join.`
                 },
                 "max-size": {
                     default: 8192,

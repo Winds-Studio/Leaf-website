@@ -1072,8 +1072,8 @@ const config: ConfigRoot = {
             "flush-interval-seconds": {
                 default: 5,
                 desc: `How often the server attempts to flush cached Linear region file data to the disk.<br>
-                More frequent flushing reduces potential data loss on a crash but increases disk I/O.<br>
-                (Unit: second)`
+                    More frequent flushing reduces potential data loss on a crash but increases disk I/O.<br>
+                    (Unit: second)`
             }
         },
         "lag-compensation": {
@@ -1114,22 +1114,22 @@ const config: ConfigRoot = {
         "hidden-item-components": {
             default: "[]",
             desc: `The list of component type keys that will be hidden from the player's inventory sent to clients.<br>
-                    <br>
-                    It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
-                    <br>
-                    It is noted that this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from the player's own inventory, instead of hiding data sent to others.<br>
-                    For example:<br>
-                    <ul>
-                    <li>If a value \`[]\` is given, no item will be affected.</li>
-                    <li>If a value \`[\"minecraft:custom_data\"]\` is given, the item's \`custom_data\` component will be hidden on the player's client.</li>
-                    </ul>
-                    <br>
-                    See [List of components](https://minecraft.wiki/w/Data_component_format#List_of_components) to get the full list of available component type keys for items.<br>
-                    <br>
-                    <div class="tip custom-block">
-                    <p class="custom-block-title custom-block-title-default">Attention</p>
-                    It may break resource packs, client mods, or specific gameplay mechanics that rely on these client-side component data of items. Use with caution. You must know what components you are hiding!
-                    </div>`
+                <br>
+                It can be used to hide complex component data on an item to reduce rendering load, frequent animations on the client side, and network usage. The actual item data will not be affected.<br>
+                <br>
+                It is noted that this option is different from Paper's [item obfuscation](https://docs.papermc.io/paper/reference/global-configuration/#anticheat_obfuscation_items_enable_item_obfuscation). This option only hides item component data from the player's own inventory, instead of hiding data sent to others.<br>
+                For example:<br>
+                <ul>
+                <li>If a value \`[]\` is given, no item will be affected.</li>
+                <li>If a value \`[\"minecraft:custom_data\"]\` is given, the item's \`custom_data\` component will be hidden on the player's client.</li>
+                </ul>
+                <br>
+                See [List of components](https://minecraft.wiki/w/Data_component_format#List_of_components) to get the full list of available component type keys for items.<br>
+                <br>
+                <div class="tip custom-block">
+                <p class="custom-block-title custom-block-title-default">Attention</p>
+                It may break resource packs, client mods, or specific gameplay mechanics that rely on these client-side component data of items. Use with caution. You must know what components you are hiding!
+                </div>`
         },
         "connection-message": {
             __desc__: `The connection message broadcasts to all online players when they join or quit the server.<br>
@@ -1172,7 +1172,7 @@ const config: ConfigRoot = {
             "cache-player-profile-result": {
                 default: true,
                 desc: `Whether to cache the player's profile data (e.g., UUID, username, skin/cape textures) when they joined the server.<br>
-                        This can reduce network requests to Mojang's authentication server, and is also useful if the authentication server is temporarily unavailable, and still allows players to rejoin the server using cached profile data.`
+                    This can reduce network requests to Mojang's authentication server, and is also useful if the authentication server is temporarily unavailable, and still allows players to rejoin the server using cached profile data.`
             },
             "cache-player-profile-result-timeout": {
                 default: 1440,
