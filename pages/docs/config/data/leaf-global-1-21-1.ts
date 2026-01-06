@@ -867,7 +867,7 @@ const config: ConfigRoot = {
         "afk-command": {
             enabled: {
                 default: false,
-                desc: `Whether to enable the AFK command based on Minecraft's built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle). Players can use /afk command to switch their AFK mode, and their AFK status can be shown in the Tab list.<br>
+                desc: `Whether to enable the AFK command based on Minecraft's built-in [idle-timeout mechanism](https://minecraft.wiki/w/Server.properties#:~:text=player%20have%20to%20idle). Players can use \`/afk\` command to switch their AFK mode, and their AFK status can be shown in the Tab list.<br>
                     <br>
                     Also set \`kick-if-idle\` to \`false\` in Purpur config, to prevent players from being kicked when they enter AFK mode. The rest of the AFK settings, configurable AFK messages, and title messages are in Purpur config.`
             }
@@ -1058,7 +1058,7 @@ const config: ConfigRoot = {
                     <br>
                     <ul>
                     <li>If set to a higher level (up to \`22\`), it provides better compression ratios but requires significantly more CPU time for compression.</li>
-                    <li>If set to a lower level, it compresses faster, but requires more space. The level 1 uses the fastest and lightest compression.</li>
+                    <li>If set to a lower level, it compresses faster, but requires more space. The level \`1\` uses the fastest and lightest compression.</li>
                     </ul>`
             },
             "throw-on-unknown-extension-detected": {
