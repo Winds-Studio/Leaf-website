@@ -78,7 +78,7 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: `Whether to make entity tracking asynchronous.<br>
-                    This can improve performance significantly, especially in some large number of entities in small area situations.<br>
+                    This can improve performance significantly, especially in situations with a large number of entities in a small area.<br>
                     <br>
                     __⚡Recommended value: \`true\`__<br>
                     <br>
@@ -361,7 +361,7 @@ const config: ConfigRoot = {
             desc: `Whether to use more efficient logic for mob natural despawn.<br>
                 This can prevent the expensive cost of the vanilla despawn logic that iterates over every player, then compares the distance between the mobs and the player.<br>
                 <br>
-                It's recommended to add [\`-DLeaf.enableFMA=true\`](http://localhost:5173/docs/config/system-properties#dleaf-enablefma) flag for better performance.<br>
+                It's recommended to add [\`-DLeaf.enableFMA=true\`](system-properties#dleaf-enablefma) flag for better performance.<br>
                 <br>
                 __⚡Recommended value: \`true\`__<br>
                 <br>

@@ -1,8 +1,10 @@
 <script setup>
+import leafGlobalConfig_latest from './data/leaf-global-latest';
 import leafGlobalConfig_1_21_4 from './data/leaf-global-1-21-4';
 import leafGlobalConfig_1_21_1 from './data/leaf-global-1-21-1';
 import ConfigGroup from '../../../../.vitepress/theme/components/config/ConfigGroup.vue'
 const data = {
+    '1.21.8': leafGlobalConfig_latest,
     '1.21.4': leafGlobalConfig_1_21_4,
     '1.21.1': leafGlobalConfig_1_21_1
 }

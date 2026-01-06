@@ -1147,8 +1147,8 @@ const config: ConfigRoot = {
             "flush-interval-seconds": {
                 default: 5,
                 desc: `How often the server attempts to flush cached Linear region file data to the disk.<br>
-                More frequent flushing reduces potential data loss on a crash but increases disk I/O.<br>
-                (Unit: second)`
+                    More frequent flushing reduces potential data loss on a crash but increases disk I/O.<br>
+                    (Unit: second)`
             }
         },
         "lag-compensation": {
