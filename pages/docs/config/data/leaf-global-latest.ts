@@ -231,7 +231,7 @@ const config: ConfigRoot = {
                     Some survival servers have mob farms, which need mobs to have a target. This kind of "pathfinding" mob farm may be broken by DAB. This situation can be solved by adding specific mobs of the mob farm to this DAB blacklist.<br>
                     If some specific mob farms are broken in your server, mobs freeze and don't move, and you are not sure whether it is caused by DAB. You can try to add them to this blacklist to see if it fixes the issue.<br>
                     <br>
-                    Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/EntityType.html)).<br>
+                    Format: \`[villager]\` or \`[villager, zombified_piglin]\` (You can find all entity types in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/EntityType.html)).<br>
                     <br>
                     [💡 Want to Go Deeper?](guides/dab-blacklist-format)`
             }
@@ -447,7 +447,7 @@ const config: ConfigRoot = {
         "skip-ai-for-non-aware-mob": {
             default: true,
             desc: `Whether to skip AI ticks entirely for mobs that are both _inactive_ and _unaware_.<br>
-                Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
+                Unaware mobs optimized this way will not perform self actions or react until they become active again, see [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/Mob.html#setAware(boolean)) for more information.<br>
                 <br>
                 __⚡Recommended value: \`true\`__
                 <table>
