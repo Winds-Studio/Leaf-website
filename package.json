@@ -1,8 +1,8 @@
 {
     "devDependencies": {
         "@vueuse/core": "^14.1.0",
-        "prettier": "3.7.4",
-        "sass": "^1.97.1",
+        "prettier": "3.8.0",
+        "sass": "^1.97.2",
         "vitepress": "1.6.4",
         "vue": "^3.5.26"
     },
@@ -15,5 +15,6 @@
         "@iconify/vue": "^5.0.0",
         "markdown-it": "^14.1.0",
         "typescript": "^5.9.3"
-    }
+    },
+    "packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48"
 }
