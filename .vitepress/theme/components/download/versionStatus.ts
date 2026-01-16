@@ -20,6 +20,7 @@ export const versionStatusMap: { [name: string]: VersionStatus } = {
         versions: ["1.21.11", "1.21.8"],
         icon: "lucide:flask-conical",
         cssClass: "status-dev",
+        //branchPrefix: "dev/"
     },
 
     stable: {
