@@ -1,4 +1,5 @@
 import { getVerStatus } from "./versionStatus";
+import semver from "semver";
 
 export interface ApiBuild {
     build: number;
@@ -30,7 +31,10 @@ const API_BASE = "https://api.leafmc.one/v2";
 export async function getVersions(): Promise<string[]> {
     const rawData = await fetch(`${API_BASE}/projects/leaf`);
     const data = (await rawData.json()) as ApiProject;
-    return data.versions.reverse();
+    // TODO: temp fix
+    // Find another way before 26.1
+    // or if Fillv3 also does not return ordered versions
+    return semver.sort(data.versions).reverse();
 }
 
 export async function getBuilds(version: string): Promise<ApiBuild[]> {
