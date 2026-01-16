@@ -162,7 +162,7 @@ const config: ConfigRoot = {
                 desc: `Ob Versuche von Trichtern (Hopper), Items zu übertragen, gedrosselt werden sollen, wenn der Zielcontainer voll ist.<br>
                     Verhindert, dass der Trichter jeden Tick versucht, Items zu verschieben, selbst wenn dies immer wieder fehlschlägt.<br>
                     <br>
-                    __⚡Empfohlener Wert: \`true\` (setze \`enabled\` unten auf true)__
+                    __⚡Empfohlener Wert: \`true\`__
                     <table>
                     <tr><td><b>Werte für Ziele</b></td><td></td></tr>
                     <tr><td><i>Optimierung</i></td><td><code>true</code></td></tr>
@@ -264,7 +264,7 @@ const config: ConfigRoot = {
                 desc: `Ob der schnellere Zufallsgenerator (Random Generator), der in JDK 17 eingeführt wurde, verwendet werden soll.<br>
                     Zufall wird fast überall in Minecraft verwendet; dies zu aktivieren kann eine ordentliche Leistungsverbesserung bringen.<br>
                     <br>
-                    __⚡Empfohlener Wert: \`true\` (setze \`enabled\` unten auf true)__
+                    __⚡Empfohlener Wert: \`true\`__
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Achtung</p>
                     Dies erfordert eine JVM, die \`RandomGenerator\` unterstützt. Einige JREs unterstützen dies nicht.
@@ -322,7 +322,7 @@ const config: ConfigRoot = {
                 default: true,
                 desc: `Ob DAB aktiviert werden soll.<br>
                     <br>
-                    __⚡Empfohlener Wert: \`true\` (setze \`enabled\` unten auf true)__
+                    __⚡Empfohlener Wert: \`true\`__
                     <table>
                     <tr><td><b>Werte für Ziele</b></td><td></td></tr>
                     <tr><td><i>Optimierung</i></td><td><code>true</code></td></tr>
@@ -1060,7 +1060,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Die Lag-Kompensation wurde entwickelt, um die Auswirkungen von Server-Lag-Spikes oder niedrigen TPS-Situationen auf das Gameplay zu mildern, was das grundlegende Spielerlebnis während des Lags sicherstellen könnte.<br>
                     <br>
-                    __⚡Empfohlener Wert: \`true\` (Setze auch \`enabled\` unten auf true)__`
+                    __⚡Empfohlener Wert: \`true\`__`
             },
             "enable-for-water": {
                 default: false,
