@@ -12,6 +12,6 @@ const data = {
 
 Diese YAML Konfiguration zeigt die standardmäßige Struktur der Konfigurationswerte der globalen Konfiguration von Gale (`config/gale-global.yml`)
 
-Klicke auf die Pfeile hinter den Konfigurationswerten um die entsprechende Beschreibung anzusehen
+Klicke auf die Pfeile hinter den Konfigurationswerten, um die entsprechende Beschreibung anzusehen
 
 <ConfigGroup :data />
