@@ -32,7 +32,7 @@ Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeb
 
 - Standard: `epoll`
 
-Legt das Netzwerk-I/O-Modell für die Datenübertragung fest. Muss in der Datei server.properties unter `use-native-transport` aktiviert sein.
+Legt das Netzwerk-I/O-Modell für die Datenübertragung fest. Muss in der Datei `server.properties` unter `use-native-transport` aktiviert sein.
 
 Falls der angegebene Übertragungstyp nicht verfügbar ist, wird automatisch auf ein verfügbares Modell umgeschaltet.
 
