@@ -316,11 +316,11 @@ const config: ConfigRoot = {
                 __⚡Empfohlener Wert: \`true\`__`
         },
         dab: {
-                __desc__:
-                    "Dynamic Activation of Brain, auch bekannt als DAB, optimiert das 'Gehirn' (Brain) von Entities, indem die Frequenz ihres Brain-Tickings verringert wird, wenn sie weit von Spielern entfernt sind. Dies ist ein lohnender Kompromiss zur Leistungsverbesserung, wenn viele Entities vorhanden sind.",
-                enabled: {
-                    default: true,
-                    desc: `Ob DAB aktiviert werden soll.<br>
+            __desc__:
+                "Dynamic Activation of Brain, auch bekannt als DAB, optimiert das 'Gehirn' (Brain) von Entities, indem die Frequenz ihres Brain-Tickings verringert wird, wenn sie weit von Spielern entfernt sind. Dies ist ein lohnender Kompromiss zur Leistungsverbesserung, wenn viele Entities vorhanden sind.",
+            enabled: {
+                default: true,
+                desc: `Ob DAB aktiviert werden soll.<br>
                     <br>
                     __⚡Empfohlener Wert: \`true\` (setze \`enabled\` unten auf true)__
                     <table>
@@ -328,39 +328,39 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimierung</i></td><td><code>true</code></td></tr>
                     <tr><td><i>Vanilla-Verhalten</i></td><td><code>false</code> (oder siehe <code>dab.blacklisted-entities</code> unten für mehr)</td></tr>
                     </table>`
-                },
-                "dont-enable-if-in-water": {
-                    default: false,
-                    desc: `Ob nicht-aquatische Entities im Wasser von DAB ausgeschlossen werden sollen. Dies kann [Pufferfish#58](https://github.com/pufferfish-gg/Pufferfish/issues/58) beheben.<br>
+            },
+            "dont-enable-if-in-water": {
+                default: false,
+                desc: `Ob nicht-aquatische Entities im Wasser von DAB ausgeschlossen werden sollen. Dies kann [Pufferfish#58](https://github.com/pufferfish-gg/Pufferfish/issues/58) beheben.<br>
                     Wenn auf \`true\` gesetzt, könnte dies verhindern, dass Entities im Wasser ersticken, wenn sie weit vom Spieler entfernt sind.<br>
                     <br>
                     __⚡Empfohlener Wert: \`true\`__`
-                },
-                "start-distance": {
-                    default: 12,
-                    desc: `Die Distanz bestimmt, wie weit ein Entity vom Spieler entfernt sein muss, um von DAB beeinflusst zu werden.<br>
+            },
+            "start-distance": {
+                default: 12,
+                desc: `Die Distanz bestimmt, wie weit ein Entity vom Spieler entfernt sein muss, um von DAB beeinflusst zu werden.<br>
                     (Einheit: Block)<br>
                     <br>
                     __⚡Empfohlener Wert: \`8\`__`
-                },
-                "max-tick-freq": {
-                    default: 20,
-                    desc: `Die maximale Tick-Zeit definiert, wie oft das am weitesten entfernte Entity seine Pathfinder und Verhaltensweisen getickt bekommt.<br>
+            },
+            "max-tick-freq": {
+                default: 20,
+                desc: `Die maximale Tick-Zeit definiert, wie oft das am weitesten entfernte Entity seine Pathfinder und Verhaltensweisen getickt bekommt.<br>
                     (Einheit: Tick, Standardwert 20 Ticks = 1s)`
-                },
-                "activation-dist-mod": {
-                    default: 8,
-                    desc: `Die Tick-Frequenz, die definiert, wie stark die Distanz die Tick-Frequenz eines Entities beeinflusst. \`freq = (distanceToPlayer^2) / (2^value)\`.
+            },
+            "activation-dist-mod": {
+                default: 8,
+                desc: `Die Tick-Frequenz, die definiert, wie stark die Distanz die Tick-Frequenz eines Entities beeinflusst. \`freq = (distanceToPlayer^2) / (2^value)\`.
                     <ul>
                     <li>Wenn du möchtest, dass weiter entfernte Entities __weniger__ oft ticken, verwende \`7\`.</li>
                     <li>Wenn du möchtest, dass weiter entfernte Entities __öfter__ ticken, versuche \`9\`.</li>
                     </ul>
                     <br>
                     __⚡Empfohlener Wert: \`7\`__`
-                },
-                "blacklisted-entities": {
-                    default: "[]",
-                    desc: `Eine Liste von Entities, die nicht von DAB betroffen sein sollen.<br>
+            },
+            "blacklisted-entities": {
+                default: "[]",
+                desc: `Eine Liste von Entities, die nicht von DAB betroffen sein sollen.<br>
                     <br>
                     Einige Survival-Server haben Mob-Farmen, die darauf angewiesen sind, dass Mobs ein Ziel haben. Diese Art von "Pfadfindungs"-Mob-Farm kann durch DAB beeinträchtigt werden. Diese Situation kann gelöst werden, indem spezifische Mobs der Mob-Farm zu dieser DAB-Blacklist hinzugefügt werden.<br>
                     Wenn bestimmte Mob-Farmen auf deinem Server defekt sind, Mobs einfrieren und sich nicht bewegen, und du nicht sicher bist, ob dies durch DAB verursacht wird. Du kannst versuchen, sie zu dieser Liste hinzuzufügen, um zu sehen, ob das Problem dadurch behoben wird.<br>
@@ -368,7 +368,7 @@ const config: ConfigRoot = {
                     Format: \`[villager]\` oder \`[villager, zombified_piglin]\` (Du findest alle Entity-Typen in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.1/org/bukkit/entity/EntityType.html)).<br>
                     <br>
                     [💡 Du möchtest tiefer eintauchen?](guides/dab-blacklist-format)`
-                }
+            }
         },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
@@ -793,8 +793,7 @@ const config: ConfigRoot = {
                 </div>`
         },
         "max-item-stack-count": {
-            __desc__:
-                `Konfigurierbare maximale Stack-Größe von fallen gelassenen Items.
+            __desc__: `Konfigurierbare maximale Stack-Größe von fallen gelassenen Items.
                 <div class="warning custom-block">
                 <p class="custom-block-title custom-block-title-default">Warnung</p>
                 Wir __empfehlen nicht__, diese Funktion zu verwenden. Es ist in Arbeit und hat bekannte Probleme.<br>

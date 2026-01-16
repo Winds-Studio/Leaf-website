@@ -105,17 +105,17 @@ Für sehr große oder aktive Server (150–300 Spieler) wird die schiere **Objek
 
 ### Vergleich: G1GC vs. Low-Latency Generational GCs (GZGC/GenShen) (Java 21+)
 
-| Feature                 | G1GC (mit Aikar’s Flags)                    | Generational ZGC / Generational Shenandoah        |
-| :---------------------- |:--------------------------------------------|:--------------------------------------------------|
-| **Hauptziel**           | Balance aus Throughput & Pausenzeiten       | Minimale Pausenzeiten (Ultra-Low-Latency)         |
-| **Typische Pause**      | Niedrig, steigt unter Last (<200ms Ziel)    | Extrem niedrig, Sub-Millisekunden-Ziel            |
-| **Allokationshandling** | Gut (generational)                          | Exzellent (generational + nebenläufig)            |
-| **Throughput**          | In der Regel sehr gut                       | Potenziell etwas geringer durch Nebenarbeit       |
-| **CPU-Nutzung**         | Moderat, Peaks während Pausen               | Höhere _Hintergrund_-CPU-Nutzung                  |
-| **RAM-Overhead**        | Effizient                                   | Etwas höher möglich                               |
-| **Komplexität**         | Bewährte Basis                              | Einfacheres Tuning als G1GC                       |
-| **Reifegrad**           | Sehr ausgereift                             | Generationale Modi neuer (Java 21+)               |
-| **Am besten für**       | Die meisten Server (<100 Spieler)           | Sehr große Server (150/300+), latenzsensitiv      |
+| Feature                 | G1GC (mit Aikar’s Flags)                 | Generational ZGC / Generational Shenandoah   |
+| :---------------------- | :--------------------------------------- | :------------------------------------------- |
+| **Hauptziel**           | Balance aus Throughput & Pausenzeiten    | Minimale Pausenzeiten (Ultra-Low-Latency)    |
+| **Typische Pause**      | Niedrig, steigt unter Last (<200ms Ziel) | Extrem niedrig, Sub-Millisekunden-Ziel       |
+| **Allokationshandling** | Gut (generational)                       | Exzellent (generational + nebenläufig)       |
+| **Throughput**          | In der Regel sehr gut                    | Potenziell etwas geringer durch Nebenarbeit  |
+| **CPU-Nutzung**         | Moderat, Peaks während Pausen            | Höhere _Hintergrund_-CPU-Nutzung             |
+| **RAM-Overhead**        | Effizient                                | Etwas höher möglich                          |
+| **Komplexität**         | Bewährte Basis                           | Einfacheres Tuning als G1GC                  |
+| **Reifegrad**           | Sehr ausgereift                          | Generationale Modi neuer (Java 21+)          |
+| **Am besten für**       | Die meisten Server (<100 Spieler)        | Sehr große Server (150/300+), latenzsensitiv |
 
 **Empfehlung:** Starte mit Aikar’s G1GC-Flags. Wenn `/spark gcmonitor` trotz Tuning häufige oder lange GC-Pausen zeigt oder das Profiling ergibt, dass der Server bei hoher Spielerzahl mit der **Allokationsrate** kämpft (und du ausreichend Hardware + Java 21 hast), ziehe einen Wechsel zu Generational ZGC in Betracht. Teste Generational Shenandoah, wenn du Java 24+ nutzt oder GZGC Probleme verursacht.
 
