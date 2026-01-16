@@ -1135,6 +1135,16 @@ const config: ConfigRoot = {
                     <p class="custom-block-title custom-block-title-default">Experimentell</p>
                     Das Entfernen aller Benutzernamenprüfungen für alte Spieler ist __UNSICHER UND GEFÄHRLICH, VERWENDUNG AUF EIGENE GEFAHR!__
                     </div>`
+            },
+            "use-username-regex": {
+                default: false,
+                desc: `Ob der Benutzername-Regex zur Validierung von Benutzernamen verwendet werden soll, wodurch nur im Regex spezifizierte Zeichen erlaubt sind.<br>
+                    Diese Option ist inkompatibel mit \`remove-all-check\` oben. Du kannst nur eine dieser beiden Optionen verwenden.`
+            },
+            "username-regex": {
+                default: "^[a-zA-Z0-9_.]*$",
+                desc: `Der Benutzername-Regex legt fest, welche Zeichen in Benutzernamen erlaubt sind.<br>
+                    Dies hat nur Auswirkungen, wenn \`use-username-regex\` oben \`true\` ist.`
             }
         }
     }

@@ -177,6 +177,7 @@ const config: ConfigRoot = {
                 <ul>
                 <li>\`FLUSH_ALL\`: Alle ausstehenden Aufgaben in der Warteschlange werden sofort im Server-Thread ausgeführt.</li>
                 <li>\`CALLER_RUNS\`: Die eingehende eingereichte Aufgabe wird im Server-Thread ausgeführt.</li>
+                <li>\`DISCARD\`: Die eingehende eingereichte Aufgabe wird verworfen.</li>
                 </ul>
                 <br>
                 __⚡Empfohlener Wert: \`CALLER_RUNS\`__`
