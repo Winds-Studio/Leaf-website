@@ -27,6 +27,9 @@ importers:
       sass:
         specifier: ^1.97.2
         version: 1.97.2
+      semver:
+        specifier: ^7.7.3
+        version: 7.7.3
       vitepress:
         specifier: 1.6.4
         version: 1.6.4(@algolia/client-search@5.46.3)(@types/node@24.0.1)(fuse.js@7.1.0)(jwt-decode@4.0.0)(less@4.3.0)(postcss@8.5.6)(sass@1.97.2)(search-insights@2.17.3)(terser@5.42.0)(typescript@5.9.3)
@@ -973,6 +976,11 @@ packages:
 
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
+    hasBin: true
+
+  semver@7.7.3:
+    resolution: {integrity: sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q==}
+    engines: {node: '>=10'}
     hasBin: true
 
   shiki@2.5.0:
@@ -2032,6 +2040,8 @@ snapshots:
 
   semver@5.7.2:
     optional: true
+
+  semver@7.7.3: {}
 
   shiki@2.5.0:
     dependencies:
