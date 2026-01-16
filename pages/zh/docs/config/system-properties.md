@@ -24,7 +24,11 @@
 
 你可以使用 [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) 等工具检查你的机器是否支持 FMA 指令集。
 
-## -DLeaf.native-transport-type
+## 已弃用参数
+
+### -DLeaf.native-transport-type
+
+(仅存在于最新的 Leaf 1.21.8)
 
 - 默认值：`epoll`
 
@@ -37,8 +41,6 @@
 - Linux: `io_uring`, `epoll`, `nio`
 - MacOS: `kqueue`, `nio`
 - Windows: 不可用 (默认 `nio`)
-
-## 已弃用参数
 
 ### -DLeaf.nearestEntitySensorBucketCount
 

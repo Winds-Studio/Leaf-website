@@ -24,7 +24,11 @@ FMA komut setini destekleyen bir CPU gerektirir, aksi takdirde daha yavaş olaca
 
 Makinenizin FMA komut setini destekleyip desteklemediğini kontrol etmek için [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) gibi araçlar kullanabilirsiniz.
 
-## -DLeaf.native-transport-type
+## Kullanımdan Kaldırılmış Bayraklar
+
+### -DLeaf.native-transport-type
+
+(Bu bayrak yalnızca en son Leaf 1.21.8 sürümlerinde mevcuttur)
 
 - varsayılan: `epoll`
 
@@ -38,9 +42,7 @@ Mevcut seçenekler:
 - MacOS: `kqueue`, `nio`
 - Windows: mevcut değil
 
-## Kullanımdan Kaldırılmış Bayraklar
-
-## -DLeaf.nearestEntitySensorBucketCount
+### -DLeaf.nearestEntitySensorBucketCount
 
 (Bu bayrak yalnızca en son Leaf 1.21.1 ve 1.21.3 sürümlerinde mevcuttur)
 
@@ -50,7 +52,7 @@ Varlık sayısı [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) eşiğ
 
 Varlık sayısının karekökü olmalıdır.
 
-## -DLeaf.nearestEntitySensorBucketSortThresholdRatio
+### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
 
 (Bu bayrak yalnızca en son Leaf 1.21.1 ve 1.21.3 sürümlerinde mevcuttur)
 

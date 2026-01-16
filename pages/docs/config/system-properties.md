@@ -24,7 +24,11 @@ Requires a CPU which supports the FMA instruction set, otherwise it will be slow
 
 You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to check whether your machine supports the FMA instruction set.
 
-## -DLeaf.native-transport-type
+## Deprecated Flags
+
+### -DLeaf.native-transport-type
+
+(This flag only exists in latest Leaf 1.21.8)
 
 - default: `epoll`
 
@@ -38,9 +42,7 @@ Available options:
 - MacOS: `kqueue`, `nio`
 - Windows: unavailable
 
-## Deprecated Flags
-
-## -DLeaf.nearestEntitySensorBucketCount
+### -DLeaf.nearestEntitySensorBucketCount
 
 (This flag only exists in latest Leaf 1.21.1 and 1.21.3)
 
@@ -50,7 +52,7 @@ How many buckets will be used if entity count reached the [Bucket Sort](https://
 
 Should be the square root of entity count.
 
-## -DLeaf.nearestEntitySensorBucketSortThresholdRatio
+### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
 
 (This flag only exists in latest Leaf 1.21.1 and 1.21.3)
 

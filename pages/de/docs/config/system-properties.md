@@ -24,7 +24,11 @@ Erfordert eine CPU, die den FMA Instruktionssatz unterstützt. Ansonsten wird di
 
 Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeben, ob ein Prozessor den nötigen Instruktionssatz unterstützt.
 
-## -DLeaf.native-transport-type
+## Veraltete Flags
+
+### -DLeaf.native-transport-type
+
+(Dieses Flag existiert nur in der neuesten Leaf 1.21.8)
 
 - Standard: `epoll`
 
@@ -37,8 +41,6 @@ Verfügbare Optionen:
 - Linux: `io_uring`, `epoll`, `nio`
 - MacOS: `kqueue`, `nio`
 - Windows: nicht verfügbar
-
-## Veraltete Flags
 
 ### -DLeaf.nearestEntitySensorBucketCount
 
