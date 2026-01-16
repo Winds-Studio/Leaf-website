@@ -29,4 +29,5 @@ Leaf website is licensed under [MIT](LICENSE). The documentations (e.g. `.md`, `
 ## 📜 Credits
 
 - [PaperMC Docs](https://docs.papermc.io/paper)
-- [Gale WIKI](https://github.com/GaleMC/Gale/wiki)
+- [Leaves Docs](https://docs.leavesmc.org/leaves/guides/getting-started)
+- [Gale Wiki](https://github.com/GaleMC/Gale/wiki)

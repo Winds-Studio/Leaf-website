@@ -1,7 +1,9 @@
 # Chunkgenerierung Benchmark
 
 :::warning WARNUNG
+
 Diese Seite zeigt einen Leistungsvergleich zwischen Leaf und Paper im Bereich Chunkgenerierung. Die Ergebnisse repräsentieren ein spezifisches Testszenario, welches sich je nach Hardware, Konfiguration und dem Seed der Welt unterscheiden kann.
+
 :::
 
 <chunk-generation-graph />

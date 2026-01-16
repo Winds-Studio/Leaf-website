@@ -80,9 +80,9 @@ const config: ConfigRoot = {
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>"none"</code> 🛈</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
+                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
                 </table>
-                <p>🛈 = The default value is \`"info"\` to prevent any errors going unnoticed by default, but the recommended value is \`"none"\` because these errors are usually meaningless and unsolvable anyway.</p>`
+                <p>ⓘ = The default value is \`"info"\` to prevent any errors going unnoticed by default, but the recommended value is \`"none"\` because these errors are usually meaningless and unsolvable anyway.</p>`
         },
         "invalid-statistics": {
             default: true,
@@ -176,28 +176,28 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to ignore any legacy structure data, for which the NBT tag parser returns null for some reason.
                 <ul>
-                <li>If \`true\`, no warning will be given when this happens.</li>
-                <li>If \`false\`, an exception will be thrown in the console when this happens.</li>
+                <li>If set to \`true\`, no warning will be given when this happens.</li>
+                <li>If set to \`false\`, an exception will be thrown in the console when this happens.</li>
                 </ul>
                 <table>
                 <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                 <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>true</code> 🛈</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                <tr><td><code>true</code> ⓘ</td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                 </table>
                 <table>
                 <tr><td><b>Values for goals</b></td><td></td></tr>
                 <tr><td><i>Optimization</i></td><td>-</td></tr>
                 <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
                 </table>
-                <p>🛈 = The default value is \`false\` to prevent any errors going unnoticed by default, but the recommended value is \`true\` because these errors are usually meaningless and unsolvable anyway.</p>`
+                <p>ⓘ = The default value is \`false\` to prevent any errors going unnoticed by default, but the recommended value is \`true\` because these errors are usually meaningless and unsolvable anyway.</p>`
         },
         keepalive: {
             "send-multiple": {
                 default: true,
                 desc: `Whether to send more frequent keepalive packets than vanilla.
                     <ul>
-                    <li>If \`true\`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>
-                    <li>If \`false\`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>
+                    <li>If set to \`true\`, a keepalive packet is sent to every client every second, and they are not kicked if they respond to at least one of them within 30 seconds.</li>
+                    <li>If set to \`false\`, a keepalive packet is sent to every client every 15 seconds, and they are kicked if they do not respond to it within 30 seconds.</li>
                     </ul>
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
@@ -215,7 +215,7 @@ const config: ConfigRoot = {
             "add-oversleep": {
                 default: false,
                 desc: `Whether to add the oversleep portion of the last tick's time to the \`/tps\` command.<br>
-                    This only has any effect if \`enabled\` above is \`true\`.
+                    This only has any effect if \`enabled\` below is \`true\`.
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>

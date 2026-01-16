@@ -116,7 +116,9 @@ export default {
         {
             text: "Anleitungen",
             items: [
-                { text: "Sentry einrichten", link: "/de/docs/how-to/setup-sentry" } // TODO
+                { text: "Sentry einrichten", link: "/de/docs/how-to/setup-sentry" },
+                { text: "Optimierung deines Leaf-Servers", link: "/de/docs/how-to/optimize-leaf-server" },
+                { text: "Java Flags für Server", link: "/de/docs/how-to/java-flags" }
             ]
         },
         {

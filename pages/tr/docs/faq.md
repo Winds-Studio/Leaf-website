@@ -18,7 +18,7 @@ Genellikle 1-3 hafta arasında, upstream'deki güncellemenin önemine bağlı ol
 
 ## ❓ · Sunucumu nasıl optimize edebilirim?
 
-[YouHaveTrouble'un rehberine](https://github.com/YouHaveTrouble/minecraft-optimization) veya topluluk tarafından hazırlanan [NitWikit optimizasyon rehberine](https://nitwikit.8aka.org/Java/optimize/) (Çince kullanıcılar için) ve [Paper-chan optimizasyon rehberine](https://paper-chan.moe/paper-optimization/) bakabilirsiniz.
+[YouHaveTrouble'un rehberine](https://github.com/YouHaveTrouble/minecraft-optimization) veya topluluk tarafından hazırlanan [NitWikit optimizasyon rehberine](https://nitwikit.8aka.org/java/optimize/) (Çince kullanıcılar için) ve [Paper-chan optimizasyon rehberine](https://paper-chan.moe/paper-optimization/) bakabilirsiniz.
 
 ## ❓ · Bilinen uyumsuzluklar var mı?
 

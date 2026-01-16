@@ -10,12 +10,12 @@ const data = {
 }
 </script>
 
-# Leaf 全局配置
+# Globale Leaf Konfiguration
 
-以下 YAML 配置展示了 Leaf 全局配置 (`config/leaf-global.yml`) 的结构及其默认的值
+Diese YAML Konfiguration zeigt die standardmäßige Struktur der Konfigurationswerte der globalen Konfiguration von Leaf (`config/leaf-global.yml`)
 
-点击配置项后面的箭头按钮以显示其描述
+Klicke auf die Pfeile hinter den Konfigurationswerten, um die entsprechende Beschreibung anzusehen
 
-使用 `/leaf reload` 重载 Leaf 配置。但是目前 **不支持** 重载异步部分的配置。
+Ein Hot-Reload kann mit `/leaf reload` durchgeführt werden. Hot-Reload wird für asynchrone Optionen **nicht unterstützt**.
 
 <ConfigGroup :data />

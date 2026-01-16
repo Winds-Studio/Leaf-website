@@ -1,7 +1,9 @@
 # Entity Performans Karşılaştırması
 
 :::warning
+
 Bu sayfa, Leaf ve Paper sunucu uygulamaları arasında entity işleme için performans karşılaştırma verilerini sunar. Bu sonuçlar, belirli bir test senaryosunu temsil eder ve donanım, yapılandırma ve diğer faktörlere bağlı olarak değişiklik gösterebilir.
+
 :::
 
 <entity-performance-graph />
@@ -21,7 +23,7 @@ bukkit.yml dosyasında değiştirilen ayarlar:
 
 Diğer tüm yapılandırma dosyaları varsayılan ayarlarında kaldı. Bu test, yoğun sunucularda sıkça görülen yüksek entity sayılı bir senaryoyu simüle eder.
 
-### Leaf+Async Yapılandırması
+### Leaf + Async Yapılandırması
 
 leaf-global.yml dosyasında minimal asenkron seçenekler etkinleştirildi:
 

@@ -1,7 +1,9 @@
 # Entity Leistung Benchmark
 
 :::warning WARNUNG
+
 Diese Seite zeigt einen Leistungsvergleich zwischen Leaf und Paper für die Verarbeitung von Entities. Die Ergebnisse repräsentieren ein spezifisches Testszenario, welches sich je nach Hardware, Konfiguration und dem Seed der Welt unterscheiden kann.
+
 :::
 
 <entity-performance-graph />
@@ -21,7 +23,7 @@ Geänderte Einstellungen in bukkit.yml:
 
 Alle anderen Konfigurationen sind weiterhin die Standardwerte. Dieser Test simuliert ein Szenario mit sehr vielen Entities, das häufig auf stark ausgelasteten Servern auftritt.
 
-### Leaf+Async Konfiguration
+### Leaf + Async Konfiguration
 
 Minimale asynchrone Einstellungen wurden in leaf-global.yml aktiviert:
 
