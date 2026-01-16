@@ -2,7 +2,7 @@
 
 ## ❓ · Wie viel schneller ist Leaf als `"<irgendein anderer Paper-Fork>"`?
 
-Weitere Informationen finden Sie unter [Entity Performance](benchmark/entity-performance.md) und [Chunk gen/load Performance](benchmark/chunk-generation.md). In Zukunft werden wir detailliertere und verlässlichere Performance-Benchmarks bereitstellen!
+Weitere Informationen findest du unter [Entity Performance](benchmark/entity-performance.md) und [Chunk gen/load Performance](benchmark/chunk-generation.md). In Zukunft werden wir detailliertere und verlässlichere Performance-Benchmarks bereitstellen!
 
 ## ❓ · Unterstützt Leaf Spigot/Paper plugins?
 
