@@ -316,8 +316,6 @@ const config: ConfigRoot = {
                 __⚡Empfohlener Wert: \`true\`__`
         },
         dab: {
-            enabled: {
-                default: true,
                 __desc__:
                     "Dynamic Activation of Brain, auch bekannt als DAB, optimiert das 'Gehirn' (Brain) von Entities, indem die Frequenz ihres Brain-Tickings verringert wird, wenn sie weit von Spielern entfernt sind. Dies ist ein lohnender Kompromiss zur Leistungsverbesserung, wenn viele Entities vorhanden sind.",
                 enabled: {
@@ -371,7 +369,6 @@ const config: ConfigRoot = {
                     <br>
                     [💡 Du möchtest tiefer eintauchen?](guides/dab-blacklist-format)`
                 }
-            }
         },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
