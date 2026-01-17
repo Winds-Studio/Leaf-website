@@ -228,7 +228,7 @@ const config: ConfigRoot = {
                     Einige Survival-Server haben Mob-Farmen, die darauf angewiesen sind, dass Mobs ein Ziel haben. Diese Art von "Pfadfindungs"-Mob-Farm kann durch DAB beeinträchtigt werden. Diese Situation kann gelöst werden, indem spezifische Mobs der Mob-Farm zu dieser DAB-Blacklist hinzugefügt werden.<br>
                     Wenn bestimmte Mob-Farmen auf deinem Server defekt sind, Mobs einfrieren und sich nicht bewegen, und du nicht sicher bist, ob dies durch DAB verursacht wird, kannst du versuchen, sie zu dieser Liste hinzuzufügen, um zu sehen, ob das Problem dadurch behoben wird.<br>
                     <br>
-                    Format: \`[villager]\` oder \`[villager, zombified_piglin]\` (Du findest alle Entity-Typen in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/EntityType.html)).<br>
+                    Format: \`[villager]\` oder \`[villager, zombified_piglin]\` (Du findest alle Entity-Typen in [Paper's Javadoc](https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/EntityType.html)).<br>
                     <br>
                     [💡 Du möchtest tiefer eintauchen?](guides/dab-blacklist-format)`
             }
@@ -431,7 +431,7 @@ const config: ConfigRoot = {
         "skip-ai-for-non-aware-mob": {
             default: true,
             desc: `Ob AI-Ticks für Mobs, die sowohl *inaktiv* als auch *unaware* (nicht aufmerksam) sind, komplett übersprungen werden sollen.<br>
-                Nicht aufmerksame Mobs, die auf diese Weise optimiert wurden, führen keine eigenständigen Aktionen aus oder reagieren nicht, bis sie wieder aktiv werden, siehe [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.8/org/bukkit/entity/Mob.html#setAware(boolean)) für weitere Informationen.<br>
+                Nicht aufmerksame Mobs, die auf diese Weise optimiert wurden, führen keine eigenständigen Aktionen aus oder reagieren nicht, bis sie wieder aktiv werden, siehe [Mob.html#setAware(boolean)](https://jd.papermc.io/paper/1.21.11/org/bukkit/entity/Mob.html#setAware(boolean)) für weitere Informationen.<br>
                 <br>
                 __⚡Empfohlener Wert: \`true\`__
                 <table>
