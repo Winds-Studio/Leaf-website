@@ -24,11 +24,52 @@
 
 你可以使用 [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) 等工具检查你的机器是否支持 FMA 指令集。
 
-## -DLeaf.native-transport-type
+## -DLeaf.disable-vanilla-profiler
+
+- 默认值：`false`
+
+是否禁用 MC 内置的原版性能分析器，以略微提升性能。
+
+建议使用此 Flag 禁用分析器，因为在某些场景下它可能会造成不必要的性能开销。
+
+你可以使用 [Spark](https://spark.lucko.me/) 作为性能分析工具，除非你需要对你数据包的函数进行性能分析。
+
+请查阅 Spark 的文档以了解：
+
+- [如何使用 `/spark` 命令](https://spark.lucko.me/docs/Command-Usage)
+- [如何用 Spark 找出 TPS 瞬卡来源](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
+
+## -DLeaf.enable-io-uring
+
+- 默认值：`false`
+
+是否使用 io_uring 作为用于网络数据传输的 I/O 模型。
+
+需要在 `server.properties` 中开启 `use-native-transport`，并将 `network-compression-threshold` 设为 `-1`。
+
+如果当前运行环境不支持 io_uring，将自动回退到可用的 I/O 模型。
+
+## -Dgale.log.warning.root
+
+- 默认值：`true`
+
+当服务端以 root 用户或在特权模式下运行时，是否在开服时打印警告信息。
+
+## -Dgale.log.warning.offline.mode
+
+- 默认值：`true`
+
+当服务端为离线模式时（`server.properties` 中的 `online-mode` 为 `false`）时，是否在开服时打印警告信息。
+
+## 已弃用参数
+
+### -DLeaf.native-transport-type
+
+(仅存在于最新的 Leaf 1.21.8)
 
 - 默认值：`epoll`
 
-设置用于网络传输的网络 I/O 模型，需开启 server.properties 内的 `use-native-transport`.
+设置用于网络传输的网络 I/O 模型，需开启 `server.properties` 内的 `use-native-transport`.
 
 如果指定的传输类型不可用，将会切换至可用的模型。
 
@@ -37,8 +78,6 @@
 - Linux: `io_uring`, `epoll`, `nio`
 - MacOS: `kqueue`, `nio`
 - Windows: 不可用 (默认 `nio`)
-
-## 已弃用参数
 
 ### -DLeaf.nearestEntitySensorBucketCount
 
