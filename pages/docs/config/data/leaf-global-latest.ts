@@ -584,16 +584,6 @@ const config: ConfigRoot = {
                     default: "25.0",
                     desc: "The spawn chance of ambient water mobs (tropical fish) after reaching the `min-failed` value above."
                 }
-            },
-            misc: {
-                "min-failed": {
-                    default: 8,
-                    desc: "The minimum failed spawn attempt for misc entities."
-                },
-                "spawn-chance": {
-                    default: "25.0",
-                    desc: "The spawn chance of misc entities after reaching the `min-failed` value above."
-                }
             }
         },
         "create-snapshot-on-retrieving-blockstate": {

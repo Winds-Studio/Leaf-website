@@ -567,16 +567,6 @@ const config: ConfigRoot = {
                     default: "25.0",
                     desc: "Die Spawn-Chance für ambiente Wassermobs (Tropenfische) nach Erreichen des `min-failed`-Wertes oben."
                 }
-            },
-            misc: {
-                "min-failed": {
-                    default: 8,
-                    desc: "Die minimalen fehlgeschlagenen Spawn-Versuche für sonstige Entities."
-                },
-                "spawn-chance": {
-                    default: "25.0",
-                    desc: "Die Spawn-Chance für sonstige Entities nach Erreichen des `min-failed`-Wertes oben."
-                }
             }
         },
         "create-snapshot-on-retrieving-blockstate": {

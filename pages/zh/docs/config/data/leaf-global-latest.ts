@@ -586,16 +586,6 @@ const config: ConfigRoot = {
                     default: "25.0",
                     desc: "在达到上方的 `min-failed` 值后，热带鱼所使用的刷怪概率。"
                 }
-            },
-            misc: {
-                "min-failed": {
-                    default: 8,
-                    desc: "杂项实体生成失败次数超过此值时，将被限制生成频率。"
-                },
-                "spawn-chance": {
-                    default: "25.0",
-                    desc: "在达到上方的 `min-failed` 值后，杂项实体所使用的刷怪概率。"
-                }
             }
         },
         "create-snapshot-on-retrieving-blockstate": {
