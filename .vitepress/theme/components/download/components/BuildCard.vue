@@ -27,7 +27,7 @@ const props = defineProps<{
 
     <span class="date">
       <Icon icon="lucide:clock-4" />
-      {{ useDateFormat(build.time, "DD.MM.YYYY HH:mm") }}
+      {{ useDateFormat(build.time, "YYYY-MM-DD HH:mm") }}
       ({{ useTimeAgo(build.time) }})
     </span>
 
