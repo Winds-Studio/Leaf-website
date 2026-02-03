@@ -136,7 +136,7 @@ const config: ConfigRoot = {
                     </div>`
             },
             "async-unsafe-read-handling": {
-                default: "BUFFERED",
+                default: "DISABLED",
                 desc: `Ob asynchrone Aufgaben innerhalb des parallelen Ticking-Systems synchron ausgeführt werden sollen.<br>
                     Dies könnte für die Kompatibilität mit bestimmten Plugins erforderlich sein, macht jedoch die Leistungsvorteile des parallelen Tickings weitgehend zunichte.<br>
                     <br>

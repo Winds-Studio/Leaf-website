@@ -139,7 +139,7 @@ const config: ConfigRoot = {
                     </div>`
             },
             "async-unsafe-read-handling": {
-                default: "BUFFERED",
+                default: "DISABLED",
                 desc: `是否在 PWT 中以同步方式执行部分异步任务。<br>
                     这在解决插件兼容性问题上很有帮助，但会在很大程度上抵消 PWT 带来的性能收益。<br>
                     <br>
