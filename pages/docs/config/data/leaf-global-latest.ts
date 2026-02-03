@@ -160,6 +160,16 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`true\`__`
             }
         },
+        "despawn-time": {
+            "proactive-weak-loading-despawn": {
+                default: false,
+                desc: ""
+            },
+            "max-entity-to-process": {
+                default: 20,
+                desc: ""
+            }
+        },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
                 default: false,
@@ -241,6 +251,30 @@ const config: ConfigRoot = {
             desc: `Whether to cache the result of *Minecraft EntityType* to *Bukkit EntityType* conversion. This conversion can be somewhat expensive, especially in the spawning logic, so caching it can improve performance slightly.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
+        },
+        "entity-goal": {
+            chance: {
+                "nearest-attackable-target": {
+                    default: -1,
+                    desc: ""
+                },
+                "follow-parent": {
+                    default: -1,
+                    desc: ""
+                },
+                "avoid-entity": {
+                    default: -1,
+                    desc: ""
+                },
+                temptation: {
+                    default: -1,
+                    desc: ""
+                },
+                "enderman-look-for-player": {
+                    default: -1,
+                    desc: ""
+                }
+            }
         },
         "fast-biome-manager-seed-obfuscation": {
             enabled: {
@@ -329,6 +363,10 @@ const config: ConfigRoot = {
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 This may cause the inconsistent order of future compose tasks in rare edge cases, which may lead to different structure generation results.
                 </div>`
+        },
+        "reuse-random-ticking-blockpos": {
+            default: false,
+            desc: ""
         },
         "cache-biome": {
             enabled: {
@@ -634,6 +672,22 @@ const config: ConfigRoot = {
                 This option fixed [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>
                 <br>
                 If set to \`true\`, you should grant player \`purpur.joinfullserver\` permission rather than using \`PlayerLoginEvent#allow\` API to allow players to bypass the limit.`
+        },
+        "prevent-moving-into-weak-loaded-chunks": {
+            enabled: {
+                default: false,
+                desc: ""
+            },
+            projectiles: {
+                default: false,
+                desc: ""
+            }
+        },
+        "vanilla-bug-fix": {
+            "mc-270656": {
+                default: false,
+                desc: ""
+            }
         }
     },
 
