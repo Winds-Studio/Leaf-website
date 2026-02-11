@@ -258,22 +258,15 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: `Whether to use the faster random generator introduced in Java 17.<br>
+                desc: `Whether to use the faster random generator introduced in Java 17 (\`Xoroshiro128PlusPlus\`).<br>
                     Random is used almost everywhere in Minecraft, enabling this can get a decent performance improvement.<br>
                     <br>
                     __⚡Recommended value: \`true\`__<br>
                     <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
-                    This requires a JVM that supports \`RandomGenerator\`. Some JREs don't support it.
+                    This requires a JVM that supports \`Xoroshiro128PlusPlus\`. Some JREs don't support it.
                     </div>`
-            },
-            "random-generator": {
-                default: "Xoroshiro128PlusPlus",
-                desc: `The specific algorithm of the random generator should be used.<br>
-                    Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1) or [JEP 356](https://openjdk.org/jeps/356).<br>
-                    <br>
-                    __⚡Recommended value: \`Xoroshiro128PlusPlus\`__`
             },
             "enable-for-worldgen": {
                 default: false,
@@ -310,13 +303,6 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimization</i></td><td><code>false</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>true</code></td></tr>
                     </table>`
-            },
-            "use-direct-implementation": {
-                default: false,
-                desc: `Whether to use direct random implementation (LCG without synchronization) instead of delegating to Java's RandomGenerator.<br>
-                    This may improve performance, but potentially changes RNG behavior.<br>
-                    <br>
-                    __⚡Recommended value: \`false\`__`
             }
         },
         "faster-structure-gen-future-sequencing": {

@@ -258,22 +258,15 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: `是否使用 Java 17 中引入的更快的随机数生成器。<br>
+                desc: `是否使用 Java 17 中引入的更快的随机数生成器（\`Xoroshiro128PlusPlus\`）。<br>
                     随机数生成在 Minecraft 中几乎无处不在，此功能可以显著提升性能。<br>
                     <br>
                     __⚡推荐值：\`true\`__<br>
                     <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">注意</p>
-                    该功能需要使用 支持 \`RandomGenerator\` 的 JVM，部分 JRE 可能不支持。
+                    该功能需要使用 支持 \`Xoroshiro128PlusPlus\` 的 JVM，部分 JRE 可能不支持。
                     </div>`
-            },
-            "random-generator": {
-                default: "Xoroshiro128PlusPlus",
-                desc: `需要使用哪种随机数生成器算法？<br>
-                    可参阅 [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1) 或 [JEP 356](https://openjdk.org/jeps/356)，了解所有可用的随机数生成器。<br>
-                    <br>
-                    __⚡推荐值：\`Xoroshiro128PlusPlus\`__`
             },
             "enable-for-worldgen": {
                 default: false,
@@ -310,13 +303,6 @@ const config: ConfigRoot = {
                     <tr><td><i>优化</i></td><td><code>false</code></td></tr>
                     <tr><td><i>原版行为</i></td><td><code>true</code></td></tr>
                     </table>`
-            },
-            "use-direct-implementation": {
-                default: false,
-                desc: `是否使用直接的随机数实现（不带同步的 LCG），而不是委托给 Java 的 随机数生成器<br>
-                    这可能进一步提升性能，但也可能改变随机数行为。<br>
-                    <br>
-                    __⚡推荐值：\`false\`__`
             }
         },
         "faster-structure-gen-future-sequencing": {
