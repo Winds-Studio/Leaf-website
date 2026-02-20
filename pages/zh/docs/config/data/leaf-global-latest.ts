@@ -617,16 +617,9 @@ const config: ConfigRoot = {
         }
     },
 
-    fixes: {
-        __desc__: "本节包含对特定问题的修复。",
-        "dont-place-player-if-server-full": {
-            default: false,
-            desc: `是否在服务器已满时禁止玩家加入（“已满”由 \`server.properties\` 中的 \`max-players\` 定义）。<br>
-                此配置项修复了 [Paper#10668](https://github.com/PaperMC/Paper/issues/10668)。<br>
-                <br>
-                如果设为 \`true\`，应给予玩家 \`purpur.joinfullserver\` 权限，以允许玩家绕过人数上限，而不是使用 \`PlayerLoginEvent#allow\` API 来放行玩家。`
-        }
-    },
+    // fixes: {
+    //     __desc__: "本节包含对特定问题的修复。",
+    // },
 
     "gameplay-mechanisms": {
         __desc__: "本节包含修改或改进游戏机制的相关功能。",
@@ -958,26 +951,6 @@ const config: ConfigRoot = {
 
     misc: {
         __desc__: "本节包含一些杂项功能。",
-        cache: {
-            "profile-lookup": {
-                enabled: {
-                    default: false,
-                    desc: `是否在玩家加入服务器时缓存其 Profile 数据（例如 UUID、用户名、皮肤 / 披风材质）。<br>
-                        这可以减少对 Mojang 认证服务器的网络请求，同时在认证服务器宕机时，玩家仍可以凭借缓存的 Profile 数据重新加入服务器。`
-                },
-                timeout: {
-                    default: 1440,
-                    desc: `玩家 Profile 数据缓存的有效时间。<br>
-                        （单位：分钟，默认值 1440 分钟 = 24 小时）<br>
-                        超过该时间后，玩家下次加入服务器时将重新向 Mojang 认证服务器请求 Profile 数据。`
-                },
-                "max-size": {
-                    default: 8192,
-                    desc: `允许缓存的最大玩家 Profile 数据数量。<br>
-                        较高的值会占用略多的内存。`
-                }
-            }
-        },
         "connection-message": {
             __desc__: `玩家连接提示，当玩家加入或离开服务器时广播发送给所有在线玩家。<br>
                 该消息需要使用 [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) 格式。<br>

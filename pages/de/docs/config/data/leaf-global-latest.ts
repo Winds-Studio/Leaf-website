@@ -595,16 +595,9 @@ const config: ConfigRoot = {
         }
     },
 
-    fixes: {
-        __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
-        "dont-place-player-if-server-full": {
-            default: false,
-            desc: `Ob Spielern der Beitritt verweigert werden soll, wenn der Server voll ist (definiert als \`max-players\` in \`server.properties\`).<br>
-                Diese Option behebt [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>
-                <br>
-                Wenn auf \`true\` gesetzt, solltest du Spielern die Berechtigung \`purpur.joinfullserver\` geben, anstatt die \`PlayerLoginEvent#allow\` API zu verwenden, um Spielern das Umgehen des Limits zu erlauben.`
-        }
-    },
+    // fixes: {
+    //     __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
+    // },
 
     "gameplay-mechanisms": {
         __desc__: "Dieser Abschnitt enthält Funktionen, die die Spielmechanik modifizieren oder verbessern.",
@@ -923,25 +916,6 @@ const config: ConfigRoot = {
 
     misc: {
         __desc__: "Dieser Abschnitt enthält einige sonstige Funktionen.",
-        cache: {
-            "profile-lookup": {
-                enabled: {
-                    default: false,
-                    desc: `Ob Profil-Datenabfragen (Skins, Texturen usw.) zwischengespeichert (gecached) werden sollen, um API-Aufrufe an Mojang zu reduzieren.<br>
-                        Dies ermöglicht es Spielern, dem Server unter Verwendung gecachter Daten wieder beizutreten, selbst wenn der Mojang-Authentifizierungsserver vorübergehend nicht verfügbar ist.`
-                },
-                timeout: {
-                    default: 1440,
-                    desc: `Der Timeout des Profil-Daten-Caches.<br>
-                        Sobald gecachte Profildaten nach dem Timeout ablaufen, wird der Cache ungültig, und der Server ruft das Profil erneut vom Mojang-Server ab, um sicherzustellen, dass die Profildaten aktualisiert sind.<br>
-                        (Einheit: Minute, Standardwert 1440 Minuten = 24 Stunden)`
-                },
-                "max-size": {
-                    default: 8192,
-                    desc: "Die maximale Anzahl an Profilen, die gecached werden sollen."
-                }
-            }
-        },
         "connection-message": {
             __desc__: `Die Verbindungsnachricht wird an alle Online-Spieler gesendet, wenn sie dem Server beitreten oder ihn verlassen.<br>
                 Die Nachricht muss das [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/)-Format verwenden.<br>

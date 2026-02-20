@@ -612,16 +612,9 @@ const config: ConfigRoot = {
         }
     },
 
-    fixes: {
-        __desc__: "This section contains bug fixes for specific issues.",
-        "dont-place-player-if-server-full": {
-            default: false,
-            desc: `Whether to disallow players from joining if the server is full (defined as \`max-players\` in \`server.properties\`).<br>
-                This option fixed [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>
-                <br>
-                If set to \`true\`, you should grant player \`purpur.joinfullserver\` permission rather than using \`PlayerLoginEvent#allow\` API to allow players to bypass the limit.`
-        }
-    },
+    // fixes: {
+    //     __desc__: "This section contains bug fixes for specific issues.",
+    // },
 
     "gameplay-mechanisms": {
         __desc__: "This section contains the features that modify or improve the game mechanics.",
@@ -953,25 +946,6 @@ const config: ConfigRoot = {
 
     misc: {
         __desc__: "This section contains some miscellaneous features.",
-        cache: {
-            "profile-lookup": {
-                enabled: {
-                    default: false,
-                    desc: `Whether to cache profile data lookups (skins, textures, etc.) to reduce API calls to Mojang.<br>
-                        This allows players to rejoin the server using cached data even if Mojang's authentication server is temporarily unavailable.`
-                },
-                timeout: {
-                    default: 1440,
-                    desc: `The timeout of the profile lookup cache.<br>
-                        Once a cached profile data expires after the timeout, the cache of it becomes invalid, and the server will re-fetch the profile from the Mojang server to ensure the profile data is updated.<br>
-                        (Unit: minute, default value 1440 minutes = 24 hours)`
-                },
-                "max-size": {
-                    default: 8192,
-                    desc: "The maximum number of profiles to cache."
-                }
-            }
-        },
         "connection-message": {
             __desc__: `The connection message broadcasts to all online players when they join or quit the server.<br>
                 The message needs to use the [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) format.<br>
