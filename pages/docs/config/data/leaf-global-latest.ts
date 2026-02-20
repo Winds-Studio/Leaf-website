@@ -139,7 +139,7 @@ const config: ConfigRoot = {
                     </div>`
             },
             "async-unsafe-read-handling": {
-                default: "BUFFERED",
+                default: "DISABLED",
                 desc: `Whether to run asynchronous tasks synchronously within the parallel ticking system.<br>
                     This might be needed for plugin compatibility with certain plugins, but it largely negates the performance benefits of parallel ticking.<br>
                     <br>
@@ -292,22 +292,15 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: `Whether to use the faster random generator introduced in Java 17.<br>
+                desc: `Whether to use the faster random generator introduced in Java 17 (\`Xoroshiro128PlusPlus\`).<br>
                     Random is used almost everywhere in Minecraft, enabling this can get a decent performance improvement.<br>
                     <br>
                     __⚡Recommended value: \`true\`__<br>
                     <br>
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Attention</p>
-                    This requires a JVM that supports \`RandomGenerator\`. Some JREs don't support it.
+                    This requires a JVM that supports \`Xoroshiro128PlusPlus\`. Some JREs don't support it.
                     </div>`
-            },
-            "random-generator": {
-                default: "Xoroshiro128PlusPlus",
-                desc: `The specific algorithm of the random generator should be used.<br>
-                    Available random generators can be found in [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1) or [JEP 356](https://openjdk.org/jeps/356).<br>
-                    <br>
-                    __⚡Recommended value: \`Xoroshiro128PlusPlus\`__`
             },
             "enable-for-worldgen": {
                 default: false,
@@ -344,13 +337,6 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimization</i></td><td><code>false</code></td></tr>
                     <tr><td><i>Vanilla behavior</i></td><td><code>true</code></td></tr>
                     </table>`
-            },
-            "use-direct-implementation": {
-                default: false,
-                desc: `Whether to use direct random implementation (LCG without synchronization) instead of delegating to Java's RandomGenerator.<br>
-                    This may improve performance, but potentially changes RNG behavior.<br>
-                    <br>
-                    __⚡Recommended value: \`false\`__`
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -666,13 +652,6 @@ const config: ConfigRoot = {
 
     fixes: {
         __desc__: "This section contains bug fixes for specific issues.",
-        "dont-place-player-if-server-full": {
-            default: false,
-            desc: `Whether to disallow players from joining if the server is full (defined as \`max-players\` in \`server.properties\`).<br>
-                This option fixed [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>
-                <br>
-                If set to \`true\`, you should grant player \`purpur.joinfullserver\` permission rather than using \`PlayerLoginEvent#allow\` API to allow players to bypass the limit.`
-        },
         "prevent-moving-into-weak-loaded-chunks": {
             enabled: {
                 default: false,
@@ -1021,25 +1000,6 @@ const config: ConfigRoot = {
 
     misc: {
         __desc__: "This section contains some miscellaneous features.",
-        cache: {
-            "profile-lookup": {
-                enabled: {
-                    default: false,
-                    desc: `Whether to cache profile data lookups (skins, textures, etc.) to reduce API calls to Mojang.<br>
-                        This allows players to rejoin the server using cached data even if Mojang's authentication server is temporarily unavailable.`
-                },
-                timeout: {
-                    default: 1440,
-                    desc: `The timeout of the profile lookup cache.<br>
-                        Once a cached profile data expires after the timeout, the cache of it becomes invalid, and the server will re-fetch the profile from the Mojang server to ensure the profile data is updated.<br>
-                        (Unit: minute, default value 1440 minutes = 24 hours)`
-                },
-                "max-size": {
-                    default: 8192,
-                    desc: "The maximum number of profiles to cache."
-                }
-            }
-        },
         "connection-message": {
             __desc__: `The connection message broadcasts to all online players when they join or quit the server.<br>
                 The message needs to use the [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/) format.<br>

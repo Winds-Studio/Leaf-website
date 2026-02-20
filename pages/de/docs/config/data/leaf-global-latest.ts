@@ -136,7 +136,7 @@ const config: ConfigRoot = {
                     </div>`
             },
             "async-unsafe-read-handling": {
-                default: "BUFFERED",
+                default: "DISABLED",
                 desc: `Ob asynchrone Aufgaben innerhalb des parallelen Ticking-Systems synchron ausgeführt werden sollen.<br>
                     Dies könnte für die Kompatibilität mit bestimmten Plugins erforderlich sein, macht jedoch die Leistungsvorteile des parallelen Tickings weitgehend zunichte.<br>
                     <br>
@@ -255,21 +255,14 @@ const config: ConfigRoot = {
         "faster-random-generator": {
             enabled: {
                 default: false,
-                desc: `Ob der schnellere Zufallsgenerator (Random Generator), der in JDK 17 eingeführt wurde, verwendet werden soll.<br>
+                desc: `Ob der schnellere Zufallsgenerator (Random Generator), der in JDK 17 eingeführt wurde, verwendet werden soll (\`Xoroshiro128PlusPlus\`).<br>
                     Zufall wird fast überall in Minecraft verwendet; dies zu aktivieren kann eine ordentliche Leistungsverbesserung bringen.<br>
                     <br>
                     __⚡Empfohlener Wert: \`true\`__
                     <div class="tip custom-block">
                     <p class="custom-block-title custom-block-title-default">Achtung</p>
-                    Dies erfordert eine JVM, die \`RandomGenerator\` unterstützt. Einige JREs unterstützen dies nicht.
+                    Dies erfordert eine JVM, die \`Xoroshiro128PlusPlus\` unterstützt. Einige JREs unterstützen dies nicht.
                     </div>`
-            },
-            "random-generator": {
-                default: "Xoroshiro128PlusPlus",
-                desc: `Der spezifische Algorithmus des Zufallsgenerators, der verwendet werden soll.<br>
-                    Verfügbare Zufallsgeneratoren findest du unter [Random Number Generators in Java](https://www.baeldung.com/java-17-random-number-generators#1-api-design-1) oder [JEP 356](https://openjdk.org/jeps/356).<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`Xoroshiro128PlusPlus\`__`
             },
             "enable-for-worldgen": {
                 default: false,
@@ -301,13 +294,6 @@ const config: ConfigRoot = {
                     <tr><td><i>Optimierung</i></td><td><code>false</code></td></tr>
                     <tr><td><i>Vanilla-Verhalten</i></td><td><code>true</code></td></tr>
                     </table>`
-            },
-            "use-direct-implementation": {
-                default: false,
-                desc: `Ob eine direkte Random-Implementierung (LCG ohne Synchronisation) verwendet werden soll, anstatt an Javas RandomGenerator zu delegieren.<br>
-                    Dies kann die Leistung verbessern, ändert aber möglicherweise das RNG-Verhalten.<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`false\`__`
             }
         },
         "faster-structure-gen-future-sequencing": {
@@ -609,16 +595,9 @@ const config: ConfigRoot = {
         }
     },
 
-    fixes: {
-        __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
-        "dont-place-player-if-server-full": {
-            default: false,
-            desc: `Ob Spielern der Beitritt verweigert werden soll, wenn der Server voll ist (definiert als \`max-players\` in \`server.properties\`).<br>
-                Diese Option behebt [Paper#10668](https://github.com/PaperMC/Paper/issues/10668).<br>
-                <br>
-                Wenn auf \`true\` gesetzt, solltest du Spielern die Berechtigung \`purpur.joinfullserver\` geben, anstatt die \`PlayerLoginEvent#allow\` API zu verwenden, um Spielern das Umgehen des Limits zu erlauben.`
-        }
-    },
+    // fixes: {
+    //     __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
+    // },
 
     "gameplay-mechanisms": {
         __desc__: "Dieser Abschnitt enthält Funktionen, die die Spielmechanik modifizieren oder verbessern.",
@@ -937,25 +916,6 @@ const config: ConfigRoot = {
 
     misc: {
         __desc__: "Dieser Abschnitt enthält einige sonstige Funktionen.",
-        cache: {
-            "profile-lookup": {
-                enabled: {
-                    default: false,
-                    desc: `Ob Profil-Datenabfragen (Skins, Texturen usw.) zwischengespeichert (gecached) werden sollen, um API-Aufrufe an Mojang zu reduzieren.<br>
-                        Dies ermöglicht es Spielern, dem Server unter Verwendung gecachter Daten wieder beizutreten, selbst wenn der Mojang-Authentifizierungsserver vorübergehend nicht verfügbar ist.`
-                },
-                timeout: {
-                    default: 1440,
-                    desc: `Der Timeout des Profil-Daten-Caches.<br>
-                        Sobald gecachte Profildaten nach dem Timeout ablaufen, wird der Cache ungültig, und der Server ruft das Profil erneut vom Mojang-Server ab, um sicherzustellen, dass die Profildaten aktualisiert sind.<br>
-                        (Einheit: Minute, Standardwert 1440 Minuten = 24 Stunden)`
-                },
-                "max-size": {
-                    default: 8192,
-                    desc: "Die maximale Anzahl an Profilen, die gecached werden sollen."
-                }
-            }
-        },
         "connection-message": {
             __desc__: `Die Verbindungsnachricht wird an alle Online-Spieler gesendet, wenn sie dem Server beitreten oder ihn verlassen.<br>
                 Die Nachricht muss das [MiniMessage](https://docs.papermc.io/adventure/minimessage/format/)-Format verwenden.<br>
