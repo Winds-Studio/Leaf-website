@@ -171,5 +171,48 @@ export default {
                 { text: "🌿 贡献", link: "/zh/docs/dev/contributing" }
             ]
         }
+    ],
+    '/ru/docs/': [
+        {
+            text: "Введение",
+            items: [
+                { text: "Начало работы", link: "/ru/docs" },
+                { text: "Часто Задаваемые Вопросы", link: "/ru/docs/faq" },
+                { text: "Полезные сайты", link: "/ru/docs/useful-sites" }
+            ]
+        },
+        {
+            text: "Тесты производительности",
+            items: [
+                { text: "Производительность сущностей", link: "/ru/docs/benchmark/entity-performance" },
+                { text: "Генерация чанков", link: "/ru/docs/benchmark/chunk-generation" }
+            ]
+        },
+        {
+            text: "Конфигурация",
+            items: [
+                { text: "Глобальные настройки Leaf", link: "/ru/docs/config/leaf-global" },
+                { text: "Глобальные настройки Gale", link: "/ru/docs/config/gale-global" },
+                { text: "Настройки мира по умолчанию (Gale)", link: "/ru/docs/config/gale-world-defaults" },
+                { text: "JVM-флаги Leaf", link: "/ru/docs/config/system-properties" }
+            ]
+        },
+        {
+            text: "Руководства",
+            items: [
+                // { text: "Настройка Sentry", link: "/ru/docs/how-to/setup-sentry" }, // TODO
+                // { text: "Оптимизация вашего сервера Leaf", link: "/ru/docs/how-to/optimize-leaf-server" }, // TODO
+                // { text: "JVM-флаги для серверов", link: "/ru/docs/how-to/java-flags" } // TODO
+            ]
+        },
+        {
+            text: "Разработка",
+            items: [
+                { text: "Руководство по разработке с Leaf", link: "/ru/docs/dev" },
+                { text: "Leaf API", link: "/ru/docs/dev/api" },
+                //{ text: "Build", link: "/docs/dev/build" } // TODO
+                { text: "🌿 Участие в разработке Leaf", link: "/ru/docs/dev/contributing" }
+            ]
+        }
     ]
 };
