@@ -159,6 +159,20 @@ const config: ConfigRoot = {
                     __⚡推荐值：\`true\`__`
             }
         },
+        "despawn-time": {
+            "proactive-weak-loading-despawn": {
+                default: false,
+                desc: `是否启用对弱加载实体的主动消失检查。<br>
+                    这可以帮助缓解在弱加载区块中加载和 tick 大量累积的实体而导致的卡顿。<br>
+                    <br>
+                    __⚡推荐值：\`true\`__<br>
+                    <br>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">实验性功能</p>
+                    实验性功能，正在积极测试中，如遇到问题请反馈。
+                    </div>`
+            }
+        },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
                 default: false,
@@ -242,6 +256,44 @@ const config: ConfigRoot = {
                 <br>
                 __⚡推荐值：\`true\`__`
         },
+        "entity-goal": {
+            "start-tick-chance": {
+                __desc__: `常见生物的意向执行尝试的检查频率。<br>
+                    在原版中，生物会在每 tick 检查是否可以开始执行某个意向，随后执行意向任务。通过增加下方配置项的数值来降低检查频率，可以显著提高性能，但可能会对游戏体验有轻微影响。<br>
+                    如果设为 \`-1\`，则遵循原版的 tick 频率。<br>
+                    <br>
+                    __⚡推荐值:__
+                    <table>
+                    <thead><tr><th>生物</th><th>开始 Tick 的频率</th></tr></thead>
+                    <tbody>
+                    <tr><td>nearest-attackable-target</td><td>20</td></tr>
+                    <tr><td>follow-parent</td><td>20</td></tr>
+                    <tr><td>avoid-entity</td><td>20</td></tr>
+                    <tr><td>temptation</td><td>20</td></tr>
+                    <tr><td>enderman-look-for-player</td><td>20</td></tr>
+                    </tbody></table>`,
+                "nearest-attackable-target": {
+                    default: -1,
+                    desc: "实体检查是否能执行 __最近的可攻击目标__ 意向的频率。"
+                },
+                "follow-parent": {
+                    default: -1,
+                    desc: "实体检查是否能执行 __跟随父母__ 意向的频率。"
+                },
+                "avoid-entity": {
+                    default: -1,
+                    desc: "实体检查是否能执行 __远离特定生物__ 意向的频率。"
+                },
+                temptation: {
+                    default: -1,
+                    desc: "实体检查是否能执行 __跟随手持指定物品玩家__ 意向的频率。"
+                },
+                "enderman-look-for-player": {
+                    default: -1,
+                    desc: "末影人检查是否能执行 __被玩家注视__ 意向的频率。"
+                }
+            }
+        },
         "fast-biome-manager-seed-obfuscation": {
             enabled: {
                 default: false,
@@ -314,6 +366,18 @@ const config: ConfigRoot = {
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">注意</p>
                 在可能存在的边缘情况下，这可能会导致结构生成任务的合并顺序不一致，从而引起结构生成结果和原版有差异。
+                </div>`
+        },
+        "reuse-random-ticking-blockpos": {
+            default: false,
+            desc: `是否在随机方块 tick 时是否复用部分 BlockPos 实例<br>
+                这可以在大量随机方块 tick 时略微减少内存分配和 GC 开销。<br>
+                <br>
+                __⚡推荐值：\`false\`__<br>
+                <br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">实验性功能</p>
+                实验性功能，正在积极测试中，可能与某些插件冲突或导致方块 tick 的位置偏移。请谨慎使用，并报告任何遇到的问题。
                 </div>`
         },
         "cache-biome": {
@@ -617,9 +681,28 @@ const config: ConfigRoot = {
         }
     },
 
-    // fixes: {
-    //     __desc__: "本节包含对特定问题的修复。",
-    // },
+    fixes: {
+        __desc__: "本节包含对特定问题的修复。",
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "是否阻止实体进入弱加载区块。",
+            enabled: {
+                default: false,
+                desc: "设为 `true` 以启用以下功能。"
+            },
+            projectiles: {
+                default: false,
+                desc: "是否阻止弹射物进入弱加载区块。"
+            }
+        },
+        "vanilla-bug-fix": {
+            __desc__: "本节包含对 Minecraft 原版的问题修复。",
+            "mc-270656": {
+                default: false,
+                desc: `是否修复 \`还要啥火箭啊？\` 进度触发的错误检查逻辑。<br>
+                    Mojira 问题跟踪链接：[MC-270656](https://mojira.dev/MC-270656).`
+            }
+        }
+    },
 
     "gameplay-mechanisms": {
         __desc__: "本节包含修改或改进游戏机制的相关功能。",
