@@ -26,7 +26,7 @@ Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeb
 
 ## -DLeaf.disable-vanilla-profiler
 
-* Standard: `false`
+- Standard: `false`
 
 Ob der eingebaute Vanilla-Profiler von Minecraft deaktiviert werden soll, um die Leistung leicht zu verbessern.
 
@@ -34,12 +34,12 @@ Es wird empfohlen, ihn zu deaktivieren, da er in manchen Szenarien Leistung vers
 
 Lies die Dokumentation von Spark, um zu lernen:
 
-* [Wie man den `/spark` Befehl verwendet](https://spark.lucko.me/docs/Command-Usage)
-* [Wie man Lag-Spikes mit Spark findet](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
+- [Wie man den `/spark` Befehl verwendet](https://spark.lucko.me/docs/Command-Usage)
+- [Wie man Lag-Spikes mit Spark findet](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
 
 ## -DLeaf.enable-io-uring
 
-* Standard: `false`
+- Standard: `false`
 
 Ob `io_uring` für das I/O-Modell der Netzwerkdatenübertragung verwendet werden soll. Erfordert, dass `use-native-transport` aktiviert ist und `network-compression-threshold` in `server.properties` auf `-1` gesetzt ist.
 
@@ -47,13 +47,13 @@ Wenn `io_uring` in der aktuellen Umgebung nicht verfügbar ist, wird auf ein ver
 
 ## -Dgale.log.warning.root
 
-* Standard: `true`
+- Standard: `true`
 
 Ob beim Serverstart eine Warnmeldung ausgegeben werden soll, wenn der Server unter dem Root-Benutzer oder im privilegierten Modus läuft.
 
 ## -Dgale.log.warning.offline.mode
 
-* Standard: `true`
+- Standard: `true`
 
 Ob beim Serverstart eine Warnmeldung ausgegeben werden soll, wenn der Server im Offline-Modus läuft (`online-mode` ist `false` in `server.properties`).
 
