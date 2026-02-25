@@ -1,11 +1,11 @@
 {
     "devDependencies": {
-        "@vueuse/core": "^14.2.0",
+        "@vueuse/core": "^14.2.1",
         "prettier": "3.8.1",
         "sass": "^1.97.3",
-        "semver": "^7.7.3",
+        "semver": "^7.7.4",
         "vitepress": "1.6.4",
-        "vue": "^3.5.27"
+        "vue": "^3.5.29"
     },
     "scripts": {
         "dev": "vitepress dev",
@@ -14,8 +14,8 @@
     },
     "dependencies": {
         "@iconify/vue": "^5.0.0",
-        "markdown-it": "^14.1.0",
+        "markdown-it": "^14.1.1",
         "typescript": "^5.9.3"
     },
-    "packageManager": "pnpm@10.28.2+sha512.41872f037ad22f7348e3b1debbaf7e867cfd448f2726d9cf74c08f19507c31d2c8e7a11525b983febc2df640b5438dee6023ebb1f84ed43cc2d654d2bc326264"
+    "packageManager": "pnpm@10.30.2+sha512.36cdc707e7b7940a988c9c1ecf88d084f8514b5c3f085f53a2e244c2921d3b2545bc20dd4ebe1fc245feec463bb298aecea7a63ed1f7680b877dc6379d8d0cb4"
 }
