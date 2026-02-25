@@ -160,6 +160,20 @@ const config: ConfigRoot = {
                     __⚡Recommended value: \`true\`__`
             }
         },
+        "despawn-time": {
+            "proactive-weak-loading-despawn": {
+                default: false,
+                desc: `Whether to enable proactive despawn check for weak-loaded entities.<br>
+                    This can help reduce lag caused by loading and ticking a large amount of cumulative entities left in weak-loaded chunks.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__<br>
+                    <br>
+                    <div class="warning custom-block">
+                    <p class="custom-block-title custom-block-title-default">Experimental</p>
+                    Experimental feature, actively testing, please report any bugs you encounter.
+                    </div>`
+            }
+        },
         "dont-save-entity": {
             "dont-save-primed-tnt": {
                 default: false,
@@ -242,6 +256,44 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
+        "entity-goal": {
+            "start-tick-chance": {
+                __desc__: `How often are the common mob goal attempts calculated.<br>
+                    In vanilla, the goal checks every tick whether the goal can start. By increasing the values below to throttle the checks, which can improve performance significantly, but may have minor gameplay implications.<br>
+                    If set to \`-1\`, it follows the tick frequency as vanilla does.<br>
+                    <br>
+                    __⚡Recommended values:__
+                    <table>
+                    <thead><tr><th>Entity Goal</th><th>Start Tick Chance</th></tr></thead>
+                    <tbody>
+                    <tr><td>nearest-attackable-target</td><td>20</td></tr>
+                    <tr><td>follow-parent</td><td>20</td></tr>
+                    <tr><td>avoid-entity</td><td>20</td></tr>
+                    <tr><td>temptation</td><td>20</td></tr>
+                    <tr><td>enderman-look-for-player</td><td>20</td></tr>
+                    </tbody></table>`,
+                "nearest-attackable-target": {
+                    default: -1,
+                    desc: "How often does the __nearest attackable target__ goal attempt to start running for an entity."
+                },
+                "follow-parent": {
+                    default: -1,
+                    desc: "How often does the __follow parent__ goal attempt to start running for an entity."
+                },
+                "avoid-entity": {
+                    default: -1,
+                    desc: "How often does the __avoid entity__ goal attempt to start running for an entity."
+                },
+                temptation: {
+                    default: -1,
+                    desc: "How often does the __temptation__ goal attempt to start running for an entity."
+                },
+                "enderman-look-for-player": {
+                    default: -1,
+                    desc: "How often does the __look for player__ goal attempt to start running for an enderman."
+                }
+            }
+        },
         "fast-biome-manager-seed-obfuscation": {
             enabled: {
                 default: false,
@@ -314,6 +366,18 @@ const config: ConfigRoot = {
                 <div class="tip custom-block">
                 <p class="custom-block-title custom-block-title-default">Attention</p>
                 This may cause the inconsistent order of future compose tasks in rare edge cases, which may lead to different structure generation results.
+                </div>`
+        },
+        "reuse-random-ticking-blockpos": {
+            default: false,
+            desc: `Whether to reuse part of the blockpos instance during random block ticking.<br>
+                This can avoid unnecessary memory allocation and reduce GC overhead slightly during a large amount of random block ticking.<br>
+                <br>
+                __⚡Recommended value: \`false\`__<br>
+                <br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing. It may conflict with some plugins or cause ticking positions to be offset. Please use with caution and report any bugs you encounter.
                 </div>`
         },
         "cache-biome": {
@@ -612,9 +676,28 @@ const config: ConfigRoot = {
         }
     },
 
-    // fixes: {
-    //     __desc__: "This section contains bug fixes for specific issues.",
-    // },
+    fixes: {
+        __desc__: "This section contains bug fixes for specific issues.",
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "Whether to prevent entities from moving into weak-loaded chunks.",
+            enabled: {
+                default: false,
+                desc: "Set this to `true` to be able to use options below."
+            },
+            projectiles: {
+                default: false,
+                desc: "Whether to prevent projectiles from moving into weak-loaded chunks."
+            }
+        },
+        "vanilla-bug-fix": {
+            __desc__: "This section contains fixes for vanilla Minecraft bugs.",
+            "mc-270656": {
+                default: false,
+                desc: `Whether to fix incorrect granting of \`Who needs rockets?\` advancement.<br>
+                    Mojira link: [MC-270656](https://mojira.dev/MC-270656).`
+            }
+        }
+    },
 
     "gameplay-mechanisms": {
         __desc__: "This section contains the features that modify or improve the game mechanics.",
