@@ -34,6 +34,18 @@ export default defineConfig({
                 ]
             }
         },
+        aze: {
+            label: "Azərbaycanca",
+            lang: "aze",
+            // Azerbaijani navigation
+            themeConfig: {
+                nav: [
+                    { text: "Ana Səhifə", link: "/aze/" },
+                    { text: "Yüklə", link: "/aze/download" },
+                    { text: "Sənədlər", link: "/aze/docs/getting-started", activeMatch: "/aze/docs/getting-started" }
+                ]
+            }
+        },
         tr: {
             label: "Türkçe",
             lang: "tr",
