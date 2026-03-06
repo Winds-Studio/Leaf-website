@@ -9,10 +9,10 @@ const data = {
 }
 </script>
 
-# Gale Genel Yapılandırma
+# Gale Ümumi Konfiqurasiya
 
-Aşağıdaki YAML yapılandırması, Gale'in genel yapılandırma dosyasının (`config/gale-global.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
+Aşağıdakı YAML konfiqurasiyası, Gale-in ümumi konfiqurasiya faylının (`config/gale-global.yml`) quruluşunu və varsayılan konfiqurasiya dəyərlərini göstərir.
 
-Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.
+Konfiqurasiya qovşağının arxasındakı ox düyməsinə vuraraq əlaqəli izahatı görə bilərsiniz.
 
 <ConfigGroup :data />

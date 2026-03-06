@@ -1,30 +1,30 @@
-# Leaf ile Sentry Kurulumu
+# Leaf ilə Sentry Qurulumu
 
-[Sentry](https://sentry.io/), gerçek zamanlı hata izleme ve performans izleme için güçlü bir servistir. Leaf sunucunuzla entegre edilmesi, hataları ve istisnaları otomatik olarak yakalamanızı sağlar, bu da sunucunuzda ortaya çıkan sorunları teşhis etmeyi ve düzeltmeyi çok daha kolay hale getirir.
+[Sentry](https://sentry.io/), real vaxt xəta izləmə və performans izləmə üçün güclü bir xidmətdir. Leaf serverinizlə inteqrasiya edilməsi, xətaları və istisnaları avtomatik olaraq yaxalamanızı təmin edir, bu da serverinizdə ortaya çıxan problemları diaqnoz etməyi və düzəltməyi çox daha asan edir.
 
-Bu rehber, Leaf'in Sentry projenize hata raporları göndermesi için nasıl yapılandırılacağını açıklar.
+Bu rəhbər, Leaf'in Sentry layihənizə xəta hesabatları göndərməsi üçün necə konfiqurasiya ediləcəyini izah edir.
 
-## Ön Koşullar
+## Əvvəl Şərtlər
 
-1. **Sentry Hesabı:** [sentry.io](https://sentry.io/) üzerinde bir hesabınızın olması gerekir. Birçok sunucu için uygun ücretsiz katmanlar sunarlar.
-2. **Sentry Projesi:** Sentry organizasyonunuz içinde yeni bir proje oluşturun.
-    - Platform seçimi istendiğinde, **Java**'yı seçin. Eğer Java hemen görünmüyorsa, "Diğer" seçeneğini seçebilir veya aratabilirsiniz. Belirli platform seçimi, genellikle Sentry tarafındaki başlangıç kurulum talimatlarını etkiler, ancak Leaf entegrasyonu kendisi halleder.
-3. **DSN (Veri Kaynağı Adı):** Projeniz oluşturulduktan sonra, proje ayarlarına gidin. "Client Keys (DSN)" bölümünü bulun. DSN dizesini kopyalayın – bu bir URL gibi görünür (örneğin, `https://xxxxxxxxxxxxxxxxxxxxxxxx@o######.ingest.sentry.io/#######`).
+1. **Sentry Hesabı:** [sentry.io](https://sentry.io/) üzərində bir hesabınızın olması lazımdır. Bir çox server üçün uyğun pulsuz qatmanlar təklif edirlər.
+2. **Sentry Layihəsi:** Sentry təşkilatınız daxilində yeni bir layihə yaradın.
+    - Platform seçimi istəndikdə, **Java**'yı seçin. Əgər Java dərhal görünmürsə, "Digər" seçimini seçə bilər və ya axtara bilərsiniz. Müəyyən platform seçimi, adətən Sentry tərəfindəki başlanğıc qurulum təlimatlarını təsir edir, lakin Leaf inteqrasiyası özü həll edir.
+3. **DSN (Veri Mənbəyi Adı):** Layihəniz yaradıldıqdan sonra, layihə ayarlarına gidin. "Client Keys (DSN)" bölməsini tapın. DSN sətrini köçürün – bu URL kimi görünür (məsələn, `https://xxxxxxxxxxxxxxxxxxxxxxxx@o######.ingest.sentry.io/#######`).
 
-## Yapılandırma Adımları
+## Konfiqurasiya Addımları
 
-1. **Leaf Yapılandırmasını Bulun:** Ana Leaf sunucu yapılandırma dosyasını açın. Bu genellikle sunucunuzun kök dizininde veya `config` alt klasöründe bulunan `leaf-global.yml` dosyasıdır.
+1. **Leaf Konfiqurasiyasını Tapın:** Ana Leaf server konfiqurasiya faylını açın. Bu adətən serverinizin kök qovluğunda və ya `config` alt qovluğunda yerləşən `leaf-global.yml` faylıdır.
 
-2. **Sentry Bölümünü Bulun:** Yapılandırma dosyası içinde `sentry:` bölümünü bulun. Varsayılan olarak bu bölüm aşağıdaki gibi görünür:
+2. **Sentry Bölməsini Tapın:** Konfiqurasiya faylı daxilində `sentry:` bölməsini tapın. Susmaya görə bu bölmə aşağıdakı kimi görünür:
 
     ```yaml
     sentry:
-        # Geliştirilmiş hata günlüğü için Sentry DSN, devre dışı bırakmak için boş bırakın,
+        # İnkişaf etmiş xəta jurnalı üçün Sentry DSN, söndürmək üçün boş buraxın,
         # https://sentry.io/ adresinden alın
         dsn: ""
-        # Bu seviye veya daha yüksek seviyedeki günlükler kaydedilecektir.
+        # Bu səviyyə və ya daha yüksək səviyyədəki jurnallar qeyd ediləcəkdir.
         log-level: WARN
-        # Bunu etkinleştirdikten sonra yalnızca Throwable içeren günlükler kaydedilecektir.
+        # Bunu aktiv etdikdən sonra yalnız Throwable ehtiva edən jurnallar qeyd ediləcəkdir.
         only-log-thrown: true
     ```
 

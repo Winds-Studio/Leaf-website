@@ -9,8 +9,8 @@ import DownloadPage from '../../.vitepress/theme/components/download/DownloadPag
 const { lang } = useData();
 const router = useRouter();
 
-// Farklı bir dil yolundaysa yönlendirme yap
-if (lang.value !== 'tr' && window.location.pathname === '/download' && !window.location.pathname.includes(`/${lang.value}/download`)) {
+// Fərqli bir dil yolundadırsa yönləndirmə et
+if (lang.value !== 'aze' && window.location.pathname === '/download' && !window.location.pathname.includes(`/${lang.value}/download`)) {
   router.go(`/${lang.value}/download`);
 }
 </script>

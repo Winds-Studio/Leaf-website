@@ -1,7 +1,7 @@
-# 🌿 Leaf'e Katkıda Bulunma
+# 🌿 Leaf'ə Töhfə Verme
 
-Leaf, projelerimize katkıda bulunmak istediğiniz için mutlu! Genellikle gönderilen tüm PR'lara (çekme taleplerine) karşı oldukça esnek davranırız, ancak onay sürecini daha sorunsuz hale getirmek için takip edebileceğiniz bazı yönergeler vardır.
+Leaf, layihələrimizə töhfə vermək istədiyiniz üçün məmnun! Adətən göndərilən bütün PR'lara (çəkmə istəklərinə) qarşı olduqca davranırıq, lakin təsdiq prosesini daha problemsiz etmək üçün izləyə biləcəyiniz bəzi rəhbərliklər var.
 
-1.21.4+ için, Paper'ın [CONTRIBUTING.md](https://github.com/PaperMC/Paper/blob/main/CONTRIBUTING.md) dosyasına bakın.
+1.21.4+ üçün, Paper'ın [CONTRIBUTING.md](https://github.com/PaperMC/Paper/blob/main/CONTRIBUTING.md) faylına baxın.
 
-Daha düşük sürümler için, Paper-archive'in [CONTRIBUTING.md](https://github.com/PaperMC/Paper-archive/blob/ver/1.21.1/CONTRIBUTING.md) dosyasına bakın.
+Daha aşağı versiyalar üçün, Paper-archive'in [CONTRIBUTING.md](https://github.com/PaperMC/Paper-archive/blob/ver/1.21.1/CONTRIBUTING.md) faylına baxın.

@@ -42,9 +42,9 @@ java {
 
 ## Dev Bundle
 
-Dev bundle, paperweight tarafından sağlanan bir araçtır ve eklenti geliştirme sırasında Minecraft NMS koduna kolayca erişmenizi sağlar. Kurulumu ve daha fazla detay için [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/) adresine bakın.
+Dev bundle, paperweight tərəfindən təmin edilən bir alətdir və plugin inkişafı zamanı Minecraft NMS koduna asanlıqla çıxışınızı təmin edir. Qurulumu və daha çox detallar üçün [paperweight-userdev](https://docs.papermc.io/paper/dev/userdev/) ünvanına baxın.
 
-Leaf tarafından sağlanan dev bundle'ı kullanabilmek için, yukarıdaki öğreticide belirtilen bağımlılıkta aşağıdaki değişiklikleri yapmanız gerekir.
+Leaf tərəfindən təmin edilən dev bundle'ı istifadə edə bilmək üçün, yuxarıdakı təlimatda göstərilən asılılıqda aşağıdakı dəyişiklikləri etməlisiniz.
 
 ::: code-group
 

@@ -1,5 +1,5 @@
-# Leaf Geliştirme Rehberi
+# Leaf İnkişaf Rəhbəri
 
-Leaf Geliştirme Rehberi'ne hoş geldiniz!
+Leaf İnkişaf Rəhbəri'ne xoş gəldiniz!
 
-Bu bölümde, Leaf kaynağından çalıştırılabilir JAR dosyası oluşturmayı ve derlemeyi, Leaf API tabanlı eklenti oluşturmayı ve hatta Leaf'e katkıda bulunmayı öğrenebilirsiniz!
+Bu bölmədə, Leaf mənbəyindən işlədilə bilən JAR faylı yaratmağı və kompilyasiya etməyi, Leaf API əsaslı plugin yaratmağı və hətta Leaf'ə töhfə verməyi öyrənə bilərsiniz!

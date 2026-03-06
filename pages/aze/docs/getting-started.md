@@ -1,15 +1,15 @@
-# Leaf Dokümanlarına Hoş Geldiniz
+# Leaf Sənədlərinə Xoş Gəlmisiniz
 
-:::warning YAPIM AŞAMASINDA
-Bu doküman sitesi aktif olarak geliştirilmektedir!
-Daha fazla bilgi için [Discord sunucumuza](https://discord.gg/gfgAwdSEuM) katılın.
+:::warning HAZIRLAMA MƏRHƏLƏSİNDƏ
+Bu sənəd saytı aktiv şəkildə inkişaf edir!
+Daha çox məlumat üçün [Discord serverimizə](https://discord.gg/gfgAwdSEuM) qoşulun.
 :::
 
-Leaf, performans, vanilla deneyimi ve stabilite arasında denge kuran bir Paper fork'udur. Büyük ağlar ve yüksek kapasiteli durumlar için tasarlanmıştır.
+Leaf, performans, vanilla təcrübəsi və stabillik arasında tarazlıyan quran Paper fork'udur. Böyük şəbəkələr və yüksək tutumlu hallar üçün nəzərdə tutulmuşdur.
 
-Bu dokümanlar, Leaf'i yapılandırma, geliştirme vb. konularda rehberler içerir.
+Bu sənədlər, Leaf-i konfiqurasiya, inkişaf və s. kimi mövzularda rəhbərlər ehtiva edir.
 
-## 📫 İletişim
+## 📫 Əlaqə
 
 - **Discord:** [`https://discord.com/invite/gfgAwdSEuM`](https://discord.com/invite/gfgAwdSEuM)
-- **Topluluk QQ Grubu:** `619278377`
+- **Topluluq QQ Qrupu:** `619278377`

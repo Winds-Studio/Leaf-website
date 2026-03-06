@@ -1,20 +1,20 @@
-# Sunucular için Java Bayrakları
+# Serverlər üçün Java Bayraqları
 
-## Başlamadan Önce: Temel Uygulamalar
+## Başlamamışdan Əvvəl: Əsas Tətbiqlər
 
-Doğru optimizasyon, sistematik bir yaklaşım gerektirir. **Ayrıntılı adımlar için ["Leaf Sunucunuzu Optimize Edin"](../how-to/optimize-leaf-server.md) rehberine bakın.** Özetle, her zaman:
+Doğru optimizasiya, sistematik yanaşma tələb edir. **Ətraflı addımlar üçün ["Leaf Serverinizi Optimize Edin"](../how-to/optimize-leaf-server.md) rəhbərinə baxın.** Qısacası, hər zaman:
 
-1. **Sunucunuzu Yedekleyin:** Herhangi bir değişiklik yapmadan önce her şeyi yedekleyin. (Bu rehber için mutlaka gerekli olmasa da iyi bir alışkanlıktır.)
-2. **Profil Oluşturun, Tahmin Etmeyin:** Ayarları değiştirmeden önce gerçek darboğazları (düşük TPS, gecikme artışları) belirlemek için [Spark](https://spark.lucko.me/) gibi araçlar kullanın. Bağlantılı belge, Spark'ı genel gecikme ve belirli artışlar için nasıl kullanacağınızı detaylandırır.
-3. **Kademeli Değişiklik Yapın:** Aynı anda yalnızca birkaç ilgili ayarı değiştirin, ardından yeniden başlatın ve test edin.
+1. **Serverinizi Yedəkləyin:** Hər hansı bir dəyişiklik etməmişdən əvvəl hər şeyi yedəkləyin. (Bu rəhbər üçün mütləq lazım olmasa da yaxşı bir vərdişdir.)
+2. **Profil Yaradın, Təxmin Etməyin:** Ayarları dəyişməmişdən əvvəl real darboğazları (aşağı TPS, gecikmə artışları) təyin etmək üçün [Spark](https://spark.lucko.me/) kimi alətlərdən istifadə edin. Bağlı sənəd, Spark'ı ümumi gecikmə və müəyyən artışlar üçün necə istifadə edəcəyinizi təfərruatlandırır.
+3. **Mərhələli Dəyişiklik Edin:** Eyni vaxtda yalnız bir neçə əlaqəli ayarı dəyişdirin, sonra yenidən başladın və test edin.
 
-## Java Çalışma Zamanı Ortamınızı (JRE/JDK) Seçme
+## Java Çalışma Zamanı Mühitinizin (JRE/JDK) Seçimi
 
-- **Öneri:** İstenen GC seçeneklerini (G1GC standarttır, ZGC ve Shenandoah çoğu büyük yapıda yaygındır, ancak satıcıya göre biraz farklılık gösterebilir) içeren, saygın bir OpenJDK satıcısından yakın tarihli bir Java 21 Uzun Süreli Destek (LTS) sürümünü kullanın. İyi seçenekler şunlardır:
-    - **Adoptium Eclipse Temurin:** Saf OpenJDK ikilik dosyaları sağlayan, topluluk destekli, yaygın olarak önerilen bir yapı [3].
-    - **Amazon Corretto:** Uzun süreli destekle, üretim için hazır OpenJDK dağıtımı [4].
-    - **GraalVM (OpenJDK tabanlı):** Gelişmiş Graal Just-In-Time (JIT) derleyicisiyle potansiyel performans avantajları sunar. Ancak, standart HotSpot JVM'lerden farklı davranabilir ve uyumluluk sorunları yaratabilir. GraalVM seçerseniz kapsamlı test yapın [6]. **GraalVM kullanmak, daha sonra tartışılan belirli JIT ayar seçeneklerini etkinleştirir.**
-- **Kaçının:** Minecraft sunucularının ihtiyaç duyabileceği bileşenlerden yoksun olabilecek başsız (headless) varyantları (genellikle `-headless` sonekli). Tam JDK (Java Geliştirme Kiti) kullanın.
+- **Tövsiyə:** İstənilən GC seçimlərini (G1GC standartdır, ZGC və Shenandoah əksər böyük quruluşda yayğındır, lakin satıcıya görə bir az fərqlilik göstərə bilər) ehtiva edən, hörmət edilən bir OpenJDK satıcısından son dövr bir Java 21 Uzun Müddətli Dəstək (LTS) versiyasından istifadə edin. Yaxşı seçimlər bunlardır:
+    - **Adoptium Eclipse Temurin:** Saf OpenJDK ikili faylları təmin edən, icma dəstəkli, geniş şəkildə tövsiyə edilən bir quruluş [3].
+    - **Amazon Corretto:** Uzun müddətli dəstəklə, istehsal üçün hazır OpenJDK distribusiyası [4].
+    - **GraalVM (OpenJDK əsaslı):** İnkişaf etmiş Graal Just-In-Time (JIT) kompilyatoru ilə potensial performans üstünlükləri təqdim edir. Lakin, standart HotSpot JVM'lərdən fərqli davranışa bilər və uyğunluq problemləri yarada bilər. GraalVM seçsəniz geniş test edin [6]. **GraalVM istifadə etmək, sonra müzakirə edilən müəyyən JIT ayar seçimlərini aktiv edir.**
+- **Çəkinin:** Minecraft serverlarının ehtiyac duyabileyi komponentlərdən məhrum ola biləcək başsız (headless) variantları (adətən `-headless` sonluqlu). Tam JDK (Java İnkişaf Kitindən) istifadə edin.
 
 ## Java Başlangıç Bayrakları (JVM Argümanları) - Çöp Toplama
 
@@ -186,13 +186,13 @@ JVM ayarı çok önemliyken, **sunucu yazılımı yapılandırması da aynı der
 - **Ana Alanlar:** Görünüm mesafesi, simülasyon mesafesi, canavar oluşturma sınırları/oranları, varlık etkinleştirme aralıkları (AI/tik yükünü ve ayırmaları azaltmak için kritik), parça yükleme/oluşturma ayarları, huni davranışı ve asenkron işlemler (işi ana iş parçacığından uzaklaştırma). Bu ayarlar için Paper [15] ve Purpur [16] dokümantasyonuna bakın.
 - **Eylem:** **Bu dosyaları ihmal etmeyin.** Kullandığınız sunucu yazılımının dokümantasyonuna bakın. **Leaf'in özel ayarları (`leaf-global.yml`) için ayrıntılı rehber için ["Leaf Sunucunuzu Optimize Edin"](../how-to/optimize-leaf-server.md) rehberine geri dönün.** Profil oluşturma sonuçlarını (Spark) kullanarak hangi oyun yönlerinin (genellikle yüksek ayırmayla ilişkili) bu yapılandırmalarda ayarlanması gerektiğini belirleyin.
 
-## Test, Yineleme ve Yardım Arama
+## Test, Təkrar və Kömək Axtarış
 
-- **Yeniden Başlatın:** Değişiklikleri uygulamak için sunucuyu yeniden başlatın.
-- **İzleyin:** Performansı, GC davranışını ve ayırma hızlarını kontrol etmek için `/spark tps`, `/spark profiler` ve `/spark gcmonitor` kullanın.
-- **Gözlemleyin:** Oyun hatalarını veya beklenmedik davranışları izleyin.
-- **Ayar Yapın:** Sorunlar ortaya çıkarsa değişiklikleri geri alın. Profil oluşturma verilerine göre ayarları ince ayar yapın. Optimizasyon yinelemelidir.
-- **Topluluk:** Sorunlarla karşılaşırsanız ilgili Discord sunucularında (PaperMC, Purpur, Leaf) yardım isteyin.
+- **Yenidən Başladın:** Dəyişiklikləri tətbiq etmək üçün serveri yenidən başladın.
+- **İzləyin:** Performansı, GC davranışını və ayırma sürətlərini yoxlamaq üçün `/spark tps`, `/spark profiler` və `/spark gcmonitor` istifadə edin.
+- **Gözləyin:** Oyun xətalarını və ya gözlənilməz davranışları izləyin.
+- **Ayar Edin:** Problemlar ortaya çıxıbsa dəyişiklikləri geri alın. Profil yaratma məlumatlarına görə ayarları incə edin. Optimizasiya təkrar prosesidir.
+- **İcma:** Problemlarla qarşılaşırsınız əlaqəli Discord serverlərində (PaperMC, Purpur, Leaf) kömək istəyin.
 
 ## Referanslar
 

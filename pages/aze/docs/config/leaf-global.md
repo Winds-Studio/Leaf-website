@@ -9,12 +9,12 @@ const data = {
 }
 </script>
 
-# Leaf Genel Yapılandırma
+# Leaf Ümumi Konfiqurasiya
 
-Aşağıdaki YAML yapılandırması, Leaf'in genel yapılandırma dosyasının (`config/leaf-global.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
+Aşağıdakı YAML konfiqurasiyası, Leaf-in ümumi konfiqurasiya faylının (`config/leaf-global.yml`) quruluşunu və varsayılan konfiqurasiya dəyərlərini göstərir.
 
-Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.
+Konfiqurasiya qovşağının arxasındakı ox düyməsinə vuraraq əlaqəli izahatı görə bilərsiniz.
 
-`/leaf reload` komutunu kullanarak sıcak yeniden yükleme yapabilirsiniz. Asenkron modüller için sıcak yeniden yükleme **desteklenmez**.
+`/leaf reload` əmri istifadə edərək isti yenidən yükləmə edə bilərsiniz. Asinxron modullar üçün isti yenidən yükləmə **dəstəklənmir**.
 
 <ConfigGroup :data />

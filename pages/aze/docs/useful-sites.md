@@ -1,9 +1,9 @@
-# Yararlı Web Siteleri
+# Faydalı Veb Saytları
 
-İşte Minecraft sunucu yönetimi hakkında daha fazla bilgi edinebileceğiniz bir dizi web sitesi. Bu siteleri Leaf dokümanlarıyla birlikte okumanız önerilir.
+Minecraft server idarəsi haqqında daha çox məlumat əldə edə biləcəyiniz bir sıra veb saytlar. Bu saytları Leaf sənədləri ilə birlikdə oxumanız tövsiyə olunur.
 
-## Web Siteleri Listesi
+## Veb Saytlarının Siyahısı
 
-- [Paper Dokümanları](https://docs.papermc.io/paper)
-- [Purpur Dokümanları](https://purpurmc.org/docs/purpur/)
-- [Paper-chan optimizasyon rehberi](https://paper-chan.moe/paper-optimization/)
+- [Paper Sənədləri](https://docs.papermc.io/paper)
+- [Purpur Sənədləri](https://purpurmc.org/docs/purpur/)
+- [Paper-chan optimizasiya rəhbəri](https://paper-chan.moe/paper-optimization/)

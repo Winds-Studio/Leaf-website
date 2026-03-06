@@ -1,10 +1,10 @@
-# Leaf Sunucunuzu Optimize Edin (1.21.4/5)
+# Leaf Serverinizi Optimize Edin (1.21.4/5)
 
-**Başlamadan Önce:**
+**Başlamamışdan Əvvəl:**
 
-1. **SUNUCUNUZU YEDEKLEYİN!** Ciddi anlamda. Yapılandırmaları, özellikle deneysel olanları değiştirmeden önce dünyanızı, eklentilerinizi ve yapılandırmalarınızı yedekleyin.
-2. **Profil Oluşturun, Tahmin Etmeyin:** Optimizasyon, varsayımlarla değil, verilerle en etkili şekilde yapılır. [Spark](https://spark.lucko.me/) gibi bir profil oluşturma aracı kullanarak sunucunuzda _gerçekten_ neyin gecikmeye neden olduğunu belirleyin. Ayarları rastgele değiştirmeyin; önce darboğazı bulun!
-    - **Genel Düşük TPS/Gecikme İçin:** Eğer sunucunuz sürekli olarak 20 TPS'nin altında çalışıyorsa, standart profil oluşturucuyu kullanın:
+1. **SERVERİNİZİ YEDEKLƏYİN!** Ciddi mənada. Konfiqurasiyaları, xüsusilə eksperimental olanları dəyişməmişdən əvvəl dünyanızı, pluginlərinizi və konfiqurasiyalarınızı yedəkləyin.
+2. **Profil Yaradın, Təxmin Etməyin:** Optimizasiya, fərziyyələrlə deyil, məlumatlarla ən effektiv şəkildə edilir. [Spark](https://spark.lucko.me/) kimi bir profil yaratma alətindən istifadə edərək serverinizdə _həqiqətən_ nəyin gecikməyə səbəb olduğunu təyin edin. Ayarları təsadüfi dəyişməyin; əvvəlcə darboqazı tapın!
+    - **Ümumi Aşağı TPS/Gecikmə üçün:** Əgər serveriniz daimi olaraq 20 TPS'nin altında işləyirsə, standart profil yaradıcıdan istifadə edin:
         1. Konsolda veya operatör olarak `/spark profiler start` komutunu çalıştırın.
         2. Tipik sunucu etkinliği sırasında veya TPS düşükken birkaç dakika çalışmasına izin verin.
         3. `/spark profiler stop` komutunu çalıştırın.
@@ -15,8 +15,8 @@
         3. `/spark profiler stop` komutunu çalıştırın.
         4. Raporu analiz edin. Bu, gecikmeli tikler sırasında sunucunun tam olarak ne yaptığını gösterir. Çağrı ağacında yüksek yüzdeli yöntemleri/işlemleri arayın. Bu, donmanın doğrudan nedenini (örneğin, belirli bir eklenti olayı, dünya oluşturma, aşırı varlık işleme) belirlemeye yardımcı olur.
     - **Değiştirmeden Önce Analiz Edin:** Profil oluşturma sonuçlarını kullanarak yapılandırma değişikliklerinize yön verin. Eğer Spark, varlık yol bulmaya işaret ediyorsa, `async-pathfinding` ayarlarına odaklanın. Eğer parça yüklemeye işaret ediyorsa, görünüm mesafelerine veya `async-chunk-send` ayarlarına bakın.
-3. **Kademeli Değişiklik Yapın:** Aynı anda yalnızca birkaç ilgili ayarı değiştirin, ardından sunucuyu yeniden başlatın ve test edin. Bu, bir değişikliğin sorun çıkarıp çıkarmadığını veya performansı iyileştirip iyileştirmediğini belirlemeyi kolaylaştırır.
-4. **Açıklamaları Okuyun:** Yapılandırma dosyasının kendisi, her seçenek için ayrıntılı açıklamalar (`desc`) içerir. Bunları dikkatlice okuyun!
+3. **Mərhələli Dəyişiklik Edin:** Eyni vaxtda yalnız bir neçə əlaqəli ayarı dəyişdirin, sonra serveri yenidən başladın və test edin. Bu, bir dəyişikliyin problem yaradıb-yaratmadığını və ya performansı yaxşılaşdırıb-yaxşılaşdırmadığını təyin etməyi asanlaşdırır.
+4. **İzahatları Oxuyun:** Konfiqurasiya faylının özü, hər seçim üçün ətraflı izahatlar (`desc`) ehtiva edir. Bunları diqqətlə oxuyun!
 
 ## `leaf-global.yml` Dosyasındaki Ana Optimizasyon Alanları
 
@@ -123,13 +123,13 @@ Bu bölüm, çeşitli hedeflenmiş optimizasyonlar içerir.
 
 Leaf, Gale, Purpur ve Paper üzerine inşa edilmiştir. Birçok önemli performans ayarı, bu yazılımların yapılandırma dosyalarında bulunur (`gale-global.yml`, `gale-world-defaults.yml`, `purpur.yml`, `paper-global.yml`, `paper-world-defaults.yml`).
 
-Bu ayarları optimize etmek için ilgili belgelerine ([Kullanışlı Web Siteleri](../useful-sites.md) bağlantılarında) ve topluluk rehberlerine (örneğin, Paper-chan'ın rehberi) bakın.
+Bu ayarları optimize etmək üçün əlaqəli sənədlərinə ([Faydalı Veb Saytları](../useful-sites.md) linklərində) və icma rəhbərlərinə (məsələn, Paper-chan'ın rəhbəri) baxın.
 
-## Test ve Yineleme
+## Test və Təkrar
 
-- Değişiklik yaptıktan sonra sunucuyu **yeniden başlatın**.
-- Normal oyun sırasında performansı izlemek için `/spark tps` ve daha önemlisi `/spark profiler` kullanın.
-- **Oynanışı gözlemleyin:** Canavarlar doğru davranıyor mu? Yeni hatalar var mı?
-- **Ayar yapın:** Performans iyileşmediyse veya sorunlar ortaya çıktıysa, son değişiklikleri geri alın veya ayarları daha fazla ince ayar yapın. Optimizasyon genellikle sunucunuzun özel yüküne ve donanımına göre deneme-yanılma sürecidir.
+- Dəyişiklik etdikdən sonra serveri **yenidən başladın**.
+- Normal oyun zamanı performansı izləmək üçün `/spark tps` və daha əhəmiyyətlisi `/spark profiler` istifadə edin.
+- **Oyunçanı izləyin:** Canavarlar doğru davranırmı? Yeni xətalar var?
+- **Ayar edin:** Performans yaxşılaşmadısa və ya problemlar ortaya çıxıbsa, son dəyişiklikləri geri alın və ya ayarları daha çox incə edin. Optimizasiya adətən serverinizin xüsusi yükünə və avadanlığına görə sınaq-xəta prosesidir.
 
-Sorun yaşarsanız veya sorularınız olursa, [Leaf Discord sunucusunda](https://discord.com/invite/gfgAwdSEuM) sormaktan çekinmeyin. İyi şanslar!
+Problem yaşayırsınız və ya suallarınız varsa, [Leaf Discord serverində](https://discord.com/invite/gfgAwdSEuM) soruşmaqdan çəkinməyin. Uğurlar!

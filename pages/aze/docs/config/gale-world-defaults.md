@@ -9,10 +9,10 @@ const data = {
 }
 </script>
 
-# Gale Dünya Varsayılan Yapılandırma
+# Gale Dünya Varsayılan Konfiqurasiya
 
-Aşağıdaki YAML yapılandırması, Gale'in dünya varsayılan yapılandırma dosyasının (`config/gale-world-defaults.yml`) yapısını ve varsayılan yapılandırma değerlerini gösterir.
+Aşağıdakı YAML konfiqurasiyası, Gale-in dünya varsayılan konfiqurasiya faylının (`config/gale-world-defaults.yml`) quruluşunu və varsayılan konfiqurasiya dəyərlərini göstərir.
 
-Yapılandırma düğümünün arkasındaki ok düğmesine tıklayarak ilgili açıklamayı görebilirsiniz.
+Konfiqurasiya qovşağının arxasındakı ox düyməsinə vuraraq əlaqəli izahatı görə bilərsiniz.
 
 <ConfigGroup :data />

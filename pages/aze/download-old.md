@@ -9,8 +9,8 @@ import OldDownloadPage from '../../.vitepress/theme/components/download/old/OldD
 const { lang } = useData();
 const router = useRouter();
 
-// Farklı bir dil yolundaysa yönlendirme yap
-if (lang.value !== 'tr' && window.location.pathname === '/download-old' && !window.location.pathname.includes(`/${lang.value}/download-old`)) {
+// Fərqli bir dil yolundadırsa yönləndirmə et
+if (lang.value !== 'aze' && window.location.pathname === '/download-old' && !window.location.pathname.includes(`/${lang.value}/download-old`)) {
   router.go(`/${lang.value}/download-old`);
 }
 </script>

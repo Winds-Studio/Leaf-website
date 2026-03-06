@@ -1,31 +1,31 @@
-# Entity Performans Karşılaştırması
+# Entity Performans Müqayisəsi
 
 :::warning
 
-Bu sayfa, Leaf ve Paper sunucu uygulamaları arasında entity işleme için performans karşılaştırma verilerini sunar. Bu sonuçlar, belirli bir test senaryosunu temsil eder ve donanım, yapılandırma ve diğer faktörlere bağlı olarak değişiklik gösterebilir.
+Bu səhifə, Leaf və Paper server proqramları arasında entity emalı üçün performans müqayisə məlumatlarını təqdim edir. Bu nəticələr, müəyyən bir test senariyasını təmsil edir və avadanlıq, konfiqurasiya və digər amillərdən asılı olaraq dəyişiklik göstərə bilər.
 
 :::
 
 <entity-performance-graph />
 
-## Test Yapılandırması
+## Test Konfiqurasiyası
 
-### Varsayılan Ayarlar Yapılandırması
+### Varsayılan Ayarlar Konfiqurasiyası
 
-Her iki sunucu, bukkit.yml, spigot.yml ve diğer yapılandırma dosyalarında varsayılan ayarlarla test edildi. Bu temel test, tipik sunucu koşulları altında performansı temsil eder.
+Hər iki server, bukkit.yml, spigot.yml və digər konfiqurasiya fayllarında varsayılan ayarlarla test edildi. Bu əsas test, tipik server şərtləri altında performansı təmsil edir.
 
-### Artırılmış Canavar Sınırları Yapılandırması
+### Artırılmış Canavar Hədləri Konfiqurasiyası
 
-bukkit.yml dosyasında değiştirilen ayarlar:
+bukkit.yml faylında dəyişdirilən ayarlar:
 
 - monsters: 70 → 700
 - animals: 10 → 100
 
-Diğer tüm yapılandırma dosyaları varsayılan ayarlarında kaldı. Bu test, yoğun sunucularda sıkça görülen yüksek entity sayılı bir senaryoyu simüle eder.
+Digər bütün konfiqurasiya faylları varsayılan ayarlarında qaldı. Bu test, intensiv serverlərdə tez-tez görünən yüksək entity sayılı bir senariyanı simulyasiya edir.
 
-### Leaf + Async Yapılandırması
+### Leaf + Async Konfiqurasiyası
 
-leaf-global.yml dosyasında minimal asenkron seçenekler etkinleştirildi:
+leaf-global.yml faylında minimal asinxron seçənəklər aktiv edildi:
 
 ```yaml
 async:
