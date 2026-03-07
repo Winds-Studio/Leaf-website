@@ -1,6 +1,6 @@
 # Chunk Yaratma Müqayisəsi
 
-:::warning
+:::warning ÖNƏMLİ
 Bu səhifə, Leaf və Paper server proqramları arasında chunk yaratma vəzifələri üçün performans müqayisə məlumatlarını təqdim edir. Bu nəticələr, müəyyən bir test senariyasını təmsil edir və avadanlıq, konfiqurasiya və müəyyən dünya toxumlarından asılı olaraq dəyişiklik göstərə bilər.
 :::
 

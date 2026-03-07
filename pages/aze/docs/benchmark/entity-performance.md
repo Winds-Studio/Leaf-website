@@ -1,6 +1,6 @@
 # Entity Performans Müqayisəsi
 
-:::warning
+::::::warning ÖNƏMLİ
 
 Bu səhifə, Leaf və Paper server proqramları arasında entity emalı üçün performans müqayisə məlumatlarını təqdim edir. Bu nəticələr, müəyyən bir test senariyasını təmsil edir və avadanlıq, konfiqurasiya və digər amillərdən asılı olaraq dəyişiklik göstərə bilər.
 

@@ -47,13 +47,13 @@ Bu xüsusiyyətin işləməsi üçün `use-native-transport` aktiv olmalı və `
 
 Mövcud iş mühitində io_uring istifadə edilə bilmirsə, avtomatik olaraq dəstəklənən başqa bir modelə geri dönülür.
 
-## -Dgale.log.warning.root
+## -Dgale.log.:::warning ÖNƏMLİ.root
 
 - varsayılan: `true`
 
 Server root istifadəçi və ya imtiyazlı (privileged) modda işləyirsə, server başladılarken bir xəbərdarlıq mesajı yazdırılıb-yazdırılmayacağını təyin edir.
 
-## -Dgale.log.warning.offline.mode
+## -Dgale.log.:::warning ÖNƏMLİ.offline.mode
 
 - varsayılan: `true`
 
