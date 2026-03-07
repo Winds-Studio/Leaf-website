@@ -260,5 +260,50 @@ export const translations = {
             download: "İndir",
             history: "Build Geçmişi"
         }
+    },
+    aze: {
+        loading: {
+            versions: "Mövcud versiyalar yüklənir...",
+            download: "Yükləmə faylları axtarılır...",
+            builds: "Quruluş tarixçəsi yüklənir..."
+        },
+        error: {
+            versions: "GitHub'dan branch'lər yüklənə bilmədi. Zəhmət olmasa sonra yenidən cəhd edin.",
+            download: "Bu versiya üçün yükləmə tapılmadı.",
+            builds: "Quruluş tarixçəsi tapılmadı."
+        },
+        actions: {
+            retry: "Yenidən Cəhd Et",
+            refresh: "Yenilə",
+            showMore: "Daha Çox Göstər",
+            showLess: "Daha Az Göstər",
+            viewOnGitHub: "GitHub'da Bax",
+            viewRelease: "GitHub'da release'i bax",
+            viewBranch: "Bu branch'i GitHub'da bax",
+            download: "Yüklə"
+        },
+        versionStatus: {
+            dead: "Bu Leaf versiyası **dəstəklənmir** və heç bir bugfix almayacaq. **Öz riskinizlə istifadə edin!**",
+            eol: "Bu Leaf versiyası **end-of-life** durumunda və yalnız kritik bugfix'lər alacaq. Ən son versiyaya yeniləyin, daha yaxşı performans əldə edin!",
+            stable: "Bu Leaf versiyası **aktiv olaraq dəstəklənir** və müntəzəm update'lər ilə bugfix'lər alır.",
+            dev: "Bu Leaf versiyası **eksperimental**dir və qeyri-sabit xüsusiyyətlər ya da bug'lar ehtiva edə bilər. Production istifadəsi üçün tövsiyə edilmir."
+        },
+        labels: {
+            version: "Minecraft Versiyası",
+            noVersions: "Mövcud versiya tapılmadı",
+            buildHistory: "Quruluş Tarixçəsi",
+            date: "Tarix",
+            commit: "Commit",
+            action: "Action'ı Bax",
+            unknown: "Bəlli deyil",
+            releaseNotes: "Release Qeydləri",
+            description: "Yüksək performanslı Minecraft server proqramı"
+        },
+        tabs: {
+            download: "Yüklə",
+            history: "Quruluş Tarixçəsi"
+        },
+        "old-download-page": "Köhnə yükləmə səhifəsinə keç",
+        "new-download-page": "Yeni yükləmə səhifəsinə keç"
     }
 };

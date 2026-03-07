@@ -88,6 +88,49 @@ export default {
             ]
         }
     ],
+    "/aze/docs/": [
+        {
+            text: "Giriş",
+            items: [
+                { text: "Başlanğıc", link: "/aze/docs/getting-started" },
+                { text: "Tez-tez Soruşulan Suallar", link: "/aze/docs/faq" },
+                { text: "Faydalı Veb Saytları", link: "/aze/docs/useful-sites" }
+            ]
+        },
+        {
+            text: "Benchmarks",
+            items: [
+                { text: "Entity Performans Müqayisəsi", link: "/aze/docs/benchmark/entity-performance" },
+                { text: "Chunk Yaratma Müqayisəsi", link: "/aze/docs/benchmark/chunk-generation" }
+            ]
+        },
+        {
+            text: "Konfiqurasiya",
+            items: [
+                { text: "Leaf Ümumi Konfiqurasiya", link: "/aze/docs/config/leaf-global" },
+                { text: "Gale Ümumi Konfiqurasiya", link: "/aze/docs/config/gale-global" },
+                { text: "Gale Dünya Varsayılan Konfiqurasiya", link: "/aze/docs/config/gale-world-defaults" },
+                { text: "Leaf JVM Bayraqları", link: "/aze/docs/config/system-properties" }
+            ]
+        },
+        {
+            text: "Təlimatlar",
+            items: [
+                { text: "Leaf ilə Sentry Qurulumu", link: "/aze/docs/how-to/setup-sentry" },
+                { text: "Leaf Serverinizi Optimize Edin", link: "/aze/docs/how-to/optimize-leaf-server" },
+                { text: "Serverlər üçün Java Bayraqları", link: "/aze/docs/how-to/java-flags" }
+            ]
+        },
+        {
+            text: "İnkişaf",
+            items: [
+                { text: "Leaf İnkişaf Rəhbəri", link: "/aze/docs/dev" },
+                { text: "Leaf API", link: "/aze/docs/dev/api" },
+                //{ text: "Quruluş", link: "/aze/docs/dev/build" } // TODO
+                { text: "🌿 Leaf'ə Töhfə Verme", link: "/aze/docs/dev/contributing" }
+            ]
+        }
+    ],
     "/de/docs/": [
         {
             text: "Einführung",
