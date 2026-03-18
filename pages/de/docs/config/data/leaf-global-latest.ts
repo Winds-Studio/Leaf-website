@@ -483,6 +483,13 @@ const config: ConfigRoot = {
                     Dies kann die Netzwerkauslastung (Netty) auf größeren Servern signifikant um bis zu 60 % reduzieren. Dabei wird sorgfältig gefiltert, um sicherzustellen, dass es keine visuellen Nebenwirkungen für den Client gibt.<br>
                     <br>
                     __⚡Empfohlener Wert: \`true\`__`
+            },
+            "disable-useless-particles": {
+                default: false,
+                desc: `Ob die serverseitige Logik für kosmetische Partikel (Sprinten, Tod, Zustandseffekte, Wasserspritzer und Blasensäulen) deaktiviert werden soll.<br>
+                    Da der Client die meisten dieser Partikel bereits anzeigt, wird die serverseitige Partikellogik nicht benötigt. Das Deaktivieren spart Netzwerkbandbreite und Serverlast.<br>
+                    <br>
+                    __⚡Empfohlener Wert: \`true\`__`
             }
         },
         "skip-ai-for-non-aware-mob": {
