@@ -492,6 +492,13 @@ const config: ConfigRoot = {
                     This can save bandwidth and reduce client-side processing load, potentially to make movement appear smoother during high entity counts or minor lag.<br>
                     <br>
                     __⚡Recommended value: \`true\`__`
+            },
+            "reduce-entity-motion-packets": {
+                default: false,
+                desc: `Whether to filter useless entity motion packets (\`ClientboundSetEntityMotionPacket\`).<br>
+                    This can significantly reduce network (Netty) usage by up to 60% on larger servers, while carefully filtering to ensure there are no visual side effects on the client.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "skip-ai-for-non-aware-mob": {
