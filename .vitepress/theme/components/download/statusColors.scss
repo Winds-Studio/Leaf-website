@@ -6,10 +6,10 @@
         --status-color-soft: var(--vp-c-indigo-soft);
     }
     &.status-stable {
-        --status-color-1: var(--vp-c-brand-1);
-        --status-color-2: var(--vp-c-brand-2);
-        --status-color-3: var(--vp-c-brand-3);
-        --status-color-soft: var(--vp-c-brand-soft);
+        --status-color-1: var(--vp-c-success-1);
+        --status-color-2: var(--vp-c-success-2);
+        --status-color-3: var(--vp-c-success-3);
+        --status-color-soft: var(--vp-c-success-soft);
     }
     &.status-eol {
         --status-color-1: var(--vp-c-warning-1);
