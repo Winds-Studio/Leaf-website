@@ -110,32 +110,28 @@
     background: var(--vp-c-default-soft);
 }
 
-.brand-button {
-    outline: var(--vp-c-brand-2) 2px solid;
+@mixin button-base($outline, $bg-soft, $bg-hover, $bg-active) {
+    outline: $outline 2px solid;
     box-sizing: border-box !important;
-    background: var(--vp-c-brand-soft);
+    background: $bg-soft;
     transition: 150ms ease-in-out all !important;
+
     &:hover {
         outline-offset: 2px;
-        background: var(--vp-c-brand-3);
+        background: $bg-hover;
     }
+
     &:active {
-        background: var(--vp-c-brand-1);
+        background: $bg-active;
     }
 }
 
+.brand-button {
+    @include button-base(var(--vp-c-brand-2), var(--vp-c-brand-soft), var(--vp-c-brand-3), var(--vp-c-brand-1));
+}
+
 .status-button {
-    outline: var(--status-color-2) 2px solid;
-    box-sizing: border-box !important;
-    background: var(--status-color-soft);
-    transition: 150ms ease-in-out all !important;
-    &:hover {
-        outline-offset: 2px;
-        background: var(--status-color-3);
-    }
-    &:active {
-        background: var(--status-color-1);
-    }
+    @include button-base(var(--status-color-2), var(--status-color-soft), var(--status-color-3), var(--status-color-1));
 }
 
 .switch {
