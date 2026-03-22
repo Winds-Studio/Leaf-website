@@ -2,6 +2,7 @@
 import { ApiBuild, getBuildLink } from "../downloadApi";
 import { Icon } from "@iconify/vue";
 import { useDateFormat, useTimeAgo } from "@vueuse/core";
+import { getVerStatus } from "../versionStatus";
 
 const props = defineProps<{
   build: ApiBuild;
@@ -10,7 +11,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="build-card">
+  <div :class="['build-card', getVerStatus(version).cssClass]">
     <h2>
       <span style="color: var(--vp-c-text-2)">#</span>
       {{ build.build }}
@@ -39,6 +40,8 @@ const props = defineProps<{
 </template>
 
 <style scoped lang="scss">
+@use "../statusColors";
+
 .build-card {
   background-color: var(--vp-c-bg-alt);
   padding: 1.25rem 1.5rem;
@@ -52,7 +55,7 @@ const props = defineProps<{
   transition: var(--vp-anim-dur) ease-in-out all;
 
   &:hover {
-    border: 1px solid var(--vp-c-brand-1);
+    border: 1px solid var(--status-color-1);
     transform: translateY(-4px);
   }
 
@@ -74,6 +77,9 @@ const props = defineProps<{
     .commit {
       a {
         text-decoration: none;
+        code {
+          color: var(--status-color-1);
+        }
       }
     }
   }
@@ -82,13 +88,13 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    color: var(--vp-c-brand-1);
-    text-decoration-color: var(--vp-c-brand-soft);
+    color: var(--status-color-1);
+    text-decoration-color: var(--status-color-soft);
     transition: var(--vp-anim-dur) ease-in-out;
     padding: 0 4rem 0 0;
     width: max-content;
     &:hover {
-      text-decoration-color: var(--vp-c-brand-1);
+      text-decoration-color: var(--status-color-1);
       filter: brightness(1.4);
       transform: translate(2px, -1px);
     }

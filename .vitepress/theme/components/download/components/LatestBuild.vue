@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ApiBuild, getBuildLink } from "../downloadApi";
 import { useTranslation } from "../useTranslation";
+import { getVerStatus } from "../versionStatus";
 
 const props = defineProps<{
   build: ApiBuild;
@@ -11,18 +12,20 @@ const { t } = useTranslation();
 </script>
 
 <template>
-  <div class="container">
+  <div :class="['container', getVerStatus(version).cssClass]">
     <div class="logo">
       {{ build.build }}
     </div>
 
-    <a class="download-button brand-button" :href="getBuildLink(version, build)"
+    <a :class="['download-button', 'status-button', getVerStatus(version).cssClass]" :href="getBuildLink(version, build)"
       >{{ t("actions.download") }} Leaf {{ version }}</a
     >
   </div>
 </template>
 
 <style scoped lang="scss">
+@use "../statusColors";
+
 .container {
   width: 100%;
   height: 16rem;
@@ -41,19 +44,19 @@ const { t } = useTranslation();
     border-radius: 50%;
     width: 8rem;
     height: 8rem;
-    outline: 2px solid var(--vp-c-brand-3);
+    outline: 2px solid var(--status-color-3);
     align-items: center;
     justify-content: center;
     font-weight: 600;
     font-size: 42px;
     //overflow: hidden;
-    color: var(--vp-c-brand-1);
+    color: var(--status-color-1);
     text-shadow: 2px 2px 0 black;
     transition: var(--vp-anim-dur) ease-in-out;
-    background: linear-gradient(30deg, var(--vp-c-brand-soft), transparent);
+    background: linear-gradient(30deg, var(--status-color-soft), transparent);
     &:hover {
       outline-offset: 4px;
-      outline: 3px solid var(--vp-c-brand-1);
+      outline: 3px solid var(--status-color-1);
     }
     &:active {
       outline-offset: 0;
