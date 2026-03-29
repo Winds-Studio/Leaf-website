@@ -165,6 +165,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Whether to enable proactive despawn check for weak-loaded entities.<br>
                     This can help reduce lag caused by loading and ticking a large amount of cumulative entities left in weak-loaded chunks.<br>
+                    This only has any effect if the [despawn-time](https://docs.papermc.io/paper/reference/world-configuration/#entities_spawning_despawn_time__entity_type_) option is configured in the Paper world config.
                     <br>
                     __⚡Recommended value: \`true\`__<br>
                     <br>
@@ -562,7 +563,7 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: `Whether to skip mob spawning in chunks that have repeatedly failed to spawn mobs beyond the configured \`min-failed\` value.<br>
-                    Once the minimum number of failed spawn attempts is reached, the server will randomly skip between 1 ~ \`spawn-chance\`% of spawn attempts in that chunk.<br>
+                    Once the minimum number of failed spawn attempts is reached, the server will use the configured percentage of \`spawn-chance\`% to throttle specific mob spawn attempts.<br>
                     Failed spawn attempts will not be counted if spawn limits are reached, and the failure counter will be reset after a successful spawn.`
             },
             monster: {
@@ -1214,6 +1215,12 @@ const config: ConfigRoot = {
             "username-regex": {
                 default: "^[a-zA-Z0-9_.]*$",
                 desc: `The username regex specifies the characters allowed in usernames.<br>
+                    <br>
+                    For example:
+                    <ul>
+                    <li>If set to \`^[a-zA-Z0-9_.]*$\`, it follows behavior in vanilla, only allowing English characters, numbers, \`_\`, and \`.\` symbol in username.</li>
+                    <li>If set to \`^[a-zA-Z0-9_.\\u4e00-\\u9fa5]*$\`, which the \`\\u4e00-\\u9fa5\` in regex allows Chinese characters in the username.</li>
+                    </ul>
                     This only has any effect if \`use-username-regex\` above is \`true\`.`
             }
         }

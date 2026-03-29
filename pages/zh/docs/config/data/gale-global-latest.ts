@@ -66,23 +66,18 @@ const config: ConfigRoot = {
                 <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
                 </table>`
         },
-        "invalid-pool-element-error-log-level": {
-            default: "info",
-            desc: `当服务器在世界数据中遇到 *无效的池元素* 时的错误日志等级.<br>
+        "invalid-legacy-text-component": {
+            default: true,
+            desc: `在 1.21.5 及更高版本中加载低版本物品数据时，是否记录无效的旧版物品文本组件信息。<br>
                 <br>
-                *无效的池元素* 是生成的结构 (如矿井) 中由于版本更新不完全或损坏的部分.<br>
-                <br>
-                这些错误通常会出现在更新过许多 Minecraft 版本的旧服务器中.<br>
-                <br>
-                这些错误通常没有意义：无法对此采取任何操作.<br>
-                <br>
-                此配置项的有效值为：\`"none"\`, \`"info"\`, \`"warn"\` 和 \`"error"\`.
+                当您将服务器从低版本升级到 1.21.5 及更高版本时，您可能会在控制台中看到大量报错刷屏，例如：<br>
+                \`MalformedJsonException: Use JsonReader.setStrictness(Strictness.LENIENT)...\`<br>
+                由于某些原因，物品组件数据已成功解析并升级，但仍然会抛出这些报错。因此你可以安全地无视这些警告信息。
                 <table>
-                <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
-                <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
-                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
-                </table>
-                <p>ⓘ = 默认值为 \`"info"\`, 以防止任何潜在错误被默认忽略，但推荐值为 \`"none"\`, 因为这些错误通常没有实际意义且无法解决.</p>`
+                <tr><td></td><td><b>默认值</b></td><td></td></tr>
+                <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
+                <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                </table>`
         },
         "invalid-statistics": {
             default: true,
@@ -193,16 +188,17 @@ const config: ConfigRoot = {
         },
         keepalive: {
             "send-multiple": {
-                default: true,
+                default: false,
                 desc: `是否发送比原版更频繁的 keepalive 数据包。
                     <ul>
                     <li>如果设为 \`true\`, 每秒向每个客户端发送一个 keepalive 数据包，如果他们在 30 秒内响应至少一个数据包，则不会被踢出.</li>
-                    <li>如果设为 \`false\`, 每 15 秒向每个客户端发送一个 keepalive 数据包，如果他们未响应，则会被踢出.</li>
+                    <li>如果设为 \`false\`, 则遵循 Paper 的行为，每秒向每个客户端发送一个 keepalive 数据包，如果客户端在 30 秒内没有响应或响应顺序错误，则会被踢出.</li>
+                    <li>在原版中，每 15 秒向每个客户端发送一个 keepalive 数据包，如果他们未响应，则会被踢出.</li>
                     </ul>
                     <table>
                     <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                     <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
-                    <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                     </table>
                     <table>
                     <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
