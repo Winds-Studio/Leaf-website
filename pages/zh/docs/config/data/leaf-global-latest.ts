@@ -164,6 +164,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `是否启用对弱加载实体的主动消失检查。<br>
                     这可以帮助缓解在弱加载区块中加载和 tick 大量累积的实体而导致的卡顿。<br>
+                    仅在 Paper 世界配置中配置了 [despawn-time](https://docs.papermc.io/paper/reference/world-configuration/#entities_spawning_despawn_time__entity_type_) 选项时，此配置项才会生效。<br>
                     <br>
                     __⚡推荐值：\`true\`__<br>
                     <br>
@@ -577,8 +578,7 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: `是否跳过生成失败次数过多的区块内的生物生成。<br>
-                    在每个区块中，当多次生成生物失败并超以下配置的 \`min-failed\` 值后，跳过后续的生物生成尝试。<br>
-                    一旦生成达到以下的最小失败次数，将随机跳过该区块中概率为 1 ~ \`spawn-chance\`% 的刷怪尝试。<br>
+                    在每个区块中，当多次生物生成失败并超以下配置的 \`min-failed\` 最小失败次数后，将使用 \`spawn-chance\` 百分比来限制特定生物的生成尝试。<br>
                     达到生成数量上限的生成失败将不会计入失败次数；并且一旦成功生成生物，失败计数将被重置。`
             },
             monster: {
@@ -1233,6 +1233,12 @@ const config: ConfigRoot = {
             "username-regex": {
                 default: "^[a-zA-Z0-9_.]*$",
                 desc: `用于定义用户名中允许字符的正则表达式。<br>
+                    <br>
+                    例如：
+                    <ul>
+                    <li>如果设为 \`^[a-zA-Z0-9_.]*$\`, 则遵循原版行为，用户名中仅允许包含英文字符、数字、下划线 (_) 和句点 (.)。</li>
+                    <li>如果设为 \`^[a-zA-Z0-9_.\\u4e00-\\u9fa5]*$\`, 则正则表达式中的 \`\\u4e00-\\u9fa5\` 允许用户名中包含中文字符。</li>
+                    </ul>
                     仅当上方的 \`use-username-regex\` 设为 \`true\` 时才会生效。`
             }
         }

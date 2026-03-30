@@ -67,23 +67,18 @@ const config: ConfigRoot = {
                 <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
                 </table>`
         },
-        "invalid-pool-element-error-log-level": {
-            default: "info",
-            desc: `Das Logging-Level für Fehler, wenn *ungültige Pool-Elemente* in den Weltdaten auftreten.<br>
+        "invalid-legacy-text-component": {
+            default: true,
+            desc: `Wenn veraltete Item-Textkomponenten einer älteren Version auf einer Version 1.21.5+ geladen werden.<br>
                 <br>
-                *Ungültige Pool-Elemente* sind Teil von generierten Strukturen (wie Minenschachte), die korrupt sind oder nicht richtig von älteren Versionen übernommen wurden.<br>
-                <br>
-                Diese Fehler sind sehr groß und treten häufig auf alten Servern auf, die zwischen Minecraft versionen wechseln.<br>
-                <br>
-                Die Fehler sind meistens nutzlos: Man kann nichts dagegen tun.<br>
-                <br>
-                Gültige Werte sind: \`"none"\`, \`"info"\`, \`"warn"\` und \`"error"\`.
+                Wenn der Server von einer älteren Version auf 1.21.5+ aktualisiert wurde, kann es passieren, dass Fehler die Konsole zuspammen, wie zum Beispiel:<br>
+                \`MalformedJsonException: Use JsonReader.setStrictness(Strictness.LENIENT)...\`<br>
+                Die Item-Komponentendaten werden trotzdem erfolgreich geparst und aktualisiert, obwohl dieser Fehler erscheint. Es ist also sicher, diese Warnungen zu ignorieren.
                 <table>
-                <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
-                <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                <tr><td><code>"none"</code> ⓘ</td><td><code>"info"</code></td><td><code>"error"</code></td><td><code>"error"</code></td></tr>
-                </table>
-                <p>ⓘ = Der Standardwert ist \`"info"\` um zu verhindern, dass Fehler nicht gesehen werden, aber der empfohlene Wert ist \`"none"\` weil die Fehler meistens nutzlos und sowieso nicht lösbar sind.</p>`
+                <tr><td></td><td><b>Standard</b></td><td></td></tr>
+                <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td></tr>
+                <tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+                </table>`
         },
         "invalid-statistics": {
             default: true,
@@ -194,16 +189,17 @@ const config: ConfigRoot = {
         },
         keepalive: {
             "send-multiple": {
-                default: true,
+                default: false,
                 desc: `Gibt an, ob Keepalive-Pakete häufiger als in Vanilla gesendet werden sollen.
                     <ul>
                     <li>Bei \`true\` wird ein Keepalive-Paket jedem Client jede Sekunde gesendet und diese werden nicht gekickt, solange sie innerhalb von 30 Sekunden mindestens einmal antworten.</li>
-                    <li>Bei \`false\` wird ein Keepalive-Paket jedem Client alle 15 Sekunden gesendet und werden gekickt, falls diese nicht innerhalb von 30 Sekunden antworten.</li>
+                    <li>Bei \`false\` wird das Verhalten von Paper verwendet: Es wird jede Sekunde ein Keepalive-Paket an jeden Client gesendet und sie werden gekickt, falls sie nicht innerhalb von 30 Sekunden antworten oder in der falschen Reihenfolge antworten.</li>
+                    <li>In Vanilla wird alle 15 Sekunden ein Keepalive-Paket an jeden Client gesendet und sie werden gekickt, falls sie nicht innerhalb von 30 Sekunden antworten.</li></ul>
                     </ul>
                     <table>
                     <tr><td></td><td><b>Standard</b></td><td></td><td></td></tr>
                     <tr><td><b>Empfohlen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                    <tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
                     </table>
                     <table>
                     <tr><td><b>Werte für Ziele</b></td><td></td></tr>

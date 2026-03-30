@@ -162,6 +162,7 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Ob die proaktive Despawn-Prüfung für weak-loaded Entities aktiviert werden soll.<br>
                     Dies kann helfen, Lag zu reduzieren, der durch das Laden und Ticking einer großen Menge angesammelter Entities in weak-loaded Chunks verursacht wird.<br>
+                    Dies hat nur Auswirkungen, wenn die [despawn-time](https://docs.papermc.io/paper/reference/world-configuration/#entities_spawning_despawn_time__entity_type_) Option in der Paper Welt-Konfiguration eingestellt ist.
                     <br>
                     __⚡Empfohlener Wert: \`true\`__<br>
                     <br>
@@ -559,7 +560,7 @@ const config: ConfigRoot = {
             enabled: {
                 default: false,
                 desc: `Ob Mob-Spawning in Chunks übersprungen werden soll, die wiederholt beim Spawnen von Mobs über den konfigurierten \`min-failed\`-Wert hinaus fehlgeschlagen sind.<br>
-                    Sobald die Mindestanzahl fehlgeschlagener Spawn-Versuche erreicht ist, wird der Server zufällig zwischen 1 ~ \`spawn-chance\`% der Spawn-Versuche in diesem Chunk überspringen.<br>
+                    Sobald die Mindestanzahl fehlgeschlagener Spawn-Versuche erreicht ist, wird der Server den konfigurierten Wert von \`spawn-chance\`% nutzen, um bestimmte Spawn-Versuche zu verlangsamen.<br>
                     Fehlgeschlagene Spawn-Versuche werden nicht gezählt, wenn Spawn-Limits erreicht sind, und der Fehlerzähler wird nach einem erfolgreichen Spawn zurückgesetzt.`
             },
             monster: {
@@ -1191,6 +1192,12 @@ const config: ConfigRoot = {
             "username-regex": {
                 default: "^[a-zA-Z0-9_.]*$",
                 desc: `Der Benutzername-Regex legt fest, welche Zeichen in Benutzernamen erlaubt sind.<br>
+                    <br>
+                    Zum Beispiel:
+                    <ul>
+                    <li>Wenn auf \`^[a-zA-Z0-9_.]*$\` gesetzt, folgt es dem Vanilla-Verhalten und erlaubt nur englische Buchstaben, Zahlen sowie die Zeichen \`_\` und \`.\` im Benutzernamen.</li>
+                    <li>Wenn auf \`^[a-zA-Z0-9_.\\u4e00-\\u9fa5]*$\` gesetzt, erlaubt das \`\\u4e00-\\u9fa5\` im Regex zusätzlich chinesische Zeichen im Benutzernamen.</li>
+                    </ul>
                     Dies hat nur Auswirkungen, wenn \`use-username-regex\` oben \`true\` ist.`
             }
         }
