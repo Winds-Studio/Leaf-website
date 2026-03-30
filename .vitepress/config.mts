@@ -5,7 +5,19 @@ import sidebar from "./sidebar.mjs";
 export default defineConfig({
     title: "Leaf",
     description: "Performant fork of Paper",
-    head: [["link", { rel: "icon", href: "/logo.svg" }]],
+    head: [
+        ["link", { rel: "icon", href: "/logo.svg" }],
+        [
+            "script",
+            {
+                async: "",
+                defer: "",
+                src: "https://umami.crashvibe.cn/script.js",
+                "data-domains": "www.leafmc.one",
+                "data-website-id": "10d1f4d2-4468-47fa-afe9-68206a082b9f",
+            },
+        ],
+    ],
 
     vite: {
         css: {

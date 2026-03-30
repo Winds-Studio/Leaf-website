@@ -28,6 +28,6 @@ jobs:
         run: pnpm install
 
       - name: Build application
+        run: pnpm build
         env:
           NUXT_PUBLIC_COMMIT_HASH: ${{ github.sha }}
-        run: pnpm build
