@@ -492,6 +492,20 @@ const config: ConfigRoot = {
                     This can save bandwidth and reduce client-side processing load, potentially to make movement appear smoother during high entity counts or minor lag.<br>
                     <br>
                     __⚡Recommended value: \`true\`__`
+            },
+            "reduce-entity-motion-packets": {
+                default: false,
+                desc: `Whether to filter useless entity motion packets (\`ClientboundSetEntityMotionPacket\`).<br>
+                    This can significantly reduce network (Netty) usage by up to ~60% on larger servers, while carefully filtering to ensure there are no visual side effects on the client.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
+            },
+            "disable-useless-particles": {
+                default: false,
+                desc: `Whether to disable server-side logic for cosmetic particles (Sprint, Death, Effect, Water Splash, and Bubble Column).<br>
+                    As the client displays most of these particles already, the server-side particle logic is not needed. Enabling this option saves network bandwidth and server load.<br>
+                    <br>
+                    __⚡Recommended value: \`true\`__`
             }
         },
         "skip-ai-for-non-aware-mob": {

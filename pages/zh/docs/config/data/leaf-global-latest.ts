@@ -493,6 +493,20 @@ const config: ConfigRoot = {
                     这可以略微节省带宽并减少客户端的处理负担。在实体数量较多或出现轻微卡顿时，有希望使移动看起来更流畅。<br>
                     <br>
                     __⚡推荐值：\`true\`__`
+            },
+            "reduce-entity-motion-packets": {
+                default: false,
+                desc: `是否过滤无用的实体运动数据包（\`ClientboundSetEntityMotionPacket\`）。<br>
+                    这可以显著降低大型服务器的网络（Netty）使用量（最高可达 ~60%），同时经过精心过滤，确保不会对客户端造成任何视觉上的副作用（画面异常）。<br>
+                    <br>
+                    __⚡推荐值：\`true\`__`
+            },
+            "disable-useless-particles": {
+                default: false,
+                desc: `是否禁用服务器端的装饰性粒子逻辑（疾跑、死亡、状态效果、水花和气泡柱粒子）。<br>
+                    由于客户端本身已经显示了大部分这些粒子，因此不需要服务器端的粒子逻辑。启用此配置项可以节省网络带宽和服务器负载。<br>
+                    <br>
+                    __⚡推荐值：\`true\`__`
             }
         },
         "skip-ai-for-non-aware-mob": {
