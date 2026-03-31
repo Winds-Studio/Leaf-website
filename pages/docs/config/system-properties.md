@@ -45,6 +45,11 @@ Whether to use io_uring for the I/O model used for network data transmission. Re
 
 If io_uring is unavailable under the current environment, it will fallback to an available model.
 
+## -DLeaf.enable-base64coder-debug-warning
+
+- default: `false`
+
+
 ## -Dgale.log.warning.root
 
 - default: `true`
