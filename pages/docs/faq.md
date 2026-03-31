@@ -22,8 +22,12 @@ You can refer to [YouHaveTrouble's guide](https://github.com/YouHaveTrouble/mine
 
 ## ❓ · Any known incompatibilities?
 
-- [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) (Incompatible with the Leaf version lower than 1.21.1).
-- In Async Tracker, if the server has [Citizens](https://www.spigotmc.org/resources/citizens.13811) the Tracker's `compat-mode` should be toggled on or disable the async tracker!
+Leaf's latest version doesn't have any known incompatibilities.
+
+However, here are some incompatibilities in legacy versions:
+
+- < 1.21.1 of Leaf, incompatibile with [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) plugin.
+- < 1.21.8 of Leaf, if you enabled async tracker and have [Citizens](https://www.spigotmc.org/resources/citizens.13811) or any plugins using real entity as NPC, please enables tracker's `compat-mode` or disable the async tracker!
 
 Found an incompatible plugin? [Report it here](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
 
