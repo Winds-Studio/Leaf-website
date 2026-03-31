@@ -222,7 +222,7 @@ const config: ConfigRoot = {
             "reduce-entity-move-packets": {
                 default: false,
                 desc: `是否减少发送给玩家的无用实体移动数据包（例如极小幅度的移动）。<br>
-                    这可以略微节省带宽并减少客户端的处理负担。在实体数量较多或出现轻微卡顿时，有希望移动看起来更流畅。<br>
+                    这可以略微节省带宽并减少客户端的处理负担。在实体数量较多或出现轻微卡顿时，有希望使移动看起来更流畅。<br>
                     <br>
                     __⚡推荐值：\`true\`__`
             }
@@ -366,7 +366,7 @@ const config: ConfigRoot = {
             },
             "activation-dist-mod": {
                 default: 8,
-                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 = (生物到玩家距离 ^2) / (2^ 此 activation-dist-mod 值)\`。
+                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 =（生物到玩家距离 ^2）/（2^ 此 activation-dist-mod 值）\`。
                     <ul>
                     <li>如果你希望距离越远的实体 __少__ tick 计算 一些，设为 \`7\`。</li>
                     <li>如果你希望距离越远的实体 __多__ tick 计算 一些，设为 \`9\`。</li>
@@ -843,7 +843,7 @@ const config: ConfigRoot = {
             "disable-moved-wrongly-threshold": {
                 default: false,
                 desc: `是否禁用 Spigot 内置的 \"moved too quickly / wrongly\" 移动速度检查（适用于玩家和载具）。<br>
-                    如果设为 \`true\`, 玩家将可以高速移动或使用载具（例如矿车）以异常速度移动.<br>
+                    如果设为 \`true\`，玩家将可以高速移动或使用载具（例如矿车）以异常速度移动。<br>
                     <br>
                     __⚡推荐值：\`true\`__`
             },

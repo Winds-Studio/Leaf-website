@@ -225,7 +225,7 @@ const config: ConfigRoot = {
             },
             "activation-dist-mod": {
                 default: 8,
-                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 = (生物到玩家距离 ^2) / (2^ 此 activation-dist-mod 值)\`。
+                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 =（生物到玩家距离 ^2）/（2^ 此 activation-dist-mod 值）\`。
                     <ul>
                     <li>如果你希望距离越远的实体 __少__ tick 计算 一些，设为 \`7\`。</li>
                     <li>如果你希望距离越远的实体 __多__ tick 计算 一些，设为 \`9\`。</li>
@@ -713,7 +713,7 @@ const config: ConfigRoot = {
             "mc-270656": {
                 default: false,
                 desc: `是否修复 \`还要啥火箭啊？\` 进度触发的错误检查逻辑。<br>
-                    Mojira 问题跟踪链接：[MC-270656](https://mojira.dev/MC-270656).`
+                    Mojira 问题跟踪链接：[MC-270656](https://mojira.dev/MC-270656)。`
             }
         }
     },
@@ -1236,8 +1236,8 @@ const config: ConfigRoot = {
                     <br>
                     例如：
                     <ul>
-                    <li>如果设为 \`^[a-zA-Z0-9_.]*$\`, 则遵循原版行为，用户名中仅允许包含英文字符、数字、下划线 (_) 和句点 (.)。</li>
-                    <li>如果设为 \`^[a-zA-Z0-9_.\\u4e00-\\u9fa5]*$\`, 则正则表达式中的 \`\\u4e00-\\u9fa5\` 允许用户名中包含中文字符。</li>
+                    <li>如果设为 \`^[a-zA-Z0-9_.]*$\`，则遵循原版行为，用户名中仅允许包含英文字符、数字、下划线（_）和句点（.）。</li>
+                    <li>如果设为 \`^[a-zA-Z0-9_.\\u4e00-\\u9fa5]*$\`，则正则表达式中的 \`\\u4e00-\\u9fa5\` 允许用户名中包含中文字符。</li>
                     </ul>
                     仅当上方的 \`use-username-regex\` 设为 \`true\` 时才会生效。`
             }

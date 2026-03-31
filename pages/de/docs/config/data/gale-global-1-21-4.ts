@@ -305,7 +305,7 @@ const config: ConfigRoot = {
                     <table>
                     <tr><td><b>Werte für Ziele</b></td><td></td></tr>
                     <tr><td><i>Optimierung</i></td><td><code>100</code></td></tr>
-                    <tr><td><i>Vanilla Verhalten</i></td><td>Geringere Werte sind mehr wie Vanilla<br>(<code>20</code> ist aber auch in Ordnung, <code>1</code> ist meistens unnötig)</td></tr>
+                    <tr><td><i>Vanilla Verhalten</i></td><td>1</td></tr>
                     </table>`
             },
             "update-entity-line-of-sight": {

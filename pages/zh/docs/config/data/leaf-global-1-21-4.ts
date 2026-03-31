@@ -632,7 +632,7 @@ const config: ConfigRoot = {
             },
             "activation-dist-mod": {
                 default: 8,
-                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 = (生物到玩家距离 ^2) / (2^ 此 activation-dist-mod 值)\`。
+                desc: `用于定义距离对实体 tick 计算频率的影响程度。公式：\`tick 频率 =（生物到玩家距离 ^2）/（2^ 此 activation-dist-mod 值）\`。
                     <ul>
                     <li>如果你希望距离越远的实体 __少__ tick 计算 一些，设为 \`7\`。</li>
                     <li>如果你希望距离越远的实体 __多__ tick 计算 一些，设为 \`9\`。</li>

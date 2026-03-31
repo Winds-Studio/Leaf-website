@@ -37,7 +37,7 @@
 请查阅 Spark 的文档以了解：
 
 - [如何使用 `/spark` 命令](https://spark.lucko.me/docs/Command-Usage)
-- [如何用 Spark 找出 TPS 瞬卡来源](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
+- [如何用 Spark 找出 TPS 瞬卡来源](https://spark.lucko.me/docs/guides/Finding-lag-spikes)
 
 ## -DLeaf.enable-io-uring
 
@@ -65,33 +65,33 @@
 
 ### -DLeaf.native-transport-type
 
-(仅存在于最新的 Leaf 1.21.8)
+（仅存在于最新的 Leaf 1.21.8）
 
 - 默认值：`epoll`
 
-设置用于网络传输的网络 I/O 模型，需开启 `server.properties` 内的 `use-native-transport`.
+设置用于网络传输的网络 I/O 模型，需开启 `server.properties` 内的 `use-native-transport`。
 
 如果指定的传输类型不可用，将会切换至可用的模型。
 
 可选项：
 
-- Linux: `io_uring`, `epoll`, `nio`
-- MacOS: `kqueue`, `nio`
-- Windows: 不可用 (默认 `nio`)
+- Linux: `io_uring`、`epoll`、`nio`
+- MacOS: `kqueue`、`nio`
+- Windows: 不可用（默认 `nio`）
 
 ### -DLeaf.nearestEntitySensorBucketCount
 
-(仅存在于最新的 Leaf 1.21.1 和 1.21.3)
+（仅存在于最新的 Leaf 1.21.1 和 1.21.3）
 
 - 默认值：`10`
 
-当实体数量达到 [桶排序 (Bucket Sort)](https://oi-wiki.org/basic/bucket-sort) 的阈值时，将使用多少个桶进行排序。
+当实体数量达到 [桶排序（Bucket Sort）](https://oi-wiki.org/basic/bucket-sort) 的阈值时，将使用多少个桶进行排序。
 
 建议此值设置为实体数量的平方根值。
 
 ### -DLeaf.nearestEntitySensorBucketSortThresholdRatio
 
-(仅存在于最新的 Leaf 1.21.1 和 1.21.3)
+（仅存在于最新的 Leaf 1.21.1 和 1.21.3）
 
 - 默认值：`2.0`
 
