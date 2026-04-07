@@ -2,6 +2,7 @@
 import type { Theme } from "vitepress";
 import { useData, useRoute } from "vitepress";
 import DefaultTheme from "vitepress/theme";
+import 'virtual:uni-icons.css'
 import "./style/index.css";
 import { h, watch } from "vue";
 

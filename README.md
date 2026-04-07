@@ -10,7 +10,7 @@ Visit the website in https://www.leafmc.one/
 
 ### Prerequisite
 
-Node.js 18.20+
+Node.js 22+
 
 ### Installation
 

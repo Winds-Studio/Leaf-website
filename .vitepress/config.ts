@@ -1,5 +1,6 @@
 import { defineConfig } from "vitepress";
-import sidebar from "./sidebar.mjs";
+import { uniIconsPlugin, uniIconsMarkdown } from '@roidmc/vitepress-uni-icons';
+import sidebar from "./sidebar.js";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -20,6 +21,16 @@ export default defineConfig({
     ],
 
     vite: {
+        plugins: [
+            uniIconsPlugin({
+                style: {
+                    iconSize: '1.2em'
+                },
+                customIcons: {
+                    '.kts': 'vscode-icons:file-type-kotlin',
+                },
+            }) as any,
+        ],
         css: {
             preprocessorOptions: {
                 scss: {
@@ -29,7 +40,13 @@ export default defineConfig({
         }
     },
 
-    srcDir: "./pages",
+    markdown: {
+        config(md) {
+            uniIconsMarkdown(md)
+        },
+    },
+
+    srcDir: "pages",
     appearance: "force-dark",
     cleanUrls: true,
 
