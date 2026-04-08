@@ -2,6 +2,7 @@
 import { ApiBuild, getBuildLink } from "../downloadApi";
 import { useTranslation } from "../useTranslation";
 import { getVerStatus } from "../versionStatus";
+import { trackDownloadEvent } from "../umami";
 
 const props = defineProps<{
   build: ApiBuild;
@@ -9,6 +10,12 @@ const props = defineProps<{
 }>();
 
 const { t } = useTranslation();
+
+function onDownloadClick() {
+  trackDownloadEvent({
+    version: props.version,
+  });
+}
 </script>
 
 <template>
@@ -17,7 +24,10 @@ const { t } = useTranslation();
       {{ build.build }}
     </div>
 
-    <a :class="['download-button', 'status-button', getVerStatus(version).cssClass]" :href="getBuildLink(version, build)"
+    <a
+      :class="['download-button', 'status-button', getVerStatus(version).cssClass]"
+      :href="getBuildLink(version, build)"
+      @click="onDownloadClick"
       >{{ t("actions.download") }} Leaf {{ version }}</a
     >
   </div>
