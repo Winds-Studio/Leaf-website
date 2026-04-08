@@ -7,6 +7,7 @@ import { branchesToVers, getLatestStable, getVerInfo, Version } from "../version
 import Markdown from "../../Markdown.vue";
 import { useData } from "vitepress";
 import VersionInfoCard from "../components/VersionInfoCard.vue";
+import { trackDownloadEvent } from "../umami";
 
 // States
 const versions = ref<Array<Version>>([]);
@@ -227,6 +228,14 @@ function refreshVersionInfo() {
   }
 }
 watch(selectedVersion, refreshVersionInfo);
+
+function trackOldDownloadClick() {
+  if (!selectedVersion.value || !downloadAsset.value) return;
+
+  trackDownloadEvent({
+    version: selectedVersion.value.name,
+  });
+}
 </script>
 
 <template>
@@ -380,7 +389,11 @@ watch(selectedVersion, refreshVersionInfo);
               </div>
 
               <div class="dl-download-actions">
-                <a :href="downloadAsset.browser_download_url" class="dl-button primary download">
+                <a
+                  :href="downloadAsset.browser_download_url"
+                  class="dl-button primary download"
+                  @click="trackOldDownloadClick"
+                >
                   <Icon icon="lucide:download" />
                   <span>{{ t("actions.download") }}</span>
                 </a>

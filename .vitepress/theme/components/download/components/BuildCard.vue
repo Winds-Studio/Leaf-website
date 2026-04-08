@@ -3,11 +3,18 @@ import { ApiBuild, getBuildLink } from "../downloadApi";
 import { Icon } from "@iconify/vue";
 import { useDateFormat, useTimeAgo } from "@vueuse/core";
 import { getVerStatus } from "../versionStatus";
+import { trackDownloadEvent } from "../umami";
 
 const props = defineProps<{
   build: ApiBuild;
   version: string;
 }>();
+
+function onDownloadClick() {
+  trackDownloadEvent({
+    version: props.version,
+  });
+}
 </script>
 
 <template>
@@ -32,7 +39,7 @@ const props = defineProps<{
       ({{ useTimeAgo(build.time) }})
     </span>
 
-    <a class="file" :href="getBuildLink(version, build)">
+    <a class="file" :href="getBuildLink(version, build)" @click="onDownloadClick">
       <Icon icon="lucide:file-box" class="file-icon" />
       {{ build.downloads.primary.name }}
     </a>
