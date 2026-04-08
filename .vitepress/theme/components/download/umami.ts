@@ -21,6 +21,6 @@ export function trackDownloadEvent(data: DownloadEventData): void {
     if (!track) return;
 
     track("leaf-download", {
-        version: data.version,
+        version: data.version
     });
 }
