@@ -1,3 +1,7 @@
+/**
+ * Umami tracking function type definition.
+ * @see https://v2.umami.is/docs/tracker-functions#event-data
+ */
 type UmamiTrack = (eventName: string, data?: Record<string, unknown>) => void;
 
 type UmamiWindow = Window & {
