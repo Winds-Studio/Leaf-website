@@ -1,5 +1,6 @@
 {
     "devDependencies": {
+        "@types/semver": "^7.7.1",
         "@vueuse/core": "^14.2.1",
         "prettier": "3.8.1",
         "sass": "^1.98.0",
