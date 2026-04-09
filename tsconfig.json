@@ -3,21 +3,21 @@
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "lib": ["esnext", "dom"],
-        "baseUrl": ".",
         "paths": {
-            "@/*": ["*"]
+            "@/*": ["./*"]
         },
-        "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
+        "esModuleInterop": true,
         "skipLibCheck": true
     },
     "include": [
-        ".vitepress/**/*.ts",
-        ".vitepress/**/*.mts",
-        ".vitepress/theme/components/**/*.ts",
-        ".vitepress/**/*.vue",
-        "pages/**/*.ts"
+        "**/.vitepress/**/*.ts",
+        "**/.vitepress/**/*.mts",
+        "**/.vitepress/**/*.vue",
+        "**/pages/**/*.ts",
+        "**/.vitepress/theme/index.tsx",
+        "**/*.d.ts"
     ],
     "exclude": ["node_modules"]
 }
