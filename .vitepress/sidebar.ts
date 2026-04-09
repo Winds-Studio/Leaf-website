@@ -1,6 +1,3 @@
-// import {DefaultTheme} from "vitepress";
-// import Sidebar = DefaultTheme.Sidebar;
-
 export default {
     "/docs/": [
         {
