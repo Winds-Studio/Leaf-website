@@ -935,6 +935,7 @@ const config: ConfigRoot = {
                 Die Protokoll-Unterstützung kann zu Inkompatibilität mit [ViaVersion](https://modrinth.com/plugin/viaversion) führen.<br>
                 Wir empfehlen Spielern, einen Client zu verwenden, der dieselbe Version wie der Server-Core hat, und die neueste entsprechende Mod zu installieren; andernfalls können sie dem Server möglicherweise nicht beitreten.
                 </div>`,
+            /*
             "jade-protocol": {
                 default: false,
                 desc: `Ob die [Jade](https://modrinth.com/mod/jade)-Protokoll-Unterstützung aktiviert werden soll.<br>
@@ -986,6 +987,7 @@ const config: ConfigRoot = {
                 desc: `Die maximale Dateigröße jeder geteilten Schematic-Datei, die auf den Server hochgeladen wird.<br>
                     (Einheit: Byte, Standardwert 40.000.000 Bytes ≈ 38 MB)`
             },
+            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `Ob die [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll)-Protokoll-Unterstützung aktiviert werden soll.<br>

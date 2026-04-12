@@ -969,6 +969,7 @@ const config: ConfigRoot = {
                 开启协议支持后，可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容。<br>
                 并且我们建议玩家使用与服务器核心相同版本的客户端，并安装对应模组的最新版本，否则将会无法进入服务器。
                 </div>`,
+            /*
             "jade-protocol": {
                 default: false,
                 desc: `是否开启对 [Jade](https://modrinth.com/mod/jade) 的协议支持。<br>
@@ -1020,6 +1021,7 @@ const config: ConfigRoot = {
                 desc: `上传至服务器的共享投影的最大单个文件大小。<br>
                     （单位：字节，默认 40,000,000 字节 ≈ 38 MB）`
             },
+            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `是否开启对 [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) 的协议支持。<br>
