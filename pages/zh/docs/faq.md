@@ -22,9 +22,14 @@
 
 ## ❓ · Leaf 有任何已知的不兼容问题吗？
 
-- [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055)（不兼容低于 1.21.1 的 Leaf 版本）。
-- 如果你的服务器装有 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 插件，并开启了异步实体跟踪，请打开 异步实体跟踪的兼容模式 `compat-mode`，或关闭异步实体跟踪！
-- 发现有不兼容的插件？[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)！
+目前，Leaf 的最新版本没有已知的兼容性问题。
+
+但是一些旧版本存在以下兼容性问题：
+
+- < 1.21.1：与 [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) 插件不兼容。
+- < 1.21.8：如果您启用了 Leaf 配置里的异步追踪，并且安装了 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 或任何使用真实实体作为 NPC 的插件，请同时开启异步追踪的 `compat-mode` 或关闭异步追踪！
+
+发现有不兼容的插件？[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)！
 
 ## ❓ · mojmap 和 reobf 有什么区别？我该使用哪个？
 

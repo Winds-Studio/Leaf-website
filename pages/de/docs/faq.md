@@ -22,9 +22,14 @@ Die [Anleitung von YouHaveTrouble](https://github.com/YouHaveTrouble/minecraft-o
 
 ## ❓ · Gibt es bekannte Inkompatibilitäten?
 
-- [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) (Inkompatibel ab Leaf 1.21.1).
-- Wenn der `async-entity-tracker` aktiv ist, funktioniert [Citizens](https://www.spigotmc.org/resources/citizens.13811) nur, wenn auch der `compat-mode` aktiv ist
-- Weitere Inkompatibilitäten sollten [hier](https://github.com/Winds-Studio/Leaf/issues/new/choose) gemeldet werden!
+The neuste Leaf Version hat keine bekannten Inkompatibilitäten.
+
+Allerdings gibt es in älteren Versionen bekannte Inkompatibilitäten:
+
+- < 1.21.1 von Leaf ist nicht kompatibel mit dem [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) Plugin.
+- < 1.21.8 von Leaf ist nicht mit [Citizens](https://www.spigotmc.org/resources/citizens.13811) oder anderen Plugins kompatibel, die echte Entites als NPCs nutzen, sofern der Async Tracker aktiviert ist. Schalte den Async Tracker aus oder aktiviere den `compat-mode`.
+
+Du hast ein inkompatibles Plugin gefunden? [Melde es hier](https://github.com/Winds-Studio/Leaf/issues/new/choose)!
 
 ## ❓ · Was ist der Unterschied zwischen mojmap und reobf? Was soll ich nutzen?
 
