@@ -14,9 +14,9 @@ export default defineConfig({
                 defer: "",
                 src: "https://umami.crashvibe.cn/script.js",
                 "data-domains": "www.leafmc.one",
-                "data-website-id": "10d1f4d2-4468-47fa-afe9-68206a082b9f",
-            },
-        ],
+                "data-website-id": "10d1f4d2-4468-47fa-afe9-68206a082b9f"
+            }
+        ]
     ],
 
     vite: {

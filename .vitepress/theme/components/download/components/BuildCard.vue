@@ -12,7 +12,7 @@ const props = defineProps<{
 
 function onDownloadClick() {
   trackDownloadEvent({
-    version: props.version,
+    version: props.version
   });
 }
 </script>

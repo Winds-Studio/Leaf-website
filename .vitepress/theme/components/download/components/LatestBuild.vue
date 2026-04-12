@@ -13,7 +13,7 @@ const { t } = useTranslation();
 
 function onDownloadClick() {
   trackDownloadEvent({
-    version: props.version,
+    version: props.version
   });
 }
 </script>

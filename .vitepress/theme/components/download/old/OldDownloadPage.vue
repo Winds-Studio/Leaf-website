@@ -233,7 +233,7 @@ function trackOldDownloadClick() {
   if (!selectedVersion.value || !downloadAsset.value) return;
 
   trackDownloadEvent({
-    version: selectedVersion.value.name,
+    version: selectedVersion.value.name
   });
 }
 </script>
