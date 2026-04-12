@@ -11,7 +11,7 @@
         "@types/semver": "^7.7.1",
         "@vueuse/core": "^14.2.1",
         "markdown-it": "^14.1.1",
-        "prettier": "3.8.1",
+        "prettier": "3.8.2",
         "sass": "^1.99.0",
         "semver": "^7.7.4",
         "typescript": "^6.0.2",
