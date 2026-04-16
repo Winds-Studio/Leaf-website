@@ -49,6 +49,14 @@
 
 如果当前运行环境不支持 io_uring，将自动回退到可用的 I/O 模型。
 
+## -DLeaf.enable-base64coder-warning
+
+- 默认值：`false`
+
+是否在插件调用 SnakeYAML 已弃用的 `Base64Coder` 方法时打印警告。此 JVM 参数仅用于调试目的，以帮助识别哪个插件正在调用弃用的 `Base64Coder` 方法。
+
+更多信息请查看 [Leaf#571](https://github.com/Winds-Studio/Leaf/issues/571#issuecomment-3695175765)。
+
 ## -Dgale.log.warning.root
 
 - 默认值：`true`

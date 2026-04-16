@@ -421,6 +421,13 @@ const config: ConfigRoot = {
                 Experimental feature, actively testing, please report any bugs you encounter.
                 </div>`
         },
+        // TODO: Add back when Leaf#528 merged
+        // "optimize-entity-activation": {
+        //     default: false,
+        //     desc: `Whether to use a more efficient data structure for entity activation logic.<br>
+        //         <br>
+        //         __⚡Recommended value: \`true\`__`
+        // },
         "only-tick-items-in-hand": {
             default: false,
             desc: `Whether to tick or update items only if the player holds them in the main hand or offhand, instead of ticking the entire inventory.<br>
@@ -428,6 +435,13 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
+        // TODO: Add back when Leaf#518 merged
+        // "optimize-mob-spawning": {
+        //     default: false,
+        //     desc: `Whether to use a more efficient data structure for collecting spawning chunks and nearest player lookup.<br>
+        //         <br>
+        //         __⚡Recommended value: \`true\`__`
+        // },
         "optimize-no-action-time": {
             "disable-light-check": {
                 default: false,
@@ -710,6 +724,16 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Whether to fix incorrect granting of \`Who needs rockets?\` advancement.<br>
                     Mojira link: [MC-270656](https://mojira.dev/MC-270656).`
+            },
+            "mc-301114": {
+                default: false,
+                desc: `Whether to fix the memory leak in the combat tracker caused by the mob constantly being damaged.<br>
+                    Mojira link: [MC-301114](https://mojira.dev/MC-301114).`
+            },
+            "mc-301114-max-entries": {
+                default: 10240,
+                desc: `Max allowed entries in the mob's combat tracker.<br>
+                    This only has any effect if \`mc-301114\` above is \`true\`.`
             }
         }
     },
@@ -780,6 +804,21 @@ const config: ConfigRoot = {
                 desc: "Same as \`horizontal-force\`, but it is for vertical velocity."
             }
         },
+        // TODO: Add back when Leaf#603 merged
+        // "ice-and-snow-chance": {
+        //     default: 48,
+        //     desc: `The chance of ice and snow formation.
+        //         <ul>
+        //         <li>If you want the ice and snow to occur less frequently, set this value higher.</li>
+        //         <li>If you want the ice and snow to behave more like vanilla, set this value closer to \`48\`.</li>
+        //         </ul>
+        //         __⚡Recommended value: \`384\` (\`384 = 48 * 8\`)__
+        //         <table>
+        //         <tr><td><b>Values for goals</b></td><td></td></tr>
+        //         <tr><td><i>Optimization</i></td><td><code>384</code></td></tr>
+        //         <tr><td><i>Vanilla behavior</i></td><td><code>48</code></td></tr>
+        //         </table>`
+        // },
         // TODO: Add back when implemented it
         // "hide-item-component": {
         //     "hidden-types": {
@@ -965,6 +1004,8 @@ const config: ConfigRoot = {
                 The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>
                 We recommend players use a client that has the same version as the server core and install the latest corresponding mod; otherwise, they may be unable to join the server.
                 </div>`,
+            // TODO: Add back when Leaves procotols are added back
+            /*
             "jade-protocol": {
                 default: false,
                 desc: `Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>
@@ -1016,6 +1057,7 @@ const config: ConfigRoot = {
                 desc: `The maximum file size of each shared schematic file is uploaded to the server.<br>
                     (Unit: byte, default value 40,000,000 bytes ≈ 38 MB)`
             },
+            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `Whether to enable [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) protocol support.<br>

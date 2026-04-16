@@ -693,6 +693,16 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Ob die fehlerhafte Vergabe des \`Wer braucht schon Raketen?\` Advancements behoben werden soll.<br>
                     Mojira-Link: [MC-270656](https://mojira.dev/MC-270656).`
+            },
+            "mc-301114": {
+                default: false,
+                desc: `Ob das Memory-Leak im Combat-Tracker behoben werden soll, das durch Mobs verursacht wird, die ständig Schaden erhalten.<br>
+                    Mojira-Link: [MC-301114](https://mojira.dev/MC-301114).`
+            },
+            "mc-301114-max-entries": {
+                default: 10240,
+                desc: `Maximale Anzahl erlaubter Einträge im Combat-Tracker der Mobs.<br>
+                    Hat nur einen Effekt, wenn \`mc-301114\` oben auf \`true\` gestellt ist.`
             }
         }
     },
@@ -935,6 +945,7 @@ const config: ConfigRoot = {
                 Die Protokoll-Unterstützung kann zu Inkompatibilität mit [ViaVersion](https://modrinth.com/plugin/viaversion) führen.<br>
                 Wir empfehlen Spielern, einen Client zu verwenden, der dieselbe Version wie der Server-Core hat, und die neueste entsprechende Mod zu installieren; andernfalls können sie dem Server möglicherweise nicht beitreten.
                 </div>`,
+            /*
             "jade-protocol": {
                 default: false,
                 desc: `Ob die [Jade](https://modrinth.com/mod/jade)-Protokoll-Unterstützung aktiviert werden soll.<br>
@@ -986,6 +997,7 @@ const config: ConfigRoot = {
                 desc: `Die maximale Dateigröße jeder geteilten Schematic-Datei, die auf den Server hochgeladen wird.<br>
                     (Einheit: Byte, Standardwert 40.000.000 Bytes ≈ 38 MB)`
             },
+            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `Ob die [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll)-Protokoll-Unterstützung aktiviert werden soll.<br>

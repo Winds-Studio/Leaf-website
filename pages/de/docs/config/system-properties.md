@@ -45,6 +45,14 @@ Ob `io_uring` für das I/O-Modell der Netzwerkdatenübertragung verwendet werden
 
 Wenn `io_uring` in der aktuellen Umgebung nicht verfügbar ist, wird auf ein verfügbares Modell zurückgegriffen.
 
+## -DLeaf.enable-base64coder-warning
+
+- Standard: `false`
+
+Ob eine Warnung ausgegeben werden soll, wenn ein Plugin veraltete `Base64Coder`-Methoden von SnakeYAML verwendet. Nutze diesen Flag, für Debugging-Zwecke, um zu ermitteln, welche Plugin diese Methoden verwendet.
+
+Siehe [Leaf#571](https://github.com/Winds-Studio/Leaf/issues/571#issuecomment-3695175765) für weitere Informationen.
+
 ## -Dgale.log.warning.root
 
 - Standard: `true`
