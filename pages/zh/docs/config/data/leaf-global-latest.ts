@@ -714,6 +714,16 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `是否修复 \`还要啥火箭啊？\` 进度触发的错误检查逻辑。<br>
                     Mojira 问题跟踪链接：[MC-270656](https://mojira.dev/MC-270656)。`
+            },
+            "mc-301114": {
+                default: false,
+                desc: `是否修复战斗跟踪器（Combat Tracker）中，因生物受到持续性伤害导致的内存泄漏。<br>
+                    Mojira 问题跟踪链接：[MC-301114](https://mojira.dev/MC-301114)。`
+            },
+            "mc-301114-max-entries": {
+                default: 10240,
+                desc: `生物战斗跟踪器中允许的最大条目。<br>
+                    仅当上方的 \`mc-301114\` 设为 \`true\` 时才会生效。`
             }
         }
     },
