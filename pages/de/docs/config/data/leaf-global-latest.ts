@@ -693,6 +693,16 @@ const config: ConfigRoot = {
                 default: false,
                 desc: `Ob die fehlerhafte Vergabe des \`Wer braucht schon Raketen?\` Advancements behoben werden soll.<br>
                     Mojira-Link: [MC-270656](https://mojira.dev/MC-270656).`
+            },
+            "mc-301114": {
+                default: false,
+                desc: `Ob das Memory-Leak im Combat-Tracker behoben werden soll, das durch Mobs verursacht wird, die ständig Schaden erhalten.<br>
+                    Mojira-Link: [MC-301114](https://mojira.dev/MC-301114).`
+            },
+            "mc-301114-max-entries": {
+                default: 10240,
+                desc: `Maximale Anzahl erlaubter Einträge im Combat-Tracker der Mobs.<br>
+                    Hat nur einen Effekt, wenn \`mc-301114\` oben auf \`true\` gestellt ist.`
             }
         }
     },
