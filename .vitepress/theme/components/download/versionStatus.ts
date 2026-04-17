@@ -17,32 +17,36 @@ export interface Version {
 
 export const versionStatusMap: { [name: string]: VersionStatus } = {
     dev: {
-        versions: ["1.21.11", "1.21.8"],
+        versions: [],
         icon: "lucide:flask-conical",
         cssClass: "status-dev"
         //branchPrefix: "dev/"
     },
 
     stable: {
-        versions: ["1.21.4"],
+        versions: ["1.21.11"],
         cssClass: "status-stable",
         icon: "lucide:check-circle"
     },
 
     eol: {
-        versions: ["1.21.1", "1.20.4"],
+        versions: [],
         cssClass: "status-eol",
         icon: "lucide:alert-circle"
     },
 
     dead: {
         versions: [
+            "1.21.8",
             "1.21.7",
             "1.21.6",
+            "1.21.4",
             "1.21.5",
             "1.21.3",
+            "1.21.1",
             "1.21",
             "1.20.6",
+            "1.20.4",
             "1.20.2",
             "1.20.1",
             "1.20",
