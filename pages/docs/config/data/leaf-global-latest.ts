@@ -421,13 +421,12 @@ const config: ConfigRoot = {
                 Experimental feature, actively testing, please report any bugs you encounter.
                 </div>`
         },
-        // TODO: Add back when Leaf#528 merged
-        // "optimize-entity-activation": {
-        //     default: false,
-        //     desc: `Whether to use a more efficient data structure for entity activation logic.<br>
-        //         <br>
-        //         __⚡Recommended value: \`true\`__`
-        // },
+        "optimize-entity-activation": {
+            default: false,
+            desc: `Whether to use a more efficient data structure for entity activation logic.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
+        },
         "only-tick-items-in-hand": {
             default: false,
             desc: `Whether to tick or update items only if the player holds them in the main hand or offhand, instead of ticking the entire inventory.<br>
@@ -435,13 +434,12 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Recommended value: \`true\`__`
         },
-        // TODO: Add back when Leaf#518 merged
-        // "optimize-mob-spawning": {
-        //     default: false,
-        //     desc: `Whether to use a more efficient data structure for collecting spawning chunks and nearest player lookup.<br>
-        //         <br>
-        //         __⚡Recommended value: \`true\`__`
-        // },
+        "optimize-mob-spawning": {
+            default: false,
+            desc: `Whether to use a more efficient data structure for collecting spawning chunks and nearest player lookup.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
+        },
         "optimize-no-action-time": {
             "disable-light-check": {
                 default: false,
@@ -804,21 +802,20 @@ const config: ConfigRoot = {
                 desc: "Same as \`horizontal-force\`, but it is for vertical velocity."
             }
         },
-        // TODO: Add back when Leaf#603 merged
-        // "ice-and-snow-chance": {
-        //     default: 48,
-        //     desc: `The chance of ice and snow formation.
-        //         <ul>
-        //         <li>If you want the ice and snow to occur less frequently, set this value higher.</li>
-        //         <li>If you want the ice and snow to behave more like vanilla, set this value closer to \`48\`.</li>
-        //         </ul>
-        //         __⚡Recommended value: \`384\` (\`384 = 48 * 8\`)__
-        //         <table>
-        //         <tr><td><b>Values for goals</b></td><td></td></tr>
-        //         <tr><td><i>Optimization</i></td><td><code>384</code></td></tr>
-        //         <tr><td><i>Vanilla behavior</i></td><td><code>48</code></td></tr>
-        //         </table>`
-        // },
+        "ice-and-snow-chance": {
+            default: 48,
+            desc: `The chance of ice and snow formation.
+                <ul>
+                <li>If you want the ice and snow to occur less frequently, set this value higher.</li>
+                <li>If you want the ice and snow to behave more like vanilla, set this value closer to \`48\`.</li>
+                </ul>
+                __⚡Recommended value: \`384\` (\`384 = 48 * 8\`)__
+                <table>
+                <tr><td><b>Values for goals</b></td><td></td></tr>
+                <tr><td><i>Optimization</i></td><td><code>384</code></td></tr>
+                <tr><td><i>Vanilla behavior</i></td><td><code>48</code></td></tr>
+                </table>`
+        },
         // TODO: Add back when implemented it
         // "hide-item-component": {
         //     "hidden-types": {
