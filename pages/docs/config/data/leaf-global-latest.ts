@@ -1001,8 +1001,6 @@ const config: ConfigRoot = {
                 The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>
                 We recommend players use a client that has the same version as the server core and install the latest corresponding mod; otherwise, they may be unable to join the server.
                 </div>`,
-            // TODO: Add back when Leaves procotols are added back
-            /*
             "jade-protocol": {
                 default: false,
                 desc: `Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>
@@ -1054,7 +1052,6 @@ const config: ConfigRoot = {
                 desc: `The maximum file size of each shared schematic file is uploaded to the server.<br>
                     (Unit: byte, default value 40,000,000 bytes ≈ 38 MB)`
             },
-            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `Whether to enable [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) protocol support.<br>
