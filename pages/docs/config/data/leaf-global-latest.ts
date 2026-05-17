@@ -421,16 +421,17 @@ const config: ConfigRoot = {
                 Experimental feature, actively testing, please report any bugs you encounter.
                 </div>`
         },
-        "optimize-entity-activation": {
-            default: false,
-            desc: `Whether to use a more efficient data structure for entity activation logic.<br>
-                <br>
-                __⚡Recommended value: \`true\`__<br>
-                <div class="warning custom-block">
-                <p class="custom-block-title custom-block-title-default">Experimental</p>
-                Experimental feature, actively testing, please report any bugs you encounter.
-                </div>`
-        },
+        // TODO: Add back when Leaf#528 merged
+        // "optimize-entity-activation": {
+        //     default: false,
+        //     desc: `Whether to use a more efficient data structure for entity activation logic.<br>
+        //         <br>
+        //         __⚡Recommended value: \`true\`__<br>
+        //         <div class="warning custom-block">
+        //         <p class="custom-block-title custom-block-title-default">Experimental</p>
+        //         Experimental feature, actively testing, please report any bugs you encounter.
+        //         </div>`
+        // },
         "only-tick-items-in-hand": {
             default: false,
             desc: `Whether to tick or update items only if the player holds them in the main hand or offhand, instead of ticking the entire inventory.<br>
@@ -568,7 +569,7 @@ const config: ConfigRoot = {
         },
         "sleeping-block-entity": {
             default: false,
-            desc: `Whether to use Lithium's sleeping block entity optimization.<br>
+            desc: `Whether to use [Lithium](https://modrinth.com/mod/lithium)'s sleeping block entity optimization.<br>
                 Block entities like hoppers will not tick if they are inactive. They will be woken up and ticked again when they receive new activities.<br>
                 This can help reduce lag on servers that have many hoppers or other block entities.<br>
                 <br>
@@ -699,7 +700,7 @@ const config: ConfigRoot = {
             },
             "paper-configuration-pool": {
                 default: true,
-                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for Paper's task pool during the configuration phase.<br>
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for Paper's task pool during the Minecraft configuration phase.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
             }
@@ -724,12 +725,13 @@ const config: ConfigRoot = {
                 default: 10240,
                 desc: `Max allowed entries in the mob's combat tracker.<br>
                     This only has any effect if \`mc-301114\` above is \`true\`.`
-            },
-            "mc-152094": {
-                default: false,
-                desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
-                    Mojira link: [MC-152094](https://mojira.dev/MC-152094)`
             }
+            // TODO: Add back when Leaf#727 merged
+            // "mc-152094": {
+            //     default: false,
+            //     desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
+            //         Mojira link: [MC-152094](https://mojira.dev/MC-152094)`
+            // }
         },
         "prevent-moving-into-weak-loaded-chunks": {
             __desc__: "Whether to prevent entities from moving into weak-loaded chunks.",
@@ -1144,7 +1146,7 @@ const config: ConfigRoot = {
                 default: "[]",
                 desc: `Worlds listed here will skip the world saving.<br>
                     Changes in chunks/entities of these worlds remain in memory until the chunk is unloaded or the server is restarted, and will not be written to the disk.<br>
-                    This is for PVP/practice servers, where the combat area is non-persistent and doesn't need to save changes.`
+                    This is for PVP/practice servers, where changes in the combat area are non-persistent and don't need to be saved.`
             }
         },
         "including-5s-in-get-tps": {

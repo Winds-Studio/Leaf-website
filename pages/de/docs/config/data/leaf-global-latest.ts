@@ -528,34 +528,6 @@ const config: ConfigRoot = {
                 Dies kann dazu führen, dass Vanilla-Karten-Item-Daten nicht mehr aktualisiert werden.
                 </div>`
         },
-        "throttle-hopper-when-full": {
-            enabled: {
-                default: false,
-                desc: `Ob Versuche von Trichtern (Hopper), Items zu übertragen, gedrosselt werden sollen, wenn der Zielcontainer voll ist.<br>
-                    Verhindert, dass der Trichter jeden Tick versucht, Items zu verschieben, selbst wenn dies immer wieder fehlschlägt.<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`true\`__
-                    <table>
-                    <tr><td><b>Werte für Ziele</b></td><td></td></tr>
-                    <tr><td><i>Optimierung</i></td><td><code>true</code></td></tr>
-                    <tr><td><i>Vanilla-Verhalten</i></td><td><code>false</code></td></tr>
-                    </table>`
-            },
-            "skip-ticks": {
-                default: 8,
-                desc: `Wie viele Ticks ein Trichter warten soll, bevor er erneut versucht, Items zu verschieben, wenn der Zielcontainer voll ist.<br>
-                    (Einheit: Tick)<br>
-                    Nur aktiv, wenn \`throttle-hopper-when-full.enabled\` oben \`true\` ist.<br>
-                    Wenn ein Wert &leq; \`0\` angegeben wird, ist diese Drosselungsfunktion deaktiviert.<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`8\`__
-                    <table>
-                    <tr><td><b>Werte für Ziele</b></td><td></td></tr>
-                    <tr><td><i>Optimierung</i></td><td><code>8</code></td></tr>
-                    <tr><td><i>Vanilla-Verhalten</i></td><td><code>8</code></td></tr>
-                    </table>`
-            }
-        },
         "throttle-mob-spawning": {
             enabled: {
                 default: false,
@@ -676,17 +648,6 @@ const config: ConfigRoot = {
 
     fixes: {
         __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
-        "prevent-moving-into-weak-loaded-chunks": {
-            __desc__: "Ob verhindert werden soll, dass Entities sich in weak-loaded Chunks bewegen.",
-            enabled: {
-                default: false,
-                desc: "Setze dies auf `true`, um die untenstehenden Optionen nutzen zu können."
-            },
-            projectiles: {
-                default: false,
-                desc: "Ob verhindert werden soll, dass Projektile sich in weak-loaded Chunks bewegen."
-            }
-        },
         "vanilla-bug-fix": {
             __desc__: "Dieser Abschnitt enthält Fixes für Vanilla Minecraft Bugs.",
             "mc-270656": {
@@ -703,6 +664,17 @@ const config: ConfigRoot = {
                 default: 10240,
                 desc: `Maximale Anzahl erlaubter Einträge im Combat-Tracker der Mobs.<br>
                     Hat nur einen Effekt, wenn \`mc-301114\` oben auf \`true\` gestellt ist.`
+            }
+        },
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "Ob verhindert werden soll, dass Entities sich in weak-loaded Chunks bewegen.",
+            enabled: {
+                default: false,
+                desc: "Setze dies auf `true`, um die untenstehenden Optionen nutzen zu können."
+            },
+            projectiles: {
+                default: false,
+                desc: "Ob verhindert werden soll, dass Projektile sich in weak-loaded Chunks bewegen."
             }
         }
     },
