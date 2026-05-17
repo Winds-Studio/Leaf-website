@@ -425,7 +425,11 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to use a more efficient data structure for entity activation logic.<br>
                 <br>
-                __⚡Recommended value: \`true\`__`
+                __⚡Recommended value: \`true\`__<br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing, please report any bugs you encounter.
+                </div>`
         },
         "only-tick-items-in-hand": {
             default: false,
@@ -438,7 +442,12 @@ const config: ConfigRoot = {
             default: false,
             desc: `Whether to use a more efficient data structure for collecting spawning chunks and nearest player lookup.<br>
                 <br>
-                __⚡Recommended value: \`true\`__`
+                __⚡Recommended value: \`true\`__
+                <br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimental</p>
+                Experimental feature, actively testing, please report any bugs you encounter.
+                </div>`
         },
         "optimize-no-action-time": {
             "disable-light-check": {
@@ -557,33 +566,13 @@ const config: ConfigRoot = {
                 This may cause vanilla map item data to stop being updated.
                 </div>`
         },
-        "throttle-hopper-when-full": {
-            enabled: {
-                default: false,
-                desc: `Whether to throttle hopper item transfer attempts if the target container is full.<br>
-                    Prevents the hopper from constantly trying to push items every tick, even if it keeps failing.<br>
-                    <br>
-                    __⚡Recommended value: \`true\`__
-                    <table>
-                    <tr><td><b>Values for goals</b></td><td></td></tr>
-                    <tr><td><i>Optimization</i></td><td><code>true</code></td></tr>
-                    <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
-                    </table>`
-            },
-            "skip-ticks": {
-                default: 8,
-                desc: `How many ticks should a hopper wait before trying to move items again if the target container is full.<br>
-                    (Unit: tick)<br>
-                    Only active if \`throttle-hopper-when-full.enabled\` above is \`true\`.<br>
-                    If a value &leq; \`0\` is given, this throttling feature is disabled.<br>
-                    <br>
-                    __⚡Recommended value: \`8\`__
-                    <table>
-                    <tr><td><b>Values for goals</b></td><td></td></tr>
-                    <tr><td><i>Optimization</i></td><td><code>8</code></td></tr>
-                    <tr><td><i>Vanilla behavior</i></td><td><code>8</code></td></tr>
-                    </table>`
-            }
+        "sleeping-block-entity": {
+            default: false,
+            desc: `Whether to use Lithium's sleeping block entity optimization.<br>
+                Block entities like hoppers will not tick if they are inactive. They will be woken up and ticked again when they receive new activities.<br>
+                This can help reduce lag on servers that have many hoppers or other block entities.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
         },
         "throttle-mob-spawning": {
             enabled: {
@@ -677,45 +666,48 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Recommended value: \`false\` (Only if you encounter specific lag described above)__`
         },
-        "use-virtual-thread-for-async-scheduler": {
-            default: false,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __CraftAsyncScheduler__, which could improve the performance of plugins that heavily utilize Bukkit's async scheduler.<br>
+        "use-virtual-thread": {
+            "bukkit-async-scheduler": {
+                default: false,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __CraftAsyncScheduler__, which could improve the performance of plugins that heavily utilize the Bukkit async scheduler.<br>
                 <br>
                 __⚡Recommended value: \`true\` (Only if all plugins support Virtual Thread)__`
-        },
-        "use-virtual-thread-for-async-chat-executor": {
-            default: true,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __Async Chat Executor__.<br>
+            },
+            "folia-async-scheduler": {
+                default: false,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __FoliaAsyncScheduler__, which could improve the performance of plugins that heavily utilize the Folia async scheduler.<br>
+                <br>
+                __⚡Recommended value: \`true\` (Only if all plugins support Virtual Thread)__`
+            },
+            "async-chat-executor": {
+                default: true,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __Async Chat Executor__.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
-        },
-        "use-virtual-thread-for-profile-executor": {
-            default: false,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __Profile Executor__, which handles player profile and skull skin fetching.<br>
+            },
+            "download-pool": {
+                default: false,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for fetching player profiles and skull skins.<br>
                 <br>
                 __⚡Recommended value: \`false\`__`
-        },
-        "use-virtual-thread-for-user-authenticator": {
-            default: true,
-            desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for the __User Authenticator service__, which handles premium player join verification.<br>
+            },
+            "auth-pool": {
+                default: true,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for user authentication, which handles premium player join verification.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`
+            },
+            "paper-configuration-pool": {
+                default: true,
+                desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for Paper's task pool during the configuration phase.<br>
+                <br>
+                __⚡Recommended value: \`true\`__`
+            }
         }
     },
 
     fixes: {
         __desc__: "This section contains bug fixes for specific issues.",
-        "prevent-moving-into-weak-loaded-chunks": {
-            __desc__: "Whether to prevent entities from moving into weak-loaded chunks.",
-            enabled: {
-                default: false,
-                desc: "Set this to `true` to be able to use options below."
-            },
-            projectiles: {
-                default: false,
-                desc: "Whether to prevent projectiles from moving into weak-loaded chunks."
-            }
-        },
         "vanilla-bug-fix": {
             __desc__: "This section contains fixes for vanilla Minecraft bugs.",
             "mc-270656": {
@@ -732,6 +724,22 @@ const config: ConfigRoot = {
                 default: 10240,
                 desc: `Max allowed entries in the mob's combat tracker.<br>
                     This only has any effect if \`mc-301114\` above is \`true\`.`
+            },
+            "mc-152094": {
+                default: false,
+                desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
+                    Mojira link: [MC-152094](https://mojira.dev/MC-152094)`
+            }
+        },
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "Whether to prevent entities from moving into weak-loaded chunks.",
+            enabled: {
+                default: false,
+                desc: "Set this to `true` to be able to use options below."
+            },
+            projectiles: {
+                default: false,
+                desc: "Whether to prevent projectiles from moving into weak-loaded chunks."
             }
         }
     },
@@ -859,7 +867,7 @@ const config: ConfigRoot = {
             },
             "flush-location-while-knockback-player": {
                 default: false,
-                desc: `Whether to send movement changes to the client immediately.<br>
+                desc: `Whether to synchronize player movement immediately when it gets knockback.<br>
                     Once the target player is hit and gets knockback, it can give a smoother PVP gameplay experience with faster knockback responses. Instead, in vanilla, the packet sending happens at the end of the tick and it may hurt the PVP game experience.<br>
                     <br>
                     __⚡Recommended value: \`true\` (For PVP server)__<br>
@@ -959,6 +967,16 @@ const config: ConfigRoot = {
                 <tr><td><i>SMP friendly</i></td><td><code>true</code></td></tr>
                 <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
                 </table>`
+        },
+        "use-vanilla-hopper": {
+            default: false,
+            desc: `Whether to use an aggresive way to revert Paper's hopper behavior to be close to vanilla behavior.<br>
+                It's recommended to use this option with \`performance.sleeping-block-entity\`.<br>
+                <table>
+                <tr><td><b>Values for goals</b></td><td></td></tr>
+                <tr><td><i>SMP friendly</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Vanilla behavior</i></td><td><code>false</code></td></tr>
+                </table>`
         }
     },
 
@@ -1001,6 +1019,10 @@ const config: ConfigRoot = {
                 The protocol support may cause incompatibility with the [ViaVersion](https://modrinth.com/plugin/viaversion).<br>
                 We recommend players use a client that has the same version as the server core and install the latest corresponding mod; otherwise, they may be unable to join the server.
                 </div>`,
+            "strict-mode": {
+                default: false,
+                desc: `Whether to throw the error instead of logging it when an exception happens while handling Leaves's protocol features.`
+            },
             "jade-protocol": {
                 default: false,
                 desc: `Whether to enable [Jade](https://modrinth.com/mod/jade) protocol support.<br>
@@ -1115,6 +1137,14 @@ const config: ConfigRoot = {
                     default: "default",
                     desc: "The quit message of the player."
                 }
+            }
+        },
+        "disable-world-data-saving": {
+            worlds: {
+                default: "[]",
+                desc: `Worlds listed here will skip the world saving.<br>
+                    Changes in chunks/entities of these worlds remain in memory until the chunk is unloaded or the server is restarted, and will not be written to the disk.<br>
+                    This is for PVP/practice servers, where the combat area is non-persistent and doesn't need to save changes.`
             }
         },
         "including-5s-in-get-tps": {
