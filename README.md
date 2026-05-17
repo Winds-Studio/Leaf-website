@@ -20,7 +20,7 @@ Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for mor
 
 - `pnpm install & pnpm build` - Build the website.
 - `pnpm run preview` - Preview the website.
-- `pnpm vitepress dev` - Start the live-reloading local dev server.
+- `pnpm dev` - Start the live-reloading local dev server.
 
 ## ⚖️ License
 
