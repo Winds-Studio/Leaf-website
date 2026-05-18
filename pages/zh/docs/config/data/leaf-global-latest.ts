@@ -428,6 +428,17 @@ const config: ConfigRoot = {
                 <br>
                 __⚡推荐值：\`true\`__`
         },
+        "optimize-mob-spawning": {
+            default: false,
+            desc: `在生物生成中，是否使用更高效的逻辑来收集可生成的区块和查找附近的玩家。<br>
+                <br>
+                __⚡推荐值：\`true\`__
+                <br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">实验性功能</p>
+                实验性功能，正在积极测试中，如遇到问题请反馈。
+                </div>`
+        },
         "optimize-no-action-time": {
             "disable-light-check": {
                 default: false,
@@ -546,33 +557,13 @@ const config: ConfigRoot = {
                 开启此配置项可能会导致原版地图物品的内容停止更新。
                 </div>`
         },
-        "throttle-hopper-when-full": {
-            enabled: {
-                default: false,
-                desc: `当目标容器已满时，是否限制漏斗尝试传输物品的频率。<br>
-                    此功能可以防止漏斗在物品传输失败时，也在每个 tick 都不断尝试传输物品。<br>
-                    <br>
-                    __⚡推荐值：\`true\`__
-                    <table>
-                    <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
-                    <tr><td><i>优化</i></td><td><code>true</code></td></tr>
-                    <tr><td><i>原版行为</i></td><td><code>false</code></td></tr>
-                    </table>`
-            },
-            "skip-ticks": {
-                default: 8,
-                desc: `当目标容器已满时，漏斗将等待多长时间再尝试移动物品。<br>
-                    （单位：tick）<br>
-                    仅在上方的 \`throttle-hopper-when-full.enabled\` 为 \`true\` 时，此配置项才会生效。<br>
-                    如果设为 &leq; \`0\`，将禁用此冷却功能。<br>
-                    <br>
-                    __⚡推荐值：\`8\`__
-                    <table>
-                    <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
-                    <tr><td><i>优化</i></td><td><code>8</code></td></tr>
-                    <tr><td><i>原版行为</i></td><td><code>8</code></td></tr>
-                    </table>`
-            }
+        "sleeping-block-entity": {
+            default: false,
+            desc: `是否使用 [锂](https://www.mcmod.cn/class/2292.html) mod 的“睡觉的方块实体”优化。<br>
+                当漏斗和其他方块实体未处于活跃状态时将不会进行 tick 计算。当接收到新任务之后会被唤醒并正常进行计算。<br>
+                这可以有效减少卡顿，特别是在有着大量漏斗或其他方块实体的生电服或者生存服。<br>
+                <br>
+                __⚡推荐值：\`true\`__`
         },
         "throttle-mob-spawning": {
             enabled: {
@@ -666,48 +657,50 @@ const config: ConfigRoot = {
                 <br>
                 __⚡推荐值：\`false\`（仅当你遇到上述卡顿时）__`
         },
-        "use-virtual-thread-for-async-scheduler": {
-            default: false,
-            desc: `是否为 __异步任务调度器（CraftAsyncScheduler）__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
+        "use-virtual-thread": {
+            "bukkit-async-scheduler": {
+                default: false,
+                desc: `是否为 __Bukkit 异步任务调度器（CraftAsyncScheduler）__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
                 这可能会提升大量使用 Bukkit 异步调度器的插件的性能。<br>
                 <br>
                 __⚡推荐值：\`true\`（仅当所有插件都支持虚拟线程时）__`
-        },
-        "use-virtual-thread-for-async-chat-executor": {
-            default: true,
-            desc: `是否为 __异步聊天__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
+            },
+            "folia-async-scheduler": {
+                default: false,
+                desc: `是否为 __Folia 异步任务调度器（FoliaAsyncScheduler）__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
+                这可能会提升大量使用 Folia 异步调度器的插件的性能。<br>
+                <br>
+                __⚡推荐值：\`true\`（仅当所有插件都支持虚拟线程时）__`
+            },
+            "async-chat-executor": {
+                default: true,
+                desc: `是否使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html) 来处理异步聊天。<br>
                 <br>
                 __⚡推荐值：\`true\`__`
-        },
-        "use-virtual-thread-for-profile-executor": {
-            default: false,
-            desc: `是否为 __玩家档案执行器（Profile Executor）__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
-                该执行器用于处理玩家档案与头颅皮肤的获取。<br>
+            },
+            "download-pool": {
+                default: false,
+                desc: `是否使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html) 来处理玩家档案与头颅皮肤的获取。<br>
                 <br>
                 __⚡推荐值：\`false\`__`
-        },
-        "use-virtual-thread-for-user-authenticator": {
-            default: true,
-            desc: `是否为 __用户验证服务（User Authenticator）__ 使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
-                该服务用于处理正版玩家的加入验证。<br>
+            },
+            "auth-pool": {
+                default: true,
+                desc: `是否使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html) 来处理正版玩家进服时的账号验证。<br>
                 <br>
                 __⚡推荐值：\`true\`__`
+            },
+            "paper-configuration-pool": {
+                default: true,
+                desc: `是否为 Paper 在 MC 配置阶段的任务池使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
+                <br>
+                __⚡推荐值：\`true\`__`
+            }
         }
     },
 
     fixes: {
         __desc__: "本节包含对特定问题的修复。",
-        "prevent-moving-into-weak-loaded-chunks": {
-            __desc__: "是否阻止实体进入弱加载区块。",
-            enabled: {
-                default: false,
-                desc: "设为 `true` 以启用以下功能。"
-            },
-            projectiles: {
-                default: false,
-                desc: "是否阻止弹射物进入弱加载区块。"
-            }
-        },
         "vanilla-bug-fix": {
             __desc__: "本节包含对 Minecraft 原版的问题修复。",
             "mc-270656": {
@@ -724,6 +717,17 @@ const config: ConfigRoot = {
                 default: 10240,
                 desc: `生物战斗跟踪器中允许的最大条目。<br>
                     仅当上方的 \`mc-301114\` 设为 \`true\` 时才会生效。`
+            }
+        },
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "是否阻止实体进入弱加载区块。",
+            enabled: {
+                default: false,
+                desc: "设为 `true` 以启用以下功能。"
+            },
+            projectiles: {
+                default: false,
+                desc: "是否阻止弹射物进入弱加载区块。"
             }
         }
     },
@@ -793,6 +797,20 @@ const config: ConfigRoot = {
                 desc: "与 \`horizontal-force\` 类似，但作用于垂直方向速度。"
             }
         },
+        "ice-and-snow-chance": {
+            default: 48,
+            desc: `降雨和降雪发生的概率。
+                <ul>
+                <li>如果希望更低的降雨降雪概率，请将该值调高。</li>
+                <li>如果希望降雨降雪的行为更接近原版，请将该值调至接近 \`48\`。</li>
+                </ul>
+                __⚡推荐值：\`384\` (\`384 = 48 * 8\`)__
+                <table>
+                <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
+                <tr><td><i>优化</i></td><td><code>384</code></td></tr>
+                <tr><td><i>原版行为</i></td><td><code>48</code></td></tr>
+                </table>`
+        },
         // TODO: Add back when implemented it
         // "hide-item-component": {
         //     "hidden-types": {
@@ -836,7 +854,7 @@ const config: ConfigRoot = {
             },
             "flush-location-while-knockback-player": {
                 default: false,
-                desc: `是否在玩家受到击退时立即向客户端发送位置数据更新包。<br>
+                desc: `是否在玩家受到击退时同步位置数据的更新。<br>
                     当目标玩家被击中并受到击退时，此配置项可以提供更顺畅、响应更快的击退反馈。而在原版中，相关数据包会在每次 tick 的最后发送，可能会影响 PVP 体验。<br>
                     <br>
                     __⚡推荐值：\`true\`（适用于 PVP 服务器）__<br>
@@ -936,6 +954,16 @@ const config: ConfigRoot = {
                 <tr><td><i>SMP 友好</i></td><td><code>true</code></td></tr>
                 <tr><td><i>原版行为</i></td><td><code>false</code></td></tr>
                 </table>`
+        },
+        "use-vanilla-hopper": {
+            default: false,
+            desc: `是否使用较激进的方式，让 Paper 上的漏斗行为更接近于原版行为。<br>
+                推荐和 \`performance.sleeping-block-entity\` 配合使用。<br>
+                <table>
+                <tr><td><b>基于目标的推荐值</b></td><td></td></tr>
+                <tr><td><i>SMP 友好</i></td><td><code>true</code></td></tr>
+                <tr><td><i>原版行为</i></td><td><code>false</code></td></tr>
+                </table>`
         }
     },
 
@@ -979,7 +1007,10 @@ const config: ConfigRoot = {
                 开启协议支持后，可能导致和 [ViaVersion](https://modrinth.com/plugin/viaversion) 不兼容。<br>
                 并且我们建议玩家使用与服务器核心相同版本的客户端，并安装对应模组的最新版本，否则将会无法进入服务器。
                 </div>`,
-            /*
+            "strict-mode": {
+                default: false,
+                desc: `Leaves 协议支持功能发生异常时，是否直接抛出错误而不是仅记录日志。`
+            },
             "jade-protocol": {
                 default: false,
                 desc: `是否开启对 [Jade](https://modrinth.com/mod/jade) 的协议支持。<br>
@@ -1031,7 +1062,6 @@ const config: ConfigRoot = {
                 desc: `上传至服务器的共享投影的最大单个文件大小。<br>
                     （单位：字节，默认 40,000,000 字节 ≈ 38 MB）`
             },
-            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `是否开启对 [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll) 的协议支持。<br>
@@ -1095,6 +1125,14 @@ const config: ConfigRoot = {
                     default: "default",
                     desc: "玩家离开服务器时的提示消息。"
                 }
+            }
+        },
+        "disable-world-data-saving": {
+            worlds: {
+                default: "[]",
+                desc: `此列表中的世界将跳过世界数据保存。<br>
+                    这些世界的区块 / 实体改动会一直保留在内存中，直到区块卸载或服务器重启，不会写入磁盘。<br>
+                    适用于战斗区域的改动不需要持久化保存的 PVP / 练习类服务器。`
             }
         },
         "including-5s-in-get-tps": {

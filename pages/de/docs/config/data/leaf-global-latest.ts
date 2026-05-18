@@ -417,6 +417,17 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Empfohlener Wert: \`true\`__`
         },
+        "optimize-mob-spawning": {
+            default: false,
+            desc: `Ob eine effizientere Datenstruktur zum Sammeln von Spawning-Chunks und für die Suche nach dem nächsten Spieler verwendet werden soll.<br>
+                <br>
+                __⚡Empfohlener Wert: \`true\`__
+                <br>
+                <div class="warning custom-block">
+                <p class="custom-block-title custom-block-title-default">Experimentell</p>
+                Experimentelle Funktion, wird aktiv getestet, bitte melde alle Fehler, die auftreten.
+                </div>`
+        },
         "optimize-no-action-time": {
             "disable-light-check": {
                 default: false,
@@ -528,33 +539,13 @@ const config: ConfigRoot = {
                 Dies kann dazu führen, dass Vanilla-Karten-Item-Daten nicht mehr aktualisiert werden.
                 </div>`
         },
-        "throttle-hopper-when-full": {
-            enabled: {
-                default: false,
-                desc: `Ob Versuche von Trichtern (Hopper), Items zu übertragen, gedrosselt werden sollen, wenn der Zielcontainer voll ist.<br>
-                    Verhindert, dass der Trichter jeden Tick versucht, Items zu verschieben, selbst wenn dies immer wieder fehlschlägt.<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`true\`__
-                    <table>
-                    <tr><td><b>Werte für Ziele</b></td><td></td></tr>
-                    <tr><td><i>Optimierung</i></td><td><code>true</code></td></tr>
-                    <tr><td><i>Vanilla-Verhalten</i></td><td><code>false</code></td></tr>
-                    </table>`
-            },
-            "skip-ticks": {
-                default: 8,
-                desc: `Wie viele Ticks ein Trichter warten soll, bevor er erneut versucht, Items zu verschieben, wenn der Zielcontainer voll ist.<br>
-                    (Einheit: Tick)<br>
-                    Nur aktiv, wenn \`throttle-hopper-when-full.enabled\` oben \`true\` ist.<br>
-                    Wenn ein Wert &leq; \`0\` angegeben wird, ist diese Drosselungsfunktion deaktiviert.<br>
-                    <br>
-                    __⚡Empfohlener Wert: \`8\`__
-                    <table>
-                    <tr><td><b>Werte für Ziele</b></td><td></td></tr>
-                    <tr><td><i>Optimierung</i></td><td><code>8</code></td></tr>
-                    <tr><td><i>Vanilla-Verhalten</i></td><td><code>8</code></td></tr>
-                    </table>`
-            }
+        "sleeping-block-entity": {
+            default: false,
+            desc: `Ob die Sleeping Block Entity Optimierung von [Lithium](https://modrinth.com/mod/lithium) verwendet werden soll.<br>
+                Block Entities wie Trichter ticken nicht, wenn sie inaktiv sind. Sie werden aufgeweckt und ticken wieder, wenn sie neue Aktivitäten registrieren.<br>
+                Dies kann helfen, Lags auf Servern mit vielen Trichtern oder anderen Block Entities zu reduzieren.<br>
+                <br>
+                __⚡Empfohlener Wert: \`true\`__`
         },
         "throttle-mob-spawning": {
             enabled: {
@@ -648,45 +639,48 @@ const config: ConfigRoot = {
                 <br>
                 __⚡Empfohlener Wert: \`false\` (Nur wenn du spezifische Lags wie oben beschrieben feststellst)__`
         },
-        "use-virtual-thread-for-async-scheduler": {
-            default: false,
-            desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den CraftAsyncScheduler verwendet werden soll, was die Leistung von Plugins verbessern könnte, die den asynchronen Scheduler von Bukkit stark nutzen.<br>
+        "use-virtual-thread": {
+            "bukkit-async-scheduler": {
+                default: false,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den CraftAsyncScheduler verwendet werden soll, was die Leistung von Plugins verbessern könnte, die den asynchronen Scheduler von Bukkit stark nutzen.<br>
                 <br>
                 __⚡Empfohlener Wert: \`true\` (Nur wenn alle Plugins Virtual Threads unterstützen)__`
-        },
-        "use-virtual-thread-for-async-chat-executor": {
-            default: true,
-            desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den Async Chat Executor verwendet werden soll.<br>
+            },
+            "folia-async-scheduler": {
+                default: false,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den __FoliaAsyncScheduler__ verwendet werden soll, was die Leistung von Plugins verbessern könnte, die den asynchronen Scheduler von Folia stark nutzen.<br>
+                <br>
+                __⚡Empfohlener Wert: \`true\` (Nur wenn alle Plugins Virtual Threads unterstützen)__`
+            },
+            "async-chat-executor": {
+                default: true,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den Async Chat Executor verwendet werden soll.<br>
                 <br>
                 __⚡Empfohlener Wert: \`true\`__`
-        },
-        "use-virtual-thread-for-profile-executor": {
-            default: false,
-            desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den Profile Executor verwendet werden soll, der das Abrufen von Spielerprofilen und Schädel-Skins handhabt.<br>
+            },
+            "download-pool": {
+                default: false,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für das Abrufen von Spielerprofilen und Skull-Skins verwendet werden soll.<br>
                 <br>
                 __⚡Empfohlener Wert: \`false\`__`
-        },
-        "use-virtual-thread-for-user-authenticator": {
-            default: true,
-            desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den User Authenticator Service verwendet werden soll, der die Premium-Spieler-Beitrittsverifizierung handhabt.<br>
+            },
+            "auth-pool": {
+                default: true,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den User Authenticator Service verwendet werden soll, der die Beitrittsverifizierung von Premiumspielern handhabt.<br>
                 <br>
                 __⚡Empfohlener Wert: \`true\`__`
+            },
+            "paper-configuration-pool": {
+                default: true,
+                desc: `Ob der in JDK 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für den Task-Pool von Paper während der Konfigurationsphase von Minecraft verwendet werden soll.<br>
+                <br>
+                __⚡Empfohlener Wert: \`true\`__`
+            }
         }
     },
 
     fixes: {
         __desc__: "Dieser Abschnitt enthält Bugfixes für spezifische Probleme.",
-        "prevent-moving-into-weak-loaded-chunks": {
-            __desc__: "Ob verhindert werden soll, dass Entities sich in weak-loaded Chunks bewegen.",
-            enabled: {
-                default: false,
-                desc: "Setze dies auf `true`, um die untenstehenden Optionen nutzen zu können."
-            },
-            projectiles: {
-                default: false,
-                desc: "Ob verhindert werden soll, dass Projektile sich in weak-loaded Chunks bewegen."
-            }
-        },
         "vanilla-bug-fix": {
             __desc__: "Dieser Abschnitt enthält Fixes für Vanilla Minecraft Bugs.",
             "mc-270656": {
@@ -703,6 +697,17 @@ const config: ConfigRoot = {
                 default: 10240,
                 desc: `Maximale Anzahl erlaubter Einträge im Combat-Tracker der Mobs.<br>
                     Hat nur einen Effekt, wenn \`mc-301114\` oben auf \`true\` gestellt ist.`
+            }
+        },
+        "prevent-moving-into-weak-loaded-chunks": {
+            __desc__: "Ob verhindert werden soll, dass Entities sich in weak-loaded Chunks bewegen.",
+            enabled: {
+                default: false,
+                desc: "Setze dies auf `true`, um die untenstehenden Optionen nutzen zu können."
+            },
+            projectiles: {
+                default: false,
+                desc: "Ob verhindert werden soll, dass Projektile sich in weak-loaded Chunks bewegen."
             }
         }
     },
@@ -771,6 +776,20 @@ const config: ConfigRoot = {
                 desc: "Dasselbe wie \`horizontal-force\`, aber für die vertikale Geschwindigkeit."
             }
         },
+        "ice-and-snow-chance": {
+            default: 48,
+            desc: `Die Wahrscheinlichkeit für die Bildung von Eis und Schnee.
+                <ul>
+                <li>Wenn du möchtest, dass Eis und Schnee seltener auftreten, setze diesen Wert höher.</li>
+                <li>Wenn du möchtest, dass sich Eis und Schnee eher wie in Vanilla verhalten, setze diesen Wert näher an \`48\`.</li>
+                </ul>
+                __⚡Empfohlener Wert: \`384\` (\`384 = 48 * 8\`)__
+                <table>
+                <tr><td><b>Werte für Ziele</b></td><td></td></tr>
+                <tr><td><i>Optimierung</i></td><td><code>384</code></td></tr>
+                <tr><td><i>Vanilla-Verhalten</i></td><td><code>48</code></td></tr>
+                </table>`
+        },
         // TODO: Add back when implemented it
         // "hide-item-component": {
         //     "hidden-types": {
@@ -813,7 +832,8 @@ const config: ConfigRoot = {
             },
             "flush-location-while-knockback-player": {
                 default: false,
-                desc: `Ob Bewegungsänderungen sofort an den Client gesendet werden sollen, sobald der Zielspieler getroffen wird und Rückstoß erhält. Dies kann ein flüssigeres PVP-Spielerlebnis mit schnelleren Rückstoß-Reaktionen bieten. In Vanilla geschieht das Senden des Pakets stattdessen am Ende des Ticks, was das PVP-Spielerlebnis beeinträchtigen kann.<br>
+                desc: `Ob die Spielerbewegung sofort synchronisiert werden soll, wenn der Spieler Rückstoß erhält.<br>
+                    Sobald der Zielspieler getroffen wird und Rückstoß erhält, kann dies ein flüssigeres PVP-Spielerlebnis mit schnelleren Rückstoß-Reaktionen bieten. In Vanilla erfolgt das Senden der Pakete stattdessen erst am Ende des Ticks, was das PVP-Spielerlebnis beeinträchtigen kann.<br>
                     <br>
                     __⚡Empfohlener Wert: \`true\` (Für PVP-Server)__
                     <div class="warning custom-block">
@@ -908,6 +928,16 @@ const config: ConfigRoot = {
                 <tr><td><i>SMP-freundlich</i></td><td><code>true</code></td></tr>
                 <tr><td><i>Vanilla-Verhalten</i></td><td><code>false</code></td></tr>
                 </table>`
+        },
+        "use-vanilla-hopper": {
+            default: false,
+            desc: `Ob ein aggressiver Weg genutzt werden soll, um das Trichter-Verhalten von Paper rückgängig zu machen und es näher an das Vanilla-Verhalten anzupassen.<br>
+                Es wird empfohlen, diese Option zusammen mit \`performance.sleeping-block-entity\` zu verwenden.<br>
+                <table>
+                <tr><td><b>Werte für Ziele</b></td><td></td></tr>
+                <tr><td><i>SMP-freundlich</i></td><td><code>true</code></td></tr>
+                <tr><td><i>Vanilla-Verhalten</i></td><td><code>false</code></td></tr>
+                </table>`
         }
     },
 
@@ -945,7 +975,10 @@ const config: ConfigRoot = {
                 Die Protokoll-Unterstützung kann zu Inkompatibilität mit [ViaVersion](https://modrinth.com/plugin/viaversion) führen.<br>
                 Wir empfehlen Spielern, einen Client zu verwenden, der dieselbe Version wie der Server-Core hat, und die neueste entsprechende Mod zu installieren; andernfalls können sie dem Server möglicherweise nicht beitreten.
                 </div>`,
-            /*
+            "strict-mode": {
+                default: false,
+                desc: `Ob ein Fehler geworfen werden soll, anstatt ihn nur zu protokollieren, wenn eine Exception bei der Verarbeitung der Protokollfunktionen von Leaves auftritt.`
+            },
             "jade-protocol": {
                 default: false,
                 desc: `Ob die [Jade](https://modrinth.com/mod/jade)-Protokoll-Unterstützung aktiviert werden soll.<br>
@@ -997,7 +1030,6 @@ const config: ConfigRoot = {
                 desc: `Die maximale Dateigröße jeder geteilten Schematic-Datei, die auf den Server hochgeladen wird.<br>
                     (Einheit: Byte, Standardwert 40.000.000 Bytes ≈ 38 MB)`
             },
-            */
             "do-a-barrel-roll-protocol": {
                 default: false,
                 desc: `Ob die [Do a Barrel Roll](https://modrinth.com/mod/do-a-barrel-roll)-Protokoll-Unterstützung aktiviert werden soll.<br>
@@ -1060,6 +1092,14 @@ const config: ConfigRoot = {
                     default: "default",
                     desc: "Die Verlassensnachricht des Spielers."
                 }
+            }
+        },
+        "disable-world-data-saving": {
+            worlds: {
+                default: "[]",
+                desc: `Hier aufgelistete Welten überspringen das Speichern der Welt.<br>
+                    Änderungen an Chunks/Entities in diesen Welten verbleiben im Speicher, bis der Chunk entladen oder der Server neu gestartet wird, und werden nicht auf die Festplatte geschrieben.<br>
+                    Dies ist für PVP-/Practice-Server gedacht, bei denen Änderungen im Kampfbereich nicht dauerhaft sind und nicht gespeichert werden müssen.`
             }
         },
         "including-5s-in-get-tps": {
