@@ -18,7 +18,7 @@
 
 ## ❓ · 我该如何优化我的服务器？
 
-你可以参考 [YouHaveTrouble 的优化指南](https://github.com/YouHaveTrouble/minecraft-optimization) 和 [Paper 酱的优化指南](https://paper-chan.moe/paper-optimization/)，或者参考由社区为中文用户撰写的 [笨蛋 Wiki 优化指南](https://nitwikit.8aka.org/java/optimize)。
+你可以参考 [YouHaveTrouble 的优化指南](https://github.com/YouHaveTrouble/minecraft-optimization) 和 [Paper 酱的优化指南](https://paper-chan.moe/paper-optimization/)，或者参考由社区为中文用户撰写的 [笨蛋 Wiki 优化指南](https://nitwikit.8aka.org/java/advance/optimize/intro/)。
 
 ## ❓ · Leaf 有任何已知的不兼容问题吗？
 
