@@ -1,3 +1,6 @@
 allowBuilds:
   '@parcel/watcher': false
   esbuild: false
+  # Temp solution for fixing cloudflare/wrangler-action#436
+  sharp: true
+  workerd: true

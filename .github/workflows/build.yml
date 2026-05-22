@@ -15,9 +15,9 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
         with:
-          run_install: false
+          cache: true
       - name: Install Node.js
         uses: actions/setup-node@v6
         with:
@@ -33,7 +33,7 @@ jobs:
           NUXT_PUBLIC_COMMIT_HASH: ${{ github.sha }}
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
