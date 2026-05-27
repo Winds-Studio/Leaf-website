@@ -37,6 +37,8 @@ Check Spark's documentation to learn:
 - [How to use `/spark` command](https://spark.lucko.me/docs/Command-Usage)
 - [How to find lag spikes using Spark](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
 
+## -DLeaf.meow
+
 ## -DLeaf.enable-io-uring
 
 - default: `false`
