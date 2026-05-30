@@ -128,6 +128,18 @@ html {
   --color-fd-ring: var(--ring);
 }
 
+.prose {
+  --tw-prose-links: var(--accent-fg);
+}
+
+.prose :where(a:not([data-card])):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  text-decoration-color: currentColor;
+}
+
+.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *, h1 *, h2 *, h3 *, h4 *, h5 *, h6 *)) {
+  color: var(--accent-fg);
+}
+
 .custom-block {
   padding: 16px;
   border-radius: 8px;
