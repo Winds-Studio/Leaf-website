@@ -167,7 +167,7 @@ Diese Flags gelten für Standard-OpenJDK-Builds wie Temurin oder Corretto.
   - `-Dgraal.UsePriorityInlining=true` (Default: true): Aktiviert einen erweiterten Inlining-Algorithmus, der Throughput priorisiert. Deaktivieren (`false`) kann Warmup beschleunigen, aber Peak-Performance senken.
   - `-Dgraal.Vectorization=true` (Default: true): Aktiviert SIMD-/Vektorisierungs-Optimierungen für potenziell schnellere mathematische/Array-Operationen. Deaktivieren ist selten sinnvoll.
   - `-Dgraal.OptDuplication=true` (Default: true): Aktiviert Pfad-Duplizierungs-Optimierungen, die verschiedene Codepfade separat optimieren. Deaktivieren kann Compile-Zeiten senken, verschlechtert aber meist die Laufzeit-Performance.
-  - `-Dgraal.TuneInlinerExploration=<float>` (Default: 0, Bereich: -1 bis 1): Steuert den Aufwand für Inlining-Exploration. Werte > 0 erhöhen den Aufwand (bessere Peak-Performance, langsameres Warmup), Werte < 0 verringern ihn (schnelleres Warmup, evtl. geringere Peak-Performance). Erfordert sorgfältiges Profiling.
+  - `-Dgraal.TuneInlinerExploration=<float>` (Default: 0, Bereich: -1 bis 1): Steuert den Aufwand für Inlining-Exploration. Werte \>0 erhöhen den Aufwand (bessere Peak-Performance, langsameres Warmup), Werte \<0 verringern ihn (schnelleres Warmup, evtl. geringere Peak-Performance). Erfordert sorgfältiges Profiling.
   - `-Dgraal.TraceInlining=false` (Default: false): Aktiviert detaillierte Logs zu Inlining-Entscheidungen – nur für tiefgehendes Debugging sinnvoll.
 - **Optionen finden:** Nutze `java -XX:+UnlockExperimentalVMOptions -XX:+PrintFlagsFinal -version | grep graal` (bei GraalVM), um verfügbare Graal-Flags aufzulisten. Das Verständnis erfordert jedoch tiefgehende Kenntnisse oder Dokumentation.
 
