@@ -1,0 +1,212 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@plugin "tailwindcss-animate";
+
+html > body[data-scroll-locked] {
+  margin-right: 0 !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
+html body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@custom-variant lang-en (&:lang(en));
+@custom-variant lang-zh (&:lang(zh));
+@custom-variant lang-de (&:lang(de));
+
+#nd-home-layout {
+  --fd-layout-width: 1200px;
+}
+
+:lang(en) {
+  line-height: 1.6;
+}
+:lang(zh) {
+  line-height: 1.75;
+  letter-spacing: 0;
+}
+:lang(de) {
+  line-height: 1.6;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-rendering: optimizeLegibility;
+  }
+
+  :root {
+    color-scheme: light;
+
+    /* leaf brand */
+    --leaf: #27500a;
+    --leaf-hover: #1f4108;
+    --leaf-fg: #fcfcfb;
+
+    /* surfaces */
+    --bg: #fcfcfb;
+    --bg-subtle: #f6f6f3;
+    --bg-elev: #ffffff;
+    --code-bg: #fafaf7;
+
+    /* text */
+    --fg: #0e110b;
+    --fg-muted: #6b7268;
+    --fg-soft: #8a8e84;
+
+    /* borders */
+    --border: rgba(14, 17, 11, 0.09);
+    --border-strong: rgba(14, 17, 11, 0.14);
+
+    /* accents */
+    --accent-bg: #eaf3de;
+    --accent-fg: #27500a;
+    --ring: rgba(99, 153, 34, 0.45);
+
+    /* chart */
+    --chart-grid: rgba(14, 17, 11, 0.06);
+    --chart-axis: rgba(14, 17, 11, 0.3);
+    --chart-compare: #b8bdb2;
+  }
+
+  html.dark {
+    color-scheme: dark;
+
+    --leaf: #4e8a1f;
+    --leaf-hover: #5d9d28;
+    --leaf-fg: #fcfcfb;
+
+    --bg: #0a0b0a;
+    --bg-subtle: #101210;
+    --bg-elev: #131513;
+    --code-bg: #0e100e;
+
+    --fg: #edede8;
+    --fg-muted: #9a9d96;
+    --fg-soft: #6f7269;
+
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+
+    --accent-bg: #1a2410;
+    --accent-fg: #b6d58a;
+    --ring: rgba(115, 191, 41, 0.5);
+
+    --chart-grid: rgba(255, 255, 255, 0.06);
+    --chart-axis: rgba(255, 255, 255, 0.3);
+    --chart-compare: #4a4d45;
+  }
+}
+
+@theme inline {
+  --color-fd-primary: var(--leaf);
+  --color-fd-primary-foreground: var(--leaf-fg);
+
+  --color-fd-secondary: var(--bg-subtle);
+  --color-fd-secondary-foreground: var(--fg);
+
+  --color-fd-accent: var(--accent-bg);
+  --color-fd-accent-foreground: var(--accent-fg);
+
+  --color-fd-ring: var(--ring);
+}
+
+.custom-block {
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  position: relative;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--color-fd-muted-foreground);
+  background-color: var(--color-fd-muted);
+  border: 1px solid var(--color-fd-border);
+
+  &::before {
+    content: none;
+  }
+
+  .custom-block-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-fd-foreground);
+
+    &::before {
+      content: "ℹ️";
+      font-size: 15px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+  }
+
+  &.warning {
+    border-color: var(--color-yellow-500);
+    background-color: color-mix(in srgb, var(--color-yellow-500) 8%, var(--color-fd-background));
+    code,
+    a {
+      color: var(--color-yellow-500);
+    }
+    .custom-block-title::before {
+      content: "⚠️";
+      font-size: 16px;
+    }
+  }
+
+  &.info {
+    border-color: var(--color-blue-500);
+    background-color: color-mix(in srgb, var(--color-blue-500) 8%, var(--color-fd-background));
+    code,
+    a {
+      color: var(--color-blue-400);
+    }
+  }
+
+  &.danger {
+    border-color: var(--color-red-500);
+    background-color: color-mix(in srgb, var(--color-red-500) 8%, var(--color-fd-background));
+    .custom-block-title::before {
+      content: "⛔";
+    }
+  }
+
+  &.tip {
+    border-color: var(--color-green-500);
+    background-color: color-mix(in srgb, var(--color-green-500) 8%, var(--color-fd-background));
+    code,
+    a {
+      color: var(--color-green-400);
+    }
+    .custom-block-title::before {
+      content: "💡";
+    }
+  }
+
+  :not(pre) > code {
+    font-size: 13px;
+    background-color: color-mix(in srgb, var(--color-fd-foreground) 10%, transparent);
+    padding: 1px 4px;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,55 @@
+---
+title: Entity-Performance
+---
+
+import {
+  EntityTestEnvironment,
+  EntityComparisonChart,
+  EntityImprovementCards,
+} from "@/components/benchmark/entity-performance-graph"
+import { Callout } from "fumadocs-ui/components/callout"
+
+<Callout type="warn">
+  Diese Seite zeigt einen Leistungsvergleich zwischen Leaf und Paper für die Verarbeitung von
+  Entities. Die Ergebnisse repräsentieren ein spezifisches Testszenario, welches sich je nach
+  Hardware, Konfiguration und dem Seed der Welt unterscheiden kann.
+</Callout>
+
+## Testumgebung
+
+<EntityTestEnvironment />
+
+## Leistungsvergleich (MSPT – niedriger ist besser)
+
+<EntityComparisonChart />
+
+## Leistungsverbesserung
+
+<EntityImprovementCards />
+
+## Testkonfiguration
+
+### Standardkonfiguration
+
+Beide Server wurden mit den Standardeinstellungen in bukkit.yml, spigot.yml und anderen Konfigurationsdateien getestet. Dieser Basistest spiegelt die Leistung unter typischen Serverbedingungen wider.
+
+### Konfiguration mit erhöhten Mob-Limits
+
+Geänderte Einstellungen in bukkit.yml:
+
+- monsters: 70 → 700
+- animals: 10 → 100
+
+Alle anderen Konfigurationsdateien blieben auf den Standardwerten. Dieser Test simuliert ein Szenario mit hoher Entity-Anzahl, wie es auf stark frequentierten Servern häufig vorkommt.
+
+### Leaf + Async-Konfiguration
+
+Minimale Async-Optionen in leaf-global.yml aktiviert:
+
+```yaml
+async:
+  async-entity-tracker:
+    enabled: true
+  async-pathfinding:
+    enabled: true
+```

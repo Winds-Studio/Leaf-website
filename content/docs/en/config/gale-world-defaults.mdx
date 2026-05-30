@@ -1,0 +1,30 @@
+---
+title: Gale World Defaults
+---
+
+import galeWorldDefaults1211En from "./message/gale-world-defaults-1-21-1-en.ts"
+import galeWorldDefaults1214En from "./message/gale-world-defaults-1-21-4-en.ts"
+import { ConfigSwitch } from "@/components/config/config-viewer"
+import galeWorldDefaultsLatestEn from "./message/gale-world-defaults-latest-en.ts"
+import galeWorldDefaults1211 from "@/components/config/data/gale-world-defaults-1-21-1"
+import galeWorldDefaults1214 from "@/components/config/data/gale-world-defaults-1-21-4"
+import galeWorldDefaultsLatest from "@/components/config/data/gale-world-defaults-latest"
+
+The YAML config below shows the structure and default config values of Gale's world defaults config (`config/gale-world-defaults.yml`)
+
+Click arrow button behind the config node to show description of it
+
+<ConfigSwitch
+  data={{
+    "1.21.11": galeWorldDefaultsLatest,
+    "1.21.8": galeWorldDefaults1214, // No change since 1.21.4
+    "1.21.4": galeWorldDefaults1214,
+    "1.21.1": galeWorldDefaults1211,
+  }}
+  messages={{
+    "1.21.11": galeWorldDefaultsLatestEn,
+    "1.21.8": galeWorldDefaults1214En,
+    "1.21.4": galeWorldDefaults1214En,
+    "1.21.1": galeWorldDefaults1211En,
+  }}
+/>

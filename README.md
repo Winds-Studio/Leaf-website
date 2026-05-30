@@ -2,7 +2,7 @@
 
 [![MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg?style=flat-square)](LICENSE)
 
-The repository of official Leaf website, powered by [VitePress](https://vitepress.dev/).
+The repository of official Leaf website, powered by [Fumadocs](https://fumadocs.vercel.app/).
 
 Visit the website in https://www.leafmc.one/
 
@@ -10,17 +10,19 @@ Visit the website in https://www.leafmc.one/
 
 ### Prerequisite
 
-Node.js 18.20+
+[Bun](https://bun.sh/) 1.0+
 
 ### Installation
 
-Refer to [Getting started](https://vitepress.dev/guide/getting-started/) for more.
+```bash
+bun install
+```
 
 ### Commands
 
-- `pnpm install & pnpm build` - Build the website.
-- `pnpm run preview` - Preview the website.
-- `pnpm dev` - Start the live-reloading local dev server.
+- `bun run build` - Build the website.
+- `bun run start` - Start the production server.
+- `bun run dev` - Start the live-reloading local dev server.
 
 ## ⚖️ License
 
