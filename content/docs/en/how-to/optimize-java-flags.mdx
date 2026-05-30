@@ -110,14 +110,14 @@ For very large or active servers (150-300 players), the sheer **rate of object a
 | Feature                 | G1GC (with Aikar's Flags)                         | Generational ZGC / Generational Shenandoah              |
 | :---------------------- | :------------------------------------------------ | :------------------------------------------------------ |
 | **Primary Goal**        | Balance throughput & pause times                  | Minimize pause times (ultra-low latency)                |
-| **Typical Pause**       | Low, but can increase with load (\<200ms aim) [8] | Extremely low, sub-millisecond target [13, 14]          |
+| **Typical Pause**       | Low, but can increase with load (&lt;200ms aim) [8] | Extremely low, sub-millisecond target [13, 14]          |
 | **Allocation Handling** | Good (Generational)                               | Excellent (Generational + Concurrent) [12, 17, 18]      |
 | **Throughput**          | Generally very good                               | Potentially slightly lower due to concurrent work [12]  |
 | **CPU Usage**           | Moderate, peaks during pauses                     | Higher _background_ CPU usage for concurrent tasks [12] |
 | **RAM Overhead**        | Efficient                                         | May require slightly more overhead [12]                 |
 | **Complexity**          | Well-understood baseline [8]                      | Simpler tuning than G1GC [10, 12, 14]                   |
 | **Maturity**            | Very mature [9]                                   | Generational modes newer (Java 21+) [10, 18]            |
-| **Best For**            | Most servers (\<100 players), balance [8]         | Very large servers (150/300+), latency sensitive [12]   |
+| **Best For**            | Most servers (&lt;100 players), balance [8]         | Very large servers (150/300+), latency sensitive [12]   |
 
 **Recommendation:** Start with Aikar's G1GC flags. If `/spark gcmonitor` shows frequent or long GC pauses _despite_ tuning, or if profiling indicates the server struggles to keep up with the **allocation rate** on a high-player-count server (and you have sufficient hardware + Java 21), then consider switching to Generational ZGC. Test Generational Shenandoah if using Java 24+ or if GZGC presents issues.
 
@@ -167,7 +167,7 @@ These flags apply when using standard OpenJDK builds like Temurin or Corretto.
   - `-Dgraal.UsePriorityInlining=true` (Default: true): Enables an advanced inlining algorithm that favors throughput over compilation speed [19]. Disabling (`false`) might speed up warmup but potentially reduce peak performance.
   - `-Dgraal.Vectorization=true` (Default: true): Enables automatic use of SIMD instructions (vectorization) for potentially faster mathematical/array operations [19]. Disabling (`false`) is unlikely to be beneficial unless it causes issues.
   - `-Dgraal.OptDuplication=true` (Default: true): Enables path duplication optimization, which can improve performance by optimizing different paths through the code separately [19]. Disabling (`false`) might reduce compile time but likely hurts runtime performance.
-  - `-Dgraal.TuneInlinerExploration=<float>` (Default: 0, Range: -1 to 1): Adjusts the effort spent on exploring inlining possibilities. Values \>0 increase effort (potentially better peak performance, slower warmup), values \<0 decrease effort (faster warmup, potentially lower peak) [19]. Requires careful profiling to tune.
+  - `-Dgraal.TuneInlinerExploration=<float>` (Default: 0, Range: -1 to 1): Adjusts the effort spent on exploring inlining possibilities. Values &gt;0 increase effort (potentially better peak performance, slower warmup), values &lt;0 decrease effort (faster warmup, potentially lower peak) [19]. Requires careful profiling to tune.
   - `-Dgraal.TraceInlining=false` (Default: false): Enables detailed logging of inlining decisions [19]. Only useful for deep debugging.
 - **Finding Options:** Use `java -XX:+UnlockExperimentalVMOptions -XX:+PrintFlagsFinal -version | grep graal` (when running GraalVM) to list available Graal-related flags, but understanding them requires deep knowledge or documentation [19].
 
