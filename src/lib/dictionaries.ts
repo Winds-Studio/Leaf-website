@@ -348,65 +348,65 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
       home: {
         config: {
           bullets: [
-            "Hot-reload at runtime — no restart needed for most changes",
-            "Fine-grained tuning for servers of any size",
-            "Clear inline comments — every option self-documented",
+            "Hot reload — no restart needed for most config changes",
+            "Fine-grained tuning for servers of any types",
+            "Clear documentations — help you understand every option",
           ],
           cta: "Read the config guide",
           eyebrow: "Take a look",
           filename: "leaf-global.yml",
           snippet: {
-            footer: "# … FIXES / NETWORK / GAMEPLAY and dozens more not shown",
+            footer: "# … FIXES / NETWORK / GAMEPLAY and more options not shown",
             header: "# Leaf config — partial view",
           },
-          sub: "A flat YAML file that controls every detail of your server. Options you don't need are hidden by default, keeping the config clean and readable.",
+          sub: "A flat YAML file that controls every detail of your server. Intuitive structure and descriptive option naming keep the config clean and readable.",
           title: "Change what you need. Leave the rest.",
         },
         cta: {
           primary: `Download v${stats.version}`,
           secondary: "Quick start",
-          sub: "One JAR, two minutes. Leaf drops into your existing server setup.",
+          sub: "One JAR, minimal effort. Leaf drops into your existing server setup.",
           title: "Your server is ready. So is Leaf.",
         },
         faq: {
           faq: [
             {
-              a: "Leaf is built on top of Paper and inherits its full API contract. Anything that runs on Paper runs on Leaf — the difference is what happens after the API returns.",
+              a: "Leaf is built on Paper and inherits the full Paper API. Paper plugins work natively on Leaf with no extra effort.",
               q: "Is Leaf a Paper fork?",
             },
             {
-              a: "No. Gameplay mechanics (redstone timing, mob AI, physics) are identical to vanilla. Optimizations happen below the gameplay layer.",
+              a: "No. All optimizations aim for vanilla parity. Game mechanics remain consistent with Paper. Any deviation is clearly noted in the docs.",
               q: "Will players notice any behavior changes?",
             },
             {
-              a: "Yes, Leaf includes all Purpur patches, though some Purpur config options have been moved into the Gale and Leaf configuration files.",
+              a: "Yes, Leaf includes all Purpur patches, but some Purpur options have been moved into configurations of Gale and Leaf.",
               q: "Does Leaf include Purpur?",
             },
           ],
           head: {
-            eyebrow: "Questions",
-            sub: "The things the docs haven't covered yet.",
+            eyebrow: "You might be wondering",
+            sub: "Still have questions? Check out the docs~",
             title: "Frequently asked questions",
           },
         },
         features: {
           features: [
             {
-              body: "Handles demanding server scenarios. Designed for large player counts with improved performance and smooth gameplay.",
-              title: "Built for scale",
+              body: "Designed to keep your server fluid and responsive under various scenarios.",
+              title: "Engineered for scale",
             },
             {
-              body: "No compromises. Swap the core, start the server, keep full Paper plugin compatibility.",
+              body: "Delivers performance without compromise, preserving plugin compatibility with Paper.",
               title: "Drop-in compatible",
             },
             {
-              body: "Stays current. Uses the latest dependencies — upstream fixes arrive on day one.",
+              body: "Built on updated dependencies to deliver upstream fixes and optimizations from day one.",
               title: "Future-facing",
             },
           ],
           featuresHead: {
             eyebrow: "What you get",
-            sub: "Leaf ships with dozens of optimizations. These three represent all of them.",
+            sub: "Leaf offers many benefits. These three represent all of them.",
             title: "Three things matter most. The rest is in the docs.",
           },
         },
@@ -439,7 +439,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           copyright: "© 2026 Leaf MC. All rights reserved.",
           copyrightNote: "Site content is licensed under CC BY-NC-SA 4.0.",
-          tag: "A highly optimized, compatible Minecraft server core that respects vanilla behavior.",
+          tag: "A highly optimized, fully plugin-compatible Minecraft server software that respects vanilla behavior.",
         },
         hero: {
           ctaPrimary: "Get started",
@@ -451,7 +451,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           pill: `v${stats.version} released`,
           subtitle:
-            "A performance-focused Minecraft server core. Vanilla-accurate, fully Paper-compatible, and built for servers that demand real throughput.",
+            "A high-performance Minecraft server software that respects vanilla behavior, maintains full plugin compatibility, and built for servers that demand the best.",
           titleA: "Make your server ",
           titleB: "fly",
           titleC: ", leave lag behind.",
@@ -515,44 +515,44 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
       home: {
         config: {
           bullets: [
-            "运行时热重载——大部分配置项无需重启",
+            "运行时热重载——大部分配置项变更无需重启",
             "精准的性能调优选项，适合不同规模和需求的服务器",
-            "清晰的注释和文档，帮助你理解每个选项的作用",
+            "清晰的文档解释，帮助你理解每个选项的作用",
           ],
           cta: "阅读配置指南",
           eyebrow: "上手看看",
           filename: "leaf-global.yml",
           snippet: {
-            footer: "# … FIXES / NETWORK / GAMEPLAY 等数十项未列出",
+            footer: "# … FIXES / NETWORK / GAMEPLAY 等更多配置项未列出",
             header: "# Leaf 配置 — 部分展示",
           },
-          sub: "一份扁平的 YAML 文件，控制服务器的每一个细节。无需调整的选项已经被隐藏了，保持配置文件简洁易懂。",
+          sub: "一份扁平的 YAML 文件，控制服务器的每一个细节。人性化的结构与选项命名，保持配置文件简洁易懂。",
           title: "需要什么改什么，其余的不用管。",
         },
         cta: {
           primary: `下载 v${stats.version}`,
           secondary: "阅读快速上手",
-          sub: "一个 jar，两分钟。Leaf 兼容你现有的服务器环境。",
+          sub: "一个 jar，无需折腾。Leaf 兼容你现有的服务器环境。",
           title: "你的服务器准备好了，Leaf 就准备好了。",
         },
         faq: {
           faq: [
             {
-              a: "Leaf 构建于 Paper 之上，继承其全部 API 契约。能在 Paper 上跑的插件就能在 Leaf 上跑——差别在于 API 返回之后发生了什么。",
-              q: "Leaf 是 Paper 的 fork 吗？",
+              a: "Leaf 构建于 Paper 之上，继承全部的 Paper API。能在 Paper 上跑的插件就能在 Leaf 上跑，无需重新寻找兼容的替代插件。",
+              q: "Leaf 是 Paper 的分支吗？",
             },
             {
-              a: "不会。玩法相关的机制（红石时序、生物 AI、物理）与原版完全一致。优化只发生在玩法层之下。",
+              a: "不会。所有优化均以原版为目标，红石、生物 AI、等行为尽可能和 Paper 一致。若某配置项会导致特性被破坏，将在文档中注明。",
               q: "玩家会感觉到行为变化吗？",
             },
             {
               a: "是的，Leaf 包含所有 Purpur 的补丁，但部分 Purpur 配置项已移至 Gale 和 Leaf 的配置中。",
-              q: "Leaf 是否包括 PurPur？",
+              q: "Leaf 是否包括 Purpur？",
             },
           ],
           head: {
-            eyebrow: "疑问",
-            sub: "文档里还没写到的那些。",
+            eyebrow: "猜你想问的",
+            sub: "还有问题？进文档看看～",
             title: "常见问题",
           },
         },
@@ -573,7 +573,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           featuresHead: {
             eyebrow: "你能得到什么",
-            sub: "Leaf 内置了数十项优化，但这三项更值得出现在首页。",
+            sub: "Leaf 有不少亮点，但这三项更值得出现在首页。",
             title: "三件事最重要，其余都在文档里。",
           },
         },
@@ -606,7 +606,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           copyright: "© 2026 Leaf MC. 保留所有权利。",
           copyrightNote: "本站内容遵循 CC BY-NC-SA 4.0 许可协议发布。",
-          tag: "一个高度优化、兼容、尊重原版行为的 Minecraft 服务端核心。",
+          tag: "一个高度优化、完全兼容插件、尊重原版行为的 Minecraft 服务端核心。",
         },
         hero: {
           ctaPrimary: "立即开始",
