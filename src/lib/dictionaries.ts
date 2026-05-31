@@ -261,7 +261,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
               h: "Ressourcen",
               items: [
                 {
-                  href: "https://github.com/Winds-Studio/Leaf/blob/ver/1.21.11/LICENSE.md",
+                  href: "https://github.com/Winds-Studio/Leaf#%EF%B8%8F-license",
                   title: "Lizenz",
                 },
               ],
@@ -431,7 +431,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
               h: "Resources",
               items: [
                 {
-                  href: "https://github.com/Winds-Studio/Leaf/blob/ver/1.21.11/LICENSE.md",
+                  href: "https://github.com/Winds-Studio/Leaf#%EF%B8%8F-license",
                   title: "License",
                 },
               ],
@@ -598,7 +598,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
               h: "资源",
               items: [
                 {
-                  href: "https://github.com/Winds-Studio/Leaf/blob/ver/1.21.11/LICENSE.md",
+                  href: "https://github.com/Winds-Studio/Leaf#%EF%B8%8F-license",
                   title: "许可证",
                 },
               ],
