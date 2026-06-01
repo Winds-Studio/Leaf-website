@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "---简介---",
+    "getting-started",
+    "faq",
+    "useful-sites",
+    "---性能基准---",
+    "benchmark/entity-performance",
+    "benchmark/chunk-generation",
+    "---配置说明---",
+    "config/leaf-global",
+    "config/gale-global",
+    "config/gale-world-defaults",
+    "config/jvm-flags",
+    "---操作指南---",
+    "how-to/setup-sentry",
+    "how-to/optimize-leaf-server",
+    "how-to/optimize-java-flags",
+    "---开发文档---",
+    "dev/guide",
+    "dev/api",
+    "dev/contributing"
+  ],
+  "root": true
+}
