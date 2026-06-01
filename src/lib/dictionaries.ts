@@ -189,23 +189,23 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
             footer: "# … FIXES / NETWORK / GAMEPLAY und weitere Optionen nicht gezeigt",
             header: "# Leaf-Konfiguration — Teilansicht",
           },
-          sub: "Eine flache YAML-Datei für jeden Server-Parameter. Eine intuitive Struktur und aussagekräftige Namen der Optionen machen die Konfiguration übersichtlich, lesbar.",
+          sub: "Eine flache YAML-Datei für jeden Server-Parameter. Eine intuitive Struktur und aussagekräftige Namen der Optionen machen die Konfiguration übersichtlich und lesbar.",
           title: "Ändere, was du brauchst. Lass den Rest.",
         },
         cta: {
           primary: `v${stats.version} herunterladen`,
           secondary: "Schnellstart",
-          sub: "Eine JAR, minimaler Aufwand. Leaf läuft direkt in bestehenden Server-Setups",
+          sub: "Eine JAR, minimaler Aufwand. Leaf läuft direkt in bestehenden Server-Setups.",
           title: "Dein Server ist bereit. Leaf auch.",
         },
         faq: {
           faq: [
             {
-              a: "Leaf basiert auf Paper und übernimmt dessen vollständigen API. Paper Plugins funktionieren nativ mit Leaf ohne zusätzlichen Aufwand.",
+              a: "Leaf basiert auf Paper und übernimmt dessen vollständige API. Paper-Plugins funktionieren nativ mit Leaf ohne zusätzlichen Aufwand.",
               q: "Ist Leaf ein Paper-Fork?",
             },
             {
-              a: "Nein. Alle Optimierungen zielen auf Vanilla-Verhalten ab und Spielmechaniken sind genau wie bei Paper. Abweichungen werden klar in der Dokumentation erwähnt",
+              a: "Nein. Alle Optimierungen zielen auf Vanilla-Verhalten ab und Spielmechaniken sind genau wie bei Paper. Abweichungen werden klar in der Dokumentation erwähnt.",
               q: "Werden Spieler den Unterschied bemerken?",
             },
             {
@@ -222,15 +222,15 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
         features: {
           features: [
             {
-              body: "Entwickelt um deinen Server unter verschiedensten Szenarien flüssig und schnell zu halten.",
+              body: "Entwickelt, um deinen Server unter verschiedensten Szenarien flüssig und schnell zu halten.",
               title: "Entwickelt für Skalierung",
             },
             {
-              body: "Liefert Leistung ohne Kompromisse während volle Plugin Kompatibilität mit Paper erhalten bleibt.",
+              body: "Liefert Leistung ohne Kompromisse, während volle Plugin-Kompatibilität mit Paper erhalten bleibt.",
               title: "Nahtlos kompatibel",
             },
             {
-              body: "Verwendet immer die neuesten Abhängigkeiten, für die aktuellsten Fehlerbehebungen und Optimierungen.",
+              body: "Verwendet immer die neuesten Abhängigkeiten für die aktuellsten Fehlerbehebungen und Optimierungen.",
               title: "Zukunftsorientiert",
             },
           ],
@@ -281,7 +281,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           pill: `v${stats.version} veröffentlicht`,
           subtitle:
-            "Eine hochoptimierte Minecraft Server-Software, die Vanilla-Verhalten beibehält und volle Plugin-Kompatibilität mit Paper beibehält. Gebaut für Server die das Beste fordern.",
+            "Eine hochoptimierte Minecraft Server-Software, die Vanilla-Verhalten beibehält und volle Plugin-Kompatibilität mit Paper wahrt. Gebaut für Server, die das Beste fordern.",
           titleA: "Bring deinen Server zum ",
           titleB: "Fliegen",
           titleC: " — ganz ohne Lags.",
