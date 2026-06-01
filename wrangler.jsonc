@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "leaf-website",
+  "account_id": "d9ce2745eab8bfa7fe860538eefe3b4c",
+  "compatibility_date": "2026-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./worker/index.ts",
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+  },
+  "images": { "binding": "IMAGES" },
+  "kv_namespaces": [{ "binding": "VINEXT_CACHE", "id": "16ffddca9cac4fef83497f70c4ac9921" }],
+}

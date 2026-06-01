@@ -1,4 +1,5 @@
 import tailwindcss from "@tailwindcss/vite"
+import { cloudflare } from "@cloudflare/vite-plugin"
 import mdx from "fumadocs-mdx/vite"
 import vinext from "vinext"
 import { defineConfig } from "vite"
@@ -18,10 +19,19 @@ export default defineConfig({
       "@radix-ui/react-collapsible",
     ],
   },
-  plugins: [tailwindcss(), mdx(), vinext()],
+  plugins: [
+    tailwindcss(),
+    mdx(),
+    vinext(),
+    cloudflare({
+      viteEnvironment: {
+        name: "rsc",
+        childEnvironments: ["ssr"],
+      },
+    }),
+  ],
   publicDir: "public",
   resolve: {
-    external: ["@takumi-rs/image-response"],
     tsconfigPaths: true,
   },
 })
