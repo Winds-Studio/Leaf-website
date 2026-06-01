@@ -1,0 +1,30 @@
+---
+title: Leaf Globale Konfiguration
+---
+
+import leafGlobal1211De from "./message/leaf-global-1-21-1-de.ts"
+import leafGlobal1214De from "./message/leaf-global-1-21-4-de.ts"
+import { ConfigSwitch } from "@/components/config/config-viewer"
+import leafGlobalLatestDe from "./message/leaf-global-latest-de.ts"
+import leafGlobal1211 from "@/components/config/data/leaf-global-1-21-1"
+import leafGlobal1214 from "@/components/config/data/leaf-global-1-21-4"
+import leafGlobalLatest from "@/components/config/data/leaf-global-latest"
+
+Diese YAML Konfiguration zeigt die standardmäßige Struktur der Konfigurationswerte der globalen Konfiguration von Leaf (`config/leaf-global.yml`)
+
+Klicke auf die Pfeile hinter den Konfigurationswerten, um die entsprechende Beschreibung anzusehen
+
+Ein Hot-Reload kann mit `/leaf reload` durchgeführt werden. Hot-Reload wird für asynchrone Optionen **nicht unterstützt**.
+
+<ConfigSwitch
+  data={{
+    "1.21.11": leafGlobalLatest,
+    "1.21.4": leafGlobal1214,
+    "1.21.1": leafGlobal1211,
+  }}
+  messages={{
+    "1.21.11": leafGlobalLatestDe,
+    "1.21.4": leafGlobal1214De,
+    "1.21.1": leafGlobal1211De,
+  }}
+/>

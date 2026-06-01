@@ -1,0 +1,30 @@
+---
+title: Gale Global Config
+---
+
+import galeGlobal1211En from "./message/gale-global-1-21-1-en.ts"
+import galeGlobal1214En from "./message/gale-global-1-21-4-en.ts"
+import { ConfigSwitch } from "@/components/config/config-viewer"
+import galeGlobalLatestEn from "./message/gale-global-latest-en.ts"
+import galeGlobal1211 from "@/components/config/data/gale-global-1-21-1"
+import galeGlobal1214 from "@/components/config/data/gale-global-1-21-4"
+import galeGlobalLatest from "@/components/config/data/gale-global-latest"
+
+The YAML config below shows the structure and default config values of Gale's global config (`config/gale-global.yml`)
+
+Click arrow button behind the config node to show description of it
+
+<ConfigSwitch
+  data={{
+    "1.21.11": galeGlobalLatest,
+    "1.21.8": galeGlobal1214, // No change since 1.21.4
+    "1.21.4": galeGlobal1214,
+    "1.21.1": galeGlobal1211,
+  }}
+  messages={{
+    "1.21.11": galeGlobalLatestEn,
+    "1.21.8": galeGlobal1214En,
+    "1.21.4": galeGlobal1214En,
+    "1.21.1": galeGlobal1211En,
+  }}
+/>
