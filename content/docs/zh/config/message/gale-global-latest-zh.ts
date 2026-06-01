@@ -267,7 +267,7 @@ const zh: ConfigMessages<typeof config> = {
                     <table>
                     <tr><td></td><td><b>默认值</b></td><td></td><td></td></tr>
                     <tr><td><b>推荐值&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>原版</i></td></tr>
-                    <tr><td><code>100</code></td><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td></tr>
+                    <tr><td><code>100</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>
                     </table>
                     <table>
                     <tr><td><b>基于目标的推荐值</b></td><td></td></tr>

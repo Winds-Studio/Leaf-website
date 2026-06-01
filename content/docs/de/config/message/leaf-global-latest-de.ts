@@ -828,7 +828,7 @@ const de: ConfigMessages<typeof config> = {
       desc: `Ob eine effizientere Logik für das natürliche Despawning von Mobs verwendet werden soll.<br>
                 Dies kann die hohen Kosten der Vanilla-Despawn-Logik vermeiden, die über jeden Spieler iteriert und dann die Distanz zwischen den Mobs und dem Spieler vergleicht.<br>
                 <br>
-                Es wird empfohlen, das Flag [\`-DLeaf.enableFMA=true\`](http://localhost:5173/docs/config/system-properties#dleaf-enablefma) für eine bessere Leistung hinzuzufügen.<br>
+                Es wird empfohlen, das Flag [\`-DLeaf.enableFMA=true\`](jvm-flags#-dleafenablefma) für eine bessere Leistung hinzuzufügen.<br>
                 <br>
                 __⚡Empfohlener Wert: \`true\`__
                 <div class="warning custom-block">

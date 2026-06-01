@@ -856,7 +856,7 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
       desc: `Whether to use more efficient logic for mob natural despawn.<br>
                 This can prevent the expensive cost of the vanilla despawn logic that iterates over every player, then compares the distance between the mobs and the player.<br>
                 <br>
-                It's recommended to add [\`-DLeaf.enableFMA=true\`](system-properties#dleaf-enablefma) flag for better performance.<br>
+                It's recommended to add [\`-DLeaf.enableFMA=true\`](jvm-flags#-dleafenablefma) flag for better performance.<br>
                 <br>
                 __⚡Recommended value: \`true\`__<br>
                 <br>
