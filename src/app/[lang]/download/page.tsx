@@ -1,4 +1,6 @@
+import type { Metadata } from "next"
 import { i18n, type Locale } from "@/lib/i18n"
+import { getDictionary } from "@/lib/dictionaries"
 
 import { DownloadPage } from "./_components/download-page"
 
@@ -8,6 +10,12 @@ type PageParams = {
 
 export function generateStaticParams() {
   return i18n.languages.map((lang) => ({ lang }))
+}
+
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  const { lang } = await params
+  const dict = await getDictionary(lang)
+  return { title: dict.download.title }
 }
 
 export const revalidate = 60

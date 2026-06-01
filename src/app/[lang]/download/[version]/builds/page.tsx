@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   const dict = dict_root.download
   return {
     description: dict.intro,
-    title: `${dict.timelineHeading} · Leaf ${version}`,
+    title: `${dict.timelineHeading} · ${version}`,
   }
 }
 

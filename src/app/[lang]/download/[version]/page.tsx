@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { i18n, type Locale } from "@/lib/i18n"
 
 import { getProject } from "@/lib/leaf-api"
@@ -5,6 +6,11 @@ import { DownloadPage } from "../_components/download-page"
 
 type PageParams = {
   params: Promise<{ lang: Locale; version: string }>
+}
+
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  const { version } = await params
+  return { title: `Leaf ${version}` }
 }
 
 export async function generateStaticParams() {

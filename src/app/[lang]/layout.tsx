@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { i18nProvider } from "fumadocs-ui/i18n"
 import "./global.css"
 import { RootProvider } from "fumadocs-ui/provider/next"
@@ -5,6 +6,13 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import React from "react"
 import SearchDialog from "@/components/search"
 import { i18nUI } from "@/lib/layout.shared"
+
+export const metadata: Metadata = {
+  title: {
+    default: "Leaf",
+    template: "%s | Leaf",
+  },
+}
 
 const inter = Inter({
   display: "swap",
