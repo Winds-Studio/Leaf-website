@@ -10,7 +10,6 @@
         "@orama/tokenizers": "^3.1.18",
         "@radix-ui/react-tabs": "^1.1.13",
         "@tailwindcss/vite": "^4.3.0",
-        "@takumi-rs/image-response": "^1.4.0",
         "class-variance-authority": "^0.7.1",
         "fumadocs-core": "^16.9.0",
         "fumadocs-mdx": "^15.0.7",
