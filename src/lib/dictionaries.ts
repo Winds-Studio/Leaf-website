@@ -236,7 +236,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           featuresHead: {
             eyebrow: "Was du bekommst",
-            sub: "Leaf enthält Dutzende Optimierungen. Diese drei stehen stellvertretend für alle.",
+            sub: "Leaf bietet unzählige Vorteile. Diese drei Aspekte repräsentieren sie alle.",
             title: "Die drei wichtigsten Dinge. Den Rest findest du in den Docs.",
           },
         },
