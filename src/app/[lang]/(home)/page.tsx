@@ -8,6 +8,8 @@ import Features from "./_components/features"
 import Footer from "./_components/footer"
 import Hero from "./_components/hero"
 
+export const revalidate = 3600
+
 export function generateStaticParams() {
   return i18n.languages.map((locale) => ({ locale }))
 }

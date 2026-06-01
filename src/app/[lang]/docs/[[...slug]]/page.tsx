@@ -50,6 +50,8 @@ export default async function Page(props: PageProps<"/[lang]/docs/[[...slug]]">)
   )
 }
 
+export const revalidate = false
+
 export function generateStaticParams() {
   return source.generateParams()
 }
