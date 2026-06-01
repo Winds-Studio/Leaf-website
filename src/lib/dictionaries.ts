@@ -178,35 +178,35 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
       home: {
         config: {
           bullets: [
-            "Hot-Reload zur Laufzeit — kein Neustart nötig",
-            "Präzise Abstimmung für Server jeder Größe",
-            "Klare Kommentare — jede Option verständlich",
+            "Hot-Reload zur Laufzeit — kein Neustart für die meisten Config-Änderungen",
+            "Präzise Abstimmung für Server aller Art",
+            "Klare Dokumentation — jede Option verständlich",
           ],
           cta: "Konfigurationsanleitung lesen",
-          eyebrow: "Schau rein",
+          eyebrow: "Schau hinein",
           filename: "leaf-global.yml",
           snippet: {
-            footer: "# … FIXES / NETWORK / GAMEPLAY und Dutzende weitere nicht gezeigt",
+            footer: "# … FIXES / NETWORK / GAMEPLAY und weitere Optionen nicht gezeigt",
             header: "# Leaf-Konfiguration — Teilansicht",
           },
-          sub: "Eine flache YAML-Datei für jeden Server-Parameter. Ungenutzte Optionen sind standardmäßig ausgeblendet — übersichtlich, lesbar, kein Ballast.",
+          sub: "Eine flache YAML-Datei für jeden Server-Parameter. Eine intuitive Struktur und aussagekräftige Namen der Optionen machen die Konfiguration übersichtlich, lesbar.",
           title: "Ändere, was du brauchst. Lass den Rest.",
         },
         cta: {
-          primary: `v${stats.version} laden`,
+          primary: `v${stats.version} herunterladen`,
           secondary: "Schnellstart",
-          sub: "Eine JAR, zwei Minuten. Leaf läuft direkt in deiner bestehenden Server-Umgebung.",
+          sub: "Eine JAR, minimaler Aufwand. Leaf läuft direkt in bestehenden Server-Setups",
           title: "Dein Server ist bereit. Leaf auch.",
         },
         faq: {
           faq: [
             {
-              a: "Leaf basiert auf Paper und übernimmt dessen vollständigen API-Vertrag. Alles, was auf Paper läuft, läuft auch auf Leaf — der Unterschied liegt darin, was nach der API-Rückgabe passiert.",
+              a: "Leaf basiert auf Paper und übernimmt dessen vollständigen API. Paper Plugins funktionieren nativ mit Leaf ohne zusätzlichen Aufwand.",
               q: "Ist Leaf ein Paper-Fork?",
             },
             {
-              a: "Nein. Spielmechaniken (Redstone-Timing, Mob-KI, Physik) sind identisch mit Vanilla. Optimierungen finden unterhalb der Gameplay-Schicht statt.",
-              q: "Werden Spieler Verhaltensänderungen bemerken?",
+              a: "Nein. Alle Optimierungen zielen auf Vanilla-Verhalten ab und Spielmechaniken sind genau wie bei Paper. Abweichungen werden klar in der Dokumentation erwähnt",
+              q: "Werden Spieler den Unterschied bemerken?",
             },
             {
               a: "Ja, Leaf enthält alle Purpur-Patches, wobei einige Purpur-Konfigurationsoptionen in die Gale- und Leaf-Konfigurationsdateien verschoben wurden.",
@@ -214,30 +214,30 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
             },
           ],
           head: {
-            eyebrow: "Fragen",
-            sub: "Was die Dokumentation noch nicht abgedeckt hat.",
+            eyebrow: "Was du dich vielleicht fragst",
+            sub: "Wirf einen Blick in die Docs bei weiteren Fragen.",
             title: "Häufig gestellte Fragen",
           },
         },
         features: {
           features: [
             {
-              body: "Für anspruchsvolle Szenarien entwickelt — trägt hohe Spielerzahlen bei verbesserter Leistung und flüssigem Gameplay.",
-              title: "Gebaut für Skalierung",
+              body: "Entwickelt um deinen Server unter verschiedensten Szenarien flüssig und schnell zu halten.",
+              title: "Entwickelt für Skalierung",
             },
             {
-              body: "Kein Aufwand. Kern tauschen, Server starten — volle Paper-Plugin-Kompatibilität inklusive.",
+              body: "Liefert Leistung ohne Kompromisse während volle Plugin Kompatibilität mit Paper erhalten bleibt.",
               title: "Nahtlos kompatibel",
             },
             {
-              body: "Immer aktuell. Neueste Abhängigkeiten, Upstream-Fixes ab dem ersten Tag.",
+              body: "Verwendet immer die neuesten Abhängigkeiten, für die aktuellsten Fehlerbehebungen und Optimierungen.",
               title: "Zukunftsorientiert",
             },
           ],
           featuresHead: {
             eyebrow: "Was du bekommst",
             sub: "Leaf enthält Dutzende Optimierungen. Diese drei stehen stellvertretend für alle.",
-            title: "Drei Dinge zählen. Den Rest findest du in den Docs.",
+            title: "Die drei wichtigsten Dinge. Den Rest findest du in den Docs.",
           },
         },
         footer: {
@@ -269,7 +269,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           copyright: "© 2026 Leaf MC. Alle Rechte vorbehalten.",
           copyrightNote: "Der Seiteninhalt ist unter CC BY-NC-SA 4.0 lizenziert.",
-          tag: "Ein hochoptimierter, kompatibler Minecraft-Serverkern, der das Vanilla-Verhalten respektiert.",
+          tag: "Eine hochoptimierte, voll plugin-kompatible Minecraft Server-Software, die das Vanilla-Verhalten respektiert.",
         },
         hero: {
           ctaPrimary: "Loslegen",
@@ -281,10 +281,10 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ],
           pill: `v${stats.version} veröffentlicht`,
           subtitle:
-            "Ein leistungsstarker Minecraft-Serverkern. Vanilla-getreu, voll Paper-kompatibel und optimiert für Server, die echten Durchsatz brauchen.",
-          titleA: "Dein Server ",
-          titleB: "fliegt",
-          titleC: " — kein Lag mehr.",
+            "Eine hochoptimierte Minecraft Server-Software, die Vanilla-Verhalten beibehält und volle Plugin-Kompatibilität mit Paper beibehält. Gebaut für Server die das Beste fordern.",
+          titleA: "Bring deinen Server zum ",
+          titleB: "Fliegen",
+          titleC: " — ganz ohne Lags.",
         },
         placeholder: {
           aiLabel: "KI-Platzhalter",
