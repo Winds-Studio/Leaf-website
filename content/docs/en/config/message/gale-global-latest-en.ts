@@ -267,7 +267,7 @@ const en: ConfigMessages<typeof config> = {
                     <table>
                     <tr><td></td><td><b>Default</b></td><td></td><td></td></tr>
                     <tr><td><b>Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td><td><i>Leaf</i></td><td><i>Paper</i></td><td><i>Vanilla</i></td></tr>
-                    <tr><td><code>100</code></td><td><code>20</code></td><td><code>1</code></td><td><code>1</code></td></tr>
+                    <tr><td><code>100</code></td><td><code>1</code></td><td><code>1</code></td><td><code>1</code></td></tr>
                     </table>
                     <table>
                     <tr><td><b>Values for goals</b></td><td></td></tr>
