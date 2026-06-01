@@ -858,7 +858,7 @@ const en: ConfigMessages<typeof config> = {
       desc: `是否为生物自然消失使用更高效的逻辑。<br>
                 这避免了在原版中生物自然消失中，遍历所有玩家并逐一计算生物与玩家距离所带来的高昂开销。<br>
                 <br>
-                建议同时添加 JVM 启动参数 [\`-DLeaf.enableFMA=true\`](system-properties#dleaf-enablefma) 以获得更好的性能。<br>
+                建议同时添加 JVM 启动参数 [\`-DLeaf.enableFMA=true\`](jvm-flags#-dleafenablefma) 以获得更好的性能。<br>
                 <br>
                 __⚡推荐值：\`true\`__<br>
                 <br>
