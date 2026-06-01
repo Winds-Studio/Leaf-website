@@ -26,7 +26,9 @@ bun install
 
 ## ⚖️ License
 
-Leaf website is licensed under [MIT](LICENSE). The documentations (e.g. `.md`, `.ts`, etc files under `pages/` folder) are licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+Leaf website's source code is licensed under [MIT](LICENSE).
+
+The content, including documentation files (e.g., `.mdx`, etc files under `content/` folder) and the text shown on the homepage, is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## 📜 Credits
 

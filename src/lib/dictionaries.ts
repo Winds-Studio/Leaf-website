@@ -350,7 +350,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           bullets: [
             "Hot reload — no restart needed for most config changes",
             "Fine-grained tuning for servers of any types",
-            "Clear documentations — help you understand every option",
+            "Clear documentation — helps you understand every option",
           ],
           cta: "Read the config guide",
           eyebrow: "Take a look",
