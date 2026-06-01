@@ -5,7 +5,7 @@
     "analyze": "adamantite analyze",
     "build": "vinext build",
     "check": "bun scripts/lint.ts && adamantite check",
-    "dev": "vinext dev --hostname 0.0.0.0",
+    "dev": "vinext dev",
     "fix": "adamantite fix",
     "format": "adamantite format",
     "lint": "oxlint",

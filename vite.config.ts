@@ -1,5 +1,5 @@
-import tailwindcss from "@tailwindcss/vite"
 import { cloudflare } from "@cloudflare/vite-plugin"
+import tailwindcss from "@tailwindcss/vite"
 import mdx from "fumadocs-mdx/vite"
 import vinext from "vinext"
 import { defineConfig } from "vite"
@@ -25,8 +25,8 @@ export default defineConfig({
     vinext(),
     cloudflare({
       viteEnvironment: {
-        name: "rsc",
         childEnvironments: ["ssr"],
+        name: "rsc",
       },
     }),
   ],

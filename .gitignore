@@ -18,3 +18,5 @@ node_modules
 .vinext
 dist
 next-env.d.ts
+/.wrangler
+/tsconfig.tsbuildinfo
