@@ -13,7 +13,7 @@ export const source = loader({
 })
 
 export function getPageImage(page: (typeof source)["$inferPage"]) {
-  const segments = [...page.slugs, "image.webp"]
+  const segments = [...page.slugs, "image.png"]
 
   return {
     segments,

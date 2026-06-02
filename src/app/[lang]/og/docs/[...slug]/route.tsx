@@ -1,20 +1,31 @@
-import { generateOGImage } from "fumadocs-ui/og"
+import { generate as DefaultImage } from "fumadocs-ui/og"
 import { notFound } from "next/navigation"
+import { ImageResponse } from "vinext/shims/og"
+import Icon from "@/components/icon"
 import { appName } from "@/lib/shared"
 import { getPageImage, source } from "@/lib/source"
 
 export const revalidate = false
 
 export async function GET(_req: Request, { params }: RouteContext<"/[lang]/og/docs/[...slug]">) {
-  const { slug } = await params
-  const page = source.getPage(slug.slice(0, -1))
+  const { lang, slug } = await params
+  const page = source.getPage(slug.slice(0, -1), lang)
   if (!page) notFound()
 
-  return generateOGImage({
-    title: page.data.title,
-    description: page.data.description,
-    site: appName,
-  })
+  return new ImageResponse(
+    <DefaultImage
+      title={page.data.title}
+      description={page.data.description}
+      site={appName}
+      primaryColor="rgba(78, 138, 31, 0.5)"
+      primaryTextColor="#b6d58a"
+      icon={<Icon.SimpleLeaf size={52} strokeWidth={1.75} />}
+    />,
+    {
+      height: 630,
+      width: 1200,
+    }
+  )
 }
 
 export function generateStaticParams() {
