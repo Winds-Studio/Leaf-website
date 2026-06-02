@@ -4,7 +4,8 @@ import Link from "next/link"
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import { cn } from "@/lib/cn"
-import { formatDateShort, fmtStr } from "@/lib/format"
+import { fmtStr } from "@/lib/format"
+import { LocalDateShort } from "@/components/local-date"
 import { getDownloadUrl, type BuildResponse } from "@/lib/leaf-api"
 
 const LEAF_COMMIT = (sha: string) => `https://github.com/Winds-Studio/Leaf/commit/${sha}`
@@ -96,7 +97,7 @@ function BuildRow({
             {isStable ? dict.pillStable : dict.pillExperimental}
           </span>
           <span className="text-fd-muted-foreground/80 text-xs">
-            {formatDateShort(build.time, locale)}
+            <LocalDateShort iso={build.time} locale={locale} />
           </span>
         </div>
         {firstChange?.summary && (

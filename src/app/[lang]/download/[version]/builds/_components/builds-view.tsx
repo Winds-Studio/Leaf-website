@@ -7,7 +7,8 @@ import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import type { BuildResponse } from "@/lib/leaf-api"
 import { cn } from "@/lib/cn"
-import { formatDateShort, fmtStr } from "@/lib/format"
+import { fmtStr } from "@/lib/format"
+import { LocalDateShort } from "@/components/local-date"
 import { getDownloadUrl } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
 import { ChannelToggle } from "../../../_components/filters"
@@ -167,7 +168,7 @@ function BuildsTableRow({
         </span>
       </td>
       <td className="text-fd-muted-foreground px-3 py-3 align-middle text-xs whitespace-nowrap">
-        {formatDateShort(build.time, locale)}
+        <LocalDateShort iso={build.time} locale={locale} />
       </td>
       <td className="text-fd-muted-foreground px-3 py-3 align-middle">
         <div className="flex min-w-0 items-center gap-2">

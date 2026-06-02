@@ -6,7 +6,8 @@ import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import type { BuildResponse } from "@/lib/leaf-api"
 import Btn from "@/components/button"
-import { formatDateLong, fmtStr, shortenSha } from "@/lib/format"
+import { fmtStr, shortenSha } from "@/lib/format"
+import { LocalDateLong } from "@/components/local-date"
 import { getDownloadUrl } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
 
@@ -41,8 +42,6 @@ function HeroBody({ build, dict, locale }: HeroBodyProps) {
   const isStable = build.channel === "default"
   const pillKind = isStable ? "default" : "experimental"
   const pillLabel = isStable ? dict.pillLatestStable : dict.pillLatestExperimental
-  const releaseDate = formatDateLong(build.time, locale)
-
   return (
     <section
       aria-labelledby="hero-version"
@@ -77,7 +76,9 @@ function HeroBody({ build, dict, locale }: HeroBodyProps) {
           </h2>
 
           <p className="text-fd-muted-foreground mt-1.5 text-sm leading-relaxed">
-            {fmtStr(dict.heroReleasedOn, { date: releaseDate })}
+            {dict.heroReleasedOn.split("{date}")[0]}
+            <LocalDateLong iso={build.time} locale={locale} />
+            {dict.heroReleasedOn.split("{date}")[1]}
             <span className="text-fd-border mx-1.5" aria-hidden>
               ·
             </span>
