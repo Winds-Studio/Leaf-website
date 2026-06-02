@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
+import { LocalDateShort } from "@/components/local-date"
 import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
-import { LocalDateShort } from "@/components/local-date"
 import { getDownloadUrl, type BuildResponse } from "@/lib/leaf-api"
 
 const LEAF_COMMIT = (sha: string) => `https://github.com/Winds-Studio/Leaf/commit/${sha}`

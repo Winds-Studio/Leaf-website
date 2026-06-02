@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import { i18n, type Locale } from "@/lib/i18n"
 import { getDictionary } from "@/lib/dictionaries"
+import { i18n, type Locale } from "@/lib/i18n"
 
 import { DownloadPage } from "./_components/download-page"
 
