@@ -85,7 +85,7 @@ export async function getVersion(version: string): Promise<VersionResponse> {
 export async function getBuild(version: string, build: number): Promise<BuildResponse> {
   return fetchWithRetry<BuildResponse>(
     `${BASE_URL}/projects/leaf/versions/${version}/builds/${build}`,
-    { next: { revalidate: 3600 } }
+    { next: { revalidate: 86400 } }
   )
 }
 

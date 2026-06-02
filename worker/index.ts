@@ -40,10 +40,14 @@ interface ExecutionContext {
   passThroughOnException(): void
 }
 
+let cacheReady = false
+
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    // 注册 KV ISR 缓存
-    setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE))
+    if (!cacheReady) {
+      setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 60_000 }))
+      cacheReady = true
+    }
 
     const url = new URL(request.url)
 
