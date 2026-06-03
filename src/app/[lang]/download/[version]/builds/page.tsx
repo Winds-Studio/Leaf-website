@@ -6,6 +6,7 @@ import { Suspense } from "react"
 
 import type { Locale } from "@/lib/i18n"
 import { Spinner } from "@/components/spinner"
+import { readCachedAllBuilds } from "@/lib/build-cache"
 import { getDictionary, type DownloadDict } from "@/lib/dictionaries"
 import { getBuild, getVersion, type BuildResponse } from "@/lib/leaf-api"
 
@@ -80,18 +81,12 @@ async function BuildsData({
   locale: Locale
   version: string
 }) {
-  let manifest
+  let allBuilds: BuildResponse[]
   try {
-    manifest = await getVersion(version, { cache: "no-store" })
+    allBuilds = await resolveAllBuilds(version)
   } catch {
     notFound()
   }
-
-  const allBuildNumbers = [...manifest.builds].toSorted((a, b) => b - a)
-  const results = await Promise.allSettled(allBuildNumbers.map((n) => getBuild(version, n)))
-  const allBuilds: BuildResponse[] = results
-    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
-    .map((r) => r.value)
 
   return (
     <BuildsView
@@ -102,4 +97,17 @@ async function BuildsData({
       version={version}
     />
   )
+}
+
+async function resolveAllBuilds(version: string): Promise<BuildResponse[]> {
+  const cached = await readCachedAllBuilds(version)
+  if (cached) return cached
+
+  // 回退
+  const manifest = await getVersion(version, { cache: "no-store" })
+  const allBuildNumbers = [...manifest.builds].toSorted((a, b) => b - a)
+  const results = await Promise.allSettled(allBuildNumbers.map((n) => getBuild(version, n)))
+  return results
+    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
+    .map((r) => r.value)
 }

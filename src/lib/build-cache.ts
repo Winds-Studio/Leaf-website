@@ -20,6 +20,7 @@ export type BuildIndex = {
 
 export const VERSIONS_KEY = "leaf:cache:versions"
 export const buildsKey = (version: string): string => `leaf:cache:builds:${version}`
+export const allBuildsKey = (version: string): string => `leaf:cache:builds-all:${version}`
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { cache: "no-store", headers: HEADERS })
@@ -51,6 +52,18 @@ export async function readCachedBuilds(version: string): Promise<BuildIndex | nu
   }
 }
 
+export async function readCachedAllBuilds(version: string): Promise<BuildResponse[] | null> {
+  const kv = getKV()
+  if (!kv) return null
+  const raw = await kv.get(allBuildsKey(version))
+  if (!raw) return null
+  try {
+    return JSON.parse(raw) as BuildResponse[]
+  } catch {
+    return null
+  }
+}
+
 export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
   const project = await fetchJson<ProjectResponse>(`${BASE_URL}/projects/leaf`)
   const versions = project.versions
@@ -67,27 +80,50 @@ export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
 async function refreshVersion(kv: KVNamespace, version: string): Promise<void> {
   const manifest = await fetchJson<VersionResponse>(`${BASE_URL}/projects/leaf/versions/${version}`)
   const total = manifest.builds.length
-  const recentNumbers = [...manifest.builds].toSorted((a, b) => b - a).slice(0, RECENT_LIMIT)
-  const maxBuild = recentNumbers[0] ?? -1
+  const numbersDesc = [...manifest.builds].toSorted((a, b) => b - a)
+  const maxBuild = numbersDesc[0] ?? -1
 
-  // 增量
-  const prevRaw = await kv.get(buildsKey(version))
-  if (prevRaw) {
+  // 检测变更
+  const prevRecentRaw = await kv.get(buildsKey(version))
+  if (prevRecentRaw) {
     try {
-      const prev = JSON.parse(prevRaw) as BuildIndex
-      const prevMax = prev.builds[0]?.build ?? -1
-      if (prevMax === maxBuild && prev.total === total) return
+      const prev = JSON.parse(prevRecentRaw) as BuildIndex
+      if ((prev.builds[0]?.build ?? -1) === maxBuild && prev.total === total) return
     } catch {
       // 继续重建
     }
   }
 
-  const builds = await Promise.all(
-    recentNumbers.map((n) =>
+  // 增量
+  const stored = (await readStoredAllBuilds(kv, version)) ?? []
+  const known = new Map(stored.map((b) => [b.build, b]))
+  const missing = numbersDesc.filter((n) => !known.has(n))
+
+  const fetched = await Promise.all(
+    missing.map((n) =>
       fetchJson<BuildResponse>(`${BASE_URL}/projects/leaf/versions/${version}/builds/${n}`)
     )
   )
+  for (const b of fetched) known.set(b.build, b)
 
-  const index: BuildIndex = { builds, total }
+  const all = numbersDesc
+    .map((n) => known.get(n))
+    .filter((b): b is BuildResponse => b !== undefined)
+
+  await kv.put(allBuildsKey(version), JSON.stringify(all))
+  const index: BuildIndex = { builds: all.slice(0, RECENT_LIMIT), total }
   await kv.put(buildsKey(version), JSON.stringify(index))
+}
+
+async function readStoredAllBuilds(
+  kv: KVNamespace,
+  version: string
+): Promise<BuildResponse[] | null> {
+  const raw = await kv.get(allBuildsKey(version))
+  if (!raw) return null
+  try {
+    return JSON.parse(raw) as BuildResponse[]
+  } catch {
+    return null
+  }
 }

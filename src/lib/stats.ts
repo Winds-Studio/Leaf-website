@@ -21,7 +21,6 @@ const FALLBACK: Stats = {
   version: "unknown",
 }
 
-const REVALIDATE_SECONDS = 3600
 const GITHUB_REPO = "Winds-Studio/Leaf"
 const BSTATS_PLUGIN_ID = 19_539
 const BSTATS_SERVERS_CHART = "servers"
@@ -36,10 +35,7 @@ function authHeaders(): HeadersInit {
 }
 
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(url, {
-    ...init,
-    next: { revalidate: REVALIDATE_SECONDS },
-  })
+  const res = await fetch(url, init)
   if (!res.ok) {
     throw new Error(`Fetch failed: ${url} (${res.status})`)
   }
