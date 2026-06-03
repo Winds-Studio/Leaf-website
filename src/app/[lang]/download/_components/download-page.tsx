@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import type { LanguageCopy } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import Btn from "@/components/button"
+import { readCachedBuilds, readCachedVersions } from "@/lib/build-cache"
 import { getDictionary } from "@/lib/dictionaries"
 import { formatDateIso, fmtStr } from "@/lib/format"
 import { getBuild, getProject, getVersion, type BuildResponse } from "@/lib/leaf-api"
@@ -23,18 +24,45 @@ type DownloadPageProps = {
   requestedVersion: string | null
 }
 
+/**
+ * 优先读取 cron 的 KV 缓存；未命中回退到 live API。
+ */
+async function resolveVersions(): Promise<string[]> {
+  const cached = await readCachedVersions()
+  if (cached) return cached
+  const project = await getProject()
+  return project.versions
+}
+
+async function resolveBuilds(version: string): Promise<{ builds: BuildResponse[]; total: number }> {
+  const cached = await readCachedBuilds(version)
+  if (cached) return cached
+
+  const versionManifest = await getVersion(version)
+  const recentBuildNumbers = [...versionManifest.builds]
+    .toSorted((a, b) => b - a)
+    .slice(0, BUILDS_TO_FETCH)
+
+  const buildResults = await Promise.allSettled(recentBuildNumbers.map((n) => getBuild(version, n)))
+  const builds = buildResults
+    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
+    .map((r) => r.value)
+
+  return { builds, total: versionManifest.builds.length }
+}
+
 export async function DownloadPage({ locale, requestedVersion }: DownloadPageProps) {
   const dictRoot = await getDictionary(locale)
   const dict = dictRoot.download
 
-  let project
+  let versions: string[]
   try {
-    project = await getProject()
+    versions = await resolveVersions()
   } catch {
     return <ApiDownFallback dict={dict} />
   }
 
-  if (project.versions.length === 0) {
+  if (versions.length === 0) {
     return (
       <Page dict={dict}>
         <EmptyState dict={dict} />
@@ -42,27 +70,20 @@ export async function DownloadPage({ locale, requestedVersion }: DownloadPagePro
     )
   }
 
-  const version = requestedVersion ?? getLatestVersion(project.versions)
-  if (requestedVersion && !isKnownVersion(project.versions, requestedVersion)) {
+  const version = requestedVersion ?? getLatestVersion(versions)
+  if (requestedVersion && !isKnownVersion(versions, requestedVersion)) {
     notFound()
   }
 
-  let versionManifest
+  let allBuilds: BuildResponse[]
+  let totalBuildCount: number
   try {
-    versionManifest = await getVersion(version)
+    const resolved = await resolveBuilds(version)
+    allBuilds = resolved.builds
+    totalBuildCount = resolved.total
   } catch {
     return <ApiDownFallback dict={dict} />
   }
-
-  const recentBuildNumbers = [...versionManifest.builds]
-    .toSorted((a, b) => b - a)
-    .slice(0, BUILDS_TO_FETCH)
-
-  const buildResults = await Promise.allSettled(recentBuildNumbers.map((n) => getBuild(version, n)))
-
-  const allBuilds: BuildResponse[] = buildResults
-    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
-    .map((r) => r.value)
 
   const isUnmaintained = inferUnmaintained(allBuilds)
   const hasStableBuilds = allBuilds.some((b) => b.channel === "default")
@@ -97,9 +118,9 @@ export async function DownloadPage({ locale, requestedVersion }: DownloadPagePro
         banner={banner}
         dict={dict}
         locale={locale}
-        totalBuildCount={versionManifest.builds.length}
+        totalBuildCount={totalBuildCount}
         version={version}
-        versions={project.versions}
+        versions={versions}
       />
     </Page>
   )
