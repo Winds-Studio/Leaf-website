@@ -73,19 +73,27 @@ async function fetchWithRetry<T>(url: string, init?: RequestInit): Promise<T> {
 }
 
 export async function getProject(): Promise<ProjectResponse> {
-  return fetchWithRetry<ProjectResponse>(`${BASE_URL}/projects/leaf`, { next: { revalidate: 600 } })
+  return fetchWithRetry<ProjectResponse>(`${BASE_URL}/projects/leaf`, {
+    next: { revalidate: 1800 },
+  })
 }
 
-export async function getVersion(version: string): Promise<VersionResponse> {
-  return fetchWithRetry<VersionResponse>(`${BASE_URL}/projects/leaf/versions/${version}`, {
-    next: { revalidate: 60 },
-  })
+export async function getVersion(version: string, init?: RequestInit): Promise<VersionResponse> {
+  return fetchWithRetry<VersionResponse>(
+    `${BASE_URL}/projects/leaf/versions/${version}`,
+    init ?? { next: { revalidate: 1800 } }
+  )
 }
 
 export async function getBuild(version: string, build: number): Promise<BuildResponse> {
   return fetchWithRetry<BuildResponse>(
     `${BASE_URL}/projects/leaf/versions/${version}/builds/${build}`,
-    { next: { revalidate: 86400 } }
+    {
+      next: {
+        // 永久缓存
+        revalidate: false,
+      },
+    }
   )
 }
 

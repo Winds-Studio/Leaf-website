@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 import type { DownloadDict } from "@/lib/dictionaries"
 import { cn } from "@/lib/cn"
 import { sortVersionsDesc } from "@/lib/semver"
@@ -8,11 +6,19 @@ import type { Channel } from "./types"
 
 type VersionPillsProps = {
   activeVersion: string
-  locale: string
+  disabled?: boolean
+  onPrefetch?: (version: string) => void
+  onSelect: (version: string) => void
   versions: readonly string[]
 }
 
-export function VersionPills({ activeVersion, locale, versions }: VersionPillsProps) {
+export function VersionPills({
+  activeVersion,
+  disabled,
+  onPrefetch,
+  onSelect,
+  versions,
+}: VersionPillsProps) {
   const sorted = sortVersionsDesc(versions)
 
   return (
@@ -20,19 +26,26 @@ export function VersionPills({ activeVersion, locale, versions }: VersionPillsPr
       {sorted.map((v) => {
         const isActive = v === activeVersion
         return (
-          <Link
+          <button
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "rounded-full px-3 py-1 text-xs leading-6 font-medium whitespace-nowrap transition-colors",
+              "rounded-full px-3 py-1 text-xs leading-6 font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed",
               isActive
                 ? "bg-fd-primary text-fd-primary-foreground"
-                : "border-fd-border text-fd-foreground hover:bg-fd-accent border"
+                : "border-fd-border text-fd-foreground hover:bg-fd-accent border",
+              disabled && !isActive && "opacity-60"
             )}
-            href={`/${locale}/download/${v}`}
+            disabled={disabled}
             key={v}
+            onClick={() => {
+              onSelect(v)
+            }}
+            onFocus={() => onPrefetch?.(v)}
+            onMouseEnter={() => onPrefetch?.(v)}
+            type="button"
           >
             {v}
-          </Link>
+          </button>
         )
       })}
     </div>
