@@ -12,6 +12,7 @@
   },
   "images": { "binding": "IMAGES" },
   "kv_namespaces": [{ "binding": "VINEXT_CACHE", "id": "16ffddca9cac4fef83497f70c4ac9921" }],
+  "triggers": { "crons": ["* * * * *"] },
   "observability": {
     "enabled": false,
     "head_sampling_rate": 1,

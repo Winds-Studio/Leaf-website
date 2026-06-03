@@ -7,6 +7,9 @@ import {
 } from "vinext/server/image-optimization"
 import { setCacheHandler } from "vinext/shims/cache"
 
+import { refreshBuildCache } from "@/lib/build-cache"
+import { setKV } from "@/lib/runtime-kv"
+
 interface KVNamespace {
   get(key: string, options?: { type?: string }): Promise<string | null>
   get(key: string, options: { type: "arrayBuffer" }): Promise<ArrayBuffer | null>
@@ -40,6 +43,11 @@ interface ExecutionContext {
   passThroughOnException(): void
 }
 
+interface ScheduledController {
+  scheduledTime: number
+  cron: string
+}
+
 let cacheReady = false
 
 export default {
@@ -50,6 +58,9 @@ export default {
       setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 21_600_000 }))
       cacheReady = true
     }
+
+    // oxlint-disable-next-line typescript/no-unnecessary-condition
+    if (env?.VINEXT_CACHE) setKV(env.VINEXT_CACHE)
 
     const url = new URL(request.url)
 
@@ -72,5 +83,15 @@ export default {
     }
 
     return handler.fetch(request, env, ctx)
+  },
+
+  async scheduled(
+    _controller: ScheduledController,
+    env: Env,
+    _ctx: ExecutionContext
+  ): Promise<void> {
+    // oxlint-disable-next-line typescript/no-unnecessary-condition
+    if (!env?.VINEXT_CACHE) return
+    await refreshBuildCache(env.VINEXT_CACHE)
   },
 }
