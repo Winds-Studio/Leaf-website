@@ -44,8 +44,10 @@ let cacheReady = false
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-    if (!cacheReady) {
-      setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 60_000 }))
+    // oxlint-disable-next-line typescript/no-unnecessary-condition - 本地就是没有这个变量
+    if (!cacheReady && env?.VINEXT_CACHE) {
+      // 大 TTL 用来削减冗余读取
+      setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 21_600_000 }))
       cacheReady = true
     }
 

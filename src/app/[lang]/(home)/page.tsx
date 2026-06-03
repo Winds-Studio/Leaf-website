@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n"
-import { getDictionary } from "@/lib/dictionaries"
+import { applyHomeStats, getDictionary } from "@/lib/dictionaries"
 import { i18n } from "@/lib/i18n"
+import { getStats } from "@/lib/stats"
 import ConfigSnippet from "./_components/config-snippet"
 import Cta from "./_components/cta"
 import Faq from "./_components/faq"
@@ -16,16 +17,17 @@ export function generateStaticParams() {
 
 export default async function HomePage({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params
-  const dist = await getDictionary(lang)
+  const [dist, stats] = await Promise.all([getDictionary(lang), getStats()])
+  const home = applyHomeStats(dist.home, stats)
 
   return (
     <main>
-      <Hero dist={{ hero: dist.home.hero, locale: lang, placeholder: dist.home.placeholder }} />
-      <Features dist={dist.home.features} />
-      <ConfigSnippet dist={dist.home.config} locale={lang} />
-      <Faq dist={dist.home.faq} />
-      <Cta dist={dist.home.cta} locale={lang} />
-      <Footer dist={dist.home.footer} locale={lang} />
+      <Hero dist={{ hero: home.hero, locale: lang, placeholder: home.placeholder }} />
+      <Features dist={home.features} />
+      <ConfigSnippet dist={home.config} locale={lang} />
+      <Faq dist={home.faq} />
+      <Cta dist={home.cta} locale={lang} />
+      <Footer dist={home.footer} locale={lang} />
     </main>
   )
 }

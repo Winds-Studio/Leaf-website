@@ -1,6 +1,5 @@
 import { Spinner } from "@/components/spinner"
 
-// 路由级加载壳
 const Loading = () => (
   <div className="flex min-h-[60vh] items-center justify-center">
     <Spinner />

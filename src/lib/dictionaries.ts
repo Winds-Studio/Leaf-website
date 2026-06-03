@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n"
-import { getStats } from "@/lib/stats"
+import type { Stats } from "@/lib/stats"
 
 export type LanguageCopy = {
   download: {
@@ -47,6 +47,7 @@ export type LanguageCopy = {
 
     buildCount: string
     pagination: string
+    loading: string
   }
   home: {
     hero: {
@@ -126,10 +127,33 @@ export type LanguageCopy = {
 }
 
 export type DownloadDict = LanguageCopy["download"]
+export type HomeDict = LanguageCopy["home"]
 
-export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
-  const stats = await getStats()
+// 不阻塞。stats 仅 home 页用到，
+// 由 home 自己取数后用本函数把 {version}/{servers}/{stars} 占位符填上。
+function fillTokens(text: string, stats: Stats): string {
+  return text
+    .replace("{version}", stats.version)
+    .replace("{servers}", stats.servers)
+    .replace("{stars}", stats.stars)
+}
 
+export function applyHomeStats(home: HomeDict, stats: Stats): HomeDict {
+  return {
+    ...home,
+    cta: {
+      ...home.cta,
+      primary: fillTokens(home.cta.primary, stats),
+    },
+    hero: {
+      ...home.hero,
+      meta: home.hero.meta.map((m) => ({ ...m, value: fillTokens(m.value, stats) })),
+      pill: fillTokens(home.hero.pill, stats),
+    },
+  }
+}
+
+export function getDictionary(locale: Locale): Promise<LanguageCopy> {
   const dictionaries: Record<Locale, LanguageCopy> = {
     de: {
       download: {
@@ -152,6 +176,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
         heroReleasedOn: "Veröffentlicht am {date}",
         intro:
           "Wähle eine Minecraft-Version und lade die Server-JAR herunter. Verwende den stabilen Kanal für Produktivumgebungen.",
+        loading: "Wird geladen …",
         pagination: "Seite {page} von {total}",
         pillExperimental: "Experimentell",
         pillLatestExperimental: "Neuester experimenteller Build",
@@ -193,7 +218,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           title: "Ändere, was du brauchst. Lass den Rest.",
         },
         cta: {
-          primary: `v${stats.version} herunterladen`,
+          primary: "v{version} herunterladen",
           secondary: "Schnellstart",
           sub: "Eine JAR, minimaler Aufwand. Leaf läuft direkt in bestehenden Server-Setups.",
           title: "Dein Server ist bereit. Leaf auch.",
@@ -275,11 +300,11 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ctaPrimary: "Loslegen",
           ctaSecondary: "Auf GitHub ansehen",
           meta: [
-            { label: "Neueste Version", value: stats.version },
-            { label: "Aktive Server", value: stats.servers },
-            { label: "Stars", value: stats.stars },
+            { label: "Neueste Version", value: "{version}" },
+            { label: "Aktive Server", value: "{servers}" },
+            { label: "Stars", value: "{stars}" },
           ],
-          pill: `v${stats.version} veröffentlicht`,
+          pill: "v{version} veröffentlicht",
           subtitle:
             "Eine hochoptimierte Minecraft Server-Software, die Vanilla-Verhalten beibehält und volle Plugin-Kompatibilität mit Paper wahrt. Gebaut für Server, die das Beste fordern.",
           titleA: "Bring deinen Server zum ",
@@ -323,6 +348,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
         heroReleasedOn: "Released {date}",
         intro:
           "Select a Minecraft version and download the server JAR. Use the stable channel for production environments.",
+        loading: "Loading…",
         pagination: "Page {page} of {total}",
         pillExperimental: "Experimental",
         pillLatestExperimental: "Latest experimental",
@@ -363,7 +389,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           title: "Change what you need. Leave the rest.",
         },
         cta: {
-          primary: `Download v${stats.version}`,
+          primary: "Download v{version}",
           secondary: "Quick start",
           sub: "One JAR, minimal effort. Leaf drops into your existing server setup.",
           title: "Your server is ready. So is Leaf.",
@@ -445,11 +471,11 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ctaPrimary: "Get started",
           ctaSecondary: "View on GitHub",
           meta: [
-            { label: "Latest version", value: stats.version },
-            { label: "Servers running", value: stats.servers },
-            { label: "Stars", value: stats.stars },
+            { label: "Latest version", value: "{version}" },
+            { label: "Servers running", value: "{servers}" },
+            { label: "Stars", value: "{stars}" },
           ],
-          pill: `v${stats.version} released`,
+          pill: "v{version} released",
           subtitle:
             "A high-performance Minecraft server software that respects vanilla behavior, maintains full plugin compatibility, and built for servers that demand the best.",
           titleA: "Make your server ",
@@ -491,6 +517,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
         heroBuild: "构建 #{n}",
         heroReleasedOn: "{date} 发布",
         intro: "选择 Minecraft 版本，下载对应的服务端 JAR。生产环境请使用稳定通道。",
+        loading: "加载中…",
         pagination: "第 {page} 页 / 共 {total} 页",
         pillExperimental: "实验性",
         pillLatestExperimental: "最新实验性构建",
@@ -530,7 +557,7 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           title: "需要什么改什么，其余的不用管。",
         },
         cta: {
-          primary: `下载 v${stats.version}`,
+          primary: "下载 v{version}",
           secondary: "阅读快速上手",
           sub: "一个 jar，无需折腾。Leaf 兼容你现有的服务器环境。",
           title: "你的服务器准备好了，Leaf 就准备好了。",
@@ -612,11 +639,11 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
           ctaPrimary: "立即开始",
           ctaSecondary: "前往 GitHub",
           meta: [
-            { label: "最新版本", value: stats.version },
-            { label: "在用服务器", value: stats.servers },
-            { label: "Star", value: stats.stars },
+            { label: "最新版本", value: "{version}" },
+            { label: "在用服务器", value: "{servers}" },
+            { label: "Star", value: "{stars}" },
           ],
-          pill: `v${stats.version} 已发布`,
+          pill: "v{version} 已发布",
           subtitle:
             "Leaf 是一个专注性能提升的 Minecraft 服务端核心，尊重原版行为、兼容插件生态。稳定地运行与强劲优化，给那些最需要它的服务器。",
           titleA: "让你的服务器 ",
@@ -641,5 +668,5 @@ export async function getDictionary(locale: Locale): Promise<LanguageCopy> {
     },
   }
 
-  return dictionaries[locale]
+  return Promise.resolve(dictionaries[locale])
 }

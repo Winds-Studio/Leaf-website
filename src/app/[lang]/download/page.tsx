@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
   return { title: dict.download.title }
 }
 
-export const revalidate = 60
+export const revalidate = 1800
 
 export default async function Page({ params }: PageParams) {
   const { lang: locale } = await params
