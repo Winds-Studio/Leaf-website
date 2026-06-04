@@ -11,6 +11,11 @@ import { getKV, type KVNamespace } from "./runtime-kv"
  */
 const RECENT_LIMIT = 12
 
+/**
+ * CF 单次 cron 调用的子请求消费
+ */
+const MAX_SUBREQUESTS = 45
+
 export type BuildIndex = {
   builds: BuildResponse[]
   total: number
@@ -66,32 +71,38 @@ export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
     await kv.put(VERSIONS_KEY, nextVersionsRaw)
   }
 
-  await Promise.allSettled(versions.map((version) => refreshVersion(kv, version)))
+  // 装不下后续 cron tick 里继续补
+  await versions.reduce(
+    (prev, version) =>
+      prev.then((budget) => (budget <= 0 ? budget : refreshVersion(kv, version, budget))),
+    Promise.resolve(MAX_SUBREQUESTS - 1)
+  )
 }
 
-async function refreshVersion(kv: KVNamespace, version: string): Promise<void> {
+/**
+ * 在预算内增量刷新单个版本
+ */
+async function refreshVersion(kv: KVNamespace, version: string, budget: number): Promise<number> {
+  if (budget <= 0) return budget
   const manifest = await getVersion(version)
+  let left = budget - 1
+
   const total = manifest.builds.length
   const numbersDesc = [...manifest.builds].toSorted((a, b) => b - a)
-  const maxBuild = numbersDesc[0] ?? -1
 
-  // 检测变更
-  const prevRecentRaw = await kv.get(buildsKey(version))
-  if (prevRecentRaw) {
-    try {
-      const prev = JSON.parse(prevRecentRaw) as BuildIndex
-      if ((prev.builds[0]?.build ?? -1) === maxBuild && prev.total === total) return
-    } catch {
-      // 继续重建
-    }
-  }
-
-  // 增量
   const stored = (await readStoredAllBuilds(kv, version)) ?? []
   const known = new Map(stored.map((b) => [b.build, b]))
   const missing = numbersDesc.filter((n) => !known.has(n))
 
-  const fetched = await Promise.all(missing.map((n) => getBuild(version, n)))
+  // 已完整且无新构建，收工！
+  if (missing.length === 0 && known.size === total) return left
+
+  // 本次预算内能抓多少抓多少
+  const toFetch = missing.slice(0, left)
+  if (toFetch.length === 0) return left // 没预算了 555，跑路辽
+
+  const fetched = await Promise.all(toFetch.map((n) => getBuild(version, n)))
+  left -= toFetch.length
   for (const b of fetched) known.set(b.build, b)
 
   const all = numbersDesc
@@ -101,6 +112,7 @@ async function refreshVersion(kv: KVNamespace, version: string): Promise<void> {
   await kv.put(allBuildsKey(version), JSON.stringify(all))
   const index: BuildIndex = { builds: all.slice(0, RECENT_LIMIT), total }
   await kv.put(buildsKey(version), JSON.stringify(index))
+  return left
 }
 
 async function readStoredAllBuilds(
