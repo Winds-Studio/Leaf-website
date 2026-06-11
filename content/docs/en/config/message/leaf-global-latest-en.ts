@@ -234,7 +234,7 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
       },
     },
     "only-player-pushable": {
-      desc: `Whether to make only the player pushable.<br>
+      desc: `Whether only the player can be pushed.<br>
                 If set to \`true\`, this option will override values of related collision options in Paper's global and world config, and mobs will not be killed under the effect of [maxEntityCramming](https://minecraft.wiki/w/Game_rule#:~:text=entity%20cramming%20damage) gamerule.<br>
                 <br>
                 __⚡Recommended value: \`true\`__<br>
