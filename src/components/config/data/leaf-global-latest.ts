@@ -562,6 +562,23 @@ const config = {
     "including-5s-in-get-tps": {
       default: true,
     },
+    "region-format": {
+      "format-name": {
+        default: "MCA",
+      },
+      "compress-level": {
+        default: 1,
+      },
+      "io-thread-count": {
+        default: 6,
+      },
+      "io-flush-delay": {
+        default: -1,
+      },
+      "linear-use-virtual-thread": {
+        default: true,
+      },
+    },
     "lag-compensation": {
       enabled: {
         default: false,
