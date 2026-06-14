@@ -145,6 +145,10 @@ const de: ConfigMessages<typeof config> = {
         desc: `Maximale Anzahl erlaubter Einträge im Combat-Tracker der Mobs.<br>
                     Hat nur einen Effekt, wenn \`mc-301114\` oben auf \`true\` gestellt ist.`,
       },
+      "mc-152094": {
+        desc: `Ob der Bug behoben werden soll, dass die Generation eines Schiffs in einer End City an Chunkgrenzen abgeschnitten wird.<br>
+              Mojira-Link: [MC-152094](https://mojira.dev/MC-152094).`
+      },
     },
   },
   "gameplay-mechanisms": {
@@ -376,6 +380,51 @@ const de: ConfigMessages<typeof config> = {
                 Wenn du die Leaf API für deine Plugins verwendest. Oder auf Leaf läufst und Reflection verwendest, um TPS zu erhalten, kannst du \`Bukkit#getTPSIncluding5SecondAverage\` verwenden, um das TPS-Array einschließlich 5-Sekunden-TPS \`[5s, 1m, 5m, 15m]\` zu erhalten.<br>
                 Außerdem kannst du \`Bukkit#get5SecondTPSAverage\` verwenden, um den Durchschnittswert der 5-Sekunden-TPS als \`double\` zu erhalten.
                 <div/>`,
+    },
+    "region-format": {
+      __desc__: `Linear ist ein Region-Format, das [zstd-Kompression](https://facebook.github.io/zstd/) anstelle von zlib wie in Vanilla Minecraft verwendet. Dieses Format spart etwa ~50% Speicherplatz und verbessert den Durchsatz beim Laden/Speichern von Chunks, insbesondere bei der Behebung von I/O-Engpässen in extrem großen Welten.<br>
+                Der [Region Converter](https://github.com/LuminolMC/region_converter) dient dazu, deine Welten zwischen verschiedenen Formaten zu konvertieren, wie z. B. Minecraft Anvil, Linear oder Buffered Linear.<br>`,
+      "format-name": {
+        desc: `Das Format, das zum Speichern von Chunk-Daten in Region-Dateien verwendet wird.<br>
+                    <br>
+                    Verfügbare Region-Formate:
+                    <table>
+                    <tr><th>Format</th><th>Beschreibung</th></tr>
+                    <tr><td><code>MCA</code></td><td>Standard Minecraft ANVIL-Format, das zlib-Kompression verwendet.</td></tr>
+                    <tr><td><code>B_LINEAR</code></td><td>Buffered Linear (oder kurz \`blinear\`) ist ein Region-Format, das von [Luminol](https://github.com/LuminolMC/Luminol) entwickelt wurde und sich derzeit in v3 befindet. Im Vergleich zu Linear v2 ersetzt es den In-Memory-Puffer des ursprünglichen Linear-Formats durch ein Swap-Datei-basiertes Design und bietet eine geringere Speichernutzung sowie schnelleres Laden von Chunks.</td></tr>
+                    <tr><td><code>LINEAR_V2</code></td><td>Die Implementierung von Linear v2 stammt von [Xymb](https://github.com/xymb-endcrystalme)s [Abomination](https://github.com/xymb-endcrystalme/Abomination). Es ist sowohl mit v1- als auch mit v2-Region-Dateien kompatibel. Region-Dateien im v1-Format werden beim Laden automatisch in v2 konvertiert.</td></tr>
+                    </table>
+                    Wenn dies auf \`MCA\` gesetzt ist, wird diese \`region-format\`-Option deaktiviert.<br>
+                    <br>
+                    Da Linear v2 viele Designfehler aufweist und für den produktiven Betrieb sehr riskant ist, empfehlen wir dringend, stattdessen Buffered Linear zu verwenden.`,
+      },
+      "compress-level": {
+        desc: `Die Kompressionsstufe der linearen Region-Format-Datei.
+                    <ul>
+                    <li>Wenn auf ein höheres Level (bis zu \`22\`) gesetzt, bietet es bessere Kompressionsraten, benötigt jedoch deutlich mehr CPU-Zeit für die Komprimierung.</li>
+                    <li>Wenn auf ein niedrigeres Level gesetzt, komprimiert es schneller, benötigt aber mehr Speicherplatz. Das Level \`1\` verwendet die schnellste und leichteste Komprimierung.</li>
+                    </ul>`,
+      },
+      "io-thread-count": {
+        desc: `Die Anzahl der Worker-Threads für das lineare Region-Format.`,
+      },
+      "io-flush-delay": {
+        desc: `Wann Daten in die Region-Datei geschrieben (geflusht) werden sollen, wenn keine Schreiboperationen stattgefunden haben.<br>
+                    (Einheit: Millisekunde)<br>
+                    <br>
+                    Wenn auf \`-1\` gesetzt, werden die untenstehenden Standardwerte verwendet.
+                    <table>
+                    <tr><td><b>Standardwerte</b></td><td></td></tr>
+                    <tr><td><i>B_LINEAR</i></td><td><code>3000</code></td></tr>
+                    <tr><td><i>LINEAR_V2</i></td><td><code>100</code></td></tr>
+                    </table>`,
+      },
+      "linear-use-virtual-thread": {
+        desc: `Ob der in Java 21 eingeführte [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) für das lineare Region-Format verwendet werden soll.<br>
+                Dies hat nur Auswirkungen, wenn \`format-name\` oben \`LINEAR_V2\` ist.<br>
+                <br>
+                __⚡Empfohlener Wert: \`true\`__`,
+      },
     },
     "lag-compensation": {
       "enable-for-lava": {
@@ -986,6 +1035,7 @@ const de: ConfigMessages<typeof config> = {
       enabled: {
         desc: `Ob Mob-Spawning in Chunks übersprungen werden soll, die wiederholt beim Spawnen von Mobs über den konfigurierten \`min-failed\`-Wert hinaus fehlgeschlagen sind.<br>
                     Sobald die Mindestanzahl fehlgeschlagener Spawn-Versuche erreicht ist, wird der Server den konfigurierten Wert von \`spawn-chance\`% nutzen, um bestimmte Spawn-Versuche zu verlangsamen.<br>
+                    Der gültige Bereich für \`spawn-chance\` liegt zwischen 0.0 und 100.0.<br>
                     Fehlgeschlagene Spawn-Versuche werden nicht gezählt, wenn Spawn-Limits erreicht sind, und der Fehlerzähler wird nach einem erfolgreichen Spawn zurückgesetzt.`,
       },
       monster: {
