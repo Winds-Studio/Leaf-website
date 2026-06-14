@@ -55,6 +55,16 @@ Whether to use io_uring for the I/O model used for network data transmission. Re
 
 If io_uring is unavailable under the current environment, it will fallback to an available model.
 
+## -DLeaf.linear-v2-read-only
+
+- default: `false`
+
+Whether to enable the read-only mode for the Linear v2 region format. Under this mode, any world changes, including chunk, POI, entity, and player data, will NOT be saved.
+
+This mode is intended for inspection, testing, migration, or emergency recovery.
+
+Given that the Linear v2 has many design flaws and is dangerous to production, if you need to use the Linear region format, we recommend using the Buffered Linear instead.
+
 ## -DLeaf.enable-base64coder-warning
 
 - default: `false`

@@ -149,6 +149,10 @@ const en: ConfigMessages<typeof config> = {
         desc: `生物战斗跟踪器中允许的最大条目。<br>
                     仅当上方的 \`mc-301114\` 设为 \`true\` 时才会生效。`,
       },
+      "mc-152094": {
+          desc: `是否修复末地船在区块边缘生成时被截断的问题。<br>
+                Mojira 问题跟踪链接：[MC-152094](https://mojira.dev/MC-152094)。`
+      },
     },
   },
   "gameplay-mechanisms": {
@@ -1023,7 +1027,8 @@ const en: ConfigMessages<typeof config> = {
       },
       enabled: {
         desc: `是否跳过生成失败次数过多的区块内的生物生成。<br>
-                    在每个区块中，当多次生物生成失败并超以下配置的 \`min-failed\` 最小失败次数后，将使用 \`spawn-chance\` 百分比来限制特定生物的生成尝试。<br>
+                    在每个区块中，当多次生物生成失败并超过以下配置的 \`min-failed\` 最小失败次数后，将使用 \`spawn-chance\` 百分比来限制特定生物的生成尝试。<br>
+                    \`spawn-chance\` 的有效范围为 0.0 到 100.0。<br>
                     达到生成数量上限的生成失败将不会计入失败次数；并且一旦成功生成生物，失败计数将被重置。`,
       },
       monster: {

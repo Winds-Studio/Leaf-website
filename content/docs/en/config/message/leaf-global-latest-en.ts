@@ -148,6 +148,10 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
         desc: `Max allowed entries in the mob's combat tracker.<br>
                     This only has any effect if \`mc-301114\` above is \`true\`.`,
       },
+      "mc-152094": {
+          desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
+              Mojira link: [MC-152094](https://mojira.dev/MC-152094).`
+      },
     },
   },
   "gameplay-mechanisms": {
@@ -1062,6 +1066,7 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
       enabled: {
         desc: `Whether to skip mob spawning in chunks that have repeatedly failed to spawn mobs beyond the configured \`min-failed\` value.<br>
                     Once the minimum number of failed spawn attempts is reached, the server will use the configured percentage of \`spawn-chance\`% to throttle specific mob spawn attempts.<br>
+                    Valid range for \`spawn-chance\` is 0.0 to 100.0.<br>
                     Failed spawn attempts will not be counted if spawn limits are reached, and the failure counter will be reset after a successful spawn.`,
       },
       monster: {
