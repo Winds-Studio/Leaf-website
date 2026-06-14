@@ -32,7 +32,7 @@ You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to ch
 
 Whether to disable Minecraft's built-in vanilla profiler to improve performance slightly.
 
-It's recommended to disable it since it may waste performance in some scenarios, and you can use [Spark](https://spark.lucko.me/) as the profiling tool. Unless you want to profile your datapack functions.
+It's recommended to use this flag to disable it since it may waste performance in some scenarios, and you can use [Spark](https://spark.lucko.me/) as the profiling tool. Unless you want to profile your datapack functions.
 
 Check Spark's documentation to learn:
 
@@ -45,7 +45,7 @@ Check Spark's documentation to learn:
 
 Whether to completely disable Minecraft's [debug feature](https://minecraft.wiki/w/Debug_property).
 
-It's recommended to disable it since it may waste performance, especially on higher online counts. You can remove this flag only when you really need to use the debug feature.
+It's recommended to use this flag to disable it since it may waste performance, especially on higher online counts. You can remove this flag only when you really need to use the debug feature.
 
 ## -DLeaf.enable-io-uring
 
@@ -59,7 +59,7 @@ If io_uring is unavailable under the current environment, it will fallback to an
 
 - default: `false`
 
-Whether to enable the read-only mode for the Linear v2 region format. Under this mode, any world changes, including chunk, POI, entity, and player data, will NOT be saved.
+Whether to enable the read-only mode for the Linear v2 region format. Under this mode, any world changes (including chunk, POI, entity, and player data) will **NOT be saved**.
 
 This mode is intended for inspection, testing, migration, or emergency recovery.
 

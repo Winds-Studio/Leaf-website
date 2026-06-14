@@ -392,6 +392,51 @@ const en: ConfigMessages<typeof config> = {
                 同时，你也可以使用 \`Bukkit#get5SecondTPSAverage\` 来获取 5 秒 TPS 的平均值（\`double\` 类型）。
                 </div>`,
     },
+    "region-format": {
+      __desc__: `Linear 是一种区域文件格式，它使用 [zstd 压缩](https://facebook.github.io/zstd/) 来替代 MC 原版使用的 zlib 压缩。该格式可节省约 50% 的磁盘空间，并提升区块加载/保存吞吐量，尤其适用于超大型世界存在 I/O 瓶颈的场景。<br>
+            你可以使用 [Region Converter](https://github.com/LuminolMC/region_converter) 在 MC 原版 Anvil、Linear 和 Buffered Linear 等区域格式之间转换世界数据。<br>`,
+      "format-name": {
+        desc: `用于保存区块数据的区域格式。<br>
+                <br>
+                可用的区域格式：
+                <table>
+                <tr><th>格式</th><th>介绍</th></tr>
+                <tr><td><code>MCA</code></td><td>标准 Minecraft ANVIL 格式，使用 zlib 压缩。</td></tr>
+                <tr><td><code>B_LINEAR</code></td><td>Buffered Linear（简称 <code>blinear</code>）是由 [Luminol](https://github.com/LuminolMC/Luminol) 开发的区域格式，目前版本已迭代到 v3。与 Linear v2 相比，它使用基于交换文件（swap file）的设计取代了原 Linear 格式的内存缓冲区，从而降低内存占用并提高区块加载速度。</td></tr>
+                <tr><td><code>LINEAR_V2</code></td><td>Linear v2 实现来源于 [Xymb](https://github.com/xymb-endcrystalme) 的 [Abomination](https://github.com/xymb-endcrystalme/Abomination)。它兼容 Linear v1 和 v2 区域格式。当加载 v1 格式的区域时，会自动转换为 v2 格式。</td></tr>
+                </table>
+                如果设为 \`MCA\`，此 \`region-format\` 配置项将被禁用。<br>
+                <br>
+                由于 Linear v2 存在诸多设计缺陷，并不适合生产环境，我们强烈建议使用 Buffered Linear。`,
+      },
+      "compress-level": {
+        desc: `Linear 区域格式的压缩等级。
+                <ul>
+                <li>设为较高的等级（最高 \`22\`）时，可获得更高的压缩率，但会显著增加压缩所需的 CPU 负担。</li>
+                <li>设为较低的等级时，压缩速度更快，但会占用更多磁盘空间。其中 \`1\` 为最快、最轻量的压缩等级。</li>
+                </ul>`,
+      },
+      "io-thread-count": {
+        desc: `Linear 区域格式使用的 I/O 工作线程数量。`,
+      },
+      "io-flush-delay": {
+        desc: `在没有新的写入操作后，等待多久将数据刷新到区域文件。<br>
+                （单位：毫秒）<br>
+                <br>
+                如果设为 \`-1\`，将使用以下默认值：
+                <table>
+                <tr><td><b>默认值</b></td><td></td></tr>
+                <tr><td><i>B_LINEAR</i></td><td><code>3000</code></td></tr>
+                <tr><td><i>LINEAR_V2</i></td><td><code>100</code></td></tr>
+                </table>`,
+      },
+      "linear-use-virtual-thread": {
+        desc: `是否为 Linear 区域格式使用 Java 21 引入的 [虚拟线程（Virtual Thread）](https://javaguide.cn/java/concurrent/virtual-thread.html)。<br>
+            仅当上方的 \`format-name\` 设为 \`LINEAR_V2\` 时才会生效。<br>
+            <br>
+            __⚡推荐值：\`true\`__`,
+      },
+    },
     "lag-compensation": {
       "enable-for-lava": {
         desc: `是否开启岩浆流动的滞后补偿。<br>

@@ -397,13 +397,17 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
                 [Region Converter](https://github.com/LuminolMC/region_converter) is here for converting your worlds between various formats, such as Minecraft Anvil, Linear, or Buffered Linear.<br>`,
       "format-name": {
         desc: `The format used for saving chunk data in region files.<br>
+                    <br>
                     Available region formats:
-                    <ul>
-                    <li>\`MCA\` - Standard Minecraft ANVIL format using zlib compression.</li>
-                    <li>\`B_LINEAR\` - Buffered Linear (or \`blinear\` for short) is a region format developed by [Luminol](https://github.com/LuminolMC/Luminol) and is currently on v3. Compared with Linear v2, it replaces the original Linear format's in-memory buffer with a swap-file-based design, and provides lower memory usage and faster chunk loading.</li>
-                    <li>\`LINEAR_V2\` - Linear v2 implementation originates from [Xymb](https://github.com/xymb-endcrystalme)'s [Abomination](https://github.com/xymb-endcrystalme/Abomination). It is compatible with both v1 and v2 region files. Region files in the v1 format are automatically converted to v2 when loaded.</li>
-                    </ul>
-                    If set to \`MCA\`, this \`region-format\` option will be disabled.`,
+                    <table>
+                    <tr><th>Format</th><th>Description</th></tr>
+                    <tr><td><code>MCA</code></td><td>Standard Minecraft ANVIL format using zlib compression.</td></tr>
+                    <tr><td><code>B_LINEAR</code></td><td>Buffered Linear (or \`blinear\` for short) is a region format developed by [Luminol](https://github.com/LuminolMC/Luminol) and is currently on v3. Compared with Linear v2, it replaces the original Linear format's in-memory buffer with a swap-file-based design, and provides lower memory usage and faster chunk loading.</td></tr>
+                    <tr><td><code>LINEAR_V2</code></td><td>Linear v2 implementation originates from [Xymb](https://github.com/xymb-endcrystalme)'s [Abomination](https://github.com/xymb-endcrystalme/Abomination). It is compatible with both v1 and v2 region files. Region files in the v1 format are automatically converted to v2 when loaded.</td></tr>
+                    </table>
+                    If set to \`MCA\`, this \`region-format\` option will be disabled.<br>
+                    <br>
+                    Due to Linear v2 having many design flaws and being very dangerous to production, we strongly recommend that you use Buffered Linear.`,
       },
       "compress-level": {
         desc: `The compression level of the linear region format file.
@@ -428,7 +432,7 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
       },
       "linear-use-virtual-thread": {
         desc: `Whether to use the [Virtual Thread](https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html) introduced in Java 21 for linear region format.<br>
-                This only has any effect if \`format-name\` above is \`LINEAR\`.<br>
+                This only has any effect if \`format-name\` above is \`LINEAR_V2\`.<br>
                 <br>
                 __⚡Recommended value: \`true\`__`,
       },
