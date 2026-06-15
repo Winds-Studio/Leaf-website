@@ -14,7 +14,6 @@ export default defineConfig({
       "next/image.js",
       "next/link.js",
       "tailwind-merge",
-      "@radix-ui/react-collapsible",
       "rehype-raw",
       "@radix-ui/react-collapsible",
     ],
