@@ -1,8 +1,11 @@
+import { resolve } from "node:path"
 import { cloudflare } from "@cloudflare/vite-plugin"
 import tailwindcss from "@tailwindcss/vite"
 import mdx from "fumadocs-mdx/vite"
 import vinext from "vinext"
 import { defineConfig } from "vite"
+
+const __dirname = import.meta.dirname
 
 export default defineConfig({
   optimizeDeps: {
@@ -31,6 +34,12 @@ export default defineConfig({
   ],
   publicDir: "public",
   resolve: {
+    alias: [
+      {
+        find: "react-dom/server.edge",
+        replacement: resolve(__dirname, "node_modules/react-dom/server.edge.js"),
+      },
+    ],
     tsconfigPaths: true,
   },
 })
