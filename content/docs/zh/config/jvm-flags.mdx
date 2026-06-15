@@ -41,6 +41,16 @@ title: Leaf JVM 参数
 - [如何使用 `/spark` 命令](https://spark.lucko.me/docs/Command-Usage)
 - [如何用 Spark 找出 TPS 瞬卡来源](https://spark.lucko.me/docs/guides/Finding-lag-spikes)
 
+## -DLeaf.disable-vanilla-debug-feature
+
+- 默认值：`false`
+
+是否完全禁用 MC 内置的 [调试功能](https://zh.minecraft.wiki/w/%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7)。
+
+建议使用此 Flag 禁用调试功能，因为该功能可能会带来额外的性能开销，尤其是在在线人数较多时。
+
+建议仅在确实需要使用调试功能时，才移除此启动参数。
+
 ## -DLeaf.enable-io-uring
 
 - 默认值：`false`
@@ -50,6 +60,18 @@ title: Leaf JVM 参数
 需要在 `server.properties` 中开启 `use-native-transport`，并将 `network-compression-threshold` 设为 `-1`。
 
 如果当前运行环境不支持 io_uring，将自动回退到可用的 I/O 模型。
+
+## -DLeaf.linear-v2-read-only
+
+- 默认值：`false`
+
+是否为 Linear v2 区域格式启用只读模式。
+
+在此模式下，任何世界数据改动（包括区块、POI、实体和玩家数据）都 **不会被保存**。
+
+该模式主要用于数据检查、测试、迁移或紧急恢复等场景。
+
+鉴于 Linear v2 存在较多设计缺陷，不建议在生产环境中使用。如果您需要使用 Linear 区域格式，推荐使用 Buffered Linear。
 
 ## -DLeaf.enable-base64coder-warning
 

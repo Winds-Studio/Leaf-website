@@ -988,7 +988,8 @@ const de: ConfigMessages<typeof config> = {
       },
       enabled: {
         desc: `Ob Mob-Spawning in Chunks übersprungen werden soll, die wiederholt beim Spawnen von Mobs über den konfigurierten \`min-failed\`-Wert hinaus fehlgeschlagen sind.<br>
-                    Sobald die Mindestanzahl fehlgeschlagener Spawn-Versuche erreicht ist, wird der Server zufällig zwischen 1 ~ \`spawn-chance\`% der Spawn-Versuche in diesem Chunk überspringen.<br>
+                    Sobald die Mindestanzahl fehlgeschlagener Spawn-Versuche erreicht ist, wird der Server den konfigurierten Wert von \`spawn-chance\`% nutzen, um bestimmte Spawn-Versuche zu verlangsamen.<br>
+                    Der gültige Bereich für \`spawn-chance\` liegt zwischen 0.0 und 100.0.<br>
                     Fehlgeschlagene Spawn-Versuche werden nicht gezählt, wenn Spawn-Limits erreicht sind, und der Fehlerzähler wird nach einem erfolgreichen Spawn zurückgesetzt.`,
       },
       misc: {

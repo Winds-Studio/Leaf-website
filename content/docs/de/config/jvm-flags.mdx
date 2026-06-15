@@ -32,12 +32,20 @@ Werkzeuge wie [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) können ausgeb
 
 Ob der eingebaute Vanilla-Profiler von Minecraft deaktiviert werden soll, um die Leistung leicht zu verbessern.
 
-Es wird empfohlen, ihn zu deaktivieren, da er in manchen Szenarien Leistung verschwenden kann, und du kannst [Spark](https://spark.lucko.me/) als Profiling-Tool verwenden. Es sei denn, du möchtest deine Datapack-Funktionen profilieren.
+Es wird empfohlen diesen Parameter zu nutzen um ihn zu deaktivieren, da er in manchen Szenarien Leistung verschwenden kann, und du kannst [Spark](https://spark.lucko.me/) als Profiling-Tool verwenden. Es sei denn, du möchtest deine Datapack-Funktionen profilieren.
 
 Lies die Dokumentation von Spark, um zu lernen:
 
 - [Wie man den `/spark` Befehl verwendet](https://spark.lucko.me/docs/Command-Usage)
 - [Wie man Lag-Spikes mit Spark findet](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
+
+## -DLeaf.disable-vanilla-debug-feature
+
+- Standard: `false`
+
+Ob die [Debug-Funktion](https://minecraft.wiki/w/Debug_property) von Minecraft vollständig deaktiviert werden soll.
+
+Es wird empfohlen, dieses Flag zu nutzen, um sie zu deaktivieren, da sie Leistung verschwenden kann, insbesondere bei höheren Spielerzahlen. Diese Flag sollte nur entfernt werden, wenn die Debug-Funktionen wirklich benötigt werden.
 
 ## -DLeaf.enable-io-uring
 
@@ -46,6 +54,16 @@ Lies die Dokumentation von Spark, um zu lernen:
 Ob `io_uring` für das I/O-Modell der Netzwerkdatenübertragung verwendet werden soll. Erfordert, dass `use-native-transport` aktiviert ist und `network-compression-threshold` in `server.properties` auf `-1` gesetzt ist.
 
 Wenn `io_uring` in der aktuellen Umgebung nicht verfügbar ist, wird auf ein verfügbares Modell zurückgegriffen.
+
+## -DLeaf.linear-v2-read-only
+
+- Standard: `false`
+
+Ob der schreibgeschützte Modus für das Linear v2 Region-Format aktiviert werden soll. In diesem Modus werden jegliche Änderungen an der Welt (einschließlich Chunk-, POI-, Entity- und Spielerdaten) **NICHT gespeichert**.
+
+Dieser Modus ist für Inspektionen, Tests, Migrationen oder die Notfallwiederherstellung vorgesehen.
+
+Da Linear v2 viele Designfehler aufweist und für den produktiven Betrieb riskant ist, empfehlen wir, stattdessen Buffered Linear zu verwenden, falls das Linear Region-Format benötigt wird.
 
 ## -DLeaf.enable-base64coder-warning
 

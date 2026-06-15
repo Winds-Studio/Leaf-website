@@ -32,12 +32,20 @@ You can use tools like [CPU-Z](https://www.cpuid.com/softwares/cpu-z.html) to ch
 
 Whether to disable Minecraft's built-in vanilla profiler to improve performance slightly.
 
-It's recommended to disable it since it may waste performance in some scenarios, and you can use [Spark](https://spark.lucko.me/) as the profiling tool. Unless you want to profile your datapack functions.
+It's recommended to use this flag to disable it since it may waste performance in some scenarios, and you can use [Spark](https://spark.lucko.me/) as the profiling tool. Unless you want to profile your datapack functions.
 
 Check Spark's documentation to learn:
 
 - [How to use `/spark` command](https://spark.lucko.me/docs/Command-Usage)
 - [How to find lag spikes using Spark](https://spark.lucko.me/docs/guides/Finding-lag-spikes).
+
+## -DLeaf.disable-vanilla-debug-feature
+
+- default: `false`
+
+Whether to completely disable Minecraft's [debug feature](https://minecraft.wiki/w/Debug_property).
+
+It's recommended to use this flag to disable it since it may waste performance, especially on higher online counts. You can remove this flag only when you really need to use the debug feature.
 
 ## -DLeaf.enable-io-uring
 
@@ -46,6 +54,16 @@ Check Spark's documentation to learn:
 Whether to use io_uring for the I/O model used for network data transmission. Requires `use-native-transport` to be enabled and set `network-compression-threshold` to `-1` in `server.properties`.
 
 If io_uring is unavailable under the current environment, it will fallback to an available model.
+
+## -DLeaf.linear-v2-read-only
+
+- default: `false`
+
+Whether to enable the read-only mode for the Linear v2 region format. Under this mode, any world changes (including chunk, POI, entity, and player data) will **NOT be saved**.
+
+This mode is intended for inspection, testing, migration, or emergency recovery.
+
+Given that the Linear v2 has many design flaws and is dangerous to production, if you need to use the Linear region format, we recommend using the Buffered Linear instead.
 
 ## -DLeaf.enable-base64coder-warning
 

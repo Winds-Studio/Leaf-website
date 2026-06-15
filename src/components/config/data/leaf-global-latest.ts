@@ -337,12 +337,9 @@ const config = {
       "mc-301114-max-entries": {
         default: 10_240,
       },
-      // TODO: Add back when Leaf#727 merged
-      // "mc-152094": {
-      //     default: false,
-      //     desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
-      //         Mojira link: [MC-152094](https://mojira.dev/MC-152094)`
-      // }
+      "mc-152094": {
+          default: false,
+      }
     },
     "prevent-moving-into-weak-loaded-chunks": {
       enabled: {
@@ -561,6 +558,23 @@ const config = {
     },
     "including-5s-in-get-tps": {
       default: true,
+    },
+    "region-format": {
+      "format-name": {
+        default: "MCA",
+      },
+      "compress-level": {
+        default: 6,
+      },
+      "io-thread-count": {
+        default: 6,
+      },
+      "io-flush-delay": {
+        default: -1,
+      },
+      "linear-use-virtual-thread": {
+        default: true,
+      },
     },
     "lag-compensation": {
       enabled: {

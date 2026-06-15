@@ -1023,7 +1023,8 @@ const en: ConfigMessages<typeof config> = {
       },
       enabled: {
         desc: `Whether to skip mob spawning in chunks that have repeatedly failed to spawn mobs beyond the configured \`min-failed\` value.<br>
-                    Once the minimum number of failed spawn attempts is reached, the server will randomly skip between 1 ~ \`spawn-chance\`% of spawn attempts in that chunk.<br>
+                    Once the minimum number of failed spawn attempts is reached, the server will use the configured percentage of \`spawn-chance\`% to throttle specific mob spawn attempts.<br>
+                    Valid range for \`spawn-chance\` is 0.0 to 100.0.<br>
                     Failed spawn attempts will not be counted if spawn limits are reached, and the failure counter will be reset after a successful spawn.`,
       },
       misc: {
