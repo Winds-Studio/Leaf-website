@@ -10,6 +10,7 @@ import {
 import { createRelativeLink } from "fumadocs-ui/mdx"
 import { notFound } from "next/navigation"
 import { getMDXComponents } from "@/components/mdx"
+import { i18n } from "@/lib/i18n"
 import { gitConfig } from "@/lib/shared"
 import { getPageImage, getPageMarkdownUrl, source } from "@/lib/source"
 
@@ -63,14 +64,31 @@ export async function generateMetadata(
   const page = source.getPage(params.slug, params.lang)
   if (!page) notFound()
 
+  const slugPath = params.slug?.join("/") ?? ""
+  const languages = Object.fromEntries(
+    i18n.languages
+      .filter((l) => source.getPage(params.slug, l))
+      .map((l) => [l, `/${l}/docs/${slugPath}`])
+  )
+
   return {
+    alternates: {
+      canonical: `/${params.lang}/docs/${slugPath}`,
+      languages: languages.en ? { ...languages, "x-default": languages.en } : languages,
+    },
     description: page.data.description,
     icons: {
       icon: "/favicon.svg",
     },
     openGraph: {
+      description: page.data.description,
       images: getPageImage(page).url,
+      title: page.data.title,
+      type: "article",
     },
     title: page.data.title,
+    twitter: {
+      card: "summary_large_image",
+    },
   }
 }

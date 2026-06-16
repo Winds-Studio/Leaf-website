@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next"
+import { siteUrl } from "@/lib/shared"
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -10,5 +11,6 @@ export default function robots(): MetadataRoute.Robots {
       ],
       userAgent: "*",
     },
+    sitemap: `${siteUrl}/sitemap.xml`,
   }
 }
