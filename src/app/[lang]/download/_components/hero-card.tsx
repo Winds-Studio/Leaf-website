@@ -182,9 +182,11 @@ function pickPrimaryDownload(build: BuildResponse) {
 }
 
 function javaRequirement(mcVersion: string): string {
-  const [, minorStr = "0", patchStr = "0"] = mcVersion.split(".")
-  const minor = Number.parseInt(minorStr, 10)
-  const patch = Number.parseInt(patchStr, 10)
+  const [majorStr = "0", minorStr = "0", patchStr = "0"] = mcVersion.split(".");
+  const major = Number.parseInt(majorStr, 10);
+  const minor = Number.parseInt(minorStr, 10);
+  const patch = Number.parseInt(patchStr, 10);
+  if (major >= 26) return "Java 25+";
   if (minor > 20 || (minor === 20 && patch >= 5)) return "Java 21+"
   if (minor >= 18) return "Java 17+"
   if (minor >= 17) return "Java 16+"
