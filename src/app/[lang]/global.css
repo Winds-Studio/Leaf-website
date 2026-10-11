@@ -93,7 +93,7 @@ html {
   html.dark {
     color-scheme: dark;
 
-    --leaf: #539021; /* text */
+    --leaf: #5c9c26; /* text */
     --leaf-solid: #477f1c; /* fill */
     --leaf-hover: #437a1a;
     --leaf-fg: #fcfcfb;

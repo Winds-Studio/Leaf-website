@@ -44,7 +44,6 @@ export const i18nUI = i18n
 export function baseOptions(locale: Locale): BaseLayoutProps {
   const t = localeUI[locale]
   return {
-    githubUrl: `https://github.com/Winds-Studio/Leaf`,
     links: [
       { active: "url", on: "nav", text: t.navHome, type: "main", url: `/${locale}` },
       {
@@ -60,6 +59,15 @@ export function baseOptions(locale: Locale): BaseLayoutProps {
         text: t.navDocs,
         type: "main",
         url: `/${locale}/docs/getting-started`,
+      },
+      // Replaces `githubUrl`: fumadocs' built-in icon is a nameless role="img" svg
+      {
+        external: true,
+        icon: <Icon.Github />,
+        label: "GitHub",
+        text: "GitHub",
+        type: "icon",
+        url: "https://github.com/Winds-Studio/Leaf",
       },
     ],
     nav: {
