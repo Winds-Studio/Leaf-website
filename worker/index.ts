@@ -74,6 +74,11 @@ export default {
 
     const url = new URL(request.url)
 
+    // /favicon.ico 默认请求，否则落到 /[lang] 返回 500
+    if (url.pathname === "/favicon.ico") {
+      return env.ASSETS.fetch(new Request(new URL("/logo.png", request.url)))
+    }
+
     // CF 图片优化
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES]

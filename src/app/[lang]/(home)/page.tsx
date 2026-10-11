@@ -51,7 +51,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: Loc
 
   return (
     <main>
-      <Hero dist={{ hero: home.hero, locale: lang, placeholder: home.placeholder }} />
+      <Hero dist={{ hero: home.hero, locale: lang }} />
       <Features dist={home.features} />
       <ConfigSnippet dist={home.config} locale={lang} />
       <Faq dist={home.faq} />

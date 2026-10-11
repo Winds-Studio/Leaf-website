@@ -78,7 +78,7 @@ export async function generateMetadata(
     },
     description: page.data.description,
     icons: {
-      icon: "/favicon.svg",
+      icon: "/logo.png",
     },
     openGraph: {
       description: page.data.description,
