@@ -35,12 +35,12 @@ export function HeroGrid() {
     <>
       <div
         aria-hidden
-        className={`pointer-events-none absolute inset-0 [--line:var(--border)] [mask-image:radial-gradient(ellipse_at_30%_20%,black,transparent_70%)] ${GRID}`}
+        className={`pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_30%_20%,black,transparent_70%)] [--line:var(--border)] ${GRID}`}
       />
       <div
         ref={glow}
         aria-hidden
-        className={`pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 [--line:color-mix(in_oklab,var(--leaf)_55%,transparent)] [mask-image:radial-gradient(180px_circle_at_var(--x)_var(--y),black,transparent)] ${GRID}`}
+        className={`pointer-events-none absolute inset-0 [mask-image:radial-gradient(180px_circle_at_var(--x)_var(--y),black,transparent)] opacity-0 transition-opacity duration-300 [--line:color-mix(in_oklab,var(--leaf)_55%,transparent)] ${GRID}`}
       />
     </>
   )

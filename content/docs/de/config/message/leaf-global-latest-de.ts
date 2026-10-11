@@ -147,7 +147,7 @@ const de: ConfigMessages<typeof config> = {
       },
       "mc-152094": {
         desc: `Ob der Bug behoben werden soll, dass die Generation eines Schiffs in einer End City an Chunkgrenzen abgeschnitten wird.<br>
-              Mojira-Link: [MC-152094](https://mojira.dev/MC-152094).`
+              Mojira-Link: [MC-152094](https://mojira.dev/MC-152094).`,
       },
     },
   },

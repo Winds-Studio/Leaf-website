@@ -8,8 +8,8 @@ import {
 import { setCacheHandler } from "vinext/shims/cache"
 
 import { refreshBuildCache } from "@/lib/build-cache"
-import { refreshStatsCache } from "@/lib/stats"
 import { setKV } from "@/lib/runtime-kv"
+import { refreshStatsCache } from "@/lib/stats"
 
 interface KVNamespace {
   get(key: string, options?: { type?: string }): Promise<string | null>

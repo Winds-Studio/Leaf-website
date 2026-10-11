@@ -251,7 +251,7 @@ function Pagination({
                 className={cn(
                   "inline-flex min-w-[28px] items-center justify-center rounded-md px-2 py-1 text-xs transition-colors",
                   n === page
-                    ? "bg-(--leaf-solid) text-fd-primary-foreground font-medium"
+                    ? "text-fd-primary-foreground bg-(--leaf-solid) font-medium"
                     : "text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-foreground"
                 )}
                 onClick={() => {

@@ -150,8 +150,8 @@ const en: ConfigMessages<typeof config> = {
                     仅当上方的 \`mc-301114\` 设为 \`true\` 时才会生效。`,
       },
       "mc-152094": {
-          desc: `是否修复末地船在区块边缘生成时被截断的问题。<br>
-                Mojira 问题跟踪链接：[MC-152094](https://mojira.dev/MC-152094)。`
+        desc: `是否修复末地船在区块边缘生成时被截断的问题。<br>
+                Mojira 问题跟踪链接：[MC-152094](https://mojira.dev/MC-152094)。`,
       },
     },
   },

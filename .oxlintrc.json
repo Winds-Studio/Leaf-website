@@ -1,0 +1,10 @@
+{
+  "plugins": ["typescript", "oxc", "react", "nextjs"],
+  "options": {
+    "typeAware": true
+  },
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/only-export-components": ["warn", { "allowConstantExport": true }]
+  }
+}

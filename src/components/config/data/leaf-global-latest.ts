@@ -338,8 +338,8 @@ const config = {
         default: 10_240,
       },
       "mc-152094": {
-          default: false,
-      }
+        default: false,
+      },
     },
     "prevent-moving-into-weak-loaded-chunks": {
       enabled: {

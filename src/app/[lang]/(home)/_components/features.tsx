@@ -22,7 +22,7 @@ const Features = ({ dist }: { dist: LanguageCopy["home"]["features"] }) => (
               />
             )}
             <span
-              className={`font-mono leading-none font-medium tabular-nums text-(--fg-soft) ${
+              className={`font-mono leading-none font-medium text-(--fg-soft) tabular-nums ${
                 i === 0 ? "text-[clamp(72px,9vw,128px)]" : "text-5xl"
               }`}
             >

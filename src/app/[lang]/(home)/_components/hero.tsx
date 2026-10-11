@@ -34,7 +34,7 @@ const Hero = ({ dist }: { dist: HeroDist }) => (
           <Icon.Leaf className="size-4" />
           {dist.hero.pill}
         </Pill>
-        <h1 className="lang-en:leading-[1.05] lang-en:tracking-[-0.035em] lang-en:font-medium lang-de:leading-[1.05] lang-de:tracking-[-0.035em] lang-de:font-medium lang-zh:leading-[1.25] lang-zh:tracking-normal m-0 max-w-[18ch] text-[clamp(44px,min(7.2vw,11svh),96px)] font-semibold text-balance lang-zh:break-keep">
+        <h1 className="lang-en:leading-[1.05] lang-en:tracking-[-0.035em] lang-en:font-medium lang-de:leading-[1.05] lang-de:tracking-[-0.035em] lang-de:font-medium lang-zh:leading-[1.25] lang-zh:tracking-normal lang-zh:break-keep m-0 max-w-[18ch] text-[clamp(44px,min(7.2vw,11svh),96px)] font-semibold text-balance">
           {dist.hero.titleA}
           <span className="lang-en:italic lang-en:font-medium lang-de:italic lang-de:font-medium text-fd-primary">
             {dist.hero.titleB}
@@ -62,9 +62,7 @@ const Hero = ({ dist }: { dist: HeroDist }) => (
             key={item.label}
             className="border-fd-border flex flex-col-reverse justify-end gap-2 px-3 py-[min(1.5rem,3svh)] not-first:border-l md:px-6"
           >
-            <dt className="font-mono text-xs text-(--fg-muted)">
-              {item.label}
-            </dt>
+            <dt className="font-mono text-xs text-(--fg-muted)">{item.label}</dt>
             <dd className="text-fd-secondary-foreground truncate font-mono text-[clamp(24px,min(4.4vw,7svh),60px)] leading-none font-medium tracking-tight tabular-nums">
               {item.value}
             </dd>

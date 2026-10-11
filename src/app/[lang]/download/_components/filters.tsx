@@ -31,7 +31,7 @@ export function VersionPills({
             className={cn(
               "rounded-full px-3 py-1 text-xs leading-6 font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed",
               isActive
-                ? "bg-(--leaf-solid) text-fd-primary-foreground"
+                ? "text-fd-primary-foreground bg-(--leaf-solid)"
                 : "border-fd-border text-fd-foreground hover:bg-fd-accent border",
               disabled && !isActive && "opacity-60"
             )}

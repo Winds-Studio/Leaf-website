@@ -18,7 +18,7 @@ const btnVariants = cva(
       variant: {
         ghost: "text-fd-muted-foreground hover:text-fd-foreground border border-transparent",
         primary:
-          "bg-(--leaf-solid) text-fd-primary-foreground border border-transparent hover:bg-[var(--leaf-hover)]",
+          "text-fd-primary-foreground border border-transparent bg-(--leaf-solid) hover:bg-[var(--leaf-hover)]",
         secondary:
           "border-fd-border bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent border",
       },
