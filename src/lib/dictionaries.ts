@@ -57,6 +57,7 @@ export type LanguageCopy = {
       titleC: string
       subtitle: string
       ctaPrimary: string
+      ctaDownload: string
       ctaSecondary: string
       meta: ReadonlyArray<{ value: string; label: string }>
     }
@@ -284,6 +285,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "Loslegen",
+          ctaDownload: "Herunterladen",
           ctaSecondary: "Auf GitHub ansehen",
           meta: [
             { label: "Neueste Version", value: "{version}" },
@@ -441,6 +443,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "Get started",
+          ctaDownload: "Download",
           ctaSecondary: "View on GitHub",
           meta: [
             { label: "Latest version", value: "{version}" },
@@ -595,6 +598,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "立即开始",
+          ctaDownload: "下载",
           ctaSecondary: "前往 GitHub",
           meta: [
             { label: "最新版本", value: "{version}" },

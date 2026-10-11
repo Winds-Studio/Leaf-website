@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from "lucide-react"
+import { ArrowRightIcon, DownloadIcon } from "lucide-react"
 import React from "react"
 import type { LanguageCopy } from "@/lib/dictionaries"
 import Btn from "@/components/button"
@@ -41,12 +41,16 @@ const Hero = ({ dist }: { dist: HeroDist }) => (
           </span>
           {dist.hero.titleC}
         </h1>
-        <div className="mt-10 flex flex-wrap items-start justify-between gap-x-12 gap-y-8">
-          <p className="text-fd-muted-foreground lang-zh:text-base lang-zh:leading-[1.75] lang-en:leading-[1.6] lang-de:leading-[1.6] max-w-130 text-[17px]">
+        <div className="mt-10 flex flex-col items-start gap-8">
+          <p className="text-fd-muted-foreground lang-zh:text-base lang-zh:leading-[1.75] lang-en:leading-[1.6] lang-de:leading-[1.6] max-w-130 text-[17px] text-pretty">
             {dist.hero.subtitle}
           </p>
-          <div className="flex flex-wrap gap-3">
-            <Btn variant="primary" size="lg" href={`/${dist.locale}/docs/getting-started`}>
+          <div className="grid w-full gap-3 sm:w-auto sm:auto-cols-fr sm:grid-flow-col [&>a]:justify-center">
+            <Btn variant="primary" size="lg" href={`/${dist.locale}/download`}>
+              <DownloadIcon className="size-4" />
+              {dist.hero.ctaDownload}
+            </Btn>
+            <Btn variant="secondary" size="lg" href={`/${dist.locale}/docs/getting-started`}>
               {dist.hero.ctaPrimary}
               <ArrowRightIcon className="size-4" />
             </Btn>
