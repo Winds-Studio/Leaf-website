@@ -41,7 +41,7 @@ const Hero = ({ dist }: { dist: HeroDist }) => (
           </span>
           {dist.hero.titleC}
         </h1>
-        <div className="mt-10 flex flex-wrap items-end justify-between gap-x-12 gap-y-8">
+        <div className="mt-10 flex flex-wrap items-start justify-between gap-x-12 gap-y-8">
           <p className="text-fd-muted-foreground lang-zh:text-base lang-zh:leading-[1.75] lang-en:leading-[1.6] lang-de:leading-[1.6] max-w-130 text-[17px]">
             {dist.hero.subtitle}
           </p>
