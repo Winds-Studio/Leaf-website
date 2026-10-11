@@ -62,14 +62,13 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     injectGitHubToken(env)
 
-    // oxlint-disable-next-line typescript/no-unnecessary-condition - 本地就是没有这个变量
+    // 本地就是没有这个变量
     if (!cacheReady && env?.VINEXT_CACHE) {
       // 大 TTL 用来削减冗余读取
       setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 21_600_000 }))
       cacheReady = true
     }
 
-    // oxlint-disable-next-line typescript/no-unnecessary-condition
     if (env?.VINEXT_CACHE) setKV(env.VINEXT_CACHE)
 
     const url = new URL(request.url)
@@ -105,7 +104,6 @@ export default {
     env: Env,
     _ctx: ExecutionContext
   ): Promise<void> {
-    // oxlint-disable-next-line typescript/no-unnecessary-condition
     if (!env?.VINEXT_CACHE) return
     injectGitHubToken(env)
     await Promise.all([refreshBuildCache(env.VINEXT_CACHE), refreshStatsCache(env.VINEXT_CACHE)])

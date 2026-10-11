@@ -1,4 +1,3 @@
-// oxlint-disable sort-keys
 import type { ConfigRoot } from "@/components/config/config-viewer"
 
 const config = {

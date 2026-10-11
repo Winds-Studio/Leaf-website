@@ -18,7 +18,7 @@ const Cta = ({ dist, locale }: { dist: LanguageCopy["home"]["cta"]; locale: stri
           className="pointer-events-none absolute top-0 right-0 grid grid-cols-10 max-md:opacity-50"
         >
           {pixels.map((o, i) => (
-            // oxlint-disable-next-line no-array-index-key -- static decorative grid
+            // Static decorative grid, index keys are fine here
             <span key={i} className="bg-fd-primary size-4" style={{ opacity: o * 0.35 }} />
           ))}
         </div>
