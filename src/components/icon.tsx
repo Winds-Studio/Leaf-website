@@ -14,7 +14,14 @@ const Icon = {
     </svg>
   ),
   Leaf: ({ className = "" }: { className?: string }) => (
-    <Image src="/favicon.svg" className={className} alt={`${appName} Logo`} unoptimized />
+    <Image
+      src="/logo.png"
+      width={96}
+      height={96}
+      className={className}
+      alt={`${appName} Logo`}
+      unoptimized
+    />
   ),
   SimpleLeaf: ({ size = 18, strokeWidth = 1.6, className = "" }: LeafIconProps) => (
     <svg

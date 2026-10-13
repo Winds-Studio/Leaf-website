@@ -57,7 +57,7 @@ const Faq = ({ dist }: { dist: LanguageCopy["home"]["faq"] }) => {
   return (
     <section className="border-fd-border border-t py-24 max-md:py-16">
       <div className="mx-auto max-w-(--fd-layout-width) px-8 max-md:px-5">
-        <SectionHead {...dist.head} />
+        <SectionHead index="03" {...dist.head} />
 
         <div className="mx-auto mt-12 flex max-w-280 items-start gap-3 max-md:flex-col">
           <div className="flex flex-1 flex-col gap-3">

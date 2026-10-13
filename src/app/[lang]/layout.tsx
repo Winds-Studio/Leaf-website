@@ -4,7 +4,7 @@ import "./global.css"
 import { RootProvider } from "fumadocs-ui/provider/next"
 import { Inter, JetBrains_Mono } from "next/font/google"
 import React from "react"
-import SearchDialog from "@/components/search"
+import SearchDialog from "@/components/search-lazy"
 import { i18nUI } from "@/lib/layout.shared"
 import { siteUrl } from "@/lib/shared"
 
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "A high-performance Minecraft server software that respects vanilla behavior, maintains full plugin compatibility, and is built for servers that demand the best.",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/logo.png",
   },
   metadataBase: new URL(siteUrl),
   title: {
@@ -29,6 +29,8 @@ const inter = Inter({
 
 const jetbrainsMono = JetBrains_Mono({
   display: "swap",
+  // Skip preload: never used for LCP text
+  preload: false,
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
 })

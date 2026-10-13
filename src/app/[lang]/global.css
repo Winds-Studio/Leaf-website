@@ -31,15 +31,18 @@ html {
   --fd-layout-width: 1200px;
 }
 
-:lang(en) {
-  line-height: 1.6;
-}
-:lang(zh) {
-  line-height: 1.75;
-  letter-spacing: 0;
-}
-:lang(de) {
-  line-height: 1.6;
+/* html-only so children inherit; base layer so utilities win */
+@layer base {
+  html:lang(en) {
+    line-height: 1.6;
+  }
+  html:lang(zh) {
+    line-height: 1.75;
+    letter-spacing: 0;
+  }
+  html:lang(de) {
+    line-height: 1.6;
+  }
 }
 
 @layer base {
@@ -58,6 +61,7 @@ html {
     /* leaf brand */
     --leaf: #27500a;
     --leaf-hover: #1f4108;
+    --leaf-solid: var(--leaf);
     --leaf-fg: #fcfcfb;
 
     /* surfaces */
@@ -69,7 +73,7 @@ html {
     /* text */
     --fg: #0e110b;
     --fg-muted: #6b7268;
-    --fg-soft: #8a8e84;
+    --fg-soft: #71766c;
 
     /* borders */
     --border: rgba(14, 17, 11, 0.09);
@@ -89,8 +93,9 @@ html {
   html.dark {
     color-scheme: dark;
 
-    --leaf: #4e8a1f;
-    --leaf-hover: #5d9d28;
+    --leaf: #5c9c26; /* text */
+    --leaf-solid: #477f1c; /* fill */
+    --leaf-hover: #437a1a;
     --leaf-fg: #fcfcfb;
 
     --bg: #0a0b0a;
@@ -100,7 +105,7 @@ html {
 
     --fg: #edede8;
     --fg-muted: #9a9d96;
-    --fg-soft: #6f7269;
+    --fg-soft: #80837a;
 
     --border: rgba(255, 255, 255, 0.08);
     --border-strong: rgba(255, 255, 255, 0.14);

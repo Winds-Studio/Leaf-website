@@ -8,8 +8,8 @@ import {
 import { setCacheHandler } from "vinext/shims/cache"
 
 import { refreshBuildCache } from "@/lib/build-cache"
-import { refreshStatsCache } from "@/lib/stats"
 import { setKV } from "@/lib/runtime-kv"
+import { refreshStatsCache } from "@/lib/stats"
 
 interface KVNamespace {
   get(key: string, options?: { type?: string }): Promise<string | null>
@@ -62,17 +62,21 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     injectGitHubToken(env)
 
-    // oxlint-disable-next-line typescript/no-unnecessary-condition - 本地就是没有这个变量
+    // 本地就是没有这个变量
     if (!cacheReady && env?.VINEXT_CACHE) {
       // 大 TTL 用来削减冗余读取
       setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 21_600_000 }))
       cacheReady = true
     }
 
-    // oxlint-disable-next-line typescript/no-unnecessary-condition
     if (env?.VINEXT_CACHE) setKV(env.VINEXT_CACHE)
 
     const url = new URL(request.url)
+
+    // /favicon.ico 默认请求，否则落到 /[lang] 返回 500
+    if (url.pathname === "/favicon.ico") {
+      return env.ASSETS.fetch(new Request(new URL("/logo.png", request.url)))
+    }
 
     // CF 图片优化
     if (url.pathname === "/_vinext/image") {
@@ -100,7 +104,6 @@ export default {
     env: Env,
     _ctx: ExecutionContext
   ): Promise<void> {
-    // oxlint-disable-next-line typescript/no-unnecessary-condition
     if (!env?.VINEXT_CACHE) return
     injectGitHubToken(env)
     await Promise.all([refreshBuildCache(env.VINEXT_CACHE), refreshStatsCache(env.VINEXT_CACHE)])

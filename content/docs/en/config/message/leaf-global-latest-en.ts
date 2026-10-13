@@ -149,8 +149,8 @@ const leafGlobalLatestEn: ConfigMessages<typeof config> = {
                     This only has any effect if \`mc-301114\` above is \`true\`.`,
       },
       "mc-152094": {
-          desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
-              Mojira link: [MC-152094](https://mojira.dev/MC-152094).`
+        desc: `Whether to fix the bug that the End City ship generation gets cut at chunk borders.<br>
+              Mojira link: [MC-152094](https://mojira.dev/MC-152094).`,
       },
     },
   },

@@ -1,0 +1,70 @@
+{
+  "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "embeddedLanguageFormatting": "auto",
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "css",
+  "insertFinalNewline": true,
+  "jsdoc": {
+    "addDefaultToDescription": true,
+    "bracketSpacing": false,
+    "capitalizeDescriptions": true,
+    "commentLineStrategy": "multiline",
+    "descriptionTag": false,
+    "descriptionWithDot": false,
+    "keepUnparsableExampleIndent": false,
+    "lineWrappingStyle": "greedy",
+    "preferCodeFences": false,
+    "separateReturnsFromParam": true
+  },
+  "jsxSingleQuote": false,
+  "objectWrap": "preserve",
+  "printWidth": 100,
+  "quoteProps": "as-needed",
+  "semi": false,
+  "singleAttributePerLine": false,
+  "singleQuote": false,
+  "sortImports": {
+    "groups": [
+      ["value-builtin", "type-import"],
+      ["value-external"],
+      ["type-internal"],
+      ["value-internal"],
+      ["type-subpath"],
+      ["value-subpath"],
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      ["unknown"]
+    ],
+    "ignoreCase": true,
+    "newlinesBetween": false,
+    "order": "asc",
+    "partitionByComment": true,
+    "partitionByNewline": true,
+    "sortSideEffects": false
+  },
+  "sortPackageJson": {
+    "sortScripts": true
+  },
+  "sortTailwindcss": {
+    "attributes": ["className", "class"],
+    "functions": ["clsx", "cn", "cva", "tw", "twMerge"],
+    "preserveDuplicates": false,
+    "preserveWhitespace": false
+  },
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "useTabs": false,
+  "ignorePatterns": [
+    "**/bun.lock",
+    ".pi/**",
+    ".next/**",
+    ".source/**",
+    ".vinext/**",
+    "dist/**",
+    "node_modules/**",
+    "tsconfig.tsbuildinfo",
+    "worker-configuration.d.ts"
+  ]
+}

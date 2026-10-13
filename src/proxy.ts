@@ -9,7 +9,7 @@ const i18nMiddleware = createI18nMiddleware(i18n)
 const rewriteLLMObj = rewritePath("/:lang/docs{/*path}", "/:lang/llms.mdx/docs{/*path}")
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)"],
 }
 
 export function proxy(request: NextRequest, context: NextFetchEvent) {

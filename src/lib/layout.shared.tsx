@@ -1,8 +1,10 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared"
 import { zhCN } from "@fumadocs/language/zh-cn"
 import { uiTranslations } from "fumadocs-ui/i18n"
+import { LanguageSelectText } from "fumadocs-ui/layouts/shared/slots/language-select"
 import type { Locale } from "@/lib/i18n"
 import Icon from "@/components/icon"
+import { LanguageSelectNamed } from "@/components/language-select"
 import { i18n } from "@/lib/i18n"
 import { appName } from "./shared"
 
@@ -44,7 +46,6 @@ export const i18nUI = i18n
 export function baseOptions(locale: Locale): BaseLayoutProps {
   const t = localeUI[locale]
   return {
-    githubUrl: `https://github.com/Winds-Studio/Leaf`,
     links: [
       { active: "url", on: "nav", text: t.navHome, type: "main", url: `/${locale}` },
       {
@@ -61,7 +62,17 @@ export function baseOptions(locale: Locale): BaseLayoutProps {
         type: "main",
         url: `/${locale}/docs/getting-started`,
       },
+      // Replaces `githubUrl`: its icon is a nameless role="img" svg
+      {
+        external: true,
+        icon: <Icon.Github />,
+        label: "GitHub",
+        text: "GitHub",
+        type: "icon",
+        url: "https://github.com/Winds-Studio/Leaf",
+      },
     ],
+    slots: { languageSelect: { root: LanguageSelectNamed, text: LanguageSelectText } },
     nav: {
       title: (
         <div className="flex w-full flex-1 items-center gap-2 py-1.5">

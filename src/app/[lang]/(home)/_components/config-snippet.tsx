@@ -2,6 +2,7 @@ import { LucideChevronsRight, Check } from "lucide-react"
 import type { LanguageCopy } from "@/lib/dictionaries"
 import Btn from "@/components/button"
 import Icon from "@/components/icon"
+import { Eyebrow } from "./section-head"
 
 type Dist = LanguageCopy["home"]["config"]
 type ValueType = "bool" | "number" | "string"
@@ -114,9 +115,7 @@ const ConfigSnippet = ({ dist, locale }: { dist: Dist; locale: string }) => (
     <div className="mx-auto max-w-(--fd-layout-width) px-8 max-md:px-5">
       <div className="grid items-stretch gap-8 md:grid-cols-2">
         <div>
-          <span className="lang-zh:normal-case lang-zh:tracking-normal lang-zh:text-[13px] mb-5 text-xs font-medium tracking-[0.08em] text-(--fg-muted) uppercase">
-            {dist.eyebrow}
-          </span>
+          <Eyebrow index="02">{dist.eyebrow}</Eyebrow>
           <h2 className="text-fd-secondary-foreground lang-en:leading-[1.2] lang-en:tracking-[-0.018] lang-de:leading-[1.2] lang-de:tracking-[-0.018] lang-zh:leading-[1.4] mt-3 mb-4 text-[clamp(28px,3vw,34px)] font-semibold">
             {dist.title}
           </h2>

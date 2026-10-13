@@ -1,14 +1,21 @@
 interface SectionHeadProps {
+  index: string
   eyebrow: string
   title: string
   sub: string
 }
-const SectionHead = ({ eyebrow, title, sub }: SectionHeadProps) => (
+
+export const Eyebrow = ({ index, children }: { index: string; children: string }) => (
+  <span className="block font-mono text-[13px] text-(--fg-muted)">
+    <span className="text-fd-primary dark:text-fd-accent-foreground">{`// ${index}`}</span>
+    {` — ${children}`}
+  </span>
+)
+
+const SectionHead = ({ index, eyebrow, title, sub }: SectionHeadProps) => (
   <div className="mb-10 flex items-end justify-between gap-8 max-md:flex-col max-md:items-start">
     <div>
-      <span className="lang-zh:normal-case lang-zh:tracking-normal lang-zh:text-[13px] text-xs font-medium tracking-[0.08em] text-(--fg-muted) uppercase">
-        {eyebrow}
-      </span>
+      <Eyebrow index={index}>{eyebrow}</Eyebrow>
       <h2 className="lang-en:leading-[1.2] lang-en:tracking-[-0.018em] lang-de:leading-[1.2] lang-de:tracking-[-0.018em] lang-zh:leading-[1.4] text-fd-secondary-foreground mt-3 max-w-160 text-[clamp(28px,3vw,36px)] font-semibold">
         {title}
       </h2>

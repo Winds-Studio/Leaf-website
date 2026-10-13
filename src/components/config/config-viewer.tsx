@@ -24,11 +24,9 @@ export type ConfigRoot = {
 }
 
 export type ConfigMessages<T> = {
-  [K in keyof T as K extends string
-    ? T[K] extends { readonly noDesc: true }
-      ? never
-      : K
-    : never]-?: T[K] extends { default: ConfigValueType }
+  [
+    K in keyof T as K extends string ? (T[K] extends { readonly noDesc: true } ? never : K) : never
+  ]-?: T[K] extends { default: ConfigValueType }
     ? { desc: string }
     : T[K] extends object
       ? { __desc__?: string } & ConfigMessages<T[K]>

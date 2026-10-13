@@ -22,7 +22,15 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "moduleDetection": "force",
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true
   },
   "include": [
     "next-env.d.ts",
@@ -31,6 +39,5 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"],
-  "extends": "adamantite/typescript"
+  "exclude": ["node_modules"]
 }

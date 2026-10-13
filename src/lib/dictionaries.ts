@@ -57,6 +57,7 @@ export type LanguageCopy = {
       titleC: string
       subtitle: string
       ctaPrimary: string
+      ctaDownload: string
       ctaSecondary: string
       meta: ReadonlyArray<{ value: string; label: string }>
     }
@@ -108,20 +109,6 @@ export type LanguageCopy = {
         q: string
         a: string
       }>
-    }
-    placeholder: {
-      aiLabel: string
-      ariaHidden: string
-      ariaReveal: string
-      badge1: string
-      badge2: string
-      badge3: string
-      body: string
-      footer: string
-      overlayHint: string
-      overlayTitle: string
-      title: string
-      todo: string
     }
   }
 }
@@ -298,6 +285,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "Loslegen",
+          ctaDownload: "Herunterladen",
           ctaSecondary: "Auf GitHub ansehen",
           meta: [
             { label: "Neueste Version", value: "{version}" },
@@ -310,20 +298,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
           titleA: "Bring deinen Server zum ",
           titleB: "Fliegen",
           titleC: " — ganz ohne Lags.",
-        },
-        placeholder: {
-          aiLabel: "KI-Platzhalter",
-          ariaHidden: "Platzhalter angezeigt",
-          ariaReveal: "Klicken, um Platzhalter anzuzeigen",
-          badge1: "Status: Vorübergehend",
-          badge2: "Autor: Kein Mensch",
-          badge3: "Lebensdauer: Bis der Dev Zeit hat",
-          body: "Ja, auch dieser Text wurde von einer KI geschrieben. Der Entwickler weiß noch nicht, was hier hin soll — große Pläne, aber die Deadline klopfte an. Statt einer leeren Fläche hat er mich hier platziert. Sobald er Zeit und Inspiration findet, werde ich durch echten, handgeschriebenen Inhalt ersetzt. Bis dahin halte ich die Stellung.",
-          footer: "Rest der Seite: 100% handgemacht ✋",
-          overlayHint: "Klicken zum Anzeigen →",
-          overlayTitle: "Ich bin ein Platzhalter",
-          title: "Hallo, ich bin ein KI-generierter Platzhalter",
-          todo: "// TODO: auf Inspiration warten",
         },
       },
     },
@@ -469,6 +443,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "Get started",
+          ctaDownload: "Download",
           ctaSecondary: "View on GitHub",
           meta: [
             { label: "Latest version", value: "{version}" },
@@ -481,20 +456,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
           titleA: "Make your server ",
           titleB: "fly",
           titleC: ", leave lag behind.",
-        },
-        placeholder: {
-          aiLabel: "AI Placeholder",
-          ariaHidden: "Placeholder revealed",
-          ariaReveal: "Click to reveal placeholder",
-          badge1: "Status: Temporary",
-          badge2: "Author: Not human",
-          badge3: "Lifespan: Until the dev has time",
-          body: "Yes, even this text was written by AI. The developer hasn't figured out what goes here yet — they had grand plans, but the deadline came knocking. Rather than leave you staring at a blank, they dropped me in as a stand-in. Once inspiration strikes (and they find the time), I'll be swapped out for something hand-crafted. Until then, I'm holding the fort.",
-          footer: "Rest of this page: 100% hand-crafted ✋",
-          overlayHint: "Click to reveal →",
-          overlayTitle: "I'm a placeholder",
-          title: "Hi, I'm an AI-generated placeholder",
-          todo: "// TODO: awaiting inspiration",
         },
       },
     },
@@ -637,6 +598,7 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         },
         hero: {
           ctaPrimary: "立即开始",
+          ctaDownload: "下载",
           ctaSecondary: "前往 GitHub",
           meta: [
             { label: "最新版本", value: "{version}" },
@@ -649,20 +611,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
           titleA: "让你的服务器 ",
           titleB: "飞起来",
           titleC: "，告别 PPT。",
-        },
-        placeholder: {
-          aiLabel: "AI 临时顶班",
-          ariaHidden: "占位符内容已显示",
-          ariaReveal: "点击显示占位符内容",
-          badge1: "状态：临时顶班",
-          badge2: "作者：不是人类",
-          badge3: "寿命：直到前端有空",
-          body: "没错，连你正在读的这段文字也是 AI 写的。那位前端还没想好这一块到底要做成什么样，本来想精雕细琢一番，但 deadline 已经追到屁股后面了——急于求成的他直接把我丢在这，先糊弄你一下。等他哪天有空（且有灵感）了，我就会被一段真正手工敲的内容替换掉。在此之前，就由我代班啦。",
-          footer: "本页其它部分：100% 手工打造 ✋",
-          overlayHint: "点击查看 →",
-          overlayTitle: "我是一个占位符",
-          title: "你好，我是一段 AI 生成的占位符",
-          todo: "// TODO: 等灵感降临",
         },
       },
     },

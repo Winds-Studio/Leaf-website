@@ -15,9 +15,9 @@ const Footer = ({ dist, locale }: { dist: LanguageCopy["home"]["footer"]; locale
         </div>
         {dist.cols.map((col) => (
           <div key={col.h}>
-            <h4 className="lang-zh:normal-case lang-zh:tracking-normal lang-zh:text-[13.5px] mb-3 text-[12.5px] font-medium tracking-[0.06em] text-(--fg-soft) uppercase">
+            <h2 className="lang-zh:normal-case lang-zh:tracking-normal lang-zh:text-[13.5px] mb-3 text-[12.5px] font-medium tracking-[0.06em] text-(--fg-soft) uppercase">
               {col.h}
-            </h4>
+            </h2>
             <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
               {col.items.map((it) => (
                 <li key={it.title}>

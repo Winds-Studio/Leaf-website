@@ -11,14 +11,12 @@ const getHeadings = async ({ data }: InferPageType<typeof source>): Promise<stri
 }
 
 function getFiles() {
-  const promises = source.getPages().map(
-    async (page): Promise<FileObject> => ({
-      content: await page.data.getText("raw"),
-      data: page.data,
-      path: page.absolutePath ?? "",
-      url: page.url,
-    })
-  )
+  const promises = source.getPages().map(async (page): Promise<FileObject> => ({
+    content: await page.data.getText("raw"),
+    data: page.data,
+    path: page.absolutePath ?? "",
+    url: page.url,
+  }))
   return Promise.all(promises)
 }
 
