@@ -31,6 +31,7 @@ interface Env {
   ASSETS: { fetch(request: Request): Promise<Response> }
   VINEXT_CACHE: KVNamespace
   GITHUB_TOKEN?: string
+  BUILD_WEBHOOK_TOKEN?: string
   IMAGES: {
     input(stream: ReadableStream): {
       transform(options: Record<string, unknown>): {
@@ -51,6 +52,18 @@ interface ScheduledController {
 }
 
 let cacheReady = false
+
+/**
+ * 常量时间字符串比较，避免时序攻击的防御式措施
+ */
+function safeEqual(a: string, b: string): boolean {
+  const x = new TextEncoder().encode(a)
+  const y = new TextEncoder().encode(b)
+  if (x.length !== y.length) return false
+  let diff = 0
+  for (let i = 0; i < x.length; i++) diff |= (x[i] ?? 0) ^ (y[i] ?? 0)
+  return diff === 0
+}
 
 function injectGitHubToken(env: Env): void {
   if (env.GITHUB_TOKEN) {
@@ -76,6 +89,18 @@ export default {
     // /favicon.ico 默认请求，否则落到 /[lang] 返回 500
     if (url.pathname === "/favicon.ico") {
       return env.ASSETS.fetch(new Request(new URL("/logo.png", request.url)))
+    }
+
+    // 新 Leaf 构建插入 download api 后刷新 KV 缓存
+    if (url.pathname === "/api/webhooks/build-published") {
+      if (request.method !== "POST") return new Response(null, { status: 405 })
+      const token = env.BUILD_WEBHOOK_TOKEN
+      if (!token || !safeEqual(request.headers.get("Authorization") ?? "", `Bearer ${token}`)) {
+        return new Response(null, { status: 401 })
+      }
+      injectGitHubToken(env)
+      ctx.waitUntil(refreshBuildCache(env.VINEXT_CACHE))
+      return new Response(null, { status: 202 })
     }
 
     // CF 图片优化
