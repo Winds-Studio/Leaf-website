@@ -8,7 +8,7 @@ export async function GET(
   { params }: RouteContext<"/[lang]/llms.mdx/docs/[[...slug]]">
 ) {
   const { lang, slug } = await params
-  const page = source.getPage(slug?.slice(0, -1), lang)
+  const page = source.getPage(slug?.at(-1) === "content.md" ? slug.slice(0, -1) : slug, lang)
   if (!page) notFound()
 
   return new Response(await getLLMText(page), {
