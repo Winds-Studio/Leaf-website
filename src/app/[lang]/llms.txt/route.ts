@@ -3,6 +3,7 @@ import { source } from "@/lib/source"
 
 export const revalidate = false
 
-export function GET() {
-  return new Response(llms(source).index())
+export async function GET(_req: Request, { params }: RouteContext<"/[lang]/llms.txt">) {
+  const { lang } = await params
+  return new Response(llms(source).index(lang))
 }
