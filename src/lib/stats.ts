@@ -39,7 +39,12 @@ function authHeaders(): HeadersInit {
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, init)
   if (!res.ok) {
-    throw new Error(`Fetch failed: ${url} (${res.status})`)
+    const body = (await res.text().catch(() => "")).slice(0, 200)
+    const remaining = res.headers.get("x-ratelimit-remaining")
+    const auth = process.env.GITHUB_TOKEN ? "token" : "no-token"
+    throw new Error(
+      `Fetch failed: ${url} (${res.status}) [${auth}, ratelimit-remaining=${remaining}] ${body}`
+    )
   }
   return (await res.json()) as Promise<T>
 }
@@ -74,22 +79,23 @@ function roundDown(n: number): string {
   return `${n}+`
 }
 
-async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
+async function safe<T>(name: string, fn: () => Promise<T>, fallback: T): Promise<T> {
   try {
     return await fn()
-  } catch {
+  } catch (error) {
+    console.error(`[stats] ${name} failed:`, error)
     return fallback
   }
 }
 
 const STATS_KEY = "leaf:cache:stats"
-const STATS_TTL_SECONDS = 21_600 // 6h 兜底
+const STATS_TTL_SECONDS = 604_800 // 7d 兜底，cron 每小时刷新；抓取失败时保留旧值
 
 export async function getStats(): Promise<Stats> {
   const cached = await readCachedStats()
   if (cached) return cached
 
-  const stats = await computeStats()
+  const stats = await computeStats(null)
   const kv = getKV()
   if (kv && isUsable(stats)) {
     try {
@@ -105,16 +111,18 @@ function isUsable(stats: Stats): boolean {
   return stats.version !== "unknown" && stats.stars !== "unknown"
 }
 
-async function computeStats(): Promise<Stats> {
+// 单项抓取失败时沿用上一次的缓存值，避免显示 unknown
+async function computeStats(prev: Stats | null): Promise<Stats> {
+  const old = prev ?? FALLBACK
   const [version, stars, servers] = await Promise.all([
-    safe(fetchLatestVersion, FALLBACK.version),
-    safe(fetchStars, Number.NaN),
-    safe(fetchServerCount, Number.NaN),
+    safe("version", fetchLatestVersion, old.version),
+    safe("stars", fetchStars, Number.NaN),
+    safe("servers", fetchServerCount, Number.NaN),
   ])
 
   return {
-    servers: Number.isFinite(servers) ? roundDown(servers) : FALLBACK.servers,
-    stars: Number.isFinite(stars) ? roundDown(stars) : FALLBACK.stars,
+    servers: Number.isFinite(servers) ? roundDown(servers) : old.servers,
+    stars: Number.isFinite(stars) ? roundDown(stars) : old.stars,
     version,
   }
 }
@@ -132,10 +140,16 @@ export async function readCachedStats(): Promise<Stats | null> {
 }
 
 export async function refreshStatsCache(kv: KVNamespace): Promise<void> {
-  const stats = await computeStats()
+  const prevRaw = await kv.get(STATS_KEY)
+  let prev: Stats | null = null
+  try {
+    prev = prevRaw ? (JSON.parse(prevRaw) as Stats) : null
+  } catch {
+    prev = null
+  }
+  const stats = await computeStats(prev)
   if (isUsable(stats)) {
     const nextRaw = JSON.stringify(stats)
-    const prevRaw = await kv.get(STATS_KEY)
     if (prevRaw !== nextRaw) {
       await kv.put(STATS_KEY, nextRaw, { expirationTtl: STATS_TTL_SECONDS })
     }
