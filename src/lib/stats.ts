@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache"
+
 import { getKV, type KVNamespace } from "./runtime-kv"
 
 // 数据源类型
@@ -77,7 +79,8 @@ function roundDown(n: number): string {
 async function safe<T>(fn: () => Promise<T>, fallback: T): Promise<T> {
   try {
     return await fn()
-  } catch {
+  } catch (err) {
+    console.error("[stats] fetch failed:", err instanceof Error ? err.message : err)
     return fallback
   }
 }
@@ -90,6 +93,8 @@ export async function getStats(): Promise<Stats> {
   if (cached) return cached
 
   const stats = await computeStats()
+  // 数据不全时不要让 ISR 缓存 unknown
+  if (!isUsable(stats)) noStore()
   const kv = getKV()
   if (kv && isUsable(stats)) {
     try {
@@ -133,11 +138,13 @@ export async function readCachedStats(): Promise<Stats | null> {
 
 export async function refreshStatsCache(kv: KVNamespace): Promise<void> {
   const stats = await computeStats()
-  if (isUsable(stats)) {
-    const nextRaw = JSON.stringify(stats)
-    const prevRaw = await kv.get(STATS_KEY)
-    if (prevRaw !== nextRaw) {
-      await kv.put(STATS_KEY, nextRaw, { expirationTtl: STATS_TTL_SECONDS })
-    }
+  if (!isUsable(stats)) {
+    console.error("[stats] cron refresh skipped, unusable:", JSON.stringify(stats))
+    return
+  }
+  const nextRaw = JSON.stringify(stats)
+  const prevRaw = await kv.get(STATS_KEY)
+  if (prevRaw !== nextRaw) {
+    await kv.put(STATS_KEY, nextRaw, { expirationTtl: STATS_TTL_SECONDS })
   }
 }
