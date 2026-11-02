@@ -1,11 +1,13 @@
 "use client"
 
 import { ChevronDownIcon } from "lucide-react"
+import Link from "next/link"
 import { useState } from "react"
 import type { LanguageCopy } from "@/lib/dictionaries"
+import type { Locale } from "@/lib/i18n"
 import SectionHead from "./section-head"
 
-const Faq = ({ dist }: { dist: LanguageCopy["home"]["faq"] }) => {
+const Faq = ({ dist, locale }: { dist: LanguageCopy["home"]["faq"]; locale: Locale }) => {
   const [openIdx, setOpenIdx] = useState<number>(0)
 
   const renderItem = (item: LanguageCopy["home"]["faq"]["faq"][number], i: number) => {
@@ -57,7 +59,18 @@ const Faq = ({ dist }: { dist: LanguageCopy["home"]["faq"] }) => {
   return (
     <section className="border-fd-border border-t py-24 max-md:py-16">
       <div className="mx-auto max-w-(--fd-layout-width) px-8 max-md:px-5">
-        <SectionHead index="03" {...dist.head} />
+        <SectionHead
+          index="03"
+          {...dist.head}
+          sub={
+            <Link
+              href={`/${locale}/docs/faq`}
+              className="underline decoration-(--border) underline-offset-4 transition-colors hover:text-fd-primary hover:decoration-fd-primary dark:hover:text-fd-accent-foreground dark:hover:decoration-fd-accent-foreground"
+            >
+              {dist.head.sub}
+            </Link>
+          }
+        />
 
         <div className="mx-auto mt-12 flex max-w-280 items-start gap-3 max-md:flex-col">
           <div className="flex flex-1 flex-col gap-3">
