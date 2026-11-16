@@ -30,7 +30,8 @@ export type LanguageCopy = {
     timelineViewAll: string
 
     apiTitle: string
-    bannerExperimental: string
+    stateNoStableTitle: string
+    stateNoStableBody: string
     apiDescription: string
     apiReferenceLink: string
 
@@ -152,8 +153,9 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
           "Builds direkt über die v3 API abrufen. Für Update-Checker und ähnliche Projekte siehe die",
         apiReferenceLink: "API-Dokumentation",
         apiTitle: "Für Skripte & CI",
-        bannerExperimental:
-          "Für diese Version gibt es noch keine stabilen Builds. Kann Fehler enthalten, bitte mit Vorsicht verwenden.",
+        stateNoStableTitle: "Keine stabilen Builds verfügbar",
+        stateNoStableBody:
+          "Es sind nur experimentelle Builds verfügbar. Mit Vorsicht verwenden — nicht für den Produktivbetrieb empfohlen.",
         supportDeprecatedBody:
           "Weiterhin herunterladbar, aber nicht mehr empfohlen. Bitte auf eine neuere Version aktualisieren.",
         supportDeprecatedTitle: "Veraltet",
@@ -318,8 +320,9 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
           "Pull builds directly via the v3 API. For update checkers and similar projects, see the",
         apiReferenceLink: "API documentation",
         apiTitle: "For scripts & CI",
-        bannerExperimental:
-          "No stable builds for this version yet. May contain issues, use with caution.",
+        stateNoStableTitle: "No stable builds available",
+        stateNoStableBody:
+          "Only experimental builds are available. Use with caution — not recommended for production.",
         supportDeprecatedBody:
           "Still downloadable, but no longer recommended. Please upgrade to a newer version.",
         supportDeprecatedTitle: "Deprecated",
@@ -482,7 +485,8 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         apiDescription: "通过 v3 API 直接拉取构建。如需用于更新检查工具等项目，请参考",
         apiReferenceLink: "API 文档",
         apiTitle: "用于脚本与 CI",
-        bannerExperimental: "该版本暂无稳定构建，可能存在问题，请谨慎使用。",
+        stateNoStableTitle: "该版本暂无稳定构建",
+        stateNoStableBody: "当前仅有实验性构建可用，请谨慎使用，不建议用于生产环境。",
         supportDeprecatedBody: "仍可下载，但不再推荐使用，请升级到新版本。",
         supportDeprecatedTitle: "已弃用",
         lastBuilt: "最后构建 {date}",

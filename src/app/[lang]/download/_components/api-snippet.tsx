@@ -5,8 +5,7 @@ import type { DownloadDict } from "@/lib/dictionaries"
 
 import { CopyButton } from "./copy-button"
 
-// TODO: 到时候再换喵
-const API_DOCS = "https://dl.leafmc.one/"
+const API_DOCS = "https://dl.leafmc.one/swagger-ui/index.html"
 
 type ApiSnippetProps = {
   dict: DownloadDict

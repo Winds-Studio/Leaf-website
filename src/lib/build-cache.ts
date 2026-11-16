@@ -80,22 +80,12 @@ export async function readCachedAllBuilds(version: string): Promise<BuildRespons
   }
 }
 
-/**
- * 内容没变就不写：免费套餐 KV 每天只能写 1000 次
- */
-async function putIfChanged(kv: KVNamespace, key: string, next: string): Promise<void> {
-  if ((await kv.get(key)) !== next) await kv.put(key, next)
-}
-
 export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
   const versions = await getVersions()
-
-  await putIfChanged(kv, VERSIONS_KEY, JSON.stringify(versions))
-
-  // 每个版本一个请求即可拿到全部构建；整体比较，晋升为稳定版的构建也能及时更新
+  await kv.put(VERSIONS_KEY, JSON.stringify(versions))
   for (const { id: version } of versions) {
     const all = await getBuilds(version)
-    await putIfChanged(kv, allBuildsKey(version), JSON.stringify(all))
-    await putIfChanged(kv, buildsKey(version), JSON.stringify(toBuildIndex(all)))
+    await kv.put(allBuildsKey(version), JSON.stringify(all))
+    await kv.put(buildsKey(version), JSON.stringify(toBuildIndex(all)))
   }
 }

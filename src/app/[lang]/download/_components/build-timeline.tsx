@@ -4,10 +4,9 @@ import Link from "next/link"
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import { LocalDateShort } from "@/components/local-date"
+import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
 import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
-
-import { cn } from "@/lib/cn"
 
 import { ChannelTag, channelOf } from "./channel"
 

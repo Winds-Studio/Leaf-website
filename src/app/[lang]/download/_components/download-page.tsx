@@ -85,17 +85,15 @@ export async function DownloadPage({ locale, requestedVersion }: DownloadPagePro
     }
   } else if (isExperimentalOnly) {
     warning = {
-      body: dict.bannerExperimental,
+      body: dict.stateNoStableBody,
       icon: "experimental",
-      title: dict.channelExperimental,
+      title: dict.stateNoStableTitle,
     }
   }
 
   const banner = warning ? (
     <WarningBanner
-      disclaimer={
-        warning.icon === "experimental" || support === "UNSUPPORTED" ? dict.disclaimer : undefined
-      }
+      disclaimer={support === "DEPRECATED" ? undefined : dict.disclaimer}
       item={warning}
     />
   ) : null
