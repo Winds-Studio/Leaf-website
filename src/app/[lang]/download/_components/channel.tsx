@@ -2,9 +2,11 @@ import type { BuildResponse } from "@/lib/leaf-api"
 import { cn } from "@/lib/cn"
 
 /**
- * 网站内的渠道分类。配色：
- * 稳定：绿色（--channel-stable）圆点，徽章与列表标签用主题 accent
- * 实验性：violet 圆点与徽章，列表标签为灰色
+ * 网站内的渠道分类。
+ *
+ * 稳定：绿色（--channel-stable）圆点，徽章与列表标签用主题 accent。
+ *
+ * 实验性：violet 圆点与徽章，列表标签为灰色。
  */
 export type ChannelKind = "stable" | "experimental"
 
