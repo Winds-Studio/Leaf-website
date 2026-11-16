@@ -8,22 +8,21 @@ import type { BuildResponse } from "@/lib/leaf-api"
 import Btn from "@/components/button"
 import { LocalDateLong } from "@/components/local-date"
 import { fmtStr, shortenSha } from "@/lib/format"
-import { getDownloadUrl } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
 
+import { channelOf, ChannelDot, channelPillClass } from "./channel"
 import { CopyButton } from "./copy-button"
 
 const GITHUB_RELEASES = "https://github.com/Winds-Studio/Leaf/releases"
 
 type HeroCardProps = {
-  allBuilds: BuildResponse[]
+  build: BuildResponse | null
   dict: DownloadDict
   locale: Locale
 }
 
-export function HeroCard({ allBuilds, dict, locale }: HeroCardProps) {
-  const build = allBuilds[0] ?? null
-  if (!build) return <HeroEmpty dict={dict} />
+export function HeroCard({ build, dict, locale }: HeroCardProps) {
+  if (!build) return <HeroEmpty body={dict.stateNoBuildsBody} title={dict.stateNoBuildsTitle} />
   return <HeroBody build={build} dict={dict} locale={locale} />
 }
 
@@ -35,13 +34,10 @@ type HeroBodyProps = {
 
 function HeroBody({ build, dict, locale }: HeroBodyProps) {
   const download = pickPrimaryDownload(build)
-  const downloadUrl = download
-    ? getDownloadUrl(build.version, build.build, download.name)
-    : undefined
+  const downloadUrl = download?.url
 
-  const isStable = build.channel === "default"
-  const pillKind = isStable ? "default" : "experimental"
-  const pillLabel = isStable ? dict.pillLatestStable : dict.pillLatestExperimental
+  const channel = channelOf(build)
+  const pillLabel = channel === "stable" ? dict.pillLatestStable : dict.pillLatestExperimental
   return (
     <section
       aria-labelledby="hero-version"
@@ -49,18 +45,8 @@ function HeroBody({ build, dict, locale }: HeroBodyProps) {
     >
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 flex-1">
-          <span className={cnPill(pillKind)}>
-            {pillKind === "experimental" ? (
-              <span aria-hidden className="relative flex size-1.5">
-                <span className="absolute inline-flex size-full animate-ping rounded-full bg-violet-400 opacity-75 dark:bg-violet-500" />
-                <span className="relative inline-flex size-1.5 rounded-full bg-violet-500 dark:bg-violet-400" />
-              </span>
-            ) : (
-              <span
-                aria-hidden
-                className="size-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400"
-              />
-            )}
+          <span className={channelPillClass(channel)}>
+            <ChannelDot kind={channel} ping />
             {pillLabel}
           </span>
 
@@ -149,7 +135,7 @@ function Sha256Row({
   )
 }
 
-function HeroEmpty({ dict }: { dict: DownloadDict }) {
+function HeroEmpty({ body, title }: { body: string; title: string }) {
   return (
     <section
       aria-labelledby="hero-empty"
@@ -162,23 +148,16 @@ function HeroEmpty({ dict }: { dict: DownloadDict }) {
         strokeWidth={1.5}
       />
       <h2 className="text-fd-foreground mt-3 text-lg font-medium" id="hero-empty">
-        {dict.stateNoBuildsTitle}
+        {title}
       </h2>
-      <p className="text-fd-muted-foreground mt-1.5 text-sm">{dict.stateNoBuildsBody}</p>
+      <p className="text-fd-muted-foreground mt-1.5 text-sm">{body}</p>
     </section>
   )
 }
 
-function cnPill(kind: "default" | "experimental"): string {
-  if (kind === "experimental") {
-    return "inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-2.5 py-0.5 text-xs font-medium leading-6 text-violet-800 dark:border-violet-800/50 dark:bg-violet-950/40 dark:text-violet-200"
-  }
-  return "inline-flex items-center gap-1.5 rounded-full bg-fd-accent px-2.5 py-0.5 text-xs font-medium leading-6 text-fd-accent-foreground"
-}
-
 function pickPrimaryDownload(build: BuildResponse) {
   if (!build.downloads) return null
-  return build.downloads.application ?? Object.values(build.downloads)[0] ?? null
+  return build.downloads["server:default"] ?? Object.values(build.downloads)[0] ?? null
 }
 
 function javaRequirement(mcVersion: string): string {

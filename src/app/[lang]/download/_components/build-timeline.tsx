@@ -3,10 +3,13 @@ import Link from "next/link"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
+import type { BuildResponse } from "@/lib/leaf-api"
 import { LocalDateShort } from "@/components/local-date"
-import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
-import { getDownloadUrl, type BuildResponse } from "@/lib/leaf-api"
+
+import { cn } from "@/lib/cn"
+
+import { ChannelTag, channelOf } from "./channel"
 
 const LEAF_COMMIT = (sha: string) => `https://github.com/Winds-Studio/Leaf/commit/${sha}`
 
@@ -63,39 +66,31 @@ function BuildRow({
   dict: DownloadDict
   locale: Locale
 }) {
-  const isStable = build.channel === "default"
+  const kind = channelOf(build)
   const firstChange = build.changes?.[0]
   const extraChanges = (build.changes?.length ?? 1) - 1
   const download = pickPrimaryDownload(build)
-  const downloadUrl = download
-    ? getDownloadUrl(build.version, build.build, download.name)
-    : undefined
+  const downloadUrl = download?.url
 
   return (
     <li
-      className={cn("relative flex items-start gap-3", !isStable && "opacity-85")}
+      className={cn("relative flex items-start gap-3", kind !== "stable" && "opacity-85")}
       id={`build-${build.build}`}
     >
       <span
         aria-hidden
         className={cn(
           "absolute top-[7px] -left-[23px] size-1.5 rounded-full",
-          isStable ? "bg-[var(--color-fd-ring)]" : "bg-fd-muted-foreground/40"
+          kind === "stable" ? "bg-[var(--color-fd-ring)]" : "bg-fd-muted-foreground/40"
         )}
       />
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <span className="text-fd-foreground text-sm font-medium">#{build.build}</span>
-          <span
-            className={cn(
-              "rounded px-1.5 py-0 text-[10px] leading-5 font-medium",
-              isStable
-                ? "bg-fd-accent text-fd-accent-foreground"
-                : "border-fd-border bg-fd-muted text-fd-muted-foreground border"
-            )}
-          >
-            {isStable ? dict.pillStable : dict.pillExperimental}
-          </span>
+          <ChannelTag
+            kind={kind}
+            label={kind === "stable" ? dict.pillStable : dict.pillExperimental}
+          />
           <span className="text-fd-muted-foreground/80 text-xs">
             <LocalDateShort iso={build.time} locale={locale} />
           </span>
@@ -135,5 +130,5 @@ function BuildRow({
 
 function pickPrimaryDownload(build: BuildResponse) {
   if (!build.downloads) return null
-  return build.downloads.application ?? Object.values(build.downloads)[0] ?? null
+  return build.downloads["server:default"] ?? Object.values(build.downloads)[0] ?? null
 }

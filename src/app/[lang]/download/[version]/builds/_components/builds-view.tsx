@@ -9,8 +9,8 @@ import type { BuildResponse } from "@/lib/leaf-api"
 import { LocalDateShort } from "@/components/local-date"
 import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
-import { getDownloadUrl } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
+import { ChannelTag, channelOf } from "../../../_components/channel"
 import { ChannelToggle } from "../../../_components/filters"
 import { channelToApi, type Channel } from "../../../_components/types"
 
@@ -18,14 +18,27 @@ const PAGE_SIZE = 25
 
 type BuildsViewProps = {
   allBuilds: BuildResponse[]
+  defaultChannel: Channel
   defaultPage: number
   dict: DownloadDict
   locale: Locale
   version: string
 }
 
-export function BuildsView({ allBuilds, defaultPage, dict, locale, version }: BuildsViewProps) {
-  const [channel, setChannel] = useState<Channel>("all")
+export function BuildsView({
+  allBuilds,
+  defaultChannel,
+  defaultPage,
+  dict,
+  locale,
+  version,
+}: BuildsViewProps) {
+  // 链接指定的渠道没有构建时回退到“全部”
+  const [channel, setChannel] = useState<Channel>(() =>
+    defaultChannel === "all" || allBuilds.some((b) => b.channel === channelToApi(defaultChannel))
+      ? defaultChannel
+      : "all"
+  )
   const [page, setPage] = useState(defaultPage)
 
   const hiddenChannels = useMemo<Channel[]>(() => {
@@ -63,8 +76,10 @@ export function BuildsView({ allBuilds, defaultPage, dict, locale, version }: Bu
     const url = new URL(globalThis.location.href)
     if (safePage > 1) url.searchParams.set("page", String(safePage))
     else url.searchParams.delete("page")
+    if (channel === "all") url.searchParams.delete("channel")
+    else url.searchParams.set("channel", channel)
     globalThis.history.replaceState(null, "", url.toString())
-  }, [safePage])
+  }, [channel, safePage])
 
   return (
     <>
@@ -144,9 +159,9 @@ function BuildsTableRow({
   dict: DownloadDict
   locale: Locale
 }) {
-  const isStable = build.channel === "default"
-  const dl = build.downloads?.application ?? Object.values(build.downloads ?? {})[0]
-  const url = dl ? getDownloadUrl(build.version, build.build, dl.name) : undefined
+  const kind = channelOf(build)
+  const dl = build.downloads?.["server:default"] ?? Object.values(build.downloads ?? {})[0]
+  const url = dl?.url
   const firstChange = build.changes?.[0]
   const extra = (build.changes?.length ?? 1) - 1
 
@@ -156,16 +171,10 @@ function BuildsTableRow({
         #{build.build}
       </td>
       <td className="px-3 py-3 align-middle">
-        <span
-          className={cn(
-            "inline-flex rounded px-1.5 py-0 text-[10px] leading-5 font-medium",
-            isStable
-              ? "bg-fd-accent text-fd-accent-foreground"
-              : "border-fd-border bg-fd-muted text-fd-muted-foreground border"
-          )}
-        >
-          {isStable ? dict.pillStable : dict.pillExperimental}
-        </span>
+        <ChannelTag
+          kind={kind}
+          label={kind === "stable" ? dict.pillStable : dict.pillExperimental}
+        />
       </td>
       <td className="text-fd-muted-foreground px-3 py-3 align-middle text-xs whitespace-nowrap">
         <LocalDateShort iso={build.time} locale={locale} />

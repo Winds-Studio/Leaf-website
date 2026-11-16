@@ -8,13 +8,14 @@ import type { Locale } from "@/lib/i18n"
 import { Spinner } from "@/components/spinner"
 import { readCachedAllBuilds } from "@/lib/build-cache"
 import { getDictionary, type DownloadDict } from "@/lib/dictionaries"
-import { getBuild, getVersion, type BuildResponse } from "@/lib/leaf-api"
+import { getBuilds, type BuildResponse } from "@/lib/leaf-api"
 
+import { parseChannel, type Channel } from "../../_components/types"
 import { BuildsView } from "./_components/builds-view"
 
 type PageParams = {
   params: Promise<{ lang: Locale; version: string }>
-  searchParams: Promise<{ page?: string }>
+  searchParams: Promise<{ channel?: string; page?: string }>
 }
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
@@ -35,6 +36,7 @@ export default async function Page({ params, searchParams }: PageParams) {
   const dict_root = await getDictionary(locale)
   const dict = dict_root.download
   const defaultPage = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1)
+  const defaultChannel: Channel = sp.channel ? parseChannel(sp.channel) : "all"
 
   return (
     <main className="px-4 py-10 sm:py-14">
@@ -62,7 +64,13 @@ export default async function Page({ params, searchParams }: PageParams) {
             </div>
           }
         >
-          <BuildsData defaultPage={defaultPage} dict={dict} locale={locale} version={version} />
+          <BuildsData
+            defaultChannel={defaultChannel}
+            defaultPage={defaultPage}
+            dict={dict}
+            locale={locale}
+            version={version}
+          />
         </Suspense>
       </div>
     </main>
@@ -71,11 +79,13 @@ export default async function Page({ params, searchParams }: PageParams) {
 
 // 版本列表用 no-store 拉取（不写 KV）。
 async function BuildsData({
+  defaultChannel,
   defaultPage,
   dict,
   locale,
   version,
 }: {
+  defaultChannel: Channel
   defaultPage: number
   dict: DownloadDict
   locale: Locale
@@ -91,6 +101,7 @@ async function BuildsData({
   return (
     <BuildsView
       allBuilds={allBuilds}
+      defaultChannel={defaultChannel}
       defaultPage={defaultPage}
       dict={dict}
       locale={locale}
@@ -104,10 +115,5 @@ async function resolveAllBuilds(version: string): Promise<BuildResponse[]> {
   if (cached) return cached
 
   // 回退
-  const manifest = await getVersion(version)
-  const allBuildNumbers = [...manifest.builds].toSorted((a, b) => b - a)
-  const results = await Promise.allSettled(allBuildNumbers.map((n) => getBuild(version, n)))
-  return results
-    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
-    .map((r) => r.value)
+  return getBuilds(version)
 }

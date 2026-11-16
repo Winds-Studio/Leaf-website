@@ -16,7 +16,6 @@ export type LanguageCopy = {
     pillLatestExperimental: string
     pillStable: string
     pillExperimental: string
-    pillUnmaintained: string
 
     heroBuild: string
     heroReleasedOn: string
@@ -31,18 +30,24 @@ export type LanguageCopy = {
     timelineViewAll: string
 
     apiTitle: string
+    bannerExperimental: string
     apiDescription: string
     apiReferenceLink: string
 
     stateNoStableTitle: string
-    stateNoStableBody: string
     stateNoBuildsTitle: string
     stateNoBuildsBody: string
     stateNoChannelBuilds: string
     stateApiDownTitle: string
     stateApiDownBody: string
     stateGithubFallback: string
-    bannerUnmaintained: string
+    supportDeprecatedTitle: string
+    supportDeprecatedBody: string
+    supportUnsupportedTitle: string
+    supportUnsupportedBody: string
+    supportEnd: string
+    supportNoStable: string
+    lastBuilt: string
     disclaimer: string
 
     buildCount: string
@@ -144,10 +149,21 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
   const dictionaries: Record<Locale, LanguageCopy> = {
     de: {
       download: {
-        apiDescription: "Builds direkt über die v2 API abrufen. Vollständige Dokumentation unter",
-        apiReferenceLink: "API-Referenz",
+        apiDescription:
+          "Builds direkt über die v3 API abrufen. Für Update-Checker und ähnliche Projekte siehe die",
+        apiReferenceLink: "API-Dokumentation",
         apiTitle: "Für Skripte & CI",
-        bannerUnmaintained: "Erhält keine Updates mehr · Letzter Build {date}",
+        bannerExperimental:
+          "Für diese Version gibt es noch keine stabilen Builds. Kann Fehler enthalten, bitte mit Vorsicht verwenden.",
+        supportDeprecatedBody:
+          "Weiterhin herunterladbar, aber nicht mehr empfohlen. Bitte auf eine neuere Version aktualisieren.",
+        supportDeprecatedTitle: "Veraltet",
+        lastBuilt: "Letzter Build {date}",
+        supportEnd: "Support endet am {date}.",
+        supportNoStable: "Für diese Version gibt es noch keine stabilen Builds.",
+        supportUnsupportedBody:
+          "Erhält keine Updates oder Fixes mehr. Bitte auf eine neuere Version aktualisieren.",
+        supportUnsupportedTitle: "Nicht mehr unterstützt",
         buildCount: "{n} Builds",
         channelAll: "Alle",
         channelExperimental: "Experimentell",
@@ -169,7 +185,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         pillLatestExperimental: "Neuester experimenteller Build",
         pillLatestStable: "Neueste stabile Version",
         pillStable: "Stabil",
-        pillUnmaintained: "Nicht gepflegt",
         sha256Label: "sha256",
         stateApiDownBody:
           "Versuche es später erneut oder lade die JAR direkt von GitHub Releases herunter.",
@@ -178,8 +193,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "Für diese Minecraft-Version wurden noch keine Builds veröffentlicht.",
         stateNoBuildsTitle: "Keine Builds verfügbar",
         stateNoChannelBuilds: "Keine {channel}-Builds verfügbar",
-        stateNoStableBody:
-          "Es sind nur experimentelle Builds verfügbar. Mit Vorsicht verwenden — nicht für den Produktivbetrieb empfohlen.",
         stateNoStableTitle: "Keine stabilen Builds verfügbar",
         timelineHeading: "Neueste Builds",
         timelineSummary: "{version} · Zeigt die letzten {count}",
@@ -303,10 +316,21 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
     },
     en: {
       download: {
-        apiDescription: "Pull builds directly via the v2 API. Full documentation at",
-        apiReferenceLink: "API reference",
+        apiDescription:
+          "Pull builds directly via the v3 API. For update checkers and similar projects, see the",
+        apiReferenceLink: "API documentation",
         apiTitle: "For scripts & CI",
-        bannerUnmaintained: "No longer receiving updates · Last built {date}",
+        bannerExperimental:
+          "No stable builds for this version yet. May contain issues, use with caution.",
+        supportDeprecatedBody:
+          "Still downloadable, but no longer recommended. Please upgrade to a newer version.",
+        supportDeprecatedTitle: "Deprecated",
+        lastBuilt: "Last built {date}",
+        supportEnd: "Support ends {date}.",
+        supportNoStable: "This version has no stable builds yet.",
+        supportUnsupportedBody:
+          "No longer receives updates or fixes. Please upgrade to a newer version.",
+        supportUnsupportedTitle: "Unsupported",
         buildCount: "{n} builds",
         channelAll: "All",
         channelExperimental: "Experimental",
@@ -328,7 +352,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         pillLatestExperimental: "Latest experimental",
         pillLatestStable: "Latest stable",
         pillStable: "Stable",
-        pillUnmaintained: "Unmaintained",
         sha256Label: "sha256",
         stateApiDownBody: "Try again later, or download the JAR directly from GitHub Releases.",
         stateApiDownTitle: "Download service unavailable",
@@ -336,8 +359,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "No builds have been released for this Minecraft version yet.",
         stateNoBuildsTitle: "No builds available",
         stateNoChannelBuilds: "No {channel} builds available",
-        stateNoStableBody:
-          "Only experimental builds are available. Use with caution — not recommended for production.",
         stateNoStableTitle: "No stable builds available",
         timelineHeading: "Recent builds",
         timelineSummary: "{version} · Showing latest {count}",
@@ -461,10 +482,17 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
     },
     zh: {
       download: {
-        apiDescription: "通过 v2 API 直接拉取构建。完整文档见",
-        apiReferenceLink: "API 参考",
+        apiDescription: "通过 v3 API 直接拉取构建。如需用于更新检查工具等项目，请参考",
+        apiReferenceLink: "API 文档",
         apiTitle: "用于脚本与 CI",
-        bannerUnmaintained: "已不再接收更新 · 最后构建 {date}",
+        bannerExperimental: "该版本暂无稳定构建，可能存在问题，请谨慎使用。",
+        supportDeprecatedBody: "仍可下载，但不再推荐使用，请升级到新版本。",
+        supportDeprecatedTitle: "已弃用",
+        lastBuilt: "最后构建 {date}",
+        supportEnd: "支持截止 {date}。",
+        supportNoStable: "该版本暂无稳定构建。",
+        supportUnsupportedBody: "不再接收更新和修复，请升级到新版本。",
+        supportUnsupportedTitle: "已停止支持",
         buildCount: "{n} 个构建",
         channelAll: "全部",
         channelExperimental: "实验性",
@@ -484,7 +512,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         pillLatestExperimental: "最新实验性构建",
         pillLatestStable: "最新稳定版本",
         pillStable: "稳定",
-        pillUnmaintained: "已停更",
         sha256Label: "sha256",
         stateApiDownBody: "稍后再试，或直接从 GitHub Releases 页面下载 JAR。",
         stateApiDownTitle: "下载服务暂时不可用",
@@ -492,7 +519,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "该 Minecraft 版本尚未发布任何构建。",
         stateNoBuildsTitle: "暂无构建",
         stateNoChannelBuilds: "暂无 {channel} 构建",
-        stateNoStableBody: "当前仅有实验性构建可用，请谨慎使用，不建议用于生产环境。",
         stateNoStableTitle: "该版本暂无稳定构建",
         timelineHeading: "近期构建",
         timelineSummary: "{version} · 显示最近 {count} 条",
