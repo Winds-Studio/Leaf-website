@@ -12,19 +12,11 @@ export const channelOf = (build: BuildResponse): ChannelKind =>
   build.channel === "default" ? "stable" : "experimental"
 
 /**
- * 渠道选择器和精选卡片徽章里的圆点
+ * 精选卡片徽章里的圆点
  */
-export function ChannelDot({ kind, ping }: { kind: ChannelKind; ping?: boolean }) {
+export function ChannelDot({ kind }: { kind: ChannelKind }) {
   if (kind === "stable") {
     return <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-(--channel-stable)" />
-  }
-  if (!ping) {
-    return (
-      <span
-        aria-hidden
-        className="size-1.5 shrink-0 rounded-full bg-violet-500 dark:bg-violet-400"
-      />
-    )
   }
   return (
     <span aria-hidden className="relative flex size-1.5 shrink-0">

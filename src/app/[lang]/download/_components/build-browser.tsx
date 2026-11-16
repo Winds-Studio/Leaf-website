@@ -5,9 +5,9 @@ import { useEffect, useState, useTransition } from "react"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
-import type { BuildResponse } from "@/lib/leaf-api"
 import { Spinner } from "@/components/spinner"
 import { cn } from "@/lib/cn"
+import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
 import { ApiSnippet } from "./api-snippet"
 import { BuildTimeline } from "./build-timeline"
 import { VersionPills } from "./filters"
@@ -67,9 +67,7 @@ export function BuildBrowser({
   }, [isPending])
 
   const heroBuild = allBuilds[0]
-  const heroUrl = heroBuild
-    ? (heroBuild.downloads?.["server:default"] ?? Object.values(heroBuild.downloads ?? {})[0])?.url
-    : undefined
+  const heroUrl = heroBuild ? pickPrimaryDownload(heroBuild)?.url : undefined
 
   return (
     <>

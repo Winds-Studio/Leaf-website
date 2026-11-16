@@ -43,6 +43,15 @@ export async function readCachedVersions(): Promise<VersionInfo[] | null> {
   }
 }
 
+/**
+ * 优先读取 cron 的 KV 缓存；未命中回退到 live API。
+ */
+export async function resolveVersions(): Promise<VersionInfo[]> {
+  const cached = await readCachedVersions()
+  if (cached) return cached
+  return getVersions()
+}
+
 export async function readCachedBuilds(version: string): Promise<BuildIndex | null> {
   const kv = getKV()
   if (!kv) return null
@@ -71,19 +80,22 @@ export async function readCachedAllBuilds(version: string): Promise<BuildRespons
   }
 }
 
+/**
+ * 内容没变就不写：免费套餐 KV 每天只能写 1000 次
+ */
+async function putIfChanged(kv: KVNamespace, key: string, next: string): Promise<void> {
+  if ((await kv.get(key)) !== next) await kv.put(key, next)
+}
+
 export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
   const versions = await getVersions()
 
-  const nextVersionsRaw = JSON.stringify(versions)
-  const prevVersionsRaw = await kv.get(VERSIONS_KEY)
-  if (prevVersionsRaw !== nextVersionsRaw) {
-    await kv.put(VERSIONS_KEY, nextVersionsRaw)
-  }
+  await putIfChanged(kv, VERSIONS_KEY, JSON.stringify(versions))
 
-  // 每个版本一个请求即可拿到全部构建；整体覆盖，晋升为稳定版的构建也能及时更新
+  // 每个版本一个请求即可拿到全部构建；整体比较，晋升为稳定版的构建也能及时更新
   for (const { id: version } of versions) {
     const all = await getBuilds(version)
-    await kv.put(allBuildsKey(version), JSON.stringify(all))
-    await kv.put(buildsKey(version), JSON.stringify(toBuildIndex(all)))
+    await putIfChanged(kv, allBuildsKey(version), JSON.stringify(all))
+    await putIfChanged(kv, buildsKey(version), JSON.stringify(toBuildIndex(all)))
   }
 }

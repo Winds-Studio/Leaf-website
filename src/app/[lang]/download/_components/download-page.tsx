@@ -4,15 +4,10 @@ import { notFound } from "next/navigation"
 import type { LanguageCopy } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import Btn from "@/components/button"
-import {
-  readCachedBuilds,
-  readCachedVersions,
-  toBuildIndex,
-  type BuildIndex,
-} from "@/lib/build-cache"
+import { readCachedBuilds, resolveVersions, toBuildIndex, type BuildIndex } from "@/lib/build-cache"
 import { getDictionary } from "@/lib/dictionaries"
 import { formatDateIso, fmtStr } from "@/lib/format"
-import { getBuilds, getVersions, type VersionInfo } from "@/lib/leaf-api"
+import { getBuilds, type VersionInfo } from "@/lib/leaf-api"
 import { getLatestVersion, isKnownVersion } from "@/lib/semver"
 
 import React from "react"
@@ -26,15 +21,6 @@ type DownloadPageProps = {
    * When null, resolve to the latest version from the API.
    */
   requestedVersion: string | null
-}
-
-/**
- * 优先读取 cron 的 KV 缓存；未命中回退到 live API。
- */
-async function resolveVersions(): Promise<VersionInfo[]> {
-  const cached = await readCachedVersions()
-  if (cached) return cached
-  return getVersions()
 }
 
 async function resolveBuilds(version: string): Promise<BuildIndex> {

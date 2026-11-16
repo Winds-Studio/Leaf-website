@@ -5,10 +5,10 @@ import { useEffect, useMemo, useState } from "react"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
-import type { BuildResponse } from "@/lib/leaf-api"
 import { LocalDateShort } from "@/components/local-date"
 import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
+import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
 import { ChannelTag, channelOf } from "../../../_components/channel"
 import { ChannelToggle } from "../../../_components/filters"
@@ -160,7 +160,7 @@ function BuildsTableRow({
   locale: Locale
 }) {
   const kind = channelOf(build)
-  const dl = build.downloads?.["server:default"] ?? Object.values(build.downloads ?? {})[0]
+  const dl = pickPrimaryDownload(build)
   const url = dl?.url
   const firstChange = build.changes?.[0]
   const extra = (build.changes?.length ?? 1) - 1

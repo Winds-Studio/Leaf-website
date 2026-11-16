@@ -91,6 +91,14 @@ async function fetchWithRetry<T>(url: string, init?: RequestInit): Promise<T> {
   return attemptFetch(1)
 }
 
+/**
+ * 下载按钮对应的 JAR
+ */
+export function pickPrimaryDownload(build: BuildResponse): BuildDownload | null {
+  if (!build.downloads) return null
+  return build.downloads["server:default"] ?? Object.values(build.downloads)[0] ?? null
+}
+
 function toBuild(version: string, b: V3Build): BuildResponse {
   return {
     version,

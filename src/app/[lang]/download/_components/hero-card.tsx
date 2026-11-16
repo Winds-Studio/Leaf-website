@@ -4,10 +4,10 @@ import { ExternalLink, Fingerprint, FileDown, ListTree } from "lucide-react"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
-import type { BuildResponse } from "@/lib/leaf-api"
 import Btn from "@/components/button"
 import { LocalDateLong } from "@/components/local-date"
 import { fmtStr, shortenSha } from "@/lib/format"
+import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
 import { trackDownload } from "@/lib/umami"
 
 import { channelOf, ChannelDot, channelPillClass } from "./channel"
@@ -46,7 +46,7 @@ function HeroBody({ build, dict, locale }: HeroBodyProps) {
       <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 flex-1">
           <span className={channelPillClass(channel)}>
-            <ChannelDot kind={channel} ping />
+            <ChannelDot kind={channel} />
             {pillLabel}
           </span>
 
@@ -153,11 +153,6 @@ function HeroEmpty({ body, title }: { body: string; title: string }) {
       <p className="text-fd-muted-foreground mt-1.5 text-sm">{body}</p>
     </section>
   )
-}
-
-function pickPrimaryDownload(build: BuildResponse) {
-  if (!build.downloads) return null
-  return build.downloads["server:default"] ?? Object.values(build.downloads)[0] ?? null
 }
 
 function javaRequirement(mcVersion: string): string {

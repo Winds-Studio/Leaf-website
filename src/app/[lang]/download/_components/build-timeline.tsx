@@ -3,9 +3,9 @@ import Link from "next/link"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
-import type { BuildResponse } from "@/lib/leaf-api"
 import { LocalDateShort } from "@/components/local-date"
 import { fmtStr } from "@/lib/format"
+import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
 
 import { cn } from "@/lib/cn"
 
@@ -126,9 +126,4 @@ function BuildRow({
       )}
     </li>
   )
-}
-
-function pickPrimaryDownload(build: BuildResponse) {
-  if (!build.downloads) return null
-  return build.downloads["server:default"] ?? Object.values(build.downloads)[0] ?? null
 }

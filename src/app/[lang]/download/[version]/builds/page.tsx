@@ -6,9 +6,10 @@ import { Suspense } from "react"
 
 import type { Locale } from "@/lib/i18n"
 import { Spinner } from "@/components/spinner"
-import { readCachedAllBuilds } from "@/lib/build-cache"
+import { readCachedAllBuilds, resolveVersions } from "@/lib/build-cache"
 import { getDictionary, type DownloadDict } from "@/lib/dictionaries"
 import { getBuilds, type BuildResponse } from "@/lib/leaf-api"
+import { isKnownVersion } from "@/lib/semver"
 
 import { parseChannel, type Channel } from "../../_components/types"
 import { BuildsView } from "./_components/builds-view"
@@ -37,6 +38,13 @@ export default async function Page({ params, searchParams }: PageParams) {
   const dict = dict_root.download
   const defaultPage = Math.max(1, Number.parseInt(sp.page ?? "1", 10) || 1)
   const defaultChannel: Channel = sp.channel ? parseChannel(sp.channel) : "all"
+
+  // 先校验版本，未知版本直接 404，不去请求 API；版本列表取不到时交给下面的构建请求处理
+  const known = await resolveVersions().then(
+    (infos) => infos.map((v) => v.id),
+    () => null
+  )
+  if (known && !isKnownVersion(known, version)) notFound()
 
   return (
     <main className="px-4 py-10 sm:py-14">

@@ -34,7 +34,6 @@ export type LanguageCopy = {
     apiDescription: string
     apiReferenceLink: string
 
-    stateNoStableTitle: string
     stateNoBuildsTitle: string
     stateNoBuildsBody: string
     stateNoChannelBuilds: string
@@ -193,7 +192,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "Für diese Minecraft-Version wurden noch keine Builds veröffentlicht.",
         stateNoBuildsTitle: "Keine Builds verfügbar",
         stateNoChannelBuilds: "Keine {channel}-Builds verfügbar",
-        stateNoStableTitle: "Keine stabilen Builds verfügbar",
         timelineHeading: "Neueste Builds",
         timelineSummary: "{version} · Zeigt die letzten {count}",
         timelineViewAll: "Alle {count} Builds für {version} anzeigen",
@@ -359,7 +357,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "No builds have been released for this Minecraft version yet.",
         stateNoBuildsTitle: "No builds available",
         stateNoChannelBuilds: "No {channel} builds available",
-        stateNoStableTitle: "No stable builds available",
         timelineHeading: "Recent builds",
         timelineSummary: "{version} · Showing latest {count}",
         timelineViewAll: "View all {count} builds for {version}",
@@ -519,7 +516,6 @@ export function getDictionary(locale: Locale): Promise<LanguageCopy> {
         stateNoBuildsBody: "该 Minecraft 版本尚未发布任何构建。",
         stateNoBuildsTitle: "暂无构建",
         stateNoChannelBuilds: "暂无 {channel} 构建",
-        stateNoStableTitle: "该版本暂无稳定构建",
         timelineHeading: "近期构建",
         timelineSummary: "{version} · 显示最近 {count} 条",
         timelineViewAll: "查看 {version} 全部 {count} 个构建",
