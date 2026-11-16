@@ -1,11 +1,9 @@
-import { KVCacheHandler } from "vinext/cloudflare"
 import handler from "vinext/server/app-router-entry"
 import {
   handleImageOptimization,
   DEFAULT_DEVICE_SIZES,
   DEFAULT_IMAGE_SIZES,
 } from "vinext/server/image-optimization"
-import { setCacheHandler } from "vinext/shims/cache"
 
 import { refreshBuildCache } from "@/lib/build-cache"
 import { setKV } from "@/lib/runtime-kv"
@@ -51,8 +49,6 @@ interface ScheduledController {
   cron: string
 }
 
-let cacheReady = false
-
 /**
  * 常量时间字符串比较，避免时序攻击的防御式措施
  */
@@ -74,13 +70,6 @@ function injectGitHubToken(env: Env): void {
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     injectGitHubToken(env)
-
-    // 本地就是没有这个变量
-    if (!cacheReady && env?.VINEXT_CACHE) {
-      // 大 TTL 用来削减冗余读取
-      setCacheHandler(new KVCacheHandler(env.VINEXT_CACHE, { tagCacheTtlMs: 21_600_000 }))
-      cacheReady = true
-    }
 
     if (env?.VINEXT_CACHE) setKV(env.VINEXT_CACHE)
 
