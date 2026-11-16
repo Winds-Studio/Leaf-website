@@ -43,7 +43,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "@vitejs/plugin-rsc": "^0.5.36",
-    "next": "16.2.6",
+    "next": "16.4.6",
     "next-validate-link": "^1.6.7",
     "oxfmt": "^0.64.0",
     "oxlint": "^1.75.0",
@@ -54,5 +54,12 @@
     "vinext": "^0.1.8",
     "vite": "^8.3.4",
     "wrangler": "^4.149.0"
+  },
+  "overrides": {
+    "fflate": "0.7.5",
+    "image-size": "2.0.4",
+    "satori": "0.63.2",
+    "tinypool": "2.1.2",
+    "undici": "7.30.2"
   }
 }
