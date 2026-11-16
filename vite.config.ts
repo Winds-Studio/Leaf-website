@@ -1,6 +1,7 @@
 import { resolve } from "node:path"
 import { cloudflare } from "@cloudflare/vite-plugin"
 import tailwindcss from "@tailwindcss/vite"
+import { kvDataAdapter } from "@vinext/cloudflare/cache/kv-data-adapter"
 import mdx from "fumadocs-mdx/vite"
 import vinext from "vinext"
 import { defineConfig } from "vite"
@@ -24,7 +25,11 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     mdx(),
-    vinext(),
+    vinext({
+      cache: {
+        data: kvDataAdapter({ binding: "VINEXT_CACHE", tagCacheTtlMs: 21_600_000 }),
+      },
+    }),
     cloudflare({
       viteEnvironment: {
         childEnvironments: ["ssr"],
