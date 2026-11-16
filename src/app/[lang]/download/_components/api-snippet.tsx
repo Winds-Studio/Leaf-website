@@ -2,20 +2,22 @@ import { Terminal } from "lucide-react"
 import Link from "next/link"
 
 import type { DownloadDict } from "@/lib/dictionaries"
-import { getDownloadUrl } from "@/lib/leaf-api"
 
 import { CopyButton } from "./copy-button"
 
+const API_DOCS = "https://dl.leafmc.one/swagger-ui/index.html"
+
 type ApiSnippetProps = {
-  build: number
   dict: DownloadDict
-  filename: string
-  version: string
+  /**
+   * 当前最新构建的下载地址
+   */
+  url: string
 }
 
-export function ApiSnippet({ build, dict, filename, version }: ApiSnippetProps) {
-  const downloadUrl = getDownloadUrl(version, build, filename)
-  const snippet = `curl -O ${downloadUrl}`
+// API 拉取构建示例命令
+export function ApiSnippet({ dict, url }: ApiSnippetProps) {
+  const snippet = `curl -O ${url}`
 
   return (
     <section className="border-fd-border bg-fd-card border-t px-6 py-5 sm:px-8 sm:py-6">
@@ -28,11 +30,10 @@ export function ApiSnippet({ build, dict, filename, version }: ApiSnippetProps) 
         {dict.apiDescription}{" "}
         <Link
           className="text-fd-foreground decoration-fd-border hover:decoration-fd-foreground underline underline-offset-2 transition-colors"
-          href="https://docs.papermc.io/misc/downloads-service"
+          href={API_DOCS}
         >
           {dict.apiReferenceLink}
         </Link>
-        .
       </p>
 
       <div className="border-fd-border bg-fd-background flex items-center gap-2 overflow-hidden rounded-md border px-3 py-2 font-mono text-xs">

@@ -83,6 +83,8 @@ html {
     --accent-bg: #eaf3de;
     --accent-fg: #27500a;
     --ring: rgba(99, 153, 34, 0.45);
+    /* 稳定渠道小圆点：品牌色系里中等亮度的不透明绿 */
+    --channel-stable: #639922;
 
     /* chart */
     --chart-grid: rgba(14, 17, 11, 0.06);
@@ -113,6 +115,7 @@ html {
     --accent-bg: #1a2410;
     --accent-fg: #b6d58a;
     --ring: rgba(115, 191, 41, 0.5);
+    --channel-stable: #73bf29;
 
     --chart-grid: rgba(255, 255, 255, 0.06);
     --chart-axis: rgba(255, 255, 255, 0.3);

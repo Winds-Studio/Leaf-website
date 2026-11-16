@@ -4,17 +4,16 @@ import { notFound } from "next/navigation"
 import type { LanguageCopy } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
 import Btn from "@/components/button"
-import { readCachedBuilds, readCachedVersions } from "@/lib/build-cache"
+import { readCachedBuilds, resolveVersions, toBuildIndex, type BuildIndex } from "@/lib/build-cache"
 import { getDictionary } from "@/lib/dictionaries"
 import { formatDateIso, fmtStr } from "@/lib/format"
-import { getBuild, getProject, getVersion, type BuildResponse } from "@/lib/leaf-api"
+import { getBuilds, type VersionInfo } from "@/lib/leaf-api"
 import { getLatestVersion, isKnownVersion } from "@/lib/semver"
 
 import React from "react"
 import { BuildBrowser } from "./build-browser"
 
 const GITHUB_RELEASES = "https://github.com/Winds-Studio/Leaf/releases"
-const BUILDS_TO_FETCH = 12
 
 type DownloadPageProps = {
   locale: Locale
@@ -24,44 +23,24 @@ type DownloadPageProps = {
   requestedVersion: string | null
 }
 
-/**
- * 优先读取 cron 的 KV 缓存；未命中回退到 live API。
- */
-async function resolveVersions(): Promise<string[]> {
-  const cached = await readCachedVersions()
-  if (cached) return cached
-  const project = await getProject()
-  return project.versions
-}
-
-async function resolveBuilds(version: string): Promise<{ builds: BuildResponse[]; total: number }> {
+async function resolveBuilds(version: string): Promise<BuildIndex> {
   const cached = await readCachedBuilds(version)
   if (cached) return cached
-
-  const versionManifest = await getVersion(version)
-  const recentBuildNumbers = [...versionManifest.builds]
-    .toSorted((a, b) => b - a)
-    .slice(0, BUILDS_TO_FETCH)
-
-  const buildResults = await Promise.allSettled(recentBuildNumbers.map((n) => getBuild(version, n)))
-  const builds = buildResults
-    .filter((r): r is PromiseFulfilledResult<BuildResponse> => r.status === "fulfilled")
-    .map((r) => r.value)
-
-  return { builds, total: versionManifest.builds.length }
+  return toBuildIndex(await getBuilds(version))
 }
 
 export async function DownloadPage({ locale, requestedVersion }: DownloadPageProps) {
   const dictRoot = await getDictionary(locale)
   const dict = dictRoot.download
 
-  let versions: string[]
+  let versionInfos: VersionInfo[]
   try {
-    versions = await resolveVersions()
+    versionInfos = await resolveVersions()
   } catch {
     return <ApiDownFallback dict={dict} />
   }
 
+  const versions = versionInfos.map((v) => v.id)
   if (versions.length === 0) {
     return (
       <Page dict={dict}>
@@ -75,50 +54,60 @@ export async function DownloadPage({ locale, requestedVersion }: DownloadPagePro
     notFound()
   }
 
-  let allBuilds: BuildResponse[]
-  let totalBuildCount: number
+  let index: BuildIndex
   try {
-    const resolved = await resolveBuilds(version)
-    allBuilds = resolved.builds
-    totalBuildCount = resolved.total
+    index = await resolveBuilds(version)
   } catch {
     return <ApiDownFallback dict={dict} />
   }
 
-  const isUnmaintained = inferUnmaintained(allBuilds)
-  const hasStableBuilds = allBuilds.some((b) => b.channel === "default")
-  const isExperimentalOnly = allBuilds.length > 0 && !hasStableBuilds
+  const info = versionInfos.find((v) => v.id === version)
 
-  const warningItems: WarningItem[] = []
-  if (isUnmaintained && allBuilds[0]) {
-    warningItems.push({
-      body: fmtStr(dict.bannerUnmaintained, { date: formatDateIso(allBuilds[0].time) }),
+  // 弃用 / 停止支持与“只有实验性构建”同时出现时，只显示前者这一行
+  const support = info?.support ?? "SUPPORTED"
+  const isExperimentalOnly = index.total > 0 && index.stableTotal === 0
+
+  let warning: WarningItem | null = null
+  if (support !== "SUPPORTED") {
+    const deprecated = support === "DEPRECATED"
+    let body = deprecated ? dict.supportDeprecatedBody : dict.supportUnsupportedBody
+    if (isExperimentalOnly) body += ` ${dict.supportNoStable}`
+    if (!deprecated && index.builds[0]) {
+      body += ` · ${fmtStr(dict.lastBuilt, { date: formatDateIso(index.builds[0].time) })}`
+    }
+    if (info?.supportEnd) {
+      body += ` ${fmtStr(dict.supportEnd, { date: formatDateIso(info.supportEnd) })}`
+    }
+    warning = {
+      body,
       icon: "unmaintained",
-      title: dict.pillUnmaintained,
-    })
-  }
-  if (isExperimentalOnly) {
-    warningItems.push({
+      title: deprecated ? dict.supportDeprecatedTitle : dict.supportUnsupportedTitle,
+    }
+  } else if (isExperimentalOnly) {
+    warning = {
       body: dict.stateNoStableBody,
       icon: "experimental",
       title: dict.stateNoStableTitle,
-    })
+    }
   }
 
-  const banner =
-    warningItems.length > 0 ? (
-      <WarningBanner disclaimer={dict.disclaimer} items={warningItems} />
-    ) : null
+  const banner = warning ? (
+    <WarningBanner
+      disclaimer={support === "DEPRECATED" ? undefined : dict.disclaimer}
+      item={warning}
+    />
+  ) : null
 
   return (
     <Page dict={dict}>
       <BuildBrowser
-        allBuilds={allBuilds}
+        allBuilds={index.builds}
         activeVersion={version}
         banner={banner}
         dict={dict}
+        key={version}
         locale={locale}
-        totalBuildCount={totalBuildCount}
+        totalBuildCount={index.total}
         version={version}
         versions={versions}
       />
@@ -187,58 +176,35 @@ type WarningItem = {
   title: string
 }
 
-function WarningBanner({ disclaimer, items }: { disclaimer: string; items: WarningItem[] }) {
+function WarningBanner({ disclaimer, item }: { disclaimer?: string; item: WarningItem }) {
+  const Icon = item.icon === "unmaintained" ? AlertTriangle : FlaskConical
   return (
     <div
       className="border-t border-amber-200 bg-amber-50 px-6 py-3 text-xs leading-relaxed sm:px-8 dark:border-amber-800/40 dark:bg-amber-950/25"
       role="status"
     >
       <div className="flex flex-col gap-2">
-        {items.map((item) => (
-          <div className="flex items-start gap-2" key={item.icon}>
-            {item.icon === "unmaintained" ? (
-              <AlertTriangle
-                aria-hidden
-                className="mt-0.5 shrink-0 text-amber-500 dark:text-amber-400"
-                size={13}
-                strokeWidth={1.75}
-              />
-            ) : (
-              <FlaskConical
-                aria-hidden
-                className="mt-0.5 shrink-0 text-amber-500 dark:text-amber-400"
-                size={13}
-                strokeWidth={1.75}
-              />
-            )}
-            <span className="text-amber-800 dark:text-amber-300">
-              <span className="font-semibold text-amber-900 dark:text-amber-100">{item.title}</span>
-              <span className="mx-1.5 opacity-40" aria-hidden>
-                ·
-              </span>
-              {item.body}
+        <div className="flex items-start gap-2">
+          <Icon
+            aria-hidden
+            className="mt-0.5 shrink-0 text-amber-500 dark:text-amber-400"
+            size={13}
+            strokeWidth={1.75}
+          />
+          <span className="text-amber-800 dark:text-amber-300">
+            <span className="font-semibold text-amber-900 dark:text-amber-100">{item.title}</span>
+            <span className="mx-1.5 opacity-40" aria-hidden>
+              ·
             </span>
-          </div>
-        ))}
-        <p className="border-t border-amber-200/70 pt-1.5 text-amber-700/70 dark:border-amber-800/30 dark:text-amber-400/60">
-          {disclaimer}
-        </p>
+            {item.body}
+          </span>
+        </div>
+        {disclaimer && (
+          <p className="border-t border-amber-200/70 pt-1.5 text-amber-700/70 dark:border-amber-800/30 dark:text-amber-400/60">
+            {disclaimer}
+          </p>
+        )}
       </div>
     </div>
   )
-}
-
-// 超过此天数无新构建 → 判定为停更
-const UNMAINTAINED_DAYS = 30
-
-function inferUnmaintained(builds: readonly BuildResponse[]): boolean {
-  if (builds.length === 0) return false
-  const latest = sortBuildsByTimeDesc(builds)[0]
-  if (!latest) return false
-  const ageMs = Date.now() - new Date(latest.time).getTime()
-  return ageMs > UNMAINTAINED_DAYS * 24 * 60 * 60 * 1000
-}
-
-function sortBuildsByTimeDesc(builds: readonly BuildResponse[]): BuildResponse[] {
-  return [...builds].toSorted((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime())
 }

@@ -5,9 +5,9 @@ import { useEffect, useState, useTransition } from "react"
 
 import type { DownloadDict } from "@/lib/dictionaries"
 import type { Locale } from "@/lib/i18n"
-import type { BuildResponse } from "@/lib/leaf-api"
 import { Spinner } from "@/components/spinner"
 import { cn } from "@/lib/cn"
+import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
 import { ApiSnippet } from "./api-snippet"
 import { BuildTimeline } from "./build-timeline"
 import { VersionPills } from "./filters"
@@ -66,8 +66,8 @@ export function BuildBrowser({
     }
   }, [isPending])
 
-  const heroBuild = allBuilds[0] ?? null
-  const heroFilename = heroBuild ? pickFilenameFromBuild(heroBuild) : undefined
+  const heroBuild = allBuilds[0]
+  const heroUrl = heroBuild ? pickPrimaryDownload(heroBuild)?.url : undefined
 
   return (
     <>
@@ -91,7 +91,7 @@ export function BuildBrowser({
         )}
 
         <div className={cn("transition-opacity", showLoading && "pointer-events-none opacity-40")}>
-          <HeroCard allBuilds={allBuilds} dict={dict} locale={locale} />
+          <HeroCard build={allBuilds[0] ?? null} dict={dict} locale={locale} />
 
           <BuildTimeline
             builds={allBuilds}
@@ -101,21 +101,9 @@ export function BuildBrowser({
             version={version}
           />
 
-          {heroBuild && heroFilename && (
-            <ApiSnippet
-              build={heroBuild.build}
-              dict={dict}
-              filename={heroFilename}
-              version={version}
-            />
-          )}
+          {heroUrl && <ApiSnippet dict={dict} url={heroUrl} />}
         </div>
       </div>
     </>
   )
-}
-
-function pickFilenameFromBuild(build: BuildResponse): string | undefined {
-  const dl = build.downloads?.application ?? Object.values(build.downloads ?? {})[0]
-  return dl?.name
 }
