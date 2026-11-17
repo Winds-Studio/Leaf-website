@@ -1,14 +1,12 @@
 import { unstable_noStore as noStore } from "next/cache"
 
+import { getVersions } from "./leaf-api"
 import { getKV, type KVNamespace } from "./runtime-kv"
+import { getLatestVersion } from "./semver"
 
 // 数据源类型
 type GitHubRepo = {
   stargazers_count: number
-}
-
-type GitHubRelease = {
-  tag_name: string
 }
 
 type BStatsDataPoint = [timestamp: number, value: number]
@@ -53,12 +51,11 @@ async function fetchStars(): Promise<number> {
   return data.stargazers_count
 }
 
+// 与 /download 默认版本一致：取版本列表中最高的版本
 async function fetchLatestVersion(): Promise<string> {
-  const data = await fetchJson<GitHubRelease>(
-    `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`,
-    { headers: authHeaders() }
-  )
-  return data.tag_name.replace(/^ver-/, "")
+  // 与 GitHub / bStats 一致：单次请求，失败记日志并显示 unknown，不重试
+  const versions = await getVersions(1)
+  return getLatestVersion(versions.map((v) => v.id))
 }
 
 async function fetchServerCount(): Promise<number> {
