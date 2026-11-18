@@ -22,9 +22,11 @@ function build(id: number, channel: BuildResponse["channel"]): BuildResponse {
 
 function memoryKV() {
   const store = new Map<string, string>()
+  const writes: string[] = []
   const kv: KVNamespace = {
     get: async (key) => store.get(key) ?? null,
     put: async (key, value) => {
+      writes.push(key)
       store.set(key, value)
     },
     delete: async (key) => {
@@ -32,7 +34,7 @@ function memoryKV() {
     },
     list: async () => ({ keys: [], list_complete: true }),
   }
-  return { kv, store }
+  return { kv, store, writes }
 }
 
 describe("toBuildIndex", () => {
@@ -49,7 +51,8 @@ describe("toBuildIndex", () => {
 })
 
 describe("refreshBuildCache", () => {
-  test("writes the version list and each version's builds", async () => {
+  test("writes missing cache entries and skips unchanged ones", async () => {
+    let channel = "ALPHA"
     globalThis.fetch = (async (url: string) => {
       if (url.endsWith("/projects/leaf/versions")) {
         return Response.json({
@@ -67,14 +70,14 @@ describe("refreshBuildCache", () => {
         {
           id: 1,
           time: "2026-11-15T00:00:00Z",
-          channel: "ALPHA",
+          channel,
           commits: [],
           downloads: {},
         },
       ])
     }) as unknown as typeof fetch
 
-    const { kv, store } = memoryKV()
+    const { kv, store, writes } = memoryKV()
     await refreshBuildCache(kv)
 
     expect(JSON.parse(store.get(VERSIONS_KEY) ?? "null")).toEqual([
@@ -85,5 +88,13 @@ describe("refreshBuildCache", () => {
       total: 2,
       stableTotal: 1,
     })
+
+    writes.length = 0
+    await refreshBuildCache(kv)
+    expect(writes).toEqual([])
+
+    channel = "STABLE"
+    await refreshBuildCache(kv)
+    expect(writes).toEqual([allBuildsKey("1.21.11"), buildsKey("1.21.11")])
   })
 })
