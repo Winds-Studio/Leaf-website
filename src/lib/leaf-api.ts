@@ -63,7 +63,11 @@ const sleep = (ms: number) =>
     setTimeout(resolve, ms)
   })
 
-async function fetchWithRetry<T>(url: string, init?: RequestInit): Promise<T> {
+async function fetchWithRetry<T>(
+  url: string,
+  init?: RequestInit,
+  maxAttempts = MAX_ATTEMPTS
+): Promise<T> {
   const mergedHeaders = new Headers(HEADERS)
   if (init?.headers) {
     const initHeaders = new Headers(init.headers)
@@ -82,7 +86,7 @@ async function fetchWithRetry<T>(url: string, init?: RequestInit): Promise<T> {
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       return (await res.json()) as T
     } catch (error) {
-      if (attempt >= MAX_ATTEMPTS) throw error
+      if (attempt >= maxAttempts) throw error
       await sleep(1000 * 2 ** attempt)
       return attemptFetch(attempt + 1)
     }
@@ -122,10 +126,12 @@ function toBuild(version: string, b: V3Build): BuildResponse {
 /**
  * All versions with support status, across all version families.
  */
-export async function getVersions(): Promise<VersionInfo[]> {
-  const res = await fetchWithRetry<V3Versions>(`${BASE_URL}/projects/leaf/versions`, {
-    cache: "no-store",
-  })
+export async function getVersions(maxAttempts = MAX_ATTEMPTS): Promise<VersionInfo[]> {
+  const res = await fetchWithRetry<V3Versions>(
+    `${BASE_URL}/projects/leaf/versions`,
+    { cache: "no-store" },
+    maxAttempts
+  )
   return res.versions.map(({ version: v }) => ({
     id: v.id,
     support: v.support.status,
