@@ -80,12 +80,17 @@ export async function readCachedAllBuilds(version: string): Promise<BuildRespons
   }
 }
 
+// 内容没变就不写，节省 KV 写操作
+async function putIfChanged(kv: KVNamespace, key: string, next: string): Promise<void> {
+  if ((await kv.get(key)) !== next) await kv.put(key, next)
+}
+
 export async function refreshBuildCache(kv: KVNamespace): Promise<void> {
   const versions = await getVersions()
-  await kv.put(VERSIONS_KEY, JSON.stringify(versions))
+  await putIfChanged(kv, VERSIONS_KEY, JSON.stringify(versions))
   for (const { id: version } of versions) {
     const all = await getBuilds(version)
-    await kv.put(allBuildsKey(version), JSON.stringify(all))
-    await kv.put(buildsKey(version), JSON.stringify(toBuildIndex(all)))
+    await putIfChanged(kv, allBuildsKey(version), JSON.stringify(all))
+    await putIfChanged(kv, buildsKey(version), JSON.stringify(toBuildIndex(all)))
   }
 }
