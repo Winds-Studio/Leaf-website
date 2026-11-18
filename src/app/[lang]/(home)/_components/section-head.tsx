@@ -1,8 +1,10 @@
+import type { ReactNode } from "react"
+
 interface SectionHeadProps {
   index: string
   eyebrow: string
   title: string
-  sub: string
+  sub: ReactNode
 }
 
 export const Eyebrow = ({ index, children }: { index: string; children: string }) => (
