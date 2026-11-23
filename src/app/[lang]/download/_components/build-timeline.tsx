@@ -7,6 +7,7 @@ import { LocalDateShort } from "@/components/local-date"
 import { cn } from "@/lib/cn"
 import { fmtStr } from "@/lib/format"
 import { pickPrimaryDownload, type BuildResponse } from "@/lib/leaf-api"
+import { trackDownload } from "@/lib/umami"
 
 import { ChannelTag, channelOf } from "./channel"
 
@@ -119,6 +120,9 @@ function BuildRow({
           className="border-fd-border text-fd-foreground hover:bg-fd-accent flex shrink-0 items-center justify-center rounded-md border px-2 py-1.5 transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-fd-ring)] focus-visible:outline-none"
           download={download?.name}
           href={downloadUrl}
+          onClick={() => {
+            trackDownload(build.version, build.build, download?.name ?? "")
+          }}
         >
           <Download aria-hidden size={13} strokeWidth={1.75} />
         </a>
