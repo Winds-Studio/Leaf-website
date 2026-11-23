@@ -88,7 +88,7 @@ function HeroBody({ build, dict, locale }: HeroBodyProps) {
               download={download?.name}
               href={downloadUrl}
               onClick={() => {
-                trackDownload(build.version, build.build, download?.name ?? "", channel)
+                trackDownload(build.version, build.build, download?.name ?? "")
               }}
               size="lg"
               variant="primary"

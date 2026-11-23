@@ -205,7 +205,7 @@ function BuildsTableRow({
             download={dl?.name}
             href={url}
             onClick={() => {
-              trackDownload(build.version, build.build, dl?.name ?? "", kind)
+              trackDownload(build.version, build.build, dl?.name ?? "")
             }}
           >
             <Download aria-hidden size={13} strokeWidth={1.75} />
