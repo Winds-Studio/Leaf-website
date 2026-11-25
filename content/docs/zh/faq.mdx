@@ -1,21 +1,43 @@
 ---
-title: 常见问题
-description: "关于 Leaf 的常见问题"
+title: 常见问题解答
+description: "关于 Leaf 的常见问题与解答"
 ---
 
 import { Callout } from "fumadocs-ui/components/callout"
 
+## ❓ · Leaf 支持哪些版本？
+
+Leaf 目前支持：
+- 1.21.11
+- 26.2
+- 26.3
+
+这些版本将收到问题修复和支持。但是我们仍旧推荐你使用 Leaf 支持的最新 MC 版本，以获得最新优化，问题修复和积极更新。
+
 ## ❓ · Leaf 相比 `"<其他任意 Paper 分支>"` 有多少性能提升？
 
-你可以参考 [实体性能](./benchmark/entity-performance) 和 [区块加载/生成性能](./benchmark/chunk-generation)。我们将在未来提供更详细严谨的性能对比！
+根据目前服主的实际使用反馈，相比于其他非 Folia 系的 Paper 分支，Leaf 通常能够带来性能提升。
+
+具体提升幅度取决于服务器硬件配置，服务器类型，和实际游戏场景。
+
+我们计划在未来提供更加全面、公平且严谨的性能对比测试。
 
 ## ❓ · Leaf 是否兼容 Spigot/Paper 插件？
 
-是的，Leaf 的插件兼容性与 Paper 完全相同。如果某个插件无法正常工作，可以将 Leaf 替换为 Purpur 并再次测试。如果问题仍然存在，请在 [Leaf 的 GitHub](https://github.com/Winds-Studio/Leaf/issues/new/choose) 上反馈。
+是的。Leaf 的目标是保持和 Paper 相同的插件兼容性。
+
+不过，并不是所有插件都会遵循标准的 API 用法，有很多直接依赖 MC 的内部实现的插件（NMS 插件）或者以不规范的方式使用 API。这类插件可能会在 MC 版本更新或更换服务端核心后出现兼容性问题。
+
+Leaf 会尽可能维护这类插件的兼容性，但无法保证所有插件都能正常工作。
+
+如果某个插件无法正常工作，可以将 Leaf 替换为 Paper 并测试。如果问题仅出现在 Leaf 上，请在 Leaf 的 [GitHub Issue](https://github.com/Winds-Studio/Leaf/issues/new/choose) 上反馈。
 
 ## ❓ · Leaf 是否包括 Purpur？
 
 是的，Leaf 包含所有 Purpur 的补丁，但部分 Purpur 配置项已移至 Gale 和 Leaf 的配置中。
+
+[TODO]
+Leaf 仅集成了部分常用的 Purpur 功能。如需使用完整的 Purpur 功能，请参阅 [???](???)。
 
 ## ❓ · Leaf 多久更新一次上游？
 
@@ -23,7 +45,7 @@ import { Callout } from "fumadocs-ui/components/callout"
 
 ## ❓ · 我该如何优化我的服务器？
 
-你可以参考 [YouHaveTrouble 的优化指南](https://github.com/YouHaveTrouble/minecraft-optimization) 和 [Paper 酱的优化指南](https://paper-chan.moe/paper-optimization/)，或者参考由社区为中文用户撰写的 [笨蛋 Wiki 优化指南](https://nitwikit.8aka.org/java/advance/optimize/intro/)。
+Leaf 的默认配置以尽可能贴近原版行为为目标，你可以参考 [Leaf 优化指南]() 以进一步提升服务器性能。
 
 ## ❓ · Leaf 有任何已知的不兼容问题吗？
 
@@ -34,16 +56,14 @@ import { Callout } from "fumadocs-ui/components/callout"
 - < 1.21.1：与 [RealisticVillagers](https://www.spigotmc.org/resources/realisticvillagers.105055) 插件不兼容。
 - < 1.21.8：如果您启用了 Leaf 配置里的异步追踪，并且安装了 [Citizens](https://www.spigotmc.org/resources/citizens.13811) 或任何使用真实实体作为 NPC 的插件，请同时开启异步追踪的 `compat-mode` 或关闭异步追踪！
 
-发现有不兼容的插件？[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)！
-
-## ❓ · mojmap 和 reobf 有什么区别？我该使用哪个？
-
-它们是基于不同的映射方式。mojmap 使用 Mojang 映射，而 reobf 使用 Spigot 的 reobf 映射。如提供了带有两种后缀结尾的核心，请使用 mojmap 结尾的核心。
+如果发现有不兼容的插件，[请在这里反馈](https://github.com/Winds-Studio/Leaf/issues/new/choose)，我们将尽快修复！
 
 ## ❓ · 我该如何支持该项目？
 
-任何人都可以通过我们的 [Open Collective](https://opencollective.com/Winds-Studio) 或者 [Dreeam 的 爱发电](https://afdian.com/a/Dreeam) (支持 支付宝 / 微信支付) 来赞助，支持 Leaf。
+Leaf 是一个免费的开源项目，所有贡献出于热爱与兴趣。如果你认可我们的工作，欢迎通过 [Open Collective](https://opencollective.com/Winds-Studio) 或者 [Dreeam 的 爱发电](https://afdian.com/a/Dreeam) 来支持 Leaf，这是对我们最大的鼓励。
+
+赞助将用于 Leaf 的基础设施维护，如 CI，域名等云服务。其余部分会作为补贴回馈给 Leaf 团队成员，或 Minecraft 社区中的其他项目和组织。
 
 <Callout title="提示" type="idea">
-  是否需要为此 _常见问题与解答_ 添加更多内容？[点此反馈](./getting-started#contact)！
+  是否需要为此 *常见问题解答* 添加更多内容？[点此反馈](./getting-started#contact)！
 </Callout>
