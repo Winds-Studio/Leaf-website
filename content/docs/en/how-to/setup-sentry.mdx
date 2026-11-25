@@ -1,65 +1,164 @@
 ---
 title: Set Up Sentry
-description: "Send Leaf error reports to Sentry"
+description: "How to configure Sentry and connect it to Leaf"
 ---
 
-[Sentry](https://sentry.io/) is a powerful service for real-time error tracking and performance monitoring. Integrating it with your Leaf server allows you to capture errors and exceptions automatically, making it much easier to diagnose and fix problems that occur on your server.
+[Sentry](https://sentry.io/) is an error monitoring platform that captures exceptions with full stack traces and context in real time. By integrating it with Leaf, it largely simplifies the manual effort of tracking errors, making it easier to track issues and implement fixes.
 
-This guide explains how to configure Leaf to send error reports to your Sentry project.
+This guide provides a detailed walkthrough of configuring Sentry and connecting it to Leaf.
 
-## Prerequisites
+## Create a Sentry account
 
-1.  **Sentry Account:** You need an account on [sentry.io](https://sentry.io/). They offer free tiers suitable for many servers.
-2.  **Sentry Project:** Create a new project within your Sentry organization.
-    - When asked for the platform, choose **Java**. If Java isn't immediately visible, you might select "Other" or search for it. The specific platform choice mainly affects initial setup instructions on Sentry's side, but Leaf handles the integration itself.
-3.  **DSN (Data Source Name):** Once your project is created, navigate to its settings. Find the "Client Keys (DSN)" section. Copy the DSN string – it looks like a URL (e.g., `https://xxxxxxxxxxxxxxxxxxxxxxxx@o######.ingest.sentry.io/#######`).
+Sentry offers a free plan with limited features for individual developers, but it is sufficient for most server needs.
 
-## Configuration Steps
+If you are unsure whether your server team has a Sentry Team, contact your team first. If you already have a Sentry account, you can jump to [Create a new project](#create-a-new-project).
 
-1.  **Locate Leaf Configuration:** Open your main Leaf server configuration file. This is typically `leaf-global.yml` located in your server's root directory or a `config` subfolder.
+### Navigate to Sentry signup [step]
 
-2.  **Find the Sentry Section:** Inside the configuration file, find the `sentry:` section. It will look similar to this by default:
+Go to [https://sentry.io/signup/](https://sentry.io/signup/).
 
-    ```yaml
-    sentry:
-      # Sentry DSN for improved error logging, leave blank to disable,
-      # Obtain from https://sentry.io/
-      dsn: ""
-      # Logs with a level higher than or equal to this level will be recorded.
-      log-level: WARN
-      # Only log with a Throwable will be recorded after enabling this.
-      only-log-thrown: true
-    ```
+You can register with your email address, or register using a supported third-party account. However, you still need to input the information shown in the next step.
 
-3.  **Configure the Settings:**
-    - **`dsn`:**
-      - Replace the empty single quotes (`''`) with the DSN you copied from your Sentry project settings. Make sure it's enclosed in single quotes.
-      - **Example:** `dsn: 'https://xxxxxxxxxxxxxxxxxxxxxxxx@o######.ingest.sentry.io/#######'`
-      - _If you leave this blank, Sentry integration will be disabled._
+<img
+  src="/docs/sentry/account-creation-1.png"
+  alt="Third-party signup options"
+  className="mx-auto max-w-[70%]"
+/>
 
-    - **`log-level`:**
-      - This determines the minimum severity level of log messages that Leaf will send to Sentry. Common levels include `ERROR`, `WARN`, `INFO`, `DEBUG`.
-      - The default `WARN` means only messages logged as warnings or errors (which typically include exceptions) will be sent.
-      - You might set it to `ERROR` if you only want critical errors. Setting it lower (like `INFO`) can send a lot more data and might not be desirable unless you're actively debugging.
-      - **Recommendation:** Start with `WARN` (the default).
+### Input your information [step]
 
-    - **`only-log-thrown`:**
-      - If set to `true` (the default), Leaf will _only_ send log messages to Sentry if they explicitly include a Java `Throwable` (like an exception or error with a stack trace). This is highly recommended as it focuses Sentry on actual code errors.
-      - If set to `false`, _any_ log message meeting the `log-level` threshold will be sent, even if it's just informational text without an error. This can create a lot of noise in Sentry.
-      - **Recommendation:** Keep this as `true` (the default).
+Input your information:
+- Name - Your name.
+- Organization - Your organization name. It can be the name of your server or studio.
+- Email - Your email.
+- Password - A strong password.
+- Data Storage Location - The region you want to store your Sentry data in. Read [Data Storage Location (US or EU)](https://docs.sentry.io/organization/data-storage-location/) for more detail.
 
-4.  **Save and Restart:**
-    - Save the changes to your configuration file.
-    - Restart your Leaf server completely for the new settings to take effect.
+<img
+  src="/docs/sentry/account-creation-2.png"
+  alt="Account creation form"
+  className="mx-auto max-w-[70%]"
+/>
 
-## Troubleshooting
+Once you have created the account, you should be on your organization dashboard page.
 
-- **Errors Not Appearing:**
-  - Double-check the `dsn` is copied correctly and enclosed in single quotes in the YAML file.
-  - Ensure your `log-level` isn't set too high (e.g., if set to `ERROR`, warnings won't be sent).
-  - Verify `only-log-thrown` is appropriate for the errors you expect to see.
-  - Make sure your server was fully restarted after changing the config.
-  - Check if your server's firewall might be blocking outgoing connections to `ingest.sentry.io` on port 443 (HTTPS).
-- **Too Many Issues:**
-  - Increase the `log-level` (e.g., from `WARN` to `ERROR`).
-  - Ensure `only-log-thrown` is set to `true`.
+## Create a new project
+
+The *project* represents Minecraft server instances of the same type. As a best practice, for example, all your lobby instances can share a project and all survival instances can share another.
+
+Don't mix different server types in one project. Choose the granularity wisely to make maintenance more efficient.
+
+### Go to Projects [step]
+
+In your organization dashboard, click your organization icon at the top-left navigation bar, select **Projects**.
+
+Then click **Create Project** at the top navigation bar.
+
+<img
+  src="/docs/sentry/project-creation-1.png"
+  alt="Projects on Organization menu"
+  className="mx-auto max-w-[50%]"
+/>
+
+### Set up a project [step]
+
+Choose **Set up manually** at the bottom of the page.
+
+<img
+  src="/docs/sentry/project-creation-2.png"
+  alt="Set up project options"
+  className="mx-auto max-w-[70%]"
+/>
+
+### Choose platform [step]
+
+In the *Platform* section, find and select **Java**.
+
+<img
+  src="/docs/sentry/project-creation-3.png"
+  alt="Choose Java as platform"
+  className="mx-auto max-w-[70%]"
+/>
+
+In the next popup box, select **Nope, Vanilla**, and click **Configure SDK**.
+
+<img
+  src="/docs/sentry/project-creation-4.png"
+  alt="Select Nope, Vanilla option"
+  className="mx-auto max-w-[40%]"
+/>
+
+### Select tracking features [step]
+
+In the *Products* section, keep the default selection, which only selects **Error monitoring**.
+
+<img
+  src="/docs/sentry/project-creation-5.png"
+  alt="Select Error monitoring only"
+  className="mx-auto max-w-[70%]"
+/>
+
+### Input project name [step]
+
+Input the project name.
+
+You can use the format like `[server name]-[backend server name]`, e.g., `ciallomc-lobby`.
+
+<img
+  src="/docs/sentry/project-creation-6.png"
+  alt="Project name and team fields"
+  className="mx-auto max-w-[70%]"
+/>
+
+### Complete [step]
+
+Click **Create Project**.
+
+Then copy and save the DSN in the *Configure SDK* section. It will be used in the further steps.
+
+<img
+  src="/docs/sentry/project-creation-7.png"
+  alt="Copy DSN"
+  className="mx-auto max-w-[100%]"
+/>
+
+## Connect Leaf to Sentry
+
+### Get the DSN [step]
+
+You should already have the DSN from the previous project creation step.
+
+However, in case you forget it, you can still find your DSN string in the settings of your project later.
+
+(Your organization icon > **Projects** > Your project > **Project Settings** > **SDK Setup** > **Client Keys (DSN)**)
+
+The entire URL string provided is your DSN.
+
+<img
+  src="/docs/sentry/connect-to-leaf-1.png"
+  alt="Path to Project settings guide"
+  className="mx-auto max-w-[70%]"
+/>
+<img
+  src="/docs/sentry/connect-to-leaf-2.png"
+  alt="Path to DSN guide"
+  className="mx-auto max-w-[80%]"
+/>
+
+### Paste the DSN into Leaf config [step]
+
+Go to the Minecraft server instance that corresponds to your created Sentry project.
+
+In the Leaf config file, paste the copied DSN into the `sentry.dsn` setting.
+
+### Apply config changes [step]
+
+Save the config file, then run `/leaf reload` or restart your Minecraft server to apply the change.
+
+Check [Leaf Global Config](../config/leaf-global) for more information about the Sentry setting in Leaf config.
+
+You are all set!
+
+## Next steps
+
+For the next steps, you can check your project dashboard, look around, and explore more features of Sentry in [Sentry Docs](https://docs.sentry.io/get-started/).
