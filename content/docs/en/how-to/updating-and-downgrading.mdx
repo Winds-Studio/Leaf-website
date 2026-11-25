@@ -1,0 +1,85 @@
+---
+title: Updating & Downgrading
+description: "How to update or downgrade your Leaf or Minecraft version"
+---
+
+## Updating plugins
+
+Check Paper's [Update plugins](https://docs.papermc.io/paper/updating/#step-2-update-plugins) guide for knowing how to update plugins and minimize downtime at the same time.
+
+## Updating to a newer Leaf version
+
+Leaf provides [auto-update feature](../config/leaf-loader) that is able to check and use latest Leaf on server starts. However, you still can refer to detailed steps below to do it manually.
+
+### Before you start [step]
+
+Close your server instance, the updating needs to be done when your server is off.
+
+Updating Leaf in the same Minecraft version is safe at most of the time, it's unlikely to get critical issues. So the backup is optional, please read [Backup your server](./backup) for more detail.
+
+### Download latest Leaf [step]
+
+Go to [Download](../../download) on this website, download the latest Leaf Jar with the corresponding Minecraft version.
+
+### Replace Leaf Jar [step]
+
+Replace your current Leaf Jar file, then update the Jar file name in your startup script or panel's startup command if needed.
+
+### Start server and fix [step]
+
+Start your server.
+
+It's possible that some errors or issues come out after the update. Check the error in the console, fix them, and restart the server.
+
+If you need any help, feel free to join [Leaf Discord](../getting-started#contact) and ask.
+
+## Upgrading to a newer Minecraft version
+
+Upgrading to a newer Minecraft version and keeping existing data is not a drop-and-replace task, especially when you want to upgrade for your entire network.
+
+So make a nice plan, schedule upgrading tasks, and the most important thing, take a full backup before upgrading.
+
+### Prepare [step]
+
+Make sure all plugins installed your server support the new Minecraft version. Review announcements or release notes post by Leaf and your plugins, to know any important information or required configuration changes before upgrading.
+
+### Before you start [step]
+
+Close your server instance, the upgrading needs to be done when your server is off.
+
+It's recommended to take a full backup before upgrading to a new Minecraft version, just in case. Please read [Backup your server](./backup) for more detail.
+
+### Update [step]
+
+Download plugins from their official sources, and Leaf from [Download](../../download) of this website.
+
+Replace your current Leaf Jar file, and update the filename in your startup script or startup command if needed.
+
+Then check [Updating plugins](#updating-plugins), or replace your plugin files manually.
+
+<Callout title="World upgrade">
+    Unlike Spigot, you don't need to run a force upgrade using `--forceUpgrade` parameter to upgrade your world. Paper's rewritten dataconverter can handle
+    chunk upgrading during its loading automatically.
+</Callout>
+
+### Start [step]
+
+Start your server, and go to next step.
+
+### Test and fix [step]
+
+When upgrading to a new Minecraft version, it's expected that some errors or issues come out after the upgrade. Some plugins may not fully support the new Minecraft version. Check the error in the console, fix them, and restart the server.
+
+Rollback important data from your backup if necessary.
+
+If you need any help, feel free to join [Leaf Discord](../getting-started#contact) and ask. If you encounter issues from specific plugin, contact their support team for help.
+
+## Downgrading to an older Leaf version
+
+It's **NOT** recommended to downgrade your server to an older Leaf version. Older versions lack latest fixes. If you encountered an issue/bug in a new Leaf version, don't downgrade to an older Leaf version. Instead, you should report it via [GitHub](https://github.com/Winds-Studio/Leaf/issues) or in our [Discord server](../getting-started#contact), and we'll implement the fix as soon as possible, so that you can update to it.
+
+## Downgrading to an older Minecraft version
+
+It's **NOT** recommended to downgrade your server to an older Minecraft version. Even if you use some tools or methods to convert your world to an older Minecraft version, all things from higher Minecraft versions, including blocks, items, etc., will be lost.
+
+If you really need to downgrade your server to an older version, restore a backup made before the upgrade, or start a new world.

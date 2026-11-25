@@ -9,9 +9,17 @@
     "config/gale-global",
     "config/gale-world-defaults",
     "config/jvm-flags",
+    "---How To---",
+    "how-to/migration",
+    "how-to/updating-and-downgrading",
+    "how-to/backup",
+    "how-to/optimize-leaf-server",
+    "how-to/optimize-java-flags",
+    "how-to/setup-sentry",
     "---Development---",
     "dev/guide",
     "dev/api",
+    "dev/download-api",
     "dev/contributing"
   ],
   "root": true
